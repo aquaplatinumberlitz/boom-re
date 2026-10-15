@@ -68,11 +68,11 @@ uv run --with unicorn --with pefile python tools/verify_emu.py unpacked_ca.exe  
 ### 1. Unpack Themida
 
 `ca.exe` bị pack bằng Themida/WinLicense 2.x. Phải **chạy** nó trong Windows để dump, không chạy trên host.
-Đang dùng Windows của **WinBoat** (docker `dockur/windows`, user/pass `admin/admin`, ổ host `$HOME` = `\\host.lan\Data`).
+Đang dùng Windows của **WinBoat** (docker `dockur/windows`, user/pass trong `~/.winboat/docker-compose.yml`, ổ host `$HOME` = `\\host.lan\Data`).
 
 ```sh
 docker port WinBoat        # lấy port 3389 (đổi sau mỗi lần restart container)
-xfreerdp3 /u:admin /p:admin /v:127.0.0.1 /port:<PORT> /cert:ignore \
+xfreerdp3 /u:<USER> /p:<PASS> /v:127.0.0.1 /port:<PORT> /cert:ignore \
   '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\unpack.bat'
 ```
 `unpack.bat` copy client vào `C:\boom` (bỏ `*.idd`, `hackshield`, `blackcipher`), chạy `unlicense ca.exe`, chép `unpacked_ca.exe` + log về đây.
