@@ -1,0 +1,2805 @@
+{
+ "sub_42DA98@42DA98": {
+  "0": [
+   "sub_42D148@42D148"
+  ],
+  "1": [
+   "sub_42B71E@42B71E"
+  ],
+  "2": [
+   "sub_42BC17@42BC17"
+  ],
+  "3": [
+   "sub_42D54C@42D54C"
+  ],
+  "4": [
+   "sub_42D7D9@42D7D9"
+  ],
+  "5": [
+   "sub_42B3B9@42B3B9"
+  ],
+  "6": [
+   "sub_42C026@42C026"
+  ],
+  "7": [
+   "sub_42B32B@42B32B"
+  ],
+  "8": [
+   "sub_42D23A@42D23A"
+  ],
+  "620": [
+   "RecvPkt__Decode4@A65750",
+   "sub_42D148@42D148",
+   "sub_42B71E@42B71E"
+  ]
+ },
+ "sub_449CFE@449CFE": {
+  "295": [
+   "sub_449233@449233"
+  ],
+  "546": [
+   "sub_448773@448773"
+  ],
+  "547": [
+   "sub_44826F@44826F"
+  ]
+ },
+ "CHiddenCatchPrepareStage__On_113@46D2C7": {
+  "0": [
+   "indirect",
+   "RecvPkt__Decode2@A656E0",
+   "sub_8E8E59@8E8E59"
+  ],
+  "1": [
+   "RecvPkt__Decode1@A65670",
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_98DB56@98DB56"
+  ]
+ },
+ "CHiddenCatchPrepareStage__OnPacket@478C84": {
+  "94": [
+   "CHiddenCatchPrepareStage__On_94@471BAD"
+  ],
+  "106": [
+   "CHiddenCatchPrepareStage__On_106@475605"
+  ],
+  "109": [
+   "indirect"
+  ],
+  "110": [
+   "indirect"
+  ],
+  "111": [
+   "indirect"
+  ],
+  "113": [
+   "CHiddenCatchPrepareStage__On_113@46D2C7"
+  ],
+  "114": [
+   "CHiddenCatchPrepareStage__On_114@470897"
+  ],
+  "115": [
+   "CHiddenCatchPrepareStage__On_115@477F8B"
+  ],
+  "116": [
+   "CHiddenCatchPrepareStage__On_116@4729D5"
+  ],
+  "117": [
+   "CHiddenCatchPrepareStage__On_117@476C92"
+  ],
+  "118": [
+   "CHiddenCatchPrepareStage__On_118@46A5D0"
+  ],
+  "119": [
+   "CHiddenCatchPrepareStage__On_119@468504"
+  ],
+  "120": [
+   "CHiddenCatchPrepareStage__On_120@470A99"
+  ],
+  "121": [
+   "CHiddenCatchPrepareStage__On_121@472DBE"
+  ],
+  "134": [
+   "CHiddenCatchPrepareStage__On_134@46DC62"
+  ],
+  "209": [
+   "CHiddenCatchPrepareStage__On_209@46E29C"
+  ],
+  "253": [
+   "CHiddenCatchPrepareStage__On_253@46D0A5"
+  ],
+  "289": [
+   "CHiddenCatchPrepareStage__On_289@4658EF"
+  ],
+  "324": [
+   "CHiddenCatchPrepareStage__On_324@467382"
+  ],
+  "397": [
+   "CHiddenCatchPrepareStage__On_397@468750"
+  ],
+  "409": [
+   "CHiddenCatchPrepareStage__On_409@465912"
+  ],
+  "498": [
+   "CHiddenCatchPrepareStage__On_498@467240"
+  ],
+  "499": [
+   "CHiddenCatchPrepareStage__On_499@467223"
+  ],
+  "500": [
+   "CHiddenCatchPrepareStage__On_500@467250"
+  ],
+  "501": [
+   "CHiddenCatchPrepareStage__On_501@46E347"
+  ],
+  "538": [
+   "CHiddenCatchPrepareStage__On_538@47300E"
+  ],
+  "553": [
+   "OnPkt_multi_344_553_553_553@A62490",
+   "RecvPkt__DecodeBlob@A658A0",
+   "sub_6A5A5E@6A5A5E"
+  ],
+  "585": [
+   "OnPkt_multi_585_585@456BF7",
+   "sub_9903FF@9903FF",
+   "sub_475C1F@475C1F"
+  ],
+  "588": [
+   "CHiddenCatchPrepareStage__On_588@46742C"
+  ],
+  "591": [
+   "CHiddenCatchPrepareStage__On_591@46AD58"
+  ],
+  "596": [
+   "CHiddenCatchPrepareStage__On_596@46711F"
+  ],
+  "598": [
+   "CHiddenCatchPrepareStage__On_598@47112C"
+  ],
+  "600": [
+   "CHiddenCatchPrepareStage__On_600@467180"
+  ]
+ },
+ "CHiddenCatchGameStage__OnPacket@47C180": {
+  "173": [
+   "indirect"
+  ],
+  "587": [
+   "CHiddenCatchGameStage__On_587@47B083"
+  ],
+  "589": [
+   "RecvPkt__Decode4@A65750",
+   "RecvPkt__Decode4@A65750",
+   "RecvPkt__Decode4@A65750"
+  ],
+  "590": [
+   "RecvPkt__DecodeBool@A65B20",
+   "sub_4576C3@4576C3",
+   "sub_6FFFDB@6FFFDB"
+  ],
+  "593": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ],
+  "594": [
+   "CHiddenCatchGameStage__On_594@479D1D"
+  ],
+  "595": [
+   "CHiddenCatchGameStage__On_595@479C69"
+  ],
+  "606": [
+   "CHiddenCatchGameStage__On_606@456C3D"
+  ]
+ },
+ "CComponentAddOnSpecialTile__vf5@4858FE": {
+  "0": [
+   "CComponentAddOnSpecialTile__vf5__On_0@4849D1"
+  ],
+  "1": [
+   "CComponentAddOnSpecialTile__vf5__On_1@485701"
+  ],
+  "578": [
+   "RecvPkt__Decode2@A656E0",
+   "CComponentAddOnSpecialTile__vf5__On_1@485701",
+   "CComponentAddOnSpecialTile__vf5__On_0@4849D1"
+  ]
+ },
+ "CHiddenCatchSinglePrepareStage__OnPacket@4B2E47": {
+  "223": [
+   "CHiddenCatchSinglePrepareStage__On_223@4B4432"
+  ],
+  "599": [
+   "CHiddenCatchSinglePrepareStage__On_599@4B2933"
+  ],
+  "610": [
+   "CHiddenCatchSinglePrepareStage__On_610@4B2902"
+  ]
+ },
+ "sub_4D24BB@4D24BB": {
+  "83": [
+   "sub_4CE9FC@4CE9FC"
+  ],
+  "84": [
+   "sub_4CF53C@4CF53C"
+  ],
+  "85": [
+   "sub_4CC007@4CC007"
+  ],
+  "86": [
+   "sub_4CBCE6@4CBCE6"
+  ],
+  "87": [
+   "sub_4D108E@4D108E"
+  ],
+  "88": [
+   "sub_4D0F56@4D0F56"
+  ],
+  "90": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_8DACD5@8DACD5",
+   "sub_4CABC7@4CABC7"
+  ],
+  "330": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_8DACD5@8DACD5",
+   "sub_4D1F27@4D1F27"
+  ],
+  "331": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_8DACD5@8DACD5",
+   "sub_4C869E@4C869E"
+  ],
+  "334": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_8DACD5@8DACD5"
+  ],
+  "490": [
+   "sub_4CBD84@4CBD84",
+   "sub_8DACD5@8DACD5",
+   "sub_8DACD5@8DACD5",
+   "sub_4C869E@4C869E",
+   "sub_8DACD5@8DACD5",
+   "sub_4D1F27@4D1F27",
+   "sub_8DACD5@8DACD5",
+   "sub_4CABC7@4CABC7"
+  ]
+ },
+ "CLobbySquareStage__OnPacket@4E5A38": {
+  "26": [
+   "CLobbySquareStage__On_26@4E061B",
+   "sub_9B6F75@9B6F75"
+  ],
+  "27": [
+   "CLobbySquareStage__On_27@4E0D5B",
+   "sub_9B6F75@9B6F75"
+  ],
+  "32": [
+   "indirect"
+  ],
+  "79": [
+   "CLobbySquareStage__On_79@4DAD83"
+  ],
+  "234": [
+   "CLobbySquareStage__On_234@4DBC0D"
+  ],
+  "265": [
+   "CLobbySquareStage__On_265@4DEA21"
+  ],
+  "289": [
+   "CLobbySquareStage__On_289@4D5BAE"
+  ],
+  "394": [
+   "CLobbySquareStage__On_394@4DF9A8"
+  ],
+  "419": [
+   "CLobbySquareStage__On_419@4E0FB7"
+  ],
+  "426": [
+   "CLobbySquareStage__On_426@4E119C"
+  ],
+  "466": [
+   "CLobbySquareStage__On_466@4E52B5"
+  ],
+  "467": [
+   "CLobbySquareStage__On_467@4E4100"
+  ],
+  "469": [
+   "CLobbySquareStage__On_469@4E36B1"
+  ],
+  "470": [
+   "CLobbySquareStage__On_470@4DA834"
+  ],
+  "471": [
+   "CLobbySquareStage__On_471@4D8E98"
+  ],
+  "472": [
+   "CLobbySquareStage__On_472@4D8F32"
+  ],
+  "473": [
+   "CLobbySquareStage__On_473@4DA862"
+  ],
+  "474": [
+   "CLobbySquareStage__On_474@4E26BB"
+  ],
+  "475": [
+   "CLobbySquareStage__On_475@4DF1F8"
+  ],
+  "476": [
+   "CLobbySquareStage__On_476@4DAC78"
+  ],
+  "477": [
+   "CLobbySquareStage__On_477@4D9060"
+  ],
+  "478": [
+   "CLobbySquareStage__On_478@4D90F5"
+  ],
+  "480": [
+   "CLobbySquareStage__On_480@4E14B1"
+  ],
+  "481": [
+   "CLobbySquareStage__On_481@4DA8E7"
+  ],
+  "482": [
+   "CLobbySquareStage__On_482@4DC39E"
+  ],
+  "483": [
+   "CLobbySquareStage__On_483@4DC4B0"
+  ],
+  "484": [
+   "CLobbySquareStage__On_484@4D5BD1"
+  ],
+  "485": [
+   "CLobbySquareStage__On_485@4D93A8"
+  ],
+  "486": [
+   "CLobbySquareStage__On_486@4DFC08"
+  ],
+  "487": [
+   "CLobbySquareStage__On_487@4DF224"
+  ],
+  "488": [
+   "CLobbySquareStage__On_488@4DF798"
+  ],
+  "489": [
+   "CLobbySquareStage__On_489@4DF238"
+  ],
+  "492": [
+   "CLobbySquareStage__On_492@4E242D"
+  ],
+  "493": [
+   "CLobbySquareStage__On_493@4D92F2"
+  ],
+  "496": [
+   "CLobbySquareStage__On_496@4DAF64"
+  ],
+  "506": [
+   "indirect"
+  ],
+  "507": [
+   "CLobbySquareStage__On_507@4DDB1E"
+  ],
+  "508": [
+   "CLobbySquareStage__On_508@4DDBC5"
+  ],
+  "576": [
+   "CLobbySquareStage__On_576@4D6E91"
+  ],
+  "612": [
+   "CLobbySquareStage__On_612@4DE0C0"
+  ],
+  "613": [
+   "CLobbySquareStage__On_613@4E36D2"
+  ],
+  "614": [
+   "CLobbySquareStage__On_614@4D9C6F"
+  ],
+  "615": [
+   "CLobbySquareStage__On_615@4D5E7B"
+  ],
+  "616": [
+   "CLobbySquareStage__On_616@4D9D56"
+  ],
+  "617": [
+   "CLobbySquareStage__On_617@4D5E89"
+  ],
+  "622": [
+   "CLobbySquareStage__On_622@4BCB30"
+  ],
+  "623": [
+   "CLobbySquareStage__On_623@4BCB79"
+  ],
+  "624": [
+   "CLobbySquareStage__On_624@4BCC41"
+  ],
+  "625": [
+   "CLobbySquareStage__On_625@4BCB8F"
+  ]
+ },
+ "sub_62CDDE@62CDDE": {
+  "260": [
+   "sub_62C0AA@62C0AA"
+  ],
+  "261": [
+   "sub_62CC00@62CC00"
+  ],
+  "262": [
+   "sub_628196@628196"
+  ],
+  "263": [
+   "sub_6281B0@6281B0"
+  ]
+ },
+ "sub_65E62E@65E62E": {
+  "266": [
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__Decode4@A65750",
+   "sub_928BCD@928BCD"
+  ],
+  "267": [
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__Decode4@A65750",
+   "OnPkt_multi_344_553_553_553@A62490"
+  ]
+ },
+ "CChatStage__OnPacket@689C63": {
+  "25": [
+   "CChatStage__On_25@67DD58",
+   "sub_8DE182@8DE182",
+   "sub_8DE261@8DE261"
+  ],
+  "29": [
+   "CChatStage__On_29@67EDBD"
+  ],
+  "31": [
+   "CChatStage__On_31@684008"
+  ],
+  "40": [
+   "CChatStage__On_40@67E08D"
+  ],
+  "47": [
+   "CChatStage__On_47@67D2DA"
+  ],
+  "71": [
+   "CChatStage__On_71@67F9B9",
+   "sub_6929A6@6929A6",
+   "sub_67F1E3@67F1E3"
+  ],
+  "73": [
+   "indirect"
+  ],
+  "77": [
+   "CChatStage__On_77@67DB4A"
+  ],
+  "82": [
+   "CChatStage__On_82@68099E"
+  ],
+  "128": [
+   "CChatStage__On_128@67EF33"
+  ],
+  "215": [
+   "CChatStage__On_215@6800B4"
+  ],
+  "270": [
+   "CChatStage__On_270@6814DB"
+  ],
+  "292": [
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__Decode1@A65670",
+   "sub_9B69F7@9B69F7"
+  ],
+  "389": [
+   "CChatStage__On_389@689AA0"
+  ],
+  "393": [
+   "CChatStage__On_393@688D43"
+  ],
+  "394": [
+   "CChatStage__On_394@68850F"
+  ],
+  "460": [
+   "indirect",
+   "RecvPkt__DecodeStrInto@A65E20"
+  ],
+  "549": [
+   "CChatStage__On_549@67CAF0"
+  ],
+  "611": [
+   "CChatStage__On_611@67D9B7"
+  ],
+  "619": [
+   "CChatStage__On_619@6819FB"
+  ],
+  "621": [
+   "CChatStage__On_621@68344F"
+  ]
+ },
+ "CChattingStage__On_113@68B85D": {
+  "0": [
+   "RecvPkt__Decode2@A656E0",
+   "sub_8E8E59@8E8E59",
+   "sub_68A74A@68A74A"
+  ],
+  "1": [
+   "RecvPkt__Decode1@A65670",
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_98DB56@98DB56"
+  ]
+ },
+ "CChattingStage__OnPacket@68F099": {
+  "7": [
+   "CChattingStage__On_7@68BA6D"
+  ],
+  "103": [
+   "indirect"
+  ],
+  "104": [
+   "indirect"
+  ],
+  "106": [
+   "indirect"
+  ],
+  "109": [
+   "indirect"
+  ],
+  "110": [
+   "indirect"
+  ],
+  "111": [
+   "CChattingStage__On_111@68AE64"
+  ],
+  "113": [
+   "CChattingStage__On_113@68B85D"
+  ],
+  "114": [
+   "CChattingStage__On_114@68C486"
+  ],
+  "115": [
+   "CChattingStage__On_115@68E9D0"
+  ],
+  "118": [
+   "CChattingStage__On_118@68B503"
+  ],
+  "119": [
+   "CChattingStage__On_119@68AEFE"
+  ],
+  "120": [
+   "CChattingStage__On_120@68C688"
+  ],
+  "121": [
+   "CChattingStage__On_121@68B95F"
+  ],
+  "129": [
+   "CChattingStage__On_129@68DE6B"
+  ],
+  "209": [
+   "CChattingStage__On_209@68B7B2"
+  ],
+  "210": [
+   "indirect"
+  ]
+ },
+ "CSessionStage__OnPacket@6914CD": {
+  "7": [
+   "OnPkt_multi_7_7@690A31"
+  ],
+  "81": [
+   "CSessionStage__On_81@69098F"
+  ],
+  "103": [
+   "indirect"
+  ],
+  "104": [
+   "indirect"
+  ],
+  "105": [
+   "indirect"
+  ],
+  "143": [
+   "CSessionStage__On_143@6908B6"
+  ],
+  "144": [
+   "CSessionStage__On_144@97C626",
+   "sub_8E7608@8E7608"
+  ],
+  "212": [
+   "CSessionStage__On_212@6908FD"
+  ],
+  "394": [
+   "OnPkt_multi_394_394@69084A"
+  ]
+ },
+ "CStage__On_325@6A0C9E": {
+  "0": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ],
+  "1": [
+   "RecvPkt__Decode2@A656E0",
+   "sub_4540FA@4540FA",
+   "CBuyItemListDlg__vf38@A707F2"
+  ],
+  "2": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ],
+  "3": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ],
+  "4": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ],
+  "5": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ],
+  "6": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ],
+  "7": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ],
+  "8": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ]
+ },
+ "CStage__OnPacket@6A978B": {
+  "2": [
+   "CStage__On_2@69B135",
+   "sub_6949B3@6949B3",
+   "sub_695FE5@695FE5",
+   "sub_6A34D0@6A34D0",
+   "sub_8E31C0@8E31C0",
+   "indirect",
+   "indirect",
+   "indirect",
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__DecodeBuf@A65830"
+  ],
+  "3": [
+   "CStage__On_3@696821"
+  ],
+  "5": [
+   "CStage__On_5@6A0936"
+  ],
+  "6": [
+   "CStage__On_6@6A0A24"
+  ],
+  "9": [
+   "CStage__On_9@692749"
+  ],
+  "12": [
+   "CStage__On_12@6953BC"
+  ],
+  "13": [
+   "CStage__On_13@654ADE"
+  ],
+  "14": [
+   "CStage__On_14@99514B",
+   "sub_999737@999737"
+  ],
+  "16": [
+   "CStage__On_16@994CB0"
+  ],
+  "17": [
+   "indirect"
+  ],
+  "18": [
+   "indirect"
+  ],
+  "20": [
+   "CStage__On_20@6A3F88"
+  ],
+  "21": [
+   "CStage__On_21@6953DE"
+  ],
+  "22": [
+   "RecvPkt__Decode4@A65750",
+   "RecvPkt__Decode4@A65750",
+   "RecvPkt__Decode1@A65670"
+  ],
+  "23": [
+   "indirect"
+  ],
+  "24": [
+   "CStage__On_24@6A6A0C"
+  ],
+  "32": [
+   "indirect"
+  ],
+  "35": [
+   "CStage__On_35@6A01F2"
+  ],
+  "41": [
+   "OnPkt_multi_41_41@65786B"
+  ],
+  "43": [
+   "CStage__On_43@695400"
+  ],
+  "51": [
+   "CStage__On_51@696AD3"
+  ],
+  "60": [
+   "CStage__On_60@6992A3"
+  ],
+  "61": [
+   "CStage__On_61@6A6292"
+  ],
+  "63": [
+   "RecvPkt__Decode1@A65670",
+   "CStage__On_3@696821",
+   "CStage__On_5@6A0936"
+  ],
+  "64": [
+   "CStage__On_64@6948BE"
+  ],
+  "65": [
+   "CStage__On_65@694A26"
+  ],
+  "67": [
+   "CStage__On_67@679F6F"
+  ],
+  "69": [
+   "CStage__On_69@67A389"
+  ],
+  "75": [
+   "CStage__On_75@697D72"
+  ],
+  "76": [
+   "CStage__On_76@69475D"
+  ],
+  "78": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_427714@427714"
+  ],
+  "80": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_98DB56@98DB56"
+  ],
+  "91": [
+   "CStage__On_91@694B5D"
+  ],
+  "100": [
+   "CStage__On_100@6950D1"
+  ],
+  "130": [
+   "CStage__On_130@69907A"
+  ],
+  "131": [
+   "CStage__On_131@6947A7"
+  ],
+  "132": [
+   "CStage__On_132@6947E3"
+  ],
+  "133": [
+   "CStage__On_133@694879"
+  ],
+  "210": [
+   "indirect"
+  ],
+  "211": [
+   "CStage__On_211@69467C"
+  ],
+  "213": [
+   "CStage__On_213@69511D"
+  ],
+  "218": [
+   "CStage__On_218@6A8F9E"
+  ],
+  "219": [
+   "CStage__On_219@694993"
+  ],
+  "220": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_6949B3@6949B3"
+  ],
+  "221": [
+   "indirect"
+  ],
+  "222": [
+   "CStage__On_222@6A04BC"
+  ],
+  "224": [
+   "CStage__On_224@6949E2"
+  ],
+  "225": [
+   "CStage__On_225@694905"
+  ],
+  "229": [
+   "CStage__On_229@6A91E6"
+  ],
+  "231": [
+   "CStage__On_231@6E0C5A"
+  ],
+  "232": [
+   "CStage__On_232@6DCAAC"
+  ],
+  "233": [
+   "CStage__On_233@6ABA33"
+  ],
+  "234": [
+   "CStage__On_234@69B7F5"
+  ],
+  "236": [
+   "CStage__On_236@699211"
+  ],
+  "238": [
+   "CStage__On_238@69F0F3"
+  ],
+  "239": [
+   "indirect"
+  ],
+  "250": [
+   "CStage__On_250@90BE07"
+  ],
+  "251": [
+   "CStage__On_251@694B46"
+  ],
+  "254": [
+   "indirect"
+  ],
+  "256": [
+   "CStage__On_256@695040"
+  ],
+  "258": [
+   "CStage__On_258@67A0B1"
+  ],
+  "266": [
+   "CStage__On_266@69512C",
+   "unknown_libname_1382@4C2E53",
+   "sub_4C2582@4C2582"
+  ],
+  "267": [
+   "indirect",
+   "indirect",
+   "sub_69BABE@69BABE"
+  ],
+  "269": [
+   "CStage__On_269@695821"
+  ],
+  "271": [
+   "CStage__On_271@90E6E3"
+  ],
+  "272": [
+   "CStage__On_272@90BA81"
+  ],
+  "273": [
+   "CStage__On_273@90E9A5",
+   "indirect"
+  ],
+  "274": [
+   "CStage__On_274@90E8AB"
+  ],
+  "275": [
+   "CStage__On_275@90E967",
+   "indirect"
+  ],
+  "276": [
+   "CStage__On_276@90C500",
+   "?GetDefaultDestination@UMSThreadVirtualProcessor@details@Concurrency@@UAEPAUIExecutionContext@3@XZ_6@8F88C5",
+   "indirect"
+  ],
+  "277": [
+   "CStage__On_277@694FE6"
+  ],
+  "278": [
+   "CStage__On_278@694FF5"
+  ],
+  "279": [
+   "CStage__On_279@695004"
+  ],
+  "280": [
+   "CStage__On_280@695013"
+  ],
+  "281": [
+   "CStage__On_281@695022"
+  ],
+  "283": [
+   "CStage__On_283@694A91"
+  ],
+  "286": [
+   "CStage__On_286@695F06"
+  ],
+  "287": [
+   "CStage__On_287@695F82"
+  ],
+  "288": [
+   "RecvPkt__Decode1@A65670",
+   "indirect"
+  ],
+  "291": [
+   "RecvPkt__Decode1@A65670",
+   "sub_8F2B03@8F2B03",
+   "RecvPkt__Decode4@A65750"
+  ],
+  "295": [
+   "CStage__On_295@6A1C43"
+  ],
+  "296": [
+   "CStage__On_296@6A1DBF"
+  ],
+  "297": [
+   "CStage__On_297@6927DF"
+  ],
+  "300": [
+   "CStage__On_300@69ED49"
+  ],
+  "302": [
+   "CStage__On_302@695EE0"
+  ],
+  "304": [
+   "CStage__On_304@69EB99"
+  ],
+  "305": [
+   "CStage__On_305@69942E"
+  ],
+  "306": [
+   "CStage__On_306@6A8406"
+  ],
+  "307": [
+   "CStage__On_307@699521"
+  ],
+  "308": [
+   "CStage__On_308@69F70C"
+  ],
+  "309": [
+   "CStage__On_309@6954FF"
+  ],
+  "310": [
+   "CStage__On_310@6955CA"
+  ],
+  "319": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_695FE5@695FE5"
+  ],
+  "325": [
+   "CStage__On_325@6A0C9E"
+  ],
+  "326": [
+   "CStage__On_326@6A54E2"
+  ],
+  "327": [
+   "nullsub_43@696B0D"
+  ],
+  "328": [
+   "nullsub_44@696B10"
+  ],
+  "329": [
+   "nullsub_45@696B13"
+  ],
+  "332": [
+   "CStage__On_332@6983D4"
+  ],
+  "333": [
+   "CStage__On_333@69845F"
+  ],
+  "336": [
+   "CStage__On_336@69AB06"
+  ],
+  "337": [
+   "CStage__On_337@696BC7"
+  ],
+  "342": [
+   "CStage__On_342@6957A5"
+  ],
+  "343": [
+   "CStage__On_343@6A689D",
+   "OnPkt_multi_344_553_553_553@A62490",
+   "indirect"
+  ],
+  "344": [
+   "OnPkt_multi_344_553_553_553@A62490",
+   "RecvPkt__DecodeBlob@A658A0",
+   "sub_695800@695800"
+  ],
+  "345": [
+   "indirect"
+  ],
+  "350": [
+   "nullsub_42@6954FC"
+  ],
+  "352": [
+   "CStage__On_352@69F023"
+  ],
+  "353": [
+   "CStage__On_353@69F037"
+  ],
+  "355": [
+   "CStage__On_355@8BE76E",
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_91FAB3@91FAB3"
+  ],
+  "360": [
+   "CStage__On_360@8BE898"
+  ],
+  "361": [
+   "CStage__On_361@8BE934"
+  ],
+  "362": [
+   "CStage__On_362@69F04B"
+  ],
+  "363": [
+   "CStage__On_363@69570C"
+  ],
+  "369": [
+   "CStage__On_369@6A448D"
+  ],
+  "370": [
+   "CStage__On_370@69584A"
+  ],
+  "371": [
+   "CStage__On_371@6929DE"
+  ],
+  "373": [
+   "CStage__On_373@69A79B"
+  ],
+  "374": [
+   "CStage__On_374@692A52"
+  ],
+  "375": [
+   "CStage__On_375@695A08"
+  ],
+  "376": [
+   "CStage__On_376@695A5A"
+  ],
+  "377": [
+   "CStage__On_377@8C0C95"
+  ],
+  "380": [
+   "CStage__On_380@69494C"
+  ],
+  "381": [
+   "CStage__On_381@695AE4",
+   "OnPkt_multi_0_1_4_6@40176C"
+  ],
+  "382": [
+   "CStage__On_382@6A3007"
+  ],
+  "383": [
+   "CStage__On_383@6A46BD"
+  ],
+  "384": [
+   "CStage__On_384@6958EC"
+  ],
+  "385": [
+   "CStage__On_385@695933"
+  ],
+  "386": [
+   "CStage__On_386@69597A"
+  ],
+  "387": [
+   "CStage__On_387@6959C1"
+  ],
+  "388": [
+   "CStage__On_388@69F5C3"
+  ],
+  "390": [
+   "CStage__On_390@695E86"
+  ],
+  "391": [
+   "CStage__On_391@696B16"
+  ],
+  "392": [
+   "CStage__On_392@69F9E8"
+  ],
+  "395": [
+   "CStage__On_395@69FE06"
+  ],
+  "404": [
+   "indirect"
+  ],
+  "405": [
+   "CStage__On_405@695EAD"
+  ],
+  "409": [
+   "CStage__On_409@69E45D"
+  ],
+  "421": [
+   "indirect"
+  ],
+  "424": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_6A34D0@6A34D0"
+  ],
+  "433": [
+   "CStage__On_433@6A16FC"
+  ],
+  "439": [
+   "CStage__On_439@452C2B"
+  ],
+  "441": [
+   "CStage__On_441@837478"
+  ],
+  "446": [
+   "CStage__On_446@6A24B1"
+  ],
+  "450": [
+   "CStage__On_450@6A27BF"
+  ],
+  "452": [
+   "CStage__On_452@45317B"
+  ],
+  "453": [
+   "CStage__On_453@453989"
+  ],
+  "455": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_8E31C0@8E31C0",
+   "indirect"
+  ],
+  "465": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "indirect",
+   "RecvPkt__Decode2@A656E0"
+  ],
+  "497": [
+   "CStage__On_497@69E78E"
+  ],
+  "498": [
+   "CStage__On_498@69549D"
+  ],
+  "499": [
+   "CStage__On_499@69548D"
+  ],
+  "500": [
+   "CStage__On_500@6954AD"
+  ],
+  "506": [
+   "indirect"
+  ],
+  "513": [
+   "CStage__On_513@8F3D07",
+   "indirect",
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9"
+  ],
+  "514": [
+   "CStage__On_514@6927B3",
+   "OnPkt_multi_0_1_4_6@40176C"
+  ],
+  "515": [
+   "CStage__On_515@69EE23"
+  ],
+  "516": [
+   "CStage__On_516@69567C"
+  ],
+  "520": [
+   "CStage__On_520@69575A"
+  ],
+  "524": [
+   "CStage__On_524@692763"
+  ],
+  "527": [
+   "CStage__On_527@695783"
+  ],
+  "533": [
+   "CStage__On_533@6A8FDF"
+  ],
+  "534": [
+   "CStage__On_534@6A910A"
+  ],
+  "535": [
+   "CStage__On_535@9C235C",
+   "OnPkt_multi_0_1_4_6@40176C"
+  ],
+  "544": [
+   "CStage__On_544@695AAC"
+  ],
+  "546": [
+   "CStage__On_546@69FFEE"
+  ],
+  "556": [
+   "CStage__On_556@6A96EB"
+  ],
+  "558": [
+   "CStage__On_558@696802"
+  ],
+  "559": [
+   "CStage__On_559@696069"
+  ],
+  "560": [
+   "CStage__On_560@696078"
+  ],
+  "561": [
+   "CStage__On_561@696087"
+  ],
+  "562": [
+   "CStage__On_562@696096"
+  ],
+  "563": [
+   "CStage__On_563@6960A5"
+  ],
+  "564": [
+   "CStage__On_564@6A5C21"
+  ],
+  "565": [
+   "CStage__On_565@6A5D2C"
+  ],
+  "566": [
+   "CStage__On_566@69D3BB"
+  ],
+  "567": [
+   "CStage__On_567@698329"
+  ],
+  "573": [
+   "CStage__On_573@692A28"
+  ],
+  "574": [
+   "CStage__On_574@6960B4"
+  ],
+  "575": [
+   "CStage__On_575@696102"
+  ],
+  "576": [
+   "CStage__On_576@69A903"
+  ],
+  "579": [
+   "CStage__On_579@692BBF"
+  ],
+  "581": [
+   "CStage__On_581@6A0B5B"
+  ],
+  "582": [
+   "CStage__On_582@8E7F45"
+  ],
+  "585": [
+   "OnPkt_multi_585_585@456BF7"
+  ],
+  "586": [
+   "CStage__On_586@456C5F"
+  ],
+  "592": [
+   "CStage__On_592@46530A"
+  ],
+  "603": [
+   "indirect"
+  ],
+  "605": [
+   "indirect"
+  ],
+  "608": [
+   "CStage__On_608@6A37BD"
+  ],
+  "609": [
+   "CStage__On_609@6A0C0E"
+  ]
+ },
+ "CLobbyStageWithSquareUI__vf130@6AF609": {
+  "0": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "j__malloc@A67890",
+   "sub_58D298@58D298"
+  ],
+  "1": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "j__malloc@A67890",
+   "sub_58D298@58D298"
+  ],
+  "3": [
+   "CLobbyStageWithSquareUI__vf130__On_3@8EAE1D",
+   "j__malloc@A67890",
+   "sub_58D298@58D298"
+  ],
+  "4": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "j__malloc@A67890",
+   "sub_58D298@58D298"
+  ],
+  "5": [
+   "CLobbyStageWithSquareUI__vf130__On_5@8E7D91",
+   "sub_692B1D@692B1D",
+   "sub_5DE0B4@5DE0B4"
+  ],
+  "6": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_692B1D@692B1D",
+   "sub_5DDF3E@5DDF3E",
+   "sub_692B1D@692B1D",
+   "sub_5DDF3E@5DDF3E",
+   "sub_A70C99@A70C99"
+  ]
+ },
+ "CLobbyStage__OnPacket@6B2ED4": {
+  "7": [
+   "CLobbyStage__On_7@6AFEDF",
+   "indirect",
+   "sub_4D24BB@4D24BB"
+  ],
+  "19": [
+   "CLobbyStage__On_19@6B0357"
+  ],
+  "26": [
+   "CLobbyStage__On_26@6B167A",
+   "sub_9B6F75@9B6F75"
+  ],
+  "32": [
+   "indirect"
+  ],
+  "125": [
+   "CLobbyStage__On_125@6B1358",
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_8DACD5@8DACD5"
+  ],
+  "218": [
+   "CLobbyStage__On_218@99AEE3",
+   "sub_8B4DBE@8B4DBE",
+   "sub_414543@414543"
+  ],
+  "234": [
+   "CLobbyStage__On_234@6B0D7C"
+  ],
+  "259": [
+   "CLobbyStage__On_259@6B27BB"
+  ],
+  "265": [
+   "CLobbyStage__On_265@6B147E"
+  ],
+  "268": [
+   "CLobbyStage__On_268@6B25E3"
+  ],
+  "289": [
+   "indirect"
+  ],
+  "363": [
+   "CLobbyStage__On_363@6ADF1C"
+  ],
+  "368": [
+   "CLobbyStage__On_368@6AE770"
+  ],
+  "372": [
+   "CLobbyStage__On_372@6ADFAD"
+  ],
+  "406": [
+   "CLobbyStage__On_406@6AEF18"
+  ],
+  "418": [
+   "CLobbyStage__On_418@6B1FEC"
+  ],
+  "419": [
+   "CLobbyStage__On_419@6B224E"
+  ],
+  "426": [
+   "CLobbyStage__On_426@6B2433"
+  ],
+  "499": [
+   "CLobbyStage__On_499@6AE72A"
+  ],
+  "505": [
+   "CLobbyStage__On_505@6B011E"
+  ],
+  "553": [
+   "OnPkt_multi_344_553_553_553@A62490",
+   "RecvPkt__DecodeBlob@A658A0",
+   "sub_6A5A5E@6A5A5E"
+  ],
+  "554": [
+   "CLobbyStage__On_554@6AE817"
+  ],
+  "576": [
+   "CLobbyStage__On_576@6AE836"
+  ]
+ },
+ "CPrepareStage__On_113@6C3061": {
+  "0": [
+   "indirect",
+   "RecvPkt__Decode2@A656E0",
+   "sub_8E8E59@8E8E59"
+  ],
+  "1": [
+   "RecvPkt__Decode1@A65670",
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_98DB56@98DB56"
+  ]
+ },
+ "CPrepareStage__OnPacket@6D02D6": {
+  "94": [
+   "CPrepareStage__On_94@6C9241"
+  ],
+  "106": [
+   "CPrepareStage__On_106@6C6BC9"
+  ],
+  "107": [
+   "CPrepareStage__On_107@6BE548"
+  ],
+  "109": [
+   "indirect"
+  ],
+  "110": [
+   "indirect"
+  ],
+  "111": [
+   "indirect"
+  ],
+  "113": [
+   "CPrepareStage__On_113@6C3061"
+  ],
+  "114": [
+   "CPrepareStage__On_114@6C7F51"
+  ],
+  "115": [
+   "CPrepareStage__On_115@6CF345"
+  ],
+  "116": [
+   "CPrepareStage__On_116@6C9600"
+  ],
+  "117": [
+   "CPrepareStage__On_117@6CCE6E"
+  ],
+  "118": [
+   "CPrepareStage__On_118@6C0DB9"
+  ],
+  "119": [
+   "CPrepareStage__On_119@6BF289"
+  ],
+  "120": [
+   "CPrepareStage__On_120@6C8153"
+  ],
+  "121": [
+   "CPrepareStage__On_121@6C96A4"
+  ],
+  "122": [
+   "CPrepareStage__On_122@6C3F62"
+  ],
+  "123": [
+   "CPrepareStage__On_123@6C3FE1"
+  ],
+  "126": [
+   "CPrepareStage__On_126@6C56DE"
+  ],
+  "127": [
+   "CPrepareStage__On_127@6C5767"
+  ],
+  "134": [
+   "CPrepareStage__On_134@6C4070"
+  ],
+  "188": [
+   "CPrepareStage__On_188@6BE9EB"
+  ],
+  "209": [
+   "CPrepareStage__On_209@6C48CD"
+  ],
+  "253": [
+   "CPrepareStage__On_253@6C2FB5"
+  ],
+  "289": [
+   "CPrepareStage__On_289@6BDC33"
+  ],
+  "324": [
+   "CPrepareStage__On_324@6BED68"
+  ],
+  "372": [
+   "CPrepareStage__On_372@6BDC74"
+  ],
+  "397": [
+   "CPrepareStage__On_397@6BF69C"
+  ],
+  "406": [
+   "CPrepareStage__On_406@6C9392"
+  ],
+  "407": [
+   "CPrepareStage__On_407@6C5A84"
+  ],
+  "409": [
+   "CPrepareStage__On_409@6BDC56"
+  ],
+  "498": [
+   "CPrepareStage__On_498@6BEAE9"
+  ],
+  "499": [
+   "CPrepareStage__On_499@6BEACC"
+  ],
+  "500": [
+   "CPrepareStage__On_500@6BEAF9"
+  ],
+  "501": [
+   "CPrepareStage__On_501@6C4978"
+  ],
+  "538": [
+   "CPrepareStage__On_538@6C98F4"
+  ],
+  "553": [
+   "OnPkt_multi_344_553_553_553@A62490",
+   "RecvPkt__DecodeBlob@A658A0",
+   "sub_6A5A5E@6A5A5E"
+  ]
+ },
+ "CPrepareStrategyAIBattle__vf4@6D3B1B": {
+  "108": [
+   "CPrepareStrategyAIBattle__vf4__On_108@6D324A"
+  ],
+  "301": [
+   "CPrepareStrategyAIBattle__vf4__On_301@6D39CD"
+  ]
+ },
+ "CHiddenCatchGameStage__vf61@70922B": {
+  "0": [
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__DecodeBuf@A65830"
+  ],
+  "1": [
+   "RecvPkt__Decode1@A65670",
+   "sub_6FFFDB@6FFFDB",
+   "RecvPkt__Decode1@A65670"
+  ],
+  "2": [
+   "RecvPkt__Decode1@A65670",
+   "sub_6FFFDB@6FFFDB",
+   "RecvPkt__Decode1@A65670"
+  ],
+  "3": [
+   "indirect",
+   "sub_886CC7@886CC7"
+  ],
+  "6": [
+   "indirect"
+  ],
+  "7": [
+   "RecvPkt__Decode1@A65670",
+   "sub_6FFFDB@6FFFDB",
+   "RecvPkt__Decode2@A656E0"
+  ]
+ },
+ "CGameStage__OnPacket@71B631": {
+  "25": [
+   "CGameStage__On_25@7127B3",
+   "sub_8DE182@8DE182"
+  ],
+  "81": [
+   "CGameStage__On_81@70C8C1"
+  ],
+  "106": [
+   "indirect",
+   "sub_7019AE@7019AE"
+  ],
+  "107": [
+   "CGameStage__On_107@703D01"
+  ],
+  "119": [
+   "indirect"
+  ],
+  "128": [
+   "indirect",
+   "sub_71458E@71458E"
+  ],
+  "135": [
+   "RecvPkt__Decode1@A65670",
+   "sub_9B5934@9B5934",
+   "sub_6FFBD4@6FFBD4"
+  ],
+  "145": [
+   "indirect",
+   "sub_701A48@701A48"
+  ],
+  "146": [
+   "indirect",
+   "sub_70DE4C@70DE4C"
+  ],
+  "147": [
+   "CGameStage__On_147@701AB1"
+  ],
+  "148": [
+   "indirect",
+   "sub_704CD8@704CD8"
+  ],
+  "149": [
+   "indirect",
+   "sub_704D77@704D77"
+  ],
+  "150": [
+   "indirect",
+   "sub_6FFF78@6FFF78"
+  ],
+  "151": [
+   "CGameStage__On_151@70205B"
+  ],
+  "152": [
+   "CGameStage__On_152@7064AC"
+  ],
+  "153": [
+   "CGameStage__On_153@70679A"
+  ],
+  "155": [
+   "CGameStage__On_155@701E8B"
+  ],
+  "157": [
+   "CGameStage__On_157@7068DE"
+  ],
+  "158": [
+   "CGameStage__On_158@715E90"
+  ],
+  "159": [
+   "indirect",
+   "sub_703F52@703F52"
+  ],
+  "160": [
+   "CGameStage__On_160@7164BB"
+  ],
+  "161": [
+   "CGameStage__On_161@704962"
+  ],
+  "163": [
+   "CGameStage__On_163@716735"
+  ],
+  "164": [
+   "CGameStage__On_164@701765"
+  ],
+  "165": [
+   "indirect",
+   "sub_7018D7@7018D7"
+  ],
+  "166": [
+   "CGameStage__On_166@708EB0"
+  ],
+  "168": [
+   "indirect",
+   "sub_719D08@719D08"
+  ],
+  "169": [
+   "indirect",
+   "sub_7090AD@7090AD"
+  ],
+  "170": [
+   "indirect",
+   "sub_70FF80@70FF80"
+  ],
+  "171": [
+   "indirect",
+   "sub_7069DF@7069DF"
+  ],
+  "173": [
+   "indirect",
+   "sub_708FFE@708FFE",
+   "indirect"
+  ],
+  "174": [
+   "indirect",
+   "sub_70264F@70264F"
+  ],
+  "176": [
+   "indirect",
+   "sub_706C42@706C42"
+  ],
+  "177": [
+   "indirect",
+   "sub_706D3C@706D3C"
+  ],
+  "178": [
+   "indirect",
+   "sub_7150E7@7150E7"
+  ],
+  "184": [
+   "CGameStage__On_184@709101"
+  ],
+  "189": [
+   "indirect",
+   "sub_70E5C4@70E5C4"
+  ],
+  "190": [
+   "indirect",
+   "sub_70E7D6@70E7D6"
+  ],
+  "191": [
+   "indirect",
+   "sub_709A38@709A38"
+  ],
+  "192": [
+   "indirect",
+   "sub_7173A5@7173A5"
+  ],
+  "193": [
+   "indirect",
+   "sub_715210@715210"
+  ],
+  "194": [
+   "indirect",
+   "sub_706823@706823"
+  ],
+  "195": [
+   "CGameStage__On_195@701D15"
+  ],
+  "196": [
+   "indirect",
+   "sub_707101@707101"
+  ],
+  "204": [
+   "indirect",
+   "sub_7071AC@7071AC"
+  ],
+  "205": [
+   "CGameStage__On_205@701B11"
+  ],
+  "209": [
+   "indirect",
+   "sub_70EE54@70EE54"
+  ],
+  "214": [
+   "indirect",
+   "sub_70DD0E@70DD0E"
+  ],
+  "215": [
+   "indirect",
+   "sub_7129C4@7129C4"
+  ],
+  "216": [
+   "indirect",
+   "sub_70DDB4@70DDB4"
+  ],
+  "267": [
+   "indirect",
+   "sub_69BABE@69BABE"
+  ],
+  "298": [
+   "indirect",
+   "sub_7035C4@7035C4"
+  ],
+  "303": [
+   "indirect",
+   "sub_70727E@70727E"
+  ],
+  "311": [
+   "indirect",
+   "sub_719A3C@719A3C"
+  ],
+  "312": [
+   "indirect",
+   "sub_70AF9C@70AF9C"
+  ],
+  "313": [
+   "indirect",
+   "sub_707D14@707D14"
+  ],
+  "314": [
+   "indirect",
+   "sub_7101FA@7101FA"
+  ],
+  "315": [
+   "indirect",
+   "sub_7158EC@7158EC"
+  ],
+  "324": [
+   "indirect",
+   "sub_703E0C@703E0C"
+  ],
+  "339": [
+   "indirect",
+   "sub_7100B2@7100B2"
+  ],
+  "356": [
+   "indirect",
+   "sub_7155DA@7155DA"
+  ],
+  "358": [
+   "indirect",
+   "sub_707673@707673"
+  ],
+  "359": [
+   "indirect",
+   "sub_70777C@70777C"
+  ],
+  "366": [
+   "indirect",
+   "sub_70058C@70058C"
+  ],
+  "394": [
+   "CGameStage__On_394@712567"
+  ],
+  "396": [
+   "RecvPkt__Decode1@A65670",
+   "indirect",
+   "sub_9B5648@9B5648"
+  ],
+  "397": [
+   "indirect",
+   "sub_704EF2@704EF2"
+  ],
+  "398": [
+   "indirect",
+   "sub_70BA8F@70BA8F"
+  ],
+  "399": [
+   "indirect",
+   "sub_70813F@70813F"
+  ],
+  "502": [
+   "indirect",
+   "sub_70BA63@70BA63"
+  ],
+  "503": [
+   "indirect",
+   "sub_70F090@70F090"
+  ],
+  "517": [
+   "indirect",
+   "sub_717791@717791"
+  ],
+  "518": [
+   "indirect",
+   "sub_70F7A3@70F7A3",
+   "indirect",
+   "sub_6FC976@6FC976"
+  ],
+  "519": [
+   "indirect",
+   "sub_70054E@70054E"
+  ],
+  "523": [
+   "indirect",
+   "sub_717B87@717B87"
+  ],
+  "526": [
+   "indirect",
+   "sub_711B3A@711B3A"
+  ],
+  "529": [
+   "CGameStage__On_529@6FA585",
+   "indirect",
+   "sub_6FC976@6FC976"
+  ],
+  "531": [
+   "indirect",
+   "sub_70A158@70A158"
+  ],
+  "532": [
+   "indirect",
+   "sub_70A04B@70A04B"
+  ],
+  "536": [
+   "indirect",
+   "sub_70FC1B@70FC1B"
+  ],
+  "538": [
+   "indirect",
+   "sub_703951@703951"
+  ],
+  "539": [
+   "indirect",
+   "sub_71798F@71798F"
+  ],
+  "540": [
+   "indirect",
+   "sub_703921@703921"
+  ],
+  "545": [
+   "indirect",
+   "sub_717EFC@717EFC"
+  ],
+  "547": [
+   "indirect",
+   "sub_707E78@707E78"
+  ],
+  "548": [
+   "indirect",
+   "sub_71824D@71824D"
+  ],
+  "552": [
+   "indirect",
+   "sub_71580C@71580C"
+  ],
+  "553": [
+   "OnPkt_multi_344_553_553_553@A62490",
+   "RecvPkt__DecodeBlob@A658A0",
+   "sub_6A5A5E@6A5A5E"
+  ],
+  "555": [
+   "indirect",
+   "sub_703A20@703A20"
+  ],
+  "568": [
+   "indirect",
+   "sub_705016@705016"
+  ],
+  "569": [
+   "indirect",
+   "sub_7038CD@7038CD"
+  ],
+  "570": [
+   "indirect",
+   "sub_70C70D@70C70D"
+  ],
+  "571": [
+   "indirect",
+   "sub_71ADEC@71ADEC"
+  ],
+  "572": [
+   "indirect",
+   "sub_709D5E@709D5E"
+  ],
+  "578": [
+   "CGameStage__On_578@70065D"
+  ]
+ },
+ "CBulaComponent__vf16@7442A5": {
+  "179": [
+   "CBulaComponent__vf16__On_179@743185"
+  ],
+  "201": [
+   "CBulaComponent__vf16__On_201@7430DD"
+  ],
+  "202": [
+   "CBulaComponent__vf16__On_202@743E83"
+  ],
+  "203": [
+   "CBulaComponent__vf16__On_203@7436E0"
+  ]
+ },
+ "CKartComponent__vf16@74B2D3": {
+  "179": [
+   "CKartComponent__vf16__On_179@74ACDD"
+  ],
+  "187": [
+   "CKartComponent__vf16__On_187@74B0B4"
+  ]
+ },
+ "CSurvivalComponent__vf16@74C99B": {
+  "172": [
+   "CSurvivalComponent__vf16__On_172@74C73D"
+  ],
+  "179": [
+   "CSurvivalComponent__vf16__On_179@74B89B"
+  ]
+ },
+ "CStageClearComponent__vf16@756CDA": {
+  "340": [
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode1@A65670"
+  ],
+  "580": [
+   "RecvPkt__Decode2@A656E0",
+   "sub_73B7B5@73B7B5",
+   "sub_6E4431@6E4431"
+  ]
+ },
+ "sub_77B648@77B648": {
+  "1": [
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0"
+  ],
+  "2": [
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0",
+   "sub_77ADAD@77ADAD"
+  ],
+  "3": [
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0",
+   "sub_77ADAD@77ADAD"
+  ],
+  "4": [
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode4@A65750"
+  ],
+  "5": [
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0",
+   "sub_77AEA3@77AEA3"
+  ]
+ },
+ "CRabbitCatchComponent__vf16@77C8A5": {
+  "175": [
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0"
+  ],
+  "179": [
+   "CRabbitCatchComponent__vf16__On_179@77C672"
+  ]
+ },
+ "CFighterOfLegendComponent__vf16@7856F3": {
+  "107": [
+   "CFighterOfLegendComponent__vf16__On_107@781DF8"
+  ],
+  "151": [
+   "CFighterOfLegendComponent__vf16__On_151@784C21"
+  ],
+  "152": [
+   "CFighterOfLegendComponent__vf16__On_152@784AFD"
+  ],
+  "155": [
+   "CFighterOfLegendComponent__vf16__On_155@781D3E"
+  ],
+  "157": [
+   "CFighterOfLegendComponent__vf16__On_157@781A22"
+  ],
+  "158": [
+   "CFighterOfLegendComponent__vf16__On_158@783B8D"
+  ],
+  "161": [
+   "CFighterOfLegendComponent__vf16__On_161@781DB8"
+  ],
+  "195": [
+   "CFighterOfLegendComponent__vf16__On_195@781C54"
+  ],
+  "301": [
+   "CFighterOfLegendComponent__vf16__On_301@785295"
+  ],
+  "317": [
+   "CFighterOfLegendComponent__vf16__On_317@782A22"
+  ],
+  "318": [
+   "CFighterOfLegendComponent__vf16__On_318@782A99"
+  ],
+  "348": [
+   "CFighterOfLegendComponent__vf16__On_348@7841A0"
+  ],
+  "349": [
+   "CFighterOfLegendComponent__vf16__On_349@78433E"
+  ]
+ },
+ "CTutorialComponent__vf16@79D222": {
+  "151": [
+   "indirect",
+   "sub_79D0C6@79D0C6"
+  ],
+  "152": [
+   "indirect",
+   "sub_79CFA2@79CFA2"
+  ],
+  "155": [
+   "indirect",
+   "sub_79C694@79C694"
+  ],
+  "157": [
+   "indirect",
+   "sub_79C50C@79C50C"
+  ],
+  "158": [
+   "indirect",
+   "sub_79C4B0@79C4B0"
+  ],
+  "161": [
+   "indirect",
+   "sub_79C70E@79C70E"
+  ],
+  "195": [
+   "indirect",
+   "sub_79C5E1@79C5E1"
+  ]
+ },
+ "CWriggleComponent__vf16__On_346@7A368E": {
+  "5": [
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0"
+  ],
+  "6": [
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__Decode2@A656E0",
+   "sub_8EAC0E@8EAC0E"
+  ],
+  "7": [
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__Decode2@A656E0",
+   "sub_7A2874@7A2874"
+  ],
+  "8": [
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__Decode1@A65670"
+  ],
+  "9": [
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode2@A656E0"
+  ],
+  "10": [
+   "RecvPkt__Decode1@A65670",
+   "RecvPkt__Decode2@A656E0"
+  ]
+ },
+ "CWriggleComponent__vf16@7A3A26": {
+  "179": [
+   "CWriggleComponent__vf16__On_179@7A2F23"
+  ],
+  "346": [
+   "CWriggleComponent__vf16__On_346@7A368E"
+  ]
+ },
+ "CZombieComponent__vf16@7AAD9B": {
+  "0": [
+   "CZombieComponent__vf16__On_0@7AAC23"
+  ],
+  "1": [
+   "CZombieComponent__vf16__On_1@7AAD0B"
+  ],
+  "2": [
+   "CZombieComponent__vf16__On_2@7AAC43"
+  ],
+  "3": [
+   "CZombieComponent__vf16__On_3@7AAD2B"
+  ],
+  "4": [
+   "CZombieComponent__vf16__On_4@7A9482"
+  ],
+  "5": [
+   "CZombieComponent__vf16__On_5@7A957D"
+  ],
+  "6": [
+   "CZombieComponent__vf16__On_6@7A85E9"
+  ],
+  "7": [
+   "CZombieComponent__vf16__On_7@7A9459"
+  ],
+  "8": [
+   "CZombieComponent__vf16__On_8@7AA77F"
+  ],
+  "207": [
+   "RecvPkt__Decode1@A65670",
+   "CZombieComponent__vf16__On_0@7AAC23",
+   "CZombieComponent__vf16__On_1@7AAD0B"
+  ]
+ },
+ "CGoldFlagComponent__vf16@7ACCA9": {
+  "158": [
+   "CGoldFlagComponent__vf16__On_158@7AC7F4"
+  ],
+  "179": [
+   "CGoldFlagComponent__vf16__On_179@7AC3B7"
+  ],
+  "521": [
+   "CGoldFlagComponent__vf16__On_521@7AC9D8"
+  ],
+  "522": [
+   "CGoldFlagComponent__vf16__On_522@7AC54B"
+  ]
+ },
+ "CCloverComponent__vf16@7AE1CA": {
+  "0": [
+   "CCloverComponent__vf16__On_0@7AE002"
+  ],
+  "179": [
+   "CCloverComponent__vf16__On_179@7AD07E"
+  ],
+  "525": [
+   "RecvPkt__Decode1@A65670",
+   "CCloverComponent__vf16__On_0@7AE002",
+   "sub_7ADCBE@7ADCBE"
+  ]
+ },
+ "CRPGComponent__vf16@7B3CF1": {
+  "369": [
+   "CRPGComponent__vf16__On_369@7B2D88"
+  ],
+  "530": [
+   "CRPGComponent__vf16__On_530@7B37E7"
+  ],
+  "537": [
+   "CRPGComponent__vf16__On_537@7B2717"
+  ]
+ },
+ "CMonsterComponent__vf16@7B66EA": {
+  "299": [
+   "CMonsterComponent__vf16__On_299@7B6306"
+  ],
+  "357": [
+   "CMonsterComponent__vf16__On_357@7B6090"
+  ]
+ },
+ "CComponentAddOnRevival__vf5@7C2020": {
+  "180": [
+   "CComponentAddOnRevival__vf5__On_180@7C1C50"
+  ],
+  "181": [
+   "CComponentAddOnRevival__vf5__On_181@7C1B08"
+  ],
+  "182": [
+   "CComponentAddOnRevival__vf5__On_182@7C1923"
+  ],
+  "183": [
+   "CComponentAddOnRevival__vf5__On_183@7C1E77"
+  ]
+ },
+ "sub_7C66BD@7C66BD": {
+  "3": [
+   "sub_7C3150@7C3150"
+  ],
+  "4": [
+   "sub_7C31DC@7C31DC"
+  ],
+  "5": [
+   "sub_7C3232@7C3232"
+  ],
+  "6": [
+   "sub_7C4532@7C4532"
+  ],
+  "7": [
+   "sub_7C4575@7C4575"
+  ],
+  "8": [
+   "sub_7C45BC@7C45BC"
+  ],
+  "9": [
+   "sub_7C622F@7C622F"
+  ],
+  "10": [
+   "sub_7C32B6@7C32B6"
+  ],
+  "11": [
+   "sub_7C32F0@7C32F0"
+  ],
+  "12": [
+   "sub_7C3329@7C3329"
+  ]
+ },
+ "CShopStageNew__OnPacket@806734": {
+  "73": [
+   "CHiddenCatchPrepareStage__vf134@6878CB",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "100": [
+   "CShopStageNew__On_100@8008D1",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "104": [
+   "CShopStageNew__On_104@800874",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "120": [
+   "CShopStageNew__On_120@801825",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "209": [
+   "CShopStageNew__On_209@800B9D",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "223": [
+   "OnPkt_multi_0_1_4_6@40176C",
+   "sub_803416@803416",
+   "sub_800813@800813"
+  ],
+  "230": [
+   "OnPkt_multi_230_230@805626",
+   "sub_8B4637@8B4637",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "257": [
+   "CShopStageNew__On_257@801744",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "335": [
+   "CShopStageNew__On_335@804B30",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "372": [
+   "CShopStageNew__On_372@7FFEE2",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "418": [
+   "OnPkt_multi_418_418@804707",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "419": [
+   "OnPkt_multi_419_419@804951",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "499": [
+   "CShopStageNew__On_499@800A2A",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "504": [
+   "CShopStageNew__On_504@8B383D",
+   "sub_9DB5CB@9DB5CB"
+  ]
+ },
+ "sub_80EF0A@80EF0A": {
+  "71": [
+   "sub_80EAA1@80EAA1"
+  ],
+  "247": [
+   "sub_80C172@80C172"
+  ],
+  "248": [
+   "sub_80CA55@80CA55"
+  ]
+ },
+ "sub_82DC14@82DC14": {
+  "427": [
+   "sub_82D79E@82D79E"
+  ],
+  "428": [
+   "sub_82D99B@82D99B"
+  ]
+ },
+ "sub_83C83F@83C83F": {
+  "429": [
+   "sub_8365E2@8365E2"
+  ],
+  "430": [
+   "sub_83BA31@83BA31"
+  ],
+  "432": [
+   "sub_83A370@83A370"
+  ],
+  "434": [
+   "sub_83AD7F@83AD7F"
+  ],
+  "435": [
+   "sub_83A361@83A361"
+  ],
+  "436": [
+   "sub_83A3C3@83A3C3"
+  ],
+  "437": [
+   "sub_834E70@834E70"
+  ],
+  "438": [
+   "sub_834E7F@834E7F"
+  ],
+  "440": [
+   "sub_83C724@83C724"
+  ],
+  "444": [
+   "sub_83AECE@83AECE"
+  ],
+  "447": [
+   "sub_83B36B@83B36B"
+  ],
+  "449": [
+   "RecvPkt__Decode4@A65750",
+   "sub_82FB22@82FB22"
+  ],
+  "451": [
+   "sub_99AC6C@99AC6C",
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_99BB7B@99BB7B"
+  ]
+ },
+ "CExchangeStage__OnPacket@845CAC": {
+  "7": [
+   "OnPkt_multi_7_7@690A31"
+  ],
+  "34": [
+   "CExchangeStage__On_34@84192A"
+  ],
+  "103": [
+   "indirect"
+  ],
+  "104": [
+   "indirect"
+  ],
+  "106": [
+   "indirect"
+  ],
+  "109": [
+   "indirect"
+  ],
+  "110": [
+   "indirect"
+  ],
+  "118": [
+   "CExchangeStage__On_118@841471"
+  ],
+  "119": [
+   "CExchangeStage__On_119@840370"
+  ],
+  "120": [
+   "CExchangeStage__On_120@843318"
+  ],
+  "136": [
+   "CExchangeStage__On_136@845C5A"
+  ],
+  "137": [
+   "CExchangeStage__On_137@8453CB"
+  ],
+  "138": [
+   "CExchangeStage__On_138@83FE24"
+  ],
+  "139": [
+   "CExchangeStage__On_139@8415CA"
+  ],
+  "140": [
+   "CExchangeStage__On_140@8418A2"
+  ],
+  "394": [
+   "OnPkt_multi_394_394@69084A"
+  ]
+ },
+ "sub_84A3F6@84A3F6": {
+  "36": [
+   "sub_849003@849003"
+  ],
+  "37": [
+   "sub_84A092@84A092"
+  ],
+  "38": [
+   "sub_84A3D7@84A3D7"
+  ]
+ },
+ "CLoginStageChina__OnPacket@84F313": {
+  "4": [
+   "CLoginStageChina__On_4@84DE0E"
+  ],
+  "5": [
+   "CLoginStageChina__On_5@84B816"
+  ],
+  "6": [
+   "CLoginStageChina__On_6@84B99A"
+  ],
+  "15": [
+   "CLoginStageChina__On_15@84B3B7"
+  ],
+  "16": [
+   "CLoginStageChina__On_16@84AC44"
+  ],
+  "53": [
+   "CLoginStageChina__On_53@84C390"
+  ],
+  "54": [
+   "CLoginStageChina__On_54@84BE43"
+  ],
+  "55": [
+   "CLoginStageChina__On_55@84C020"
+  ],
+  "56": [
+   "CLoginStageChina__On_56@84C590"
+  ],
+  "57": [
+   "CLoginStageChina__On_57@84B1F4"
+  ],
+  "58": [
+   "CLoginStageChina__On_58@84A924"
+  ],
+  "62": [
+   "CLoginStageChina__On_62@84A959"
+  ]
+ },
+ "CLoginStage__OnPacket@8544A2": {
+  "4": [
+   "CLoginStage__On_4@8534F3"
+  ],
+  "5": [
+   "CLoginStage__On_5@8502E7"
+  ],
+  "6": [
+   "CLoginStage__On_6@85185F"
+  ],
+  "15": [
+   "CLoginStage__On_15@84FE35"
+  ],
+  "16": [
+   "CLoginStage__On_16@84FB9F"
+  ],
+  "48": [
+   "CLoginStage__On_48@84FD8F"
+  ],
+  "49": [
+   "CLoginStage__On_49@8519C5"
+  ],
+  "59": [
+   "CLoginStage__On_59@850CB9"
+  ]
+ },
+ "CSelectServerStage__OnPacket@859C70": {
+  "7": [
+   "CSelectServerStage__On_7@8558C4"
+  ],
+  "16": [
+   "CSelectServerStage__On_16@854ADC"
+  ],
+  "19": [
+   "CSelectServerStage__On_19@855F5B"
+  ],
+  "41": [
+   "OnPkt_multi_41_41@65786B",
+   "sub_859375@859375"
+  ]
+ },
+ "CUserMarketStage__OnPacket@8603A3": {
+  "100": [
+   "CUserMarketStage__On_100@85E71A"
+  ],
+  "289": [
+   "CUserMarketStage__On_289@85E453"
+  ],
+  "410": [
+   "CUserMarketStage__On_410@85E9BE"
+  ],
+  "411": [
+   "CUserMarketStage__On_411@85E99F"
+  ],
+  "412": [
+   "CUserMarketStage__On_412@85E472"
+  ],
+  "413": [
+   "CUserMarketStage__On_413@85F5BA"
+  ],
+  "414": [
+   "CUserMarketStage__On_414@85F7E2"
+  ],
+  "415": [
+   "CUserMarketStage__On_415@85D6CE"
+  ],
+  "416": [
+   "CUserMarketStage__On_416@85F960"
+  ],
+  "417": [
+   "CUserMarketStage__On_417@85FA25"
+  ],
+  "418": [
+   "OnPkt_multi_418_418@804707"
+  ],
+  "419": [
+   "OnPkt_multi_419_419@804951"
+  ],
+  "420": [
+   "CUserMarketStage__On_420@85E481"
+  ]
+ },
+ "CSquareStage__OnPacket@86FF2C": {
+  "16": [
+   "CSquareStage__On_16@8680B0"
+  ],
+  "67": [
+   "CSquareStage__On_67@868F08"
+  ],
+  "69": [
+   "CSquareStage__On_69@868E4E"
+  ],
+  "83": [
+   "CSquareStage__On_83@86B66A"
+  ],
+  "84": [
+   "CSquareStage__On_84@86BDE7"
+  ],
+  "234": [
+   "CSquareStage__On_234@867E32"
+  ],
+  "289": [
+   "CSquareStage__On_289@867928"
+  ],
+  "394": [
+   "CSquareStage__On_394@86D4CD"
+  ],
+  "466": [
+   "CSquareStage__On_466@869BAD"
+  ],
+  "467": [
+   "CSquareStage__On_467@86FE10"
+  ],
+  "469": [
+   "CSquareStage__On_469@86F7D5"
+  ],
+  "470": [
+   "CSquareStage__On_470@86A7B4"
+  ],
+  "471": [
+   "CSquareStage__On_471@867731"
+  ],
+  "472": [
+   "CSquareStage__On_472@8677D0"
+  ],
+  "473": [
+   "CSquareStage__On_473@869844"
+  ],
+  "474": [
+   "CSquareStage__On_474@86F7F6"
+  ],
+  "475": [
+   "CSquareStage__On_475@86CD57"
+  ],
+  "476": [
+   "CSquareStage__On_476@869CBD"
+  ],
+  "477": [
+   "CSquareStage__On_477@867873"
+  ],
+  "478": [
+   "CSquareStage__On_478@868676"
+  ],
+  "480": [
+   "CSquareStage__On_480@86E9C0"
+  ],
+  "481": [
+   "CSquareStage__On_481@8698DE"
+  ],
+  "482": [
+   "CSquareStage__On_482@86A88A"
+  ],
+  "483": [
+   "CSquareStage__On_483@86A99C"
+  ],
+  "484": [
+   "CSquareStage__On_484@86794B"
+  ],
+  "485": [
+   "CSquareStage__On_485@868369"
+  ],
+  "486": [
+   "CSquareStage__On_486@86D746"
+  ],
+  "487": [
+   "CSquareStage__On_487@86CD83"
+  ],
+  "488": [
+   "CSquareStage__On_488@86D2F7"
+  ],
+  "489": [
+   "CSquareStage__On_489@86CD97"
+  ],
+  "490": [
+   "CSquareStage__On_490@86BCD6"
+  ],
+  "492": [
+   "CSquareStage__On_492@86F07F"
+  ],
+  "493": [
+   "CSquareStage__On_493@8678E3"
+  ],
+  "496": [
+   "CSquareStage__On_496@869E16"
+  ],
+  "506": [
+   "indirect"
+  ],
+  "507": [
+   "CSquareStage__On_507@86C33F"
+  ],
+  "508": [
+   "CSquareStage__On_508@86C3E6"
+  ],
+  "509": [
+   "CSquareStage__On_509@86799F"
+  ],
+  "510": [
+   "CSquareStage__On_510@8684B1"
+  ],
+  "511": [
+   "CSquareStage__On_511@868516"
+  ],
+  "512": [
+   "CSquareStage__On_512@8679BC"
+  ]
+ },
+ "CMagicBookMarketStage__OnPacket@880A2F": {
+  "100": [
+   "CMagicBookMarketStage__On_100@87FEF7",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "230": [
+   "OnPkt_multi_230_230@805626",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "289": [
+   "CMagicBookMarketStage__On_289@87FB3F",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "422": [
+   "CMagicBookMarketStage__On_422@880221",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "423": [
+   "CMagicBookMarketStage__On_423@8802E4",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "425": [
+   "CMagicBookMarketStage__On_425@8804F3",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "426": [
+   "CMagicBookMarketStage__On_426@88087F",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "499": [
+   "CMagicBookMarketStage__On_499@87FF12",
+   "sub_9DB5CB@9DB5CB"
+  ]
+ },
+ "sub_8883BE@8883BE": {
+  "198": [
+   "sub_888333@888333"
+  ],
+  "199": [
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode1@A65670",
+   "sub_886B27@886B27"
+  ],
+  "200": [
+   "RecvPkt__Decode2@A656E0",
+   "RecvPkt__Decode4@A65750",
+   "sub_8869F6@8869F6"
+  ]
+ },
+ "sub_8F939A@8F939A": {
+  "11": [
+   "sub_8F391D@8F391D",
+   "sub_8F3903@8F3903",
+   "sub_8F8EEC@8F8EEC"
+  ],
+  "117": [
+   "?GetCompletionList@UMSSchedulerProxy@details@Concurrency@@QBEPAXXZ_1@8F8893",
+   "sub_8F391D@8F391D",
+   "sub_8F3903@8F3903"
+  ]
+ },
+ "sub_958C01@958C01": {
+  "1": [
+   "RecvPkt__Decode4@A65750",
+   "RecvPkt__Decode4@A65750",
+   "sub_88B575@88B575"
+  ],
+  "2": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ]
+ },
+ "sub_95983D@95983D": {
+  "1": [
+   "RecvPkt__Decode4@A65750",
+   "sub_88B575@88B575",
+   "sub_8B3786@8B3786"
+  ],
+  "2": [
+   "sub_99A731@99A731",
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "indirect"
+  ],
+  "4": [
+   "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z@4015E9",
+   "sub_A2A5E0@A2A5E0",
+   "sub_98DB56@98DB56"
+  ]
+ },
+ "sub_95A04E@95A04E": {
+  "227": [
+   "sub_9580E9@9580E9",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "228": [
+   "sub_958253@958253",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "237": [
+   "sub_95905E@95905E",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "251": [
+   "sub_957612@957612"
+  ],
+  "323": [
+   "sub_958C01@958C01",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "367": [
+   "sub_956F93@956F93",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "408": [
+   "sub_95983D@95983D",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "491": [
+   "sub_958345@958345",
+   "sub_9DB5CB@9DB5CB"
+  ],
+  "494": [
+   "sub_9584C1@9584C1",
+   "sub_9DB5CB@9DB5CB"
+  ]
+ },
+ "sub_961951@961951": {
+  "246": [
+   "sub_95FCFB@95FCFB"
+  ],
+  "364": [
+   "sub_961504@961504"
+  ]
+ }
+}

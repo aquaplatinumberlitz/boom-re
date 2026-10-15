@@ -1,0 +1,16 @@
+# Game binaries / copyrighted data: regenerate locally (see README "Thiết lập lại từ đầu")
+unpacked_ca.exe
+unpacked_ca.exe.*
+*.i64
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+assets/
+tools/unlicense.exe
+
+# Logs / scratch
+*.log
+unpack.done
+__pycache__/
