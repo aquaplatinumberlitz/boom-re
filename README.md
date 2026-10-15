@@ -76,7 +76,7 @@ uv run --with unicorn --with pefile python tools/verify_emu.py unpacked_ca.exe  
 ```sh
 docker port WinBoat        # lấy port 3389 (đổi sau mỗi lần restart container)
 xfreerdp3 /u:<USER> /p:<PASS> /v:127.0.0.1 /port:<PORT> /cert:ignore \
-  '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\unpack.bat'
+  '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\win\unpack.bat'
 ```
 `win/unpack.bat` copy client vào `C:\boom` (bỏ `*.idd`, `hackshield`, `blackcipher`), chạy `unlicense ca.exe`, chép `unpacked_ca.exe` + log về đây.
 Kết quả lần trước: **OEP = 0x9E5EFE**, base 0x400000, 433 import, IAT giả ở 0x1900000.
@@ -103,7 +103,7 @@ docker run -d --rm --name boomsrv --network winboat_default --ip 172.18.0.50 \
   --user "$(id -u):$(id -g)" -v "$HOME/boom-re:/work" -w /work python:3.12-slim python -u tools/fakeserver.py --log /work/logs/fakeserver.log
 docker exec WinBoat sh -c 'for d in 222.255.122.204 120.138.77.0/24 118.102.5.126 175.207.3.35; do
   iptables -t nat -I PREROUTING -s 172.30.0.0/24 -d $d -p tcp -j DNAT --to-destination 172.18.0.50; done'
-xfreerdp3 ... '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\watch2.bat'
+xfreerdp3 ... '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\win\watch2.bat'
 ```
 (host bật `ufw` nên Windows không gọi thẳng host được → server chạy trong container cùng mạng.)
 
