@@ -20,14 +20,20 @@ Server đã chết, mất source; chỉ còn client. Mục tiêu dài hạn: hi�
 | Sprite `CDataI16Alpha` → PNG | ✅ Xong (108.726 ảnh) | `tools/i16.py` |
 | Frame animation của sprite (record 48 byte) | ⬜ Chưa | |
 | Định dạng `.map` (965 map) và `Attr/*` | ⬜ Chưa | `decomp/CGamePlayMap__Load.c` |
-| Gỡ HackShield/BlackCipher, patch IP server | ⬜ Chưa | |
-| Server giả lập | ⬜ Chưa | |
+| Gỡ HackShield/BlackCipher, patch IP server | ✅ Patch **trong bộ nhớ** client gốc (Themida) | `tools/launch.ps1`, `tools/launcher/boomlaunch.c` |
+| Chạy client thật nối vào server giả | 🟡 **Đăng nhập qua được**; kẹt ở Direct3D (VM không GPU) | [Chạy client](#chạy-client-với-server-giả) |
+| Server giả lập | 🟡 Prototype Python: hello + chuỗi login 6 packet | `tools/fakeserver.py` |
+| Sửa IAT bản dump để chạy `unpacked_ca.exe` | ⬜ Dở (226 ô giải được, wrapper Themida chưa) | `tools/fix_iat.py` |
 
 ### Câu hỏi còn mở
-- Định dạng packet server gửi **trước** handshake (`dword_EEC1BC/C0`, giá trị đặt lúc runtime).
-- Byte thứ 2 của header khi header dài 2 byte.
-- Ý nghĩa byte `type` so với `opcode` u16 trong payload.
-- Chưa có traffic thật để so toàn bộ frame (mới kiểm chứng phần crypto).
+- Byte thứ 2 của header khi header dài 2 byte (client gửi `0xF4`, client không kiểm tra khi nhận).
+- Render: `init renderer falied. hr=0x887600aa` trong WinBoat; Wine (WoW64 mới) chết ở anti-VM của Themida (`EXCEPTION_PRIV_INSTRUCTION` @ 0x11E5F62).
+
+### Đã kiểm chứng trên client thật (2026-10-16)
+- Định dạng trước handshake đọc từ bộ nhớ process: `dword_EA6FE0/E4` = `dword_EEC1BC/C0` = **(0,0)**; sau handshake (2,3); gửi (2,2).
+- Codec `boomproto.py` giải mã đúng packet thật của client (CRC8 khớp).
+- "type" trong payload **chính là opcode** (u16 ở mode 2/3): dispatcher `Rewind` rồi `Decode2`.
+- Luồng: kết nối patch (server gửi hello, version=116) → client đóng → kết nối chính: hello → client gửi opcode 0 (6×u32) → server gửi 13, 2, 12, 21, 1, 43 (mỗi cái `u8 0` = dùng cache) → `Login_DoLoginSequence` (0x8E2DEC) thành công, cửa sổ "Boom" mở.
 
 ---
 
@@ -35,11 +41,8 @@ Server đã chết, mất source; chỉ còn client. Mục tiêu dài hạn: hi�
 
 Theo thứ tự ưu tiên:
 
-1. **Cho client chạy được không cần server thật.**
-   - Patch IP server hardcode (`120.138.77.22-25`, `.83-85`, `118.102.5.126`, `222.255.122.204`, `175.207.3.35`) → `127.0.0.1` hoặc IP host.
-   - Gỡ khởi tạo HackShield / BlackCipher / GameGuard (tìm theo chuỗi `CBlackCipher2Client::*`, `hackshield`, `ehsvc.dll`).
-   - Chạy trong WinBoat, đọc bộ nhớ để trả lời các câu hỏi mở ở trên.
-2. **Server giả tối thiểu** (Python, dùng `tools/boomproto.py`): accept TCP → gửi handshake (`Net_OnHandshake` 0x999C02) → xem client gửi gì → login → lobby.
+1. **Cho client render được** (đang chặn): thử Windows có GPU thật / VM có GPU passthrough, hoặc Wine bản có WoW64 kiểu cũ (32-bit prefix), hoặc d3d9 software trong WinBoat.
+2. **Server thật bằng Rust** (prototype Python ở `tools/fakeserver.py` là đặc tả sống): sau login → nhận gì tiếp, lobby, phòng, ván chơi.
 3. **Cấu trúc field từng packet**: đọc handler trong `decomp/handlers/` theo luồng Login (`CLoginStage`) → Lobby → Room (`CPrepareStage`) → Game (`CGameStage`). Ghi vào `docs/protocol.md`.
 4. **`.map` / `Attr/*`**: server cần để chạy ván chơi. Loader map: `CGamePlayMap__Load` 0x7354FD.
 5. (Phụ) Frame animation sprite.
@@ -75,7 +78,7 @@ docker port WinBoat        # lấy port 3389 (đổi sau mỗi lần restart con
 xfreerdp3 /u:<USER> /p:<PASS> /v:127.0.0.1 /port:<PORT> /cert:ignore \
   '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\unpack.bat'
 ```
-`unpack.bat` copy client vào `C:\boom` (bỏ `*.idd`, `hackshield`, `blackcipher`), chạy `unlicense ca.exe`, chép `unpacked_ca.exe` + log về đây.
+`win/unpack.bat` copy client vào `C:\boom` (bỏ `*.idd`, `hackshield`, `blackcipher`), chạy `unlicense ca.exe`, chép `unpacked_ca.exe` + log về đây.
 Kết quả lần trước: **OEP = 0x9E5EFE**, base 0x400000, 433 import, IAT giả ở 0x1900000.
 
 Nếu RDP bị reset ngay / guest API không trả lời: Windows trong WinBoat bị treo → `docker restart WinBoat` (đã gặp 1 lần).
@@ -87,6 +90,27 @@ Nếu RDP bị reset ngay / guest API không trả lời: Windows trong WinBoat 
 - Đã có sẵn `.i64` thì mở thẳng, không cần làm lại.
 
 ---
+
+## Chạy client với server giả
+
+Đang dùng **client gốc (Themida)**, patch trong bộ nhớ (không sửa file):
+- Bỏ HackShield/BlackCipher: `0x8E701D` `74 29` → `EB 29`.
+- Đổi IP server (hoặc chuyển hướng bằng iptables DNAT trong container WinBoat).
+
+WinBoat (render chưa được, nhưng mạng + login chạy):
+```sh
+docker run -d --rm --name boomsrv --network winboat_default --ip 172.18.0.50 \
+  --user "$(id -u):$(id -g)" -v "$HOME/boom-re:/work" -w /work python:3.12-slim python -u tools/fakeserver.py --log /work/logs/fakeserver.log
+docker exec WinBoat sh -c 'for d in 222.255.122.204 120.138.77.0/24 118.102.5.126 175.207.3.35; do
+  iptables -t nat -I PREROUTING -s 172.30.0.0/24 -d $d -p tcp -j DNAT --to-destination 172.18.0.50; done'
+xfreerdp3 ... '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\watch2.bat'
+```
+(host bật `ufw` nên Windows không gọi thẳng host được → server chạy trong container cùng mạng.)
+
+Wine (render có GPU, nhưng Themida chết trong Wine WoW64):
+```sh
+cd wine/Boom && wine boomlaunch.exe 127.0.0.1     # wine/Boom = bản copy reflink của client
+```
 
 ## Đã tìm được gì
 
@@ -151,7 +175,7 @@ Nếu RDP bị reset ngay / guest API không trả lời: Windows trong WinBoat 
 | `decomp/net/` | Pseudocode hàm mạng + bảng tráo opcode `.bin` |
 | `decomp/CGamePlayMap__Load.c` | Pseudocode loader map |
 | `rtti.txt`, `ca_strings.txt` | Tên class RTTI, strings của binary |
-| `unpack.bat` | Script unpack chạy trong Windows |
+| `win/*.bat` | Script chạy trong Windows (unpack, chạy client, chụp màn hình, dump bộ nhớ) |
 
 ## Lưu ý / bẫy đã gặp
 

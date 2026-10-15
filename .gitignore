@@ -14,3 +14,8 @@ tools/unlicense.exe
 *.log
 unpack.done
 __pycache__/
+wine/
+ca_patched.exe
+logs/
+*.exe
+!tools/launcher/*.c
