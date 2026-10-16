@@ -31,7 +31,7 @@ Cập nhật 2026-10-16.
 | Packet → handler | ✅ 520 opcode / 59 dispatcher | `decomp/opcode_dispatch.json`, `decomp/handlers/` |
 | Hello + chuỗi đăng nhập | ✅ client thật đăng nhập được vào server giả | `docs/protocol.md`, `tools/fakeserver.py` |
 | Đăng nhập bằng tài khoản (opcode 1 → 4, 15) | ✅ tới màn chọn kênh | `docs/protocol.md`, `tools/fakeserver.py` |
-| Màn chọn kênh → lobby | 🟡 vào được stage 10; danh sách kênh (opcode 14) đang crash khi parse | `docs/protocol.md` → "Màn chọn kênh" |
+| Màn chọn kênh → lobby | ✅ stage 10, parse xong 14+16 (thiếu tag blob là nguyên nhân crash cũ), cache ghi được; slot kênh còn trống | `docs/protocol.md` → "Màn chọn kênh" |
 | Pack `.idx/.idd` + sprite → PNG | ✅ 108.726 PNG, 965 map, 645 ogg | `docs/assets.md`, `tools/idf.py`, `tools/i16.py` |
 | Định dạng `.map`, `Attr/*`, frame animation | ⬜ | `decomp/CGamePlayMap__Load.c` |
 | Client gốc (Themida) + patch bộ nhớ | ✅ chạy tới đăng nhập trong WinBoat; ❌ không render (VM không GPU); ❌ Wine (anti-VM Themida) | `docs/runtime.md` |
@@ -57,7 +57,8 @@ Cập nhật 2026-10-16.
 
 **Hướng đã chọn (2026-10-16): hướng 1 — devirtualize** → **bản dump đã vào được game trong Wine.**
 
-1. Danh sách kênh: sửa crash khi parse opcode 14 (`docs/protocol.md` → "Màn chọn kênh"), rồi vào kênh (`On_7`) → lobby (stage 11).
+1. Slot kênh còn trống trên UI: tìm field hiển thị trong bản ghi opcode 14 (đang gửi 0) và khớp id
+   status (0–3) với id bản ghi (1–4), rồi vào kênh (`On_7`) → lobby (stage 11).
    Chạy dưới winedbg: `tools/xvfb_login_dbg.sh` (bắt exception first-chance, backtrace ở `logs/xvfb/login_dbg.txt`).
    Thử nhanh: `python3 tools/fakeserver.py --log logs/fakeserver_host.log &` rồi `tools/xvfb_login.sh`.
    Khi client chạm khối VM mới (crash/exception trong section Themida) → làm theo [docs/devirt.md](docs/devirt.md)

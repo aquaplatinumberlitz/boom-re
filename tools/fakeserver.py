@@ -46,17 +46,20 @@ def login_net_info(host="127.0.0.1", ports=(0, 0, 0)):
 
 
 def channel_list(names=("Kenh 1", "Kenh 2", "Kenh 3", "Kenh 4")):
-    """CStage__On_14 -> sub_99489D: u8 1 = new data (cached by the client), blob {u16 n, n records (sub_994663):
-    str name, u32, u8 x7, u16 x2, u8 x4, u32 x2}. Field meanings: unknown yet (zeros except a running id)."""
-    inner = struct.pack("<H", len(names))
+    """CStage__On_14 -> sub_99489D: u8 1 = new data (cached by the client), blob {u8 tag, u16 n, n records
+    (sub_994663): str name, u32, u8 x7, u16 x2, u8 x4, u32 x2}. tag selects sub_A62580 decoding: 0 = raw copy,
+    1 = sub_A0B480-encoded; anything else leaves the sub-reader empty and the client overruns CChannelCache
+    (crash in sub_414059). Field meanings: unknown yet (zeros except a running id)."""
+    inner = b"\x00" + struct.pack("<H", len(names))
     for i, n in enumerate(names):
         inner += _lstr(n) + struct.pack("<I", i + 1) + bytes(7) + struct.pack("<HH", 0, 0) + bytes(4) + struct.pack("<II", 0, 0)
     return obf_body(14, ("u8", 1), ("blob", inner))
 
 
 def channel_status(users=(10, 20, 30, 40)):
-    """CSelectServerStage__On_16 / CLoginStage__On_16: blob {u16 n, n x (u16, u32)} -> CChannelInfo (sub_9949C6)."""
-    inner = struct.pack("<H", len(users))
+    """CSelectServerStage__On_16: u8 tag (sub_A62580: 0 = raw) + blob {u16 n, n x (u16, u32)} -> sub_9949C6.
+    Without the tag the sub-reader stays empty, count is garbage and the client overruns (crash in sub_413F32)."""
+    inner = b"\x00" + struct.pack("<H", len(users))
     for i, u in enumerate(users):
         inner += struct.pack("<HI", i, u)
     return obf_body(16, ("blob", inner))
