@@ -1,0 +1,3056 @@
+[
+ {
+  "dll": "advapi32.dll",
+  "slots": [
+   {
+    "va": "C0F000",
+    "dll": "advapi32.dll",
+    "name": "RegDeleteValueA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F004",
+    "dll": "advapi32.dll",
+    "name": "InitializeSecurityDescriptor",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F008",
+    "dll": "advapi32.dll",
+    "name": "RegQueryValueA",
+    "how": "override"
+   },
+   {
+    "va": "C0F00C",
+    "dll": "advapi32.dll",
+    "name": "RegEnumValueA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F010",
+    "dll": "advapi32.dll",
+    "name": "RegQueryInfoKeyA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F014",
+    "dll": "advapi32.dll",
+    "name": "RegCloseKey",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F018",
+    "dll": "advapi32.dll",
+    "name": "RegCreateKeyExA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F01C",
+    "dll": "advapi32.dll",
+    "name": "SetSecurityDescriptorDacl",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F020",
+    "dll": "advapi32.dll",
+    "name": "RegOpenKeyExA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F024",
+    "dll": "advapi32.dll",
+    "name": "RegDeleteKeyA",
+    "how": "emulated+stolen"
+   },
+   {
+    "va": "C0F028",
+    "dll": "advapi32.dll",
+    "name": "RegQueryValueExA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F02C",
+    "dll": "advapi32.dll",
+    "name": "RegSetValueExA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F030",
+    "dll": "advapi32.dll",
+    "name": "RegEnumKeyExA",
+    "how": "emulated"
+   }
+  ]
+ },
+ {
+  "dll": "cawh.sys",
+  "slots": [
+   {
+    "va": "C0F038",
+    "dll": "cawh.sys",
+    "name": "?Hook@@YGJHIJ@Z",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "comctl32.dll",
+  "slots": [
+   {
+    "va": "C0F040",
+    "dll": "comctl32.dll",
+    "name": "InitCommonControls",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "ddraw.dll",
+  "slots": [
+   {
+    "va": "C0F048",
+    "dll": "ddraw.dll",
+    "name": "DirectDrawCreateEx",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "dwk.dll",
+  "slots": [
+   {
+    "va": "C0F050",
+    "dll": "dwk.dll",
+    "name": "InstallDWK",
+    "how": "direct"
+   },
+   {
+    "va": "C0F054",
+    "dll": "dwk.dll",
+    "name": "UninstallDWK",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "gdi32.dll",
+  "slots": [
+   {
+    "va": "C0F05C",
+    "dll": "gdi32.dll",
+    "name": "SetBkColor",
+    "how": "direct"
+   },
+   {
+    "va": "C0F060",
+    "dll": "gdi32.dll",
+    "name": "TextOutA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F064",
+    "dll": "gdi32.dll",
+    "name": "CreateSolidBrush",
+    "how": "direct"
+   },
+   {
+    "va": "C0F068",
+    "dll": "gdi32.dll",
+    "name": "SetPixel",
+    "how": "direct"
+   },
+   {
+    "va": "C0F06C",
+    "dll": "gdi32.dll",
+    "name": "CreateCompatibleBitmap",
+    "how": "direct"
+   },
+   {
+    "va": "C0F070",
+    "dll": "gdi32.dll",
+    "name": "PatBlt",
+    "how": "direct"
+   },
+   {
+    "va": "C0F074",
+    "dll": "gdi32.dll",
+    "name": "LineTo",
+    "how": "direct"
+   },
+   {
+    "va": "C0F078",
+    "dll": "gdi32.dll",
+    "name": "DeleteObject",
+    "how": "direct"
+   },
+   {
+    "va": "C0F07C",
+    "dll": "gdi32.dll",
+    "name": "Polygon",
+    "how": "direct"
+   },
+   {
+    "va": "C0F080",
+    "dll": "gdi32.dll",
+    "name": "RoundRect",
+    "how": "direct"
+   },
+   {
+    "va": "C0F084",
+    "dll": "gdi32.dll",
+    "name": "CreatePen",
+    "how": "direct"
+   },
+   {
+    "va": "C0F088",
+    "dll": "gdi32.dll",
+    "name": "SelectObject",
+    "how": "direct"
+   },
+   {
+    "va": "C0F08C",
+    "dll": "gdi32.dll",
+    "name": "CreateCompatibleDC",
+    "how": "direct"
+   },
+   {
+    "va": "C0F090",
+    "dll": "gdi32.dll",
+    "name": "CreateDIBSection",
+    "how": "direct"
+   },
+   {
+    "va": "C0F094",
+    "dll": "gdi32.dll",
+    "name": "GetStockObject",
+    "how": "direct"
+   },
+   {
+    "va": "C0F098",
+    "dll": "gdi32.dll",
+    "name": "BitBlt",
+    "how": "direct"
+   },
+   {
+    "va": "C0F09C",
+    "dll": "gdi32.dll",
+    "name": "ExtCreateRegion",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0A0",
+    "dll": "gdi32.dll",
+    "name": "MoveToEx",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0A4",
+    "dll": "gdi32.dll",
+    "name": "DeleteDC",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0A8",
+    "dll": "gdi32.dll",
+    "name": "SetTextColor",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "imm32.dll",
+  "slots": [
+   {
+    "va": "C0F0B0",
+    "dll": "imm32.dll",
+    "name": "ImmReleaseContext",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0B4",
+    "dll": "imm32.dll",
+    "name": "ImmGetDefaultIMEWnd",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0B8",
+    "dll": "imm32.dll",
+    "name": "ImmGetCompositionStringA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0BC",
+    "dll": "imm32.dll",
+    "name": "ImmNotifyIME",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0C0",
+    "dll": "imm32.dll",
+    "name": "ImmSetCompositionWindow",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0C4",
+    "dll": "imm32.dll",
+    "name": "ImmGetProperty",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0C8",
+    "dll": "imm32.dll",
+    "name": "ImmAssociateContext",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0CC",
+    "dll": "imm32.dll",
+    "name": "ImmCreateContext",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0D0",
+    "dll": "imm32.dll",
+    "name": "ImmDestroyContext",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0D4",
+    "dll": "imm32.dll",
+    "name": "ImmGetContext",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0D8",
+    "dll": "imm32.dll",
+    "name": "ImmGetOpenStatus",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0DC",
+    "dll": "imm32.dll",
+    "name": "ImmGetCompositionWindow",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0E0",
+    "dll": "imm32.dll",
+    "name": "ImmSetCompositionFontA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0E4",
+    "dll": "imm32.dll",
+    "name": "ImmGetCompositionFontA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0E8",
+    "dll": "imm32.dll",
+    "name": "ImmGetConversionStatus",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0EC",
+    "dll": "imm32.dll",
+    "name": "ImmSetConversionStatus",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0F0",
+    "dll": "imm32.dll",
+    "name": "ImmSetOpenStatus",
+    "how": "direct"
+   },
+   {
+    "va": "C0F0F4",
+    "dll": "imm32.dll",
+    "name": "ImmGetCompositionStringW",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "iphlpapi.dll",
+  "slots": [
+   {
+    "va": "C0F0FC",
+    "dll": "iphlpapi.dll",
+    "name": "GetAdaptersInfo",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "kernel32.dll",
+  "slots": [
+   {
+    "va": "C0F104",
+    "dll": "kernel32.dll",
+    "name": "GetEnvironmentVariableA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F108",
+    "dll": "kernel32.dll",
+    "name": "SetCurrentDirectoryA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F10C",
+    "dll": "kernel32.dll",
+    "name": "CreateMutexA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F110",
+    "dll": "kernel32.dll",
+    "name": "SetThreadPriority",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F114",
+    "dll": "kernel32.dll",
+    "name": "GetCurrentThread",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F118",
+    "dll": "kernel32.dll",
+    "name": "lstrcpyW",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F11C",
+    "dll": "kernel32.dll",
+    "name": "CompareFileTime",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F120",
+    "dll": "kernel32.dll",
+    "name": "GetSystemInfo",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F124",
+    "dll": "kernel32.dll",
+    "name": "RaiseException",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F128",
+    "dll": "kernel32.dll",
+    "name": "FileTimeToSystemTime",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F12C",
+    "dll": "kernel32.dll",
+    "name": "FileTimeToLocalFileTime",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F130",
+    "dll": "kernel32.dll",
+    "name": "GetCurrentThreadId",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F134",
+    "dll": "kernel32.dll",
+    "name": "VirtualQuery",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F138",
+    "dll": "kernel32.dll",
+    "name": "FormatMessageA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F13C",
+    "dll": "kernel32.dll",
+    "name": "SetUnhandledExceptionFilter",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F140",
+    "dll": "kernel32.dll",
+    "name": "IsBadWritePtr",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F144",
+    "dll": "kernel32.dll",
+    "name": "UnmapViewOfFile",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F148",
+    "dll": "kernel32.dll",
+    "name": "MapViewOfFile",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F14C",
+    "dll": "kernel32.dll",
+    "name": "CreateFileMappingA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F150",
+    "dll": "kernel32.dll",
+    "name": "ResumeThread",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F154",
+    "dll": "kernel32.dll",
+    "name": "GetCurrentProcess",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F158",
+    "dll": "kernel32.dll",
+    "name": "GetFullPathNameA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F15C",
+    "dll": "kernel32.dll",
+    "name": "SetFileTime",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F160",
+    "dll": "kernel32.dll",
+    "name": "LocalFileTimeToFileTime",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F164",
+    "dll": "kernel32.dll",
+    "name": "DosDateTimeToFileTime",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F168",
+    "dll": "kernel32.dll",
+    "name": "GetFileTime",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F16C",
+    "dll": "kernel32.dll",
+    "name": "IsDBCSLeadByte",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F170",
+    "dll": "kernel32.dll",
+    "name": "MoveFileA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F174",
+    "dll": "kernel32.dll",
+    "name": "OutputDebugStringA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F178",
+    "dll": "kernel32.dll",
+    "name": "lstrcmp",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F17C",
+    "dll": "kernel32.dll",
+    "name": "GetTimeFormatA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F180",
+    "dll": "kernel32.dll",
+    "name": "FindNextFileA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F184",
+    "dll": "kernel32.dll",
+    "name": "FindClose",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F188",
+    "dll": "kernel32.dll",
+    "name": "GetCommandLineA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F18C",
+    "dll": "kernel32.dll",
+    "name": "WriteFile",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F190",
+    "dll": "kernel32.dll",
+    "name": "SetEnvironmentVariableA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F194",
+    "dll": "kernel32.dll",
+    "name": "ReleaseMutex",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F198",
+    "dll": "kernel32.dll",
+    "name": "ExitProcess",
+    "how": "direct"
+   },
+   {
+    "va": "C0F19C",
+    "dll": "kernel32.dll",
+    "name": "GetFileAttributesA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1A0",
+    "dll": "kernel32.dll",
+    "name": "RemoveDirectoryA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1A4",
+    "dll": "kernel32.dll",
+    "name": "CopyFileA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F1A8",
+    "dll": "kernel32.dll",
+    "name": "FindResourceExA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F1AC",
+    "dll": "kernel32.dll",
+    "name": "SetFilePointer",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1B0",
+    "dll": "kernel32.dll",
+    "name": "GetVersionExA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1B4",
+    "dll": "kernel32.dll",
+    "name": "GetSystemDirectoryA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F1B8",
+    "dll": "kernel32.dll",
+    "name": "GetCurrentProcessId",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1BC",
+    "dll": "kernel32.dll",
+    "name": "GetModuleFileNameA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1C0",
+    "dll": "kernel32.dll",
+    "name": "lstrcat",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F1C4",
+    "dll": "kernel32.dll",
+    "name": "GetFileSize",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1C8",
+    "dll": "kernel32.dll",
+    "name": "GetSystemTime",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1CC",
+    "dll": "kernel32.dll",
+    "name": "GetCurrentDirectoryA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1D0",
+    "dll": "kernel32.dll",
+    "name": "GetModuleHandleA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1D4",
+    "dll": "kernel32.dll",
+    "name": "InterlockedExchange",
+    "how": "override"
+   },
+   {
+    "va": "C0F1D8",
+    "dll": "kernel32.dll",
+    "name": "lstrcmpiA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F1DC",
+    "dll": "kernel32.dll",
+    "name": "CreateProcessA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1E0",
+    "dll": "kernel32.dll",
+    "name": "ReadFile",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1E4",
+    "dll": "kernel32.dll",
+    "name": "DeleteFileA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1E8",
+    "dll": "kernel32.dll",
+    "name": "FindResourceA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F1EC",
+    "dll": "kernel32.dll",
+    "name": "FreeResource",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1F0",
+    "dll": "kernel32.dll",
+    "name": "QueryPerformanceFrequency",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1F4",
+    "dll": "kernel32.dll",
+    "name": "QueryPerformanceCounter",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1F8",
+    "dll": "kernel32.dll",
+    "name": "Sleep",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F1FC",
+    "dll": "kernel32.dll",
+    "name": "GetTickCount",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F200",
+    "dll": "kernel32.dll",
+    "name": "FindResourceExW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F204",
+    "dll": "kernel32.dll",
+    "name": "FindResourceW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F208",
+    "dll": "kernel32.dll",
+    "name": "LoadResource",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F20C",
+    "dll": "kernel32.dll",
+    "name": "LockResource",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F210",
+    "dll": "kernel32.dll",
+    "name": "SizeofResource",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F214",
+    "dll": "kernel32.dll",
+    "name": "CompareStringA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F218",
+    "dll": "kernel32.dll",
+    "name": "lstrcpyn",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F21C",
+    "dll": "kernel32.dll",
+    "name": "GetPrivateProfileStringA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F220",
+    "dll": "kernel32.dll",
+    "name": "OpenProcess",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F224",
+    "dll": "kernel32.dll",
+    "name": "ReadProcessMemory",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F228",
+    "dll": "kernel32.dll",
+    "name": "VirtualQueryEx",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F22C",
+    "dll": "kernel32.dll",
+    "name": "VirtualProtect",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F230",
+    "dll": "kernel32.dll",
+    "name": "GetExitCodeProcess",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F234",
+    "dll": "kernel32.dll",
+    "name": "GlobalSize",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F238",
+    "dll": "kernel32.dll",
+    "name": "GetUserDefaultLangID",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F23C",
+    "dll": "kernel32.dll",
+    "name": "IsDBCSLeadByteEx",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F240",
+    "dll": "kernel32.dll",
+    "name": "GlobalAlloc",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F244",
+    "dll": "kernel32.dll",
+    "name": "GlobalWire",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F248",
+    "dll": "kernel32.dll",
+    "name": "GlobalUnlock",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F24C",
+    "dll": "kernel32.dll",
+    "name": "VirtualAlloc",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F250",
+    "dll": "kernel32.dll",
+    "name": "FindFirstFileA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F254",
+    "dll": "kernel32.dll",
+    "name": "GetThreadContext",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F258",
+    "dll": "kernel32.dll",
+    "name": "CreateSemaphoreA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F25C",
+    "dll": "kernel32.dll",
+    "name": "ReleaseSemaphore",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F260",
+    "dll": "kernel32.dll",
+    "name": "SuspendThread",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F264",
+    "dll": "kernel32.dll",
+    "name": "GetVersion",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F268",
+    "dll": "kernel32.dll",
+    "name": "IsBadStringPtrA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F26C",
+    "dll": "kernel32.dll",
+    "name": "IsBadWritePtr",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F270",
+    "dll": "kernel32.dll",
+    "name": "WinExec",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F274",
+    "dll": "kernel32.dll",
+    "name": "GetFileAttributesExA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F278",
+    "dll": "kernel32.dll",
+    "name": "Module32First",
+    "how": "override"
+   },
+   {
+    "va": "C0F27C",
+    "dll": "kernel32.dll",
+    "name": "Module32Next",
+    "how": "override"
+   },
+   {
+    "va": "C0F280",
+    "dll": "kernel32.dll",
+    "name": "GetTickCount",
+    "how": "override"
+   },
+   {
+    "va": "C0F284",
+    "dll": "kernel32.dll",
+    "name": "OpenThread",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F288",
+    "dll": "kernel32.dll",
+    "name": "GetTempPathA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F28C",
+    "dll": "kernel32.dll",
+    "name": "GetTempFileNameA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F290",
+    "dll": "kernel32.dll",
+    "name": "CreateToolhelp32Snapshot",
+    "how": "override"
+   },
+   {
+    "va": "C0F294",
+    "dll": "kernel32.dll",
+    "name": "Process32First",
+    "how": "override"
+   },
+   {
+    "va": "C0F298",
+    "dll": "kernel32.dll",
+    "name": "Process32Next",
+    "how": "override"
+   },
+   {
+    "va": "C0F29C",
+    "dll": "kernel32.dll",
+    "name": "CreateDirectoryA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2A0",
+    "dll": "kernel32.dll",
+    "name": "DeleteCriticalSection",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F2A4",
+    "dll": "kernel32.dll",
+    "name": "InitializeCriticalSection",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F2A8",
+    "dll": "kernel32.dll",
+    "name": "MultiByteToWideChar",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2AC",
+    "dll": "kernel32.dll",
+    "name": "LeaveCriticalSection",
+    "how": "direct"
+   },
+   {
+    "va": "C0F2B0",
+    "dll": "kernel32.dll",
+    "name": "EnterCriticalSection",
+    "how": "direct"
+   },
+   {
+    "va": "C0F2B4",
+    "dll": "kernel32.dll",
+    "name": "LoadLibraryA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2B8",
+    "dll": "kernel32.dll",
+    "name": "GetProcAddress",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F2BC",
+    "dll": "kernel32.dll",
+    "name": "FreeLibrary",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2C0",
+    "dll": "kernel32.dll",
+    "name": "lstrlenW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2C4",
+    "dll": "kernel32.dll",
+    "name": "WideCharToMultiByte",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2C8",
+    "dll": "kernel32.dll",
+    "name": "GetLastError",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2CC",
+    "dll": "kernel32.dll",
+    "name": "CreateFileA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2D0",
+    "dll": "kernel32.dll",
+    "name": "lstrlen",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2D4",
+    "dll": "kernel32.dll",
+    "name": "HeapFree",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2D8",
+    "dll": "kernel32.dll",
+    "name": "GetProcessHeap",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2DC",
+    "dll": "kernel32.dll",
+    "name": "HeapAlloc",
+    "how": "direct"
+   },
+   {
+    "va": "C0F2E0",
+    "dll": "kernel32.dll",
+    "name": "GetWindowsDirectoryA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2E4",
+    "dll": "kernel32.dll",
+    "name": "IsDebuggerPresent",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2E8",
+    "dll": "kernel32.dll",
+    "name": "WaitForSingleObject",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2EC",
+    "dll": "kernel32.dll",
+    "name": "Thread32First",
+    "how": "override"
+   },
+   {
+    "va": "C0F2F0",
+    "dll": "kernel32.dll",
+    "name": "Thread32Next",
+    "how": "override"
+   },
+   {
+    "va": "C0F2F4",
+    "dll": "kernel32.dll",
+    "name": "GetVolumeInformationA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2F8",
+    "dll": "kernel32.dll",
+    "name": "CompareStringW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F2FC",
+    "dll": "kernel32.dll",
+    "name": "CreateFileW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F300",
+    "dll": "kernel32.dll",
+    "name": "GetDriveTypeW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F304",
+    "dll": "kernel32.dll",
+    "name": "SetEndOfFile",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F308",
+    "dll": "kernel32.dll",
+    "name": "WriteConsoleW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F30C",
+    "dll": "kernel32.dll",
+    "name": "IsValidLocale",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F310",
+    "dll": "kernel32.dll",
+    "name": "EnumSystemLocalesA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F314",
+    "dll": "kernel32.dll",
+    "name": "GetLocaleInfoA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F318",
+    "dll": "kernel32.dll",
+    "name": "GetUserDefaultLCID",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F31C",
+    "dll": "kernel32.dll",
+    "name": "GetEnvironmentStringsW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F320",
+    "dll": "kernel32.dll",
+    "name": "FreeEnvironmentStringsA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F324",
+    "dll": "kernel32.dll",
+    "name": "GetStringTypeW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F328",
+    "dll": "kernel32.dll",
+    "name": "SetCurrentDirectoryW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F32C",
+    "dll": "kernel32.dll",
+    "name": "GetCurrentDirectoryW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F330",
+    "dll": "kernel32.dll",
+    "name": "PeekNamedPipe",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F334",
+    "dll": "kernel32.dll",
+    "name": "GetFileInformationByHandle",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F338",
+    "dll": "kernel32.dll",
+    "name": "SetStdHandle",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F33C",
+    "dll": "kernel32.dll",
+    "name": "LoadLibraryW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F340",
+    "dll": "kernel32.dll",
+    "name": "SetConsoleCtrlHandler",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F344",
+    "dll": "kernel32.dll",
+    "name": "GetFileType",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F348",
+    "dll": "kernel32.dll",
+    "name": "SetHandleCount",
+    "how": "override"
+   },
+   {
+    "va": "C0F34C",
+    "dll": "kernel32.dll",
+    "name": "FatalAppExitA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F350",
+    "dll": "kernel32.dll",
+    "name": "FlushFileBuffers",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F354",
+    "dll": "kernel32.dll",
+    "name": "GetTimeZoneInformation",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F358",
+    "dll": "kernel32.dll",
+    "name": "HeapCreate",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F35C",
+    "dll": "kernel32.dll",
+    "name": "GetConsoleMode",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F360",
+    "dll": "kernel32.dll",
+    "name": "GetConsoleCP",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F364",
+    "dll": "kernel32.dll",
+    "name": "IsValidCodePage",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F368",
+    "dll": "kernel32.dll",
+    "name": "GetOEMCP",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F36C",
+    "dll": "kernel32.dll",
+    "name": "GetACP",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F370",
+    "dll": "kernel32.dll",
+    "name": "GetLocaleInfoW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F374",
+    "dll": "kernel32.dll",
+    "name": "GetModuleFileNameW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F378",
+    "dll": "kernel32.dll",
+    "name": "GetStdHandle",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F37C",
+    "dll": "kernel32.dll",
+    "name": "IsProcessorFeaturePresent",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F380",
+    "dll": "kernel32.dll",
+    "name": "RestoreLastError",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F384",
+    "dll": "kernel32.dll",
+    "name": "TlsFree",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F388",
+    "dll": "kernel32.dll",
+    "name": "TlsSetValue",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F38C",
+    "dll": "kernel32.dll",
+    "name": "TlsGetValue",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F390",
+    "dll": "kernel32.dll",
+    "name": "TlsAlloc",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F394",
+    "dll": "kernel32.dll",
+    "name": "LCMapStringW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F398",
+    "dll": "kernel32.dll",
+    "name": "GetCPInfo",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F39C",
+    "dll": "kernel32.dll",
+    "name": "GetStartupInfoW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3A0",
+    "dll": "kernel32.dll",
+    "name": "HeapSetInformation",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3A4",
+    "dll": "kernel32.dll",
+    "name": "FindFirstFileExA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3A8",
+    "dll": "kernel32.dll",
+    "name": "GetDriveTypeA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3AC",
+    "dll": "kernel32.dll",
+    "name": "SystemTimeToFileTime",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3B0",
+    "dll": "kernel32.dll",
+    "name": "TerminateProcess",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3B4",
+    "dll": "kernel32.dll",
+    "name": "UnhandledExceptionFilter",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3B8",
+    "dll": "kernel32.dll",
+    "name": "GetModuleHandleW",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3BC",
+    "dll": "kernel32.dll",
+    "name": "CreateThread",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F3C0",
+    "dll": "kernel32.dll",
+    "name": "ExitThread",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F3C4",
+    "dll": "kernel32.dll",
+    "name": "GetSystemTimeAsFileTime",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3C8",
+    "dll": "kernel32.dll",
+    "name": "RtlUnwind",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3CC",
+    "dll": "kernel32.dll",
+    "name": "LocalFree",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3D0",
+    "dll": "kernel32.dll",
+    "name": "HeapSize",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F3D4",
+    "dll": "kernel32.dll",
+    "name": "HeapReAlloc",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F3D8",
+    "dll": "kernel32.dll",
+    "name": "HeapDestroy",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3DC",
+    "dll": "kernel32.dll",
+    "name": "InitializeCriticalSectionAndSpinCount",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3E0",
+    "dll": "kernel32.dll",
+    "name": "DecodePointer",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F3E4",
+    "dll": "kernel32.dll",
+    "name": "EncodePointer",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F3E8",
+    "dll": "kernel32.dll",
+    "name": "InterlockedCompareExchange",
+    "how": "override"
+   },
+   {
+    "va": "C0F3EC",
+    "dll": "kernel32.dll",
+    "name": "InterlockedDecrement",
+    "how": "override"
+   },
+   {
+    "va": "C0F3F0",
+    "dll": "kernel32.dll",
+    "name": "InterlockedIncrement",
+    "how": "override"
+   },
+   {
+    "va": "C0F3F4",
+    "dll": "kernel32.dll",
+    "name": "VirtualFree",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3F8",
+    "dll": "kernel32.dll",
+    "name": "SetFileAttributesA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F3FC",
+    "dll": "kernel32.dll",
+    "name": "SetEvent",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F400",
+    "dll": "kernel32.dll",
+    "name": "CloseHandle",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F404",
+    "dll": "kernel32.dll",
+    "name": "CreateEventA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F408",
+    "dll": "kernel32.dll",
+    "name": "GetLocalTime",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F40C",
+    "dll": "kernel32.dll",
+    "name": "InterlockedExchangeAdd",
+    "how": "override"
+   },
+   {
+    "va": "C0F410",
+    "dll": "kernel32.dll",
+    "name": "GetDateFormatA",
+    "how": "emulated"
+   }
+  ]
+ },
+ {
+  "dll": "<stub>",
+  "slots": [
+   {
+    "va": "C0F418",
+    "dll": "<stub>",
+    "name": "0",
+    "how": "stub"
+   },
+   {
+    "va": "C0F41C",
+    "dll": "<stub>",
+    "name": "12",
+    "how": "stub"
+   }
+  ]
+ },
+ {
+  "dll": "oleaut32.dll",
+  "slots": [
+   {
+    "va": "C0F424",
+    "dll": "oleaut32.dll",
+    "name": "VariantInit",
+    "how": "direct"
+   },
+   {
+    "va": "C0F428",
+    "dll": "oleaut32.dll",
+    "name": "VariantTimeToSystemTime",
+    "how": "direct"
+   },
+   {
+    "va": "C0F42C",
+    "dll": "oleaut32.dll",
+    "name": "VariantChangeType",
+    "how": "direct"
+   },
+   {
+    "va": "C0F430",
+    "dll": "oleaut32.dll",
+    "name": "GetErrorInfo",
+    "how": "direct"
+   },
+   {
+    "va": "C0F434",
+    "dll": "oleaut32.dll",
+    "name": "SysFreeString",
+    "how": "direct"
+   },
+   {
+    "va": "C0F438",
+    "dll": "oleaut32.dll",
+    "name": "VariantClear",
+    "how": "direct"
+   },
+   {
+    "va": "C0F43C",
+    "dll": "oleaut32.dll",
+    "name": "SysAllocString",
+    "how": "direct"
+   },
+   {
+    "va": "C0F440",
+    "dll": "oleaut32.dll",
+    "name": "SafeArrayDestroy",
+    "how": "direct"
+   },
+   {
+    "va": "C0F444",
+    "dll": "oleaut32.dll",
+    "name": "CreateErrorInfo",
+    "how": "direct"
+   },
+   {
+    "va": "C0F448",
+    "dll": "oleaut32.dll",
+    "name": "SystemTimeToVariantTime",
+    "how": "direct"
+   },
+   {
+    "va": "C0F44C",
+    "dll": "oleaut32.dll",
+    "name": "SysAllocStringByteLen",
+    "how": "direct"
+   },
+   {
+    "va": "C0F450",
+    "dll": "oleaut32.dll",
+    "name": "SysStringByteLen",
+    "how": "direct"
+   },
+   {
+    "va": "C0F454",
+    "dll": "oleaut32.dll",
+    "name": "SysStringLen",
+    "how": "direct"
+   },
+   {
+    "va": "C0F458",
+    "dll": "oleaut32.dll",
+    "name": "SetErrorInfo",
+    "how": "direct"
+   },
+   {
+    "va": "C0F45C",
+    "dll": "oleaut32.dll",
+    "name": "SysAllocStringLen",
+    "how": "direct"
+   },
+   {
+    "va": "C0F460",
+    "dll": "oleaut32.dll",
+    "name": "SafeArrayCreate",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "shell32.dll",
+  "slots": [
+   {
+    "va": "C0F468",
+    "dll": "shell32.dll",
+    "name": "SHGetSpecialFolderPathA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F46C",
+    "dll": "shell32.dll",
+    "name": "ShellExecuteA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F470",
+    "dll": "shell32.dll",
+    "name": "ShellExecuteEx",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "user32.dll",
+  "slots": [
+   {
+    "va": "C0F478",
+    "dll": "user32.dll",
+    "name": "GetAsyncKeyState",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F47C",
+    "dll": "user32.dll",
+    "name": "RegisterClassA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F480",
+    "dll": "user32.dll",
+    "name": "CreateWindowExW",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F484",
+    "dll": "user32.dll",
+    "name": "ShowWindow",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F488",
+    "dll": "user32.dll",
+    "name": "UpdateWindow",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F48C",
+    "dll": "user32.dll",
+    "name": "SetFocus",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F490",
+    "dll": "user32.dll",
+    "name": "SetWindowLongA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F494",
+    "dll": "user32.dll",
+    "name": "BeginPaint",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F498",
+    "dll": "user32.dll",
+    "name": "EndPaint",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F49C",
+    "dll": "user32.dll",
+    "name": "LoadCursorA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4A0",
+    "dll": "user32.dll",
+    "name": "SetCursor",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4A4",
+    "dll": "user32.dll",
+    "name": "ShowCursor",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F4A8",
+    "dll": "user32.dll",
+    "name": "DefWindowProcA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4AC",
+    "dll": "user32.dll",
+    "name": "DestroyWindow",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F4B0",
+    "dll": "user32.dll",
+    "name": "GetClientRect",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4B4",
+    "dll": "user32.dll",
+    "name": "SetWindowPos",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F4B8",
+    "dll": "user32.dll",
+    "name": "InvalidateRect",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F4BC",
+    "dll": "user32.dll",
+    "name": "PostMessageA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4C0",
+    "dll": "user32.dll",
+    "name": "KillTimer",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F4C4",
+    "dll": "user32.dll",
+    "name": "SetTimer",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4C8",
+    "dll": "user32.dll",
+    "name": "PostQuitMessage",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4CC",
+    "dll": "user32.dll",
+    "name": "DispatchMessageW",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4D0",
+    "dll": "user32.dll",
+    "name": "TranslateMessage",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4D4",
+    "dll": "user32.dll",
+    "name": "GetMessageW",
+    "how": "override"
+   },
+   {
+    "va": "C0F4D8",
+    "dll": "user32.dll",
+    "name": "AdjustWindowRect",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4DC",
+    "dll": "user32.dll",
+    "name": "GetWindowRect",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4E0",
+    "dll": "user32.dll",
+    "name": "SetScrollInfo",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4E4",
+    "dll": "user32.dll",
+    "name": "GetSystemMetrics",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4E8",
+    "dll": "user32.dll",
+    "name": "RegisterClassExA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4EC",
+    "dll": "user32.dll",
+    "name": "PeekMessageA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4F0",
+    "dll": "user32.dll",
+    "name": "ClientToScreen",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4F4",
+    "dll": "user32.dll",
+    "name": "SetWindowRgn",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F4F8",
+    "dll": "user32.dll",
+    "name": "CharUpperA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F4FC",
+    "dll": "user32.dll",
+    "name": "DestroyCaret",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F500",
+    "dll": "user32.dll",
+    "name": "CreateCaret",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F504",
+    "dll": "user32.dll",
+    "name": "IsClipboardFormatAvailable",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F508",
+    "dll": "user32.dll",
+    "name": "GetClipboardData",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F50C",
+    "dll": "user32.dll",
+    "name": "ValidateRect",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F510",
+    "dll": "user32.dll",
+    "name": "RedrawWindow",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F514",
+    "dll": "user32.dll",
+    "name": "GetCursor",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F518",
+    "dll": "user32.dll",
+    "name": "GetKeyboardLayout",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F51C",
+    "dll": "user32.dll",
+    "name": "OpenClipboard",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F520",
+    "dll": "user32.dll",
+    "name": "EmptyClipboard",
+    "how": "override"
+   },
+   {
+    "va": "C0F524",
+    "dll": "user32.dll",
+    "name": "SetClipboardData",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F528",
+    "dll": "user32.dll",
+    "name": "CloseClipboard",
+    "how": "override"
+   },
+   {
+    "va": "C0F52C",
+    "dll": "user32.dll",
+    "name": "SetCursorPos",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F530",
+    "dll": "user32.dll",
+    "name": "IsRectEmpty",
+    "how": "emulated+stolen"
+   },
+   {
+    "va": "C0F534",
+    "dll": "user32.dll",
+    "name": "GetWindowDC",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F538",
+    "dll": "user32.dll",
+    "name": "CharNextExA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F53C",
+    "dll": "user32.dll",
+    "name": "CharPrevExA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F540",
+    "dll": "user32.dll",
+    "name": "IsWindowVisible",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F544",
+    "dll": "user32.dll",
+    "name": "GetSysColor",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F548",
+    "dll": "user32.dll",
+    "name": "GetDlgItem",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F54C",
+    "dll": "user32.dll",
+    "name": "GetDesktopWindow",
+    "how": "override"
+   },
+   {
+    "va": "C0F550",
+    "dll": "user32.dll",
+    "name": "GetWindow",
+    "how": "override"
+   },
+   {
+    "va": "C0F554",
+    "dll": "user32.dll",
+    "name": "GetDesktopWindow",
+    "how": "override"
+   },
+   {
+    "va": "C0F558",
+    "dll": "user32.dll",
+    "name": "EnumThreadWindows",
+    "how": "override"
+   },
+   {
+    "va": "C0F55C",
+    "dll": "user32.dll",
+    "name": "GetWindowTextA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F560",
+    "dll": "user32.dll",
+    "name": "MessageBoxA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F564",
+    "dll": "user32.dll",
+    "name": "IsWindowEnabled",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F568",
+    "dll": "user32.dll",
+    "name": "EnableWindow",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F56C",
+    "dll": "user32.dll",
+    "name": "ScreenToClient",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F570",
+    "dll": "user32.dll",
+    "name": "LoadBitmapW",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F574",
+    "dll": "user32.dll",
+    "name": "GetForegroundWindow",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F578",
+    "dll": "user32.dll",
+    "name": "GetCursorPos",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F57C",
+    "dll": "user32.dll",
+    "name": "SendMessageA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F580",
+    "dll": "user32.dll",
+    "name": "CallWindowProcA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F584",
+    "dll": "user32.dll",
+    "name": "FlashWindowEx",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F588",
+    "dll": "user32.dll",
+    "name": "FlashWindow",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F58C",
+    "dll": "user32.dll",
+    "name": "GetKeyState",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F590",
+    "dll": "user32.dll",
+    "name": "wsprintfA",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F594",
+    "dll": "user32.dll",
+    "name": "UnhookWindowsHookEx",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F598",
+    "dll": "user32.dll",
+    "name": "SetWindowsHookExA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F59C",
+    "dll": "user32.dll",
+    "name": "IntersectRect",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5A0",
+    "dll": "user32.dll",
+    "name": "MapVirtualKeyA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5A4",
+    "dll": "user32.dll",
+    "name": "SetRect",
+    "how": "emulated+stolen"
+   },
+   {
+    "va": "C0F5A8",
+    "dll": "user32.dll",
+    "name": "GetDesktopWindow",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5AC",
+    "dll": "user32.dll",
+    "name": "GetWindowLongA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5B0",
+    "dll": "user32.dll",
+    "name": "CallNextHookEx",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5B4",
+    "dll": "user32.dll",
+    "name": "IsDialogMessage",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5B8",
+    "dll": "user32.dll",
+    "name": "TranslateAccelerator",
+    "how": "emulated+stolen"
+   },
+   {
+    "va": "C0F5BC",
+    "dll": "user32.dll",
+    "name": "GetSystemMenu",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F5C0",
+    "dll": "user32.dll",
+    "name": "GetMenuItemCount",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5C4",
+    "dll": "user32.dll",
+    "name": "DeleteMenu",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F5C8",
+    "dll": "user32.dll",
+    "name": "keybd_event",
+    "how": "override"
+   },
+   {
+    "va": "C0F5CC",
+    "dll": "user32.dll",
+    "name": "SystemParametersInfoA",
+    "how": "override"
+   },
+   {
+    "va": "C0F5D0",
+    "dll": "user32.dll",
+    "name": "IsWindow",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5D4",
+    "dll": "user32.dll",
+    "name": "LoadIconA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5D8",
+    "dll": "user32.dll",
+    "name": "FindWindowA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5DC",
+    "dll": "user32.dll",
+    "name": "ClipCursor",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F5E0",
+    "dll": "user32.dll",
+    "name": "MessageBoxW",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5E4",
+    "dll": "user32.dll",
+    "name": "LoadStringA",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5E8",
+    "dll": "user32.dll",
+    "name": "GetDC",
+    "how": "emulated"
+   },
+   {
+    "va": "C0F5EC",
+    "dll": "user32.dll",
+    "name": "ReleaseDC",
+    "how": "emulated+stolen"
+   },
+   {
+    "va": "C0F5F0",
+    "dll": "user32.dll",
+    "name": "SetForegroundWindow",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5F4",
+    "dll": "user32.dll",
+    "name": "ReleaseCapture",
+    "how": "unlicense"
+   },
+   {
+    "va": "C0F5F8",
+    "dll": "user32.dll",
+    "name": "SetCapture",
+    "how": "emulated"
+   }
+  ]
+ },
+ {
+  "dll": "version.dll",
+  "slots": [
+   {
+    "va": "C0F600",
+    "dll": "version.dll",
+    "name": "GetFileVersionInfoA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F604",
+    "dll": "version.dll",
+    "name": "GetFileVersionInfoSizeA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F608",
+    "dll": "version.dll",
+    "name": "VerQueryValueA",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "wininet.dll",
+  "slots": [
+   {
+    "va": "C0F610",
+    "dll": "wininet.dll",
+    "name": "InternetSetStatusCallback",
+    "how": "direct"
+   },
+   {
+    "va": "C0F614",
+    "dll": "wininet.dll",
+    "name": "InternetQueryDataAvailable",
+    "how": "direct"
+   },
+   {
+    "va": "C0F618",
+    "dll": "wininet.dll",
+    "name": "HttpAddRequestHeadersA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F61C",
+    "dll": "wininet.dll",
+    "name": "InternetReadFile",
+    "how": "direct"
+   },
+   {
+    "va": "C0F620",
+    "dll": "wininet.dll",
+    "name": "InternetAttemptConnect",
+    "how": "direct"
+   },
+   {
+    "va": "C0F624",
+    "dll": "wininet.dll",
+    "name": "HttpQueryInfoA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F628",
+    "dll": "wininet.dll",
+    "name": "InternetOpenUrlA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F62C",
+    "dll": "wininet.dll",
+    "name": "HttpSendRequestA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F630",
+    "dll": "wininet.dll",
+    "name": "InternetSetCookieA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F634",
+    "dll": "wininet.dll",
+    "name": "InternetOpenA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F638",
+    "dll": "wininet.dll",
+    "name": "InternetConnectA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F63C",
+    "dll": "wininet.dll",
+    "name": "HttpOpenRequestA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F640",
+    "dll": "wininet.dll",
+    "name": "HttpSendRequestExA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F644",
+    "dll": "wininet.dll",
+    "name": "InternetWriteFile",
+    "how": "direct"
+   },
+   {
+    "va": "C0F648",
+    "dll": "wininet.dll",
+    "name": "HttpEndRequestA",
+    "how": "direct"
+   },
+   {
+    "va": "C0F64C",
+    "dll": "wininet.dll",
+    "name": "InternetCloseHandle",
+    "how": "direct"
+   },
+   {
+    "va": "C0F650",
+    "dll": "wininet.dll",
+    "name": "InternetReadFileExA",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "winmm.dll",
+  "slots": [
+   {
+    "va": "C0F658",
+    "dll": "winmm.dll",
+    "name": "timeGetTime",
+    "how": "direct"
+   },
+   {
+    "va": "C0F65C",
+    "dll": "winmm.dll",
+    "name": "timeEndPeriod",
+    "how": "direct"
+   },
+   {
+    "va": "C0F660",
+    "dll": "winmm.dll",
+    "name": "timeBeginPeriod",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "ws2_32.dll",
+  "slots": [
+   {
+    "va": "C0F668",
+    "dll": "ws2_32.dll",
+    "name": "socket",
+    "how": "direct"
+   },
+   {
+    "va": "C0F66C",
+    "dll": "ws2_32.dll",
+    "name": "WSAAsyncSelect",
+    "how": "direct"
+   },
+   {
+    "va": "C0F670",
+    "dll": "ws2_32.dll",
+    "name": "getsockname",
+    "how": "direct"
+   },
+   {
+    "va": "C0F674",
+    "dll": "ws2_32.dll",
+    "name": "setsockopt",
+    "how": "direct"
+   },
+   {
+    "va": "C0F678",
+    "dll": "ws2_32.dll",
+    "name": "gethostbyname",
+    "how": "direct"
+   },
+   {
+    "va": "C0F67C",
+    "dll": "ws2_32.dll",
+    "name": "recvfrom",
+    "how": "direct"
+   },
+   {
+    "va": "C0F680",
+    "dll": "ws2_32.dll",
+    "name": "htons",
+    "how": "direct"
+   },
+   {
+    "va": "C0F684",
+    "dll": "ws2_32.dll",
+    "name": "gethostname",
+    "how": "direct"
+   },
+   {
+    "va": "C0F688",
+    "dll": "ws2_32.dll",
+    "name": "WSAGetLastError",
+    "how": "direct"
+   },
+   {
+    "va": "C0F68C",
+    "dll": "ws2_32.dll",
+    "name": "inet_addr",
+    "how": "direct"
+   },
+   {
+    "va": "C0F690",
+    "dll": "ws2_32.dll",
+    "name": "htonl",
+    "how": "direct"
+   },
+   {
+    "va": "C0F694",
+    "dll": "ws2_32.dll",
+    "name": "htons",
+    "how": "direct"
+   },
+   {
+    "va": "C0F698",
+    "dll": "ws2_32.dll",
+    "name": "htonl",
+    "how": "direct"
+   },
+   {
+    "va": "C0F69C",
+    "dll": "ws2_32.dll",
+    "name": "accept",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6A0",
+    "dll": "ws2_32.dll",
+    "name": "WSACleanup",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6A4",
+    "dll": "ws2_32.dll",
+    "name": "__WSAFDIsSet",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6A8",
+    "dll": "ws2_32.dll",
+    "name": "select",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6AC",
+    "dll": "ws2_32.dll",
+    "name": "connect",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6B0",
+    "dll": "ws2_32.dll",
+    "name": "ioctlsocket",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6B4",
+    "dll": "ws2_32.dll",
+    "name": "listen",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6B8",
+    "dll": "ws2_32.dll",
+    "name": "sendto",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6BC",
+    "dll": "ws2_32.dll",
+    "name": "bind",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6C0",
+    "dll": "ws2_32.dll",
+    "name": "closesocket",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6C4",
+    "dll": "ws2_32.dll",
+    "name": "WSAStartup",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6C8",
+    "dll": "ws2_32.dll",
+    "name": "send",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6CC",
+    "dll": "ws2_32.dll",
+    "name": "getsockopt",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6D0",
+    "dll": "ws2_32.dll",
+    "name": "inet_ntoa",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6D4",
+    "dll": "ws2_32.dll",
+    "name": "recv",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "binkw32.dll",
+  "slots": [
+   {
+    "va": "C0F6DC",
+    "dll": "binkw32.dll",
+    "name": "_BinkBufferBlit@12",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6E0",
+    "dll": "binkw32.dll",
+    "name": "_BinkBufferUnlock@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6E4",
+    "dll": "binkw32.dll",
+    "name": "_BinkCopyToBuffer@28",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6E8",
+    "dll": "binkw32.dll",
+    "name": "_BinkBufferLock@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6EC",
+    "dll": "binkw32.dll",
+    "name": "_BinkDoFrame@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6F0",
+    "dll": "binkw32.dll",
+    "name": "_BinkCheckCursor@20",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6F4",
+    "dll": "binkw32.dll",
+    "name": "_BinkBufferOpen@16",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6F8",
+    "dll": "binkw32.dll",
+    "name": "_BinkOpen@8",
+    "how": "direct"
+   },
+   {
+    "va": "C0F6FC",
+    "dll": "binkw32.dll",
+    "name": "_BinkSetSoundSystem@8",
+    "how": "direct"
+   },
+   {
+    "va": "C0F700",
+    "dll": "binkw32.dll",
+    "name": "_BinkOpenDirectSound@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F704",
+    "dll": "binkw32.dll",
+    "name": "_BinkWait@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F708",
+    "dll": "binkw32.dll",
+    "name": "_BinkNextFrame@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F70C",
+    "dll": "binkw32.dll",
+    "name": "_BinkRestoreCursor@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F710",
+    "dll": "binkw32.dll",
+    "name": "_BinkBufferClose@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F714",
+    "dll": "binkw32.dll",
+    "name": "_BinkClose@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F718",
+    "dll": "binkw32.dll",
+    "name": "_BinkGetRects@8",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "d3dx9_30.dll",
+  "slots": [
+   {
+    "va": "C0F720",
+    "dll": "d3dx9_30.dll",
+    "name": "D3DXVec2CatmullRom",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "dbghelp.dll",
+  "slots": [
+   {
+    "va": "C0F728",
+    "dll": "dbghelp.dll",
+    "name": "MiniDumpWriteDump",
+    "how": "direct"
+   },
+   {
+    "va": "C0F72C",
+    "dll": "dbghelp.dll",
+    "name": "MiniDumpReadDumpStream",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "ijl15.dll",
+  "slots": [
+   {
+    "va": "C0F734",
+    "dll": "ijl15.dll",
+    "name": "ijlRead",
+    "how": "direct"
+   },
+   {
+    "va": "C0F738",
+    "dll": "ijl15.dll",
+    "name": "ijlInit",
+    "how": "direct"
+   },
+   {
+    "va": "C0F73C",
+    "dll": "ijl15.dll",
+    "name": "ijlFree",
+    "how": "direct"
+   },
+   {
+    "va": "C0F740",
+    "dll": "ijl15.dll",
+    "name": "ijlWrite",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "imagehlp.dll",
+  "slots": [
+   {
+    "va": "C0F748",
+    "dll": "imagehlp.dll",
+    "name": "StackWalk",
+    "how": "direct"
+   },
+   {
+    "va": "C0F74C",
+    "dll": "imagehlp.dll",
+    "name": "SymFunctionTableAccess",
+    "how": "direct"
+   },
+   {
+    "va": "C0F750",
+    "dll": "imagehlp.dll",
+    "name": "SymGetSymFromAddr",
+    "how": "direct"
+   },
+   {
+    "va": "C0F754",
+    "dll": "imagehlp.dll",
+    "name": "SymCleanup",
+    "how": "direct"
+   },
+   {
+    "va": "C0F758",
+    "dll": "imagehlp.dll",
+    "name": "SymGetOptions",
+    "how": "direct"
+   },
+   {
+    "va": "C0F75C",
+    "dll": "imagehlp.dll",
+    "name": "SymSetOptions",
+    "how": "direct"
+   },
+   {
+    "va": "C0F760",
+    "dll": "imagehlp.dll",
+    "name": "SymInitialize",
+    "how": "direct"
+   },
+   {
+    "va": "C0F764",
+    "dll": "imagehlp.dll",
+    "name": "MakeSureDirectoryPathExists",
+    "how": "direct"
+   },
+   {
+    "va": "C0F768",
+    "dll": "imagehlp.dll",
+    "name": "SymGetModuleBase",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "mss32.dll",
+  "slots": [
+   {
+    "va": "C0F770",
+    "dll": "mss32.dll",
+    "name": "_AIL_register_EOS_callback@8",
+    "how": "direct"
+   },
+   {
+    "va": "C0F774",
+    "dll": "mss32.dll",
+    "name": "_AIL_set_sample_volume_pan@12",
+    "how": "direct"
+   },
+   {
+    "va": "C0F778",
+    "dll": "mss32.dll",
+    "name": "_AIL_resume_sample@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F77C",
+    "dll": "mss32.dll",
+    "name": "_AIL_stop_sample@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F780",
+    "dll": "mss32.dll",
+    "name": "_AIL_sample_ms_position@12",
+    "how": "direct"
+   },
+   {
+    "va": "C0F784",
+    "dll": "mss32.dll",
+    "name": "_AIL_set_named_sample_file@20",
+    "how": "direct"
+   },
+   {
+    "va": "C0F788",
+    "dll": "mss32.dll",
+    "name": "_AIL_end_sample@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F78C",
+    "dll": "mss32.dll",
+    "name": "_AIL_sample_user_data@8",
+    "how": "direct"
+   },
+   {
+    "va": "C0F790",
+    "dll": "mss32.dll",
+    "name": "_AIL_set_sample_user_data@12",
+    "how": "direct"
+   },
+   {
+    "va": "C0F794",
+    "dll": "mss32.dll",
+    "name": "_AIL_start_sample@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F798",
+    "dll": "mss32.dll",
+    "name": "_AIL_init_sample@12",
+    "how": "direct"
+   },
+   {
+    "va": "C0F79C",
+    "dll": "mss32.dll",
+    "name": "_AIL_shutdown@0",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7A0",
+    "dll": "mss32.dll",
+    "name": "_AIL_close_digital_driver@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7A4",
+    "dll": "mss32.dll",
+    "name": "_AIL_release_sample_handle@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7A8",
+    "dll": "mss32.dll",
+    "name": "_AIL_allocate_sample_handle@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7AC",
+    "dll": "mss32.dll",
+    "name": "_AIL_set_preference@8",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7B0",
+    "dll": "mss32.dll",
+    "name": "_AIL_open_digital_driver@16",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7B4",
+    "dll": "mss32.dll",
+    "name": "_AIL_set_redist_directory@4",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7B8",
+    "dll": "mss32.dll",
+    "name": "_AIL_startup@0",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7BC",
+    "dll": "mss32.dll",
+    "name": "_AIL_sample_status@4",
+    "how": "direct"
+   }
+  ]
+ },
+ {
+  "dll": "nmco3.dll",
+  "slots": [
+   {
+    "va": "C0F7C4",
+    "dll": "nmco3.dll",
+    "name": "NMCOLogout",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7C8",
+    "dll": "nmco3.dll",
+    "name": "NMCOGetFriendInfo",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7CC",
+    "dll": "nmco3.dll",
+    "name": "NMCOGetMyIdCode",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7D0",
+    "dll": "nmco3.dll",
+    "name": "NMCOChangeMyInfo",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7D4",
+    "dll": "nmco3.dll",
+    "name": "NMCOGetMyStatus",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7D8",
+    "dll": "nmco3.dll",
+    "name": "NMCOGetAddFriendConfirmMessage",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7DC",
+    "dll": "nmco3.dll",
+    "name": "NMCOBlockUser",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7E0",
+    "dll": "nmco3.dll",
+    "name": "NMCODeleteUser",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7E4",
+    "dll": "nmco3.dll",
+    "name": "NMCOCreateChatSession",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7E8",
+    "dll": "nmco3.dll",
+    "name": "NMGSResetCallbackAndWantClose",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7EC",
+    "dll": "nmco3.dll",
+    "name": "NMGSRegisterCallbackMsg",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7F0",
+    "dll": "nmco3.dll",
+    "name": "NMCOGetServerMessage",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7F4",
+    "dll": "nmco3.dll",
+    "name": "NMCOAddNewFriend",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7F8",
+    "dll": "nmco3.dll",
+    "name": "NMCOConfirmAddFriend",
+    "how": "direct"
+   },
+   {
+    "va": "C0F7FC",
+    "dll": "nmco3.dll",
+    "name": "NMCSSendChatMessage",
+    "how": "direct"
+   }
+  ]
+ }
+]

@@ -1,0 +1,1172 @@
+[
+ {
+  "site": "48A73D",
+  "insn": "jmp",
+  "target": "131C09D",
+  "class": "unknown",
+  "stop": "jne 0x131c134",
+  "steps": 2,
+  "func": "CGOHiddenCatchBomber__vf113",
+  "func_ea": "48A6FC"
+ },
+ {
+  "site": "593EEC",
+  "insn": "jmp",
+  "target": "131CA65",
+  "class": "unknown",
+  "stop": "call dword ptr [eax + 0x38]",
+  "steps": 115,
+  "func": "CGOLobbySquareQuestNpc__vf116",
+  "func_ea": "593EEC"
+ },
+ {
+  "site": "594C29",
+  "insn": "jmp",
+  "target": "131CBC1",
+  "class": "unknown",
+  "stop": "call dword ptr [eax + 0x58]",
+  "steps": 58,
+  "func": "CGOCAHeroGameBomber__vf54",
+  "func_ea": "594C26"
+ },
+ {
+  "site": "594FF9",
+  "insn": "jmp",
+  "target": "131D197",
+  "class": "unknown",
+  "stop": "call dword ptr [eax + 0x58]",
+  "steps": 65,
+  "func": "sub_594FF6",
+  "func_ea": "594FF6"
+ },
+ {
+  "site": "595094",
+  "insn": "jmp",
+  "target": "131DCBC",
+  "class": "return",
+  "back_to": "5950B8",
+  "steps": 1,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "5961B4",
+  "insn": "jmp",
+  "target": "131DCC1",
+  "class": "unknown",
+  "stop": "call 0x595b7e",
+  "steps": 1,
+  "func": "sub_5961B4",
+  "func_ea": "5961B4"
+ },
+ {
+  "site": "5982D6",
+  "insn": "jmp",
+  "target": "131DD96",
+  "class": "unknown",
+  "stop": "jl 0x598312",
+  "steps": 2,
+  "func": "CGOLobbySquareQuestNpc__vf129",
+  "func_ea": "5982D3"
+ },
+ {
+  "site": "598337",
+  "insn": "jmp",
+  "target": "131DF8E",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 2,
+  "func": "sub_598333",
+  "func_ea": "598333"
+ },
+ {
+  "site": "59F547",
+  "insn": "jmp",
+  "target": "131E0B5",
+  "class": "unknown",
+  "stop": "jne 0x131e178",
+  "steps": 2,
+  "func": "CGOLobbySquareQuestNpc__vf113",
+  "func_ea": "59F515"
+ },
+ {
+  "site": "5A106A",
+  "insn": "jmp",
+  "target": "131E656",
+  "class": "unknown",
+  "stop": "je 0x5a109a",
+  "steps": 83,
+  "func": "CGOCAHeroGameBomber__vf74",
+  "func_ea": "5A0F75"
+ },
+ {
+  "site": "5A495A",
+  "insn": "jmp",
+  "target": "131E9E6",
+  "class": "unknown",
+  "stop": "call 0x595b7e",
+  "steps": 34,
+  "func": "sub_5A494C",
+  "func_ea": "5A494C"
+ },
+ {
+  "site": "5A60CA",
+  "insn": "jmp",
+  "target": "131EBD4",
+  "class": "unknown",
+  "stop": "call 0x5a5993",
+  "steps": 1,
+  "func": "sub_5A60C7",
+  "func_ea": "5A60C7"
+ },
+ {
+  "site": "5A6E89",
+  "insn": "jmp",
+  "target": "1334B7C",
+  "class": "vm",
+  "key": "D84CFF3",
+  "steps": 2,
+  "func": "CGOBomber__vf21",
+  "func_ea": "5A6244"
+ },
+ {
+  "site": "5AF0FB",
+  "insn": "jmp",
+  "target": "131EF5F",
+  "class": "unknown",
+  "stop": "call dword ptr [eax + 0x38]",
+  "steps": 57,
+  "func": "CGOCAHeroGameBomber__vf116",
+  "func_ea": "5AF0F8"
+ },
+ {
+  "site": "5AFAEB",
+  "insn": "jmp",
+  "target": "131F4A8",
+  "class": "unknown",
+  "stop": "jne 0x131f539",
+  "steps": 2,
+  "func": "CGOCAHeroGameBomber__vf113",
+  "func_ea": "5AFAB9"
+ },
+ {
+  "site": "5B07F5",
+  "insn": "jmp",
+  "target": "131FD0A",
+  "class": "unknown",
+  "stop": "jl 0x5b0886",
+  "steps": 2,
+  "func": "CGOCAHeroGameBomber__vf129",
+  "func_ea": "5B07EF"
+ },
+ {
+  "site": "5C22EC",
+  "insn": "jmp",
+  "target": "1320334",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 43,
+  "func": "sub_5C22E8",
+  "func_ea": "5C22E8"
+ },
+ {
+  "site": "5C23B2",
+  "insn": "jmp",
+  "target": "1320663",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 2,
+  "func": "sub_5C23AF",
+  "func_ea": "5C23AF"
+ },
+ {
+  "site": "6EFD4A",
+  "insn": "jmp",
+  "target": "133B0DB",
+  "class": "vm",
+  "key": "D850BA8",
+  "steps": 2,
+  "func": "sub_6EFD24",
+  "func_ea": "6EFD24"
+ },
+ {
+  "site": "6F287E",
+  "insn": "jmp",
+  "target": "133F274",
+  "class": "vm",
+  "key": "D85712F",
+  "steps": 2,
+  "func": "sub_6F27EE",
+  "func_ea": "6F27EE"
+ },
+ {
+  "site": "6FFE96",
+  "insn": "jmp",
+  "target": "1320883",
+  "class": "unknown",
+  "stop": "je 0x6ffef0",
+  "steps": 56,
+  "func": "sub_6FFE91",
+  "func_ea": "6FFE91"
+ },
+ {
+  "site": "7048BB",
+  "insn": "jmp",
+  "target": "1320EFB",
+  "class": "unknown",
+  "stop": "call 0x59761d",
+  "steps": 143,
+  "func": "sub_7048AC",
+  "func_ea": "7048AC"
+ },
+ {
+  "site": "705AFD",
+  "insn": "jmp",
+  "target": "132171E",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 66,
+  "func": "sub_705AF4",
+  "func_ea": "705AF4"
+ },
+ {
+  "site": "705C9C",
+  "insn": "jmp",
+  "target": "1323158",
+  "class": "unknown",
+  "stop": "je 0x13235b5",
+  "steps": 44,
+  "func": "sub_705C94",
+  "func_ea": "705C94"
+ },
+ {
+  "site": "705D31",
+  "insn": "jmp",
+  "target": "1323655",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 58,
+  "func": "sub_705D23",
+  "func_ea": "705D23"
+ },
+ {
+  "site": "705E7D",
+  "insn": "jmp",
+  "target": "1324436",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 45,
+  "func": "sub_705E73",
+  "func_ea": "705E73"
+ },
+ {
+  "site": "705F7F",
+  "insn": "jmp",
+  "target": "1324F42",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 50,
+  "func": "sub_705F63",
+  "func_ea": "705F63"
+ },
+ {
+  "site": "706025",
+  "insn": "jmp",
+  "target": "13258DF",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 56,
+  "func": "sub_70601D",
+  "func_ea": "70601D"
+ },
+ {
+  "site": "7081B3",
+  "insn": "jmp",
+  "target": "1326262",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 50,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "711EA3",
+  "insn": "jmp",
+  "target": "1328267",
+  "class": "unknown",
+  "stop": "jne 0x1328595",
+  "steps": 2,
+  "func": "sub_711E7F",
+  "func_ea": "711E7F"
+ },
+ {
+  "site": "71200F",
+  "insn": "jmp",
+  "target": "1329638",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 45,
+  "func": "sub_712006",
+  "func_ea": "712006"
+ },
+ {
+  "site": "71581A",
+  "insn": "jmp",
+  "target": "1343650",
+  "class": "vm",
+  "key": "D85B2FC",
+  "steps": 2,
+  "func": "sub_71580C",
+  "func_ea": "71580C"
+ },
+ {
+  "site": "7294D1",
+  "insn": "jmp",
+  "target": "132A261",
+  "class": "unknown",
+  "stop": "call 0x726bbd",
+  "steps": 107,
+  "func": "sub_7294CA",
+  "func_ea": "7294CA"
+ },
+ {
+  "site": "736C27",
+  "insn": "jmp",
+  "target": "1348035",
+  "class": "vm",
+  "key": "D85F6CD",
+  "steps": 2,
+  "func": "CGamePlayMap__Load",
+  "func_ea": "7354FD"
+ },
+ {
+  "site": "754C82",
+  "insn": "jmp",
+  "target": "134CB8F",
+  "class": "vm",
+  "key": "D864077",
+  "steps": 2,
+  "func": "CMapScriptStageClear__vf7",
+  "func_ea": "754BF6"
+ },
+ {
+  "site": "8E5519",
+  "insn": "jmp",
+  "target": "134FEF0",
+  "class": "vm",
+  "key": "D868BB4",
+  "steps": 2,
+  "func": "CFxApp__vf6",
+  "func_ea": "8E50D1"
+ },
+ {
+  "site": "8F346C",
+  "insn": "jmp",
+  "target": "135B33B",
+  "class": "vm",
+  "key": "D86C113",
+  "steps": 2,
+  "func": "sub_8F3409",
+  "func_ea": "8F3409"
+ },
+ {
+  "site": "8F452B",
+  "insn": "jmp",
+  "target": "1360153",
+  "class": "vm",
+  "key": "D877351",
+  "steps": 2,
+  "func": "sub_8F4421",
+  "func_ea": "8F4421"
+ },
+ {
+  "site": "8F4D46",
+  "insn": "jmp",
+  "target": "136E43B",
+  "class": "vm",
+  "key": "D87C187",
+  "steps": 2,
+  "func": "sub_8F4D01",
+  "func_ea": "8F4D01"
+ },
+ {
+  "site": "8F8F69",
+  "insn": "jmp",
+  "target": "138E546",
+  "class": "vm",
+  "key": "D8A713D",
+  "steps": 2,
+  "func": "sub_8F8EEC",
+  "func_ea": "8F8EEC"
+ },
+ {
+  "site": "8FEAAD",
+  "insn": "jmp",
+  "target": "132A455",
+  "class": "unknown",
+  "stop": "call 0x58d4da",
+  "steps": 100,
+  "func": "sub_8FEAA5",
+  "func_ea": "8FEAA5"
+ },
+ {
+  "site": "8FEB93",
+  "insn": "jmp",
+  "target": "132AD56",
+  "class": "return",
+  "back_to": "8FEBC2",
+  "steps": 58,
+  "func": "sub_8FEB90",
+  "func_ea": "8FEB90"
+ },
+ {
+  "site": "8FEBC8",
+  "insn": "jmp",
+  "target": "132AE25",
+  "class": "unknown",
+  "stop": "call dword ptr [eax + 0x58]",
+  "steps": 152,
+  "func": "sub_8FEBC4",
+  "func_ea": "8FEBC4"
+ },
+ {
+  "site": "8FEC31",
+  "insn": "jmp",
+  "target": "132B403",
+  "class": "unknown",
+  "stop": "call 0x5a5993",
+  "steps": 90,
+  "func": "sub_8FEC29",
+  "func_ea": "8FEC29"
+ },
+ {
+  "site": "8FEF02",
+  "insn": "jmp",
+  "target": "132B7E0",
+  "class": "unknown",
+  "stop": "call dword ptr [eax + 0xb4]",
+  "steps": 142,
+  "func": "sub_8FEEF2",
+  "func_ea": "8FEEF2"
+ },
+ {
+  "site": "8FEFA4",
+  "insn": "jmp",
+  "target": "132BF77",
+  "class": "unknown",
+  "stop": "jne 0x132c0d8",
+  "steps": 2,
+  "func": "sub_8FEF83",
+  "func_ea": "8FEF83"
+ },
+ {
+  "site": "8FF044",
+  "insn": "jmp",
+  "target": "132C7CA",
+  "class": "unknown",
+  "stop": "call 0x58d56d",
+  "steps": 64,
+  "func": "sub_8FF036",
+  "func_ea": "8FF036"
+ },
+ {
+  "site": "8FF47E",
+  "insn": "jmp",
+  "target": "132CD1F",
+  "class": "unknown",
+  "stop": "jl 0x8ff4cb",
+  "steps": 39,
+  "func": "sub_8FF46B",
+  "func_ea": "8FF46B"
+ },
+ {
+  "site": "8FF4E7",
+  "insn": "jmp",
+  "target": "132CFF9",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 114,
+  "func": "sub_8FF4E4",
+  "func_ea": "8FF4E4"
+ },
+ {
+  "site": "8FF521",
+  "insn": "jmp",
+  "target": "132D14F",
+  "class": "unknown",
+  "stop": "call 0x414543",
+  "steps": 86,
+  "func": "sub_8FF51B",
+  "func_ea": "8FF51B"
+ },
+ {
+  "site": "966FEC",
+  "insn": "jmp",
+  "target": "13926FB",
+  "class": "vm",
+  "key": "D8AA5FC",
+  "steps": 2,
+  "func": "sub_966FDE",
+  "func_ea": "966FDE"
+ },
+ {
+  "site": "9670D8",
+  "insn": "jmp",
+  "target": "132D300",
+  "class": "unknown",
+  "stop": "call 0x964e3e",
+  "steps": 6,
+  "func": "sub_9670D1",
+  "func_ea": "9670D1"
+ },
+ {
+  "site": "967129",
+  "insn": "jmp",
+  "target": "132D3E2",
+  "class": "unknown",
+  "stop": "call 0x964e97",
+  "steps": 3,
+  "func": "sub_967122",
+  "func_ea": "967122"
+ },
+ {
+  "site": "967171",
+  "insn": "jmp",
+  "target": "132D544",
+  "class": "unknown",
+  "stop": "call 0x964eba",
+  "steps": 2,
+  "func": "sub_96716A",
+  "func_ea": "96716A"
+ },
+ {
+  "site": "9671B4",
+  "insn": "jmp",
+  "target": "132D612",
+  "class": "unknown",
+  "stop": "call 0x964ec2",
+  "steps": 2,
+  "func": "sub_9671AD",
+  "func_ea": "9671AD"
+ },
+ {
+  "site": "9671F7",
+  "insn": "jmp",
+  "target": "132D768",
+  "class": "unknown",
+  "stop": "call 0x964eed",
+  "steps": 2,
+  "func": "sub_9671F0",
+  "func_ea": "9671F0"
+ },
+ {
+  "site": "967256",
+  "insn": "jmp",
+  "target": "132D82B",
+  "class": "unknown",
+  "stop": "call 0x964e15",
+  "steps": 4,
+  "func": "sub_967233",
+  "func_ea": "967233"
+ },
+ {
+  "site": "9672DC",
+  "insn": "jmp",
+  "target": "132D8EC",
+  "class": "unknown",
+  "stop": "jne 0x132d8fc",
+  "steps": 2,
+  "func": "sub_96729A",
+  "func_ea": "96729A"
+ },
+ {
+  "site": "9673BB",
+  "insn": "jmp",
+  "target": "132DE33",
+  "class": "unknown",
+  "stop": "call 0x965077",
+  "steps": 5,
+  "func": "sub_96738F",
+  "func_ea": "96738F"
+ },
+ {
+  "site": "967472",
+  "insn": "jmp",
+  "target": "132DECF",
+  "class": "unknown",
+  "stop": "call 0x965048",
+  "steps": 7,
+  "func": "sub_967404",
+  "func_ea": "967404"
+ },
+ {
+  "site": "9674E4",
+  "insn": "jmp",
+  "target": "132DFB8",
+  "class": "unknown",
+  "stop": "call 0x9650a6",
+  "steps": 4,
+  "func": "sub_9674B7",
+  "func_ea": "9674B7"
+ },
+ {
+  "site": "967556",
+  "insn": "jmp",
+  "target": "132E109",
+  "class": "unknown",
+  "stop": "call 0x9650d1",
+  "steps": 3,
+  "func": "sub_96752A",
+  "func_ea": "96752A"
+ },
+ {
+  "site": "9675A0",
+  "insn": "jmp",
+  "target": "132E274",
+  "class": "unknown",
+  "stop": "call 0x96548b",
+  "steps": 4,
+  "func": "sub_967599",
+  "func_ea": "967599"
+ },
+ {
+  "site": "9675EE",
+  "insn": "jmp",
+  "target": "132E3A2",
+  "class": "unknown",
+  "stop": "call 0x99aee3",
+  "steps": 3,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "96764D",
+  "insn": "jmp",
+  "target": "132E623",
+  "class": "unknown",
+  "stop": "call 0x965164",
+  "steps": 3,
+  "func": "sub_967646",
+  "func_ea": "967646"
+ },
+ {
+  "site": "967697",
+  "insn": "jmp",
+  "target": "132E784",
+  "class": "unknown",
+  "stop": "call 0x965187",
+  "steps": 3,
+  "func": "sub_96768E",
+  "func_ea": "96768E"
+ },
+ {
+  "site": "967704",
+  "insn": "jmp",
+  "target": "132E85B",
+  "class": "unknown",
+  "stop": "call 0x9650f4",
+  "steps": 3,
+  "func": "sub_9676D8",
+  "func_ea": "9676D8"
+ },
+ {
+  "site": "96774F",
+  "insn": "jmp",
+  "target": "132E904",
+  "class": "unknown",
+  "stop": "call 0x965241",
+  "steps": 4,
+  "func": "sub_967747",
+  "func_ea": "967747"
+ },
+ {
+  "site": "96779A",
+  "insn": "jmp",
+  "target": "132EA4E",
+  "class": "unknown",
+  "stop": "call 0x96526a",
+  "steps": 3,
+  "func": "sub_967793",
+  "func_ea": "967793"
+ },
+ {
+  "site": "967BB7",
+  "insn": "jmp",
+  "target": "132EB98",
+  "class": "unknown",
+  "stop": "jne 0x132eb9d",
+  "steps": 3,
+  "func": "sub_967B5E",
+  "func_ea": "967B5E"
+ },
+ {
+  "site": "9682E5",
+  "insn": "jmp",
+  "target": "139634F",
+  "class": "vm",
+  "key": "D8AE77A",
+  "steps": 2,
+  "func": "sub_9682DE",
+  "func_ea": "9682DE"
+ },
+ {
+  "site": "9685B7",
+  "insn": "jmp",
+  "target": "132EDA5",
+  "class": "unknown",
+  "stop": "call 0x9656ca",
+  "steps": 3,
+  "func": "sub_968586",
+  "func_ea": "968586"
+ },
+ {
+  "site": "9686C4",
+  "insn": "jmp",
+  "target": "132EEE1",
+  "class": "unknown",
+  "stop": "je 0x132f6ea",
+  "steps": 54,
+  "func": "sub_968693",
+  "func_ea": "968693"
+ },
+ {
+  "site": "A12E59",
+  "insn": "jmp",
+  "target": "139FD59",
+  "class": "vm",
+  "key": "D8B2412",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A131E7",
+  "insn": "jmp",
+  "target": "13A463A",
+  "class": "vm",
+  "key": "D8BBDA8",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A13450",
+  "insn": "jmp",
+  "target": "13A7AE0",
+  "class": "vm",
+  "key": "D8C0658",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A1349C",
+  "insn": "jmp",
+  "target": "13AD7F3",
+  "class": "vm",
+  "key": "D8C3AFC",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A136D4",
+  "insn": "jmp",
+  "target": "13B1901",
+  "class": "vm",
+  "key": "D8C9811",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A13769",
+  "insn": "jmp",
+  "target": "13B6F90",
+  "class": "vm",
+  "key": "D8CD916",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A138D7",
+  "insn": "jmp",
+  "target": "13BBA98",
+  "class": "vm",
+  "key": "D8D2F9D",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A13A1C",
+  "insn": "jmp",
+  "target": "13C5E5F",
+  "class": "vm",
+  "key": "D8D7AA6",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A14319",
+  "insn": "jmp",
+  "target": "13D79F7",
+  "class": "vm",
+  "key": "D8ED579",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A14479",
+  "insn": "jmp",
+  "target": "13DDA63",
+  "class": "vm",
+  "key": "D8F39FB",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A14809",
+  "insn": "jmp",
+  "target": "13EB3DF",
+  "class": "vm",
+  "key": "D90420E",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A149B8",
+  "insn": "jmp",
+  "target": "13F98B7",
+  "class": "vm",
+  "key": "D90F3CD",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A14B49",
+  "insn": "jmp",
+  "target": "13FDF42",
+  "class": "vm",
+  "key": "D9158D2",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A14C36",
+  "insn": "jmp",
+  "target": "1402BCE",
+  "class": "vm",
+  "key": "D919F5E",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A14CC9",
+  "insn": "jmp",
+  "target": "1407727",
+  "class": "vm",
+  "key": "D91EBE5",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A14FD9",
+  "insn": "jmp",
+  "target": "140B12C",
+  "class": "vm",
+  "key": "D923755",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A15089",
+  "insn": "jmp",
+  "target": "1410A87",
+  "class": "vm",
+  "key": "D92718B",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A15329",
+  "insn": "jmp",
+  "target": "141642C",
+  "class": "vm",
+  "key": "D92CA99",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A1548C",
+  "insn": "jmp",
+  "target": "141FFE0",
+  "class": "vm",
+  "key": "D9324C9",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A159C9",
+  "insn": "jmp",
+  "target": "14244A2",
+  "class": "vm",
+  "key": "D93BFEF",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A15B39",
+  "insn": "jmp",
+  "target": "142958D",
+  "class": "vm",
+  "key": "D9404A9",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A15C99",
+  "insn": "jmp",
+  "target": "142E3B8",
+  "class": "vm",
+  "key": "D9455A7",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A15DF9",
+  "insn": "jmp",
+  "target": "1432592",
+  "class": "vm",
+  "key": "D94A3CC",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A15F57",
+  "insn": "jmp",
+  "target": "12DFE4D",
+  "class": "vm",
+  "key": "D7F6AB3",
+  "steps": 2,
+  "func": "sub_A15F50",
+  "func_ea": "A15F50"
+ },
+ {
+  "site": "A160D9",
+  "insn": "jmp",
+  "target": "12E3A48",
+  "class": "vm",
+  "key": "D7FBE66",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16309",
+  "insn": "jmp",
+  "target": "12F5415",
+  "class": "vm",
+  "key": "D80DF62",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16534",
+  "insn": "jmp",
+  "target": "13008C8",
+  "class": "vm",
+  "key": "D819AAB",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16589",
+  "insn": "jmp",
+  "target": "1304012",
+  "class": "vm",
+  "key": "D81C8E4",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16619",
+  "insn": "jmp",
+  "target": "1307A71",
+  "class": "vm",
+  "key": "D82002B",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A1673D",
+  "insn": "jmp",
+  "target": "130F2E4",
+  "class": "vm",
+  "key": "D8272E0",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16875",
+  "insn": "jmp",
+  "target": "131761B",
+  "class": "vm",
+  "key": "D82EC13",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16927",
+  "insn": "jmp",
+  "target": "131C080",
+  "class": "vm",
+  "key": "D833669",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16A46",
+  "insn": "jmp",
+  "target": "1436CD5",
+  "class": "vm",
+  "key": "D94E5A1",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16AF9",
+  "insn": "jmp",
+  "target": "143BDDD",
+  "class": "vm",
+  "key": "D952CEE",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16C59",
+  "insn": "jmp",
+  "target": "1441422",
+  "class": "vm",
+  "key": "D957DF3",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16DB9",
+  "insn": "jmp",
+  "target": "13302B9",
+  "class": "unknown",
+  "stop": "jae 0x1330b14",
+  "steps": 196,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16E89",
+  "insn": "jmp",
+  "target": "144650C",
+  "class": "vm",
+  "key": "D95D43C",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A16F59",
+  "insn": "jmp",
+  "target": "144B396",
+  "class": "vm",
+  "key": "D962527",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A170B9",
+  "insn": "jmp",
+  "target": "1451142",
+  "class": "vm",
+  "key": "D9673E5",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A172C9",
+  "insn": "jmp",
+  "target": "145731F",
+  "class": "vm",
+  "key": "D96D19F",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A174CC",
+  "insn": "jmp",
+  "target": "145C50B",
+  "class": "vm",
+  "key": "D97332B",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A1784E",
+  "insn": "jmp",
+  "target": "1460A56",
+  "class": "vm",
+  "key": "D978530",
+  "steps": 2,
+  "func": "sub_A17810",
+  "func_ea": "A17810"
+ },
+ {
+  "site": "A178FA",
+  "insn": "jmp",
+  "target": "14647EE",
+  "class": "vm",
+  "key": "D97CA83",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ },
+ {
+  "site": "A17A24",
+  "insn": "jmp",
+  "target": "146D5FA",
+  "class": "vm",
+  "key": "D984F8A",
+  "steps": 2,
+  "func": null,
+  "func_ea": null
+ }
+]

@@ -7,8 +7,9 @@ Inputs (from tools/live_dump.ps1 + tools/dump_exports.ps1, captured in the SAME 
   logs/live/reg_XXXXXXXX.bin  executable private regions (Themida wrappers)
 
 usage:
-  python3 tools/fix_iat.py report
-  python3 tools/fix_iat.py build in.exe out.exe     # add import descriptors for the original IAT
+  python3 tools/fix_iat.py report                   # needs logs/live + logs/exports (same Windows boot as dump)
+  python3 tools/fix_iat.py export                   # -> decomp/iat_resolved.json (git-tracked)
+  python3 tools/fix_iat.py build in.exe out.exe     # uses iat_resolved.json; adds import descriptors + CALL_FIXES
 """
 import collections, pathlib, struct, sys
 
@@ -330,10 +331,35 @@ def report():
         print(f"{res[0][0]:#x} {gdll} n={len(res)} unresolved={bad} other_dlls={mixed}")
 
 
-def build(src, dst):
-    import pefile
+RESOLVED_JSON = ROOT / "decomp" / "iat_resolved.json"
+
+
+def export_plan():
+    """Save the resolved plan to git-tracked JSON so later builds need neither Windows nor logs/live."""
+    import json
     slots, fwd, by_name, _ = resolve()
     plan = pick_names(slots, fwd, by_name)
+    out = [{"dll": gdll, "slots": [{"va": "%X" % va, "dll": c[0], "name": c[1], "how": how} for va, c, how in res]}
+           for gdll, res in plan]
+    RESOLVED_JSON.write_text(json.dumps(out, indent=1))
+    print("wrote", RESOLVED_JSON, sum(len(g["slots"]) for g in out), "slots")
+
+
+def load_plan():
+    import json
+    if not RESOLVED_JSON.exists():
+        slots, fwd, by_name, _ = resolve()
+        return pick_names(slots, fwd, by_name)
+    plan = []
+    for g in json.loads(RESOLVED_JSON.read_text()):
+        res = [(int(x["va"], 16), (x["dll"], x["name"]), x["how"]) for x in g["slots"]]
+        plan.append((g["dll"], res))
+    return plan
+
+
+def build(src, dst):
+    import pefile
+    plan = load_plan()  # decomp/iat_resolved.json (run `export` after changing OVERRIDES / resolution)
     for gdll, res in plan:
         if any(c is None for _, c, _ in res):
             sys.exit(f"unresolved slots in group {res[0][0]:#x}; run 'report'")
@@ -423,5 +449,7 @@ def build(src, dst):
 if __name__ == "__main__":
     if sys.argv[1] == "report":
         report()
+    elif sys.argv[1] == "export":
+        export_plan()
     else:
         build(sys.argv[2], sys.argv[3])

@@ -1,162 +1,188 @@
 # Boom Online client — reverse engineering
 
 Dịch ngược client **Boom Online** (VNG, bản Việt của Nexon *Crazy Arcade / BnB*, nhánh source `VBNB_116`).
-Server đã chết, mất source; chỉ còn client. Mục tiêu dài hạn: hiểu đủ để viết **server giả lập** và chơi lại được.
+Server đã chết, mất source; chỉ còn client. Mục tiêu dài hạn: hiểu đủ để viết **server giả lập** (sẽ viết bằng **Rust**) và chơi lại được.
 
-> **Vào làm tiếp?** Đọc mục [Trạng thái](#trạng-thái) → [Việc tiếp theo](#việc-tiếp-theo) → [Bắt đầu phiên làm việc](#bắt-đầu-phiên-làm-việc).
+> **Vào làm tiếp?** Đọc theo thứ tự:
+> 1. [Trạng thái](#trạng-thái) và [Việc tiếp theo](#việc-tiếp-theo)
+> 2. [Bắt đầu phiên làm việc](#bắt-đầu-phiên-làm-việc) (kiểm tra môi trường)
+> 3. Tài liệu chi tiết của việc đang làm: **[docs/devirt.md](docs/devirt.md)**
+
+Tài liệu:
+
+| File | Nội dung |
+|---|---|
+| [docs/protocol.md](docs/protocol.md) | Protocol TCP: frame, mã hoá, seq, hello, đăng nhập, dispatch — phần lớn **đã kiểm chứng với client thật** |
+| [docs/assets.md](docs/assets.md) | Pack `.idx/.idd`, mã hoá entry, sprite → PNG |
+| [docs/runtime.md](docs/runtime.md) | Chạy client: thứ tự khởi động, mã lỗi, patch bộ nhớ, mạng WinBoat, Wine, **sửa IAT bản dump** |
+| [docs/devirt.md](docs/devirt.md) | **Việc đang làm**: hàm bị Themida ảo hoá, danh sách, phương pháp |
 
 ---
 
 ## Trạng thái
 
+Cập nhật 2026-10-16.
+
 | Phần | Trạng thái | Ở đâu |
 |---|---|---|
-| Unpack Themida `ca.exe` | ✅ Xong | [Unpack](#1-unpack-themida) |
-| IDA: phân tích + đặt tên từ RTTI | ✅ 3699 vtable, 13.800 hàm ảo, ~20k tên | `decomp/ida_names.json` |
-| Lớp mạng TCP: frame, seq byte, mã hoá, CRC, bảng tráo opcode | ✅ Xong; crypto **đã kiểm chứng** bằng emulate binary | `docs/protocol.md`, `tools/boomproto.py` |
-| Đường đi packet → handler | ✅ 520 opcode / 59 dispatcher | `decomp/opcode_dispatch.json`, `decomp/handlers/` |
-| Cấu trúc field của từng packet | ⬜ Chưa (mới có handshake) | |
-| Pack `.idx/.idd` (mục lục, mã hoá entry, zlib) | ✅ Xong, kiểm CRC 100% | `docs/assets.md`, `tools/idf.py` |
-| Sprite `CDataI16Alpha` → PNG | ✅ Xong (108.726 ảnh) | `tools/i16.py` |
-| Frame animation của sprite (record 48 byte) | ⬜ Chưa | |
-| Định dạng `.map` (965 map) và `Attr/*` | ⬜ Chưa | `decomp/CGamePlayMap__Load.c` |
-| Gỡ HackShield/BlackCipher, patch IP server | ✅ Patch **trong bộ nhớ** client gốc (Themida) | `tools/launch.ps1`, `tools/launcher/boomlaunch.c` |
-| Chạy client thật nối vào server giả | 🟡 **Đăng nhập qua được**; kẹt ở Direct3D (VM không GPU) | [Chạy client](#chạy-client-với-server-giả) |
-| Server giả lập | 🟡 Prototype Python: hello + chuỗi login 6 packet | `tools/fakeserver.py` |
-| Sửa IAT bản dump (`ca_fixed.exe`) | ✅ 489/489 ô + 38 lời gọi sai của unlicense; chạy tới `WinMain` trong Wine | `tools/fix_iat.py`, `tools/rebuild_wine.sh` |
-| Hàm bị Themida ảo hoá (~12 hàm) | ⬜ **Chặn** bản dump | [docs/runtime.md](docs/runtime.md#hàm-bị-themida-ảo-hoá-vm--chặn-hướng-3) |
+| Unpack Themida `ca.exe` | ✅ `unpacked_ca.exe` (OEP 0x9E5EFE) | [Unpack](#1-unpack-themida) |
+| IDA: phân tích + đặt tên từ RTTI | ✅ 3699 vtable, 13.800 hàm ảo, ~20.7k tên | `decomp/ida_names.json` |
+| Lớp mạng TCP | ✅ kiểm chứng: emulate binary + traffic thật | `docs/protocol.md`, `tools/boomproto.py` |
+| Packet → handler | ✅ 520 opcode / 59 dispatcher | `decomp/opcode_dispatch.json`, `decomp/handlers/` |
+| Hello + chuỗi đăng nhập | ✅ client thật đăng nhập được vào server giả | `docs/protocol.md`, `tools/fakeserver.py` |
+| Cấu trúc field packet sau đăng nhập | ⬜ chưa biết client làm gì tiếp (chưa có client hiển thị) | |
+| Pack `.idx/.idd` + sprite → PNG | ✅ 108.726 PNG, 965 map, 645 ogg | `docs/assets.md`, `tools/idf.py`, `tools/i16.py` |
+| Định dạng `.map`, `Attr/*`, frame animation | ⬜ | `decomp/CGamePlayMap__Load.c` |
+| Client gốc (Themida) + patch bộ nhớ | ✅ chạy tới đăng nhập trong WinBoat; ❌ không render (VM không GPU); ❌ Wine (anti-VM Themida) | `docs/runtime.md` |
+| Bản dump chạy trong Wine (**hướng đang theo**) | 🟡 IAT sửa xong 489/489 + 38 call site; chạy tới `WinMain` | `tools/fix_iat.py`, `tools/rebuild_wine.sh` |
+| Hàm bị Themida ảo hoá | ⬜ **đang làm** — 56 điểm VM (15 trong hàm game, 41 vùng anti-cheat) | `docs/devirt.md`, `decomp/themida_entries.json` |
+| Server thật (Rust) | ⬜ chưa bắt đầu; `tools/fakeserver.py` là đặc tả sống | |
+
+### Đã kiểm chứng trên client thật
+- Codec `boomproto.py` giải mã đúng packet thật của client (CRC8 khớp); seq byte, obfuscate số đúng.
+- Định dạng nhận: (0,0) cho hello, (2,3) sau đó; gửi (2,2). Đọc thẳng từ bộ nhớ process.
+- Luồng: kết nối patch → hello (version 116) → client đóng → kết nối chính → hello → client gửi opcode 0 →
+  server gửi 13, 2, 12, 21, 1, 43 (mỗi cái `u8 0`) → đăng nhập xong, cửa sổ "Boom".
 
 ### Câu hỏi còn mở
-- Byte thứ 2 của header khi header dài 2 byte (client gửi `0xF4`, client không kiểm tra khi nhận).
-- Render: `init renderer falied. hr=0x887600aa` trong WinBoat; Wine (WoW64 mới) chết ở anti-VM của Themida (`EXCEPTION_PRIV_INSTRUCTION` @ 0x11E5F62).
-
-### Đã kiểm chứng trên client thật (2026-10-16)
-- Định dạng trước handshake đọc từ bộ nhớ process: `dword_EA6FE0/E4` = `dword_EEC1BC/C0` = **(0,0)**; sau handshake (2,3); gửi (2,2).
-- Codec `boomproto.py` giải mã đúng packet thật của client (CRC8 khớp).
-- "type" trong payload **chính là opcode** (u16 ở mode 2/3): dispatcher `Rewind` rồi `Decode2`.
-- Luồng: kết nối patch (server gửi hello, version=116) → client đóng → kết nối chính: hello → client gửi opcode 0 (6×u32) → server gửi 13, 2, 12, 21, 1, 43 (mỗi cái `u8 0` = dùng cache) → `Login_DoLoginSequence` (0x8E2DEC) thành công, cửa sổ "Boom" mở.
+- Byte thứ 2 của header 2 byte (client gửi `0xF4`, khi nhận không kiểm tra).
+- 6×u32 trong opcode 0 (có lẽ session từ launcher VNG; chạy trần thì toàn 0).
+- Packet sau đăng nhập.
 
 ---
 
 ## Việc tiếp theo
 
-Theo thứ tự ưu tiên:
+**Hướng đã chọn (2026-10-16): hướng 1 — devirtualize** các khối bị Themida ảo hoá để bản dump chạy trong Wine (có GPU).
 
-1. **Chạy được client có hiển thị** — đang chọn hướng 3 (bản dump không Themida trong Wine): IAT đã xong,
-   còn ~12 hàm bị Themida ảo hoá (xem `docs/runtime.md`). Phương án dự phòng: client gốc + Wine có WoW64 cũ.
-2. **Server thật bằng Rust** (prototype Python ở `tools/fakeserver.py` là đặc tả sống): sau login → nhận gì tiếp, lobby, phòng, ván chơi.
-3. **Cấu trúc field từng packet**: đọc handler trong `decomp/handlers/` theo luồng Login (`CLoginStage`) → Lobby → Room (`CPrepareStage`) → Game (`CGameStage`). Ghi vào `docs/protocol.md`.
-4. **`.map` / `Attr/*`**: server cần để chạy ván chơi. Loader map: `CGamePlayMap__Load` 0x7354FD.
-5. (Phụ) Frame animation sprite.
+1. Làm theo [docs/devirt.md](docs/devirt.md):
+   - Bắt đầu từ `sub_8F4421` (site 0x8F452B, đang chết ở đây), rồi các hàm khởi động khác (`CFxApp__vf6`, `sub_8F3409`, `sub_8F4D01`, `sub_8F8EEC`).
+   - Xác nhận 41 điểm VM ở `0xA12E59–0xA17A24` là anti-cheat → bỏ qua cả khối.
+   - Mỗi khối xong: cập nhật bảng trong `docs/devirt.md`, chạy `tools/rebuild_wine.sh`.
+2. Khi client hiển thị được trong Wine: nối với `tools/fakeserver.py` (IP 127.0.0.1), xem client làm gì sau đăng nhập.
+3. Server thật bằng **Rust** (tokio), lấy `tools/fakeserver.py` + `docs/protocol.md` làm đặc tả.
+4. Cấu trúc field từng packet (Login → Lobby → Room `CPrepareStage` → Game `CGameStage`), `.map`, `Attr/*`.
+
+Phương án dự phòng nếu VM quá khó: client gốc + Wine có WoW64 kiểu cũ (runner Lutris/wine-ge có lib32), xem `docs/runtime.md`.
 
 ---
 
 ## Bắt đầu phiên làm việc
 
-Những thứ **không có trong git** (nặng hoặc có bản quyền) và phải có sẵn trên máy:
-
-| Thứ | Ở máy hiện tại | Cách tạo lại |
-|---|---|---|
-| Client gốc | `~/Downloads/Boom/` | Bản cài game |
-| `unpacked_ca.exe` (18MB) | `~/boom-re/` | [Unpack](#1-unpack-themida) |
-| Database IDA `unpacked_ca.exe.i64` (283MB) | `~/boom-re/` | [IDA](#2-ida) |
-| `assets/` (665MB) | `~/boom-re/assets/` | `python3 tools/idf.py extract ~/Downloads/Boom assets` (~5 phút) |
-| `tools/unlicense.exe` | `~/boom-re/tools/` | [unlicense 0.4.0](https://github.com/ergrelet/unlicense/releases/tag/0.4.0) bản `py3.11-x86` |
-
-Kiểm tra nhanh mọi thứ còn chạy:
+### Kiểm tra nhanh
 ```sh
-python3 tools/boomproto.py                       # -> roundtrip ok
-python3 tools/idf.py ~/Downloads/Boom             # liệt kê 4 pack
+cd ~/boom-re
+python3 tools/boomproto.py                                   # -> roundtrip ok
+python3 tools/idf.py ~/Downloads/Boom                         # liệt kê 4 pack
 uv run --with unicorn --with pefile python tools/verify_emu.py unpacked_ca.exe   # -> fails: 0
+tools/rebuild_wine.sh                                         # build dump đã sửa + chạy trong Wine (backtrace + CALog)
 ```
+
+### File không có trong git (nặng / bản quyền) — đang nằm trên máy
+
+| Thứ | Ở đâu | Cách tạo lại |
+|---|---|---|
+| Client gốc | `~/Downloads/Boom/` | bản cài game |
+| `unpacked_ca.exe` (18MB) | `~/boom-re/` | [Unpack](#1-unpack-themida) |
+| IDA database `unpacked_ca.exe.i64` (283MB) | `~/boom-re/` | [IDA](#2-ida) |
+| `assets/` (665MB) | `~/boom-re/assets/` | `python3 tools/idf.py extract ~/Downloads/Boom assets` (~5 phút) |
+| `tools/unlicense.exe` | `~/boom-re/tools/` | [unlicense 0.4.0](https://github.com/ergrelet/unlicense/releases/tag/0.4.0) `py3.11-x86` |
+| `ca_fixed.exe`, `ca_fixed_patched.exe` | `~/boom-re/` | `tools/rebuild_wine.sh` (cần `unpacked_ca.exe` + `decomp/iat_resolved.json`) |
+| `wine/Boom/` | bản copy reflink của client để chạy Wine | `cp -a --reflink=auto ~/Downloads/Boom wine/` |
+| `logs/live/` (77MB), `logs/exports.tsv` | dump bộ nhớ client gốc + export DLL | `win/live_dump.bat` trong WinBoat. **Chỉ cần nếu giải lại IAT**; kết quả đã lưu ở `decomp/iat_resolved.json` |
+| `unlicense_ca.log` | log unpack (fix_iat dùng khi giải lại) | sinh ra khi unpack |
+
+### Trạng thái môi trường (không bền — kiểm tra lại mỗi phiên)
+
+- **WinBoat** (Windows trong docker `dockur/windows`): `docker ps`; port RDP **đổi sau mỗi lần restart container** → `docker port WinBoat`.
+  User/pass trong `~/.winboat/docker-compose.yml`. Thư mục home của host = `\\host.lan\Data` trong Windows.
+  Bị treo (RDP reset ngay) → `docker restart WinBoat`.
+- **Server giả**: container `boomsrv` (`172.18.0.50` trên mạng `winboat_default`) nếu đang chạy; trên host thì `python3 tools/fakeserver.py --log logs/fakeserver_host.log` (nghe 3838/4848/5858/6868).
+- **Luật iptables DNAT** trong container WinBoat (chuyển IP server cũ → `boomsrv`) **mất khi restart container**; lệnh ở [Chạy client](#chạy-client-với-server-giả).
+- Host bật **ufw** → Windows guest không gọi được host; dùng container cùng mạng.
+- **Wine**: CachyOS Wine 10 (chỉ WoW64 mới), prefix `~/.wine`, đã đặt `ShowCrashDialog=0`.
+- **IDA MCP**: database mở bằng idalib; lần đầu mở mất ~70 phút auto-analysis, trong lúc đó mọi lệnh bị treo.
 
 ### 1. Unpack Themida
 
-`ca.exe` bị pack bằng Themida/WinLicense 2.x. Phải **chạy** nó trong Windows để dump, không chạy trên host.
-Đang dùng Windows của **WinBoat** (docker `dockur/windows`, user/pass trong `~/.winboat/docker-compose.yml`, ổ host `$HOME` = `\\host.lan\Data`).
-
+`ca.exe` bị pack Themida/WinLicense 2.x. Phải **chạy** nó trong Windows để dump.
 ```sh
-docker port WinBoat        # lấy port 3389 (đổi sau mỗi lần restart container)
+docker port WinBoat        # lấy port 3389
 xfreerdp3 /u:<USER> /p:<PASS> /v:127.0.0.1 /port:<PORT> /cert:ignore \
   '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\win\unpack.bat'
 ```
-`win/unpack.bat` copy client vào `C:\boom` (bỏ `*.idd`, `hackshield`, `blackcipher`), chạy `unlicense ca.exe`, chép `unpacked_ca.exe` + log về đây.
-Kết quả lần trước: **OEP = 0x9E5EFE**, base 0x400000, 433 import, IAT giả ở 0x1900000.
-
-Nếu RDP bị reset ngay / guest API không trả lời: Windows trong WinBoat bị treo → `docker restart WinBoat` (đã gặp 1 lần).
+`win/unpack.bat` copy client vào `C:\boom` (bỏ `*.idd`, `hackshield`, `blackcipher`), chạy `unlicense ca.exe`, chép `unpacked_ca.exe` + log về.
+Mọi script `win/*.bat` chạy cùng cách (RemoteApp), ghi kết quả về `logs/`.
 
 ### 2. IDA
 
-- Mở `unpacked_ca.exe` lần đầu: auto-analysis **~70 phút** (binary 18MB). Trong lúc đó mọi lệnh IDA MCP bị treo — chờ đến khi xong.
-- Nạp lại toàn bộ tên/comment đã đặt: chạy `tools/ida_apply_names.py` trong IDA (File → Script file).
-- Đã có sẵn `.i64` thì mở thẳng, không cần làm lại.
+- Đã có `.i64` thì mở thẳng.
+- Làm lại từ đầu: mở `unpacked_ca.exe` (~70 phút) rồi chạy `tools/ida_apply_names.py` (nạp `decomp/ida_names.json`).
+- Sau khi đặt thêm tên: xuất lại `decomp/ida_names.json` (đoạn code xuất nằm trong lịch sử commit; tên + comment, bỏ tên mặc định `sub_`…).
 
 ---
 
 ## Chạy client với server giả
 
-Đang dùng **client gốc (Themida)**, patch trong bộ nhớ (không sửa file):
-- Bỏ HackShield/BlackCipher: `0x8E701D` `74 29` → `EB 29`.
-- Đổi IP server (hoặc chuyển hướng bằng iptables DNAT trong container WinBoat).
-
-WinBoat (render chưa được, nhưng mạng + login chạy):
+**Client gốc (Themida)** — mạng/đăng nhập chạy, không render (WinBoat không GPU):
 ```sh
 docker run -d --rm --name boomsrv --network winboat_default --ip 172.18.0.50 \
   --user "$(id -u):$(id -g)" -v "$HOME/boom-re:/work" -w /work python:3.12-slim python -u tools/fakeserver.py --log /work/logs/fakeserver.log
 docker exec WinBoat sh -c 'for d in 222.255.122.204 120.138.77.0/24 118.102.5.126 175.207.3.35; do
   iptables -t nat -I PREROUTING -s 172.30.0.0/24 -d $d -p tcp -j DNAT --to-destination 172.18.0.50; done'
-xfreerdp3 ... '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\win\watch2.bat'
+xfreerdp3 ... '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\win\watch2.bat'   # launch.ps1 patch bộ nhớ + chụp màn hình
 ```
-(host bật `ufw` nên Windows không gọi thẳng host được → server chạy trong container cùng mạng.)
 
-Wine (render có GPU, nhưng Themida chết trong Wine WoW64):
+**Bản dump đã sửa IAT** trong Wine (đang làm, xem `docs/devirt.md`):
 ```sh
-cd wine/Boom && wine boomlaunch.exe 127.0.0.1     # wine/Boom = bản copy reflink của client
+python3 tools/fakeserver.py --log logs/fakeserver_host.log &   # IP đã patch thành 127.0.0.1
+tools/rebuild_wine.sh
 ```
 
-## Đã tìm được gì
+---
+
+## Đã tìm được gì (tóm tắt)
 
 ### Client
-- `ca.exe`: game chính, PE32 i386, build 2015-03-27. `v2.49/ca.exe` là bản cũ hơn (2015-03-11), cũng bị pack Themida.
-- PDB gốc: `M:\Source\VBNB_116\Binary\intl\Vietnam\client\CA.pdb`.
-- MSVC C++, boost, lua_tinker, TinyXML, zlib 1.1.4. Còn nguyên RTTI: **2558 class** (`rtti.txt`).
-- Anti-cheat: `hackshield/`, `blackcipher/`, `gameguard.des`, driver `cawh.sys`, `procobsrv.sys`.
-- Login qua Nexon Messenger (`nmco3.dll`, `CNMLoginPassportFunc`…), stage `CLoginStage`.
-- Launcher/updater (`autoupdate.exe`, `paio.exe`, `vui game.exe`) không phải game.
+- `ca.exe`: PE32 i386, build 2015-03-27; `v2.49/ca.exe` bản cũ hơn. PDB `M:\Source\VBNB_116\Binary\intl\Vietnam\client\CA.pdb`.
+- MSVC C++ (CRT VS2008), boost, lua_tinker, TinyXML, zlib 1.1.4. RTTI: **2558 class** (`rtti.txt`).
+- Phiên bản client = **116** (`App__GetVersion_116` 0x8E2494).
+- Anti-cheat: HackShield (`hackshield/`), BlackCipher (`ngclient.aes`, `blackcipher/`), anti-cheat tự viết (quét process theo `cavn.ini`, `AntiCheat_ScanProcesses` ~0xA12C00), `cawh.sys` (thật ra là DLL hook cửa sổ của game).
+- Log client: `CALog.log` trong thư mục game.
 
-### Mạng — tóm tắt (chi tiết: `docs/protocol.md`)
-- Frame: `[seq byte][len][payload][checksum]`, big-endian.
-- Client gửi: payload mã hoá XOR nối chuỗi (khoá `seq ^ 0x53351D9C`, mỗi dword `-= 0x63CAACE3`) + CRC8.
-- Seq: base 102/192, modif 231, bộ đếm bắt đầu 40, mỗi packet +3.
-- Handshake (packet đầu từ server) mang "header type" → chọn 1 trong 16 hàng bảng tráo opcode.
-- Payload: `[type][opcode u16][fields]`. Packet đi qua `CMainWnd::OnPacket` 0x8F995D → handler của stage hiện tại (`<Stage>__OnPacket`, đặt tên handler dạng `<Stage>__On_<opcode>`).
+### Mạng (chi tiết `docs/protocol.md`)
+- Frame `[seq][len][payload][checksum]`, big-endian; client gửi XOR nối chuỗi (`seq ^ 0x53351D9C`, mỗi dword `-= 0x63CAACE3`) + CRC8.
+- Seq: base 102/192, modif 231, đếm từ 40, +3 mỗi packet. Opcode = trường đầu payload.
+- Server giả lập: `tools/fakeserver.py` (`hello_packet`, `login_replies`, `Session`).
 
-### Tài nguyên — tóm tắt (chi tiết: `docs/assets.md`)
-- 4 pack `fx`, `charte`, `emote`, `fxasset`; `.idx` mã hoá XOR nối chuỗi.
-- Entry `Map/*`, `Attr/*` mã hoá thêm (có CRC32); tên chứa `_mm` thì nén zlib.
-- Sprite: RLE, pixel 24-bit BGR hoặc RGB565, có alpha riêng.
-- `Attr/BomberAttr` = chỉ số nhân vật, `Attr/ItemAttr` = vật phẩm, `Attr/MapGroup` = nhóm map.
+### Tài nguyên (chi tiết `docs/assets.md`)
+- Pack `fx`, `charte`, `emote`, `fxasset`; entry `Map/*`, `Attr/*` mã hoá (CRC32), `_mm` = zlib; sprite RLE + alpha.
 
 ### Địa chỉ quan trọng (`unpacked_ca.exe`)
 
 | Địa chỉ | Tên | Ghi chú |
 |---|---|---|
 | 0x9E5EFE | OEP | |
-| 0x8842DD | `CClientSocket__ctor` | đặt seq params |
+| 0x8F2146 | `WinMain` | `CrashDlg` khi có C++ exception không bắt |
+| 0x8E6FEE | `CFxApp__vf4_Init` | thứ tự khởi động, `docs/runtime.md` |
+| 0x8E701D | jz HackShield/BlackCipher | patch `74 29` → `EB 29` |
+| 0x8E426E | `PatchServer_CheckVersion` | kết nối patch, chờ hello |
+| 0x8F280B / 0x8E4778 | `App__SetExitError` / `App__ShowExitError` | mã lỗi khởi động |
+| 0x998FD5 | `CMultiServer__ctor` | danh sách IP/port |
+| 0x8842DD | `CClientSocket__ctor` | seq params |
 | 0xA662E0 / 0xA663E0 | `ProcessRecvPacket` / `SendPacket` | |
 | 0xA64B70 / 0xA643F0 | `RecvPkt__Deserialize` / `SendPkt__Serialize` | |
 | 0xA642E0 / 0xA64240 | `PacketDecryptXor` / `PacketEncryptXor` | |
 | 0xE5CEE8 / 0xE5DEE8 | bảng tráo opcode enc / dec | |
-| 0x999C02 | `Net_OnHandshake` | |
-| 0x8F4094 | `Net_DispatchMainSocket` | |
-| 0x8F995D | `CMainWnd__OnPacket` | |
+| 0x999C02 | `Net_OnHandshake` | hello trên kết nối chính |
+| 0x8E2DEC | `Login_DoLoginSequence` | opcode 0 → chờ 13,2,12,21,1,43 |
+| 0x8F995D | `CMainWnd__OnPacket` | định tuyến packet |
 | 0x6A978B | `CStage__OnPacket` | 191 opcode chung |
-| 0x8E426E | `PatchServer_CheckVersion` | kết nối kiểm tra bản vá |
-| 0xA388C0 | `PackFS__AttachIdf` | mở pack |
-| 0xA37880 | `CData__LoadFromPack` | giải mã/giải nén entry |
-| 0xA3D850 | `CDataI16Alpha__Load` | sprite |
-| 0x7354FD | `CGamePlayMap__Load` | map |
-| 0xE60838 | `g_pMainWnd` | |
+| 0xA388C0 / 0xA37880 | `PackFS__AttachIdf` / `CData__LoadFromPack` | pack |
+| 0x7354FD | `CGamePlayMap__Load` | map (có khối bị ảo hoá) |
+| 0x11EE128 | VM entry Themida | `docs/devirt.md` |
+| 0xC0F000–0xC0F7FF | IAT gốc | `decomp/iat_resolved.json` |
+| 0x1900000 / 0x16AD000 | IAT giả của unlicense | 3 mục sai, xem `docs/runtime.md` |
 
 ---
 
@@ -164,25 +190,32 @@ cd wine/Boom && wine boomlaunch.exe 127.0.0.1     # wine/Boom = bản copy refli
 
 | Đường dẫn | Nội dung |
 |---|---|
-| `docs/protocol.md` | Protocol TCP (frame, mã hoá, seq, handshake, dispatch) |
-| `docs/assets.md` | Định dạng pack + sprite |
-| `docs/runtime.md` | Chạy client: thứ tự khởi động, patch, mạng WinBoat, Wine, sửa IAT, VM Themida |
-| `tools/boomproto.py` | Codec packet (tự test khi chạy trực tiếp) |
-| `tools/verify_emu.py` | Chạy hàm crypto thật của binary bằng Unicorn, so với `boomproto.py` |
-| `tools/idf.py` | Đọc/giải nén pack (`extract`) |
-| `tools/i16.py` | Sprite → PNG |
-| `tools/ida_apply_names.py` | Nạp `decomp/ida_names.json` vào IDA |
-| `decomp/ida_names.json` | Toàn bộ tên + comment đã đặt trong IDA |
-| `decomp/opcode_dispatch.json` | dispatcher → opcode → handler |
-| `decomp/handlers/` | Pseudocode `OnPacket` của từng Stage |
-| `decomp/net/` | Pseudocode hàm mạng + bảng tráo opcode `.bin` |
-| `decomp/CGamePlayMap__Load.c` | Pseudocode loader map |
-| `rtti.txt`, `ca_strings.txt` | Tên class RTTI, strings của binary |
-| `win/*.bat` | Script chạy trong Windows (unpack, chạy client, chụp màn hình, dump bộ nhớ) |
+| `docs/` | tài liệu (xem bảng đầu file) |
+| `tools/boomproto.py` | codec packet (tự test khi chạy trực tiếp) |
+| `tools/fakeserver.py` | server giả: hello + chuỗi đăng nhập |
+| `tools/verify_emu.py` | chạy hàm crypto thật của binary bằng Unicorn, so với `boomproto.py` |
+| `tools/idf.py`, `tools/i16.py` | đọc/giải nén pack, sprite → PNG |
+| `tools/patch_client.py` | patch file: bỏ HackShield, bỏ patch-check, đổi IP |
+| `tools/fix_iat.py` | giải IAT gốc (`report`/`export`) và build `ca_fixed.exe` (`build`) |
+| `tools/rebuild_wine.sh` | build + patch + chạy bản dump trong winedbg |
+| `tools/themida_scan.py` | liệt kê điểm vào section Themida → `decomp/themida_entries.json` |
+| `tools/launch.ps1`, `tools/launcher/boomlaunch.c` | patch bộ nhớ client gốc (PowerShell / exe mingw) |
+| `tools/live_dump.ps1`, `tools/dump_exports.ps1`, `tools/peek.ps1` | dump bộ nhớ / export DLL / đọc biến lúc chạy (PowerShell 32-bit) |
+| `tools/ida_apply_names.py` | nạp `decomp/ida_names.json` vào IDA |
+| `win/*.bat` | chạy trong Windows qua RDP RemoteApp: `unpack`, `watch2` (client gốc + patch + chụp màn hình), `live_dump`, `peek`, `run_*`, chẩn đoán (`diag`, `evlog`, `getcrash`, `status`) |
+| `decomp/ida_names.json` | toàn bộ tên + comment đã đặt trong IDA |
+| `decomp/iat_resolved.json` | IAT gốc đã giải (489 ô) |
+| `decomp/themida_entries.json` | 117 điểm vào Themida + phân loại |
+| `decomp/opcode_dispatch.json`, `decomp/handlers/`, `decomp/net/` | dispatch, pseudocode handler, hàm mạng + bảng opcode |
+| `rtti.txt`, `ca_strings.txt` | RTTI, strings |
 
 ## Lưu ý / bẫy đã gặp
 
-- Hằng số trong pseudocode Hex-Rays là **thập phân** — đổi hex cẩn thận (đã từng sai `1674226915` → phải là `0x63CAACE3`, phát hiện nhờ `verify_emu.py`).
-- Các biến toàn cục mang giá trị `0xFFFFFFFF` trong dump là chưa được khởi tạo lúc OEP → giá trị thật phải đọc lúc runtime.
-- `Map/*` có dword thứ 2 = 2 nên dễ bị nhận nhầm là sprite; nhận dạng bằng dword đầu = 1000/1001.
-- Python chạy với `-I` thì không tự thêm thư mục script vào `sys.path` (tools đã tự xử lý).
+- Hằng số trong pseudocode Hex-Rays là **thập phân** — đổi hex cẩn thận (đã sai `1674226915` ≠ `0x63CA5EE3`; đúng là `0x63CAACE3`).
+- Biến toàn cục = `0xFFFFFFFF` trong dump là chưa khởi tạo lúc OEP → đọc lúc runtime (`tools/peek.ps1`).
+- `Map/*` dword thứ 2 = 2 → dễ nhận nhầm là sprite; nhận dạng bằng dword đầu = 1000/1001.
+- Python `-I` không thêm thư mục script vào `sys.path` (tools đã tự xử lý).
+- unlicense: không sửa IAT gốc; và **gán sai** những wrapper mà Themida giả lập chung nhiều API (xem `docs/runtime.md`).
+- Dump IAT/export **phụ thuộc lần boot của Windows** (địa chỉ DLL hệ thống); kết quả đã chốt ở `decomp/iat_resolved.json`.
+- QMP screendump chỉ chụp console, không thấy phiên RDP → chụp bằng PowerShell trong phiên.
+- Lệnh `pkill -f <chuỗi>` có thể giết luôn shell đang chạy lệnh đó nếu chuỗi khớp chính nó.

@@ -79,7 +79,9 @@ Wrapper Themida là stub 4KB nhảy ngược vào section của chính exe → e
 
 ## Sửa IAT (hướng 3) — kết quả 2026-10-16
 
-`tools/fix_iat.py build unpacked_ca.exe ca_fixed.exe` (rồi `tools/patch_client.py`, hoặc gộp: `tools/rebuild_wine.sh`):
+`tools/fix_iat.py build unpacked_ca.exe ca_fixed.exe` (rồi `tools/patch_client.py`, hoặc gộp: `tools/rebuild_wine.sh`).
+Kết quả giải đã chốt ở `decomp/iat_resolved.json` (git); `build` chỉ cần file này + `unpacked_ca.exe`.
+Muốn giải lại (sửa `OVERRIDES`…) thì cần `logs/live/` + `unlicense_ca.log`, chạy `report` rồi `export`.
 
 1. Dump process gốc **gồm mọi image module** (`tools/live_dump.ps1` → `logs/live/`): IAT gốc, vùng wrapper, image `ca.exe` + 64 DLL.
 2. Mỗi ô IAT gốc, lấy tên theo thứ tự ưu tiên:
@@ -100,6 +102,8 @@ Wrapper Themida là stub 4KB nhảy ngược vào section của chính exe → e
 Kết quả trong Wine: qua CRT startup, vào `WinMain`, nạp D3D9 + D3DX9 thành công, rồi chết ở hàm bị ảo hoá.
 
 ## Hàm bị Themida ảo hoá (VM) — chặn hướng 3
+
+→ **Đang làm theo hướng 1, chi tiết ở [devirt.md](devirt.md).**
 
 Có 98 điểm code game nhảy vào section Themida (`0x11E4000–0x16AB000`):
 - Phần lớn nhảy tới `0x131xxxx–0x132xxxx` rồi quay về: nhiều khả năng chỉ là code **mutate** (x86 bị xáo), chạy native được.
