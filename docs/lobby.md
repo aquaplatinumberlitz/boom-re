@@ -289,3 +289,22 @@ Dùng `winedbg --gdb` + gdb batch (xem `tools/wine_gdb.sh`; ổn định, đọc
 - **Việc còn lại để kênh hiện**: (1) đặt category record (+0xD0, u8 thứ 3) = một giá trị, rồi (2) làm tab khớp —
   hoặc kích hoạt `vf15` (phím đổi tab), hoặc tìm chỗ client tự chọn tab mặc định khi kênh tới (có thể cần 1 field/
   packet nữa). Thử nhanh: đặt +0xD0=0, vào stage 10, ép `sub_85718D` nhận a2=0 (hoặc bấm phím đổi tab) → ô sẽ nhận id.
+
+### ✅ XÁC NHẬN: kênh hiển thị được (2026-10-16, qua gdb-proxy)
+Ép mảng slot `stage+0x4C6C = {0,1,2,3}` + tab `stage+0x4C68 = 0` **sau khi On_14 nạp kênh** → 4 ô hiện
+**"Kenh 1".."Kenh 4"** với icon kênh (ảnh `docs/channel_display_ok.png`). Chứng minh: record opcode 14 + field
+(type=50/kind=18/max=100/category=0) + hàm vẽ `sub_854E1D` đều ĐÚNG; thiếu mỗi việc **điền mảng slot**.
+
+**Nút thắt gốc (đã chốt):** mảng slot `stage+0x4C6C` dựng bởi `sub_85718D`:
+- `vf44` (OnEnter) gọi `sub_85718D(this,-1)` → dựng lúc `CChannelInfo` còn RỖNG (kênh tới sau qua opcode 40→14).
+- `vf5` (mỗi frame) gọi `sub_85718D(this, v4)` **chỉ khi** `v4 != *(this+4854)`, với `v4 = sub_A84DFE(this+1878)`
+  = **lựa chọn của tab-control** (this+1878). Tab-control mặc định chọn -1 → `v4` không đổi → **không dựng lại**
+  khi kênh tới → ô trống.
+- Ngoài ra `vf15` (0x857458+, nút mũi tên đổi tab) cũng gọi `sub_85718D(this, tab±1)`.
+
+**Fix sạch (chưa làm):** làm client dựng lại mảng slot với tab khớp category kênh sau khi nhận kênh. Hướng:
+1. Tab-control (this+1878) phải có mục category khớp `category kênh (+0xD0)` và được chọn → `v4` đổi → `vf5` dựng lại.
+   Cần tìm hàm điền tab-control (nghi trong `sub_858AB4` vf44, chuỗi `aChBtChannel`) + category value mặc định.
+2. Hoặc gửi kênh (opcode 14) SỚM hơn (trước khi `vf44` dựng mảng slot) — nhưng client gửi opcode 40 lúc OnEnter nên khó.
+3. Hoặc (tạm, để chơi được): sau khi vào stage 10, người chơi bấm phím đổi tab (`vf15`) → dựng lại → kênh hiện.
+Record opcode 14 hiện mang type=50/kind=18/max=100/category(+0xD0)=0; cần chốt category + cơ chế chọn tab.
