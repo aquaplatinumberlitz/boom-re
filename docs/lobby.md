@@ -269,3 +269,23 @@ gửi thêm 1 packet. ⇒ client tự đổi sang stage 11; server cần xử l�
   chạy nhánh copy. Cần xác nhận runtime nhánh nào chạy và vì sao `vf19` vẫn vẽ trống (nghi field quyết định ô/trang
   hoặc 1 field hiển thị khác chưa set). Getter kênh (đều value-box, cùng stride 232): `sub_994A5A`(+0x4C kind),
   `sub_994D51`(+0x40 loại), `sub_994C91`(+0xC4), `sub_994A86/994A9F/9949F3`(chuỗi: tên/…).
+
+### Cập nhật 3: hàm vẽ THẬT của stage 10 + gate cuối (2026-10-16, qua gdb-proxy)
+Dùng `winedbg --gdb` + gdb batch (xem `tools/wine_gdb.sh`; ổn định, đọc bộ nhớ chuẩn — `x/2xb 0x400000`=`4d 5a`)
+đã xác định runtime:
+- **`CSelectServerDlg__vf19` (0x872672) KHÔNG phải hàm vẽ stage 10** (không hit). Hàm vẽ thật = **`sub_854E1D`**
+  (0x854E1D, gọi count-getter `sub_994A1D` 5360 lần/các frame từ 0x854EDD). Hàm **dựng mảng slot** = **`sub_85718D`**
+  (0x85718D). Mảng slot ở **`stage+0x4C6C` (this+4891 dword)**; `vf44` memset -1 lúc OnEnter.
+- **Dữ liệu kênh trong `CChannelInfo` (0xE60FD8) ĐÚNG HẾT** (giải value-box khớp giá trị gửi):
+  CH0 type(+0x40)=**50**, kind(+0x4C)=**18**, max(+0x34)=**100**. ⇒ record opcode 14 + bộ giải box chính xác.
+- **Gate cuối khiến ô trống** (trong `sub_85718D`): thêm kênh vào ô chỉ khi
+  `(u8)sub_994A9F(ch) == *(stage+0x4C68)` — **category kênh == tab đang chọn**. Runtime: **tab = -1**
+  (mặc định lúc dựng), **category kênh = 0** (= u8 thứ 3 của record, offset **+0xD0**, mình đang để 0)
+  → `0 != -1` → không kênh nào vào ô. (Kèm `sub_994C91==0` ok, `sub_994D51` so 0xC8, kind∈{10,18} ok.)
+  `sub_994A9F` đọc `info+232*i+232` = record[i]+0xD0 (record base = info+0x18).
+- **Tab (stage+0x4C68) chỉ đổi khỏi -1 qua UI**: `vf15` (0x857458+, gọi `sub_85718D(this, tab±1)` = nút mũi tên
+  đổi tab category), `vf5` (0x8592FA, click). Không thấy tự chọn tab lúc kênh tới. Vì (u8)category ∈ 0..255 không
+  bao giờ == tab -1, nên **phải có bước chọn tab category** (đưa tab về 0..255 khớp category kênh).
+- **Việc còn lại để kênh hiện**: (1) đặt category record (+0xD0, u8 thứ 3) = một giá trị, rồi (2) làm tab khớp —
+  hoặc kích hoạt `vf15` (phím đổi tab), hoặc tìm chỗ client tự chọn tab mặc định khi kênh tới (có thể cần 1 field/
+  packet nữa). Thử nhanh: đặt +0xD0=0, vào stage 10, ép `sub_85718D` nhận a2=0 (hoặc bấm phím đổi tab) → ô sẽ nhận id.

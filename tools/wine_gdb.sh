@@ -16,6 +16,10 @@ sleep 1; export DISPLAY=:77
   done ) &
 CLK=$!
 ( cd wine/Boom && rm -f CALog.log && cat "$CMDS" \
-  | env -u WAYLAND_DISPLAY WINEDEBUG=-all timeout "$SECS" winedbg --gdb 'Z:\home\admin\boom-re\wine\Boom\ca_fixed_patched.exe' > ../../$OUT/gdb.txt 2>&1 )
+  | env -u WAYLAND_DISPLAY WINEDEBUG=-all timeout "$SECS" winedbg --gdb 'Z:\home\admin\boom-re\wine\Boom\ca_fixed_patched.exe' > ../../$OUT/gdb.txt 2>&1 ) &
+GP=$!
+# screenshots near the end (channel screen should be up by then)
+( sleep $((SECS-20)); for t in 0 6 12; do sleep $t; import -window root "$OUT/gdbshot_$t.png" 2>/dev/null; done ) &
+wait $GP
 kill $CLK $XP 2>/dev/null
 grep -vE '^Wine-gdb> *$|warning: remote' "$OUT/gdb.txt" | grep -v '^$'
