@@ -222,3 +222,50 @@ Thứ tự ưu tiên code fakeserver (khi test động xác nhận): `on_opcode_
 - OnEnter gửi 303: `CStage__vf44` 0x6A3E34 (`SendPkt__Begin` 0x888462,
   `SendPkt__Send` 0x888609). Stage 11: ctor `CLobbyStage` 0x6B3EDD (size 0x5525C).
 - IDA DB chỉ đọc qua MCP idalib, không save. Disasm dài không in ra chat theo quy ước.
+
+## (c) Tại sao kẹt ở "vào kênh" — điều tra 2026-10-16 (chưa xong)
+
+Triệu chứng: vào được stage 10 (CALog `Sg - INT(dne:10)`), nhận opcode 14 (ghi `channel2_001.ssd`,
+không crash), **nhưng lưới 8 ô kênh (4×2, 5 trang) trống** → không click vào kênh được → kẹt.
+
+### Điều kiện click được một kênh — `sub_8570DB` (0x8570DB) 🟢
+Duyệt `CChannelInfo` (`dword_E60FD8`), chỉ nhận kênh `i` thỏa **cả 3**:
+- `sub_994A5A(info, i) == 10` — `0x994A5A`: đọc field `+0x4C` (u8), trả **10 nếu == 18**, else trả giá trị thô.
+  ⇒ **field +0x4C của record phải = 18** mới click được.
+- `sub_994D51(info, i) == a2` — `0x994D51`: field `+0x40` (u8); `a2` = loại kênh click (trong `sub_856BAC` so
+  với `0x80/0x82/0xC8`) ⇒ thử `+0x40 = 0x80`.
+- `sub_994C91(info, i) == 0` — `0x994C91`: field `+0xC4` (u32), phải 0.
+
+Trong record opcode 14 (`sub_994663`), 7 u8 lưu theo thứ tự vào `+0x28,+0x34,+0xD0,+0x40,+0x4C,+0x58,+0x64`.
+Nên u8 thứ 4 = `+0x40`, u8 thứ 5 = `+0x4C`. Đã sửa `channel_list()`: `u8×7 = [0,0,0,0x80,18,0,0]`.
+
+### Vẫn trống sau khi đặt kind=18 — phần chưa giải 🟡
+- Dữ liệu opcode 14 vào **`CChannelCache` (`dword_E61010`)**; click/join đọc **`CChannelInfo` (`dword_E60FD8`)**
+  — hai object khác nhau. `CStage__On_14` (0x99514B) copy bằng vòng `sub_9950DA(this=CChannelInfo, i, -1,
+  sub_993F7B(i))` nhưng `sub_9950DA` (0x9950DA) chỉ ghi value-box vào **mảng chỉ mục** `this+3*i+59398` /
+  `+62470`, **không** copy record 232-byte sang. Vậy record 232-byte trong `CChannelInfo` được điền ở chỗ khác
+  (chưa truy ra — có thể `sub_994FB3` khi record đã tồn tại, hoặc broadcast opcode 7/16).
+- Lưới ô kênh dựng ở `sub_858AB4` (0x858AB4, chuỗi `aChBtChannel`/`ChannelTab`) — lớn (~7.6KB decompile), chưa đọc hết.
+- Field đều là **value-box** (`sub_413F32` set / `sub_414625` get, 6 byte, có `sub_A21D00` + XOR) → đọc runtime
+  phải giải mã, không đọc thẳng bộ nhớ được.
+
+### Luồng join sau khi click — `sub_856BAC` (0x856BAC) 🟢 (chưa cần tới vì chưa click được)
+Gọi mỗi frame từ `CSelectServerStage__vf5`. Khi chọn kênh hợp lệ: gửi **opcode 71** (`sub_88849F(71)` +
+`EncodeBool`), tính toán, **đặt `this[5915]=1`**, `sub_8F391D(dword_E6092C, 11)` (vào lobby) hoặc `(…, 20)` (square),
+gửi thêm 1 packet. ⇒ client tự đổi sang stage 11; server cần xử lý opcode 71 + trả `opcode 7` thành công
+(định dạng ở mục (a2)/(a3)) để không bị `ErrDisconnect` (do `On_7` đòi `[5915]==1`).
+
+### Bước tiếp đề xuất
+1. Runtime: break `sub_858AB4` hoặc dump `CChannelInfo`/`CChannelCache` sau On_14, giải value-box để xem field
+   nào quyết định "kênh vào ô nào" (nghi một field = số thứ tự ô/trang).
+2. Tìm nơi điền record 232-byte của `CChannelInfo` (xref ghi `dword_E60FD8 + 232*i`).
+3. Khi ô kênh hiện + click được: thêm handler opcode 71 + reply opcode 7 (thành công) vào `fakeserver.py`.
+
+### Cập nhật: hàm vẽ ô + điều kiện copy (2026-10-16)
+- **Hàm vẽ lưới ô kênh = `CSelectServerDlg__vf19` (0x872672) + `sub_8729D0` (0x8729D0)** (đọc `dword_E60FD8`,
+  class `CSelectServerDlg` 0x872xxx). Đây là nơi cần đọc tiếp để biết field nào quyết định ô hiện/trống.
+- `sub_9950DA`: nếu `sub_414543(cache_record + 0x1C) == -1` → chỉ set mảng chỉ mục; **else `sub_994FB3`** (0x994FB3)
+  copy record cache→Info (value-box các offset +40..+220). Record fakeserver gửi có `+0x1C = i+1` (≠ -1) ⇒ đáng lẽ
+  chạy nhánh copy. Cần xác nhận runtime nhánh nào chạy và vì sao `vf19` vẫn vẽ trống (nghi field quyết định ô/trang
+  hoặc 1 field hiển thị khác chưa set). Getter kênh (đều value-box, cùng stride 232): `sub_994A5A`(+0x4C kind),
+  `sub_994D51`(+0x40 loại), `sub_994C91`(+0xC4), `sub_994A86/994A9F/9949F3`(chuỗi: tên/…).

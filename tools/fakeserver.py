@@ -50,9 +50,14 @@ def channel_list(names=("Kenh 1", "Kenh 2", "Kenh 3", "Kenh 4")):
     (sub_994663): str name, u32, u8 x7, u16 x2, u8 x4, u32 x2}. tag selects sub_A62580 decoding: 0 = raw copy,
     1 = sub_A0B480-encoded; anything else leaves the sub-reader empty and the client overruns CChannelCache
     (crash in sub_414059). Field meanings: unknown yet (zeros except a running id)."""
+    # bản ghi -> CChannelInfo (232 byte/kênh). Để kênh CLICK ĐƯỢC, sub_8570DB đòi mỗi kênh:
+    #   +0x4C (u8 thứ 5) == 18  -> sub_994A5A trả 10 (0x994A5A: get(+76)==18 ? 10 : raw);
+    #   +0x40 (u8 thứ 4) == loại kênh click (sub_994D51; sub_856BAC so với 0x80/0x82/0xC8) -> thử 0x80 (thường);
+    #   +0xC4 (u32 thứ 2) == 0 (sub_994C91). u8×7 lưu vào +0x28,+0x34,+0xD0,+0x40,+0x4C,+0x58,+0x64 theo thứ tự đọc.
     inner = b"\x00" + struct.pack("<H", len(names))
     for i, n in enumerate(names):
-        inner += _lstr(n) + struct.pack("<I", i + 1) + bytes(7) + struct.pack("<HH", 0, 0) + bytes(4) + struct.pack("<II", 0, 0)
+        u8x7 = bytes([0, 0, 0, 0x80, 18, 0, 0])  # [3]=+0x40 type=0x80, [4]=+0x4C kind=18 (bắt buộc để click được)
+        inner += _lstr(n) + struct.pack("<I", i + 1) + u8x7 + struct.pack("<HH", 0, 0) + bytes(4) + struct.pack("<II", 0, 0)
     return obf_body(14, ("u8", 1), ("blob", inner))
 
 
