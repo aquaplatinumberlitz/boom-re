@@ -1,9 +1,12 @@
-"""Read memory of the running ca_fixed_patched (Wine, new-wow64) via /proc/PID/mem, and decode the game's
-obfuscated "value boxes". Far more reliable than winedbg scripting for inspecting live state.
+"""Read memory of the running ca_fixed_patched via /proc/PID/mem, and decode the game's obfuscated "value boxes".
+
+NOTE: under new-wow64 Wine (this setup) the 32-bit game memory is NOT readable this way: the process found by
+find_pid() returns EIO for game VAs (e.g. 0xE60838). Use tools/wine_gdb.sh (winedbg --gdb) for live reads; the
+decoders here (vbox/u8/u32) remain valid for bytes read through gdb.
 
 A value box (set sub_413F32 / get sub_414625, 0x413F32/0x414625): the box OBJECT is 12 bytes; obj+8 points to a
-6-byte buffer on the heap. For a u8 field: val = buf[0] ^ (buf[1] or 42). For wider fields the get rolls a key
-across buf[0..] starting from buf[4]; implemented below (u8/u16/u32).
+buffer on the heap. u8 (getter sub_414625): val = buf[0] ^ (buf[1] or 42). u32 (getter sub_414543): key k = buf[4];
+for i in 0..3: k = k or 42; out[i] = buf[i] ^ k; k = (k + buf[i] + 42) & 0xFF. (u16 getter not checked yet.)
 
 usage:
   python3 tools/wine_peek.py <hexVA> [n]            raw hex dump of n bytes (default 16) at 32-bit VA
@@ -38,21 +41,23 @@ class Mem:
         return struct.unpack("<I", self.read(va, 4))[0]
 
 
+def decode_box(b, kind="u8"):
+    """Decode a value-box buffer `b` (bytes at *(obj+8))."""
+    if kind == "u8":
+        return b[0] ^ (b[1] or 42)
+    if kind == "u32":
+        k, out = b[4], []
+        for i in range(4):
+            k = k or 42
+            out.append(b[i] ^ k)
+            k = (k + b[i] + 42) & 0xFF
+        return int.from_bytes(bytes(out), "little")
+    raise ValueError(f"{kind}: getter not verified")
+
+
 def vbox(mem, obj, kind="u8"):
     """Decode a value box object at `obj` (obj+8 -> buffer)."""
-    buf = mem.u32(obj + 8)
-    b = mem.read(buf, 8)
-    # replicate the getter's rolling decode
-    out = []
-    key = b[1]
-    n = {"u8": 1, "u16": 2, "u32": 4}[kind]
-    k = key if key else 42
-    for i in range(n):
-        out.append(b[i] ^ k)
-        k = (k + b[i] + 42) & 0xFF
-        if k == 0:
-            k = 42
-    return int.from_bytes(bytes(out), "little")
+    return decode_box(mem.read(mem.u32(obj + 8), 8), kind)
 
 
 def main():
@@ -68,13 +73,13 @@ def main():
         print(f"CChannelInfo @ {info:#x}, count(+0xC) = {cnt}")
         n = int(a[1]) if len(a) > 1 else min(cnt if cnt < 64 else 8, 8)
         for i in range(n):
-            rec = info + 0x18 + 0xE8 * i
-            typ = vbox(mem, rec + 0x40, "u8")
-            kind = vbox(mem, rec + 0x4C, "u8")
-            mx = vbox(mem, rec + 0x34, "u8")
-            # current users live in a separate 12-byte array at info + 0x3A018 + 12*i
-            cur = vbox(mem, info + 0x3A018 + 0xC * i, "u32")
-            print(f"  ch[{i}] type(+0x40)={typ} kind(+0x4C)={kind} max(+0x34)={mx} cur={cur}")
+            g = info + 0xE8 * i  # getter base: sub_994xxx read info + 232*i + G (stored record = g + 0x18)
+            mx = vbox(mem, g + 0x34, "u32")    # sub_994D38 max users
+            typ = vbox(mem, g + 0x40)          # sub_994D51 type
+            kind = vbox(mem, g + 0x4C)         # sub_994A5A kind (18 -> 10)
+            cat = vbox(mem, g + 0xE8)          # sub_994A9F category
+            cur = vbox(mem, info + 0x3A018 + 0xC * i, "u32")  # sub_994D7E current users (opcode 16)
+            print(f"  ch[{i}] max={mx} type={typ} kind={kind} category={cat} cur={cur}")
     else:
         va = int(a[0], 16)
         n = int(a[1]) if len(a) > 1 else 16

@@ -45,39 +45,36 @@ def login_net_info(host="127.0.0.1", ports=(0, 0, 0)):
     return obf_body(15, ("blob", inner))
 
 
-def channel_list(names=("Kenh 1", "Kenh 2", "Kenh 3", "Kenh 4")):
+def channel_list(names=("Kenh 1", "Kenh 2", "Kenh 3", "Kenh 4"), max_users=100):
     """CStage__On_14 -> sub_99489D: u8 1 = new data (cached by the client), blob {u8 tag, u16 n, n records
     (sub_994663): str name, u32, u8 x7, u16 x2, u8 x4, u32 x2}. tag selects sub_A62580 decoding: 0 = raw copy,
     1 = sub_A0B480-encoded; anything else leaves the sub-reader empty and the client overruns CChannelCache
-    (crash in sub_414059). Field meanings: unknown yet (zeros except a running id)."""
-    # bản ghi -> CChannelInfo (232 byte/kênh). Để kênh CLICK ĐƯỢC, sub_8570DB đòi mỗi kênh:
-    #   +0x4C (u8 thứ 5) == 18  -> sub_994A5A trả 10 (0x994A5A: get(+76)==18 ? 10 : raw);
-    #   +0x40 (u8 thứ 4) == loại kênh click (sub_994D51; sub_856BAC so với 0x80/0x82/0xC8) -> thử 0x80 (thường);
-    #   +0xC4 (u32 thứ 2) == 0 (sub_994C91). u8×7 lưu vào +0x28,+0x34,+0xD0,+0x40,+0x4C,+0x58,+0x64 theo thứ tự đọc.
-    # record -> CChannelInfo (232 byte/kênh). u8×7 lưu vào +0x28,+0x34,+0xD0,+0x40,+0x4C,+0x58,+0x64 (theo thứ tự đọc).
-    # Để ô HIỆN (CSelectServerDlg__vf19 0x872672):
-    #   +0x40 (u8[3], type) phải qua sub_66F4B4: type ∈ 50..65 hoặc 70  (0x80 bị loại!) -> dùng 50;
-    #   +0x4C (u8[4], kind) == 18 (sub_994A86/sub_994A5A);  +0x34 (u8[1], max users) > current (opcode 16 +0x3A018);
-    #   tên (sub_9949F3) phải có. Để CLICK được (sub_8570DB): cùng 3 điều kiện + +0xC4(u32[1])==0.
+    (crash in sub_414059).
+
+    sub_994663 stores the record at rec = info + 0x18 + 232*i (S = offset in rec); the getters sub_994xxx read
+    info + 232*i + G, so G = S + 0x18. Map (verified in IDA + live gdb on the slot builder sub_85718D):
+      u32     S=0x1C G=0x34 sub_994D38  MAX USERS (renderer/sub_857458: channel usable while cur < max)
+      u8[0]   S=0x28 G=0x40 sub_994D51  channel type (join sub_856BAC: 0x80/0x82/0xC8; builder mode 0 needs != 0xC8;
+                                        renderer: 50..65|70 adds an extra sub_66F4E4 check)
+      u8[1]   S=0x34 G=0x4C sub_994A5A  kind: 18 -> reads as 10; builder + click need 10/18
+      u8[2]   S=0xD0 G=0xE8 sub_994A9F  category: must == selected tab (0)
+      u8[3..6], u16 x2, u8x4[0..2]      not read by the channel screen as far as known
+      u8x4[3] S=0xAC G=0xC4 sub_994C91  must be 0 for builder/click
+      u32 x2  S=0xB8/0xC4 G=0xD0/0xDC  unknown"""
     inner = b"\x00" + struct.pack("<H", len(names))
-    for i, n in enumerate(names):
-        # Getter offsets (sub_994xxx read info + 232*i + G) sit 0x18 above the stored record (info+0x18+232*i+S),
-        # verified live with gdb on the slot builder sub_85718D:
-        #   u8[0] S=0x28 -> G=0x40 sub_994D51 (join type; slot builder mode 0 needs != 0xC8)
-        #   u8[1] S=0x34 -> G=0x4C sub_994A5A (kind; slot builder + click need 18 -> returns 10)
-        #   u8[2] S=0xD0 -> G=0xE8 sub_994A9F (category; must == selected tab = 0)
-        #   u8x4[3] S=0xAC -> G=0xC4 sub_994C91 (must be 0)
-        u8x7 = bytes([0, 18, 0, 50, 18, 0, 0])
-        inner += _lstr(n) + struct.pack("<I", i + 1) + u8x7 + struct.pack("<HH", 0, 0) + bytes(4) + struct.pack("<II", 0, 0)
+    for n in names:
+        u8x7 = bytes([0, 18, 0, 0, 0, 0, 0])  # type 0, kind 18, category 0
+        inner += _lstr(n) + struct.pack("<I", max_users) + u8x7 + struct.pack("<HH", 0, 0) + bytes(4) + struct.pack("<II", 0, 0)
     return obf_body(14, ("u8", 1), ("blob", inner))
 
 
 def channel_status(users=(10, 20, 30, 40)):
-    """CSelectServerStage__On_16: u8 tag (sub_A62580: 0 = raw) + blob {u16 n, n x (u16, u32)} -> sub_9949C6.
-    Without the tag the sub-reader stays empty, count is garbage and the client overruns (crash in sub_413F32)."""
+    """CSelectServerStage__On_16: u8 tag (sub_A62580: 0 = raw) + blob {u16 n, n x (u16, u32)} -> sub_9949C6(i, ..):
+    entry i (implicit loop index) = u16 CURRENT USERS -> info+0x3A018+12i (sub_994D7E), u32 -> info+0x3D018+12i
+    (sub_994DA3, meaning unknown). Without the tag the sub-reader stays empty and the client overruns."""
     inner = b"\x00" + struct.pack("<H", len(users))
-    for i, u in enumerate(users):
-        inner += struct.pack("<HI", i, u)
+    for u in users:
+        inner += struct.pack("<HI", u, 0)
     return obf_body(16, ("blob", inner))
 
 

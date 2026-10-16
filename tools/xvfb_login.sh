@@ -3,7 +3,7 @@
 # usage: tools/xvfb_login.sh [user] [pass] [seconds=60]   -> logs/xvfb/login_*.png
 cd "$(dirname "$0")/.."
 U=${1:-tester}; P=${2:-1234}; SECS=${3:-60}; OUT=logs/xvfb; mkdir -p $OUT; rm -f $OUT/login_*.png
-pkill -9 -f ca_fixed_patched 2>/dev/null; pkill -9 -f 'Xvfb :77' 2>/dev/null; sleep 1  # drop leftovers (mutex)
+pkill -9 -f '[c]a_fixed_patched' 2>/dev/null; pkill -9 -f '[X]vfb :77' 2>/dev/null; sleep 1  # drop leftovers (mutex)
 Xvfb :77 -screen 0 1024x768x24 -nolisten tcp >/dev/null 2>&1 & XPID=$!
 sleep 1
 export DISPLAY=:77

@@ -231,13 +231,13 @@ không crash), **nhưng lưới 8 ô kênh (4×2, 5 trang) trống** → không 
 ### Điều kiện click được một kênh — `sub_8570DB` (0x8570DB) 🟢
 Duyệt `CChannelInfo` (`dword_E60FD8`), chỉ nhận kênh `i` thỏa **cả 3**:
 - `sub_994A5A(info, i) == 10` — `0x994A5A`: đọc field `+0x4C` (u8), trả **10 nếu == 18**, else trả giá trị thô.
-  ⇒ **field +0x4C của record phải = 18** mới click được.
+  ⇒ **field +0x4C của record phải = 18** mới click được. **⚠ SAI — xem "Errata audit" cuối file.**
 - `sub_994D51(info, i) == a2` — `0x994D51`: field `+0x40` (u8); `a2` = loại kênh click (trong `sub_856BAC` so
-  với `0x80/0x82/0xC8`) ⇒ thử `+0x40 = 0x80`.
+  với `0x80/0x82/0xC8`) ⇒ thử `+0x40 = 0x80`. **⚠ SAI — xem "Errata audit" cuối file.**
 - `sub_994C91(info, i) == 0` — `0x994C91`: field `+0xC4` (u32), phải 0.
 
 Trong record opcode 14 (`sub_994663`), 7 u8 lưu theo thứ tự vào `+0x28,+0x34,+0xD0,+0x40,+0x4C,+0x58,+0x64`.
-Nên u8 thứ 4 = `+0x40`, u8 thứ 5 = `+0x4C`. Đã sửa `channel_list()`: `u8×7 = [0,0,0,0x80,18,0,0]`.
+Nên u8 thứ 4 = `+0x40`, u8 thứ 5 = `+0x4C`. Đã sửa `channel_list()`: `u8×7 = [0,0,0,0x80,18,0,0]`. **⚠ SAI — xem "Errata audit" cuối file.**
 
 ### Vẫn trống sau khi đặt kind=18 — phần chưa giải 🟡
 - Dữ liệu opcode 14 vào **`CChannelCache` (`dword_E61010`)**; click/join đọc **`CChannelInfo` (`dword_E60FD8`)**
@@ -277,13 +277,13 @@ Dùng `winedbg --gdb` + gdb batch (xem `tools/wine_gdb.sh`; ổn định, đọc
   (0x854E1D, gọi count-getter `sub_994A1D` 5360 lần/các frame từ 0x854EDD). Hàm **dựng mảng slot** = **`sub_85718D`**
   (0x85718D). Mảng slot ở **`stage+0x4C6C` (this+4891 dword)**; `vf44` memset -1 lúc OnEnter.
 - **Dữ liệu kênh trong `CChannelInfo` (0xE60FD8) ĐÚNG HẾT** (giải value-box khớp giá trị gửi):
-  CH0 type(+0x40)=**50**, kind(+0x4C)=**18**, max(+0x34)=**100**. ⇒ record opcode 14 + bộ giải box chính xác.
+  CH0 type(+0x40)=**50**, kind(+0x4C)=**18**, max(+0x34)=**100**. ⇒ record opcode 14 + bộ giải box chính xác. **⚠ SAI — xem "Errata audit" cuối file.**
 - **Gate cuối khiến ô trống** (trong `sub_85718D`): thêm kênh vào ô chỉ khi
   `(u8)sub_994A9F(ch) == *(stage+0x4C68)` — **category kênh == tab đang chọn**. Runtime: **tab = -1**
   (mặc định lúc dựng), **category kênh = 0** (= u8 thứ 3 của record, offset **+0xD0**, mình đang để 0)
   → `0 != -1` → không kênh nào vào ô. (Kèm `sub_994C91==0` ok, `sub_994D51` so 0xC8, kind∈{10,18} ok.)
   `sub_994A9F` đọc `info+232*i+232` = record[i]+0xD0 (record base = info+0x18).
-- **Tab (stage+0x4C68) chỉ đổi khỏi -1 qua UI**: `vf15` (0x857458+, gọi `sub_85718D(this, tab±1)` = nút mũi tên
+- **Tab (stage+0x4C68) chỉ đổi khỏi -1 qua UI**: `vf15` (0x857458+, gọi `sub_85718D(this, tab±1)` = nút mũi tên **⚠ SAI — xem "Errata audit" cuối file.**
   đổi tab category), `vf5` (0x8592FA, click). Không thấy tự chọn tab lúc kênh tới. Vì (u8)category ∈ 0..255 không
   bao giờ == tab -1, nên **phải có bước chọn tab category** (đưa tab về 0..255 khớp category kênh).
 - **Việc còn lại để kênh hiện**: (1) đặt category record (+0xD0, u8 thứ 3) = một giá trị, rồi (2) làm tab khớp —
@@ -293,21 +293,21 @@ Dùng `winedbg --gdb` + gdb batch (xem `tools/wine_gdb.sh`; ổn định, đọc
 ### ✅ XÁC NHẬN: kênh hiển thị được (2026-10-16, qua gdb-proxy)
 Ép mảng slot `stage+0x4C6C = {0,1,2,3}` + tab `stage+0x4C68 = 0` **sau khi On_14 nạp kênh** → 4 ô hiện
 **"Kenh 1".."Kenh 4"** với icon kênh (ảnh `docs/channel_display_ok.png`). Chứng minh: record opcode 14 + field
-(type=50/kind=18/max=100/category=0) + hàm vẽ `sub_854E1D` đều ĐÚNG; thiếu mỗi việc **điền mảng slot**.
+(type=50/kind=18/max=100/category=0) + hàm vẽ `sub_854E1D` đều ĐÚNG; thiếu mỗi việc **điền mảng slot**. **⚠ SAI — xem "Errata audit" cuối file.**
 
 **Nút thắt gốc (đã chốt):** mảng slot `stage+0x4C6C` dựng bởi `sub_85718D`:
 - `vf44` (OnEnter) gọi `sub_85718D(this,-1)` → dựng lúc `CChannelInfo` còn RỖNG (kênh tới sau qua opcode 40→14).
-- `vf5` (mỗi frame) gọi `sub_85718D(this, v4)` **chỉ khi** `v4 != *(this+4854)`, với `v4 = sub_A84DFE(this+1878)`
+- `vf5` (mỗi frame) gọi `sub_85718D(this, v4)` **chỉ khi** `v4 != *(this+4854)`, với `v4 = sub_A84DFE(this+1878)` **⚠ SAI — xem "Errata audit" cuối file.**
   = **lựa chọn của tab-control** (this+1878). Tab-control mặc định chọn -1 → `v4` không đổi → **không dựng lại**
   khi kênh tới → ô trống.
-- Ngoài ra `vf15` (0x857458+, nút mũi tên đổi tab) cũng gọi `sub_85718D(this, tab±1)`.
+- Ngoài ra `vf15` (0x857458+, nút mũi tên đổi tab) cũng gọi `sub_85718D(this, tab±1)`. **⚠ SAI — xem "Errata audit" cuối file.**
 
 **Fix sạch (chưa làm):** làm client dựng lại mảng slot với tab khớp category kênh sau khi nhận kênh. Hướng:
 1. Tab-control (this+1878) phải có mục category khớp `category kênh (+0xD0)` và được chọn → `v4` đổi → `vf5` dựng lại.
    Cần tìm hàm điền tab-control (nghi trong `sub_858AB4` vf44, chuỗi `aChBtChannel`) + category value mặc định.
 2. Hoặc gửi kênh (opcode 14) SỚM hơn (trước khi `vf44` dựng mảng slot) — nhưng client gửi opcode 40 lúc OnEnter nên khó.
 3. Hoặc (tạm, để chơi được): sau khi vào stage 10, người chơi bấm phím đổi tab (`vf15`) → dựng lại → kênh hiện.
-Record opcode 14 hiện mang type=50/kind=18/max=100/category(+0xD0)=0; cần chốt category + cơ chế chọn tab.
+Record opcode 14 hiện mang type=50/kind=18/max=100/category(+0xD0)=0; cần chốt category + cơ chế chọn tab. **⚠ SAI — xem "Errata audit" cuối file.**
 
 ### Cập nhật 4: NGUỒN số tab + cơ chế dựng lại (2026-10-16) — cơ chế đầy đủ
 - **Số tab category = `sub_854A7D()` = `*(CShareContext + 456)`** (`CShareContext` = `dword_E60E54`, singleton session).
@@ -320,8 +320,66 @@ Record opcode 14 hiện mang type=50/kind=18/max=100/category(+0xD0)=0; cần ch
   ⇒ **ô kênh chỉ dựng lại khi CHỌN một category tab** (bắn sự kiện 900). Không có tương tác → ô giữ nguyên (trống
   từ lúc OnEnter khi kênh chưa tới).
 - Builder `sub_85718D` lọc: `(u8)sub_994A9F(ch)(category +0xD0) == tab v4` + `sub_994C91(ch)(+0xC4)==0` +
-  `sub_994D51(ch)(type +0x40)` so 0xC8 + kind(+0x4C)∈{10,18}. ⇒ **category kênh (+0xD0) phải == chỉ số tab được chọn.**
+  `sub_994D51(ch)(type +0x40)` so 0xC8 + kind(+0x4C)∈{10,18}. ⇒ **category kênh (+0xD0) phải == chỉ số tab được chọn.** **⚠ SAI — xem "Errata audit" cuối file.**
 
 **Để kênh tự hiện cần:** (1) số tab login > 0 (đã đặt 1); (2) category kênh (+0xD0) khớp một tab; (3) tab được chọn
 → bắn sự kiện 900 → vf5 dựng lại. Còn phải xác minh: tab-control (this+1878) có tự chọn tab 0 khi vào màn không, hay
 người chơi phải click tab/mũi tên category (nút `<` `>` ở đầu màn?) để bắn sự kiện 900. Đây là bước cuối cùng.
+
+### ✅ Cập nhật 5: kênh TỰ HIỆN — patch client + sửa offset (2026-10-16)
+Ảnh: `docs/channel_autoshow.png` (login → màn kênh hiện "Kenh 1".."Kenh 4", **không click gì**).
+
+1. **Patch client (hook `.devirt`)** — `tools/devirt.py`, danh sách `HOOKS` (cơ chế mới: trampoline, không cần VM jmp):
+   site `0x854B5B` (cuối `CSelectServerStage__On_16`, lệnh `call sub_A62530` = huỷ blob, `ecx=&v6` đã đặt sẵn) →
+   `jmp cave`. Cave: chạy lại `call sub_A62530`; `pushad/pushfd`; `stage = *(*(0xE60838)+0xD4)` (bỏ qua nếu 0);
+   `push 0; mov ecx, stage; call sub_85718D` (__thiscall, ret 4); `popfd/popad`; `jmp 0x854B60` (epilog gốc).
+   An toàn vì On_16 (0x854ADC) chỉ được gọi từ `CSelectServerStage__OnPacket` (0x859CDA) → stage hiện tại chắc chắn là
+   CSelectServerStage. Không có nhảy nào vào 0x854B5B; nhánh "0 kênh" (`jz 0x854B60`) bỏ qua hook (không cần dựng).
+   Kiểm chứng gdb: `sub_85718D` được gọi 2 lần — OnEnter `a2=-1` và hook `a2=0` (mode `[stage+0x64F0]=0`).
+2. **Lỗi offset khiến hook dựng ra 0 ô** (gdb trên gate của `sub_85718D`): `sub_994A9F`=0 khớp tab 0,
+   `sub_994C91`=0, `sub_994D51`=0, nhưng **`sub_994A5A`=100** (cần 10/18). Lý do: getter đọc `info+232*i+G`, record lưu ở
+   `info+0x18+232*i+S` ⇒ **G = S + 0x18**; getter `+0x4C` = S `0x34` = **u8[1]** (fakeserver để 100). Sửa u8[1]=18 → 4 ô.
+
+### Errata audit các commit "Claude Opus 4.8" (7e4a395, 3447c1f, ba8badc, 4235925, 03b7b2c, e4c591c, bb2b2ca)
+Lỗi gốc chung: **lẫn hai hệ offset**. Offset lưu trong `sub_994663` (`[esi+S]`, esi = record = `info+0x18+232*i`)
+thì đúng; nhưng offset đọc ra từ getter (`this+232*a2+G`, this = `info`) lại bị ghi như thể là S. Bảng đúng
+(kiểm trong IDA: `lea ecx,[esi+S]` của `sub_994663` + decompile getter; kiểm runtime bằng gdb):
+
+| field gói 14 | S (record) | G (getter) | getter | ý nghĩa đã kiểm |
+|---|---|---|---|---|
+| u32 (sau tên) | 0x1C | 0x34 | `sub_994D38` (u32) | **MAX USERS**: renderer `sub_854E1D` + `sub_857458` coi kênh dùng được khi `cur < max` |
+| u8[0] | 0x28 | 0x40 | `sub_994D51` | **loại kênh**: join `sub_856BAC` so 0x80/0x82/0xC8; builder mode 0 cần ≠0xC8; renderer: 50..65/70 → thêm check `sub_66F4E4`; ==0x82 đổi skin |
+| u8[1] | 0x34 | 0x4C | `sub_994A5A`/`sub_994A86` | **kind**: 18 → đọc ra 10; builder/click cần 10/18 |
+| u8[2] | 0xD0 | 0xE8 | `sub_994A9F` | **category** == tab đang chọn |
+| u8x4[3] | 0xAC | 0xC4 | `sub_994C91` | phải 0 |
+| opcode 16 u16 | — | info+0x3A018+12i | `sub_994D7E` | **CUR USERS** |
+| opcode 16 u32 | — | info+0x3D018+12i | `sub_994DA3` | chưa rõ |
+
+Các khẳng định sai cụ thể (đã gắn ⚠ ở trên):
+- "+0x4C = u8 thứ 5 = kind", "+0x40 = u8 thứ 4 = type", "max = u8[1] (+0x34)", "sub_994C91 = u32 thứ 2" — sai hệ
+  offset; đúng theo bảng trên. Hệ quả: fakeserver đặt kind=18 vào u8[4] (vô dụng) và 100 vào u8[1] (chính là kind) →
+  builder loại mọi kênh. `max` thật là u32, fakeserver để `i+1`.
+- "type phải ∈ 50..65 hoặc 70 mới hiện (0x80 bị loại)" — lấy từ `CSelectServerDlg__vf19` (hàm của dialog khác, chính
+  4.8 sau đó xác nhận không chạy ở stage 10). Trong renderer thật, `sub_66F4B4` chỉ thêm một điều kiện disable; type=0
+  vẫn hiện (đã chạy thử: u8[0]=u8[3]=0 vẫn hiện đủ 4 kênh).
+- "giải value-box khớp ⇒ record + bộ giải chính xác" — chỉ chứng minh u8 round-trip ở offset lưu, không chứng minh ý nghĩa.
+  **`tools/wine_peek.py`: bộ giải u32 sai** (dùng khoá `buf[1]`, getter `sub_414543` dùng `buf[4]`) — đã sửa + self-test.
+  Kiểm runtime (gdb, `x/8xb` buffer box): CH0 max (G 0x34) giải ra **100**, cur (info+0x3A018) ra **10** = đúng giá trị gửi; builder slotcount=4.
+  Đồng thời `/proc/PID/mem` **không đọc được** bộ nhớ game trên new-wow64 (EIO) — docstring cũ nói "reliable" là sai.
+- "`vf15` (0x857458) = nút mũi tên, gọi `sub_85718D(this, tab±1)`" — sai: `sub_857458` tìm kênh có type==a2, `cur<max`,
+  `sub_994C15>=a3`, rồi gọi `sub_85718D(this, *(this+6116))` (giống chọn kênh nhanh), không phải ±1.
+- "`vf5` gọi mỗi frame" (Cập nhật 3) — sai, chính Cập nhật 4 đã sửa: `vf5` là handler sự kiện (900 = đổi tab).
+- opcode 16 (`channel_status`, có từ commit OpenCode b80cc27, 4.8 audit cho qua): gửi `(u16 i, u32 users)` — sai nghĩa;
+  index là bộ đếm vòng lặp, u16 = cur users. Đã sửa thành `(u16 users, u32 0)`.
+- `tools/wine_gdb.sh`: cửa sổ login cố định ~42 s quá ngắn khi chạy dưới gdb (khởi động chậm ~3×) → nhiều lần không vào
+  được stage 10. Đã đổi thành thử lại tới khi CALog có `dne:10`. `pkill -f ca_fixed_patched` đổi sang `[c]a_…` để
+  không tự giết shell gọi nó.
+
+Những phần 4.8 làm **đúng** (đã kiểm lại): tag byte opcode 14/16 (xác nhận OpenCode); renderer thật = `sub_854E1D`,
+builder = `sub_85718D`, mảng slot `stage+0x4C6C`, tab `stage+0x4C68`; category = `sub_994A9F` = S 0xD0; số tab =
+`*(CShareContext+456)` từ gói login (runtime: với 1 tab, `sub_85718D(…,0)` được chấp nhận); sự kiện 900 = đổi tab;
+offset lưu trong `sub_994663`; kỹ thuật `winedbg --gdb`.
+
+**Bước tiếp (vào kênh):** click ô → `sub_8570DB` cần `sub_994D51 == loại click` (u8[0], hiện 0; `sub_856BAC` gợi ý 0x80
+= kênh thường) → join gửi opcode 71 → server trả opcode 7 thành công.
+
