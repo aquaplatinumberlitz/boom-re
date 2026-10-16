@@ -117,3 +117,24 @@ Lựa chọn:
 2. Tái tạo môi trường mà VM cần (dữ liệu stack/vùng nhớ Themida lúc chạy) — chưa rõ khả thi.
 3. Quay về client gốc (Themida chạy thật, VM chạy đúng) + patch bộ nhớ, giải bài toán hiển thị:
    Wine bản có WoW64 cũ (runner Lutris/wine-ge có lib32) hoặc Windows có GPU.
+
+## Debug bản dump: dùng `winedbg --gdb`, không dùng winedbg tương tác
+
+Kết luận thực nghiệm (đã kiểm chứng 2026-10-16): vấn đề nằm ở **frontend điều khiển**,
+không phải engine đọc bộ nhớ (winedbg luôn đọc được). Cùng một động cơ, đổi tay lái:
+
+| Chế độ | Cách gọi | Đánh giá |
+|---|---|---|
+| winedbg tương tác | lệnh `break/cont/info regs` qua stdin | ❌ chập chờn: breakpoint báo `Invalid address`, process chết trước khi hit, script `cont/bt` lệch pha sau exception đầu tiên |
+| `winedbg --gdb` + gdb batch | `winedbg --gdb` làm gdb-proxy (spawn gdb 18.x thật, chuyển lệnh sang Win32 API), nạp sẵn file lệnh gdb | ✅ ổn định, lặp lại được: `break *0x8F2146` hit đúng `0x008f2146`, `x/2xb 0x400000` → `0x4d 0x5a` |
+
+Cách dùng chuẩn (`tools/wine_gdb.sh <gdb_cmd_file> [user] [pass] [secs]` → `logs/xvfb/gdb.txt`):
+```sh
+printf 'set pagination off\nbreak *0x8F2146\ncontinue\nx/2xb 0x400000\nquit\n' > /tmp/cmds.gdb
+tools/wine_gdb.sh /tmp/cmds.gdb tester 1234 80
+```
+Script tự dựng Xvfb :77 riêng và gõ đăng nhập lại vài lần (retry) trong nền — vì login
+tự động tới đúng màn hình là chuyện riêng, không liên quan độ ổn định của debugger.
+Phạm vi đã khẳng định: đặt breakpoint + đọc bộ nhớ theo script. Chưa khẳng định:
+sửa hết mọi vướng runtime (VD: `set`-ghi bộ nhớ, watchpoint phần cứng vẫn cần thử
+riêng từng cái).

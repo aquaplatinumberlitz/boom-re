@@ -172,19 +172,34 @@ Cài đặt mẫu: `tools/fakeserver.py` (`hello_packet`, `login_replies`, `Sess
 - Rời màn Login (`sub_84FABC`): đặt tên file cache kênh `channel2_%03d%s.ssd` (`sub_993EF4`), client gửi opcode 7 (lớn, `sub_98E763`),
   rồi `sub_8F391D(10)`.
 
-### Màn chọn kênh (stage 10, `CSelectServerStage`) — 🟡 vào được, danh sách kênh chưa hiện
+### Màn chọn kênh (stage 10, `CSelectServerStage`) — ✅ vào được, hiện danh sách (slot trống, chưa rõ ngữ nghĩa field)
 - Vào stage, client gửi opcode 298 (str id đã mã hoá + u8) và **opcode 40** (u8 0). Server giả trả 14 + 16 khi nhận 40.
 - Handler của stage: 7 (kết quả vào kênh: u8 mã lỗi 0/2/4/5/11..22), 16 (trạng thái kênh), 19 (chỉ thành viên guild), 41.
-- **Opcode 14 — danh sách kênh** (`CStage__On_14` → `sub_99489D`, object `CChannelCache` = `dword_E61010`):
-  u8 cờ + blob; cờ 1 → parse `sub_994800` rồi ghi cache ra file kênh (tên file chỉ có sau `sub_993EF4` → **phải gửi sau khi vào stage 10**;
-  gửi sớm hơn thì ghi file thất bại → `CAppException` → client ngắt kết nối). Cờ 0 → đọc cache.
-  Blob: u16 `n`, `n` bản ghi (`sub_994663`): str tên, u32, u8×7, u16×2, u8×4, u32×2 (khớp với ctor bản ghi `sub_994397`, 0xE8 byte,
-  1024 bản ghi trong `CChannelCache`). Sau đó `On_14` duyệt kênh qua `sub_9950DA` vào `CChannelInfo` (`dword_E60FD8`).
-  ⚠️ **Hiện crash** khi parse bản ghi đầu tiên: ghi giá trị u8 thứ 7 (`[rec+0x64]`, 0x99471C → `sub_4140C5`) vào con trỏ rác
-  (`ESI=0x10374FC8`, `[esi+8]=0xD37C20E5`). Bố cục trường đã đối chiếu đúng với ctor; nghi `CChannelCache` (malloc 0x4011C ở
-  `CFxApp__InitSystems` 0x8E5DB9) có vấn đề trong bản dump — **đang điều tra**.
-- **Opcode 16 — trạng thái kênh** (`CSelectServerStage__On_16`): blob {u16 `n`, `n` × (u16, u32)} → `CChannelInfo` (`sub_9949C6`);
-  chỉ xử lý khi `sub_994A1D(CChannelInfo)` ≠ 0. Gửi riêng 16 thì client không lỗi.
+- **Opcode 14 — danh sách kênh** (`CStage__On_14` 0x99514B → `sub_99489D`, object `CChannelCache` = `dword_E61010`):
+  u8 cờ + blob; cờ 1 → `RecvPkt__DecodeBlob` vào sub-reader `v5` → parse `sub_994800(this=cache, a2=v5)` rồi
+  ghi cache ra file kênh (`sub_A62C20`, tên file chỉ có sau `sub_993EF4` → **phải gửi sau khi vào stage 10**;
+  gửi sớm hơn thì ghi file thất bại → `CAppException` → client ngắt kết nối). Cờ 0 → đọc cache (`sub_A62D10`).
+  - Blob inner **phải bắt đầu bằng u8 tag** (`sub_A62580` 0xA62580): 0 = copy thô (`memcpy`, `end = len-1`),
+    1 = giải mã `sub_A0B480`; tag khác → sub-reader rỗng (base/end/pos = 0) mà không báo lỗi.
+    Gửi thiếu tag (byte đầu = count `04 00…`) là nguyên nhân crash trước đây: count `sub_A62F70` đọc trên reader
+    rỗng trả về `(u16)v5` (≈ 0xDE44 = 56868, quan sát `v5 = 0x11de44` rỗng tại entry `sub_994663`) → vòng lặp
+    `v6 < count` tràn mảng 1024 bản ghi trong `CChannelCache` → crash trong helper field (`sub_414059` 0x4140C5 /
+    `sub_414059+` 0x41418B, `movb %al,1(%ecx)` / `2(%ecx)` với ECX rác). Đã sửa: `channel_list()` thêm `b"\x00"`.
+  - Sau tag: u16 `n` LE (`sub_A62F70`), `n` bản ghi (`sub_994663`, mỗi bản ghi stride 58 dword = 0xE8 byte,
+    slot đầu = cache+20; `CChannelCache` malloc 0x4011C ở `CFxApp__InitSystems` 0x8E5DB9): tên str
+    (u32 LE độ dài + byte, qua `sub_410655` → `sub_A63A40`), u32 (`sub_A62FB0` + `sub_413F32` vào field +0x1C),
+    u8×7 (`sub_A62F40` + `sub_414059` vào +0x28,+0x34,+0xD0,+0x40,+0x4C,+0x58,+0x64), u16×2 (`sub_A62F70` +
+    `sub_41411C` vào +0x70,+0x7C), u8×4 (vào +0x88,+0x94,+0xA0,+0xAC), u32×2 (vào +0xB8,+0xC4).
+    Bố cục đọc từ disasm `sub_994663` (0x994663–0x9947DB); giá trị các field chưa rõ (server giả gửi 0 trừ tên + id).
+  - Parse xong → ghi `channel2_001.ssd` (`"ssi1"` + zlib, 56 byte với 4 kênh mẫu) → `CStage__On_14` duyệt kênh
+    qua `sub_9950DA` vào `CChannelInfo` (`dword_E60FD8`). Client ở lại stage 10, keep-alive opcode 15 đều.
+  - ⚠️ Slot kênh hiện **trống** trên UI (đã nhận đủ 4 kênh + status, không crash). Nghi một field
+    trong bản ghi là trạng thái/hiển thị (đang gửi 0), hoặc id status (0–3) phải khớp id bản ghi (1–4).
+- **Opcode 16 — trạng thái kênh** (`CSelectServerStage__On_16` 0x854ADC, guard `sub_994A1D(CChannelInfo)` ≠ 0):
+  blob **cũng cần tag** (`DecodeBlob` → `v6` + `sub_A62580`): u16 `n`, `n` × (u16, u32 LE) → `sub_9949C6(idx, a, b)`
+  (`0x9949C6`: `ESI = idx*12 + ECX_base`, `sub_413F32(ESI+0x3A018, a)`, `sub_413F32(ESI+0x3D018, b)`).
+  Thiếu tag → count rác (quan sát `EBX = 0x401` = vòng lặp chạy quá 1024) → crash `sub_413F32` (0x413FA1,
+  `movb %al,4(%ecx)`, ECX = 0). Đã sửa: `channel_status()` thêm `b"\x00"`.
 
 ### Kiểu dữ liệu (mode 1/2)
 - u64: 8 byte BE, XOR `0x0000000071B18589` (`RecvPkt__Decode8` 0xA26980).

@@ -7,7 +7,7 @@ IAT đã sửa xong (`docs/runtime.md` → "Sửa IAT"). Việc còn lại là c
 
 - ✅ **Bản dump chạy trong Wine: intro → màn đăng nhập → đăng nhập vào `tools/fakeserver.py` → màn chọn kênh (stage 10)**.
   Keep-alive opcode 15 mỗi 5 s. Thử: `tools/xvfb_login.sh` (Xvfb riêng, tự gõ tài khoản, chụp `logs/xvfb/login_*.png`).
-- Đã devirtualize **7 khối** (bảng dưới, ✅). Phương pháp chuẩn: [Snapshot + emulate](#quy-trình-snapshot--emulate-khối-vm).
+- Đã devirtualize **6 khối** (bảng dưới, ✅). Phương pháp chuẩn: [Snapshot + emulate](#quy-trình-snapshot--emulate-khối-vm).
 - HackShield tắt bằng **chính công tắc của game**: `Feature_IsDisabled(212)` → 1 ở 22 chỗ gọi (`tools/patch_client.py`); BlackCipher bỏ qua.
 - Chưa chạm: các khối VM ở lobby/phòng/ván (`CGamePlayMap__Load`, `CGOBomber__vf21`, `sub_71580C`…) — làm khi tới.
 - Tiếp theo (protocol, không phải VM): danh sách kênh opcode 14 đang crash — `docs/protocol.md` → "Màn chọn kênh"; rồi lobby (stage 11).
