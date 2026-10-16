@@ -164,6 +164,41 @@ BLOCKS = [
 ]
 
 
+# Trampoline hooks: overwrite `olen` original bytes at `site` (whose original bytes must equal `orig`) with a
+# `jmp cave` (+nop padding). The cave (in .devirt) runs `asm` then continues; `asm` must replicate whatever the
+# overwritten instruction(s) did and end by jumping back to site+olen. Unlike BLOCKS these do not require a VM jmp.
+HOOKS = [
+    dict(
+        site=0x854B5B, olen=5, orig="e8d0d92000",
+        name="CSelectServerStage__On_16: auto-rebuild channel slots after channel status arrives",
+        # On_16 (0x854ADC) is the stage's opcode-16 (channel-status) handler. It stores the per-channel user
+        # counts but never repopulates the slot list, so channels that arrive (opcode 14) only after the stage's
+        # OnEnter built the (empty) slot list stay hidden until the player clicks a category tab (fires event 900 ->
+        # sub_85718D). We replicate the overwritten `call sub_A62530(&v6)` (blob dtor, ecx already = &v6), then call
+        # sub_85718D(stage, 0) to rebuild the slot array (stage+0x4C6C) for tab 0 -> channels show with no click.
+        # stage = *(g_pMainWnd+0xD4), g_pMainWnd = dword_E60838. sub_85718D is __thiscall(this=stage, tab) (ret 4).
+        asm=f"""
+            call {0xA62530:#x}
+            pushad
+            pushfd
+            mov eax, dword ptr [{0xE60838:#x}]
+            test eax, eax
+            jz hk16_done
+            mov eax, dword ptr [eax + 0xD4]
+            test eax, eax
+            jz hk16_done
+            push 0
+            mov ecx, eax
+            call {0x85718D:#x}
+        hk16_done:
+            popfd
+            popad
+            jmp {0x854B60:#x}
+        """,
+    ),
+]
+
+
 def main(src, dst):
     import keystone, pefile
     pe = pefile.PE(src)
@@ -188,6 +223,22 @@ def main(src, dst):
             off = pe.get_offset_from_rva(addr - base)
             data[off:off + len(blob)] = blob
         print(f"devirt {b['site']:#x} -> {va:#x} ({b['func']})")
+
+    for h in HOOKS:
+        va = base + sec_rva + len(code)
+        enc, _ = ks.asm(h["asm"], va)
+        code += bytes(enc)
+        while len(code) % 16:
+            code += b"\xCC"
+        o = pe.get_offset_from_rva(h["site"] - base)
+        cur = bytes(data[o:o + h["olen"]]).hex()
+        if cur != h["orig"]:
+            sys.exit(f"hook {h['site']:#x}: unexpected bytes {cur} (want {h['orig']}) -- wrong binary?")
+        if h["olen"] < 5:
+            sys.exit(f"hook {h['site']:#x}: olen {h['olen']} < 5, no room for jmp")
+        data[o:o + 5] = b"\xE9" + struct.pack("<i", va - (h["site"] + 5))
+        data[o + 5:o + h["olen"]] = b"\x90" * (h["olen"] - 5)
+        print(f"hook  {h['site']:#x} -> {va:#x} ({h['name']})")
 
     fa = pe.OPTIONAL_HEADER.FileAlignment
     raw_size = (len(code) + fa - 1) // fa * fa

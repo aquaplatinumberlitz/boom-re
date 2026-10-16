@@ -61,7 +61,13 @@ def channel_list(names=("Kenh 1", "Kenh 2", "Kenh 3", "Kenh 4")):
     #   tên (sub_9949F3) phải có. Để CLICK được (sub_8570DB): cùng 3 điều kiện + +0xC4(u32[1])==0.
     inner = b"\x00" + struct.pack("<H", len(names))
     for i, n in enumerate(names):
-        u8x7 = bytes([0, 100, 0, 50, 18, 0, 0])  # [1]=+0x34 max=100, [3]=+0x40 type=50, [4]=+0x4C kind=18
+        # Getter offsets (sub_994xxx read info + 232*i + G) sit 0x18 above the stored record (info+0x18+232*i+S),
+        # verified live with gdb on the slot builder sub_85718D:
+        #   u8[0] S=0x28 -> G=0x40 sub_994D51 (join type; slot builder mode 0 needs != 0xC8)
+        #   u8[1] S=0x34 -> G=0x4C sub_994A5A (kind; slot builder + click need 18 -> returns 10)
+        #   u8[2] S=0xD0 -> G=0xE8 sub_994A9F (category; must == selected tab = 0)
+        #   u8x4[3] S=0xAC -> G=0xC4 sub_994C91 (must be 0)
+        u8x7 = bytes([0, 18, 0, 50, 18, 0, 0])
         inner += _lstr(n) + struct.pack("<I", i + 1) + u8x7 + struct.pack("<HH", 0, 0) + bytes(4) + struct.pack("<II", 0, 0)
     return obf_body(14, ("u8", 1), ("blob", inner))
 
