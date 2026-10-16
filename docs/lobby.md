@@ -308,3 +308,20 @@ Dùng `winedbg --gdb` + gdb batch (xem `tools/wine_gdb.sh`; ổn định, đọc
 2. Hoặc gửi kênh (opcode 14) SỚM hơn (trước khi `vf44` dựng mảng slot) — nhưng client gửi opcode 40 lúc OnEnter nên khó.
 3. Hoặc (tạm, để chơi được): sau khi vào stage 10, người chơi bấm phím đổi tab (`vf15`) → dựng lại → kênh hiện.
 Record opcode 14 hiện mang type=50/kind=18/max=100/category(+0xD0)=0; cần chốt category + cơ chế chọn tab.
+
+### Cập nhật 4: NGUỒN số tab + cơ chế dựng lại (2026-10-16) — cơ chế đầy đủ
+- **Số tab category = `sub_854A7D()` = `*(CShareContext + 456)`** (`CShareContext` = `dword_E60E54`, singleton session).
+  Đặt bởi **`sub_99C4CB(v50)` trong `sub_852BCA` (xử lý login opcode 4)** → **số tab đến từ GÓI LOGIN**, không phải
+  channel data. Trong gói login (sau vòng lặp người chơi): `u8,u8,u8,u16,`**`u8 = số tab`**`,u8(đổi mật khẩu)`.
+  Server giả cũ gửi = 0 → 0 tab → không bao giờ dựng lại ô. **Đã sửa `login_ok()`: u8 số tab = 1.**
+- **`CSelectServerStage__vf5` là handler SỰ KIỆN** (a2 = mã sự kiện): a2∈0x5DC.. = hover/chọn ô; a2∈0x9C4.. = click ô;
+  **a2 == 900 (0x384) = SỰ KIỆN ĐỔI TAB** → `v4 = sub_A84DFE(this+1878)` (lựa chọn tab-control); nếu
+  `0 ≤ v4 < sub_854A7D()` và `v4 != *(this+4854)` → `sub_85718D(this-36, v4)` **dựng lại ô** với tab = v4.
+  ⇒ **ô kênh chỉ dựng lại khi CHỌN một category tab** (bắn sự kiện 900). Không có tương tác → ô giữ nguyên (trống
+  từ lúc OnEnter khi kênh chưa tới).
+- Builder `sub_85718D` lọc: `(u8)sub_994A9F(ch)(category +0xD0) == tab v4` + `sub_994C91(ch)(+0xC4)==0` +
+  `sub_994D51(ch)(type +0x40)` so 0xC8 + kind(+0x4C)∈{10,18}. ⇒ **category kênh (+0xD0) phải == chỉ số tab được chọn.**
+
+**Để kênh tự hiện cần:** (1) số tab login > 0 (đã đặt 1); (2) category kênh (+0xD0) khớp một tab; (3) tab được chọn
+→ bắn sự kiện 900 → vf5 dựng lại. Còn phải xác minh: tab-control (this+1878) có tự chọn tab 0 khi vào màn không, hay
+người chơi phải click tab/mũi tên category (nút `<` `>` ở đầu màn?) để bắn sự kiện 900. Đây là bước cuối cùng.

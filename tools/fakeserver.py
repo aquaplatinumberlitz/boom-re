@@ -92,8 +92,11 @@ def login_ok(name="tester", players=1):
               ("u8", 0), ("u8", 0), ("u32", 0), ("u8", 0), ("u8", 0),
               ("u32", 0),                                              # count of (u32, u32) pairs
               ("u8", 0)]
-    f += [("u8", 0), ("u8", 0), ("u8", 0), ("u16", 0), ("u8", 0),
-          ("u8", 0)]                                  # 1 = "need to change password" dialog
+    # trailing: u8 sub_99C3A7, u8 sub_99C99F, u8 sub_99C3BE, u16 sub_99C42A,
+    #   u8 sub_99C4CB = SỐ TAB CATEGORY (CShareContext+456, sub_854A7D) — PHẢI > 0 thì màn chọn kênh mới có tab
+    #   để dựng danh sách ô (channel category +0xD0 phải < số tab này). 0 = không tab -> ô kênh trống.
+    f += [("u8", 0), ("u8", 0), ("u8", 0), ("u16", 0), ("u8", 1),
+          ("u8", 0)]                                  # u8=1 tab; cuối = cờ "đổi mật khẩu"
     return obf_body(4, *f)
 
 
