@@ -54,9 +54,14 @@ def channel_list(names=("Kenh 1", "Kenh 2", "Kenh 3", "Kenh 4")):
     #   +0x4C (u8 thứ 5) == 18  -> sub_994A5A trả 10 (0x994A5A: get(+76)==18 ? 10 : raw);
     #   +0x40 (u8 thứ 4) == loại kênh click (sub_994D51; sub_856BAC so với 0x80/0x82/0xC8) -> thử 0x80 (thường);
     #   +0xC4 (u32 thứ 2) == 0 (sub_994C91). u8×7 lưu vào +0x28,+0x34,+0xD0,+0x40,+0x4C,+0x58,+0x64 theo thứ tự đọc.
+    # record -> CChannelInfo (232 byte/kênh). u8×7 lưu vào +0x28,+0x34,+0xD0,+0x40,+0x4C,+0x58,+0x64 (theo thứ tự đọc).
+    # Để ô HIỆN (CSelectServerDlg__vf19 0x872672):
+    #   +0x40 (u8[3], type) phải qua sub_66F4B4: type ∈ 50..65 hoặc 70  (0x80 bị loại!) -> dùng 50;
+    #   +0x4C (u8[4], kind) == 18 (sub_994A86/sub_994A5A);  +0x34 (u8[1], max users) > current (opcode 16 +0x3A018);
+    #   tên (sub_9949F3) phải có. Để CLICK được (sub_8570DB): cùng 3 điều kiện + +0xC4(u32[1])==0.
     inner = b"\x00" + struct.pack("<H", len(names))
     for i, n in enumerate(names):
-        u8x7 = bytes([0, 0, 0, 0x80, 18, 0, 0])  # [3]=+0x40 type=0x80, [4]=+0x4C kind=18 (bắt buộc để click được)
+        u8x7 = bytes([0, 100, 0, 50, 18, 0, 0])  # [1]=+0x34 max=100, [3]=+0x40 type=50, [4]=+0x4C kind=18
         inner += _lstr(n) + struct.pack("<I", i + 1) + u8x7 + struct.pack("<HH", 0, 0) + bytes(4) + struct.pack("<II", 0, 0)
     return obf_body(14, ("u8", 1), ("blob", inner))
 
