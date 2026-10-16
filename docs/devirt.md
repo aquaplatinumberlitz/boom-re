@@ -119,3 +119,17 @@ WINEDEBUG=+seh,-all wine ca_fixed_patched.exe     # liệt kê mọi exception
 WINEDEBUG=+debugstr,-all wine ca_fixed_patched.exe  # OutputDebugString của game
 ```
 Wine đã đặt `HKCU\Software\Wine\WineDbg\ShowCrashDialog = 0` (in backtrace ra console thay vì hộp thoại).
+
+## Chẩn đoán màn hình logo (2026-10-16)
+
+Bản dump dừng ở logo Nexon/VNG. Thực chất process thoát mã 9 (`App__SetExitError(9)`), không treo.
+
+- CALog: `116 : InitBeforePatch` rồi dừng.
+- winedbg (break first-chance): page fault `EIP=0x1388`, tức một `call [reg+N]` với con trỏ rác.
+- Nguồn: `CStageMgr__ChangeStage` (`0x8F8EEC`) có một khối ở site `0x8F8F69` (tiếp tục ở `0x8F9392`) chưa viết lại → cần làm block thứ 2.
+- Đã quan sát block này trên client gốc: `tools/vmtrace.py build 8F8F69 8F9392`, dump ở `logs/vmtrace/8F8F69/dump.bin`.
+  - reloc (5 byte site đè): `call 0x9DB5B7`; điểm tiếp tục thật là epilog `0x8F9392` (call `__EH_epilog3`), back `0x8F9397`.
+  - Hàm ngữ cảnh: chuyển stage (Login → SelectServer → Lobby…). vtable stage: `CLoginStage` ctor `0x84F4A7`, `CStage` ctor `0x6A588F`.
+  - diff: nhiều thay đổi trên object `CMainWnd` ([esi]) + ~18 dword global; cần đọc kỹ để tái hiện (chưa xong).
+
+Các script phụ thêm: `tools/wine_bt.sh` (attach winedbg lấy bt), `tools/wine_dbg.sh` (break first-chance trong Xvfb).
