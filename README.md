@@ -23,7 +23,8 @@ Server đã chết, mất source; chỉ còn client. Mục tiêu dài hạn: hi�
 | Gỡ HackShield/BlackCipher, patch IP server | ✅ Patch **trong bộ nhớ** client gốc (Themida) | `tools/launch.ps1`, `tools/launcher/boomlaunch.c` |
 | Chạy client thật nối vào server giả | 🟡 **Đăng nhập qua được**; kẹt ở Direct3D (VM không GPU) | [Chạy client](#chạy-client-với-server-giả) |
 | Server giả lập | 🟡 Prototype Python: hello + chuỗi login 6 packet | `tools/fakeserver.py` |
-| Sửa IAT bản dump để chạy `unpacked_ca.exe` | ⬜ Dở (226 ô giải được, wrapper Themida chưa) | `tools/fix_iat.py` |
+| Sửa IAT bản dump (`ca_fixed.exe`) | ✅ 489/489 ô + 38 lời gọi sai của unlicense; chạy tới `WinMain` trong Wine | `tools/fix_iat.py`, `tools/rebuild_wine.sh` |
+| Hàm bị Themida ảo hoá (~12 hàm) | ⬜ **Chặn** bản dump | [docs/runtime.md](docs/runtime.md#hàm-bị-themida-ảo-hoá-vm--chặn-hướng-3) |
 
 ### Câu hỏi còn mở
 - Byte thứ 2 của header khi header dài 2 byte (client gửi `0xF4`, client không kiểm tra khi nhận).
@@ -41,7 +42,8 @@ Server đã chết, mất source; chỉ còn client. Mục tiêu dài hạn: hi�
 
 Theo thứ tự ưu tiên:
 
-1. **Cho client render được** (đang chặn): thử Windows có GPU thật / VM có GPU passthrough, hoặc Wine bản có WoW64 kiểu cũ (32-bit prefix), hoặc d3d9 software trong WinBoat.
+1. **Chạy được client có hiển thị** — đang chọn hướng 3 (bản dump không Themida trong Wine): IAT đã xong,
+   còn ~12 hàm bị Themida ảo hoá (xem `docs/runtime.md`). Phương án dự phòng: client gốc + Wine có WoW64 cũ.
 2. **Server thật bằng Rust** (prototype Python ở `tools/fakeserver.py` là đặc tả sống): sau login → nhận gì tiếp, lobby, phòng, ván chơi.
 3. **Cấu trúc field từng packet**: đọc handler trong `decomp/handlers/` theo luồng Login (`CLoginStage`) → Lobby → Room (`CPrepareStage`) → Game (`CGameStage`). Ghi vào `docs/protocol.md`.
 4. **`.map` / `Attr/*`**: server cần để chạy ván chơi. Loader map: `CGamePlayMap__Load` 0x7354FD.
@@ -164,6 +166,7 @@ cd wine/Boom && wine boomlaunch.exe 127.0.0.1     # wine/Boom = bản copy refli
 |---|---|
 | `docs/protocol.md` | Protocol TCP (frame, mã hoá, seq, handshake, dispatch) |
 | `docs/assets.md` | Định dạng pack + sprite |
+| `docs/runtime.md` | Chạy client: thứ tự khởi động, patch, mạng WinBoat, Wine, sửa IAT, VM Themida |
 | `tools/boomproto.py` | Codec packet (tự test khi chạy trực tiếp) |
 | `tools/verify_emu.py` | Chạy hàm crypto thật của binary bằng Unicorn, so với `boomproto.py` |
 | `tools/idf.py` | Đọc/giải nén pack (`extract`) |

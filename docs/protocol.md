@@ -54,12 +54,15 @@ Kích thước theo **header mode** (switch trong 0xA63EE0 / 0xA643F0 / 0xA64B70
 - 1 → payload mã hoá XOR, checksum CRC32 (4 byte), `len` bị XOR-obfuscate.
 - 2 → như 1 nhưng checksum CRC8 (1 byte).
 
-Mode client dùng — 🟢:
-- Gửi: `CSendPacketBase(type, cks=2, hdr=2)` (globals `0xE5794C/0xE57950`, `0xE47F54/58`).
-- Nhận sau handshake: `SetRecvFormat(cks=2, hdr=3)` (`0xE57944/48`).
-- Nhận trước handshake: lấy từ `dword_EEC1BC/C0`, giá trị đặt lúc runtime → ❓
+Mode client dùng — ✅ (đọc từ bộ nhớ client đang chạy, `tools/peek.ps1`):
 
-## Seq byte (byte đầu header) — 🟢
+| Chiều | (cks, hdr) | Nguồn |
+|---|---|---|
+| Client → server | (2, 2) | `0xE5794C/50`, `0xE47F54/58` |
+| Server → client, packet đầu (hello) | (0, 0) | `dword_EEC1BC/C0` (kết nối chính), `dword_EA6FE0/E4` (kết nối patch) — đều = 0 lúc runtime |
+| Server → client, sau hello | (2, 3) | `0xE57944/48` |
+
+## Seq byte (byte đầu header) — ✅ (khớp traffic thật)
 
 Gửi (`MakeSeqByte` 0xA660A0):
 ```
@@ -87,7 +90,7 @@ Checksum tính trên **plaintext**, giá trị khởi đầu = key:
 - CRC32: poly 0x04C11DB7, MSB-first, `crc = T[b ^ (crc>>24)] ^ (crc<<8)`, ghi big-endian.
 - CRC8: poly 0x07, `crc = T[crc ^ b]`.
 
-## Obfuscate số nguyên (mode 1/2) — 🟢
+## Obfuscate số nguyên (mode 1/2) — ✅ (khớp traffic thật)
 
 Khi checksum mode là 1/2, `len` và **mọi field** ghi bằng `Encode1/2/4` đều bị XOR:
 - u8 `^ 0x5A`
@@ -103,21 +106,52 @@ Chuỗi = u16 độ dài + byte, trong đó phần byte được XOR theo từng
 - decode `g_OpcodeSubstDecTable` 0xE5DEE8
 - Dump: `decomp/net/opcode_{enc,dec}_table.bin`
 
-## Payload
+## Payload — ✅
 
 ```
-[type: 1|2 byte][opcode: u16][fields...]
+[opcode: 1|2 byte = "type size" của mode][fields...]
 ```
+"Type" **chính là opcode**: dispatcher gọi `RecvPkt__Rewind` rồi `RecvPkt__Decode2` → đọc lại đúng trường đầu tiên.
+Ở mode 2/3 opcode là u16 (XOR `0xA569`), ở mode 0 là u8 và được tráo qua bảng opcode.
 Đọc bằng `RecvPkt__Decode1/2/4/8/Str/Buf` (0xA65670…), ghi bằng `SendPkt__Encode*` (0xA65220…).
 
-## Handshake (packet đầu từ server) — 🟢
+## Hello (packet đầu từ server, mọi kết nối) — ✅ chạy được với client thật
 
-`Net_OnHandshake` 0x999C02. Khi `type == 0`:
+Server gửi ngay khi client kết nối; client không gửi gì trước.
+Cùng một định dạng cho kết nối patch (`PatchServer_CheckVersion` 0x8E426E) và kết nối chính (`Net_OnHandshake` 0x999C02):
 ```
-u16 ?, u16 ?, u32 header_type, str ?, u8 flag
-if flag == 1: u8 ?, str ?, u32 ?, u8 ?
+format (0,0): [seq u8][len u16 BE][opcode u8 = 0 (tráo bảng)]
+  u16 ?            (0)
+  u16 version      phải = 116 (sub_8E2494); khác 116 → client chạy autoupdate.exe rồi thoát
+  u32 header_type  hàng bảng tráo opcode (0..15) → SetHeaderType
+  str ?            (u16 len + byte)
+  u8  flag         1 → thêm: u8, str, u32, u8 (sub_8E3AA0)
 ```
-→ `SetRecvFormat(2,3)` rồi `SetHeaderType(header_type)`.
+Seq byte cho header_type `t`: `((t + 231) ^ (102 + 40)) & 0xFF` (t=0 → `0x69`).
+Sau hello, phía nhận của client chuyển sang (2,3) và `seq_r = 43`.
+
+Kết nối patch: nhận hello hợp lệ → client tự đóng socket (~0,1s) rồi mở kết nối chính tới server khác trong danh sách.
+
+## Đăng nhập — ✅ chạy được với client thật
+
+`Login_DoLoginSequence` 0x8E2DEC (gọi sau hello trên kết nối chính):
+
+1. Client gửi **opcode 0** + 6×u32: `sub_65419B(E61024)`, `sub_98D908(..)`, `*(E60FBC+92)`, `sub_8EE552(E60A0C)`, `sub_9967C4(CMultiServer)`, `sub_98131D(E64B10)`.
+   Chạy không qua launcher của VNG thì cả 6 đều = 0. Ví dụ packet thật:
+   `0f f4 a5 73 | 11 74 a3 99 … 00 00 | 96` → hdr `0f f4`, len 26, payload, CRC8 0x96.
+2. Server phải trả **đúng thứ tự**, mỗi packet tối đa 10 giây:
+
+| Opcode | Handler | Nội dung | Tối thiểu |
+|---|---|---|---|
+| 13 | `CStage__On_13` 0x654ADE | u8 có dữ liệu?, blob → `fxdynimginfo.ssd` | `u8 0` |
+| 2 | 0x98DFAB | u8, blob FxClientString | `u8 0` (dùng cache) |
+| 12 | 0x9D3F17 | u8, blob FxQuestString | `u8 0` |
+| 21 | 0x8F13E6 | u8, blob FxMessageTable | `u8 0` |
+| 1 | 0x99933B | u8, blob `multisvr.ssd`; u8, blob `multisvrn.ssd` | `u8 0, u8 0` |
+| 43 | 0x982A90 | u8, blob | `u8 0` |
+
+Nhận đủ → hàm trả 2, cửa sổ game "Boom" mở. Tiếp theo client làm gì: **chưa biết** (bị chặn bởi lỗi render).
+Cài đặt mẫu: `tools/fakeserver.py` (`hello_packet`, `login_replies`, `Session`).
 
 ## Dispatch
 
@@ -131,9 +165,14 @@ if flag == 1: u8 ?, str ?, u32 ?, u8 ?
 Bảng opcode → handler (520 opcode, 59 dispatcher): `decomp/opcode_dispatch.json`.
 Handler được đặt tên dạng `<Stage>__On_<opcode>` trong IDA. Pseudocode của các stage: `decomp/handlers/`.
 
+## Kiểm chứng
+
+- Mã hoá/giải mã/CRC: emulate hàm thật của binary (`tools/verify_emu.py`) — 88/88 khớp.
+- Phía client → server: giải mã packet thật của client, CRC8 khớp.
+- Phía server → client: client thật chấp nhận hello + 6 packet login do `fakeserver.py` tạo.
+
 ## Câu hỏi còn mở
 
-- Định dạng nhận trước handshake (`dword_EEC1BC/C0`) → đọc lúc runtime.
-- Byte thứ 2 của header khi A = 2.
-- Ý nghĩa byte `type` so với `opcode` u16.
-- Chưa có traffic thật để so: cần chạy client nối vào server giả rồi đối chiếu.
+- Byte thứ 2 của header khi A = 2: client gửi `0xF4`; khi nhận client không kiểm tra (server gửi 0 vẫn được).
+- Ý nghĩa 6×u32 trong opcode 0 (có lẽ session/account từ launcher VNG).
+- Packet sau đăng nhập (lobby, phòng, ván chơi).

@@ -19,3 +19,4 @@ ca_patched.exe
 logs/
 *.exe
 !tools/launcher/*.c
+ca_fixed*.exe

@@ -29,6 +29,12 @@ public static class Live {
       a = b + sz;
     }
     File.WriteAllText(Path.Combine(dir, "regions.tsv"), rs.ToString());
+    // every module image: ca.exe (Themida sections hold wrapper logic) and DLLs (wrappers end in jmp [dll IAT])
+    foreach (ProcessModule mm in p.Modules) {
+      long ib = mm.BaseAddress.ToInt64(); int isz = mm.ModuleMemorySize;
+      var img = new byte[isz]; for (int off = 0; off < isz; off += 0x1000) { var pg = Read(h, ib + off, Math.Min(0x1000, isz - off)); Buffer.BlockCopy(pg, 0, img, off, pg.Length); }
+      File.WriteAllBytes(Path.Combine(dir, "image_" + ib.ToString("x8") + ".bin"), img);
+    }
   }
 }
 "@
