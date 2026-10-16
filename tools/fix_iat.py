@@ -45,6 +45,12 @@ OVERRIDES = {
     0xC0F40C: ("kernel32.dll", "InterlockedExchangeAdd"),  # same Themida-internal 2-arg family as InterlockedExchange; used via CALL_FIXES
     0xC0F54C: ("user32.dll", "GetDesktopWindow"),        # PLACEHOLDER
     0xC0F554: ("user32.dll", "GetDesktopWindow"),        # PLACEHOLDER
+    0xC0F480: ("user32.dll", "CreateWindowExA"),         # unlicense said ...W; class/title are narrow std::string, class registered with RegisterClassExA
+}
+
+# Wrong A/W names in unlicense's own (fake) import table: renamed in place in the hint/name entry (same length).
+FAKE_RENAMES = {
+    "CreateWindowExW": "CreateWindowExA",   # sub_8F77A7 main window; W made CreateWindow fail ("CreateWindow failed" CSysException)
 }
 
 # Slots pointing into anti-cheat modules we do not want to load: replaced by tiny stubs (xor eax,eax; ret N).
@@ -422,6 +428,20 @@ def build(src, dst):
         sys.exit("no room for a new section header")
     sh = struct.pack("<8sIIIIIIHHI", b".imp2\0\0\0", len(blob), sec_rva, raw_size, raw_ptr, 0, 0, 0, 0, 0xE0000060)
     data[hdr_off:hdr_off + 40] = sh
+    for old, new in FAKE_RENAMES.items():
+        ob, nb = b"\0\0" + old.encode() + b"\0", new.encode() + b"\0"
+        hits = 0
+        for imp_desc in pe.DIRECTORY_ENTRY_IMPORT:
+            for imp in imp_desc.imports:
+                if imp.name == old.encode():
+                    o = pe.get_offset_from_rva(imp.hint_name_table_rva + 2) if hasattr(imp, "hint_name_table_rva") else None
+                    if o is None:
+                        continue
+                    assert data[o:o + len(old)] == old.encode()
+                    data[o:o + len(nb)] = nb.ljust(len(old) + 1, b"\0")
+                    hits += 1
+        if not hits:
+            sys.exit(f"fake import {old} not found")
     for site, slot in CALL_FIXES.items():
         o = pe.get_offset_from_rva(site - base)
         op, tgt = bytes(data[o:o + 2]), struct.unpack_from("<I", data, o + 2)[0]

@@ -1721,8 +1721,8 @@
    {
     "va": "C0F480",
     "dll": "user32.dll",
-    "name": "CreateWindowExW",
-    "how": "unlicense"
+    "name": "CreateWindowExA",
+    "how": "override"
    },
    {
     "va": "C0F484",

@@ -20,3 +20,5 @@ logs/
 *.exe
 !tools/launcher/*.c
 ca_fixed*.exe
+ca_devirt.exe
+tools/inject.exe

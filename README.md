@@ -34,8 +34,8 @@ Cập nhật 2026-10-16.
 | Pack `.idx/.idd` + sprite → PNG | ✅ 108.726 PNG, 965 map, 645 ogg | `docs/assets.md`, `tools/idf.py`, `tools/i16.py` |
 | Định dạng `.map`, `Attr/*`, frame animation | ⬜ | `decomp/CGamePlayMap__Load.c` |
 | Client gốc (Themida) + patch bộ nhớ | ✅ chạy tới đăng nhập trong WinBoat; ❌ không render (VM không GPU); ❌ Wine (anti-VM Themida) | `docs/runtime.md` |
-| Bản dump chạy trong Wine (**hướng đang theo**) | 🟡 IAT sửa xong 489/489 + 38 call site; chạy tới `WinMain` | `tools/fix_iat.py`, `tools/rebuild_wine.sh` |
-| Hàm bị Themida ảo hoá | ⬜ **đang làm** — 56 điểm VM (15 trong hàm game, 41 vùng anti-cheat) | `docs/devirt.md`, `decomp/themida_entries.json` |
+| Bản dump chạy trong Wine (**hướng đang theo**) | ✅ **vào game được**: cửa sổ mở (GPU), đăng nhập vào server giả | `tools/rebuild_wine.sh`, `docs/devirt.md` |
+| Hàm bị Themida ảo hoá | 🟡 1/56 khối viết lại (khởi động); còn lại làm khi chạm tới | `docs/devirt.md`, `tools/devirt.py`, `tools/vmtrace.py` |
 | Server thật (Rust) | ⬜ chưa bắt đầu; `tools/fakeserver.py` là đặc tả sống | |
 
 ### Đã kiểm chứng trên client thật
@@ -53,13 +53,12 @@ Cập nhật 2026-10-16.
 
 ## Việc tiếp theo
 
-**Hướng đã chọn (2026-10-16): hướng 1 — devirtualize** các khối bị Themida ảo hoá để bản dump chạy trong Wine (có GPU).
+**Hướng đã chọn (2026-10-16): hướng 1 — devirtualize** → **bản dump đã vào được game trong Wine.**
 
-1. Làm theo [docs/devirt.md](docs/devirt.md):
-   - Bắt đầu từ `sub_8F4421` (site 0x8F452B, đang chết ở đây), rồi các hàm khởi động khác (`CFxApp__vf6`, `sub_8F3409`, `sub_8F4D01`, `sub_8F8EEC`).
-   - Xác nhận 41 điểm VM ở `0xA12E59–0xA17A24` là anti-cheat → bỏ qua cả khối.
-   - Mỗi khối xong: cập nhật bảng trong `docs/devirt.md`, chạy `tools/rebuild_wine.sh`.
-2. Khi client hiển thị được trong Wine: nối với `tools/fakeserver.py` (IP 127.0.0.1), xem client làm gì sau đăng nhập.
+1. Xem client làm gì sau đăng nhập (màn hình, packet gửi lên `tools/fakeserver.py`), mở rộng server giả theo đó.
+   Khi client chạm khối VM mới (crash/exception trong section Themida) → làm theo [docs/devirt.md](docs/devirt.md)
+   (`tools/vmtrace.py` quan sát trên client gốc → viết lại trong `tools/devirt.py`).
+2. Xác nhận 41 điểm VM ở `0xA12E59–0xA17A24` là anti-cheat → bỏ qua cả khối nếu bị chạm.
 3. Server thật bằng **Rust** (tokio), lấy `tools/fakeserver.py` + `docs/protocol.md` làm đặc tả.
 4. Cấu trúc field từng packet (Login → Lobby → Room `CPrepareStage` → Game `CGameStage`), `.map`, `Attr/*`.
 
@@ -197,7 +196,10 @@ tools/rebuild_wine.sh
 | `tools/idf.py`, `tools/i16.py` | đọc/giải nén pack, sprite → PNG |
 | `tools/patch_client.py` | patch file: bỏ HackShield, bỏ patch-check, đổi IP |
 | `tools/fix_iat.py` | giải IAT gốc (`report`/`export`) và build `ca_fixed.exe` (`build`) |
-| `tools/rebuild_wine.sh` | build + patch + chạy bản dump trong winedbg |
+| `tools/rebuild_wine.sh` | fix_iat → devirt → patch → chạy bản dump trong winedbg |
+| `tools/devirt.py` | khối VM viết lại (`BLOCKS`) → `ca_devirt.exe` |
+| `tools/vmtrace.py`, `tools/launcher/inject.c`, `win/vmtrace.bat` | quan sát một khối VM trên client gốc (cave + snapshot + diff) |
+| `tools/run_xvfb.sh` | chạy bản dump trong Xvfb riêng + chụp màn hình |
 | `tools/themida_scan.py` | liệt kê điểm vào section Themida → `decomp/themida_entries.json` |
 | `tools/launch.ps1`, `tools/launcher/boomlaunch.c` | patch bộ nhớ client gốc (PowerShell / exe mingw) |
 | `tools/live_dump.ps1`, `tools/dump_exports.ps1`, `tools/peek.ps1` | dump bộ nhớ / export DLL / đọc biến lúc chạy (PowerShell 32-bit) |

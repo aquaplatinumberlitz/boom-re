@@ -5,10 +5,20 @@ IAT đã sửa xong (`docs/runtime.md` → "Sửa IAT"). Việc còn lại là c
 
 ## Trạng thái (2026-10-16)
 
-- `tools/rebuild_wine.sh` build + chạy `ca_fixed_patched.exe` trong winedbg: chạy qua CRT, vào `WinMain`,
-  `CALog.log` ghi `116 : InitBeforePatch`, nạp D3D9/D3DX9 xong → **page fault trong VM Themida** khi `sub_8F4421` vào VM
-  (EIP `0x11FB494`, đọc `[0x19FF68]`).
-- **Chưa devirtualize hàm nào.**
+- ✅ **Bản dump chạy được trong Wine trên host (GPU), mở cửa sổ game và đăng nhập vào `tools/fakeserver.py`** (127.0.0.1).
+- Đã devirtualize: **1 khối** (`sub_8F4421` site 0x8F452B) — xem [Khối đã xong](#khối-đã-xong).
+- Sửa thêm: unlicense nhầm `CreateWindowExW` ↔ `CreateWindowExA` (cửa sổ chính không tạo được → `CSysException "CreateWindow failed"`).
+- Các khối VM khác chưa bị chạm tới trên luồng khởi động → làm khi gặp (lobby, phòng, ván chơi sẽ chạm `CGamePlayMap__Load`, `CGOBomber__vf21`…).
+
+## Khối đã xong
+
+### 0x8F452B — `sub_8F4421` (bước khởi tạo trong `CFxApp__InitMain`)
+- Ranh giới: site 0x8F452B → tiếp tục ở **0x8F45A7** (`lea ecx,[esi+14h]; push ebx; call 0x413F32`). Byte giữa là rác.
+- Quan sát (`tools/vmtrace.py`, client gốc trong WinBoat): thanh ghi edi/esi/ebp/ebx giữ nguyên; eax/ecx chết. Bộ nhớ:
+  - `0xEED860[256]` = bảng CRC32 reflected, poly **0xDD10EC81** (chỉ code Themida ở 0x1330A69 đọc);
+  - `0xEEE07C = 0x4A65000A`, `0xEEE088 = 1`, `0xEEE08C = GetTickCount()` (không có xref từ code game);
+  - `0xEEE650..65C` = callback `0x8F2C5D, 0x8F30F7, 0x8F2C4F, 0x8F31F6` (nhiều hàm game gọi, ví dụ `sub_413F32`).
+- Viết lại: `tools/devirt.py` `BLOCKS[0]` (dữ liệu ghi thẳng vào image + `GetTickCount` lúc chạy).
 
 ## Cách Themida ảo hoá trong binary này
 
@@ -60,6 +70,30 @@ Thứ tự theo luồng khởi động (làm trước) rồi tới gameplay:
 
 Nằm sau `AntiCheat_ScanProcesses` (0xA12C00, chụp toolhelp quét process theo danh sách trong `cavn.ini`).
 Giả thuyết: toàn bộ là anti-cheat tự viết → **bỏ qua cả khối** thay vì devirtualize. Cần xác nhận nơi gọi vào vùng này.
+
+## Công cụ quan sát khối VM: `tools/vmtrace.py` + `tools/launcher/inject.c`
+
+Chạy trên **client gốc** (Themida thật) trong WinBoat, nơi VM chạy đúng:
+```sh
+uv run --with pefile --with capstone --with keystone-engine python tools/vmtrace.py build <SITE> <CONT>   # -> logs/vmtrace/<SITE>/
+# tạo win/vmtrace_run.bat gọi: win\vmtrace.bat <SITE> 30000000 230000 30000FF0   (RemoteApp không nhận tham số có dấu cách)
+xfreerdp3 ... '/app:program:C:\Windows\System32\cmd.exe,cmd:/c \\host.lan\Data\boom-re\win\vmtrace_run.bat'
+uv run --with pefile python tools/vmtrace.py diff <SITE>     # thanh ghi + object [esi] + stack + vùng data 0xE00000–0xF09000 trước/sau
+```
+- `inject.exe` khởi động `ca.exe`, đặt cave ở 0x30000000, patch HackShield + site + điểm tiếp tục khi Themida giải mã xong, chờ cờ = 2, dump.
+- `flag=2` nghĩa là cả hai hook chạy → **điểm tiếp tục đúng**.
+- Stack thay đổi **dưới ESP** là vùng nháp của VM, bỏ qua.
+- Cần `boomsrv` + DNAT (để qua bước kiểm tra bản vá) nếu khối nằm sau đó trong luồng khởi động.
+- Tìm điểm tiếp tục: sau site là byte rác; tìm đoạn x86 hợp lệ chạy tới epilog của hàm (`call 0x9DB5CB; ret`), kiểm chứng bằng vmtrace.
+
+## Chạy bản dump
+
+```sh
+python3 tools/fakeserver.py --log logs/fakeserver_host.log &   # server giả trên host
+tools/rebuild_wine.sh            # fix_iat -> devirt -> patch_client -> chạy dưới winedbg (cửa sổ hiện trên desktop)
+tools/run_xvfb.sh ca_fixed_patched.exe 40   # chạy trong Xvfb :77 riêng, chụp logs/xvfb/shot_*.png (không đụng desktop)
+```
+Chỉ chạy **một** bản một lúc (mutex `Global\FxClient...`; bản thứ hai thoát mã 9). Dọn bằng `kill` đúng PID, đừng `pkill -f` chuỗi có trong lệnh của chính shell.
 
 ## Phương pháp đề xuất (cho từng site)
 
