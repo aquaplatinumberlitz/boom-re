@@ -83,6 +83,19 @@ BLOCKS = [
         """,
     ),
     dict(
+        site=0x8F54E4, cont=0x8F5DFA, func="sub_8F4D01 main loop: pending stage change (CMainSystem::vf5 true)",
+        # vmemu on snapshot 8F5F40 with a stage request injected (--pre-asm sub_8F391D(10)):
+        # sub_A13A10 (.text checksum, dropped) then CStageMgr__ChangeStage(g_pMainWnd, sub_8F3903(this)).
+        asm=f"""
+            mov ecx, dword ptr [ebp - 0x280]
+            call {0x8F3903:#x}
+            push eax
+            mov ecx, dword ptr [{0xE60838:#x}]
+            call {0x8F8EEC:#x}
+            jmp {0x8F5DFA:#x}
+        """,
+    ),
+    dict(
         site=0x8F5F40, cont=0x8F6908, func="sub_8F4D01 main loop: periodic (elapsed > 0x3681) part",
         # p = new(0xC); sub_67C820(p, &[ebp-0x140]) (copy of current time); delete old CMainSystem+0xF8 (sub_8F2C6B(1));
         # CMainSystem+0xF8 = p; then same as the native else-branch 0x8F6919:

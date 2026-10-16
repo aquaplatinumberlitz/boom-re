@@ -19,13 +19,52 @@ def hello_packet(header_type=HEADER_TYPE, version=CLIENT_VERSION):
     body = bytes([0]) + struct.pack(">HHI", 0, version, header_type) + struct.pack(">H", 0) + bytes([0])
     return bp.build(body, hdr_mode=0, cks_mode=0, seq_byte=seq_byte, seq=st.seq_r, header_type=header_type)
 
+SIZES = {"u8": 1, "u16": 2, "u32": 4, "u64": 8}
+
+
 def obf_body(opcode, *fields):
     """Body for formats with checksum mode 1/2: [opcode u16][fields], every int XOR-obfuscated (put_int obf=True).
-    fields: ('u8'|'u16'|'u32', value)"""
+    fields: ('u8'|'u16'|'u32'|'u64', value) or ('str', text)"""
     out = bp.put_int(opcode, 2, True)
     for kind, v in fields:
-        out += bp.put_int(v, {"u8": 1, "u16": 2, "u32": 4}[kind], True)
+        if kind == "str":
+            out += bp.put_str(v, True)
+        elif kind == "blob":
+            out += bp.put_blob(v, True)
+        else:
+            out += bp.put_int(v, SIZES[kind], True)
     return out
+
+
+def login_net_info(host="127.0.0.1", ports=(0, 0, 0)):
+    """CLoginStage__On_15 0x84FE35: blob {str host, u16 x3 (-> sub_8E289C), u8 mode (0 none / 1: 2 str / 2: u16), u16}.
+    Moves CWaitForLoginDlg from state 2 (set by login_ok) to 1; 10 ticks later the dialog ends with 3 ->
+    sub_84FABC -> stage 10 (SelectServer)."""
+    h = host.encode()
+    inner = struct.pack("<I", len(h)) + h + struct.pack("<HHH", *ports) + bytes([0]) + struct.pack("<H", 0)
+    return obf_body(15, ("blob", inner))
+
+
+def login_ok(name="tester", players=1):
+    """CLoginStage__On_4 0x8534F3: u8 result 0 = success -> sub_852BCA 0x852BCA (field order from the decompile;
+    meaning of most fields still unknown, zeros are accepted). `players` must equal the 1P/2P count
+    (CLobbyStage__On_218(dword_E60880))."""
+    f = [("u8", 0),                                   # result: 0 ok, 1 not registered, ...
+         ("u8", 0), ("u16", 0), ("u8", players), ("u64", 0)]
+    for i in range(players):
+        f += [("u32", 1000 + i), ("u32", 0), ("u16", 0), ("u16", 0),   # sub_9B698F, sub_9B69AB
+              ("u32", 0), ("str", name), ("u8", 0),                    # sub_99A71D, sub_99A746 (name), sub_99AC50
+              ("str", name), ("str", ""),                              # sub_99A817, sub_99A783
+              ("u8", 0), ("u32", 0), ("u8", 0), ("u8", 0), ("u16", 0), ("u8", 0), ("u8", 0),
+              ("u32", 0), ("u32", 0), ("u8", 0), ("u8", 0), ("u8", 0),
+              ("u16", 0), ("u16", 0),                                  # only if !Feature_IsDisabled(6): stub -> always
+              ("u32", 0),                                              # sub_99AC6C
+              ("u8", 0), ("u8", 0), ("u32", 0), ("u8", 0), ("u8", 0),
+              ("u32", 0),                                              # count of (u32, u32) pairs
+              ("u8", 0)]
+    f += [("u8", 0), ("u8", 0), ("u8", 0), ("u16", 0), ("u8", 0),
+          ("u8", 0)]                                  # 1 = "need to change password" dialog
+    return obf_body(4, *f)
 
 
 class Session:
@@ -115,8 +154,13 @@ async def handle(reader, writer, port, log):
             for body in bodies:
                 op = bp.get_int(body, 2, True)
                 log(f"[{port}] C->S opcode {op} body {body.hex()}")
+                replies = []
+                if op == 1:  # login request (u8 players, str id, str password: both encrypted, accepted as is)
+                    replies = [login_ok(), login_net_info()]
                 if op == 0:
-                    for r in login_replies():
+                    replies = login_replies()
+                if replies:
+                    for r in replies:
                         frame = sess.send(r)
                         writer.write(frame)
                         log(f"[{port}] S->C opcode {bp.get_int(r, 2, True)} {frame.hex()}")

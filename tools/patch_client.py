@@ -3,20 +3,28 @@
 usage: python3 tools/patch_client.py unpacked_ca.exe ca_patched.exe [server_ip]
 
 Patches (VA, see README "Địa chỉ quan trọng"):
-  0x8E701D  jz -> jmp        skip HackShield + BlackCipher init in CFxApp__vf4
+  Feature 212  call -> mov al,1  every `push 0xD4; call Feature_IsDisabled` (22 sites): HackShield feature off,
+                             the game's own switch (InitHackShield, heartbeat CStage::vf47, login, sub_8E31C0 users...)
+  0x8E703A  jne -> jmp       skip BlackCipher init (sub_4134BF) in CFxApp__vf4
   0x8E56ED  10 x nop         skip PatchServer_CheckVersion (treat as success)
-  0x69E636  jnz -> jmp       skip the HackShield heartbeat in CStage::vf47 (anti-cheat object is null without HackShield)
   IP strings                 every hardcoded server IP -> server_ip
 """
-import sys
+import struct, sys
 import pefile
 
 PATCHES = [
     # (va, original bytes, new bytes, note)
-    (0x8E701D, bytes.fromhex("7429"), bytes.fromhex("EB29"), "skip HackShield/BlackCipher init"),
+    (0x8E703A, bytes.fromhex("750C"), bytes.fromhex("EB0C"), "skip BlackCipher init"),
     (0x8E56ED, bytes.fromhex("57E87BEBFFFF85C07421"), b"\x90" * 10, "skip PatchServer_CheckVersion"),
-    (0x69E636, bytes.fromhex("0F854C010000"), bytes.fromhex("E94D01000090"), "skip HackShield heartbeat (CStage::vf47)"),
 ]
+
+# `call Feature_IsDisabled_stub0` (0x40176C, always returns al=0) right after `push 0xD4` (feature 212 = HackShield)
+FEATURE_IS_DISABLED = 0x40176C
+FEATURE_D4_CALLS = [0x595372, 0x59E869, 0x59E98A, 0x68BB28, 0x690AEC, 0x69E62E, 0x6AA235, 0x6B0070, 0x6B0278,
+                    0x84E4ED, 0x852E4F, 0x855828, 0x8E29A3, 0x8E31D8, 0x8E3899, 0x8E4E57, 0x8F3108, 0x8F3207,
+                    0x900D53, 0x900D62, 0x900D71, 0x900D81]
+for _va in FEATURE_D4_CALLS:
+    PATCHES.append((_va, None, bytes.fromhex("B001909090"), "Feature_IsDisabled(212 HackShield) -> 1"))
 
 IP_STRINGS = {  # va -> original (from strings xrefs; all used for server addresses)
     0xC88930: "222.255.122.204",  # CMultiServer default (gethostbyname)
@@ -42,6 +50,8 @@ def main(src, dst, ip="172.18.0.1"):
 
     for va, old, new, note in PATCHES:
         o = off(va)
+        if old is None:  # call rel32 to Feature_IsDisabled
+            old = b"\xE8" + struct.pack("<i", FEATURE_IS_DISABLED - (va + 5))
         cur = bytes(data[o:o + len(old)])
         if cur == new:
             print(f"{va:#x} already patched ({note})")

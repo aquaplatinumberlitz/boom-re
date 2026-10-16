@@ -89,12 +89,49 @@ def layout(hdr_mode):
     return a, b, c, a
 
 # Obfuscated big-endian ints used when checksum mode is 1 or 2 (0xA26920..)
-XOR = {1: 0x5A, 2: 0xA569, 4: 0x96CA5395}
+XOR = {1: 0x5A, 2: 0xA569, 4: 0x96CA5395, 8: 0x71B18589}  # u64: RecvPkt__Decode8 0xA26980 (only the low dword)
 
 def put_int(v, size, obf):
     if obf:
         v ^= XOR[size]
     return (v & ((1 << (8 * size)) - 1)).to_bytes(size, "big")
+
+def obf_bytes(raw):
+    """Byte run obfuscation (0xA26A10, strings/blobs): 4/2/1-byte chunks, little-endian int ^ key, big-endian out."""
+    out, i = b"", 0
+    while i < len(raw):
+        k = 4 if len(raw) - i >= 4 else 2 if len(raw) - i >= 2 else 1
+        out += put_int(int.from_bytes(raw[i:i + k], "little"), k, True)
+        i += k
+    return out
+
+
+def put_blob(inner, obf):
+    """RecvPkt__DecodeBlob 0xA658A0 / 0xA65100: [u32 N][N bytes] where the bytes are a serialized sub-reader
+    (0xA62890): [0x18][u32 LE len][len bytes of plain little-endian fields, read by 0xA62F40/0xA62F70/0xA63A40]."""
+    raw = b"\x18" + struct.pack("<I", len(inner)) + inner
+    return put_int(len(raw), 4, obf) + (obf_bytes(raw) if obf else raw)
+
+
+def put_str(text, obf):
+    """RecvPkt__DecodeStr 0xA65E70 / 0xA26A10: [u16 len][bytes]; obfuscated: bytes in 4/2/1 chunks, each chunk read
+    as a little-endian int, XORed with the size key and written big-endian."""
+    raw = text.encode("cp1258", errors="replace") if isinstance(text, str) else bytes(text)
+    return put_int(len(raw), 2, obf) + (obf_bytes(raw) if obf else raw)
+
+
+def get_str(buf, obf):
+    """-> (bytes, consumed)"""
+    n = get_int(buf, 2, obf)
+    if not obf:
+        return bytes(buf[2:2 + n]), 2 + n
+    out, i = b"", 0
+    while i < n:
+        k = 4 if n - i >= 4 else 2 if n - i >= 2 else 1
+        out += get_int(buf[2 + i:], k, True).to_bytes(k, "little")
+        i += k
+    return out, 2 + n
+
 
 def get_int(buf, size, obf):
     v = int.from_bytes(buf[:size], "big")
