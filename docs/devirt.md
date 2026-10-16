@@ -6,9 +6,41 @@ IAT đã sửa xong (`docs/runtime.md` → "Sửa IAT"). Việc còn lại là c
 ## Trạng thái (2026-10-16)
 
 - ✅ **Bản dump chạy được trong Wine trên host (GPU), mở cửa sổ game và đăng nhập vào `tools/fakeserver.py`** (127.0.0.1).
-- Đã devirtualize: **1 khối** (`sub_8F4421` site 0x8F452B) — xem [Khối đã xong](#khối-đã-xong).
+- Đã devirtualize: **2 khối** (`sub_8F4421` site 0x8F452B; `CStageMgr__ChangeStage` site 0x8F8F69) — xem [Khối đã xong](#khối-đã-xong).
+  Sau khối 2: hết chết ở intro; logo Nexon hiện, CALog `[XRpt] Sg - INT(dne:1)` + `EndOfInit!! exitcode=0`, đăng nhập server giả xong,
+  client mở thêm kết nối tới port khác (hello rồi tự đóng — chưa rõ, xem `logs/fakeserver_host.log`).
+- **Chặn tiếp theo: vòng lặp chính `sub_8F4D01`** (gọi từ `CFxApp__vf5` 0x8E30DA) — 3 khối VM lớn, xem [Vòng lặp chính](#vòng-lặp-chính-sub_8f4d01--chặn-hiện-tại).
 - Sửa thêm: unlicense nhầm `CreateWindowExW` ↔ `CreateWindowExA` (cửa sổ chính không tạo được → `CSysException "CreateWindow failed"`).
 - Các khối VM khác chưa bị chạm tới trên luồng khởi động → làm khi gặp (lobby, phòng, ván chơi sẽ chạm `CGamePlayMap__Load`, `CGOBomber__vf21`…).
+
+## Ranh giới khối VM: marker của Themida SDK
+
+Mỗi khối VM **kết thúc bằng marker VM_END của SDK**: `EB 10 57 4C 20 …` (`jmp $+0x12` qua 16 byte, có chữ `WL `), các byte còn lại bị
+mutate (`89 xx` / `90`). **Code gốc tiếp tục ngay sau marker** (marker + 0x12). Khối = `[site, marker+0x12)`; vùng giữa là rác
+(Themida ghi đè code gốc tại chỗ, nên độ dài vùng ≈ độ dài code gốc). Phần code gốc **sau** marker còn nguyên dù IDA không thấy
+(không có xref) → disassemble thẳng bằng capstone.
+Kiểm chứng: 0x8F452B → 0x8F45A7 (khớp vmtrace), 0x8F8F69 → 0x8F8FCA (khớp thanh ghi sau khối của vmtrace: `edi=0xE`, `ebx=0`).
+73 marker trong `.text`. Ghép site với marker kế tiếp:
+
+| site | hàm | tiếp tục | dài |
+|---|---|---|---|
+| 0x8E5519 | `CFxApp__vf6` | 0x8E5547 | 0x2E |
+| 0x8F346C | `sub_8F3409` | 0x8F38F3 | 0x487 |
+| 0x8F452B | `sub_8F4421` | 0x8F45A7 | 0x7C ✅ |
+| 0x8F4D46 | `sub_8F4D01` (vòng lặp chính) | 0x8F5468 | 0x722 |
+| 0x8F54E4 | `sub_8F4D01` | 0x8F5DFA | 0x916 |
+| 0x8F5F40 | `sub_8F4D01` | 0x8F6908 | 0x9C8 |
+| 0x8F8F69 | `CStageMgr__ChangeStage` | 0x8F8FCA | 0x61 ✅ |
+| 0x966FEC | `sub_966FDE` | 0x9670BD | 0xD1 |
+| 0x9682E5 | `sub_9682DE` | 0x968385 | 0xA0 |
+| 0x5A6E89 | `CGOBomber__vf21` | 0x5A6F64 | 0xDB |
+| 0x6EFD4A | `sub_6EFD24` | 0x6EFED9 | 0x18F |
+| 0x6F287E | `sub_6F27EE` | 0x6F2923 | 0xA5 |
+| 0x71581A | `sub_71580C` | 0x7158E4 | 0xCA |
+| 0x736C27 | `CGamePlayMap__Load` | 0x736D6C | 0x145 |
+| 0x754C82 | `CMapScriptStageClear__vf7` | 0x754D20 | 0x9E |
+
+(Site nằm ngoài hàm IDA như 0x8F54E4/0x8F5F40 không có trong `decomp/themida_entries.json`; tìm bằng `jmp` → `push key; jmp 0x11EE128`.)
 
 ## Khối đã xong
 
@@ -19,6 +51,63 @@ IAT đã sửa xong (`docs/runtime.md` → "Sửa IAT"). Việc còn lại là c
   - `0xEEE07C = 0x4A65000A`, `0xEEE088 = 1`, `0xEEE08C = GetTickCount()` (không có xref từ code game);
   - `0xEEE650..65C` = callback `0x8F2C5D, 0x8F30F7, 0x8F2C4F, 0x8F31F6` (nhiều hàm game gọi, ví dụ `sub_413F32`).
 - Viết lại: `tools/devirt.py` `BLOCKS[0]` (dữ liệu ghi thẳng vào image + `GetTickCount` lúc chạy).
+
+### 0x8F8F69 — `CStageMgr__ChangeStage(id)` 0x8F8EEC
+- Hàm: nếu `id == [this+D8]` thì thôi; `[this+E8]=1`; stage cũ `vf45` (OnLeave, `[vt+0xB4]`) + dọn UI; `delete` stage cũ; **khối VM**;
+  rồi code gốc (còn nguyên từ 0x8F8FCA): `switch(id)` → `malloc(size)` + ctor → `[this+D4]`; null → MessageBox + `App__SetExitError(5,0x1B4)`;
+  `stage->vf44()` (OnEnter, `[vt+0xB0]`); CALog `[XRpt] Sg - INT(dne:%d)`; `[this+E8]=0`.
+- Khối VM (0x61 byte) chỉ còn: `[this+DC] = [this+D8]` (stage trước, đọc qua `GetPrevStage` 0x8F889A), `[this+D8] = id`.
+  Bằng chứng: vmtrace (`D8: 0x17 → 1`), ngoài ctor `sub_8F9800` không code native nào ghi D8/DC; `CStage__vf44` đọc `GetCurStageId` nên D8 phải đặt trước.
+  Ngữ cảnh tại site: `esi`=CMainWnd, `ebx`=id, `edi`=0 (dùng làm tham số ở 0x8F8FD0).
+- Viết lại: `tools/devirt.py` `BLOCKS[1]`.
+
+## Stage (CMainWnd = `g_pMainWnd`)
+
+`CMainWnd`: `+D4` stage hiện tại, `+D8` id hiện tại (`GetCurStageId` 0x8F8893, 151 nơi gọi), `+DC` id trước, `+E8` đang chuyển stage.
+Id 0x17 = chưa có stage. Đổi stage: `sub_8F391D(dword_E6092C, id)` đặt id đích (giá trị được che), vòng lặp chính so với `GetCurStageId` rồi gọi ChangeStage.
+Bảng `switch` trong code gốc 0x8F8FE3 (size = tham số `malloc`; `0x40176c(n)` = `Feature_IsDisabled(n)`):
+
+| id | stage | size | ctor | ghi chú |
+|---|---|---|---|---|
+| 1 | `CLoginStage` | 0x26CC | 0x84F724 | ✅ chạy trong Wine |
+| 3 | `CCreditStage` | 0x1024 | 0x68F731 | |
+| 10 | `CSelectServerStage` | 0x7354 | 0x85817A | |
+| 11 | lobby: loại 0 `CLobbySquareStage` (0x570F0, 0x4E56DF) / loại 2 `CLobbyStageWithSquareUI` (0x57CFC, 0x4C1F4D) / khác `CLobbyStage` (0x5525C, 0x6B3EDD) | | | loại = `sub_994378(server hiện tại)`, mặc định 1 nếu feature 0x2E tắt; 0x7B tắt UI square |
+| 12 | phòng: `sub_8F8CFC` → `CPrepareStage` / `CHiddenCatch(Single)PrepareStage` | | | |
+| 13 | ván: `sub_8F8C88` → `CGameStage` / `CHiddenCatchGameStage` | | | |
+| 14 | `CShopStageNew` | 0xAD64 | 0x807358 | |
+| 16 | `CChattingStage` | 0xC134 | 0x68EE57 | |
+| 17 | `CExchangeStage` | 0x8D88 | 0x846220 | |
+| 19 | `CUserMarketStage` | 0x11B4C | 0x85E898 | feature 7 |
+| 20 | `CSquareStage` | 0x7048 | 0x86C926 | feature 8 |
+| 21 | `CMagicBookMarketStage` | 0xF8A8 | 0x87F942 | feature 0x3C |
+
+(Đọc từ code gốc, id 1 đã kiểm chứng; ctor là hàm **không** có caller native — hàm stage được gọi từ `vf0` deleting-dtor là **dtor**.
+README/devirt cũ ghi `CLoginStage` ctor 0x84F4A7 là sai: đó là dtor.)
+
+## Vòng lặp chính `sub_8F4D01` — chặn hiện tại
+
+`CFxApp__vf5` 0x8E30DA → `sub_8F4D01(ecx = dword_E6092C)`. Trong Wine: first-chance page fault lặp lại ở handler VM 0x11FB494
+(`push [edx]`, `edx = 0x19FF68` — địa chỉ gần đỉnh stack main thread **của process gốc**).
+Hàm có 3 khối VM lớn (bảng trên: 0x722 + 0x916 + 0x9C8 byte code gốc). Code gốc còn nguyên quanh chúng (0x8F5468–0x8F54E4,
+0x8F5DFA–0x8F5F40, 0x8F6908–0x8F6D35): đầu vòng lặp 0x8F54B3 (`sub_8F282C` → thoát; `vf5 [+0x14]` có message?), so stage đích/hiện tại,
+gọi `stage->vf44`, `Net_DispatchMainSocket(1)` 0x8F4094, đo thời gian khung hình (`> 0x3681`), `Sleep(5)`…
+Khối 1 = phần khởi tạo trước vòng lặp, khối 2 = sau `sub_8F4CEA` khi có message, khối 3 = phần update/render trong scope `0x4E71E6`.
+
+Viết lại 3 khối này bằng tay từ diff là không khả thi (≈5KB code không nhìn thấy). Hướng khả dĩ:
+1. **Trace VM trên client gốc** (x32dbg trong WinBoat, ghi lại mọi lệnh ngoài section Themida = lời gọi native + tham số),
+   dựng lại code từ chuỗi lời gọi. Vướng: client gốc trong WinBoat không tới được vòng lặp chính (renderer init thất bại vì không GPU)
+   → cần patch bỏ qua lỗi renderer, hoặc Windows có GPU.
+2. **Cho VM chạy trong bản dump**: VM cần trạng thái Themida lúc runtime (đọc `0x19FF68`, vùng cấp phát ngoài image như `0x1BA6650`).
+   Dump toàn bộ bộ nhớ process gốc (không chỉ vùng thực thi như `tools/live_dump.ps1` hiện tại) rồi map lại cùng địa chỉ khi khởi động bản dump.
+   Rủi ro: trạng thái có thể chứa địa chỉ DLL của Windows (khác Wine).
+3. Client gốc + Wine có WoW64 kiểu cũ (`docs/runtime.md`) — VM chạy thật, không cần devirtualize.
+
+### `tools/vmemu.py` (thử nghiệm, CHƯA dùng được)
+Chạy một khối VM của dump bằng Unicorn: lời gọi native (control vào `.text` với `[esp]` trỏ về section Themida) được ghi + giả lập,
+dừng khi thoát ra `.text`; `--snapshot logs/vmtrace/<SITE>` khởi đầu từ trạng thái thật và so với "post".
+Kết quả với 0x8F8F69: bytecode chạy thẳng (~6400 lệnh VM, `--dispatch 0x11EECBE`) nhưng **không thoát** (>20M lệnh), đọc vùng ngoài image —
+cùng triệu chứng như trong Wine → xác nhận VM phụ thuộc trạng thái runtime không có trong dump (kể cả khi phủ section Themida bằng `logs/live/image_00400000.bin`).
 
 ## Cách Themida ảo hoá trong binary này
 
@@ -120,9 +209,9 @@ WINEDEBUG=+debugstr,-all wine ca_fixed_patched.exe  # OutputDebugString của ga
 ```
 Wine đã đặt `HKCU\Software\Wine\WineDbg\ShowCrashDialog = 0` (in backtrace ra console thay vì hộp thoại).
 
-## Chẩn đoán màn hình logo (2026-10-16)
+## Chẩn đoán màn hình logo (2026-10-16) — ĐÃ GIẢI QUYẾT (khối 0x8F8F69, xem trên)
 
-Bản dump dừng ở logo Nexon/VNG. Thực chất process thoát mã 9 (`App__SetExitError(9)`), không treo.
+Bản dump dừng ở màn hình intro. Thực chất process thoát mã 9 (`App__SetExitError(9)`), không treo.
 
 - CALog: `116 : InitBeforePatch` rồi dừng.
 - winedbg (break first-chance): page fault `EIP=0x1388`, tức một `call [reg+N]` với con trỏ rác.

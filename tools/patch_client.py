@@ -5,6 +5,7 @@ usage: python3 tools/patch_client.py unpacked_ca.exe ca_patched.exe [server_ip]
 Patches (VA, see README "Địa chỉ quan trọng"):
   0x8E701D  jz -> jmp        skip HackShield + BlackCipher init in CFxApp__vf4
   0x8E56ED  10 x nop         skip PatchServer_CheckVersion (treat as success)
+  0x69E636  jnz -> jmp       skip the HackShield heartbeat in CStage::vf47 (anti-cheat object is null without HackShield)
   IP strings                 every hardcoded server IP -> server_ip
 """
 import sys
@@ -14,6 +15,7 @@ PATCHES = [
     # (va, original bytes, new bytes, note)
     (0x8E701D, bytes.fromhex("7429"), bytes.fromhex("EB29"), "skip HackShield/BlackCipher init"),
     (0x8E56ED, bytes.fromhex("57E87BEBFFFF85C07421"), b"\x90" * 10, "skip PatchServer_CheckVersion"),
+    (0x69E636, bytes.fromhex("0F854C010000"), bytes.fromhex("E94D01000090"), "skip HackShield heartbeat (CStage::vf47)"),
 ]
 
 IP_STRINGS = {  # va -> original (from strings xrefs; all used for server addresses)

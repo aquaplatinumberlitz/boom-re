@@ -46,6 +46,108 @@ BLOCKS = [
             0xEEE650: dwords(0x8F2C5D, 0x8F30F7, 0x8F2C4F, 0x8F31F6),
         },
     ),
+    dict(
+        site=0x8F8F69, cont=0x8F8FCA, func="CStageMgr__ChangeStage (0x8F8EEC), start of the new-stage part",
+        # Themida only overwrote 0x8F8F69..0x8F8FC9; the original x86 from 0x8F8FCA on is intact:
+        # switch(id) -> malloc(size) + stage ctor -> [esi+D4], stage->vf44 (OnEnter), CALog "Sg - INT", [esi+E8]=0.
+        # vmtrace 8F8F69: [esi+D8] 0x17 -> id (nothing native writes it except the ctor sub_8F9800),
+        # [esi+DC] = previous id (read by GetPrevStage 0x8F889A, e.g. CHiddenCatchSinglePrepareStage__vf124 == 13).
+        # Context at the site: esi = CMainWnd, ebx = new id ([ebp+8]), edi = 0 (used as arg at 0x8F8FD0).
+        asm=f"""
+            mov eax, dword ptr [esi + 0xD8]
+            mov dword ptr [esi + 0xDC], eax
+            mov dword ptr [esi + 0xD8], ebx
+            jmp {0x8F8FCA:#x}
+        """,
+    ),
+    # Main loop sub_8F4D01 (CMainSystem::Run, ecx = dword_E6092C, [ebp-0x280] = this). Evidence for these blocks:
+    # full-memory snapshots of the original client at the site/continuation (tools/launcher/snap.c, win/snap.bat)
+    # + emulation of the VM on the snapshot (tools/vmemu.py --snap ... --run-natives); emulated frame/global diff
+    # matches the real post snapshot (tools/snapdiff.py). Anti-cheat / integrity parts are dropped:
+    #   sub_A12E50 (anti-cheat init: drops %TEMP%\drc*.tmp DLL and loads it), sub_A14800 (hash of a table of all
+    #   VM entry stubs, kept in locals ebp-0xCC..-0x68), sub_A13A10 (checksum of .text 0x401324+0x1266FA).
+    dict(
+        site=0x8F4D46, cont=0x8F5468, func="sub_8F4D01 main loop: init before the loop",
+        # only native-visible effect: [ebp-0xA8] = malloc(0x2B4) zeroed (freed at function exit 0x8F6CE2)
+        asm=f"""
+            push 0x2B4
+            call {0x9E30F2:#x}
+            add esp, 4
+            mov dword ptr [ebp - 0xA8], eax
+            push 0x2B4
+            push 0
+            push eax
+            call {0x9DF690:#x}
+            add esp, 0xC
+            jmp {0x8F5468:#x}
+        """,
+    ),
+    dict(
+        site=0x8F5F40, cont=0x8F6908, func="sub_8F4D01 main loop: periodic (elapsed > 0x3681) part",
+        # p = new(0xC); sub_67C820(p, &[ebp-0x140]) (copy of current time); delete old CMainSystem+0xF8 (sub_8F2C6B(1));
+        # CMainSystem+0xF8 = p; then same as the native else-branch 0x8F6919:
+        # [ebp-0x184] = sub_9995B1(sub_412B76()); sub_441A4C(&[ebp-0x134], 1)
+        asm=f"""
+            push 0xC
+            call {0x9DBE57:#x}
+            add esp, 4
+            test eax, eax
+            je c_new_done
+            lea edx, [ebp - 0x140]
+            push edx
+            mov ecx, eax
+            call {0x67C820:#x}
+        c_new_done:
+            mov edx, dword ptr [ebp - 0x280]
+            mov ecx, dword ptr [edx + 0xF8]
+            mov dword ptr [edx + 0xF8], eax
+            test ecx, ecx
+            je c_old_done
+            push 1
+            call {0x8F2C6B:#x}
+        c_old_done:
+            call {0x412B76:#x}
+            mov ecx, eax
+            call {0x9995B1:#x}
+            mov dword ptr [ebp - 0x184], eax
+            push 1
+            lea ecx, [ebp - 0x134]
+            call {0x441A4C:#x}
+            jmp {0x8F6908:#x}
+        """,
+    ),
+    dict(
+        site=0x8F346C, cont=0x8F38F3, func="sub_8F3409 (CMainSystem::vf10, every 5 s): keep-alive",
+        # vmemu on snapshot 8F346C (frame diff == real post): CSendPacket at [ebp-0x50] (0x2C bytes),
+        # SendPkt__Begin(0xF); Encode4([ebp-0x1C] time, [ebp-0x18], [ebp-0x24]) (the 3 values computed right before
+        # the site: time, [EA6FF0+0x1C], [EA6FF0+0x20]); Send; dtor; sub_8F2803(sub_8E1C72()) ([EA6FF0+0x24]=1);
+        # CMainSystem+0x48 = time. Dropped: rand()-driven HackShield checks (sub_8E31C0 object, sub_4AEAB0/sub_900D7C x6).
+        asm=f"""
+            lea ecx, [ebp - 0x50]
+            push 0xF
+            call {0x888462:#x}
+            push dword ptr [ebp - 0x1C]
+            lea ecx, [ebp - 0x50]
+            call {0xA65280:#x}
+            push dword ptr [ebp - 0x18]
+            lea ecx, [ebp - 0x50]
+            call {0xA65280:#x}
+            push dword ptr [ebp - 0x24]
+            lea ecx, [ebp - 0x50]
+            call {0xA65280:#x}
+            lea ecx, [ebp - 0x50]
+            call {0x888609:#x}
+            lea ecx, [ebp - 0x50]
+            call {0x8884DC:#x}
+            call {0x8E1C72:#x}
+            mov ecx, eax
+            call {0x8F2803:#x}
+            mov ecx, dword ptr [ebp - 0xCC]
+            mov eax, dword ptr [ebp - 0x1C]
+            mov dword ptr [ecx + 0x48], eax
+            jmp {0x8F38F3:#x}
+        """,
+    ),
 ]
 
 

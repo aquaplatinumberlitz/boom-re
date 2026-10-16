@@ -1,6 +1,6 @@
 # 32-bit PowerShell. Start ORIGINAL ca.exe and patch code in memory as soon as Themida has decrypted it.
 # Patch list "va:oldhex:newhex;..." (same patches as tools/patch_client.py)
-param([string]$Exe, [string]$Patches = "8E701D:7429:EB29", [string]$Log, [int]$TimeoutMs = 30000)
+param([string]$Exe, [string]$Patches = "8E701D:7429:EB29", [string]$Log, [int]$TimeoutMs = 30000, [int]$WaitExitMs = 0)
 $src = @"
 using System; using System.Runtime.InteropServices; using System.Diagnostics;
 public static class L {
@@ -37,3 +37,7 @@ public static class L {
 Add-Type -TypeDefinition $src
 $p = Start-Process -FilePath $Exe -WorkingDirectory (Split-Path $Exe) -PassThru
 [L]::Run($p.Id, $Patches, $TimeoutMs) | Set-Content -Encoding ASCII $Log
+if ($WaitExitMs -gt 0) {
+  if ($p.WaitForExit($WaitExitMs)) { "exit code {0:X8} after {1}s" -f $p.ExitCode, [int]($p.ExitTime - $p.StartTime).TotalSeconds | Add-Content -Encoding ASCII $Log }
+  else { "still running after $WaitExitMs ms" | Add-Content -Encoding ASCII $Log }
+}

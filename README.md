@@ -35,7 +35,7 @@ Cập nhật 2026-10-16.
 | Định dạng `.map`, `Attr/*`, frame animation | ⬜ | `decomp/CGamePlayMap__Load.c` |
 | Client gốc (Themida) + patch bộ nhớ | ✅ chạy tới đăng nhập trong WinBoat; ❌ không render (VM không GPU); ❌ Wine (anti-VM Themida) | `docs/runtime.md` |
 | Bản dump chạy trong Wine (**hướng đang theo**) | ✅ **vào game được**: cửa sổ mở (GPU), đăng nhập vào server giả | `tools/rebuild_wine.sh`, `docs/devirt.md` |
-| Hàm bị Themida ảo hoá | 🟡 1/56 khối viết lại (khởi động); còn lại làm khi chạm tới | `docs/devirt.md`, `tools/devirt.py`, `tools/vmtrace.py` |
+| Hàm bị Themida ảo hoá | 🟡 2/56 khối viết lại (khởi động, `ChangeStage` → qua intro); **chặn ở vòng lặp chính `sub_8F4D01`** (3 khối lớn) | `docs/devirt.md`, `tools/devirt.py`, `tools/vmtrace.py` |
 | Server thật (Rust) | ⬜ chưa bắt đầu; `tools/fakeserver.py` là đặc tả sống | |
 
 ### Đã kiểm chứng trên client thật
@@ -55,6 +55,7 @@ Cập nhật 2026-10-16.
 
 **Hướng đã chọn (2026-10-16): hướng 1 — devirtualize** → **bản dump đã vào được game trong Wine.**
 
+0. **Vòng lặp chính `sub_8F4D01`** bị ảo hoá (3 khối, ~5KB code gốc) — chọn hướng trong [docs/devirt.md](docs/devirt.md#vòng-lặp-chính-sub_8f4d01--chặn-hiện-tại).
 1. Xem client làm gì sau đăng nhập (màn hình, packet gửi lên `tools/fakeserver.py`), mở rộng server giả theo đó.
    Khi client chạm khối VM mới (crash/exception trong section Themida) → làm theo [docs/devirt.md](docs/devirt.md)
    (`tools/vmtrace.py` quan sát trên client gốc → viết lại trong `tools/devirt.py`).
@@ -179,7 +180,9 @@ tools/rebuild_wine.sh
 | 0x6A978B | `CStage__OnPacket` | 191 opcode chung |
 | 0xA388C0 / 0xA37880 | `PackFS__AttachIdf` / `CData__LoadFromPack` | pack |
 | 0x7354FD | `CGamePlayMap__Load` | map (có khối bị ảo hoá) |
-| 0x11EE128 | VM entry Themida | `docs/devirt.md` |
+| 0x8F8EEC | `CStageMgr__ChangeStage` | bảng id → stage trong `docs/devirt.md` |
+| 0x8F4D01 | vòng lặp chính (`CFxApp__vf5` gọi) | 3 khối VM lớn — chặn hiện tại |
+| 0x11EE128 | VM entry Themida | `docs/devirt.md`; khối kết thúc ở marker `EB 10 57 4C 20` |
 | 0xC0F000–0xC0F7FF | IAT gốc | `decomp/iat_resolved.json` |
 | 0x1900000 / 0x16AD000 | IAT giả của unlicense | 3 mục sai, xem `docs/runtime.md` |
 
@@ -199,6 +202,7 @@ tools/rebuild_wine.sh
 | `tools/rebuild_wine.sh` | fix_iat → devirt → patch → chạy bản dump trong winedbg |
 | `tools/devirt.py` | khối VM viết lại (`BLOCKS`) → `ca_devirt.exe` |
 | `tools/vmtrace.py`, `tools/launcher/inject.c`, `win/vmtrace.bat` | quan sát một khối VM trên client gốc (cave + snapshot + diff) |
+| `tools/vmemu.py` | (thử nghiệm) emulate khối VM của dump bằng Unicorn — chưa thoát được khối, xem `docs/devirt.md` |
 | `tools/run_xvfb.sh` | chạy bản dump trong Xvfb riêng + chụp màn hình |
 | `tools/themida_scan.py` | liệt kê điểm vào section Themida → `decomp/themida_entries.json` |
 | `tools/launch.ps1`, `tools/launcher/boomlaunch.c` | patch bộ nhớ client gốc (PowerShell / exe mingw) |
