@@ -36,7 +36,7 @@ Cập nhật 2026-10-16.
 | Định dạng `.map`, `Attr/*`, frame animation | ⬜ | `decomp/CGamePlayMap__Load.c` |
 | Client gốc (Themida) + patch bộ nhớ | ✅ chạy tới đăng nhập trong WinBoat; ❌ không render (VM không GPU); ❌ Wine (anti-VM Themida) | `docs/runtime.md` |
 | Bản dump chạy trong Wine (**hướng đang theo**) | ✅ **vào game được**: cửa sổ mở (GPU), đăng nhập vào server giả | `tools/rebuild_wine.sh`, `docs/devirt.md` |
-| Hàm bị Themida ảo hoá | 🟡 7/56 khối viết lại (khởi động, `ChangeStage`, vòng lặp chính, keep-alive) — **dump tới màn chọn kênh** | `docs/devirt.md`, `tools/devirt.py`, `tools/vmemu.py`, `tools/launcher/snap.c` |
+| Hàm bị Themida ảo hoá | 🟡 6/56 khối viết lại (khởi động, `ChangeStage`, vòng lặp chính 3 khối, keep-alive) — **dump tới màn chọn kênh** | `docs/devirt.md`, `tools/devirt.py`, `tools/vmemu.py`, `tools/launcher/snap.c` |
 | Client gốc trong WinBoat có hình | ✅ D3D9 phần mềm (wined3d + Mesa llvmpipe) | `win/swd3d.bat`, `thirdparty/swd3d/` |
 | Server thật (Rust) | ⬜ chưa bắt đầu; `tools/fakeserver.py` là đặc tả sống | |
 

@@ -6,9 +6,12 @@ CMDS=$(realpath "$1"); U=${2:-tester}; P=${3:-1234}; OUT=logs/xvfb; mkdir -p $OU
 Xvfb :77 -screen 0 1024x768x24 -nolisten tcp >/dev/null 2>&1 & XPID=$!
 sleep 1; export DISPLAY=:77
 ( cd wine/Boom && rm -f CALog.log && cat "$CMDS" \
-  | env -u WAYLAND_DISPLAY WINEDEBUG=-all timeout 90 wine winedbg 'Z:\home\admin\boom-re\wine\Boom\ca_fixed_patched.exe' > ../../$OUT/login_bp.txt 2>&1 ) & WPID=$!
-sleep 22
-xdotool mousemove 575 602 click 1; sleep 0.5; xdotool type --delay 80 "$U"; sleep 0.3
-xdotool mousemove 575 634 click 1; sleep 0.5; xdotool type --delay 80 "$P"; sleep 0.3
-xdotool mousemove 581 733 click 1
+  | env -u WAYLAND_DISPLAY WINEDEBUG=-all timeout 70 wine winedbg 'Z:\home\admin\boom-re\wine\Boom\ca_fixed_patched.exe' > ../../$OUT/login_bp.txt 2>&1 ) & WPID=$!
+sleep 12
+for a in 1 2 3 4 5; do
+  xdotool mousemove 575 602 click 1; sleep 0.4; xdotool type --delay 60 "$U"; sleep 0.2
+  xdotool mousemove 575 634 click 1; sleep 0.4; xdotool type --delay 60 "$P"; sleep 0.2
+  xdotool mousemove 581 733 click 1
+  sleep 8
+done
 wait $WPID; kill $XPID 2>/dev/null
