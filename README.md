@@ -31,7 +31,7 @@ Cập nhật 2026-10-16.
 | Packet → handler | ✅ 520 opcode / 59 dispatcher | `decomp/opcode_dispatch.json`, `decomp/handlers/` |
 | Hello + chuỗi đăng nhập | ✅ client thật đăng nhập được vào server giả | `docs/protocol.md`, `tools/fakeserver.py` |
 | Đăng nhập bằng tài khoản (opcode 1 → 4, 15) | ✅ tới màn chọn kênh | `docs/protocol.md`, `tools/fakeserver.py` |
-| Màn chọn kênh → lobby | ⬜ `CSelectServerStage__On_16/7` | |
+| Màn chọn kênh → lobby | 🟡 vào được stage 10; danh sách kênh (opcode 14) đang crash khi parse | `docs/protocol.md` → "Màn chọn kênh" |
 | Pack `.idx/.idd` + sprite → PNG | ✅ 108.726 PNG, 965 map, 645 ogg | `docs/assets.md`, `tools/idf.py`, `tools/i16.py` |
 | Định dạng `.map`, `Attr/*`, frame animation | ⬜ | `decomp/CGamePlayMap__Load.c` |
 | Client gốc (Themida) + patch bộ nhớ | ✅ chạy tới đăng nhập trong WinBoat; ❌ không render (VM không GPU); ❌ Wine (anti-VM Themida) | `docs/runtime.md` |
@@ -57,7 +57,8 @@ Cập nhật 2026-10-16.
 
 **Hướng đã chọn (2026-10-16): hướng 1 — devirtualize** → **bản dump đã vào được game trong Wine.**
 
-1. Protocol màn chọn kênh (`CSelectServerStage__On_16` trạng thái kênh, `On_7` vào kênh) → lobby, mở rộng `tools/fakeserver.py`.
+1. Danh sách kênh: sửa crash khi parse opcode 14 (`docs/protocol.md` → "Màn chọn kênh"), rồi vào kênh (`On_7`) → lobby (stage 11).
+   Chạy dưới winedbg: `tools/xvfb_login_dbg.sh` (bắt exception first-chance, backtrace ở `logs/xvfb/login_dbg.txt`).
    Thử nhanh: `python3 tools/fakeserver.py --log logs/fakeserver_host.log &` rồi `tools/xvfb_login.sh`.
    Khi client chạm khối VM mới (crash/exception trong section Themida) → làm theo [docs/devirt.md](docs/devirt.md)
    (`tools/vmtrace.py` quan sát trên client gốc → viết lại trong `tools/devirt.py`).
@@ -206,7 +207,7 @@ tools/rebuild_wine.sh
 | `tools/vmtrace.py`, `tools/launcher/inject.c`, `win/vmtrace.bat` | quan sát một khối VM trên client gốc (cave + snapshot + diff) |
 | `tools/launcher/snap.c`, `win/snap.bat` | snapshot toàn bộ bộ nhớ client gốc tại một site VM (pre/post) |
 | `tools/vmemu.py`, `tools/snapdiff.py` | emulate khối VM trên snapshot (Unicorn), so với diff thật — quy trình trong `docs/devirt.md` |
-| `tools/xvfb_login.sh` | chạy dump trong Xvfb, tự gõ đăng nhập, chụp màn hình |
+| `tools/xvfb_login.sh`, `tools/xvfb_login_dbg.sh` | chạy dump trong Xvfb, tự gõ đăng nhập, chụp màn hình (bản `_dbg`: dưới winedbg) |
 | `tools/run_xvfb.sh` | chạy bản dump trong Xvfb riêng + chụp màn hình |
 | `tools/themida_scan.py` | liệt kê điểm vào section Themida → `decomp/themida_entries.json` |
 | `tools/launch.ps1`, `tools/launcher/boomlaunch.c` | patch bộ nhớ client gốc (PowerShell / exe mingw) |

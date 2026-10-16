@@ -150,7 +150,16 @@ Kết nối patch: nhận hello hợp lệ → client tự đóng socket (~0,1s)
 | 1 | 0x99933B | u8, blob `multisvr.ssd`; u8, blob `multisvrn.ssd` | `u8 0, u8 0` |
 | 43 | 0x982A90 | u8, blob | `u8 0` |
 
-Nhận đủ → hàm trả 2, cửa sổ game "Boom" mở. Tiếp theo client làm gì: **chưa biết** (bị chặn bởi lỗi render).
+Nhận đủ → hàm trả 2, cửa sổ game "Boom" mở; màn Login (xem dưới).
+
+**Opcode 1 — danh sách server** (`sub_99933B`): mỗi phần là u8 cờ (1 = có dữ liệu mới, client ghi cache ra file) + blob.
+Không có file `multisvr*.ssd` trong thư mục game → gửi `u8 0, u8 0` = dùng danh sách hardcode trong `CMultiServer__ctor`
+(nhóm "Default Server List"; endpoint 120.138.77.x / 222.255.122.204 × 3838/4848/5858/6868, đã patch IP thành 127.0.0.1).
+- blob `multisvr.ssd` (`sub_998CCF`): u8 `n` × {str, str, u32} (nhóm, `sub_9986F3`), u16 `m` × {u32 in_addr, u16 port, u8} (endpoint,
+  `sub_998760`; mặc định u8 = 1), u8 cờ (`CMultiServer+0x3C`).
+- blob `multisvrn.ssd` (`sub_998EA0`): u8 `n` × {u8, str, str}.
+- ⚠️ Gửi `multisvr_blob()` (1 nhóm, 4 endpoint 127.0.0.1 với u8 = 1) → client **không mở kết nối chính**, hiện `ErrCannotLogin`.
+  Còn thiếu ý nghĩa trường → `tools/fakeserver.py` tạm để `u8 0`. Nhớ xoá `wine/Boom/multisvr*.ssd` sau khi thử (client đọc cache).
 Cài đặt mẫu: `tools/fakeserver.py` (`hello_packet`, `login_replies`, `Session`).
 
 ### Đăng nhập bằng tài khoản (màn Login) — ✅ chạy được với bản dump
@@ -160,7 +169,22 @@ Cài đặt mẫu: `tools/fakeserver.py` (`hello_packet`, `login_replies`, `Sess
   (cuối = cờ "đổi mật khẩu"). Client trả opcode 9 (u32).
 - Server trả **opcode 15** (`CLoginStage__On_15`): blob {str host, 3×u16, u8 mode, u16} → hộp thoại chờ `CWaitForLoginDlg` đổi
   trạng thái 2→1→3 → chuyển **stage 10** (chọn kênh). Không có 15 → hết giờ → `ErrBadNetwork`.
-- Ở màn chọn kênh client gửi opcode 7 (lớn), 298, 40.
+- Rời màn Login (`sub_84FABC`): đặt tên file cache kênh `channel2_%03d%s.ssd` (`sub_993EF4`), client gửi opcode 7 (lớn, `sub_98E763`),
+  rồi `sub_8F391D(10)`.
+
+### Màn chọn kênh (stage 10, `CSelectServerStage`) — 🟡 vào được, danh sách kênh chưa hiện
+- Vào stage, client gửi opcode 298 (str id đã mã hoá + u8) và **opcode 40** (u8 0). Server giả trả 14 + 16 khi nhận 40.
+- Handler của stage: 7 (kết quả vào kênh: u8 mã lỗi 0/2/4/5/11..22), 16 (trạng thái kênh), 19 (chỉ thành viên guild), 41.
+- **Opcode 14 — danh sách kênh** (`CStage__On_14` → `sub_99489D`, object `CChannelCache` = `dword_E61010`):
+  u8 cờ + blob; cờ 1 → parse `sub_994800` rồi ghi cache ra file kênh (tên file chỉ có sau `sub_993EF4` → **phải gửi sau khi vào stage 10**;
+  gửi sớm hơn thì ghi file thất bại → `CAppException` → client ngắt kết nối). Cờ 0 → đọc cache.
+  Blob: u16 `n`, `n` bản ghi (`sub_994663`): str tên, u32, u8×7, u16×2, u8×4, u32×2 (khớp với ctor bản ghi `sub_994397`, 0xE8 byte,
+  1024 bản ghi trong `CChannelCache`). Sau đó `On_14` duyệt kênh qua `sub_9950DA` vào `CChannelInfo` (`dword_E60FD8`).
+  ⚠️ **Hiện crash** khi parse bản ghi đầu tiên: ghi giá trị u8 thứ 7 (`[rec+0x64]`, 0x99471C → `sub_4140C5`) vào con trỏ rác
+  (`ESI=0x10374FC8`, `[esi+8]=0xD37C20E5`). Bố cục trường đã đối chiếu đúng với ctor; nghi `CChannelCache` (malloc 0x4011C ở
+  `CFxApp__InitSystems` 0x8E5DB9) có vấn đề trong bản dump — **đang điều tra**.
+- **Opcode 16 — trạng thái kênh** (`CSelectServerStage__On_16`): blob {u16 `n`, `n` × (u16, u32)} → `CChannelInfo` (`sub_9949C6`);
+  chỉ xử lý khi `sub_994A1D(CChannelInfo)` ≠ 0. Gửi riêng 16 thì client không lỗi.
 
 ### Kiểu dữ liệu (mode 1/2)
 - u64: 8 byte BE, XOR `0x0000000071B18589` (`RecvPkt__Decode8` 0xA26980).
@@ -190,4 +214,5 @@ Handler được đặt tên dạng `<Stage>__On_<opcode>` trong IDA. Pseudocode
 
 - Byte thứ 2 của header khi A = 2: client gửi `0xF4`; khi nhận client không kiểm tra (server gửi 0 vẫn được).
 - Ý nghĩa 6×u32 trong opcode 0 (có lẽ session/account từ launcher VNG).
-- Packet sau đăng nhập (lobby, phòng, ván chơi).
+- Ý nghĩa các trường trong gói đăng nhập (opcode 4), bản ghi kênh (opcode 14), endpoint multisvr.
+- Opcode 14 crash (xem trên); lobby, phòng, ván chơi.

@@ -45,6 +45,23 @@ def login_net_info(host="127.0.0.1", ports=(0, 0, 0)):
     return obf_body(15, ("blob", inner))
 
 
+def channel_list(names=("Kenh 1", "Kenh 2", "Kenh 3", "Kenh 4")):
+    """CStage__On_14 -> sub_99489D: u8 1 = new data (cached by the client), blob {u16 n, n records (sub_994663):
+    str name, u32, u8 x7, u16 x2, u8 x4, u32 x2}. Field meanings: unknown yet (zeros except a running id)."""
+    inner = struct.pack("<H", len(names))
+    for i, n in enumerate(names):
+        inner += _lstr(n) + struct.pack("<I", i + 1) + bytes(7) + struct.pack("<HH", 0, 0) + bytes(4) + struct.pack("<II", 0, 0)
+    return obf_body(14, ("u8", 1), ("blob", inner))
+
+
+def channel_status(users=(10, 20, 30, 40)):
+    """CSelectServerStage__On_16 / CLoginStage__On_16: blob {u16 n, n x (u16, u32)} -> CChannelInfo (sub_9949C6)."""
+    inner = struct.pack("<H", len(users))
+    for i, u in enumerate(users):
+        inner += struct.pack("<HI", i, u)
+    return obf_body(16, ("blob", inner))
+
+
 def login_ok(name="tester", players=1):
     """CLoginStage__On_4 0x8534F3: u8 result 0 = success -> sub_852BCA 0x852BCA (field order from the decompile;
     meaning of most fields still unknown, zeros are accepted). `players` must equal the 1P/2P count
@@ -98,6 +115,36 @@ class Session:
             yield body
 
 
+def _lstr(text):
+    """string inside a blob sub-reader (0xA63A40): u32 LE length + bytes"""
+    b = text.encode("cp1258", errors="replace")
+    return struct.pack("<I", len(b)) + b
+
+
+DEFAULT_ENDPOINTS = tuple(("127.0.0.1", p, 1) for p in (3838, 4848, 5858, 6868))
+
+
+def multisvr_blob(servers=(("Boom", "Fake server", 0),), endpoints=DEFAULT_ENDPOINTS, flag=0):
+    """sub_998CCF 0x998CCF (cached as multisvr.ssd): u8 n {str, str, u32} (sub_9986F3), u16 m {u32 in_addr, u16 port, u8}
+    (sub_998760), u8 flag (CMultiServer+0x3C). Built-in defaults (CMultiServer__ctor / CMultiServer__AddDefaultServers):
+    one group {"Default Server List", "This is built in ...", 0}, endpoints {ip, 3838/4848/5858/6868, 1}."""
+    out = bytes([len(servers)])
+    for a, b, v in servers:
+        out += _lstr(a) + _lstr(b) + struct.pack("<I", v)
+    out += struct.pack("<H", len(endpoints))
+    for ip, port, g in endpoints:
+        out += bytes(int(x) for x in ip.split(".")) + struct.pack("<HB", port, g)
+    return out + bytes([flag])
+
+
+def multisvrn_blob(entries=((1, "Kenh 1", ""),)):
+    """sub_998EA0 0x998EA0 (cached as multisvrn.ssd): u8 n {u8, str, str} (sub_998690)."""
+    out = bytes([len(entries)])
+    for i, a, b in entries:
+        out += bytes([i]) + _lstr(a) + _lstr(b)
+    return out
+
+
 def login_replies():
     """Login_DoLoginSequence 0x8E2DEC waits for 13, 2, 12, 21, 1, 43 in this order.
     Each starts with a u8 'have new data' flag; 0 = use local cache."""
@@ -106,7 +153,8 @@ def login_replies():
         obf_body(2, ("u8", 0)),            # FxClientString
         obf_body(12, ("u8", 0)),           # FxQuestString
         obf_body(21, ("u8", 0)),           # FxMessageTable
-        obf_body(1, ("u8", 0), ("u8", 0)), # multisvr.ssd / multisvrn.ssd
+        obf_body(1, ("u8", 0), ("u8", 0)),  # sub_99933B: 0 = keep built-in list; 1 + multisvr_blob() breaks the
+                                            # main connection (ErrCannotLogin) - endpoint fields not fully known yet
         obf_body(43, ("u8", 0)),           # sub_982A90
     ]
 
@@ -157,6 +205,9 @@ async def handle(reader, writer, port, log):
                 replies = []
                 if op == 1:  # login request (u8 players, str id, str password: both encrypted, accepted as is)
                     replies = [login_ok(), login_net_info()]
+                if op == 40:  # sent on entering the channel screen; the channel cache file name
+                    # (channel2_%03d%s.ssd, sub_993EF4) only exists from now on -> channel list must come after it
+                    replies = [channel_list(), channel_status()]
                 if op == 0:
                     replies = login_replies()
                 if replies:
