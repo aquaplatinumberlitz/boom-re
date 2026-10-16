@@ -30,12 +30,14 @@ Cập nhật 2026-10-16.
 | Lớp mạng TCP | ✅ kiểm chứng: emulate binary + traffic thật | `docs/protocol.md`, `tools/boomproto.py` |
 | Packet → handler | ✅ 520 opcode / 59 dispatcher | `decomp/opcode_dispatch.json`, `decomp/handlers/` |
 | Hello + chuỗi đăng nhập | ✅ client thật đăng nhập được vào server giả | `docs/protocol.md`, `tools/fakeserver.py` |
-| Cấu trúc field packet sau đăng nhập | ⬜ chưa biết client làm gì tiếp (chưa có client hiển thị) | |
+| Đăng nhập bằng tài khoản (opcode 1 → 4, 15) | ✅ tới màn chọn kênh | `docs/protocol.md`, `tools/fakeserver.py` |
+| Màn chọn kênh → lobby | ⬜ `CSelectServerStage__On_16/7` | |
 | Pack `.idx/.idd` + sprite → PNG | ✅ 108.726 PNG, 965 map, 645 ogg | `docs/assets.md`, `tools/idf.py`, `tools/i16.py` |
 | Định dạng `.map`, `Attr/*`, frame animation | ⬜ | `decomp/CGamePlayMap__Load.c` |
 | Client gốc (Themida) + patch bộ nhớ | ✅ chạy tới đăng nhập trong WinBoat; ❌ không render (VM không GPU); ❌ Wine (anti-VM Themida) | `docs/runtime.md` |
 | Bản dump chạy trong Wine (**hướng đang theo**) | ✅ **vào game được**: cửa sổ mở (GPU), đăng nhập vào server giả | `tools/rebuild_wine.sh`, `docs/devirt.md` |
-| Hàm bị Themida ảo hoá | 🟡 2/56 khối viết lại (khởi động, `ChangeStage` → qua intro); **chặn ở vòng lặp chính `sub_8F4D01`** (3 khối lớn) | `docs/devirt.md`, `tools/devirt.py`, `tools/vmtrace.py` |
+| Hàm bị Themida ảo hoá | 🟡 7/56 khối viết lại (khởi động, `ChangeStage`, vòng lặp chính, keep-alive) — **dump tới màn chọn kênh** | `docs/devirt.md`, `tools/devirt.py`, `tools/vmemu.py`, `tools/launcher/snap.c` |
+| Client gốc trong WinBoat có hình | ✅ D3D9 phần mềm (wined3d + Mesa llvmpipe) | `win/swd3d.bat`, `thirdparty/swd3d/` |
 | Server thật (Rust) | ⬜ chưa bắt đầu; `tools/fakeserver.py` là đặc tả sống | |
 
 ### Đã kiểm chứng trên client thật
@@ -55,8 +57,8 @@ Cập nhật 2026-10-16.
 
 **Hướng đã chọn (2026-10-16): hướng 1 — devirtualize** → **bản dump đã vào được game trong Wine.**
 
-0. **Vòng lặp chính `sub_8F4D01`** bị ảo hoá (3 khối, ~5KB code gốc) — chọn hướng trong [docs/devirt.md](docs/devirt.md#vòng-lặp-chính-sub_8f4d01--chặn-hiện-tại).
-1. Xem client làm gì sau đăng nhập (màn hình, packet gửi lên `tools/fakeserver.py`), mở rộng server giả theo đó.
+1. Protocol màn chọn kênh (`CSelectServerStage__On_16` trạng thái kênh, `On_7` vào kênh) → lobby, mở rộng `tools/fakeserver.py`.
+   Thử nhanh: `python3 tools/fakeserver.py --log logs/fakeserver_host.log &` rồi `tools/xvfb_login.sh`.
    Khi client chạm khối VM mới (crash/exception trong section Themida) → làm theo [docs/devirt.md](docs/devirt.md)
    (`tools/vmtrace.py` quan sát trên client gốc → viết lại trong `tools/devirt.py`).
 2. Xác nhận 41 điểm VM ở `0xA12E59–0xA17A24` là anti-cheat → bỏ qua cả khối nếu bị chạm.
@@ -202,7 +204,9 @@ tools/rebuild_wine.sh
 | `tools/rebuild_wine.sh` | fix_iat → devirt → patch → chạy bản dump trong winedbg |
 | `tools/devirt.py` | khối VM viết lại (`BLOCKS`) → `ca_devirt.exe` |
 | `tools/vmtrace.py`, `tools/launcher/inject.c`, `win/vmtrace.bat` | quan sát một khối VM trên client gốc (cave + snapshot + diff) |
-| `tools/vmemu.py` | (thử nghiệm) emulate khối VM của dump bằng Unicorn — chưa thoát được khối, xem `docs/devirt.md` |
+| `tools/launcher/snap.c`, `win/snap.bat` | snapshot toàn bộ bộ nhớ client gốc tại một site VM (pre/post) |
+| `tools/vmemu.py`, `tools/snapdiff.py` | emulate khối VM trên snapshot (Unicorn), so với diff thật — quy trình trong `docs/devirt.md` |
+| `tools/xvfb_login.sh` | chạy dump trong Xvfb, tự gõ đăng nhập, chụp màn hình |
 | `tools/run_xvfb.sh` | chạy bản dump trong Xvfb riêng + chụp màn hình |
 | `tools/themida_scan.py` | liệt kê điểm vào section Themida → `decomp/themida_entries.json` |
 | `tools/launch.ps1`, `tools/launcher/boomlaunch.c` | patch bộ nhớ client gốc (PowerShell / exe mingw) |

@@ -3,15 +3,33 @@
 Mục tiêu: chạy được bản dump `ca_fixed.exe` (không còn Themida) trong Wine trên host có GPU.
 IAT đã sửa xong (`docs/runtime.md` → "Sửa IAT"). Việc còn lại là các đoạn code bị Themida ảo hoá.
 
-## Trạng thái (2026-10-16)
+## Trạng thái (2026-10-16, tối)
 
-- ✅ **Bản dump chạy được trong Wine trên host (GPU), mở cửa sổ game và đăng nhập vào `tools/fakeserver.py`** (127.0.0.1).
-- Đã devirtualize: **2 khối** (`sub_8F4421` site 0x8F452B; `CStageMgr__ChangeStage` site 0x8F8F69) — xem [Khối đã xong](#khối-đã-xong).
-  Sau khối 2: hết chết ở intro; logo Nexon hiện, CALog `[XRpt] Sg - INT(dne:1)` + `EndOfInit!! exitcode=0`, đăng nhập server giả xong,
-  client mở thêm kết nối tới port khác (hello rồi tự đóng — chưa rõ, xem `logs/fakeserver_host.log`).
-- **Chặn tiếp theo: vòng lặp chính `sub_8F4D01`** (gọi từ `CFxApp__vf5` 0x8E30DA) — 3 khối VM lớn, xem [Vòng lặp chính](#vòng-lặp-chính-sub_8f4d01--chặn-hiện-tại).
-- Sửa thêm: unlicense nhầm `CreateWindowExW` ↔ `CreateWindowExA` (cửa sổ chính không tạo được → `CSysException "CreateWindow failed"`).
-- Các khối VM khác chưa bị chạm tới trên luồng khởi động → làm khi gặp (lobby, phòng, ván chơi sẽ chạm `CGamePlayMap__Load`, `CGOBomber__vf21`…).
+- ✅ **Bản dump chạy trong Wine: intro → màn đăng nhập → đăng nhập vào `tools/fakeserver.py` → màn chọn kênh (stage 10)**.
+  Keep-alive opcode 15 mỗi 5 s. Thử: `tools/xvfb_login.sh` (Xvfb riêng, tự gõ tài khoản, chụp `logs/xvfb/login_*.png`).
+- Đã devirtualize **7 khối** (bảng dưới, ✅). Phương pháp chuẩn: [Snapshot + emulate](#quy-trình-snapshot--emulate-khối-vm).
+- HackShield tắt bằng **chính công tắc của game**: `Feature_IsDisabled(212)` → 1 ở 22 chỗ gọi (`tools/patch_client.py`); BlackCipher bỏ qua.
+- Chưa chạm: các khối VM ở lobby/phòng/ván (`CGamePlayMap__Load`, `CGOBomber__vf21`, `sub_71580C`…) — làm khi tới.
+- Tiếp theo: protocol màn chọn kênh (`CSelectServerStage__On_16` trạng thái kênh, `On_7` kết quả vào kênh) → lobby (stage 11).
+
+## Quy trình snapshot + emulate khối VM
+
+VM Themida trong bản dump không chạy được vì thiếu trạng thái runtime (stack/vùng nhớ của process gốc). Nhưng **chạy được trong Unicorn
+trên một snapshot đầy đủ bộ nhớ của client gốc** chụp đúng tại site:
+
+1. **Client gốc chạy được trong WinBoat** (không GPU) nhờ D3D9 phần mềm: `thirdparty/swd3d/` = `d3d9.dll`+`wined3d.dll` của Wine (PE)
+   + `opengl32.dll`+`libgallium_wgl.dll` của Mesa (mesa-dist-win, llvmpipe), đặt cạnh `ca.exe`, `GALLIUM_DRIVER=llvmpipe` (`win/swd3d.bat`).
+   Kiểm tra riêng: `tools/d3dtest/d3dtest.c` + `win/d3dtest.bat`.
+2. **Snapshot**: `win/snap.bat <SITE> [CONT] [timeout] [CONT:oldbytes:00]` → `tools/launcher/snap.exe` (mingw, `snap.c`):
+   patch site (`jmp rel32` vào stub VM) → cave lưu thanh ghi + TEB rồi quay vòng; injector suspend mọi thread, dump **mọi vùng committed**
+   (~260MB) → `logs/snap/<SITE>/pre.snap`; nếu có CONT: cho chạy tiếp, chụp `post.snap` tại điểm tiếp tục (byte gốc ở CONT bị thay bằng `jmp`).
+3. **Emulate**: `tools/vmemu.py <SITE> --snap logs/snap/<SITE>/pre.snap --run-natives --quiet-api [--skip ADDR=eax] [--pre-asm "..."]`
+   - map toàn bộ snapshot, GDT để `fs:` → TEB, khôi phục byte gốc ở site;
+   - log mọi `CALL` native từ VM (tên IDA, ecx, tham số) và giá trị trả về; code Windows chạy thật, **syscall WoW64 giả lập** (`jmp far 0x33`);
+   - cuối: diff frame của caller + `.data` → so với `tools/snapdiff.py logs/snap/<SITE> ['--obj=*E6092C:0x200']` (diff pre/post thật).
+   - `--pre-asm` chạy x86 trước site (ví dụ ép một lần chuyển stage: `sub_8F391D(10)`) để kích hoạt khối không tự chạy.
+   - Đừng `--skip` hàm anti-cheat mà VM kiểm tra kết quả (`sub_A13A10`): VM rẽ sang nhánh phá stack (ghi 0 từ đỉnh stack xuống).
+4. **Viết lại** chỉ phần có tác dụng với code native (biến cục bộ được đọc sau, field object, global), bỏ phần anti-cheat → `tools/devirt.py`.
 
 ## Ranh giới khối VM: marker của Themida SDK
 
@@ -25,11 +43,11 @@ Kiểm chứng: 0x8F452B → 0x8F45A7 (khớp vmtrace), 0x8F8F69 → 0x8F8FCA (k
 | site | hàm | tiếp tục | dài |
 |---|---|---|---|
 | 0x8E5519 | `CFxApp__vf6` | 0x8E5547 | 0x2E |
-| 0x8F346C | `sub_8F3409` | 0x8F38F3 | 0x487 |
+| 0x8F346C | `sub_8F3409` keep-alive | 0x8F38F3 | 0x487 ✅ |
 | 0x8F452B | `sub_8F4421` | 0x8F45A7 | 0x7C ✅ |
-| 0x8F4D46 | `sub_8F4D01` (vòng lặp chính) | 0x8F5468 | 0x722 |
-| 0x8F54E4 | `sub_8F4D01` | 0x8F5DFA | 0x916 |
-| 0x8F5F40 | `sub_8F4D01` | 0x8F6908 | 0x9C8 |
+| 0x8F4D46 | `sub_8F4D01` (vòng lặp chính) khởi tạo | 0x8F5468 | 0x722 ✅ |
+| 0x8F54E4 | `sub_8F4D01` chuyển stage | 0x8F5DFA | 0x916 ✅ |
+| 0x8F5F40 | `sub_8F4D01` định kỳ | 0x8F6908 | 0x9C8 ✅ |
 | 0x8F8F69 | `CStageMgr__ChangeStage` | 0x8F8FCA | 0x61 ✅ |
 | 0x966FEC | `sub_966FDE` | 0x9670BD | 0xD1 |
 | 0x9682E5 | `sub_9682DE` | 0x968385 | 0xA0 |
@@ -85,29 +103,17 @@ Bảng `switch` trong code gốc 0x8F8FE3 (size = tham số `malloc`; `0x40176c(
 (Đọc từ code gốc, id 1 đã kiểm chứng; ctor là hàm **không** có caller native — hàm stage được gọi từ `vf0` deleting-dtor là **dtor**.
 README/devirt cũ ghi `CLoginStage` ctor 0x84F4A7 là sai: đó là dtor.)
 
-## Vòng lặp chính `sub_8F4D01` — chặn hiện tại
+## Vòng lặp chính `sub_8F4D01` (CMainSystem::Run) — ✅
 
-`CFxApp__vf5` 0x8E30DA → `sub_8F4D01(ecx = dword_E6092C)`. Trong Wine: first-chance page fault lặp lại ở handler VM 0x11FB494
-(`push [edx]`, `edx = 0x19FF68` — địa chỉ gần đỉnh stack main thread **của process gốc**).
-Hàm có 3 khối VM lớn (bảng trên: 0x722 + 0x916 + 0x9C8 byte code gốc). Code gốc còn nguyên quanh chúng (0x8F5468–0x8F54E4,
-0x8F5DFA–0x8F5F40, 0x8F6908–0x8F6D35): đầu vòng lặp 0x8F54B3 (`sub_8F282C` → thoát; `vf5 [+0x14]` có message?), so stage đích/hiện tại,
-gọi `stage->vf44`, `Net_DispatchMainSocket(1)` 0x8F4094, đo thời gian khung hình (`> 0x3681`), `Sleep(5)`…
-Khối 1 = phần khởi tạo trước vòng lặp, khối 2 = sau `sub_8F4CEA` khi có message, khối 3 = phần update/render trong scope `0x4E71E6`.
-
-Viết lại 3 khối này bằng tay từ diff là không khả thi (≈5KB code không nhìn thấy). Hướng khả dĩ:
-1. **Trace VM trên client gốc** (x32dbg trong WinBoat, ghi lại mọi lệnh ngoài section Themida = lời gọi native + tham số),
-   dựng lại code từ chuỗi lời gọi. Vướng: client gốc trong WinBoat không tới được vòng lặp chính (renderer init thất bại vì không GPU)
-   → cần patch bỏ qua lỗi renderer, hoặc Windows có GPU.
-2. **Cho VM chạy trong bản dump**: VM cần trạng thái Themida lúc runtime (đọc `0x19FF68`, vùng cấp phát ngoài image như `0x1BA6650`).
-   Dump toàn bộ bộ nhớ process gốc (không chỉ vùng thực thi như `tools/live_dump.ps1` hiện tại) rồi map lại cùng địa chỉ khi khởi động bản dump.
-   Rủi ro: trạng thái có thể chứa địa chỉ DLL của Windows (khác Wine).
-3. Client gốc + Wine có WoW64 kiểu cũ (`docs/runtime.md`) — VM chạy thật, không cần devirtualize.
-
-### `tools/vmemu.py` (thử nghiệm, CHƯA dùng được)
-Chạy một khối VM của dump bằng Unicorn: lời gọi native (control vào `.text` với `[esp]` trỏ về section Themida) được ghi + giả lập,
-dừng khi thoát ra `.text`; `--snapshot logs/vmtrace/<SITE>` khởi đầu từ trạng thái thật và so với "post".
-Kết quả với 0x8F8F69: bytecode chạy thẳng (~6400 lệnh VM, `--dispatch 0x11EECBE`) nhưng **không thoát** (>20M lệnh), đọc vùng ngoài image —
-cùng triệu chứng như trong Wine → xác nhận VM phụ thuộc trạng thái runtime không có trong dump (kể cả khi phủ section Themida bằng `logs/live/image_00400000.bin`).
+`CFxApp__vf5` 0x8E30DA → `sub_8F4D01(ecx = dword_E6092C)`, `[ebp-0x280]` = this. Kết quả emulate (diff khớp snapshot thật):
+- **A 0x8F4D46** (trước vòng lặp): `sub_A12E50` (anti-cheat: thả `%TEMP%\drc*.tmp` rồi nạp), `[ebp-0xA8] = malloc(0x2B4)` zero
+  (free lúc thoát 0x8F6CE2), bảng toàn vẹn 57 stub VM + `sub_A14800` (hash → `ebp-0xCC..-0x68`). Giữ lại: chỉ buffer.
+- **B 0x8F54E4** (khi `CMainSystem::vf5` = stage hiện tại ≠ stage đích): `sub_A13A10` (checksum `.text` 0x401324+0x1266FA) rồi
+  `CStageMgr__ChangeStage(g_pMainWnd, sub_8F3903(this))`.
+- **C 0x8F5F40** (khi `elapsed > 0x3681`): `p = new(0xC)`; `sub_67C820(p, &[ebp-0x140])`; xoá `CMainSystem+0xF8` cũ (`sub_8F2C6B(1)`),
+  `+0xF8 = p`; `sub_A13A10`; `[ebp-0x184] = sub_9995B1(sub_412B76())`; `sub_441A4C(&[ebp-0x134], 1)`.
+- **0x8F346C** `sub_8F3409` (`CMainSystem::vf10`, mỗi 5 s): keep-alive `SendPkt 0xF {u32 time, [EA6FF0+0x1C], [EA6FF0+0x20]}`,
+  `[EA6FF0+0x24]=1`, `CMainSystem+0x48 = time`; phần sau là kiểm tra HackShield ngẫu nhiên (bỏ).
 
 ## Cách Themida ảo hoá trong binary này
 

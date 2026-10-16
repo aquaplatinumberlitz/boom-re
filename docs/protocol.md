@@ -153,6 +153,21 @@ Kết nối patch: nhận hello hợp lệ → client tự đóng socket (~0,1s)
 Nhận đủ → hàm trả 2, cửa sổ game "Boom" mở. Tiếp theo client làm gì: **chưa biết** (bị chặn bởi lỗi render).
 Cài đặt mẫu: `tools/fakeserver.py` (`hello_packet`, `login_replies`, `Session`).
 
+### Đăng nhập bằng tài khoản (màn Login) — ✅ chạy được với bản dump
+- Client gửi **opcode 1**: u8 số người chơi, str id, str mật khẩu (cả hai còn một lớp mã hoá riêng), 6×u32 (gồm IP LAN). Kèm opcode 58.
+- Server trả **opcode 4** (`CLoginStage__On_4` 0x8534F3): u8 kết quả (0 ok, 1 chưa đăng ký…); khi 0 → `sub_852BCA`:
+  u8, u16, u8 `n` (= số người chơi 1P/2P), u64, `n` × ~40 trường (u32/u16/u8/str, thứ tự trong `login_ok()`), rồi 6 trường chung
+  (cuối = cờ "đổi mật khẩu"). Client trả opcode 9 (u32).
+- Server trả **opcode 15** (`CLoginStage__On_15`): blob {str host, 3×u16, u8 mode, u16} → hộp thoại chờ `CWaitForLoginDlg` đổi
+  trạng thái 2→1→3 → chuyển **stage 10** (chọn kênh). Không có 15 → hết giờ → `ErrBadNetwork`.
+- Ở màn chọn kênh client gửi opcode 7 (lớn), 298, 40.
+
+### Kiểu dữ liệu (mode 1/2)
+- u64: 8 byte BE, XOR `0x0000000071B18589` (`RecvPkt__Decode8` 0xA26980).
+- str: u16 độ dài + byte obfuscate theo khối 4/2/1: khối đọc little-endian, XOR khoá theo kích thước, ghi big-endian (0xA26A10).
+- blob (`RecvPkt__DecodeBlob`): u32 N + N byte (obfuscate như str) = `[0x18][u32 LE len][dữ liệu]`; dữ liệu đọc **thô little-endian**
+  (u8, u16, str = u32 LE độ dài + byte). `boomproto.put_blob`.
+
 ## Dispatch
 
 `CMainWnd::OnPacket` lần lượt thử:
