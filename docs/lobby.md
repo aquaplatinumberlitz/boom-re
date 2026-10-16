@@ -415,3 +415,27 @@ Kẹt ở "Đang tải". Lúc vào, client gửi 298, 303, 319, 64, 476, 477, 39
 - On_476: `u16 id, u32, str` (chat/notice theo id); On_477: `u16 n, n×{u16, u8 k, k==0 ? u32}`.
 Bước tiếp: xem client gửi gì trong 395/298/303/319/64 (cái nào là "xin vào quảng trường"), tìm tên theme hợp lệ trong
 assets, gửi 466 rồi 467 (có chính người chơi) để qua "Đang tải".
+
+### ✅ Cập nhật 7: SẢNH LOAD XONG (2026-10-17)
+Ảnh `docs/lobby_loaded.png`: sảnh quảng trường hiện đủ UI (TẠO PHÒNG, ĐI TẮT, lưới phòng, tab chat AllTab/GuildTab/
+Square_ChatTab, khung nhân vật) kèm lớp hướng dẫn lần đầu (HD Câu cá, nút "Đóng lại"). Đứng ổn định ≥70 s, keep-alive
+(opcode 15) đều. Chạy: `SHOTS=5 tools/xvfb_join.sh`.
+
+1. **Opcode 395** (rỗng, `sub_4D5C25` gọi từ `CLobbySquareStage__vf44`) = xin thông tin quảng trường. Fakeserver trả
+   **466** rồi **467** (`square_info()`, `square_users()`):
+   - 466: `u32 area=1`, blob `{u8 tag 0, u32 n=0}`, `str map = "LobbySquare01.map"` (**phải có đuôi** — nạp bằng
+     `"Map/%s"`, file `assets/fx/Map/LobbySquare01..09.map`), `str theme = "Square"` (`"Theme/"+theme`,
+     `assets/fx/Theme/Square`), `u32 0`.
+   - 467: `u16 n = 0` → client đặt `this[4775]=1` và gửi **396** (= đã load).
+2. **Crash khi nạp map** (gdb: `sub_4BECBE` → `sub_6EBC30(0x19)` → … → `sub_592BFA` → `eh vector constructor iterator` gọi
+   "ctor" rác → nhảy vào địa chỉ stack, AV tại `0x0012D69F`). Nguyên nhân: **10 byte tại `0x592C09` hỏng ngay trong dump gốc**
+   (`unpacked_ca.exe`): byte 1..6 của `push offset dtor; push offset ctor` bị thay bằng `FF 15 58 06 90 01`
+   (`call [0x01900658]`, vùng không có trong dump). Khôi phục `68 E8684C00 68 90684C00` (dtor `sub_4C68E8` theo hàm sinh đôi
+   `sub_592C2D` + unwind funclet `0xB1F8C0`; ctor `sub_4C6890` — hàm duy nhất còn lại ghi `vt_CMotionBlurFloorEffect`;
+   byte 0 và 7..9 khớp sẵn) — patch trong `tools/patch_client.py`. Đã quét `.text` tìm `FF 15` trỏ vào vùng không ánh xạ:
+   5 kết quả, 4 cái còn lại là byte trùng ngẫu nhiên trong lệnh/dữ liệu hợp lệ (0x5F48FD, 0x6E5E5B, 0xD0EA7F, 0xDF6367).
+3. Còn để ý: tên hiển thị là `aName01` (chưa có tên thật — có thể từ login/467 rỗng); 298/303/319/64/476/477 client gửi
+   vẫn chưa được trả lời (chưa thấy ảnh hưởng). `tools/wine_gdb.sh` có thêm `JOIN=1` (click "Kenh 1" sau khi vào màn kênh).
+   Ảnh chụp đen 1 lần (`import` lúc đổi khung) không lặp lại ở lượt sau.
+
+**Bước tiếp:** đóng hướng dẫn, thử TẠO PHÒNG (xem opcode client gửi) → trả lời để vào phòng chờ; điền tên người chơi.

@@ -14,7 +14,12 @@ sleep 1; export DISPLAY=:77
     xdotool mousemove 575 602 click 1; sleep 0.4; xdotool type --delay 50 "$U"; sleep 0.2
     xdotool mousemove 575 634 click 1; sleep 0.4; xdotool type --delay 50 "$P"; sleep 0.2
     xdotool mousemove 581 733 click 1; sleep 10
-  done ) &
+  done
+  # JOIN=1: once on the channel screen, click the first channel slot ("Kenh 1") to join it
+  if [ -n "$JOIN" ]; then
+    for a in $(seq 1 30); do grep -q 'dne:10' wine/Boom/CALog.log 2>/dev/null && break; sleep 5; done
+    sleep 20; xdotool mousemove 650 393 click 1
+  fi ) &
 CLK=$!
 ( cd wine/Boom && rm -f CALog.log && cat "$CMDS" \
   | env -u WAYLAND_DISPLAY WINEDEBUG=-all timeout "$SECS" winedbg --gdb 'Z:\home\admin\boom-re\wine\Boom\ca_fixed_patched.exe' > ../../$OUT/gdb.txt 2>&1 ) &

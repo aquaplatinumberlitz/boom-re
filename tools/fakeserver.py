@@ -100,6 +100,25 @@ def channel_enter_ok(now=None):
     return obf_body(17, *f)
 
 
+def square_info(area=1, map_name="LobbySquare01.map", theme="Square"):
+    """Reply to opcode 395 (empty, sent by CLobbySquareStage__vf44 via sub_4D5C25). Opcode 466
+    (CLobbySquareStage__On_466 0x4E52B5): u32 area id (stage+5541; -1 = use the channel name only, else title
+    "LobbySquare_AreaName%02d"), blob {u8 tag 0, u32 n, n x {u32 m, m x 5 x u32}} (square objects, sub_4E4EFD/sub_4E134C),
+    str map file incl. extension (loaded as "Map/%s", assets/fx/Map/; sub_4E1FBE -> sub_4BECBE builds the map object
+    at stage+22152, which gates 467/476/477 via sub_4D82DE),
+    str theme ("Theme/" + theme, assets/fx/Theme/<theme>), u32 (time offset for the map object, sub_6E2054)."""
+    blob = b"\x00" + struct.pack("<I", 0)
+    return obf_body(466, ("u32", area), ("blob", blob), ("str", map_name), ("str", theme), ("u32", 0))
+
+
+def square_users(users=()):
+    """Opcode 467 (CLobbySquareStage__On_467 0x4E4100, "OnSquareUserList"): u16 n, n x sub_4E3F29 (u16 slot, then
+    sub_4E2D7E user record). At the end the stage sets this[4775] = 1 (square loaded) and sends opcode 396."""
+    if users:
+        raise NotImplementedError("user record sub_4E2D7E not mapped yet")
+    return obf_body(467, ("u16", 0))
+
+
 def login_ok(name="tester", players=1):
     """CLoginStage__On_4 0x8534F3: u8 result 0 = success -> sub_852BCA 0x852BCA (field order from the decompile;
     meaning of most fields still unknown, zeros are accepted). `players` must equal the 1P/2P count
@@ -253,6 +272,8 @@ async def handle(reader, writer, port, log):
                     replies = [channel_join_ok(port=port)]
                 if op == 6:  # login on the channel server -> enter the lobby (stage 11)
                     replies = [channel_enter_ok()]
+                if op == 395:  # lobby square: request square info -> area/map/theme, then the user list
+                    replies = [square_info(), square_users()]
                 if op == 0:
                     replies = login_replies()
                 if replies:

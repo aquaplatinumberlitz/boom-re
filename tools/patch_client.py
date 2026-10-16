@@ -16,6 +16,13 @@ PATCHES = [
     # (va, original bytes, new bytes, note)
     (0x8E703A, bytes.fromhex("750C"), bytes.fromhex("EB0C"), "skip BlackCipher init"),
     (0x8E56ED, bytes.fromhex("57E87BEBFFFF85C07421"), b"\x90" * 10, "skip PatchServer_CheckVersion"),
+    # sub_592BFA (array ctor of 10 x CMotionBlurFloorEffect, 0xA0 each; reached when the lobby square map loads,
+    # sub_4BECBE -> sub_6EBC30(0x19)): bytes 1..6 of `push offset dtor; push offset ctor` were replaced in the dump by
+    # FF 15 58 06 90 01 = call [0x01900658] (unmapped Themida region) -> count/ctor garbage -> jump to a stack address.
+    # Restored from the intact twin sub_592C2D / unwind funclet 0xB1F8C0 (dtor sub_4C68E8) and the class ctor sub_4C6890
+    # (only other function setting vt_CMotionBlurFloorEffect); bytes 0 and 7..9 (68 .. 68 4C 00) match.
+    (0x592C09, bytes.fromhex("68FF1558069001684C00"), bytes.fromhex("68E8684C006890684C00"),
+     "restore push dtor/ctor in sub_592BFA (lobby square map load)"),
 ]
 
 # `call Feature_IsDisabled_stub0` (0x40176C, always returns al=0) right after `push 0xD4` (feature 212 = HackShield)
