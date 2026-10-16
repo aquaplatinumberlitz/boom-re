@@ -70,12 +70,34 @@ def channel_list(names=("Kenh 1", "Kenh 2", "Kenh 3", "Kenh 4"), max_users=100):
 
 def channel_status(users=(10, 20, 30, 40)):
     """CSelectServerStage__On_16: u8 tag (sub_A62580: 0 = raw) + blob {u16 n, n x (u16, u32)} -> sub_9949C6(i, ..):
-    entry i (implicit loop index) = u16 CURRENT USERS -> info+0x3A018+12i (sub_994D7E), u32 -> info+0x3D018+12i
-    (sub_994DA3, meaning unknown). Without the tag the sub-reader stays empty and the client overruns."""
+    entry i (implicit loop index) = u16 CURRENT USERS -> info+0x3A018+12i (sub_994D7E), u32 STATE -> info+0x3D018+12i
+    (sub_994DA3): 1 = online (renderer sub_854E1D draws name + load gauge, else greyed; join check sub_67051F rejects
+    0, and 3 is a special refusal). Without the tag the sub-reader stays empty and the client overruns."""
     inner = b"\x00" + struct.pack("<H", len(users))
     for u in users:
-        inner += struct.pack("<HI", u, 0)
+        inner += struct.pack("<HI", u, 1)
     return obf_body(16, ("blob", inner))
+
+
+def channel_join_ok(ip="127.0.0.1", port=3838, kind=10, index=0):
+    """Reply to opcode 5 (channel join request from sub_856BAC: bool, u32 index-within-kind sub_994F71).
+    CSelectServerStage__On_7 0x8558C4: u8 result (0 = ErrCannotConnect, 2/4/5/11..31 = error strings, 26 = shutdown;
+    any other value = success) then u8 kind, u32 channel index within kind, u32 ip, u16 port; ip and port both != 0.
+    Stored at stage+0x640C..0x6418; sub_855717 copies them into the connection info (sub_999702), reconnects
+    (sub_8F6D35, ip/port in host order -> htonl/htons inside) and sends opcode 6 on the new connection."""
+    return obf_body(7, ("u8", 1), ("u8", kind), ("u32", index),
+                    ("u32", struct.unpack(">I", bytes(map(int, ip.split("."))))[0]), ("u16", port))
+
+
+def channel_enter_ok(now=None):
+    """Reply to opcode 6 (channel-server login, sub_999FE6). Opcode 17 -> CStage__OnPacket case 15 -> stage vf55;
+    CSelectServerStage__vf55 (only when [5915]==2 i.e. after the reconnect) -> CHiddenCatchPrepareStage__vf55 0x69A5F0:
+    parse (sub_69A420 / sub_4D7963) then sub_8F391D(.., 11) = LOBBY (20 = square if sub_8DB058).
+    Body: SYSTEMTIME (8 x u16), u32, u8 x9, u8 n (<= 6), n x (u32, u32), u8, u8, u8. Meanings mostly unknown."""
+    t = now or datetime.datetime.now()
+    st = [t.year, t.month, (t.weekday() + 1) % 7, t.day, t.hour, t.minute, t.second, 0]
+    f = [("u16", v) for v in st] + [("u32", 0)] + [("u8", 0)] * 9 + [("u8", 0)] + [("u8", 0)] * 3
+    return obf_body(17, *f)
 
 
 def login_ok(name="tester", players=1):
@@ -227,6 +249,10 @@ async def handle(reader, writer, port, log):
                 if op == 40:  # sent on entering the channel screen; the channel cache file name
                     # (channel2_%03d%s.ssd, sub_993EF4) only exists from now on -> channel list must come after it
                     replies = [channel_list(), channel_status()]
+                if op == 5:  # channel join request -> point the client at a "channel server" (ourselves, same port)
+                    replies = [channel_join_ok(port=port)]
+                if op == 6:  # login on the channel server -> enter the lobby (stage 11)
+                    replies = [channel_enter_ok()]
                 if op == 0:
                     replies = login_replies()
                 if replies:

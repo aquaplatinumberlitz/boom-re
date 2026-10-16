@@ -383,3 +383,35 @@ offset lưu trong `sub_994663`; kỹ thuật `winedbg --gdb`.
 **Bước tiếp (vào kênh):** click ô → `sub_8570DB` cần `sub_994D51 == loại click` (u8[0], hiện 0; `sub_856BAC` gợi ý 0x80
 = kênh thường) → join gửi opcode 71 → server trả opcode 7 thành công.
 
+
+### ✅ Cập nhật 6: VÀO ĐƯỢC KÊNH → stage 11 (sảnh quảng trường) (2026-10-17)
+Chạy `tools/xvfb_join.sh` (login → chờ `dne:10` → click ô "Kenh 1"): CALog `NTFC - SCEstbl` → `SSS - CNTM(SCed)` →
+`LbySS - INT` → **`Sg - INT(dne:11)`**. Ảnh: `docs/channel_selected.png` (thanh tải kênh hiện), `docs/lobby_loading.png`
+(stage 11, khung "Đang tải").
+
+Luồng (đã code trong `tools/fakeserver.py`):
+1. Opcode 16 entry = `(u16 cur users, u32 state)`; **state phải = 1** (online): renderer `sub_854E1D` vẽ tên + thanh tải
+   khi `sub_994DA3()==1`, check vào kênh `sub_67051F` trả 0 nếu state==0 (3 = từ chối đặc biệt).
+2. Click ô → `vf5` (sự kiện 1500+ô) → `sub_856BAC(stage, kênh)`. `v30` = "kênh thuộc server đang nối"
+   (`sub_994F71(kênh)` == `E60784+0x14` và kind == `E60784+0x10`): nếu đúng → đổi thẳng stage 11 (không gói nào).
+   Nếu không: `[5915]=1`, gửi **opcode 5** `{bool (kind qua sub_58FDF8/box), u32 chỉ số kênh trong cùng kind (sub_994F71)}`.
+3. Server → **opcode 7** (`CSelectServerStage__On_7` 0x8558C4): `u8 kết quả` (0 = ErrCannotConnect; 2,4,5,11..31 = các lỗi
+   có chuỗi; 26 = shutdown; giá trị khác = OK, dùng 1), `u8 kind (10)`, `u32 chỉ số kênh trong kind`, `u32 IP`, `u16 port`
+   (IP/port thứ tự host, client tự htonl/htons; cả hai ≠ 0). Lưu `stage+0x640C..0x6418`; ngắt kết nối cũ (`sub_8F314D`).
+4. `sub_859D8A`→`sub_855717`: `sub_999702(E60784, kind, idx, ip, port)`, connect (`sub_8F6D35`, nhận hello mới), rồi
+   `sub_999FE6` gửi **opcode 6** `{u8 số người, bool, mỗi người: str tên, u32, u32, u64; bool, bool}`; đặt `[5915]=2`.
+   Fakeserver trỏ IP/port về chính nó (cùng port).
+5. Server → **opcode 17**: `CStage__OnPacket` case 15 (case = opcode−2) → `vf55`; `CSelectServerStage__vf55` chỉ chạy khi
+   `[5915]==2` → `0x69A5F0`: parse `sub_69A420`/`sub_4D7963` rồi **`sub_8F391D(.., 11)`** (20 = square nếu `sub_8DB058`).
+   Thân: SYSTEMTIME (8×u16), u32, u8×9, u8 n (≤6), n×(u32,u32), u8, u8, u8 — fakeserver gửi giờ hiện tại + toàn 0.
+
+### Hiện trạng stage 11 (`CLobbySquareStage`, OnEnter `vf44` 0x4DED62) 🟡
+Kẹt ở "Đang tải". Lúc vào, client gửi 298, 303, 319, 64, 476, 477, 395 (server giả chưa trả). Handler đã xác định:
+- **On_466** (0x4E52B5) = thông tin khu: `u32 area id` (`this+5541`, -1 = đặc biệt), blob {u32 n, n×{u32 m, m×5×u32}} (vật thể,
+  `sub_4E4EFD/sub_4E134C`), `str`, `str` (dùng làm tên **theme** — `"%s%s"` với `aTheme`, phải là tài nguyên có thật),
+  `u32` → `sub_4E1FBE`; nạp map theme (`sub_8DA6F5`).
+- **On_467** (0x4E4100) = danh sách người trong quảng trường: `u16 n`, n× `sub_4E3F29`; cuối hàm đặt **`this[4775]=1`
+  (đã load)** và gửi opcode 396. Chặn bởi `sub_4D82DE()` (cũng chặn 476/477).
+- On_476: `u16 id, u32, str` (chat/notice theo id); On_477: `u16 n, n×{u16, u8 k, k==0 ? u32}`.
+Bước tiếp: xem client gửi gì trong 395/298/303/319/64 (cái nào là "xin vào quảng trường"), tìm tên theme hợp lệ trong
+assets, gửi 466 rồi 467 (có chính người chơi) để qua "Đang tải".
