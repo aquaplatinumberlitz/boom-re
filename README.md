@@ -118,7 +118,7 @@ Mọi script `win/*.bat` chạy cùng cách (RemoteApp), ghi kết quả về `l
 
 - Đã có `.i64` thì mở thẳng.
 - Làm lại từ đầu: mở `unpacked_ca.exe` (~70 phút) rồi chạy `tools/ida_apply_names.py` (nạp `decomp/ida_names.json`).
-- Sau khi đặt thêm tên: xuất lại `decomp/ida_names.json` (đoạn code xuất nằm trong lịch sử commit; tên + comment, bỏ tên mặc định `sub_`…).
+- Sau khi đặt thêm tên: chạy `tools/ida_export_names.py` trong IDA → cập nhật `decomp/ida_names.json`, rồi commit.
 
 ---
 
@@ -201,7 +201,7 @@ tools/rebuild_wine.sh
 | `tools/themida_scan.py` | liệt kê điểm vào section Themida → `decomp/themida_entries.json` |
 | `tools/launch.ps1`, `tools/launcher/boomlaunch.c` | patch bộ nhớ client gốc (PowerShell / exe mingw) |
 | `tools/live_dump.ps1`, `tools/dump_exports.ps1`, `tools/peek.ps1` | dump bộ nhớ / export DLL / đọc biến lúc chạy (PowerShell 32-bit) |
-| `tools/ida_apply_names.py` | nạp `decomp/ida_names.json` vào IDA |
+| `tools/ida_apply_names.py`, `tools/ida_export_names.py` | nạp / xuất `decomp/ida_names.json` (IDA) |
 | `win/*.bat` | chạy trong Windows qua RDP RemoteApp: `unpack`, `watch2` (client gốc + patch + chụp màn hình), `live_dump`, `peek`, `run_*`, chẩn đoán (`diag`, `evlog`, `getcrash`, `status`) |
 | `decomp/ida_names.json` | toàn bộ tên + comment đã đặt trong IDA |
 | `decomp/iat_resolved.json` | IAT gốc đã giải (489 ô) |
