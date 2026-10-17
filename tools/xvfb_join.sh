@@ -24,5 +24,10 @@ xdotool mousemove 650 393 click --repeat 2 --delay 120 1   # double click, in ca
 sleep 8; import -window root $OUT/join_2.png
 sleep 8; import -window root $OUT/join_3.png
 for n in $(seq 4 $((3 + ${SHOTS:-0}))); do sleep 8; import -window root $OUT/join_$n.png; done   # SHOTS=n: more shots
+# CLICKS="x,y,wait x,y,wait ...": clicks in the lobby, a screenshot logs/xvfb/click_<i>.png after each wait
+i=0; for c in $CLICKS; do
+  i=$((i+1)); x=${c%%,*}; r=${c#*,}; y=${r%%,*}; w=${r#*,}
+  xdotool mousemove "$x" "$y" click 1; sleep "$w"; import -window root $OUT/click_$i.png
+done
 kill $WPID 2>/dev/null; pkill -9 -f '[c]a_fixed_patched' 2>/dev/null; kill $XPID 2>/dev/null
 echo "--- CALog"; cat wine/Boom/CALog.log

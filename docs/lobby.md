@@ -439,3 +439,28 @@ Square_ChatTab, khung nhân vật) kèm lớp hướng dẫn lần đầu (HD C�
    Ảnh chụp đen 1 lần (`import` lúc đổi khung) không lặp lại ở lượt sau.
 
 **Bước tiếp:** đóng hướng dẫn, thử TẠO PHÒNG (xem opcode client gửi) → trả lời để vào phòng chờ; điền tên người chơi.
+
+### ✅ Cập nhật 8: TẠO PHÒNG → phòng chờ stage 12 (2026-10-17)
+Ảnh: `docs/create_room_dialog.png` (hộp thoại TẠO PHÒNG), `docs/waiting_room.png` (phòng "DefaultRoomTitle2", 8 ô, chọn
+nhân vật/đội/bản đồ, nút SẴN SÀNG). Chạy: `CLICKS="975,38,3 385,50,4 437,612,10 512,384,8" tools/xvfb_join.sh`
+(đóng hướng dẫn → TẠO PHÒNG → XÁC NHẬN). CALog `Sg - INT(dne:12)`.
+
+Tìm đường click bằng gdb (`tools/wine_gdb.sh`, biến mới `CLICKS=`): sự kiện nút **không** qua `CStage::vf5`.
+`CCtrlButton__vf14` (0xA7A3BD, WM_LBUTTONUP 514) gọi `ICtrlEventHandler` slot +20 của cửa sổ cha `[nút+0x54]` (hoặc của
+delegate `[cha+0x88]` nếu khác 0) với mã nút `[nút+0xF8]`. Nút sảnh: cha = **`CLobbyRoomUIWnd`** (vt 0xC23D1C,
+ICtrlEventHandler ở +0xF4 → slot 5 = **`sub_4D3512`**): 2011 (0x7DB) = TẠO PHÒNG → `sub_4CB4C3`, 2012 = ĐI TẮT → `sub_4CB599`.
+
+1. **Nút TẠO PHÒNG im lặng** nếu `CLobbyRoomUIWnd[+0x4585C]==0` (chưa nhận danh sách phòng) hoặc `[+0x45858]!=0`.
+   `+0x4585C=1` chỉ đặt trong `sub_4D0F56` = **opcode 88 danh sách phòng**: `u16 n`; n≠0 thì blob n×(u16 session, u32 →
+   `sub_6ACBB5`). Fakeserver gửi 88 với n=0 ngay sau 466/467 (`room_list()`).
+   Bộ phân phối gói phòng `sub_4D24BB` (gọi từ `CLobbySquareStage__OnPacket`/`CLobbyStage__OnPacket`): 83 `sub_4CE9FC`,
+   84 `sub_4CF53C`, 85 `sub_4CC007`, 86 `sub_4CBCE6`, 87 `sub_4D108E`, 88 `sub_4D0F56`, 90 `sub_4CABC7`, 330 `sub_4D1F27`,
+   331 `sub_4C869E`, 334 (cờ `+300108`), 490 `sub_4CBD84`.
+2. Bấm TẠO PHÒNG → `this[252]` (= `CNormalLobbyStrategy`, vt 0xC52BCC) vf40 0x6B8DD8 mở hộp thoại. XÁC NHẬN → client gửi
+   **opcode 77**: `str tên phòng, str mật khẩu, u32×7 (mặc định 0,1,5,19,0,0,0), u32 -1, u32 0, u8 0` (ý nghĩa chưa gán;
+   `parse_create_room()` giải và ghi log).
+3. Server → **opcode 83** (`create_room_ok()`): `u8 0` (OK; 1 SameRoomExist, 2 NoEmptySlot, 3 CantCreateRoom, 4 NoAuthority,
+   5..19 lỗi khác — `sub_4CE9FC`) rồi `CNormalLobbyStrategy` vf11 0x6B7B55 đọc `u16 số phòng, u32, u8, u8, u8` →
+   **`sub_8F391D(12)`**. (`sub_4DD398` cùng định dạng nhưng là đường của sảnh quảng trường, cần `CLobbySquareStage[4793]`.)
+4. Vào stage 12 client gửi 298, 303, 337, 476 (chưa trả lời). **Bước tiếp:** gói danh sách người trong phòng (để chính người
+   chơi hiện trong ô) + nút SẴN SÀNG / bắt đầu trận — đang có agent OpenCode `a-room` phân tích tĩnh stage 12.

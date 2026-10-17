@@ -119,6 +119,37 @@ def square_users(users=()):
     return obf_body(467, ("u16", 0))
 
 
+def room_list(rooms=()):
+    """Opcode 88 (lobby room-list packets dispatched by sub_4D24BB, from CLobbySquareStage__OnPacket /
+    CLobbyStage__OnPacket) -> sub_4D0F56: u16 n; if n != 0: blob {n x (u16 session idx, u32 ...) -> sub_6ACBB5}.
+    It sets CLobbyRoomUIWnd[+0x4585C] = 1 ("room list received"); without it the TẠO PHÒNG button (id 2011 ->
+    sub_4CB4C3) and most room buttons silently do nothing."""
+    if rooms:
+        raise NotImplementedError("room record (sub_6ACBB5) not mapped yet")
+    return obf_body(88, ("u16", 0))
+
+
+def parse_create_room(body):
+    """Opcode 77 (client, create-room dialog "XÁC NHẬN"; senders sub_4DD17B / sub_6B6441 / ...). Captured with the
+    default dialog: str title "DefaultRoomTitle<n>", str password "", u32 x7 = 0,1,5,19,0,0,0, u32 -1, u32 0, u8 0
+    (meanings not mapped yet). Returns the decoded fields (best effort)."""
+    p = 2
+    title, n = bp.get_str(body[p:], True); p += n
+    pw, n = bp.get_str(body[p:], True); p += n
+    ints = []
+    while p + 4 <= len(body) - 1:
+        ints.append(bp.get_int(body[p:], 4, True)); p += 4
+    return title.decode("cp1258", "replace"), pw.decode("cp1258", "replace"), ints
+
+
+def create_room_ok(room_no=1):
+    """Reply to opcode 77. Opcode 83 -> sub_4D24BB -> sub_4CE9FC: u8 result (0 = OK; 1 SameRoomExist, 2 NoEmptySlot,
+    3 CantCreateRoom, 4 NoAuthority, 5..19 other errors). On 0 the rest goes to the lobby strategy object
+    (CLobbyRoomUIWnd[+252], vt_CNormalLobbyStrategy) vf11 0x6B7B55: u16 room no (sub_8E8E3B), u32 (sub_8E75F1),
+    u8 (sub_8E75D2), u8 (sub_8E78CB), u8 (sub_8E7626) -> sub_8F391D(12) = waiting-room stage."""
+    return obf_body(83, ("u8", 0), ("u16", room_no), ("u32", 0), ("u8", 0), ("u8", 0), ("u8", 0))
+
+
 def login_ok(name="tester", players=1):
     """CLoginStage__On_4 0x8534F3: u8 result 0 = success -> sub_852BCA 0x852BCA (field order from the decompile;
     meaning of most fields still unknown, zeros are accepted). `players` must equal the 1P/2P count
@@ -272,8 +303,11 @@ async def handle(reader, writer, port, log):
                     replies = [channel_join_ok(port=port)]
                 if op == 6:  # login on the channel server -> enter the lobby (stage 11)
                     replies = [channel_enter_ok()]
+                if op == 77:  # create room (dialog XÁC NHẬN) -> opcode 83 success -> waiting room (stage 12)
+                    log(f"[{port}] create room {parse_create_room(body)}")
+                    replies = [create_room_ok()]
                 if op == 395:  # lobby square: request square info -> area/map/theme, then the user list
-                    replies = [square_info(), square_users()]
+                    replies = [square_info(), square_users(), room_list()]
                 if op == 0:
                     replies = login_replies()
                 if replies:

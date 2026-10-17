@@ -19,6 +19,15 @@ sleep 1; export DISPLAY=:77
   if [ -n "$JOIN" ]; then
     for a in $(seq 1 30); do grep -q 'dne:10' wine/Boom/CALog.log 2>/dev/null && break; sleep 5; done
     sleep 20; xdotool mousemove 650 393 click 1
+  fi
+  # CLICKS="x,y,wait ...": after the lobby is up (CALog dne:11), click in order, screenshot gclick_<i>.png after each
+  if [ -n "$CLICKS" ]; then
+    for a in $(seq 1 40); do grep -q 'dne:11' wine/Boom/CALog.log 2>/dev/null && break; sleep 5; done
+    sleep 25; i=0
+    for c in $CLICKS; do
+      i=$((i+1)); x=${c%%,*}; r=${c#*,}; y=${r%%,*}; w=${r#*,}
+      xdotool mousemove "$x" "$y" click 1; sleep "$w"; import -window root "$OUT/gclick_$i.png" 2>/dev/null
+    done
   fi ) &
 CLK=$!
 ( cd wine/Boom && rm -f CALog.log && cat "$CMDS" \
