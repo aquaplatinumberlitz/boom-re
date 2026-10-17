@@ -222,9 +222,16 @@ opcode 189 (S→C) — thứ tự đọc: u8 mode, u32, u16 map_id, rồi field 
   mode 2: u16 a4 + u8 a5 + u32 a6 → sub_70DF00: sub_70D4B7 (phase 3), sub_70319B, vf147(map_id, Block16
           Block16 = 16 × giá trị sub_8E9BF6(k)[: 580*k + this[121] + 124 của room ctx, đọc client-side]),
           sub_70A385(a4, a5, a6), nếu a6 != 0 → sub_69280F(0, a6), rồi C→S **140** {bool 1}
-  mode 4: u16 a4 + u8 a5 + u8 a6 → sub_70DFF9: **CÓ CỔNG**: nếu a4 != (*(*this+608))(this, 4) [getter slot 152
-          với arg 4] → sub_708FFE(5, 0) và BỎ QUA âm thầm (không có 139/140 nào cả). Qua cổng thì như mode 2 +
-          chép khối 96 byte × 12 bomber (vt+732) + gọi [vt+424](0, 9430) từng bomber + C→S 140.
+  mode 4: u16 a4 + u8 a5 + u8 a6 → sub_70DFF9, 2 nhánh + đuôi dùng chung:
+          nhánh A (a4 < (this[5410]-this[5409]) >> 2, đếm phần tử list this[5409..5410]): vf155(1) +
+          vf157(map_id, Block);
+          nhánh B (ngược lại): nếu a4 != (*(*this+608))(this, 4) [getter slot 152 arg 4] → sub_708FFE(5,0) và
+          bỏ tiếp tục (KHÔNG gửi 140); nếu bằng → vf147(map_id, Block);
+          **cả hai nhánh chảy vào đuôi chung**: nếu this[5419] là CGameMiniMapWnd → sub_7E397C(a6, map_id); vòng
+          12 bomber: hồi ghi blob 96 byte đã thu thập lúc đầu hàm ([vt+728] thu, [vt+732] ghi lại), gọi
+          [vt+424](0, 9430) nếu sub_58D4DA != 0; rồi gửi C→S **140** {bool 1}.
+          ⇒ 140 là phản hồi CỦA CẢ nhánh A và nhánh B (đã chạy thật: mode 4 (1,1,1) → client trả 140 sau 89 ms,
+          thấy ở cả run của agent lẫn run tái-build của chủ dự án).
   mode 0: (không field; chỉ khi this[5402]==2 → sub_70E511: sub_70C5DC(3), vf155(1), …)
 ```
 Đã chạy thật (fakeserver `TURN_MODE`): mode 4 với a4=1 → bị cổng từ chối (im lặng); mode 1 → client gửi 139 ✓ +

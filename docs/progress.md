@@ -118,12 +118,21 @@ Chi tiết + địa chỉ hàm client của từng bước: [docs/lobby.md](lobb
   `jmp sub_414543` nguyên bản bị Themida đè bằng `jmp 0x26574543` (ngoài image, SIGSEGV khi chạy). Soi hàm song sinh
   `CBombOwner__vf31` (0x578963, nguyên bản) xác byte gốc → skip `jmp 0x414543`. Bằng chứng gdb + chi tiết:
   `docs/vmtriage.md` §3a. Bằng skip này client đi được hết OnEnter (query bomber theo slot của vf161).
-- Sau đó: **stage 13 nạp map xong, vẽ bản đồ Village01 + HUD, client sống ổn** (keep-alive đều).
+- **Cập nhật (2026-10-17, sau khi chủ dự án tái-build + chạy lại):** run mode 4 trước đó của agent **CÓ trả 140**
+  ngay (89 ms) — khẳng định "mode 4 bị cổng từ chối âm thầm" trong commit b60a125 là **sai** (grep nhầm cửa sổ +
+  đọc nhầm cấu trúc nhánh). Đã sửa ở §5a. Hai nhánh mode 4 đều có thể trả 140; nhánh B mới có đường hủy.
+- **Sau đó: stage 13 nạp map xong, vẽ Village01 + HUD, client sống ổn** (`docs/battle_village01.png`).
 - Fakeserver đã gửi được chuỗi trong trận: 501 → **189** (mode 1/2/4, decompile đủ §5a `oc_e-game.md`;
-  mode 1 → client trả 139 ✓, mode 2 → trả 140 ✓; mode 4 có cổng a4 == getter(4)) → **190 "GO"** (§5a-2; phase 2,
+  mode 1 → client trả 139 ✓, mode 2 → trả 140 ✓, mode 4 → trả 140 ✓) → **190 "GO"** (§5a-2; phase 2,
   overlay THỜI GIAN).
-- Kẹt hiện tại: **nhân vật không di chuyển** sau chuỗi trên. Input lên được game (đăng nhập gõ được). Nghi thiếu
-  state/gói (356/176?), hoặc bomber cần state khác — xem "Việc tiếp theo" mục 6.
+- Kẹt hiện tại: **nhân vật không di chuyển** sau chuỗi trên. Input tới game (đăng nhập gõ được).
+  **Giữ cả hai giả thuyết** (chưa loại được cái nào):
+  1. Thiếu gói/state tiếp theo (356/176 theo §5g, hoặc gói khác);
+  2. **Skip 0x736C27 bỏ ~0x136 byte code gốc** của `CGamePlayMap__Load` chưa biết làm gì → môi trường trạng thái
+     mà các phần sau coi là "đã có sẵn" không tồn tại. (Skip 0x5788C9 an toàn — khối đúng 1 lệnh jmp, cont khớp
+     song sinh, không bỏ sót gì.)
+- Việc phân định 2 giả thuyết: snapshot + emulate `0x736C27` (viết lại thật) là đường chắc chắn nhất — nếu khối
+  chỉ làm việc nội bộ map-list thì nằm ở giả thuyết (1), và dò tiếp gói.
 
 Ghi chép trước đó về phần crash map: [docs/lobby.md](lobby.md) "Cập nhật 12".
 
@@ -131,7 +140,10 @@ Ghi chép trước đó về phần crash map: [docs/lobby.md](lobby.md) "Cập 
 
 ## 6. Việc tiếp theo (theo thứ tự ưu tiên)
 
-1. **Mở điều khiển nhân vật trong trận** (kế tiếp mục 5):
+1. **Mở điều khiển nhân vật trong trận** (kế tiếp mục 5) — **phân định 2 giả thuyết** (thiếu gói/state hay skip
+   0x736C27 bỏ việc):
+   - Snapshot + emulate `0x736C27` trên client gốc (viết lại thật khối nạp map) — hoặc trước đó, chụp pre/post
+     snapshot của khối để liệt kê đúng vùng nhớ/field khối tác động;
    - Đọc vòng tick `sub_71B521` (điều kiện client gửi 141) và nguồn HUD "GIỚI HAN"/overlay THỜI GIAN để biết
      state nào còn thiếu — khả năng là gói **356** (§5g `oc_e-game.md`) hoặc **176**;
    - Giải nghĩa `sub_70A385(a4, a5, a6)` (set vị trí/đội 12 bomber?) để gửi 189 đúng tham số;
@@ -235,8 +247,10 @@ Tất cả nằm trong pipeline `tools/rebuild_wine.sh`, không sửa tay file e
    - Builders mới: `round_start()` (opcode 189, mode 1/2/4 — field từ decompile đủ, `oc_e-game.md` §5a) và
      `round_go()` (opcode **190 "GO"** = `sub_70E7D6`, set phase `this[5402]=2`; field ở §5a-2).
    - Env: `TURN_START` (giây sau 501), `TURN_MODE`, `TURN_A2/3/4` (giá trị mode 2), `GO_START` (giây sau 189).
-   - Thí nghiệm: mode 1 → C→S **139 ✓** (nạp lại round, nhân vật về spawn); mode 4 (a4=1) → **bị cổng từ chối**
-     (cần a4 == getter(4), âm thầm bỏ qua); mode 2 (1,1,12345) → C→S **140 ✓** (screen đen = loading ~5 s, map mới);
+   - Thí nghiệm: mode 1 → C→S **139 ✓** (nạp lại round, nhân vật về spawn); mode 2 (1,1,12345) → C→S **140 ✓**
+     (screen đen = loading ~5 s, map mới); mode 4 (1,1,1) → C→S **140 ✓ sau 89 ms** — lúc làm chắc chắn rằng
+     "bị cổng từ chối" là **sai** (grep `tail -4` bị keep-alive che; đọc nhầm cấu trúc nhánh — hai nhánh mode 4
+     đều gửi 140 ở đuôi dùng chung, chỉ nhánh B mới có đường hủy `sub_708FFE(5,0)`). Đã sửa trong `oc_e-game.md` §5a.
      190 Go → overlay "THỜI GIAN" hiện (phase 2 set ✓).
 6. **Vẫn kẹt**: nhân vật không di chuyển; HUD timer 00:00/02:00 đứng. Input tới game (đăng nhập gõ được bằng bàn
    phím) → vấn đề là **state client**, không phải infra.
@@ -249,6 +263,9 @@ Tất cả nằm trong pipeline `tools/rebuild_wine.sh`, không sửa tay file e
   Hex-Rays JUMPOUT ra ngoài image. Sửa nhanh + đúng: tìm hàm song sinh nguyên bản có cùng đuôi để biết byte gốc.
 - Bp gdb dạng script tuần tự (`continue` → inspect → `continue` → bt+quit) đủ dùng khi biết bp hit đúng 1 lần
   trước crash — thông tin `[stage]`, `[esi]` lấy được gọn.
+- **grep opcode trong log fakeserver phải dùng pattern cụ thể** ("C->S opcode 140"), không dùng `tail -N` của mọi
+  "C->S opcode" — keep-alive (op 15) mỗi 5 s dễ đẩy phản hồi cần tìm ra khỏi cửa sổ (đây là lý do kết luận sai
+  "mode 4 im lặng" — đã đính chính 2026-10-17).
 - gdb chậm ~2-3× so với driver click tương tác của `wine_gdb.sh` (JOIN/CLICKS dùng thời gian tĩnh) — chờ lâu hơn.
 - Luồng click trước đó dính typo tọa độ (344,611 thay 434,611) — luồng "sàn sạch" phải xem ảnh sau từng click.
 - Mode 189/190: tất cả giá trị "chưa rõ" dễ gửi 0/1 — mode 2 chạy được với (1,1,12345) nhưng **cần audit** giá trị

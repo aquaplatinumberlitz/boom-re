@@ -65,7 +65,11 @@ Kiểm chứng: 0x8F452B → 0x8F45A7 (khớp vmtrace), 0x8F8F69 → 0x8F8FCA (k
 
 Dòng 🟡 (2026-10-17): 2 khối mới thêm dạng **skip thí nghiệm** trong `tools/devirt.py` `BLOCKS`, chưa viết lại thật:
 - `0x736C27 → jmp 0x736D6C` (`CGamePlayMap__Load` — thực ra là điểm `mov ecx,[0xE60884]` của đoạn dọn dẹp; luồng
-  nạp map tiếp tục bình thường). Nhờ nó, client qua được nạp map vào trận.
+  nạp map tiếp tục bình thường). Nhờ nó, client qua được nạp map vào trận. **Rủi ro (2026-10-17, chủ dự án nhắc):**
+  vùng 0x736C2C..0x736D59 (~0x12E byte ≈ code gốc bị ghi đè) là việc thật đã bị bỏ qua khi skip — trạng thái mà
+  phần sau dựa vào có thể thiếu; là **giả thuyết 2** cho hiện tượng "nhân vật không di chuyển" trong trận
+  (`progress.md` §5). Giả thuyết 1 (thiếu gói/state khác) vẫn giữ song song. Skip `0x5788C9` thì an toàn được chứng
+  minh (khối đúng 1 lệnh jmp, cont khớp song sinh).
 - `0x5788C9 → jmp 0x414543` (`CBombOwner__vf33` — site nằm ngoài `themida_entries.json`, là 1 lệnh `jmp sub_414543`
   nguyên bản bị Themida đè bằng `jmp 0x26574543` (ngoài image → SIGSEGV khi chạy). Soi hàm song sinh
   `CBombOwner__vf31` (0x578963, không bị đè) xác nhận byte gốc = đúng jmp đó → skip khôi phục đúng ngữ nghĩa).
