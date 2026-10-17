@@ -5,8 +5,9 @@ IAT đã sửa xong (`docs/runtime.md` → "Sửa IAT"). Việc còn lại là c
 
 ## Trạng thái (2026-10-16, tối)
 
-> **Mới hơn (2026-10-17):** bản dump đã chạy tới phòng chờ (stage 12); có thêm khối tạm `sub_9682DE` và hook kênh tự hiện
-> (`HOOKS`). Tiến độ hiện tại: [progress.md](progress.md).
+> **Mới hơn (2026-10-17):** bản dump đã chạy tới **trận đấu (stage 13): nạp map xong + vẽ bản đồ + client ổn định** nhờ 2 khối
+> skip thí nghiệm 0x736C27 / 0x5788C9 (bảng dưới); có thêm khối tạm `sub_9682DE` và hook kênh tự hiện (`HOOKS`).
+> Tiến độ hiện tại: [progress.md](progress.md).
 
 - ✅ **Bản dump chạy trong Wine: intro → màn đăng nhập → đăng nhập vào `tools/fakeserver.py` → màn chọn kênh (stage 10)**.
   Keep-alive opcode 15 mỗi 5 s. Thử: `tools/xvfb_login.sh` (Xvfb riêng, tự gõ tài khoản, chụp `logs/xvfb/login_*.png`).
@@ -58,8 +59,18 @@ Kiểm chứng: 0x8F452B → 0x8F45A7 (khớp vmtrace), 0x8F8F69 → 0x8F8FCA (k
 | 0x6EFD4A | `sub_6EFD24` | 0x6EFED9 | 0x18F |
 | 0x6F287E | `sub_6F27EE` | 0x6F2923 | 0xA5 |
 | 0x71581A | `sub_71580C` | 0x7158E4 | 0xCA |
-| 0x736C27 | `CGamePlayMap__Load` | 0x736D6C | 0x145 |
+| 0x736C27 | `CGamePlayMap__Load` | 0x736D6C | 0x145 🟡 skip chạy tốt |
 | 0x754C82 | `CMapScriptStageClear__vf7` | 0x754D20 | 0x9E |
+| 0x5788C9 | `CBombOwner__vf33` | — | 1 lệnh 🟡 skip chạy tốt |
+
+Dòng 🟡 (2026-10-17): 2 khối mới thêm dạng **skip thí nghiệm** trong `tools/devirt.py` `BLOCKS`, chưa viết lại thật:
+- `0x736C27 → jmp 0x736D6C` (`CGamePlayMap__Load` — thực ra là điểm `mov ecx,[0xE60884]` của đoạn dọn dẹp; luồng
+  nạp map tiếp tục bình thường). Nhờ nó, client qua được nạp map vào trận.
+- `0x5788C9 → jmp 0x414543` (`CBombOwner__vf33` — site nằm ngoài `themida_entries.json`, là 1 lệnh `jmp sub_414543`
+  nguyên bản bị Themida đè bằng `jmp 0x26574543` (ngoài image → SIGSEGV khi chạy). Soi hàm song sinh
+  `CBombOwner__vf31` (0x578963, không bị đè) xác nhận byte gốc = đúng jmp đó → skip khôi phục đúng ngữ nghĩa).
+  Bằng chứng chi tiết trong `docs/vmtriage.md` §3a và `docs/progress.md` §11. Cánh vẫn là **skip**: nếu sau này
+  phát hiện 0x414543 (hub Feature-check, bản dump trả al=0) phải trả giá trị thật thì viết lại.
 
 (Site nằm ngoài hàm IDA như 0x8F54E4/0x8F5F40 không có trong `decomp/themida_entries.json`; tìm bằng `jmp` → `push key; jmp 0x11EE128`.)
 

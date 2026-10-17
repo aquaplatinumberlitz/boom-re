@@ -11,6 +11,9 @@ HEADER_TYPE = 0       # row of the opcode substitution table, 0..15
 ROOM_TYPE = int(__import__('os').environ.get('ROOM_TYPE', '19'))
 MAP_INDEX = int(__import__('os').environ.get('MAP_INDEX', '0'))
 AUTO_START = float(__import__('os').environ.get('AUTO_START', '0'))  # >0: send opcode 501 N s after entering a room  # room_map(); index into the client's map table  # see create_room_ok(); 14 = 1-player start allowed
+TURN_START = float(__import__('os').environ.get('TURN_START', '0'))  # >0: send opcode 189 N s after 501 (TURN_START counts from the 501 moment)
+TURN_MODE = int(__import__('os').environ.get('TURN_MODE', '4'))      # mode field of opcode 189 (1/2/4, see oc_e-game.md §5a)
+GO_START = float(__import__('os').environ.get('GO_START', '0'))      # >0: send opcode 190 ("GO", sub_70E7D6, sets phase this[5402]=2) N s after 189
 
 
 def hello_packet(header_type=HEADER_TYPE, version=CLIENT_VERSION):
@@ -260,6 +263,44 @@ def match_start(map_entry=BATTLE_MAPS[0], dyn_index=0, room_type=None, seed=1234
     return obf_body(501, *f)
 
 
+def round_start(map_entry=BATTLE_MAPS[0], mode=4, turn_ms=10000, extra2=None, extra4=(1, 1)):
+    """Opcode 189 (S->C `sub_70E5C4` 0x70E5C4) = the round/turn command, per oc_e-game.md section 5a:
+    u8 mode (Decode1); u32 -> this[4887] (CHUA KIE: looks like per-turn time limit); u16 map_id (Decode2,
+    sub_8EAB95-usable); then per mode (static decompile of the handler):
+      mode 1: u8 x16 (per-slot state, built client-side into Block)          -> sub_70E357: vf147(map_id, Block)
+              + spawns 1 bomber (malloc 0xA18 sub_5862A5) + sends C->S 139 {bool 1}
+      mode 2: u16 a4 + u8 a5 + u32 a6                        -> sub_70DF00: sub_70A385(a4, a5, a6) + vf147(map, Block)
+              + sends C->S 140 {bool 1}
+      mode 4: u16 a4 + u8 a5 + u8 a6(u8)                     -> sub_70DFF9: needs a4 == (*(*this+608))(this, 4)
+              (else sub_708FFE(5,0) = silently dropped!) + vf147 + 12-bomber block copy (vt+732) + C->S 140.
+    TURN_A2/TURN_A3/TURN_A4 env vars override the mode-2 fields (defaults 1 / 1 / 12345)."""
+    import os
+    if extra2 is None:
+        extra2 = (int(os.environ.get('TURN_A2', '1')), int(os.environ.get('TURN_A3', '1')),
+                  int(os.environ.get('TURN_A4', '12345')))
+    name, _theme, _file, idx = map_entry
+    f = [("u8", mode), ("u32", turn_ms), ("u16", idx)]
+    if mode == 1:
+        f += [("u8", 1 if i == 0 else 0) for i in range(16)]
+    elif mode == 2:
+        f += [("u16", extra2[0]), ("u8", extra2[1]), ("u32", extra2[2])]
+    elif mode == 4:
+        f += [("u16", extra4[0]), ("u8", extra4[1]), ("u8", 1)]
+    return obf_body(189, *f)
+
+
+def round_go(times=(120, 30), seed=0, kind=0, flag=0):
+    """Opcode 190 (S->C sub_70E7D6, CGameStage__OnPacket case 190) = "GO" command: sets the round phase
+    this[5402] = 2 (via sub_70C5DC). Field order (recv order): u32 (seed/turn no., v27), u8 (kind, v28),
+    u32 t1 + u32 t2 (seconds; client stores this[19736] = 1000*t1, this[19740] = 1000*t2), u8 flag (then
+    per-flag extras: flag != 0 -> per 2P pairing over bombers (no extra bytes), else u8 n + n x u8).
+    Values beyond t1/t2 are CHUA KIE, guessed 0."""
+    f = [("u32", seed), ("u8", kind), ("u32", times[0]), ("u32", times[1]), ("u8", flag)]
+    if flag == 0:
+        f += [("u8", 0)]
+    return obf_body(190, *f)
+
+
 def login_ok(name="tester", players=1):
     """CLoginStage__On_4 0x8534F3: u8 result 0 = success -> sub_852BCA 0x852BCA (field order from the decompile;
     meaning of most fields still unknown, zeros are accepted). `players` must equal the 1P/2P count
@@ -426,6 +467,18 @@ async def handle(reader, writer, port, log):
                             writer.write(sess.send(r))
                             await writer.drain()
                             log(f"[{port}] S->C opcode 501 (auto start)")
+                            if TURN_START:  # round/turn command (opcode 189) after the match starts
+                                await asyncio.sleep(TURN_START)
+                                r = round_start(mode=TURN_MODE)
+                                writer.write(sess.send(r))
+                                await writer.drain()
+                                log(f"[{port}] S->C opcode 189 (mode {TURN_MODE})")
+                                if GO_START:  # "GO" command (opcode 190, sets phase this[5402] = 2)
+                                    await asyncio.sleep(GO_START)
+                                    r = round_go()
+                                    writer.write(sess.send(r))
+                                    await writer.drain()
+                                    log(f"[{port}] S->C opcode 190 (GO)")
                         asyncio.ensure_future(_start())
                 if op == 97:  # client Start (passed its own checks) -> start the match
                     replies = [match_start()]

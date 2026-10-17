@@ -210,21 +210,45 @@ CHƯA KIỂ: ý nghĩa các u32 loại c/d/e của phần 3 và sub-packet của
 
 ## 5. Các gói chạy trận (đọc từ decompile; field theo thứ tự Decode/Encode chính xác, ý nghĩa CHƯA KIỂ)
 
-### 5a. Opcode 189 (S→C) — LỆNH LƯỢT (`sub_70E5C4` 0x70E5C4) ✅ cấu trúc
+### 5a. Opcode 189 (S→C) — LỆNH LƯỢT (`sub_70E5C4` 0x70E5C4) ✅ decompile đủ (2026-10-17)
 ```
-opcode 189 (S→C):
+opcode 189 (S→C) — thứ tự đọc: u8 mode, u32, u16 map_id, rồi field theo mode:
   u8 mode (Decode1)
-  u32 -> this[4887]      (Decode4; CHƯA KIỂ — có vẻ giới hạn thời gian lượt)
-  u16 map_id             (Decode2; được phép dùng cho sub_8EAB95, vf147 — giống map id trong 501)
-  mode 1: u8×16 → sub_70E357(...): set map id, gọi vf147 (tạo lại round) rồi C→S gửi 139 {bool 1}
-  mode 2: u16 (Decode2) + u8 (Decode1) + u32 (Decode4)
-          → sub_70DF00(...): nhánh "thiếu 12 bomber" hoặc nhánh đầy đủ (so this[5410]-this[5409] >> 2), sau đó C→S 140
-  mode 4: u16 (Decode2) + u8 (Decode1) + u8 (Decode1) → sub_70DFF9(...): đầy đủ 12 bomber có RTTI CGOBomber
-          + dùng malloc 0xA18, gửi C→S 140 sau khi sync xong
-  mode 0: (không field; nếu this[5402]==2 → sub_70E511)
+  u32 -> this[4887]      (Decode4; CHƯA KIỂ — có vẻ giới hạn thời gian lượt; client nhận bình thường)
+  u16 map_id             (Decode2; dùng cho sub_8EAB95/vf147 — giống map id trong 501)
+  mode 1: u8×16 (Block) → sub_70E357: sub_70C5DC(1) (phase this[5402]=1), vf147(map_id, Block)
+          (nạp lại round — đi qua skip 0x736C27), tạo 1 bomber cho ta (malloc 0xA18 + sub_5862A5 +
+          sub_6E17DB vào E608CC), rồi C→S **139** {bool 1}
+  mode 2: u16 a4 + u8 a5 + u32 a6 → sub_70DF00: sub_70D4B7 (phase 3), sub_70319B, vf147(map_id, Block16
+          Block16 = 16 × giá trị sub_8E9BF6(k)[: 580*k + this[121] + 124 của room ctx, đọc client-side]),
+          sub_70A385(a4, a5, a6), nếu a6 != 0 → sub_69280F(0, a6), rồi C→S **140** {bool 1}
+  mode 4: u16 a4 + u8 a5 + u8 a6 → sub_70DFF9: **CÓ CỔNG**: nếu a4 != (*(*this+608))(this, 4) [getter slot 152
+          với arg 4] → sub_708FFE(5, 0) và BỎ QUA âm thầm (không có 139/140 nào cả). Qua cổng thì như mode 2 +
+          chép khối 96 byte × 12 bomber (vt+732) + gọi [vt+424](0, 9430) từng bomber + C→S 140.
+  mode 0: (không field; chỉ khi this[5402]==2 → sub_70E511: sub_70C5DC(3), vf155(1), …)
 ```
-Lưu ý: u32 đọc **trước** u16 (thứ tự trên).
-CHƯA KIỂ: điều kiện rơi vào mode 2 hay mode 4, và ý nghĩa các u32 đọc thêm trong lượt.
+Đã chạy thật (fakeserver `TURN_MODE`): mode 4 với a4=1 → bị cổng từ chối (im lặng); mode 1 → client gửi 139 ✓ +
+nạp lại round (renderer đổi layout, nhân vật về spawn); mode 2 (a4=1,a5=1,a6=12345) → client gửi 140 ✓ (màn hình
+đen ~5 s là loading, rồi map mới hiện). Nhân vật **vẫn chưa tự di chuyển** — gợi ý còn thiếu state/gói khác (xem §12 cập nhật).
+CHƯA KIỂ: ý nghĩa thật của a4/a5/a6 và this[4887]; sau 140 cần gì nữa để mở điều khiển.
+
+### 5a-2. Opcode 190 (S→C) — "GO" (`sub_70E7D6` 0x70E7D6, dispatch case 190) ✅ decompile (2026-10-17)
+```
+opcode 190 (S→C):
+  u32 v27   (Decode4; CHƯA KIỂ — có vẻ số lượt/seed; được truyền vào sub_5A8DA5 nếu this[5417] != 0)
+  u8  v28   (Decode1; CHƯA KIỂ — kind, cũng truyền sub_5A8DA5)
+  u32 t1    (Decode4; giây → this[19736] = 1000*t1)
+  u32 t2    (Decode4; giây → this[19740] = 1000*t2; this[19744] = 0)
+  u8 flag   (Decode1)
+    flag != 0: (không đọc thêm) — duyệt bomber 0..1: lấy [vt+40] của obj+1524 → sub_414F70
+    flag == 0: u8 n → n × u8 → sub_41D3CB từng giá trị
+  Đầu hàm: sub_70C5DC(2) [phase = 2]; giữa hàm: sub_70319B, loop bomber: sub_592ADE(1) + [vt+424](24, 10120);
+  cuối: tính số lượng item shield từ bảng item; nếu this[5417] là CGameMiniMapWnd → sub_7E397C(a6, map_id)
+```
+Đã chạy thật: `GO_START=4` (4 s sau 189) → client hiện overlay trung tâm "**THỜI GIAN**" + số 0 → tức phase 2 đã
+set. Đồng hồ bên (GIỚI HAN) vẫn 00:00 và nhân vật vẫn chưa điều khiển được — bộ đếm/điều khiển có nguồn khác
+(CHƯA KIỂ — nghi gói 356/176 theo §5g, hoặc bomber cần state từ [vt+424]/loop nguồn khác).
+fakeserver: `round_go()` + env `GO_START`/`TURN_*`.
 
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
@@ -234,7 +258,10 @@ CHƯA KIỂ: điều kiện rơi vào mode 2 hay mode 4, và ý nghĩa các u32 
 | 141 | `sub_70E9FC` 0x70E9FC / `sub_70EADB` 0x70EADB — client **tự gửi trong vòng tick** `sub_71B521` (khi hết hạn stamp this[19676] / step theo seed sub_654153(3) % 12 == 0) | `u2 uid` (sub_6E2000), `u2 map_id` (sub_8E9977), `u8 n` (số ô bước, clamp 0..3), n × {`u8`, `u8`} — 2 byte mỗi ô, đọc từ queue di chuyển (sub_6EE7A1 / sub_6ED146) |
 | 142 | `sub_71B275` 0x71B275 (vòng tick khi this[21956] != 0, cách nhau ≥ 2000 tick) != 0, thời gian cách nhau ≥ 2000) | `u2 uid`, `u2 map_id`, `u8 nblocks` (clamped 0..10), mỗi block: `u8 ncell`, ncell × {`u8`, `u8`} |
 | 143 | `sub_71751A` 0x71751A — *đây là gói đặt bom*, caller: `CMapActionBomb__vf4` 0x752B44 (nút/nhấn bom) + `sub_76D342` | `u2 uid`, `u8 count` (= số cell), `u2 x?`, `u2 y?`, `u8 dir?`, `u32`, `u2` , rồi count × {`u8`, `u8`} |
-|—| còn lại: các gói phụ: `sub_702FCA` (209), `sub_702DE4` (115), `sub_70307F` (158), `sub_70326A/70330E/7033A3/7034FF` (126), `sub_703825` (175), `sub_706FC0` (135), `sub_70732A` (99), `sub_707F0F` (192), `sub_7083EC` (211), `sub_70A3EC` (132), `sub_70B0B3` (196), `sub_70D9BE` (207), `sub_70DFF9` Ngoài nói trên (140), `sub_70E7D6` (CHƯA KIỂ opcode), `sub_70EBE4` (179), `sub_70E9FC` tự nói trên (141), `sub_70F090` (174), `sub_7100B2` (197), `sub_716B75` (136), `sub_71751A` bản thân (143), `sub_7190C6` (184), `sub_719A3C` (203), `sub_71B275` nói trên (142), `sub_6F4365` (148), `sub_6FB1FE`/`sub_6FA7AB` (183), `sub_703A3?` (unclear) | (1×) thông tin phụ (CHƯA KIỂ) |
+|—| còn lại: các gói phụ: `sub_702FCA` (209), `sub_702DE4` (115), `sub_70307F` (158), `sub_70326A/70330E/7033A3/7034FF` (126), `sub_703825` (175), `sub_706FC0` (135), `sub_70732A` (99), `sub_707F0F` (192), `sub_7083EC` (211), `sub_70A3EC` (132), `sub_70B0B3` (196), `sub_70D9BE` (207), `sub_70DFF9` Ngoài nói trên (140), `sub_70E9FC` tự nói trên (141), `sub_70F090` (174), `sub_7100B2` (197), `sub_716B75` (136), `sub_71751A` bản thân (143), `sub_7190C6` (184), `sub_719A3C` (203), `sub_71B275` nói trên (142), `sub_6F4365` (148), `sub_6FB1FE`/`sub_6FA7AB` (183), `sub_703A3?` (unclear) | (1×) thông tin phụ (CHƯA KIỂ) |
+
+> Sửa (2026-10-17): `sub_70E7D6` **không phải gói C→S** — đó là handler opcode **190 S→C "GO"** (dispatch case 190,
+> `CGameStage__OnPacket`), cấu trúc ở §5a-2.
 
 ### 5c. Opcode S→C đáng chú ý của CGameStage (ngoài bảng §3; cấu trúc đọc từ decompile, ý nghĩa CHƯA KIỂ)
 - **On_106** `sub_7019AE` 0x7019AE: `u8 slot, DecodeBuf 3` → `sub_8E977D(slot, buf)` — cập nhật trạng thái ô/người
@@ -268,14 +295,19 @@ CHƯA KIỂ: điều kiện rơi vào mode 2 hay mode 4, và ý nghĩa các u32 
 - **On_25** 0x7127B3: `str` → phân token `sub_70ECEF` → mở cửa sổ/thêm người khác (CHƯA KIỂ).
 - **On_81** 0x70C8C1: `u32 slot/uid, str` — hiển thị text trên người chơi.
 
-### 5d. Minimum server để trận chạy (cấu trúc đã đọc từ IDA, chưa kiểm runtime)
+### 5d. Minimum server để trận chạy — ✅ ĐÃ KIỂM CHỨNG runtime tới bước 4 (2026-10-17)
 1. Gửi **231** trước (cấu trúc nhánh "blob có tag" như gói 14, xem §2b) để bảng map của trận được nạp đủ.
 2. Khi bấm BẮT ĐẦU (hoặc tự quyết): gửi **501** đúng §4 — `map_name` phải == tên theo `map_id` trong bảng **231**,
    ngược lại: hộp thoại "Invalid map..." và quay về phòng chờ.
+   ✅ runtime: fakeserver gửi 501 (AUTO_START) → client vào stage 13, nạp map thành công (qua skip 0x736C27), vẽ map.
 3. Client vào stage 13, load map (đặt theme từ **231**), KHÔNG thêm gói gửi lúc vào stage.
-4. Bắt đầu lượt: gửi **189** (mode 2/4 như §5a) — client trả C→S **139**/`140`.
+4. Bắt đầu lượt: gửi **189** (mode 1/2 như §5a; mode 4 cần cổng a4 == getter(4)) — client trả C→S **139** (mode 1)
+   hoặc **140** (mode 2); kèm **190 "GO"** sau đó để set phase 2 (§5a-2) → client hiện overlay THỜI GIAN.
+   ✅ runtime: cả 139 (mode 1) và 140 (mode 2) đều quan sát được trong log fakeserver.
 5. Đồng bộ di chuyển: client tự gửi **141** (và 142); **KHÔNG có handler S→C tương ứng** trong CGameStage/kế thừa
    (xem §5f) — chuyển động người khác client tự mô phỏng; trạng thái bù/tile qua **356** (§5g) và **176**.
+   ⬜ runtime: chưa thấy client gửi 141/142 — nhân vật chưa điều khiển được; nguyên nhân CHƯA KIỂ (nghi thiếu
+   state sau 140/190, hoặc cần thêm gói 356/176; đọc `sub_71B521` vòng tick để xem điều kiện kích hoạt 141).
 6. Đặt bom: client gửi **143** (`CMapActionBomb__vf4`); server phải phát hiệu ứng (nhiều khả năng qua 158/145/163) — CHƯA KIỂ.
 7. Kết thúc lượt: **146** (§5h); 128/204 không phải "kết thúc ván" rõ ràng — CHƯA KIỂ.
 

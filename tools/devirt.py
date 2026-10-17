@@ -178,6 +178,29 @@ BLOCKS = [
             jmp {0x968385:#x}
         """,
     ),
+    dict(
+        site=0x736C27, cont=0x736D6C, func="CGamePlayMap__Load success tail (EXPERIMENT: plain skip)",
+        # Themida chunk spans 0x736C27..0x736D5A (marker EB 10 57 4C 20 at 0x736D5A, 16 bytes mutated);
+        # native visible ONLY from marker end 0x736D6C: mov ecx,[0xE60884]; call sub_8EC54D; mov bl,1;
+        # jmp loc_736B2C (cleanup path) -> mov al,bl -> epilog. cont reads NO incoming registers (ecx/bl
+        # clobbered right away; cleanup uses only ebp-locals alreadly initialized) -> a plain jmp is a valid
+        # no-op substitute for the chunk. Chunk's own work (registering the fresh 0x90 ctor object for room
+        # kinds 20/33, unknown for others) dropped on purpose; room type 19 needs none of it.
+        asm=f"""
+            jmp {0x736D6C:#x}
+        """,
+    ),
+    dict(
+        site=0x5788C9, cont=0x414543, func="CBombOwner__vf33 tail (EXPERIMENT: plain skip)",
+        # Chunk = 0x5788C9..0x5788DB (site jmp e9 -> 0x26574543, a Themida heap-mutated module, then junk);
+        # native resumes at 0x5788DC = `jmp 0x414543` (Themida check hub, returns al=0) and the next function
+        # prologue starts at 0x5788E5. Mutate class: the mutated copy of the tail runs the same chain that ends
+        # at jmp 0x414543, so a plain jmp preserves behavior without the heap module (not runnable inside the
+        # dump -> SIGSEGV at 0x26574543 as seen in the OnEnter vf161 path).
+        asm=f"""
+            jmp {0x414543:#x}
+        """,
+    ),
 ]
 
 

@@ -28,7 +28,7 @@ Game chia thành các "stage" (màn). Client ghi stage hiện tại vào `wine/B
 | 10 | Đăng nhập + chọn kênh (`CSelectServerStage`) | ✅ kênh tự hiện, click vào kênh được | `docs/channel_autoshow.png` |
 | 11 | Sảnh quảng trường (`CLobbySquareStage`) | ✅ load xong, nút TẠO PHÒNG chạy | `docs/lobby_loaded.png`, `docs/create_room_dialog.png` |
 | 12 | Phòng chờ (`CPrepareStage`) | ✅ có người chơi (trưởng phòng), map Village01, nút BẮT ĐẦU bật | `docs/waiting_room_start.png`, `docs/map_dialog_village.png` |
-| 13 | Trận đấu (`CGameStage`) | ❌ crash khi nạp map | — |
+| 13 | Trận đấu (`CGameStage`) | 🟡 2026-10-17: nạp map xong, vẽ bản đồ + HUD, client ổn định (2 khối skip 0x736C27/0x5788C9); **chưa điều khiển được nhân vật** — cần thêm gói/state sau 189/190 | `docs/battle_village01.png` |
 
 Những phần **chưa làm** ở các màn đã qua (không chặn đường vào trận):
 - Hộp thoại **chọn map** trong phòng liệt kê 0 map (báo "CantDecideMap"). Server đang tự gán map cho phòng.
@@ -100,40 +100,53 @@ CLICKS="975,38,3 385,50,4 437,612,10 512,384,8" tools/xvfb_join.sh
 | Tạo phòng | 77 | 83 (`create_room_ok`) | → stage 12 |
 | Vào phòng chờ | 337 | 103 (`room_player`), 106 (`room_slot_state`), 113 (`room_map`) | trưởng phòng, ô 0, map |
 | Bấm BẮT ĐẦU | 97 | 501 (`match_start`) | hoặc server tự gửi 501 (`AUTO_START`) |
+| Bắt đầu lượt (server tự) | — | 189 (`round_start`, mode 1/2/4 — `TURN_MODE`) | mode 1 → client trả C→S 139; mode 2 → 140; mode 4 có cổng, sai tham số bị bỏ qua âm thầm |
+| "GO" (server tự) | — | 190 (`round_go`, sau 189 — `GO_START`) | client set phase 2, hiện overlay "THỜI GIAN" giữa màn |
 
-Chi tiết + địa chỉ hàm client của từng bước: [docs/lobby.md](lobby.md) (mục "Cập nhật 5" → "Cập nhật 12").
+Chi tiết + địa chỉ hàm client của từng bước: [docs/lobby.md](lobby.md) (mục "Cập nhật 5" → "Cập nhật 12");
+[docs/oc_e-game.md](oc_e-game.md) §5a/§5a-2 (189/190, đã decompile đủ + kiểm runtime).
 
 ---
 
-## 5. Chỗ đang kẹt: vào trận
+## 5. Tiến độ vào trận (2026-10-17) — đã qua nạp map, còn kẹt điều khiển
 
-**Do chủ dự án tự xử lý — đừng làm phần này khi chưa được giao.**
+Được giao xử lý trước đó ("viết lại khối 0x736C27"). Kết quả:
 
-Những gì đã biết:
-- Client nhận 501, gửi 298, tạo `CGameStage` (stage 13).
-- Trong lúc tạo màn trận có một khối VM `sub_9682DE` (0x9682E5). Đã thay tạm bằng code viết tay trong `tools/devirt.py`
-  (suy ra từ hàm khởi tạo/huỷ, **chưa kiểm bằng trace** — có thể sai).
-- Sau đó client crash trong vùng VM khi nạp map: backtrace đi qua 0x6ED8A6 → phần nạp map của `CGamePlayMap__Load`
-  (khối VM bắt đầu trong hàm ở 0x736C27). Đây là vùng còn bị Themida bảo vệ.
-- Ghi chép trước đó: [docs/lobby.md](lobby.md) "Cập nhật 12".
+- Client ổn định qua **điểm crash cũ** (nạp map): khối VM `CGamePlayMap__Load` 0x736C27 tạm đi qua bằng skip
+  `jmp 0x736D6C` trong `tools/devirt.py` (thí nghiệm; viết lại thật vẫn cần snapshot + emulate).
+- Crash kế tiếp nằm ở **`CBombOwner__vf33`**: site **0x5788C9** (không có trong `themida_entries.json`) — 1 lệnh
+  `jmp sub_414543` nguyên bản bị Themida đè bằng `jmp 0x26574543` (ngoài image, SIGSEGV khi chạy). Soi hàm song sinh
+  `CBombOwner__vf31` (0x578963, nguyên bản) xác byte gốc → skip `jmp 0x414543`. Bằng chứng gdb + chi tiết:
+  `docs/vmtriage.md` §3a. Bằng skip này client đi được hết OnEnter (query bomber theo slot của vf161).
+- Sau đó: **stage 13 nạp map xong, vẽ bản đồ Village01 + HUD, client sống ổn** (keep-alive đều).
+- Fakeserver đã gửi được chuỗi trong trận: 501 → **189** (mode 1/2/4, decompile đủ §5a `oc_e-game.md`;
+  mode 1 → client trả 139 ✓, mode 2 → trả 140 ✓; mode 4 có cổng a4 == getter(4)) → **190 "GO"** (§5a-2; phase 2,
+  overlay THỜI GIAN).
+- Kẹt hiện tại: **nhân vật không di chuyển** sau chuỗi trên. Input lên được game (đăng nhập gõ được). Nghi thiếu
+  state/gói (356/176?), hoặc bomber cần state khác — xem "Việc tiếp theo" mục 6.
 
-Sau khi qua được chỗ này, việc tiếp theo là làm các gói trong trận — agent `e-game` đã soạn sẵn (mục 7), có phần
-"5d Minimum server để trận chạy".
+Ghi chép trước đó về phần crash map: [docs/lobby.md](lobby.md) "Cập nhật 12".
 
 ---
 
 ## 6. Việc tiếp theo (theo thứ tự ưu tiên)
 
-1. **[chủ dự án]** Qua chỗ crash nạp map (mục 5).
-2. **Mở đủ map** (làm được ngay, không phụ thuộc mục 5):
+1. **Mở điều khiển nhân vật trong trận** (kế tiếp mục 5):
+   - Đọc vòng tick `sub_71B521` (điều kiện client gửi 141) và nguồn HUD "GIỚI HAN"/overlay THỜI GIAN để biết
+     state nào còn thiếu — khả năng là gói **356** (§5g `oc_e-game.md`) hoặc **176**;
+   - Giải nghĩa `sub_70A385(a4, a5, a6)` (set vị trí/đội 12 bomber?) để gửi 189 đúng tham số;
+   - Nếu runtime vẫn crash trong vòng chat/game loop → thêm skip thí nghiệm cho 0x5A6E89 / 0x6F287E / 0x754C82.
+2. **Viết lại thật 2 khối skip** (0x736C27, 0x5788C9): snapshot client gốc trong WinBoat (`win/snap.bat`) +
+   `tools/vmemu.py` + `tools/snapdiff.py` theo [docs/devirt.md](devirt.md); đã đoán được cont = 0x736D6C / cont = jmp
+   0x414543. Cần bấm đúng các patch của `patch_client.py` vào snap.bat và nâng `MAX_PATCHES` của `snap.c` nếu thiếu.
+3. **Mở đủ map** (làm được ngay, không phụ thuộc phần trên):
    - Thay 3 map tự soạn trong `BATTLE_MAPS` bằng danh sách đầy đủ: client nạp mọi mục `Map/*` trong pack `fx.idx` theo
      thứ tự chữ cái (1019 mục) → chỉ số = vị trí trong danh sách đó (`tools/idf.py` đọc được pack).
    - Làm cho hộp thoại chọn map liệt kê được: lỗi nằm ở bước nhóm map (bộ lọc `sub_6DEE48` đã cho qua cả 3 map).
    - Tìm xem map có khoá theo cấp nhân vật không (chưa ai phân tích; nghi ở gói map riêng của người chơi cho loại phòng 14,
      hoặc gói 231).
-3. **Audit tài liệu của agent OpenCode** trước khi dùng (mục 7).
-4. Kiểm lại `sub_9682DE` bằng trace thật.
-5. Làm các gói trong trận theo `docs/oc_e-game.md` (sau mục 1).
+4. **Audit tài liệu của agent OpenCode** trước khi dùng (mục 7).
+5. Kiểm lại `sub_9682DE` bằng trace thật.
 6. Sảnh/phòng đầy đủ: danh sách người, danh sách phòng, nhiều người chơi (`docs/oc_c-square.md`, `docs/oc_a-room.md`).
 7. Viết server thật bằng Rust, dùng `tools/fakeserver.py` + `docs/` làm đặc tả.
 
@@ -174,6 +187,9 @@ Tất cả nằm trong pipeline `tools/rebuild_wine.sh`, không sửa tay file e
 ## 9. Bẫy thường gặp
 
 - `pkill -f ca_fixed_patched` có thể **giết luôn shell** đang chạy lệnh (chuỗi khớp chính nó) → dùng `'[c]a_fixed_patched'`.
+  **Dạng bẫy khác (2026-10-17):** cả heredoc/giá trị env chứa chuỗi khớp cũng dính — ví dụ ghi file bằng
+  `cat > x <<'EOF' ... pkill -f ca_fixed ... EOF` thì chính lệnh shell ngoài khớp. Nghiêm chút: **ghi file bằng công
+  cụ write/edit, chạy file riêng**, không nhúng nội dung pkill vào cmdline.
 - Còn tiến trình client cũ thì client mới không chạy (mutex) → các script đã tự pkill trước.
 - `/proc/<pid>/mem` không đọc được trong Wine kiểu WoW64 mới → dùng gdb (`tools/wine_gdb.sh`).
 - Số trong pseudocode Hex-Rays là **thập phân**.
@@ -192,3 +208,57 @@ Tất cả nằm trong pipeline `tools/rebuild_wine.sh`, không sửa tay file e
 | bản dump | `unpacked_ca.exe`: client đã gỡ Themida, chạy được sau khi qua `rebuild_wine.sh` |
 | khối VM | đoạn code Themida biến thành bytecode riêng; trong bản dump không chạy được, phải viết lại (`devirt.py`) |
 | CALog | `wine/Boom/CALog.log`, log của client; `dne:N` = đã vào stage N |
+
+---
+
+## 11. Nhật ký phiên 2026-10-17 (agent OpenCode — qua nạp map tới ván)
+
+### Chuỗi công việc
+
+1. **Skip thí nghiệm 0x736C27** (`CGamePlayMap__Load`) trong `tools/devirt.py` BLOCKS → build lại + chạy:
+   điểm crash cũ (nạp map) qua được, nhưng crash **kế tiếp** ở OnEnter, backtrace trong `logs/xvfb/gdb.txt`
+   (EIP 0x26574543 — heap "rác").
+2. **Định danh crash thật bằng gdb + static** (bẫy "object rác" bị bác bỏ):
+   - `HIT6FFCA9` (bp trước lời gọi ảo trong `sub_6FFC94`): `[stage]` = `vt_CGameStage` **lành** → object stage OK.
+   - Crash EIP = **0x26574543**, stack: `CHiddenCatchGameStage__vf161` (0x7027B0, loop query bomber theo slot
+     `sub_6E5C2B`) → wrapper `CGOCAHeroGameBomber__vf33_0` (0x5A0274; `[esi]=vt_CGOZzolmanBomber_off510` — bomber
+     **lành**) → `CBombOwner__vf33` (0x5788B8) → hết thân, nhảy 0x26574543.
+   - Hex-Rays của `CBombOwner__vf33` có sẵn `JUMPOUT(0x26574543)` — **khớp chính xác địa chỉ crash** → là site VM,
+     không phải dữ liệu hỏng.
+3. **Site 0x5788C9 không có trong `themida_entries.json`**: disasm cho thấy lệnh nguyên bản tại đó (so với hàm song
+   sinh `CBombOwner__vf31` 0x578963 *không bị đè*: `...; lea ecx,[esi+0x1C]; pop esi; jmp sub_414543`) là
+   `jmp sub_414543` (5 byte) **bị Themida đè bằng** `jmp 0x26574543`. Skip = `jmp 0x414543` (giữ đúng lệnh gốc,
+   bỏ qua mutator-in-heap). Chi tiết trong `docs/vmtriage.md` §3a/§5.
+4. **Kết quả chạy thật**: LOGIN → kênh → sảnh → phòng → AUTO_START 501 → **dne:13, nạp map xong, vẽ Village01 + HUD,
+   client sống ổn** (`docs/battle_village01.png`). Nhân vật đứng ở spawn không di chuyển.
+5. **Fakeserver phần trong trận** (`tools/fakeserver.py`):
+   - Builders mới: `round_start()` (opcode 189, mode 1/2/4 — field từ decompile đủ, `oc_e-game.md` §5a) và
+     `round_go()` (opcode **190 "GO"** = `sub_70E7D6`, set phase `this[5402]=2`; field ở §5a-2).
+   - Env: `TURN_START` (giây sau 501), `TURN_MODE`, `TURN_A2/3/4` (giá trị mode 2), `GO_START` (giây sau 189).
+   - Thí nghiệm: mode 1 → C→S **139 ✓** (nạp lại round, nhân vật về spawn); mode 4 (a4=1) → **bị cổng từ chối**
+     (cần a4 == getter(4), âm thầm bỏ qua); mode 2 (1,1,12345) → C→S **140 ✓** (screen đen = loading ~5 s, map mới);
+     190 Go → overlay "THỜI GIAN" hiện (phase 2 set ✓).
+6. **Vẫn kẹt**: nhân vật không di chuyển; HUD timer 00:00/02:00 đứng. Input tới game (đăng nhập gõ được bằng bàn
+   phím) → vấn đề là **state client**, không phải infra.
+
+### Bài học / kinh nghiệm
+
+- Crash "EIP rác" trong bản dump **không có nghĩa là object hỏng**: kiểm `[esi]`/vtable trước khi kết luận. Ở đây
+  `Hex-Rays JUMPOUT(địa chỉ crash)` luôn là dấu hiệu site VM — grep nó đầu tiên.
+- Site VM có thể sống **ngay trong 1 lệnh jmp ngắn** của hàm nguyên bản (mẫu "jmp bị chiếm đoạt"); đặc điểm nhận:
+  Hex-Rays JUMPOUT ra ngoài image. Sửa nhanh + đúng: tìm hàm song sinh nguyên bản có cùng đuôi để biết byte gốc.
+- Bp gdb dạng script tuần tự (`continue` → inspect → `continue` → bt+quit) đủ dùng khi biết bp hit đúng 1 lần
+  trước crash — thông tin `[stage]`, `[esi]` lấy được gọn.
+- gdb chậm ~2-3× so với driver click tương tác của `wine_gdb.sh` (JOIN/CLICKS dùng thời gian tĩnh) — chờ lâu hơn.
+- Luồng click trước đó dính typo tọa độ (344,611 thay 434,611) — luồng "sàn sạch" phải xem ảnh sau từng click.
+- Mode 189/190: tất cả giá trị "chưa rõ" dễ gửi 0/1 — mode 2 chạy được với (1,1,12345) nhưng **cần audit** giá trị
+  a4/a5/a6 thật (`sub_70A385`) trước khi tin.
+
+### Trạng thái để phiên sau bắt lại
+
+- `tools/devirt.py`: 9 BLOCKS (2 skip thí nghiệm mới: 0x736C27→0x736D6C, 0x5788C9→0x414543) — lần build kế tiếp nên
+  giữ và ghi chú như hiện tại.
+- `tools/fakeserver.py`: AUTO_START/TURN_*/GO_START hoạt động; đã test với ROOM_TYPE=19, MAP_INDEX=0.
+- Ảnh màn trận: `docs/battle_village01.png` (map + HUD), `docs/battle_mode1_spawn.png` (spawn sau mode 1).
+- Log phiên: `logs/xvfb/gdb.txt` (bp HIT6FFCA9 + crash), `logs/fakeserver_host.log` (189/190/139/140), ảnh
+  `/tmp/opencode/st_*.png` (tạm thời — copy sang docs nếu cần thêm).
