@@ -170,3 +170,40 @@ từng phần tử danh sách `this[5413]`; cuối cùng `CSessionStage__vf51` (
 | 571 | `sub_71ADEC` | 0x71ADEC |
 | 572 | `sub_709D5E` | 0x709D5E |
 | 578 | `CGameStage__On_578` | 0x70065D |
+
+
+## 4. Gói opcode 501 (S→C "bắt đầu trận", handler 0x6C4978) — đọc từ decompile; CHƯA KIỂ runtime
+```
+opcode 501 (S→C):
+  u8 ok                       // Decode1; ==0 → hộp thoại aCannotlaunchas, KHÔNG đổi stage
+
+  // ---- phần 1: người chơi, lặp this[4770] (số người đã lưu từ opcode 103) ----
+  u8 c                        // c != 0: chỉ DecodeBuf 3 → sub_8E977D(slot, buf)
+                              // c == 0: entry đầy đủ:
+                              //   u32 player_id        (sub_679434 + blob)
+                              //   blob                 (thông tin người, như 103)
+                              //   DecodeBuf 3          (bitfield sẵn sàng/nhân vật/đội; chia cho sub_691BEE)
+                              //   u8                   (sub_8E8F21)
+                              //   sub_572A05 + CGameStage-vf149 offset 592 (this)
+  // ---- phần 2: cấu hình trận (guard sub_8DAB40/8DAD87/8DAD95 đều 0) ----
+  u32 seed                    → sub_8E77E4(seed)   ; sub_65412D(3, seed)
+  u16 map_id                  → sub_736FE3(map_id) ; sub_8EAB95(map_id)
+  str map_name                // u16 độ dài + byte; so _mbsnbcmp với tên map_id: khác → aInvalidmapretu
+  u32 type                    // sub_6DE36E(type) != 0 bắt buộc; sub_6DD49B(type) != 0 → cờ (sub_8E7E46)
+  u8 p0                       → sub_8E78CB(p0)
+  u8 ready_bits               → sub_8E7636(ready_bits) (CHƯA KIỂ)
+  u8 pcount                   → sub_8E9027(pcount) (số người phần 3)
+  // ---- phần 3: pcount × { u8 slot, u8 x, u8 y, u32, u32, u32 } ----
+  u8 slot → sub_8E8EFF(slot, 0)
+  u8 x → sub_8E76A3(slot, x)
+  u8 y → sub_8E8EBB(slot, y)
+  u32 → sub_67900E (dùng làm ô/x?; CHƯA KIỂ)
+  u32 → sub_67901A (CHƯA KIỂ)
+  u32 → sub_9B69F7(0 nếu là người thứ 0, 1 nếu thứ 1, giá trị) (CHƯA KIỂ)
+  // ---- phần 4: lặp 16 slot (0..15) ----
+  mỗi slot có người: u8 != 0 → sub_985703(a2)  (sub-packet, CHƯA KIỂ)
+  // ---- hợp lệ ----
+  sub_6734D5(0x15, 1, 0); sub_8F391D(13)       // đổi stage 13
+```
+Nhánh lệch bản đồ: hộp thoại `aInvalidmapretu` rồi `sub_8F391D(this[15141])` (quay về phòng chờ) + `sub_8F2F14`.
+CHƯA KIỂ: ý nghĩa các u32 loại c/d/e của phần 3 và sub-packet của phần 4.
