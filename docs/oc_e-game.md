@@ -272,7 +272,7 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
 ### 5d. Minimum server để trận chạy (chưa kiểm runtime — GVNGạn xemner tiếp trước khi chơi)
 1. Gửi **231** trước (cấu trúc nhánh "blob có tag" như gói 14, xem §2b) để bảng map của trận được nạp đủ.
 2. Khi bấm BẮT ĐẦU (hoặc tự quyết): gửi **501** đúng §4 — `map_name` phải == tên theo `map_id` trong bảng **231**,
-   ngược llegalArgumentException h被誉为 "aInvalidmapretu" đứng room.
+   ngược lại: hộp thoại "Invalid map..." và quay về phòng chờ.
 3. Client vào stage 13, load map (đặt theme từ **231**), KHÔNG thêm gói gửi lúc vào stage.
 4. Bắt đầu lượt: gửi **189** (mode 2/4 như §5a) — client trả C→S **139**/`140`.
 5. Đồng bộ di chuyển: client tự gửi **141** (và 142); SERVER PHẢI phát lại cho người chơi khác — *chưa tìm handler
