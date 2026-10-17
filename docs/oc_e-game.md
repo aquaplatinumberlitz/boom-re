@@ -161,7 +161,7 @@ Chuyển tiếp → handler (`= function đế received at, alias trong IDA`):
 ```text
 opcode 501 (S→C):
   u8 ok                       // Decode1; ==0 → hộp thoại aCannotlaunchas, DỪNG (không đổi stage)
-  // ---- phần người chơi (như opcode 103), lặp v2[4770] (lần v2[4770] = số người đã lưu) ----
+  // ---- phần người chơi (như opcode 103 nhưng đọc lặp this[4770] = số người đã lưu) ----
   u8 c                              // c≠0: chỉ DecodeBuf 3 → sub_8E977D(idx, buf)  (update trạng thái ô)
                                     // c==0: entry đầy đủ: u32 id, blob(thông tin như 103), DecodeBuf 3,
                                     //       u8 (sub_8E8F21), sub_572A05 + vf149(this+592)
@@ -193,3 +193,68 @@ opcode 501 (S→C):
 - BGM: vf155 (0x70EEF3) tra tên nhạc từ bảng/gói theo map id (`sub_6DDBAB`), các sự kiện đều là hiệu ứng resource.
 CHƯA KIỂ: format fieldValue của bản ghi 231 theo Nghena cứng - nhưng **phải gửi 231 trước 501** để có tên map (vf147
 truy bảng; nếu thiếu khả năng sẽ lệch/dừng trong sub_736FE3 với bác bảng rỗng → vanney boots VNA hết).
+
+## 5. Các gói để trận CHẠY (đọc từ decompile, CHƯA KIỂ runtime; field theo thứ tự Decode/Encode chính xác)
+
+### 5a. Opcode 189 (S→C) — LỆNH ROUND (`sub_70E5C4` 0x70E5C4) — gói "khởi động lượt"
+```
+u8 mode (Decode1)
+  mode 0: (không field sau) — nếu this[5402]==2 → sub_70E511
+  mode 1: u8×16 (decode từng ô) → sub_70E357(this, 16 flags):
+          client set map id (sub_8EAB95), gọi vf147 (reload round), gửi C→S 139 {bool 1}
+  mode 2: u16 (RoundNo?), u8, u32 → sub_70DF00(..., u32) — khác sub_70DFF9 kiểu "map chưa đầy đủ"
+          → gửi C→S 140 {bool 1}
+  mode 4: u16, u8, u8 → sub_70DFF9(...) — nhánh "đầy đủ 12 bomber + sync thành phần trận"
+          → gửi C→S 140 {bool 1}
+các field trước tác: this[4887] = u32 (Decode4) — set **giới hạn/tIMER lượt?** trong `this[4887]`;
+listen lại: `u16` (Decode2) **xuất hiện trước `u32`** như dòng trên (v16=u8 mode, thi[4887]=u32, v15=u16).
+```
+**Không có mode nào "kết thúc"** trong 189 — các mode chỉ misłego "map reload/quan sát mieć 12 Когда con"; cụ thể việc
+chuyển đổi lượt/di chuyển là gói khác (141/142/143 C→S vsđ đối tượng người chơi).
+
+### 5b. C→S các gói client gửi khi chơi (đều đọc được các Encode chính xác)
+| op | địa chỉ send | nội dung Encode (thứ tự) |
+|---|---|---|
+| **139** | `sub_70E357` 0x70E357 (do On_189 mode1 strcpy gọi) | `bool 1` |
+| **140** | `sub_70DF00` 0x70DF00 / `sub_70DFF9` 0x70DFF9 | `bool 1` |
+| **141** | `sub_70E9FC` 0x70E9FC / `sub_70EADB` 0x70EADB (client **tự gửi trong vloop** `sub_71B521` mỗi 12 tick khi this[19676..] hết hạn) | `u2 uid` (sub_6E2000), `u2 map_id` (sub_8E9977), `u8 n` (≤3 các bước đường đi), n × {`u8`, `u8`} — 2 byte/cell (thứ tự raw trong queue: byte@+4 rồi byte@+0 → tổng theo "thứ true cell"), đọc bằng `sub_6EE7A1`/`sub_6ED146` |
+| **142** | `sub_71B275` 0x71B275 (loop tick khi this[21956]!=0 và Always®ส=2000) | `u2 uid`, `u2 map_id`, `u8 nblocks` (≤10), mỗi block: `u8 ncell`, ncell × {`u8`, `u8`} |
+| **143** | `sub_71751A` 0x71751A — **ДАТ бом đặt bom**, caller `CMapActionBomb__vf4` 0x752B44 (nút điả bom) + `sub_76D342` | `u2 uid`, `u8 nsửa` (= điều ở queue), `u2 a7` (x?), `u2 a6` (y?), `u8 a3`, `u32 a4`, `u2 a11`, rồi per cell: {`u8`, `u8`} |
+| 158 | `sub_70307F` 0x70307F | (u8, u8, u8?) — hồi âm lỗi/nhà các case "receive đã dùng 730EF4 thất bại" gợi ý inline (CHƯA KIỂ) |
+
+Ngo Riníi ngoài chiến trường (xem trước đây nhiều): `sub_702FCA` gửi **209** `u8?, …`, `sub_702DE4` gửi **115** `u8?`,
+`sub_70B0B3` gửi **196** `u8?`+…, `sub_70EBE4` gửi **179** `u8?`, `sub_70F090` gửi **174** `u8?`,
+`sub_7100B2` gửi **197** `u8?` của case-on-330, `sub_70FF80` gửi **121**, `sub_703825` gửi **175**, `sub_707F0F`
+gửi **192**, `sub_7083EC` gửi **211**, `sub_70A3EC` gửi **132**, `sub_70D9BE` gửi **207**, `sub_70326A/70330E/7033A3/7034FF`
+gửi **126** ×4, `sub_70732A` gửi **99**, `sub_706FC0` gửi **135**, `sub_716B75` gửi **136**, `sub_7190C6` gửi **184** (u8?×2),
+`sub_719A3C` gửi **203**, `sub_71AD24` gửi **140** (là một, chữ亚军 kiểm time sync), `sub_6FB1FE`/`sub_6FA7AB` gửi **183**.
+Các gói này chi签订了 1× field; CHƯA KIỂ ý nghĩa — chỉ cần khi chơi/tổ chức mediática càng thêm.
+
+### 5c. S→C LiênQuantity quan trọng (ngoài bảng §3)
+- `On_155` 0x701E8B — *trạng thái/do người chơi khác thực hiện* (u8 id, u8 dir/high nibble + slot low nibble, u16 idx,
+  u8, u8, u8, u8) — âm thanh/hiệu ứng (`sub_6734D5(0x4C/0x9D/0x9F)`).
+- `On_157` 0x7068DE — *cell đa usr unit* (u8 id, u16, u8, u8, u8, u8, u8) → `sub_730EF4` (nếu fail → `sub_70307F`, 2, -1).
+- `On_158` 0x715E90 — *vật phẩm/hiệu quả vào ô* (u8 code, u8 id, u8÷, u8, u8, u16 type giá trị (45/97/99/100/103...),
+  u16 itemId, bool) — nổ/pickup/cóm kết hợp — thể hiện phải đối نâng. CHƯA KIỂ chi tiết nhánh 99/97/100/103.
+- `On_164` 0x701765 — *tiền/thắng buff*: u16 uid, u32 (điểm?), hiệu ứng picking (u32).
+- `On_148/149` 0x704CD8/0x704D77: `u8 slot, bool` → bật/tắt (ability flag 2) → courtesy phânဏ set/unset (v35).
+- `On_150` 0x6FFF78: `u8 slot` → `this[slot+4895]=1`.
+- `On_145` 0x701A48: `u8 slot, u16 which(1..25), u32, u32` → `sub_6EB940` (map object change).
+- `On_146` 0x70DE4C: đầu `sub_70A647(this, pkt)` rồi reset trạng thái ở sẵn (this[5400]=1 nếu sub_9B6F75(4)) — **song dấu "étien đấu"** (CHƯA KIỂ).
+- `On_151` 0x70205B (chung 477): `u8 n`, n × {`u16 id`, `u8`, (nếu) `u32`} → `sub_6E9994` — *ứng suất 477 in-strategy*.
+- `On_152` 0x7064AC (chung 478): u8 (Điều tôi chỉ nhận khi id ngồi ""): u8 v6, u16 v7, u32, u32, u32, u8 (box), u8, u8, u32, u8, [→ điều kiện 3×u8], u16, u16, u8 (sub_4D6096), u64, u8, u8, [u8] — *thông báo* `sub_6E9AF9` (như 478 vàng Square).
+- `On_153` 0x70679A: `u8 (≤4), u16 slot, u32, u8` — *thuộc tính đổi màu intención* (CHƯA KIỂ).
+- `On_107` 0x703D01: `u16 (≤0xF), u8 flag, u16 (≤0xF), u16` → set/unset 8E8C5C/8E8CB1 (một dạng item trên người chơi).
+- `On_128` 0x71458E: u8 subtype {1..25} — mỗi subtype là lần gói "thắng/loss điểm vị copy"; các field xuất hiện: u16 id,
+  số lượng (u8/u16/u32/u64/str) — một dạng điểm list / C оружия игра.bdca. CHƯA KIỂ chi tiết từng subtype.
+- `On_25` 0x7127B3: `str` → phân rẽ token (sub_70ECEF) → cửa sổ/invite, người thứ (sub_594CBF + sub_5AB65D).
+- `On_81` 0x70C8C1: `u32 slot/uid, str` — hiển thị text trên người chơi (`sub_5A2C2B`).
+
+### 5d. Kết luận minimun server cho счастлив (trận thường, chưa chơi nhị thành CHƯA KIỂ)
+1. Trước khi vào phòng: **231** (bảng map/theme — fxdynmapinfo) gửi được có, đã làm tiếp cả "Tên map & "Theme/"
+2. Answer ask start:`u8 ok=1`, **501** như §4 (seed ~ flash đısplays, map name rdrawing must match map id trong 231!).
+3. Sau khi client nạp stage-13 (gửi 139/140 chỉ khi server gửi 189) → gửi **189** mode 2 hoặc 4 để round start.
+4. Đồng bộ di chuyển: client gửi **141**; server phát lại cho người khác ở dạng nhận*gursday tương ứng (CHƯA KIỂ opcode
+   nhận hệ pass | chưa chấm rõ — cần phân tích thêm netmovu công bật (HĐ: hmm — CGameStage OnPacket chưa thấy một
+   handler áp "path di chuyển từ mạng" — *** submit 메커니즌 endereco bác đọc pourrait khác: ẩn dưới tools/TODO for doc).
+5. Bom: client gửi **143** (CMapActionBomb__vf4); server phải broadcast hiệu ứng (158 hoặc 145) — chưa khai bản.
