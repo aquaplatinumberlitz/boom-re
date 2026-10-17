@@ -519,6 +519,6 @@ chuyển tiếp `CSessionStage__OnPacket` → `CChatStage__OnPacket`). `CSession
 - Khối VM `sub_9682DE` (0x9682E5, Init(chỉ số) của object thành viên 2 instance, gọi từ ctor `sub_9683B4`) được thay bằng
   bản tối thiểu trong `tools/devirt.py` — **suy ra từ ctor/dtor, chưa kiểm bằng trace**.
 - Sau đó client crash trong vùng VM khi game context nạp map (backtrace qua 0x6ED8A6 → vùng `CGamePlayMap__Load`).
-  **Dừng tại đây**: phần này nằm ở khối bảo vệ của Themida; chờ người dùng quyết hướng tiếp theo.
+  **Dừng tại đây**: phần này nằm ở khối bảo vệ của Themida; chủ dự án đang tự xử lý (xem `docs/progress.md` mục 5).
 - Hộp thoại chọn map vẫn liệt kê 0 map dù bộ lọc `sub_6DEE48` cho qua cả 3 map (gdb: RET=1) — vấn đề ở bước nhóm map,
   chưa xử lý (không cần cho đường 501).

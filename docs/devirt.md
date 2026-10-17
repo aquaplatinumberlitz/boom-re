@@ -5,6 +5,9 @@ IAT đã sửa xong (`docs/runtime.md` → "Sửa IAT"). Việc còn lại là c
 
 ## Trạng thái (2026-10-16, tối)
 
+> **Mới hơn (2026-10-17):** bản dump đã chạy tới phòng chờ (stage 12); có thêm khối tạm `sub_9682DE` và hook kênh tự hiện
+> (`HOOKS`). Tiến độ hiện tại: [progress.md](progress.md).
+
 - ✅ **Bản dump chạy trong Wine: intro → màn đăng nhập → đăng nhập vào `tools/fakeserver.py` → màn chọn kênh (stage 10)**.
   Keep-alive opcode 15 mỗi 5 s. Thử: `tools/xvfb_login.sh` (Xvfb riêng, tự gõ tài khoản, chụp `logs/xvfb/login_*.png`).
 - Đã devirtualize **6 khối** (bảng dưới, ✅). Phương pháp chuẩn: [Snapshot + emulate](#quy-trình-snapshot--emulate-khối-vm).

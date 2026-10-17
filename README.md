@@ -4,9 +4,9 @@ Dịch ngược client **Boom Online** (VNG, bản Việt của Nexon *Crazy Arc
 Server đã chết, mất source; chỉ còn client. Mục tiêu dài hạn: hiểu đủ để viết **server giả lập** (sẽ viết bằng **Rust**) và chơi lại được.
 
 > **Vào làm tiếp?** Đọc theo thứ tự:
-> 1. [Trạng thái](#trạng-thái) và [Việc tiếp theo](#việc-tiếp-theo)
+> 1. **[docs/progress.md](docs/progress.md)** — tiến độ, cách chạy thử, chỗ đang kẹt, việc tiếp theo (viết cho người mới)
 > 2. [Bắt đầu phiên làm việc](#bắt-đầu-phiên-làm-việc) (kiểm tra môi trường)
-> 3. Tài liệu chi tiết của việc đang làm: **[docs/devirt.md](docs/devirt.md)**
+> 3. Chi tiết từng bước đã làm: [docs/lobby.md](docs/lobby.md)
 
 Tài liệu:
 
@@ -15,13 +15,17 @@ Tài liệu:
 | [docs/protocol.md](docs/protocol.md) | Protocol TCP: frame, mã hoá, seq, hello, đăng nhập, dispatch — phần lớn **đã kiểm chứng với client thật** |
 | [docs/assets.md](docs/assets.md) | Pack `.idx/.idd`, mã hoá entry, sprite → PNG |
 | [docs/runtime.md](docs/runtime.md) | Chạy client: thứ tự khởi động, mã lỗi, patch bộ nhớ, mạng WinBoat, Wine, **sửa IAT bản dump** |
-| [docs/devirt.md](docs/devirt.md) | **Việc đang làm**: hàm bị Themida ảo hoá, danh sách, phương pháp |
+| [docs/progress.md](docs/progress.md) | **Tiến độ + handoff**: đang ở đâu, chạy thử, việc tiếp theo |
+| [docs/lobby.md](docs/lobby.md) | Kênh → sảnh → phòng chờ → bắt đầu trận: nhật ký từng bước, địa chỉ hàm |
+| [docs/devirt.md](docs/devirt.md) | Hàm bị Themida ảo hoá, danh sách, phương pháp viết lại |
+| [docs/map.md](docs/map.md) | Định dạng map |
+| `docs/oc_*.md` | Ghi chép của agent OpenCode (chưa audit hết, xem `docs/progress.md` mục 7) |
 
 ---
 
 ## Trạng thái
 
-Cập nhật 2026-10-16.
+Cập nhật 2026-10-17. Bản ngắn gọn cho người mới: [docs/progress.md](docs/progress.md).
 
 | Phần | Trạng thái | Ở đâu |
 |---|---|---|
@@ -31,12 +35,15 @@ Cập nhật 2026-10-16.
 | Packet → handler | ✅ 520 opcode / 59 dispatcher | `decomp/opcode_dispatch.json`, `decomp/handlers/` |
 | Hello + chuỗi đăng nhập | ✅ client thật đăng nhập được vào server giả | `docs/protocol.md`, `tools/fakeserver.py` |
 | Đăng nhập bằng tài khoản (opcode 1 → 4, 15) | ✅ tới màn chọn kênh | `docs/protocol.md`, `tools/fakeserver.py` |
-| Màn chọn kênh → lobby | ✅ stage 10, parse xong 14+16 (thiếu tag blob là nguyên nhân crash cũ), cache ghi được; slot kênh còn trống | `docs/protocol.md` → "Màn chọn kênh" |
+| Màn chọn kênh (stage 10) | ✅ kênh tự hiện (hook), click vào kênh được | `docs/lobby.md` |
+| Sảnh quảng trường (stage 11) | ✅ load xong (sửa 10 byte hỏng 0x592C09), TẠO PHÒNG chạy | `docs/lobby.md` |
+| Phòng chờ (stage 12) | ✅ người chơi, trưởng phòng, map Village01, nút BẮT ĐẦU bật; hộp thoại chọn map còn trống | `docs/lobby.md` |
+| Trận đấu (stage 13) | ❌ nhận 501, tạo `CGameStage`, rồi crash khi nạp map (vùng Themida bảo vệ) — **chủ dự án đang tự xử lý** | `docs/progress.md` mục 5 |
 | Pack `.idx/.idd` + sprite → PNG | ✅ 108.726 PNG, 965 map, 645 ogg | `docs/assets.md`, `tools/idf.py`, `tools/i16.py` |
 | Định dạng `.map`, `Attr/*`, frame animation | ⬜ | `decomp/CGamePlayMap__Load.c` |
 | Client gốc (Themida) + patch bộ nhớ | ✅ chạy tới đăng nhập trong WinBoat; ❌ không render (VM không GPU); ❌ Wine (anti-VM Themida) | `docs/runtime.md` |
-| Bản dump chạy trong Wine (**hướng đang theo**) | ✅ **vào game được**: cửa sổ mở (GPU), đăng nhập vào server giả | `tools/rebuild_wine.sh`, `docs/devirt.md` |
-| Hàm bị Themida ảo hoá | 🟡 6/56 khối viết lại (khởi động, `ChangeStage`, vòng lặp chính 3 khối, keep-alive) — **dump tới màn chọn kênh** | `docs/devirt.md`, `tools/devirt.py`, `tools/vmemu.py`, `tools/launcher/snap.c` |
+| Bản dump chạy trong Wine (**hướng đang theo**) | ✅ **chạy tới phòng chờ**: đăng nhập → kênh → sảnh → phòng chờ | `tools/rebuild_wine.sh`, `docs/devirt.md` |
+| Hàm bị Themida ảo hoá | 🟡 7/56 khối viết lại (khởi động, `ChangeStage`, vòng lặp chính 3 khối, keep-alive, `sub_9682DE` tạm) + 1 hook | `docs/devirt.md`, `tools/devirt.py`, `tools/vmemu.py`, `tools/launcher/snap.c` |
 | Client gốc trong WinBoat có hình | ✅ D3D9 phần mềm (wined3d + Mesa llvmpipe) | `win/swd3d.bat`, `thirdparty/swd3d/` |
 | Server thật (Rust) | ⬜ chưa bắt đầu; `tools/fakeserver.py` là đặc tả sống | |
 
@@ -55,19 +62,12 @@ Cập nhật 2026-10-16.
 
 ## Việc tiếp theo
 
-**Hướng đã chọn (2026-10-16): hướng 1 — devirtualize** → **bản dump đã vào được game trong Wine.**
+Danh sách đầy đủ, có thứ tự ưu tiên: [docs/progress.md](docs/progress.md#6-việc-tiếp-theo-theo-thứ-tự-ưu-tiên). Tóm tắt:
 
-1. Slot kênh còn trống trên UI: tìm field hiển thị trong bản ghi opcode 14 (đang gửi 0) và khớp id
-   status (0–3) với id bản ghi (1–4), rồi vào kênh (`On_7`) → lobby (stage 11).
-   Chạy dưới winedbg: `tools/xvfb_login_dbg.sh` (bắt exception first-chance, backtrace ở `logs/xvfb/login_dbg.txt`).
-   Thử nhanh: `python3 tools/fakeserver.py --log logs/fakeserver_host.log &` rồi `tools/xvfb_login.sh`.
-   Khi client chạm khối VM mới (crash/exception trong section Themida) → làm theo [docs/devirt.md](docs/devirt.md)
-   (`tools/vmtrace.py` quan sát trên client gốc → viết lại trong `tools/devirt.py`).
-2. Xác nhận 41 điểm VM ở `0xA12E59–0xA17A24` là anti-cheat → bỏ qua cả khối nếu bị chạm.
-3. Server thật bằng **Rust** (tokio), lấy `tools/fakeserver.py` + `docs/protocol.md` làm đặc tả.
-4. Cấu trúc field từng packet (Login → Lobby → Room `CPrepareStage` → Game `CGameStage`), `.map`, `Attr/*`.
-
-Phương án dự phòng nếu VM quá khó: client gốc + Wine có WoW64 kiểu cũ (runner Lutris/wine-ge có lib32), xem `docs/runtime.md`.
+1. **[chủ dự án]** Qua chỗ crash nạp map khi vào trận.
+2. Mở đủ map: danh sách map đầy đủ từ `fx.idx`, hộp thoại chọn map, kiểm tra khoá map theo cấp.
+3. Audit `docs/oc_*.md` (agent OpenCode) trước khi dùng.
+4. Các gói trong trận (`docs/oc_e-game.md`), rồi server thật bằng **Rust** (`tools/fakeserver.py` là đặc tả sống).
 
 ---
 
@@ -198,7 +198,7 @@ tools/rebuild_wine.sh
 |---|---|
 | `docs/` | tài liệu (xem bảng đầu file) |
 | `tools/boomproto.py` | codec packet (tự test khi chạy trực tiếp) |
-| `tools/fakeserver.py` | server giả: hello + chuỗi đăng nhập |
+| `tools/fakeserver.py` | server giả: đăng nhập → kênh → sảnh → phòng chờ → bắt đầu trận (biến `ROOM_TYPE`, `MAP_INDEX`, `AUTO_START`) |
 | `tools/verify_emu.py` | chạy hàm crypto thật của binary bằng Unicorn, so với `boomproto.py` |
 | `tools/idf.py`, `tools/i16.py` | đọc/giải nén pack, sprite → PNG |
 | `tools/patch_client.py` | patch file: bỏ HackShield, bỏ patch-check, đổi IP |
@@ -208,6 +208,8 @@ tools/rebuild_wine.sh
 | `tools/vmtrace.py`, `tools/launcher/inject.c`, `win/vmtrace.bat` | quan sát một khối VM trên client gốc (cave + snapshot + diff) |
 | `tools/launcher/snap.c`, `win/snap.bat` | snapshot toàn bộ bộ nhớ client gốc tại một site VM (pre/post) |
 | `tools/vmemu.py`, `tools/snapdiff.py` | emulate khối VM trên snapshot (Unicorn), so với diff thật — quy trình trong `docs/devirt.md` |
+| `tools/xvfb_join.sh` | đăng nhập → vào kênh → sảnh; `CLICKS=` click tiếp (tạo phòng…) + chụp màn hình |
+| `tools/wine_gdb.sh` | chạy dưới `winedbg --gdb` + gdb, tự đăng nhập (`JOIN=1`, `CLICKS=`) |
 | `tools/xvfb_login.sh`, `tools/xvfb_login_dbg.sh` | chạy dump trong Xvfb, tự gõ đăng nhập, chụp màn hình (bản `_dbg`: dưới winedbg) |
 | `tools/run_xvfb.sh` | chạy bản dump trong Xvfb riêng + chụp màn hình |
 | `tools/themida_scan.py` | liệt kê điểm vào section Themida → `decomp/themida_entries.json` |
