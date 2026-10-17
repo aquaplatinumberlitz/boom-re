@@ -269,7 +269,7 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
 - **On_25** 0x7127B3: `str` → phân token `sub_70ECEF` → mở cửa sổ/thêm người khác (CHƯA KIỂ).
 - **On_81** 0x70C8C1: `u32 slot/uid, str` — hiển thị text trên người chơi.
 
-### 5d. Minimum server để trận chạy (chưa kiểm runtime — GVNGạn xemner tiếp trước khi chơi)
+### 5d. Minimum server để trận chạy (cấu trúc đã đọc từ IDA, chưa kiểm runtime)
 1. Gửi **231** trước (cấu trúc nhánh "blob có tag" như gói 14, xem §2b) để bảng map của trận được nạp đủ.
 2. Khi bấm BẮT ĐẦU (hoặc tự quyết): gửi **501** đúng §4 — `map_name` phải == tên theo `map_id` trong bảng **231**,
    ngược lại: hộp thoại "Invalid map..." và quay về phòng chờ.
