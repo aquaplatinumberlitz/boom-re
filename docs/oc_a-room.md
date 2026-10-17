@@ -121,3 +121,95 @@ opcode 88 (client→server): u16 (sub_6DC06C(id) = u16 tại bản ghi-map[id]+1
   `sub_6DD49B(id)!=0` → lưu `sub_8E7E46(cờ)`. ❓ đối tượng `this+72` chưa định danh.
 - Nhóm "bản đồ konnte chuẩn": chuỗi list ở mảng `this+56*i` — cần dump runtime.
   KHÔNG KHIẾT từ file tài nguyên tĩnh — CHƯA KIỂ (xem §5 việc còn lại).
+
+## 3. Luồng BẮT ĐẦU trận (tuần tự toàn bộ) 🟢 (trừ ghi chú riêng)
+
+### 3a. Bấm BẮT ĐẦU — event 3500 (`sub_6C93B0`) → `sub_6C869F` (0x6C869F) [gửi **opcode 97**]
+
+- `sub_6C93B0` (0x6C93B0): nếu `sub_8EA9B0()!=0` (có host trong phòng) → `sub_6C869F()`;
+  else chỉ khi a2==0: feature 4 (`sub_9B6F75(4)`) bật → `sub_6BEA68()` (CHƯA KIỂ),
+  else `sub_A7A121(stage+47964)` + `sub_6C31ED(1)` (vào nhánh "87 chế độ khác" — mục 3b).
+- `sub_6C869F` (0x6C869F, decompile push 97): đọc gói gửi **opcode 97** — CHƯA KIỂ
+  (chưa xem pseudocode — việc còn lại, xem §5).
+- Dialog/состояние: sau gửi thành công `this[4777]=4` + `vf153(0)`.
+
+### 3b. `sub_6C31ED` (0x6C31ED) — gửi **opcode 87** [nhánh không-host/khác]
+
+Điều kiện vào: `this[4777]==0 && sub_8EA823(E60884)!=0`. Chặn thoát về stage cũ
+(`sub_8F391D(*(this+15141)) + sub_8F2F14()` — sub_8F2F14 gửi opcode 81, không field)
+nếu: số người chơi ∉{2,3}; hoặc trạng thái slot (`(state>>2)&7`, đọc qua `sub_8EA779`)
+— nếu thấy slot "trạng thái" =1 → v21=0; =7 → bỏ qua; còn lại → thoát; kiểm tất cả
+slot "đúng trạng thái không kháng" `((state&0x1C)==4)==v21` → thoát.
+Ngược lại: kiểm `sub_8DAB89()` (fail → `aInvalidgradeto`), `sub_8DAFD7(1)` (fail →
+`aInvalidgradese`) rồi GỬI:
+
+```
+opcode 87 (client→server): blob (sub_A629B0 + sub_8FD1D5 — dữ liệu tải准备的
+                           trận/neกมคธรรม?), bool (v21 = "mọi người sẵn sàng"?),
+                           u32 (GetNumNestedThreadSubscriptions(E60A20))
+```
+Send ok → `this[4777]=4`, vf153(0). Ngoài caller 0xDAC còn là luồng vf65/vf82/vf149/
+vf77/vf44 của CPrepareStage — cùng packet. **Nội dung blob ❓ (sub_8FD1D5 — CHƯA KIỂ;
+cần đọc nếu server muốn kiểm hợp lệ).**
+
+### 3c. Server xác nhận BẮT ĐẦU — **On_501 `sub_6C4978` (0x6C4978)** 🟢 (phần lớn — format đủ)
+
+Trình tự đọc server→client (mọi mode):
+
+```
+opcode 501 (server→client, "bắt đầu trận"):
+  u8 result            !=1 → chỉ hiện dialog "Cannot launch as..." (aCannotlaunchas),
+                       KHÔNG đổi stage
+  [chỉ khi (sub_8DAB40()/8DAD87/8DAD95) — mode 2P/team] i = stage[4770]:
+      i × { u8 flag;
+            flag!=0 → 3-byte buf (DecodeBuf 3) → sub_8E977D(slot, …) — state ô ❓
+            flag==0 → u32 id; blob (template OnPkt_multi_344_553: nội dung ❓);
+                      3-byte buf (vị trí❓); u8; ... dựng actor per-player (malloc 0x198,
+                      sub_679A78/46B55B), vf592(stage) —CHƯA KIỂ chi tiết }
+  u32 A            → sub_8E77E4 (field +145 room: "seed/mã trận"? CHƯA KIỂ)
+  u16 B            → sub_8EAB95: **map id** (u16) + kế ổn get; (v31 = B
+                   trong sub_6DE3 executed cử tương — wait — Detailed: B dùng trong
+                   kiểm (xem 2c)) — TỔNG HỢP: B = id map/theme chuẩn клиентов ❓
+  str  mapName     → kiểm prefix với chuỗi поколения của sub_736FE3(table, B) —
+                     "Map/xxx.map" hợp lệ; KHÔNG hợp lệ → dialog aInvalidmapretu
+                     (không đổi stage)
+  u32 C            → sub_6DE36E(C): 0<=C<count(this+72) & hợp lệ (7 sub-check
+                     sub_6DD49B) — "theme id"? CHƯA KIỂ
+  u8  D            → sub_8E78CB (room +228 = **mode mới** khi thi trong trận — same as On_94)
+  u8  E            → sub_8E7636 (field +263 = sáng/tối? CHƯA KIỂ)
+  u8  F (=n)       → số bản ghi tiếp theo; n × :
+      u8  slot     → sub_8E8EFF(slot,0); sub_8E8EBB(slot, u8#3)
+      u8  ×2 (v15, v16)
+      u32 ×3       → sub_8E99A3(&entry, slot): nếu ≠0: u32#1→sub_67900E, u32#2→
+                     sub_67901A; u32#3=v31: nếu slot==mình → sub_9B69F7(1P, v31),
+                     nếu 2P && slot==second → sub_9B69F7(2P, v31)
+                     ⟹ v31 = "điPTY/trận-hàng/cột cho phép"? CHƯA KIỂ (khoảng
+                     "đơi nhận điểm vị trí"?)
+  [loop 16× sub_6BE6D0(slot) — tìm chỗ của mình] (≤16 vòng) →
+      u8 flag      → ≠0 → sub_985703(packet) đọc thêm (blob thụ động ❓ — CHƯA KIỂ)
+      v17 = sub_6DC025(E60930); sub_6DDB4B(var64, v17); sub_98579D(E60A20, state)
+                     (điền entrance — từng người + sub_971177-та bảng vị trí)
+      sub_6734D5(21, 1, 0)                          (tнат/disable cờ nội bộ #21 ❓)
+      sub_8F391D(13)                                → ChangeStage(13)→ **thành stage 13**
+```
+- **Sau việc dưới đây type-2 cụt: thành công → sub_8F391D(13)** (disasm 0x6c4fe9: `push 0Dh` — id đích = **13**);
+  FAIL (sai map / F!=1) → `sub_8F391D([stage+0xEC94])` (id đích = id hiện tại, tức
+  TRỞ LẠI stage hiện tại, kh 而 itта ranh hành trọng tất cả chế độ) + `sub_8F2F14()`
+  = **gửi opcode 81** (không field, ❓ nghĩa — "hwnба đặt”？). 🟢
+- ⟹ fakeserver: khi nhận 87/97 (tùy mode) phải trả **501** như trên, với
+  `result u8 = 1`, mapName đúng creek (với id B — kiểm thế list), mode D khớp
+  phần chết/phong hiện tại, F = 0 (đơn giản nhất: bản ghi cặp player trống
+  — ❓ sub_98579D có thể cần bảng "in game state" đầy đủ để hoạt ý tưởng đunci).
+
+### 3d. Stage tiếp theo — id 13 🟢
+
+- `CStageMgr__ChangeStage` (0x8F8EEC, khối VM tại 0x8F8F69 — xem devirt.md §73):
+  `sub_8F8C88` tạo `CGameStage` (`sub_8DE532(E60928)==0`, malloc 0x5710, ctor
+  `sub_70CBAF`) hoặc `CHiddenCatchGameStage` (`sub_8DE532==1`, malloc 0x5F40,
+  ctor `sub_47C726`). `sub_8DE532` = loại trận người dùng đã vào (gán góc II từ
+  vòng đầu/regard bảo — CHƯA KIỂ).
+- gói client gửi ngay khi vào stage 13: sẽ cần phân tích riêng (trên docs,
+  thuộc mục "c-game": vf44 của CGameStage. Dispatch nhanh: CGameStage__vf51 ==
+  opcode 20 (trả về), 25 → sub_7127B3, 81 → sub_70C8C1, 106 → sub_7019AE,
+  107 → sub_703D01, 119, 128 → sub_71458E, 135+... — đầy đủ cần thêm phiên
+  c-game). Trong phạm vi a-room: **CHỚ chưa đề ra gói trả để trận chạy — CẦN TIẾNH thêm nó.**
