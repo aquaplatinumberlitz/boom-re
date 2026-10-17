@@ -464,3 +464,16 @@ ICtrlEventHandler ở +0xF4 → slot 5 = **`sub_4D3512`**): 2011 (0x7DB) = TẠO
    **`sub_8F391D(12)`**. (`sub_4DD398` cùng định dạng nhưng là đường của sảnh quảng trường, cần `CLobbySquareStage[4793]`.)
 4. Vào stage 12 client gửi 298, 303, 337, 476 (chưa trả lời). **Bước tiếp:** gói danh sách người trong phòng (để chính người
    chơi hiện trong ô) + nút SẴN SÀNG / bắt đầu trận — đang có agent OpenCode `a-room` phân tích tĩnh stage 12.
+
+### ✅ Cập nhật 9: người chơi hiện trong phòng chờ (2026-10-17)
+Ảnh `docs/waiting_room_player.png`: nhân vật ở ô 1, kèm cờ (chủ phòng). Stage 12 = **`CPrepareStage`** (OnPacket rồi
+chuyển tiếp `CSessionStage__OnPacket` → `CChatStage__OnPacket`). `CSessionStage__OnPacket`: 103 → vf141, 104 → vf143,
+105 → vf144, 7, 81, 143, 144, 212, 394, 400 (`sub_6913F1`). `CPrepareStage__OnPacket` riêng: 94, 106, 107, 109–111
+(vf146/147/151), 113–127, 134, 188, 209, 253, 289, 324, 372, 397, 406, 407, 409, 498–501, 538, 553.
+- **Opcode 103 = đặt người chơi vào ô** (`0x692446` → `CSetPlayerOnPreparePacket` = `sub_573146` + `sub_572A05`), định dạng
+  ghi trong `room_player()` của `tools/fakeserver.py`. `DecodeBuf` 3 byte (bitfield sẵn sàng/nhân vật/đội) dùng cùng mã
+  hoá theo cụm như chuỗi (`sub_A26A10`) → thêm kiểu field `("buf", bytes)` vào `obf_body`. Blob được đệm byte 0.
+  Fakeserver gửi 103 (ô 0, id 1000 = id trong login) khi client gửi **337** (lúc vào stage 12).
+- Opcode 104 (vf143) = rời phòng (`u8 slot`; nếu là mình thì hiện Banned… và về stage trước).
+- Còn thiếu: dòng chat "CoupleEntrance" (một field 103 để mặc định), bản đồ trống, nút vẫn là "SẴN SÀNG" (client chưa coi
+  mình là chủ phòng) và bấm không gửi gì → cần gói thông tin phòng / chủ phòng / bản đồ (agent `a-room` đang phân tích).

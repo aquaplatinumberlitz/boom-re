@@ -24,13 +24,16 @@ SIZES = {"u8": 1, "u16": 2, "u32": 4, "u64": 8}
 
 def obf_body(opcode, *fields):
     """Body for formats with checksum mode 1/2: [opcode u16][fields], every int XOR-obfuscated (put_int obf=True).
-    fields: ('u8'|'u16'|'u32'|'u64', value) or ('str', text)"""
+    fields: ('u8'|'u16'|'u32'|'u64', value), ('str', text), ('blob', inner) or ('buf', raw bytes: RecvPkt__DecodeBuf,
+    same 4/2/1-byte run obfuscation as strings, no length prefix)"""
     out = bp.put_int(opcode, 2, True)
     for kind, v in fields:
         if kind == "str":
             out += bp.put_str(v, True)
         elif kind == "blob":
             out += bp.put_blob(v, True)
+        elif kind == "buf":
+            out += bp.obf_bytes(bytes(v))
         else:
             out += bp.put_int(v, SIZES[kind], True)
     return out
@@ -148,6 +151,26 @@ def create_room_ok(room_no=1):
     (CLobbyRoomUIWnd[+252], vt_CNormalLobbyStrategy) vf11 0x6B7B55: u16 room no (sub_8E8E3B), u32 (sub_8E75F1),
     u8 (sub_8E75D2), u8 (sub_8E78CB), u8 (sub_8E7626) -> sub_8F391D(12) = waiting-room stage."""
     return obf_body(83, ("u8", 0), ("u16", room_no), ("u32", 0), ("u8", 0), ("u8", 0), ("u8", 0))
+
+
+def room_player(slot=0, user_id=1000, name="tester", host=1, character=0, team=0):
+    """Opcode 103 (CSessionStage__OnPacket -> stage vf141; CPrepareStage: 0x692446 builds CSetPlayerOnPreparePacket
+    (sub_57343E) = CSetPlayerPacket sub_573146 + CSlotAccessoryPacket sub_572A05, then vf149 + sub_691E66).
+    sub_573146: u8 slot, u32 user id, u8 (+16; 0 forces the next u32 to -1), u8, u8, u32, 3 bytes bitfield
+    (byte0 bit0 = ready (On_106), byte1 & 0x3F = character, byte2 & 0x1F = team), blob profile (sub_679434: str, u8,
+    u8, u32, u8, u32, u16, u32, u32, u32, u32, u8, u32, str, u16 ...), u8, u8 (<=1), u8, str, str, blob, u8 flag
+    (!= 0 -> blob). sub_572A05: u16, u8 n x (u8, u16), u8 m x (u32 x3), u8 (<=22 / 101..102 / 255), u8, u32 x3,
+    u8 k x (u32 x3), u32 x2, bool, u32, u16, str. Meanings mostly unmapped (CHƯA KIỂM); blobs are padded with zeros so
+    sub-readers never run dry. Opcode 104 (vf143) = player leaves (u8 slot)."""
+    nm = name.encode("cp1258")
+    profile = b"\x00" + struct.pack("<H", len(nm)) + nm + bytes(256)
+    pad = b"\x00" + bytes(256)
+    f = [("u8", slot), ("u32", user_id), ("u8", host), ("u8", 0), ("u8", 0), ("u32", 0),
+         ("buf", bytes([0, character & 0x3F, team & 0x1F])),
+         ("blob", profile), ("u8", 0), ("u8", 0), ("u8", 0), ("str", name), ("str", ""), ("blob", pad), ("u8", 0),
+         ("u16", 0), ("u8", 0), ("u8", 0), ("u8", 255), ("u8", 0), ("u32", 0), ("u32", 0), ("u32", 0), ("u8", 0),
+         ("u32", 0), ("u32", 0), ("u8", 0), ("u32", 0), ("u16", 0), ("str", "")]
+    return obf_body(103, *f)
 
 
 def login_ok(name="tester", players=1):
@@ -306,6 +329,8 @@ async def handle(reader, writer, port, log):
                 if op == 77:  # create room (dialog XÁC NHẬN) -> opcode 83 success -> waiting room (stage 12)
                     log(f"[{port}] create room {parse_create_room(body)}")
                     replies = [create_room_ok()]
+                if op == 337:  # sent on entering the waiting room (stage 12) -> put ourselves into slot 0
+                    replies = [room_player()]
                 if op == 395:  # lobby square: request square info -> area/map/theme, then the user list
                     replies = [square_info(), square_users(), room_list()]
                 if op == 0:
