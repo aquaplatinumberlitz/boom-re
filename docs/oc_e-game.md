@@ -19,7 +19,7 @@ Tiền đề (docs/lobby.md Cập nhật 10): phòng chờ = stage 12 `CPrepareS
 ### On_501 → stage 13 ✅
 `CPrepareStage__On_501` (0x6C4978): nhánh bản đồ hợp lệ → **`sub_8F391D(13)`**; nhánh tên bản đồ lệch (`aInvalidmapretu`,
 hộp thoại "Invalid map...") → `sub_8F391D(this[15141])` + `sub_8F2F14` (quay về phòng chờ).
-⇒ **Trận thường = stage 13, lớp `CGameStage`** (vtable入り thành phần: vf44 OnEnter 0x71B519, vf51 OnPacket 0x71B631,
+⇒ **Trận thường = stage 13, lớp `CGameStage`** (bảng vtable +: vf44 OnEnter 0x71B519, vf51 OnPacket 0x71B631,
 kế thừa `CChatStage` → cuối OnPacket chuyển tiếp `CSessionStage__vf51`).
 
 ## 2. OnEnter — `CGameStage__vf44` (0x71B519) → `sub_71A9EC` (0x71A9EC) ✅
