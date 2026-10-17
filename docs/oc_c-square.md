@@ -37,10 +37,13 @@ Opcode ghi như u16 (XOR 0xA569 khi mode 2/3).
   - n > 1: gửi **n gói** `{str sub_99A731(i), bool true}` i=0..n−1.
 
 ### 303 — gửi từ `CStage__vf44` 0x6A3EDA (base CStage; CLobbySquareStage kế thừa)
-Điều kiện: sau `sub_694E38`, với `n = CLobbyStage__On_218(dword_E60880)` (số mục) và global mode `m`:
-`m = 1` khi giá trị trả về nằm trong 11..12, `m = 0` khi bằng 20; ngoài khoảng 11/12/20 → không gửi.
-Mỗi i = 0..n−1: `sub_88849F(303)`; EncodeBool(m)… với **field2 nghi ngờ là Encode2 (u16 = i), cần soi disasm** xem đúng lệnh call Encode nào.
-Nghĩa tổng thể 303 = ❓ (xem §3).
+Điều kiện: `id stage hiện tại = *(dword_E60880+0xD8)` (getter 0x8F8893, mọc tên
+"?GetCompletionList@UMSSchedulerProxy…" — thực ra là `return *(this+54)` dword):
+`∈ {11, 12}` → `m = 1`, `== 20` → `m = 0`, khác → không gửi.
+Và `n = CLobbyStage__On_218(dword_E60880)` = giá trị box `*(CMainWnd+12)` (u32).
+Mỗi i = 0..n−1: `sub_88849F(303)` rồi **2 × `SendPkt__EncodeBool` (0xA65240, đã soi cả 2 call
+= cùng đích)**: `{bool m, bool i(byte index)}`.
+Nghĩa tổng thể 303 = ❓ (phản hồi chỉ có case ở CGameStage — xem §4).
 
 ### 319 — `sub_67A132(this)` : gói rỗng (0 field) 🟢
 Guard `this[3085]` (chỉ gửi 1 lần/nhập, reset khi ra vào lại sảnh); trả về 0 nếu đã gửi ⇒ **yêu cầu 1 lần**, không lặp.
@@ -119,7 +122,7 @@ opcode 467 (server→client): u16 n, n × {u16 slot, u32 uid, blob "profile", u8
 - Tên người chơi thật lấy từ **2 nguồn**:
   1. **Login opcode 4** (`sub_852BCA`): mỗi player có 2 str (getter `sub_99A746`/`sub_99A817`
      theo d-login; player id `sub_99A71D` phải khớp uid) — **tên của chính mình** trong UI.
-  2. **Opcode 467 record** (mỗi ngườikhác trong map): **str đầu trong blob "profile"** →
+  2. **Opcode 467 record** (mỗi người khác trong map): **str đầu trong blob "profile"** →
      `sub_40E909(obj+8)`; getter tên `sub_678ED7` → `sub_A67960` (`this+8`).
      Với 467 rỗng (n=0 như fakeserver) không ai hiện trên map; UI self vẫn vẽ.
 
@@ -128,7 +131,7 @@ opcode 467 (server→client): u16 n, n × {u16 slot, u32 uid, blob "profile", u8
 Dispatch riêng của stage: 26, 27, 32 (vf240), 79, 234, 265, 289, 394, 419, 426, 466, 467, 469,
 470–481 (trừ 479 → mặc định return), 482–489, 492, 493, 496, 506 (vf233), 507, 508, 576,
 612–617, 622–625; cuối gọi chain phụ `sub_42DA98 → sub_4D24BB → sub_4D39EB → sub_4C011B →
-CChatStage__OnPacket` (chat riêng 618+, dintre khác). Tất cả (trừ 467) chặn bởi `sub_4D82DE()`.
+CChatStage__OnPacket` (chat riêng 618+, không lặp vào đây). Tất cả (trừ 467) chặn bởi `sub_4D82DE()`.
 
 **Chuyển động / trạng thái người chơi**:
 
@@ -136,47 +139,58 @@ CChatStage__OnPacket` (chat riêng 618+, dintre khác). Tất cả (trừ 467) c
 |---|---|---|---|
 | 469 | 0x4E36B1 | u16 slot → `sub_4E2D7E(slot,…)` | **người mới xuất hiện** (cùng bản ghi 467) |
 | 470 | 0x4DA834 | u16 slot → `sub_4D8DBB(slot)` + `sub_4D88AD()` | **người rời sảnh** |
-| 471 | 0x4D8E98 | u16 n, n × 8B {u16, u16, u32 → `sub_4D5560`: kiểm hàng = dword0>>16, box(dword1), box(byte2 dword1)} | cập nhật toạ độ từng người — ❓ (ti宁市 kết đang kiểm) |
-| 472 | 0x4D8F32 | u16 slot, u8, u16, bool, [bool1→ u8 →`sub_593D85`] | trạng thái/hành động â cá bản thân? → `sub_595D7A` — ❓ |
-| 473 | 0x4DA862 | u16 slot, u8 (nếu qua kep state < 0) → `sub_4D944D(slot,u8)` | hiệu ứng/cử chỉ riêng — ❓ |
-| 474 | 0x4E26BB | u16 slot, u8, blob, bool, blob | ❓ (lớn, 1731B; kiểu "trang bị/hồ sơ khi click") |
-| 475 | 0x4DF1F8 | u16 slot, u8 s → `sub_4DC5C2(slot,s)`: s=0 off/1 on/2 status "LobbySquare_…Ing" | **cấp trạng thái "đang chơi/đang …"** (nổ chấm xanh thành viên)... |
+| 471 | 0x4D8E98 | u16 n, n × 8B: `u16 id`, `u16 → this[3183] = dword0>>16`, `u32 → 2 box (dword1, byte2 của dword1)` | **lô cập nhật vị trí/param nhiều người cùng lúc** — mỗi mục tìm obj tên qua `sub_4BE6CD(id_lo16)` (mục 0 bỏ qua; cần vf+388 trả khác 0), rồi `sub_4D5560`: ghi giá trị + nếu `this[3513]==0` đặt `timeGetTime()`, gọi `sub_4D51F6` (cập nhật chuyển động) — 8B trọn vẹn 🟢, nghĩa từng số ❓ |
+| 472 | 0x4D8F32 | u16 slot, u8 act, u16 val, u8 flag, [flag≠0 → u8 → `sub_593D85`] | **lệnh hành động/đổi trạng thái cho 1 người** — flag≠0 thì chạy hiệu ứng `sub_593D85`; flag=0 thì chỉ khi state obj `(charobj+1296)` vf+40 < 0 mới tiếp (`sub_59C47F`→`sub_970BF0`→`sub_595D7A(act,val,0)` = bắt đầu hành động, kiểm "đang bận" vf+196, gọi vf+220(-1) + vf+260) — tên hành động ❓ |
+| 473 | 0x4DA862 | u16 slot, u8, (chỉ khi `(charobj+1296)` vf+40 < 0) → `sub_4D944D(slot,u8)` | **đổi trạng thái hiển thị của 1 người**: bitfield qua `sub_8EA71F`/`sub_8E977D` (byte mask 0xE0/0xC0, XOR vào cánh 0x1F), sau đó cập nhật 13 mục + 9 slot nội bộ (`sub_8D4A0F`, `sub_8E9814/8E983C`) — cùng họ với bitfield 2×u8 của 467; nghĩa bit ❓ |
+| 474 | 0x4E26BB | u16 slot, u8, [blob + bool + [bool1 → blob]] | **"467 thu gọn" cho người đã có** (bản như 469-full nhưng thiếu `u32+blob profile` đầu): cùng chuỗi cập nhật 13 mục + 9 slot + blob + `bool` → blob nếu 1 thì nạp object UI (`sub_9C9D9A`/`sub_9C9EB6`), feature 41/76; 1731B chủ yếu là 13×9 vòng update — nghĩa blob ❓ |
+| 475 | 0x4DF1F8 | u16 slot, u8 s → `sub_4DC5C2(slot, s)`: s = 0 off / 1 on / 2 hiện text "LobbySquare_…Ing" | **trạng thái "đang chơi/đang làm gì đó"** của người trên slot (dot trạng thái + text) 🟢 |
 | 493 | 0x4D92F2 | u16 slot | ❓ |
 
-**Chat trong sảnh** (cửa chat thuộc CChatStage; 610+ thường qua P: chat, sảnh_MESSAGE):
+**Các case còn lại của dispatch (476–481, 492) — handler xác nhận 🟢, nghĩa cả enum ❓**:
+
+| Op | handler | format | ghi chú |
+|---|---|---|---|
+| 476 | 0x4DAC78 | u16 slot, u32, str | lấy bản ghi `sub_8E99A3(slot)`, `u32 → sub_6790BC`, `str → sub_67962A` rồi áp lên char obj (`sub_59C91D`) — nghi "đổi tên/chỉ số hiển thị" ❓ |
+| 477 | 0x4D9060 | u16 n, n × {u16 id, u8, [u8=0 → u32]} → `sub_6E9994(id,u8,u32)` | danh sách mục trạng thái/cần nạp (n cuối gọi `sub_875139`) — ❓ |
+| 478 | 0x4D90F5 | u16 slot, u32, u32 (sub_44AD23), u32, u8×3 (box), u32 (box), u16 (sub_44AD23), u16 (box) → `sub_6E9AF9(slot,…,-1,-1,-1,…)` | hồ sơ/điểm số cho slot; hợp lệ → `sub_6EFC1C(slot)` — ❓ |
+| 480 | 0x4E14B1 | u32 id, u8 n, n × {u16, u16, u8, u8} → `sub_6EBAE0(0, id, …)` | danh sách cặp giá trị theo id — ❓ |
+| 481 | 0x4DA8E7 | u16 n, n × {u32, u8, u8, u16 m, m×u8, [u8=2 → u32]} | reset `this+19176` trước (`sub_87461A`), mỗi mục `sub_875C11/87541A` + có thể `sub_8753A8`; cuối `sub_4D9379()` — ❓ |
+| 492 | 0x4E242D | (không đọc) → **GỬI 419**: bool, bool, u16 n, n × {bool, bool} | server yêu cầu client gửi lại **419** (trạng thái từng người, qua `sub_726BA7/726BB2`); lưu ý opcode 419 dùng cả 2 chiều ❓ |
+
+**Chat/khu trong sảnh** (cửa chat thuộc CChatStage; nhóm 612–617 là handler riêng của CLobbySquareStage, 618+ là chat):
 
 | Op | handler | format | ý nghĩa |
 |---|---|---|---|
 | 612 | 0x4DE0C0 | u8 mode | mode 0 = **load lại khu**: hiển thị "AreamoveLoadin", this[5541]=-1, **gửi lại 395**; mode 1 = `sub_4C1393` |
-| 613 | 0x4E36D2 | u8, u16, u32, blob, u8, blob, bool, blob (2131B; key "Game/SelfIndicator") | cập nhật CHÍNH MÌNH trong sảnh (bản ghi self + hiệu ứng) — ❓ |
-| 614 | 0x4D9C6F | u32 ×3 | ❓ |
-| 615 | 0x4D5E7B | (rỗng) | `sub_4BFE37(this+337280)` — ❓ |
-| 616 | 0x4D9D56 | u32 ×4, str | ❓ (485B — kiểu tên/chatal biologist?) |
-| 617 | 0x4D5E89 | u32 | `sub_4C0957` — ❓ |
-| 622 | 0x4BCB30 | u16, u8, u32, u16 + timestamp | sống trong nhóm slot stage+85019*4 — ❓ (nệm NPC?) |
-| 623 | 0x4BCB79 | (không đọc packet; reset struct) | — |
-| 624 | 0x4BCC41 | str, str → `sub_5FB0E4` (dialog) | ❓ (2 chuỗi, kiểu饮用 browser/gold?) |
-| 625 | 0x4BCB8F | u16 → this+8 | — |
+| 613 | 0x4E36D2 | u8, u16 slot, u32, blob, u8, [sub_572A05 tự đọc thêm], blob, bool, [bool1 → blob] | **refresh bản ghi 1 người có sẵn** (khung như 474 + thêm `u32 + blob profile` đầu = parse qua `sub_679434`, giống blob "profile" của 467) + trên hết📎 vẽ UI self: xâu key "Game/SelfIndicator" → vf+152(this, u8-đầu, chuỗi) = **bật indicator của chính mình**; kết thúc gọi vf+424(this, 24, 1972) — nghĩa u8 đầu ❓ |
+| 614 | 0x4D9C6F | u32 ×3 → `sub_4BFDA5(u32,u32,u32)` | chặn bởi `this[4775]` (đã nạp); nếu số tab kênh ≠ 2 và UI điều kiện hợp lệ thì bỏ qua (lọc theo tên tab đầu `sub_99A731(0)`) — ❓ (nghi bộ đếm/thông báo) |
+| 615 | 0x4D5E7B | (rỗng) | `sub_4BFE37(this+337280)` — không đọc packet 🟢, nghĩa ❓ |
+| 616 | 0x4D9D56 | u32, u32, u32, u32, str | **tìm người theo uid qua các tab kênh**: so `u32#2` với uid từng thành viên tab (`sub_99A70C(i)`) + đúng tên (`sub_40E0D6`) — nếu không khớp ai trong các tab hoặc không có tab → `sub_4C0D80(u32×4)`; chức năng 4×u32 ❓ |
+| 617 | 0x4D5E89 | u32 → `sub_4C0957` | ❓ |
+| 622 | 0x4BCB30 | u16, u8, u32, u16 + timestamp | store vào struct (`this+85019` của stage): `this[0]=timeGetTime()`, `[1]=u32`, `[2]=u16`, `[3]=u16`, `[4]=u8` — ❓ (bộ đếm giờ của sự kiện gì đó) |
+| 623 | 0x4BCB79 | (không đọc packet; reset struct) | đặt `[0]=-1, [1]=[2]=0, [3]=[4]=-1` — xoá trạng thái 622 🟢 |
+| 624 | 0x4BCC41 | str, str → `sub_5FB0E4(tên1, chuỗi2, màu (0,76,161))` | **hộp thông báo 2 chuỗi** (chuỗi 1 qua `sub_98DB56` sao chép/gói, chuỗi 2 hiển thị thẳng, màu tím nhạt) — nội dung ❓ |
+| 625 | 0x4BCB8F | u16 → struct[2] (`this+85019`) | đặt giá trị của mục 2 trên struct 622 (không chữ khác) 🟢 |
 
-**Sự kiện khac55+ tuoi**:
+**Sự kiện khác**:
 
 | Op | handler | format | ý nghĩa |
 |---|---|---|---|
 | 26 | 0x4E061B | u16, u32, str, u8, str, u8 → mời đi cùng "ReceiveInvite…/RoomDestroyed" | mời/mời refund khu |
 | 27 | 0x4E0D5B | u32, str | mời đi cùng (dialog "LobbySquare_InviteUserArea", kiểm sub_8DD45B) |
-| 79 | 0x4DAD83 | (không soi) | ❓ |
+| 79 | 0x4DAD83 | u32 slot, str | feature76: slot hợp lệ (≤ `sub_6E3D95`) → `sub_6E5C2B(slot)` + str → `sub_5A2C2B(str,…,76)` — gán thông tin dạng chuỗi cho 1 người ❓ |
 | 234 | 0x4DBC0D | (sub-parse; các chuỗi "GuildJoinSuccess2", "GuildAcceptedButLimitOver"…) | kết quả vào guild |
-| 265 | 0x4DEA21 | ❓ | ❓ |
+| 265 | 0x4DEA21 | u16 n, n × str | **danh sách chuỗi hiển thị**: mỗi str sao chép → `sub_98DB56`, rồi `sub_5FABCC(…, màu (0,76,161))` — thông báo/tên ❓ |
 | 289 | 0x4D5BAE | (không decode) → `sub_6952A5(pkt)` = parse trong sub; 0 → vf268(this,0) | ❓ |
-| 394 | 0x4DF9A8 | str, u8, u8, u8 | ❓ |
+| 394 | 0x4DF9A8 | str, u8, u8, u8 | **danh sách tên có highlight**: phân mảnh chuỗi (`sub_4DCFC5`, tối đa 2 mục 0x1C), mỗi mục tìm người `sub_6E7AE0`; màu vàng (255,216,0) nếu u8#1 ≠ 0, màu (235,160,255) nếu str#0 so sánh đúng. Ý nghĩa qua ngữ cảnh người gọi — ❓ |
 | 419 | 0x4E0FB7 | str, u32, u32, u32 → "UMItemSold1" "[%s] " | **báo bán đồ trên chợ (User Market)** |
-| 426 | 0x4E119C | u8, blob → "MagicBookMarket_SoldItem" | báo bán s情节 thu |
+| 426 | 0x4E119C | u8, blob → "MagicBookMarket_SoldItem" | báo bán sách phép (MagicBook) |
 | 482/483 | 0x4DC39E/0x4DC4B0 | u8 → "DominoAlreadyIgnite/Full/Invalid" | sự kiện domino |
 | 486 | 0x4DFC08 | u16 slot, u32, u32, u16, u16, u8 | domino-event hoàn thành |
 | 487 | 0x4DF224 | rỗng | no-op |
 | 488 | 0x4DF798 | u16 → "PlayWithYou" | lời mời chơi cùng |
-| 489 | 0x4DF238 | (1 decode?) chuỗi lỗi "PlayWith…" | trạng thái PlayWith |
-| 496 | 0x4DAF64 | u32, u32, u8 | ❓ |
+| 489 | 0x4DF238 | u16 slot, u8 type (thêm str = tên người đọc từ bản ghi slot) | **kết quả PlayWith**: type 0 → `sub_4D6B6B` + `sub_4DD17B` (bắt đầu/thoát playing); type ≥ 1 → dialog lỗi "PlayWithInvalid…" màu — ❓ map type→chuỗi |
+| 496 | 0x4DAF64 | u32, u32, u8 | so 2×u32 với **hash tên** (`sub_A1FE70(tên)`) của từng người trên map; người nào khớp → tạo object 0xB8 + `sub_576289(charobj, sub_6E206E(slot), str…)`. Nghi "làm nổi/khoá theo tên" — ❓ |
 | 507 | 0x4DDB1E | u8 → "NoEmptySlot" | lỗi tạo phinaire |
 | 508 | 0x4DDBC5 | u8 → "CantFindEmptyRoom" | lỗi tạo phòng |
 | 576 | 0x4D6E91 | (CStage__On_576 + sub_51607D(CMainWnd)) | giữ hành vi base |
@@ -192,9 +206,29 @@ CChatStage__OnPacket` (chat riêng 618+, dintre khác). Tất cả (trừ 467) c
   0x40176C + `sub_695FE5`) = gói dữ liệu kiểu multi: kiểu `bool/u8/u32/u16` chọn từ case ❓.
   Server NÊN trả gói 319; chạy trong sảnh lần 1.
 - 64: **CStage__OnPacket case 64** → `CStage__On_64` 0x6948BE: `blob` → `sub_8B25A2`:
-  `u16 n, n × (u32? nhiều field parse `sub_8A1514`, obj malloc 0x238 = bộ chơi NPC)` — danh sách
-  gì đó phục vụ cache **fxstock.ini** (`sub_A62C20(aFxstockIni)`); n=0 thì giữ dữ liệu cũ + ghi file
-  + `this[8]=1` + `sub_8B2064(...)`. Nghĩa kh biased "Di Tặt/di tắt" (button "ĐI TẮT" trên UI):
-  danh sách MUA/BÁN (bảng giá) — ❓ chi tiết record `sub_8A1514`.
+  `u16 n, n × record` (record parse trong `sub_8A1514`, obj malloc 0x238), cache ra **fxstock.ini**
+  (`sub_A62C20(aFxstockIni)`); n = 0 thì giữ dữ liệu cũ + ghi file + `this[8]=1` + `sub_8B2064(...)`.
+  Tên file "fxstock" gợi **bảng giá/mua bán (stock item)** — nghĩa record `sub_8A1514` ❓.
 - 476/477/395: trả **476 / 477 / (466+467)** như trên (chính handler cùng opcode).
 - 396: không có handler phía client — client chỉ GỬI; server có thể bỏ qua.
+
+## 5. Kết luận trả lời trực tiếp câu hỏi task
+
+1. **Client gửi gì khi bước vào sảnh (vf44)**: `476 (rỗng) → 319 (rỗng, 1 lần) → 477 (rỗng) → 395 (rỗng)`;
+   sau đó từ base/flow khác thêm `303 (bool,bool ×n tab, khi stage∈{11,12}→m=1; stage 20→m=0)` và
+   `64 (u16, lần đầu khi guard this[1258]=0)`; 298 (str+bool ×n) chỉ khi mở dialog SMS/CNM.
+   **Client PHẢI nhận gì để nạp xong**: `395 → 466 + 467` (467 có thể rỗng n=0 — UI self vẫn vẽ),
+   `476 → 476`, `477 → 477`, `319 → 319`, `64 → 64` (có thể rỗng blob). Khi client xử lý xong 467 nó
+   **gửi 396 rỗng** (ack nạp xong) — server có thể bỏ qua. Sau đó server có thể bắn 469/471/472… tùy.
+2. **Khung bản ghi 467/469/613/474** — cùng một chuỗi thân đọc bởi `sub_4E2D7E`:
+   `u16 slot, u32, blob(profile: str tên đầu → obj+8), u8, u8, u16 x, u16 y, u8, blob, bool+[blob],
+   bool+[blob], u32 m, m×blob`; 613 thêm tiền thân `u8 mode, u16 slot, u32` (hoặc tương đương),
+   474 không có phần blob profile. record = obj 0x198, gắn bảng slot bằng `sub_4DC5C2`.
+3. **"aName01"** — chuỗi key `LobbySquare_AreaName01` (area=1) vẽ trên thanh khu (top-left),
+   dài hơn ô hiển thị nên chỉ thấy đuôi "aName01"; KHÔNG phải tên người chơi. Fakeserver muốn
+   đẹp thì gửi `area` khác/không gửi, hoặc thêm bản dịch của key qua bảng FxMessageTable (op 21).
+4. **Sự kiện di chuyển**: các handler 467/469/613/474 trong sảnh đều là thông báo do server chủ
+   động bắn; gói client gửi để di chuyển chính mình trong task này KHÔNG soi (❓) — kết luận: thông
+   báo người khác di chuyển bằng **471** (lô 8B ×n).
+5. **Chat**: handler chat nằm ở `CChatStage__OnPacket` (618+); sảnh riêng chỉ có 612–617 (612 =
+   mode reload khu → client gửi lại 395).
