@@ -424,6 +424,9 @@ opcode 571 (S→C):
 - (b) đã chốt cấu trúc **146** (§5h); cần log runtime để confirm và hiểu 3 cặp {u32,u16}; subtype On_128 chưa gỡ.
 - (c) thứ tự bắt đầu lượt: server nhận 139/140 rồi đáp mode 2/4 của 189; thêm suy đoán: **146 → 571 (§5i)
   → 140 C→S → 189**; cả hai CHƯA KIỂ runtime.
-- (d) ý nghĩa từng field phần 3 (c/d/e) của 501 vẫn CHƯA KIỂ.
+- (d) ý nghĩa từng field phần 3 (c/d/e) của 501 vẫn CHƯA KIỂ. Bổ sung: các setter nằm trong nhóm "ghi record"
+  giá trị hộp toàn cục — u32 c (sub_67900E → sub_44AD23), u32 d (sub_67901A → sub_413F32), u32 e
+  (sub_9B69F7: **chỉ nhận khi ≤ 100** — nhiều khả năng tỉ lệ %), và cùng bộ như phần giữa gói 571.
+
 - (a) **ĐÃ GIẢI**: không có handler 141/142 S→C (và cả 188/197 chỉ qua strategy, xem §5f); Nếu làm server nhiều người thật, nên bắt log kiểm xem server có gửi 176 (định vị lại player theo slot)
   giữa trận không.
