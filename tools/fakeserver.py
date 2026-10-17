@@ -8,6 +8,8 @@ import boomproto as bp
 
 CLIENT_VERSION = 116  # sub_8E2494
 HEADER_TYPE = 0       # row of the opcode substitution table, 0..15
+ROOM_TYPE = int(__import__('os').environ.get('ROOM_TYPE', '19'))
+MAP_INDEX = int(__import__('os').environ.get('MAP_INDEX', '0'))  # room_map(); index into the client's map table  # see create_room_ok(); 14 = 1-player start allowed
 
 
 def hello_packet(header_type=HEADER_TYPE, version=CLIENT_VERSION):
@@ -145,12 +147,15 @@ def parse_create_room(body):
     return title.decode("cp1258", "replace"), pw.decode("cp1258", "replace"), ints
 
 
-def create_room_ok(room_no=1):
+def create_room_ok(room_no=1, room_type=0, team_mode=0):
     """Reply to opcode 77. Opcode 83 -> sub_4D24BB -> sub_4CE9FC: u8 result (0 = OK; 1 SameRoomExist, 2 NoEmptySlot,
     3 CantCreateRoom, 4 NoAuthority, 5..19 other errors). On 0 the rest goes to the lobby strategy object
     (CLobbyRoomUIWnd[+252], vt_CNormalLobbyStrategy) vf11 0x6B7B55: u16 room no (sub_8E8E3B), u32 (sub_8E75F1),
-    u8 (sub_8E75D2), u8 (sub_8E78CB), u8 (sub_8E7626) -> sub_8F391D(12) = waiting-room stage."""
-    return obf_body(83, ("u8", 0), ("u16", room_no), ("u32", 0), ("u8", 0), ("u8", 0), ("u8", 0))
+    u8 team mode (sub_8E75D2, <=2; read back by sub_8E75EA), u8 ROOM TYPE (sub_8E78CB, read by sub_8E78DB),
+    u8 (sub_8E7626) -> sub_8F391D(12) = waiting-room stage.
+    Room type decides the Start pre-check (sub_6C0990 -> vf155 -> sub_988F2D): min players / min teams = 2/2 by
+    default, 1/1 for types 14, 16, 17, 19, 22, 32, 33 (or map game types 96, 107, 116, ...). team mode 2 -> 1 team."""
+    return obf_body(83, ("u8", 0), ("u16", room_no), ("u32", 0), ("u8", team_mode), ("u8", room_type), ("u8", 0))
 
 
 def room_player(slot=0, user_id=1000, name="tester", chief=True, character=0, team=0):
@@ -181,6 +186,58 @@ def room_slot_state(slot=0, chief=True, ready=False, character=0, team=0):
     PRE_Bt_Start when we are chief (PRE_Bt_Ready otherwise). Without it the buttons stay disabled."""
     st = bytes([(0x02 if chief else 0) | (0x01 if ready else 0), character & 0x3F, team & 0x1F])
     return obf_body(106, ("u8", slot), ("buf", st), ("u8", 0))
+
+
+def room_map(map_index=0, map_code=0):
+    """Opcode 113 (CPrepareStage__On_113): u16 result (0 = ok; 1 = "MapSelectPlayer" error + u8), then u16 (sub_8E8E59,
+    map code?), u32 map index -> sub_6DBFBE(dword_E60930, index) = the room's current map (sub_6DC01D), used by the Start
+    checks (sub_6C0990 / sub_6DF9FB: without a map -> "SmallMapPlayer2"). Also calls stage vf153 + strategy vf18."""
+    return obf_body(113, ("u16", 0), ("u16", map_code), ("u32", map_index))
+
+
+# Battle maps offered by the fake server: (display name, theme folder, pack map name, index in CPlayMapInfoList).
+# CPlayMapInfoList (dword_E60A10, filled by sub_7376D3 at start-up) holds every "Map/*" entry of fx.idx in idx order
+# (== alphabetical, 1019 entries); a map record's u16 at +112 is an index into it (max players come from the .map file,
+# sub_6DD119 -> sub_736E92). Indices from tools/idf.py over ~/Downloads/Boom/fx.idx.
+BATTLE_MAPS = [("Village01", "Village", "Village01.map", 954),
+               ("Forest01", "Forest", "Forest01.map", 223),
+               ("Camp01", "Camp", "Camp01.map", 104)]
+
+
+def _sstr(text):
+    """String inside a blob sub-reader (sub_A63A40): u32 LE length + bytes."""
+    b = text.encode("cp1258")
+    return struct.pack("<I", len(b)) + b
+
+
+def dyn_map_blob(maps=BATTLE_MAPS, mode=0):
+    """Inner bytes (tag 0 + data) of the opcode 231 blob, parsed by sub_6E077C into 128-byte CDynamicMapMan records:
+    u16 n, then per map: u32 id (+0), u8 mode (+4; must equal CDynamicMapMan[27], set by sub_4D6FC6: 0 normal channel,
+    9 if sub_8DAF47, 3/2/1/5/6/7/8 other channel kinds), str name (+8), str name2 (+24), u8 special (+40; 0 = normal),
+    u8 game type (+41; 1 = not in any special list), str theme (+44), str map file (+72), u8 (+100), u8 (+101; default
+    mode filter needs != 0), u32 RGB (+104), u8 (+108; 2/3 excluded, /10==1 sets +120), u8 (+109; != 2), u8 (+110),
+    u16 CPlayMapInfoList index (+112), u8 (+114), u32 (+116). Categories are derived from the maps (sub_6E048D, enabled)."""
+    out = struct.pack("<H", len(maps))
+    for i, (name, theme, mapfile, idx) in enumerate(maps):
+        out += struct.pack("<IB", i + 1, mode) + _sstr(name) + _sstr(name) + bytes([0, 1]) + _sstr(theme) + _sstr(mapfile)
+        out += bytes([0, 1]) + struct.pack("<I", 0x00FFFFFF) + bytes([0, 1, 0]) + struct.pack("<HBI", idx, 0, 0)
+    return b"\x00" + out
+
+
+def dyn_map_info():
+    """Opcode 231 (CStage__On_231): blob -> sub_6E077C; only accepted if the blob checksum (sub_A0E1E0 = adler32 seeded
+    with 0, over tag+data, stored by sub_A62580) equals CDynamicMapMan[3], which opcode 234 sets. Saved to
+    fxdynmapinfo.ssd. This is the client's battle-map table: empty -> empty map dialog, "SmallMapPlayer2" on Start."""
+    return obf_body(231, ("blob", dyn_map_blob()))
+
+
+def map_checksums():
+    """Opcode 234 (CStage__On_234): blob {u8 (sub_A90B40), u16 (dword_EA7878), u32 (dword_EA787C), u8 n, n x u8}, then
+    u32 dyn-map checksum (sub_6E0F64 -> CDynamicMapMan[3], then reloads fxdynmapinfo.ssd), u32 (sub_6ABA21, stage-map
+    checksum), u8 flag, u32 (sub_9C24BA if flag)."""
+    import zlib
+    return obf_body(234, ("blob", b"\x00" + struct.pack("<BHIB", 0, 0, 0, 0)),
+                    ("u32", zlib.adler32(dyn_map_blob(), 0)), ("u32", 0), ("u8", 0), ("u32", 0))
 
 
 def login_ok(name="tester", players=1):
@@ -339,11 +396,11 @@ async def handle(reader, writer, port, log):
                     replies = [channel_enter_ok()]
                 if op == 77:  # create room (dialog XÁC NHẬN) -> opcode 83 success -> waiting room (stage 12)
                     log(f"[{port}] create room {parse_create_room(body)}")
-                    replies = [create_room_ok()]
+                    replies = [create_room_ok(room_type=ROOM_TYPE)]
                 if op == 337:  # sent on entering the waiting room (stage 12) -> put ourselves into slot 0
-                    replies = [room_player(), room_slot_state()]
+                    replies = [room_player(), room_slot_state(), room_map(MAP_INDEX)]
                 if op == 395:  # lobby square: request square info -> area/map/theme, then the user list
-                    replies = [square_info(), square_users(), room_list()]
+                    replies = [square_info(), square_users(), room_list(), map_checksums(), dyn_map_info()]
                 if op == 0:
                     replies = login_replies()
                 if replies:

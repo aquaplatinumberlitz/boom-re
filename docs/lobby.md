@@ -491,3 +491,22 @@ chuyển tiếp `CSessionStage__OnPacket` → `CChatStage__OnPacket`). `CSession
   hoặc `this[4777]!=0`). `0xBBA` (chỉ trưởng phòng) → vf152 hộp thoại chọn bản đồ; `0xBBB` → `sub_6C95AD` → `sub_6C63B6`.
 - Bấm BẮT ĐẦU một mình → hộp thoại **"SmallPlayerNo"** (client tự chặn: thiếu người).
 - Sau 106, client gửi opcode 88 (`u16, u32`) — chưa trả lời.
+
+### Cập nhật 11: bảng map (opcode 234 + 231), map của phòng (113) (2026-10-17)
+Ảnh `docs/map_dialog_village.png`: phòng có map **Village01** (ảnh xem trước thật, tối đa 8 người).
+- **Bảng map do server gửi** (`CDynamicMapMan` = `dword_E60930`, cache `fxdynmapinfo.ssd`): **opcode 231** (`CStage__On_231`)
+  blob → `sub_6E077C`; chỉ nhận nếu checksum blob (`sub_A0E1E0` = adler32 khởi tạo 0, trên tag+data, lưu bởi `sub_A62580`)
+  == `CDynamicMapMan[3]`, giá trị này đặt bởi **opcode 234** (`CStage__On_234`: blob {u8,u16,u32,u8 n,n×u8}, `u32` checksum
+  map động → `sub_6E0F64`, `u32` checksum stage-map → `sub_6ABA21`, `u8`, `u32`). Định dạng bản ghi 231 + offset bản ghi 128
+  byte: xem `dyn_map_blob()` trong `tools/fakeserver.py`. **Chuỗi trong sub-reader blob = u32 độ dài + byte** (`sub_A63A40`).
+- `u16` ở +112 của bản ghi map = **chỉ số trong `CPlayMapInfoList`** (`dword_E60A10`, `sub_7376D3` nạp lúc khởi động mọi mục
+  `Map/*` của `fx.idx` theo thứ tự idx = thứ tự chữ cái, 1019 mục; Village01 = 954, Forest01 = 223, Camp01 = 104). Số người tối
+  đa lấy từ file `.map` (`sub_6DD119` → `sub_736E92`, mục 56 byte, +40).
+- Danh sách map cuối (`sub_6E06A0`) chỉ giữ map có byte +4 == `CDynamicMapMan[27]` (`sub_4D6FC6`: 0 kênh thường).
+- **Opcode 113** (`CPrepareStage__On_113`) = đặt map phòng: `u16 0, u16, u32 chỉ số map` → `sub_6DBFBE` (map hiện tại).
+- Điều kiện số người khi BẮT ĐẦU (`sub_6C0990` → vf155 → `sub_988F2D`): tối thiểu 2 người/2 đội, trừ **loại phòng**
+  (u8 thứ 4 của gói 83, `sub_8E78CB`/`sub_8E78DB`) ∈ {14,16,17,19,22,32,33} → 1/1. Loại 14 dùng danh sách map riêng của người
+  chơi (`sub_9B63AA`), nên fakeserver mặc định loại 19 (`ROOM_TYPE`). Lỗi BẮT ĐẦU hiển thị bởi `sub_6C710D(mã)`
+  (2 CantDecideMap, 3 AllMustReady, 4 SmallPlayerNo, 5 SmallMapPlayer[2], 6 SmallTeamNo, …), cũng dùng cho **opcode 116**.
+- Nút BẮT ĐẦU = `sub_6C869F` (vf77): kiểm tra → gửi **opcode 97** (blob + thông tin map `sub_6DF9FB`) → `this[4777]=3`.
+- Hiện tại: "CantDecideMap" — hộp thoại map vẫn liệt kê 0 map (bộ lọc `sub_6DEE48` loại hết; đang đo bằng gdb).
