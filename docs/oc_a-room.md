@@ -129,9 +129,9 @@ opcode 88 (client→server): u16 (sub_6DC06C(id) = u16 tại bản ghi-map[id]+1
 - `sub_6C93B0` (0x6C93B0): nếu `sub_8EA9B0()!=0` (có host trong phòng) → `sub_6C869F()`;
   else chỉ khi a2==0: feature 4 (`sub_9B6F75(4)`) bật → `sub_6BEA68()` (CHƯA KIỂ),
   else `sub_A7A121(stage+47964)` + `sub_6C31ED(1)` (vào nhánh "87 chế độ khác" — mục 3b).
-- `sub_6C869F` (0x6C869F, decompile push 97): đọc gói gửi **opcode 97** — CHƯA KIỂ
-  (chưa xem pseudocode — việc còn lại, xem §5).
-- Dialog/состояние: sau gửi thành công `this[4777]=4` + `vf153(0)`.
+- `sub_6C869F` (0x6C869F): gửi **opcode 97** — ĐÃ ĐỌC, chi tiết §7.2.
+- Dialog/trạng thái: sau gửi thành công `this[4777]=4` + `vf153(0)`. (Chú ý §7.2
+  ghi `=3` trên nhánh 97 — CHƯA KIỂ 2 luồng set giá trị khác nhau; xem §7.2.)
 
 ### 3b. `sub_6C31ED` (0x6C31ED) — gửi **opcode 87** [nhánh không-host/khác]
 
@@ -149,8 +149,8 @@ opcode 87 (client→server): blob (sub_A629B0 + sub_8FD1D5 — dữ liệu tải
                            u32 (GetNumNestedThreadSubscriptions(E60A20))
 ```
 Send ok → `this[4777]=4`, vf153(0). Ngoài caller 0xDAC còn là luồng vf65/vf82/vf149/
-vf77/vf44 của CPrepareStage — cùng packet. **Nội dung blob ❓ (sub_8FD1D5 — CHƯA KIỂ;
-cần đọc nếu server muốn kiểm hợp lệ).**
+vf77/vf44 của CPrepareStage — cùng packet. **Nội dung blob: ĐÃ ĐỌC — §7.1** (bool×2
++ list nhóm × sub_8FAD2D; field trong của sub_8FAD2D vẫn ❓).
 
 ### 3c. Server xác nhận BẮT ĐẦU — **On_501 `sub_6C4978` (0x6C4978)** 🟢 (phần lớn — format đủ)
 
@@ -235,8 +235,9 @@ opcode 501 (server→client, "bắt đầu trận"):
 
 ## 5. Việc còn lại (một số điểm CHƯA KIỂ)
 
-1. `sub_6BEA68` / `sub_8FD1D5` (blob của opcode 87) / `sub_985703` (đọc gói phụ
-   của 501), `sub_6C43BA` (nhánh On_94 khác) — chưa xem.
+1. ~~`sub_8FD1D5` (blob của opcode 87/97), `sub_6C43BA` (nhánh On_94 khác)~~ —
+   ĐÃ ĐỌC (xem §7.1, §7.3). Còn lại: `sub_6BEA68` (nhánh feature-4 của 0xDAC),
+   `sub_985703` (đọc gói phụ của 501).
 2. Bảng tên/bản ghi map (mảng 56 byte `this+56*i` trong sub_736FE3) cần runtime dump
    để có map id chuẩn (tiếng "Map/..." + theme id).
 3. Luồng stage 13 (CGameStage — QDialog đong, đọc `CGameStage__vf51` hay rotate
@@ -251,11 +252,67 @@ opcode 501 (server→client, "bắt đầu trận"):
 | opcode | hướng | fields (thứ tự đọc) | nguồn |
 |---|---|---|---|
 | 94 | client→server | bool slot, bool bit-sẵn-sàng (2×u8 qua EncodeBool) | `sub_6BE8AF`/`sub_6918DD` 0x6BE8AF/0x6918DD |
-| 94 | server→client | str A, str B, u8 (mode +118), u8 (mode +228) — đổi thông tin phòng | `sub_6C450D` 0x6C450D (nhánh khác 0x6C43BA ❓) |
+| 94 | server→client | str A, str B, u8 (mode +118), u8 (mode +228) — đổi thông tin phòng | `sub_6C450D` 0x6C450D (nhánh khác `sub_6C43BA` 0x6C43BA: chỉ str A + str B — §7.3) |
 | 85 | client→server | str, str, bool, bool (58?) — sửa thông tin phòng từ dialog (event 0xBBB) | `sub_6C21F6` 0x6C21F6 |
-| 87 | client→server | blob, bool, u32 — luồng BẮT ĐẦU (chế độ thường) | `sub_6C31ED` 0x6C31ED |
-| 97 | client→server | ❓ chưa coi unwind — luồng BẮT ĐẦU host (event 0xDAC) | `sub_6C869F` 0x6C869F |
+| 87 | client→server | blob (đã giải mã — §7.1), bool, u32 — luồng BẮT ĐẦU (chế độ thường) | `sub_6C31ED` 0x6C31ED |
+| 97 | client→server | blob (cùng `sub_8FD1D5` — §7.1), u32 (GetNumNestedThreadSubscriptions) — luồng BẮT ĐẦU host (event 0xDAC); trước gửi: kiểm grade `sub_8DAB89`/`sub_8DAFD7(1)` | `sub_6C869F` 0x6C869F |
 | 88 | client→server | u16 (chỉ số nhóm map), u32 (id map/mode) — chọn map/đổi mode | `sub_6C3557` 0x6C3557 |
 | 212 | client→server | ❓ — event 3600+i | `sub_6C62A4` 0x6C62A4 |
 | 501 | server→client | u8 result(=1); [2P: n×bản ghi]; u32, u16(map id), str(map name), u32(theme), u8, u8, u8 n, n×(u8 slot, u8, u8, u32×3); [u8 + (≠0: phụ blob)] → ChangeStage 13 | `sub_6C4978` 0x6C4978 |
 | 81 | client→server | (không field) — gửi khi On_501 THẤT BẠI (quay lại stage cũ) | `sub_8F2F14` 0x8F2F14 |
+
+## 7. Ghi chú bổ sung — 3 hàm trước đây "CHƯA KIỂ" (đọc thêm) 🟢
+
+### 7.1 `sub_8FD1D5(a2)` (0x8FD1D5) — nội dung blob của opcode 87/97 🟢/❓
+
+- `this` = object "chuẩn bị trận" (state chuẩn bị của stage), dau: blob §3b gói từ
+  `sub_A629B0` (constructor/clear) + `sub_8FD1D5(this, blob)`. Trình tự encode Greenland
+  (mọi field qua EncodeBool/Encode4):
+  1. `EncodeBool(blob, this[3] != 0)` — CH4/boolean ❓ (this[3] = *(_DWORD*)
+     (state + 12) — cờ "team-lőada"? field `+12` — CHƯA KIỂ nghĩa).
+  2. `EncodeBool(blob, this[3])` — bool thô của cùng ô (cast to bool).
+  3. duyệt list node tại `this[2]` (linked list node 9 nút đầu `v4[4]`→`v4[5]`
+     stride 36 byte/node (vector<string→,? node>)):
+     n = (end−begin)/36 → `Encode?` số n (sub_A634C0 — bool/u4 tảng: n <= chu kỳ
+     in nếu n≠0) rồi n × `sub_8FAD2D(a2)` (encode 1 bản ghi "tổ trong/nhóm trận"
+     chấm; nội dung record 36 byte — CHƯA KIỂ field bên trong).
+- ⟹ blob là **bảng phân nhóm các đội/groups** (theo mode team) — server giả có thể
+  chấp nhận nguyên khối như "opaque" vì cho phép bỏ qua pass-through, vẫn nên
+  decode: bool×2 + list nhóm × sub_8FAD2D. ❓ field timaster của sub_8FAD2D cần
+  runtime/2P test để xác định.
+
+### 7.2 `sub_6C869F` (0x6C869F) — luồng "BẮT ĐẦU" gửi **opcode 97** 🟢
+
+- Điều kiện vào: `this[4777]==0` (else thoát); grade-check `sub_8DAB89()` (fail →
+  dialog `aInvalidgradeto...`) và `sub_8DAFD7(1)` (fail → `aInvalidgradese...`).
+- Sau đó `v3 = sub_6C0990()` = "id chế độ vào trận": nếu `sub_8DADA3()!=0 &&
+  sub_9B6F75(4)!=0` → v3 = 0. Dải hợp lệ: {0..8, 10, 12..22, 23..26} (ngoài
+  dải thoát). Hợp lệ → `sub_6734D5(dword_E6083C, 20, 1, 0)` (cảnh/trạng thái #20 —
+  ❓) + `sub_6C710D(v3, 0)` rồi thoát, **KHÔNG gửi 97** — tức 97 chỉ đi trong
+  một số chế độ (đơn giản `v3` = mode nhận từ 6C0990 dẫn về đường "ẩn khác").
+  ❓ dải và nghĩa cần runtime.
+- Khi GỬI 97: trình tự giống 87 §3b — `sub_88849F(97)`; blob `sub_A629B0 +
+  sub_8FD1D5` (§7.1) qua `EncodeBlob`; `sub_8FE6C7()`; `sub_6DB42C(this[14221],
+  this[14222])` (2 field 35//35, `+14221/+14222` — CHƯA KIỂ); nếu
+  `sub_6DF9FB(blob-writer)!=0` (❓ có gì vừa ghi vào packet) → `sub_6C710D` (lỗi)
+  **bỏ field u32**; ngược lại thêm `u32 GetNumNestedThreadSubscriptions(E60A20)`.
+  Gửi ok (`sub_999526`) → `this[4777]=3` (khác 87: =4), gọi vf(+612)(this,0).
+  Close: `sub_A62B10`, `sub_8884DC`.
+- ⟹ **97 = biến thể BẮT ĐẦU của host trước khi vào mode ANOTHER (v3 →), dùng
+  blob phân nhóm §7.1 + u32 như 87 nhưng KHÔNG có field bool v21**.
+  fakeserver: trả **501** như mục 3c khi nhận 97. 🟢
+
+### 7.3 `sub_6C43BA` (0x6C43BA) — nhánh thứ 2 của On_94 (server→client) 🟢
+
+- Trình tự: `DecodeStrInto(Str)` (str A), `DecodeStrInto(Buf2)` (str B); đọc chuỗi
+  hiện hành của room `sub_8EB2DC(dword_E60884, v11)`; so `Buf2` == v11
+  (`sub_40E371`) → nếu khác: nếu `Str` == tiêu đề cũ (*) `sub_8E8E8A(room)`:
+  hiện dialog `aRoominfochange` ("Room info change...") hoặc `aRoomnamechange`
+  ("Room name change..."). Sau đó áp dụng: `sub_8EB8CD(Str)` (setter str A) và
+  `sub_8EB853(Buf2)` (setter str B) trên phòng.
+- ⟹ nhánh này = **server phản hồi cho opcode 85 (sửa tên/mô tả phòng, mục
+  "sửa thông tin phòng")**: 2 chuỗi = (tên mới?, mô tả mới?) — phần client فقط
+  nhận+sập+thông báo, KHÔNG có u8 mode. Các setter `sub_8EB8CD/8EB853` tương ứng
+  với 2 str của luồng sửa thông tin — thứ tự trường cần đối sánh luồng §85.
+  ❓ A = tên hay mô tả — c Alex nêu: sub_8E8E8A (đọc từ phòng) sẽ quyết định theo
+  tiếng tại runtime.
