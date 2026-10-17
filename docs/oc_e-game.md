@@ -385,10 +385,45 @@ On_146 (sub_70DE4C 0x70DE4C) — phần 1 gọi sub_70A647 (0x70A647):
 - **On_215** `sub_7129C4`: `u16 id, u8` → hộp thoại "Banned..." + `sub_708FFE(30/31, 0)` (bị đuổi khỏi trận).
 - **On_216** `sub_70DDB4`: hộp thoại `aHordeeventMove` + ra khỏi trận `sub_708FFE(0, 0)` (CHƯA KIỂ).
 
+### 5i. Opcode 571 (S→C, `sub_71ADEC` 0x71ADEC) — "gán lại bomber cho lượt" ✅ cấu trúc (CHƯA KIỂ runtime)
+Gói blob (`DecodeBlob`); field đọc bằng `sub_A62F40` (u8), `sub_A62F70` (u16), `sub_A62FB0` (u32), đúng thứ tự:
+```
+opcode 571 (S→C):
+  u8 kind                 // v31 — ==2: "tạo lại toàn bộ" (nhánh cuối dưới)
+  u32 type                // → sub_8E78CB(type) (giống u32 type trong 501)
+  u32 round_len           // → this[4887]
+  u16 v32                 // (đuan cho sub_71AD24 bên dưới; nhiều khả năng = map id)
+  u32 v33                 // (đuan cho sub_71AD24)
+  u8 pcount               // → sub_8E9027(pcount)
+  if Decode4 != 0:        // sub_A62F10
+      u8 a, u8 b, u8 c, u8 d → sub_8E7A56(a, b, c); sub_8E7A65(d)
+  // pcount vòng (tương tự phần 3 của 501):
+  pcount × {
+      u8 x                // đọc qua box (sub_4419FE + sub_414543) = slot
+      u8 → sub_8E8EDD(slot, …)
+      u8 → sub_8E8EFF(slot, …)
+      u8 → sub_8E76A3(slot, x)
+      u8 → sub_8E8EBB(slot, y)
+      u8 p                // phụ (sub_679047(p) khi người sống)
+      u8 q                // (bỏ)
+      u32 v15             // → sub_67900E (nếu ≥0) khi người của slot còn
+      u32 v17             // → sub_67901A
+      u32 v40             // → sub_9B69F7(0 hoặc 1 nếu là "slot của đội mình", v40)
+      if u8 != 0:         // có kèm blob con: sub_97EDBC → sub_8ED30A(slot, ...) + sub_474031
+  }
+  // dọn: nếu this[5395] hợp lệ → vf23/vf(96)/vf0(1) rồi this[5395] = 0; this[5396] vf(mk140); this[5561] tương tự
+  if kind == 2:
+      lặp i = 0..15: sub_8E9BF6(i)     // dựng mảng 16 slot như OnEnter
+      sub_71AD24(v32, v42, v33)        // → C→S gửi 140 {bool 1} (và nội dung từ v32/v33)
+```
+- Ý nghĩa (suy đoán): gói "chuẩn bị lượt" đầy đủ hơn 189 mode 4 — server gửi sau khi kết lượt trước (146) để
+  đặt lại vị trí/join người rồi client lại xác nhận **140**. ⇒ server SESSION nên có cặp: 146 → 571 → 140 C→S →
+  189 (mode 2/4) → 140. Hoặc 571 thay cho 189 mode 2/4 tuỳ MODE. **CHƯA KIỂ runtime**.
+
 ### TODO phân tích tiếp (cập nhật)
 - (b) đã chốt cấu trúc **146** (§5h); cần log runtime để confirm và hiểu 3 cặp {u32,u16}; subtype On_128 chưa gỡ.
-- (c) thứ tự bắt đầu lượt: server nhận 139/140 rồi đáp mode 2/4 của 189; thêm suy đoán: **146 → 189** (kết
-  lượt cũ trước rồi sang lượt mới); cả hai CHƯA KIỂ runtime.
+- (c) thứ tự bắt đầu lượt: server nhận 139/140 rồi đáp mode 2/4 của 189; thêm suy đoán: **146 → 571 (§5i)
+  → 140 C→S → 189**; cả hai CHƯA KIỂ runtime.
 - (d) ý nghĩa từng field phần 3 (c/d/e) của 501 vẫn CHƯA KIỂ.
 - (a) **ĐÃ GIẢI**: không có handler 141/142 S→C (và cả 188/197 chỉ qua strategy, xem §5f); Nếu làm server nhiều người thật, nên bắt log kiểm xem server có gửi 176 (định vị lại player theo slot)
   giữa trận không.
