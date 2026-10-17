@@ -23,8 +23,8 @@ hộp thoại "Invalid map...") → `sub_8F391D(this[15141])` + `sub_8F2F14` (qu
 kế thừa `CChatStage` → cuối OnPacket chuyển tiếp `CSessionStage__vf51`).
 
 ## 2. OnEnter — `CGameStage__vf44` (0x71B519) → `sub_71A9EC` (0x71A9EC) ✅
-CALog: chuỗi `"[XRpt] Sg - INT(dne:%d)...\n"` (0xC7B204) — stage trận trong `vf44` log `Sg - INT(dne:13)` giống stage
-11/12. Luồng theo thứ tự code:
+CALog: chuỗi `"[XRpt] Sg - INT(dne:%d)..."` (0xC7B204) — pattern stage 11/12 đều log `Sg - INT(dne:<stage-id>)`;
+log cho stage 13 suy theo cùng pattern (CHƯA KIỂ xref trực tiếp). Luồng theo thứ tự code:
 1. gọi vtable **vf146** (offset 584) của this (`CGameStage__vf146` 0x700F05);
 2. `a1[4926] = 0`, rồi `CChatStage__vf44(a1)` (stage 13 kế thừa CChatStage);
 3. `a1[155] = 1`; `sub_6FFC52`, `sub_71C46A(0)`, `sub_7056BD(a1)`;
