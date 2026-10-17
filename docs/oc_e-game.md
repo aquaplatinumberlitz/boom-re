@@ -392,8 +392,8 @@ opcode 571 (S→C):
   u8 kind                 // v31 — ==2: "tạo lại toàn bộ" (nhánh cuối dưới)
   u32 type                // → sub_8E78CB(type) (giống u32 type trong 501)
   u32 round_len           // → this[4887]
-  u16 v32                 // (đuan cho sub_71AD24 bên dưới; nhiều khả năng = map id)
-  u32 v33                 // (đuan cho sub_71AD24)
+  u16 v32                 // (truyền cho sub_71AD24 bên dưới; nhiều khả năng = map id)
+  u32 v33                 // (truyền cho sub_71AD24)
   u8 pcount               // → sub_8E9027(pcount)
   if Decode4 != 0:        // sub_A62F10
       u8 a, u8 b, u8 c, u8 d → sub_8E7A56(a, b, c); sub_8E7A65(d)
