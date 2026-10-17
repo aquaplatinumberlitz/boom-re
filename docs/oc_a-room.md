@@ -245,3 +245,17 @@ opcode 501 (server→client, "bắt đầu trận"):
 4. Sự kiện các nút `sub_6C1A53` (3350+), `sub_6C0585` (0xC80), `sub_6C1947`
    (0xCE3-0xCEB), `sub_6C62A4` (3600+i, gửi **opcode 212**) — chưa đọc.
 5. sub_6918DD vs sub_6BE8AF (2 luồng gửi 94) — chưa truy thứ cấp.
+
+## 6. Bảng định dạng gói (tóm tắt a-room)
+
+| opcode | hướng | fields (thứ tự đọc) | nguồn |
+|---|---|---|---|
+| 94 | client→server | bool slot, bool bit-sẵn-sàng (2×u8 qua EncodeBool) | `sub_6BE8AF`/`sub_6918DD` 0x6BE8AF/0x6918DD |
+| 94 | server→client | str A, str B, u8 (mode +118), u8 (mode +228) — đổi thông tin phòng | `sub_6C450D` 0x6C450D (nhánh khác 0x6C43BA ❓) |
+| 85 | client→server | str, str, bool, bool (58?) — sửa thông tin phòng từ dialog (event 0xBBB) | `sub_6C21F6` 0x6C21F6 |
+| 87 | client→server | blob, bool, u32 — luồng BẮT ĐẦU (chế độ thường) | `sub_6C31ED` 0x6C31ED |
+| 97 | client→server | ❓ chưa coi unwind — luồng BẮT ĐẦU host (event 0xDAC) | `sub_6C869F` 0x6C869F |
+| 88 | client→server | u16 (chỉ số nhóm map), u32 (id map/mode) — chọn map/đổi mode | `sub_6C3557` 0x6C3557 |
+| 212 | client→server | ❓ — event 3600+i | `sub_6C62A4` 0x6C62A4 |
+| 501 | server→client | u8 result(=1); [2P: n×bản ghi]; u32, u16(map id), str(map name), u32(theme), u8, u8, u8 n, n×(u8 slot, u8, u8, u32×3); [u8 + (≠0: phụ blob)] → ChangeStage 13 | `sub_6C4978` 0x6C4978 |
+| 81 | client→server | (không field) — gửi khi On_501 THẤT BẠI (quay lại stage cũ) | `sub_8F2F14` 0x8F2F14 |
