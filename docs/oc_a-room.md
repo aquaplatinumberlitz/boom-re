@@ -213,3 +213,35 @@ opcode 501 (server→client, "bắt đầu trận"):
   opcode 20 (trả về), 25 → sub_7127B3, 81 → sub_70C8C1, 106 → sub_7019AE,
   107 → sub_703D01, 119, 128 → sub_71458E, 135+... — đầy đủ cần thêm phiên
   c-game). Trong phạm vi a-room: **CHỚ chưa đề ra gói trả để trận chạy — CẦN TIẾNH thêm nó.**
+
+## 4. opcode 88 — chốt phần hỏi (3) của task 🟢/❓
+
+- Sender duy nhất: `sub_6C3557(this, id, a3)` (0x6C3557). Wire = **`[88][u16][u32]`**
+  — u16 = `sub_6DC06C(id)` = giá trị tại **bản ghi-map[id]+112** của bảng truy
+  (object `dword_E60930`, bản ghi list qua `sub_6DB901(id)`); u32 = `id` đầy đủ.
+- Điều kiện gửi: `this[4777]==0` và `sub_8EA9B0()!=0`; chặn 2P (`sub_6DC339(id)==247
+  && dword_E60848>=2` → chỉ hiện `a2pcannotenterg`, không gửi).
+- 6 caller: `sub_6C450D` (On_94 — gửi lại 88 ngay sau khi nhận room-info-change nếu
+  `sub_8EA9B0(E60884)!=0`), `sub_6C5469` (được gọi từ **CPrepareStage__On_106** —
+  tạo/bật nút PRE_Bt_Start rồi gửi 88), `vf149/vf150/vf152` (chọn map/mode),
+  `sub_6D5834` (❓).
+- ⟹ Giải nghĩa task (3): opcode 88 khi vào phòng KHÔNG phải gói "xin vào phòng"
+  chung, mà là **"đồng bộ vị trí/chế độ của mình với server"** dùng chung cho các
+  thao tác (chọn map → đổi mode → xin chỗ). Giá trị hiển thị của cả 2 field
+  liên quan đến bản ghi-triangle trong bảng nói trên — đối với test động, giữ
+  bảng w/ spoofing sample. **Server cần trả khi nhận 88 = opcode 94** (room-info
+  change, định dạng mục 1b) — để cập nhật room UI + khóa `this[4777]=0`
+  (quay về rảnh). 🟢/❓
+
+## 5. Việc còn lại (một số điểm CHƯA KIỂ)
+
+1. `sub_6BEA68` / `sub_8FD1D5` (blob của opcode 87) / `sub_985703` (đọc gói phụ
+   của 501), `sub_6C43BA` (nhánh On_94 khác) — chưa xem.
+2. Bảng tên/bản ghi map (mảng 56 byte `this+56*i` trong sub_736FE3) cần runtime dump
+   để có map id chuẩn (tiếng "Map/..." + theme id).
+3. Luồng stage 13 (CGameStage — QDialog đong, đọc `CGameStage__vf51` hay rotate
+   vf44/vf5 của game stage cho một bảng đầy đủ: gói client gửi khi vào (OnEnter),
+   server trả map/vị trí/player — thuộc phiên "c-game" (thư mục khác).
+4. Sự kiện các nút `sub_6C1A53` (3350+), `sub_6C0585` (0xC80), `sub_6C1947`
+   (0xCE3-0xCEB), `sub_6C62A4` (3600+i, gửi **opcode 212**) — chưa đọc.
+5. sub_6918DD vs sub_6BE8AF (2 luồng gửi 94) — chưa truy thứ cấp.
