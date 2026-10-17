@@ -285,3 +285,20 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
 - (b) gói kết thúc ván: On_146, On_128 subtype, On_204;
 - (c) gọi lược bắt đầu: bắt server nhận 139/140 (modewire), mode2/mode4 luồng đầy đủ;
 - (d) chính từng field của phần 3 (c/d/e) của *501* vẫn CHƯA KIỂ.
+
+### 5e. Bổ sung opcode "sự kiện trong trận" (đọc từ decompile)
+- **On_163** 0x716735 = bắt đầu một cặp key-value đầu bằng mụcTOCOL, sau đó:
+  `u8 sub, u8 target, u16 idx, u16 arg`, sau theo `sub`: 0`/`3`/`13`/`14`→`sub_706BCB`|`sub_706B26`|`sub_71652D`|`sub_716692`
+  (za blob), 1/8/12→`sub_70B8C4(...,1/0)`, 2→`sub_7022EE` (u8,u8,u8 nibble), 4→`sub_70213E` (u32), 5→`sub_702189`, 6
+  →`sub_702552` (4×u32), 7→`sub_702165(id)`, 9/10/15/16/19→theo mụciễn, 11/17/18/20/21/22/23.. (mất 1 u8/u32/u16).
+  Đây là **đsylvania "event/passive" pannels** (nhstatus/hàng hiệu ứng) trong trận. CHƯA KIỂ chi tiết.
+- **On_298** `sub_7035C4`: `u8 type(9/12), u16, u16` — type 9: sinh quái/wave (`u8 dir, u8, u8, u8, u8, u32`, sau
+  điá danh hàng, `sub_729794`, `sub_5C0138`); type 12: `u16 col, u16 row` + text báo lỗi `CreateBoxMon.destroybox
+  colrow(%d,%d) failed`. CHƯA KIỂ ngữ nghĩa đầy đủ (ch khi mode đặc biệt/Zombie).
+- **On_303** `sub_70727E`: `u8, u16, u16, u16` → `sub_728F9E(-1,-1,..., 93 hoặc 62, 10, ...)` (spawn box mon/npc).
+- **On_160** 0x7164BB: phần đầu giống field `On_158` rồi gọi `sub_6F2964(u8, u16)` và tiếp tục trực tiếp **On_158(pkt, 1)**
+  — biến thể OCSP item của 158.
+- **On_161** 0x704962: `u8 id, u8 target, u8, u8, u8` → `sub_6F007D` rồi kiểm nếu là mình: gửi hiệu ứng `sub_89B623`;
+  thất bại → `sub_70307F(target, 4, -1)`.
+- **On_215** `sub_7129C4`: `u16 id, u8 hack` → "Banned..." hộp thoại + `sub_708FFE(30/31,0)` (ra khỏi trận bị hack).
+- **On_216** `sub_70DDB4`: hộp thoại `aHordeeventMove` + ra trận `sub_708FFE(0, 0)` (CHƯA KIỂ).
