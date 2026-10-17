@@ -287,7 +287,7 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
 - (d) ý nghĩa từng field phần 3 (c/d/e) của 501 vẫn CHƯA KIỂ.
 
 ### 5e. Bổ sung opcode "sự kiện trong trận" (đọc từ decompile)
-- **On_163** 0xC716735: bắt đầu bằng 4 field chung, sau đó switch theo subtype:
+- **On_163** 0x716735: bắt đầu bằng 4 field chung, sau đó switch theo subtype:
   `u8 sub, u8 target, u16 idx, u16 arg`; theo `sub` 0..27: 0/3/13/14 → `sub_706BCB`/`sub_706B26`/`sub_71652D`/
   `sub_716692` (mỗi cái đọc thêm blob); 1/8/12 → `sub_70B8C4(...,1/0)`; 2 → `sub_7022EE` (u8,u8,u8 nibble);
   4 → `sub_70213E` (u32); 6 → `sub_702552` (4×u32); 7/9/10/15/16/19 → xử lý riêng từng kiểu; 21/22/23.. đọc thêm
