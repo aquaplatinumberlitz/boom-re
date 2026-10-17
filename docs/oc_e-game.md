@@ -224,7 +224,7 @@ opcode 189 (S→C):
   mode 0: (không field; nếu this[5402]==2 → sub_70E511)
 ```
 Lưu ý: u32 đọc **trước** u16 (thứ tự trên).
-CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 để SUMMARY nước.
+CHƯA KIỂ: điều kiện rơi vào mode 2 hay mode 4, và ý nghĩa các u32 đọc thêm trong lượt.
 
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
@@ -247,7 +247,7 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
 - **On_145** `sub_701A48`: `u8 slot, u16 which(1..25), u32, u32` → `sub_6EB940(slot, which, …)` (thay đổi object trên
   bản đồ, tới 25 kiểu).
 - **On_146** `sub_70DE4C`: đầu tiên `sub_70A647(this, pkt)` (CHƯA KIỂ format), sau đó reset "sẵn sàng" của người chơi;
-  nếu `sub_9B6F75(4)` → `this[5400] = 1`. Có vẻ chuẩn bị lượt tiếp.
+  nếu `sub_9B6F75(4)` → `this[5400] = 1`. có vẻ là chuẩn bị lượt tiếp.
 - **On_155** `CGameStage__On_155` 0x701E8B: `u8` (so id của mình `sub_6E2000`), `u8` (nibble cao = kiểu hành động
   >4, nibble thấp = slot), `u16 idx`, `u8`, `u8`, `u8`, `u8` — hiệu ứng/âm thanh (`sub_6734D5` 0x4C/0x9D/0x9F),
   đổi trạng thái theo hành động (`sub_591045/50`).
@@ -264,8 +264,7 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
 - **On_107** 0x703D01: `u16 a(≤0xF), u8 flag, u16 c(≤0xF), u16` → `sub_8E8C5C/8E8CB1` (flag on/off thuộc tính người
   chơi).
 - **On_128** `sub_71458E` 0x71458E: `u8 subtype {1..25}` rồi field theo subtype (thường `u16 id` + số lượng
-  u16/u32/u64/u8/str) — cộng/trừ tài nguyên trong trận; sub-icon + string "ZombieSurvivel..." hàm nhiệm vụ nření
- _subtype 20. CHƯA KIỂ từng subtype.
+  u16/u32/u64/u8/str) — cộng/trừ tài nguyên trong trận; sub-icon + string "ZombieSurvivel..." nhiệm vụ subtype 20. CHƯA KIỂ từng subtype.
 - **On_25** 0x7127B3: `str` → phân token `sub_70ECEF` → mở cửa sổ/thêm người khác (CHƯA KIỂ).
 - **On_81** 0x70C8C1: `u32 slot/uid, str` — hiển thị text trên người chơi.
 
@@ -275,16 +274,99 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
    ngược lại: hộp thoại "Invalid map..." và quay về phòng chờ.
 3. Client vào stage 13, load map (đặt theme từ **231**), KHÔNG thêm gói gửi lúc vào stage.
 4. Bắt đầu lượt: gửi **189** (mode 2/4 như §5a) — client trả C→S **139**/`140`.
-5. Đồng bộ di chuyển: client tự gửi **141** (và 142); SERVER PHẢI phát lại cho người chơi khác — *chưa tìm handler
-   nhận được tương ứng trong CGameStage__OnPacket* (CHƯA KIỂ — cần tiếp tục tra).
+5. Đồng bộ di chuyển: client tự gửi **141** (và 142); **KHÔNG có handler S→C tương ứng** trong CGameStage/kế thừa
+   (xem §5f) — chuyển động người khác client tự mô phỏng; trạng thái bù/tile qua **356** (§5g) và **176**.
 6. Đặt bom: client gửi **143** (`CMapActionBomb__vf4`); server phải phát hiệu ứng (nhiều khả năng qua 158/145/163) — CHƯA KIỂ.
-7. Kết thúc ván: chưa chốt (On_146/128/204?) — CHƯA KIỂ.
+7. Kết thúc lượt: **146** (§5h); 128/204 không phải "kết thúc ván" rõ ràng — CHƯA KIỂ.
 
-### TODO phân tích tiếp
-- (a) tìm handler S→C tương ứng C→S 141/142 (băng di chuyển của người khác);
-- (b) gói kết thúc ván: On_146, On_128 subtype, On_204;
-- (c) thứ tự bắt đầu lượt: server nhận 139/140 rồi đáp mode2/mode4 của 189;
-- (d) ý nghĩa từng field phần 3 (c/d/e) của 501 vẫn CHƯA KIỂ.
+### 5f. Kiến trúc fallback OnPacket — object "strategy" `this[5417]` ✅ cấu trúc
+Khi opcode không có case riêng, `CGameStage__OnPacket` rơi default và chạy chuỗi sau
+(xem `decomp/handlers/CGameStage.c` dòng 331–356):
+1. nếu `this[5417] != 0`: `RecvPkt__Rewind` rồi gọi **vf12 (offset 48)** của object đó; trả ≠0 → kết thúc nhánh;
+2. `RecvPkt__Rewind` + `sub_8883BE`, rồi với **từng phần tử** list `this[5413]`: gọi vf **offset 64** trên `elem[2]`
+   (loại "listener" đăng ký vào trận; chưa truy được class của elem[2] — CHƯA KIỂ);
+3. cuối cùng `CSessionStage__vf51` (0x6914CD) → `CChatStage__vf51` (0x689C63) → `CStage__vf51` — **không lần nào
+   có case cho 141/142** trong cả chuỗi.
+
+- **`this[5417]` là object "strategy" theo chế độ chơi**, gán trong `CGameStage__vf146` (0x700F05), rồi gọi vf4
+  (attach stage) của object:
+  - kind (`sub_8E78DB(dword_E60884)`) == 17 → `sub_7E6E28` (new 0xC1C, ctor `sub_7EBA6D`) — nhánh RPG;
+  - kind ∈ {18, 21, 25} → `sub_7E6DF2` → `sub_7E9613(1)` = **`CNormalGameStrategy`** (new 0x934,
+    vtable `vt_CNormalGameStrategy` 0xC6BD24);
+  - `sub_988CCC(sub_6DC339(sub_6DC025(dword_E60930)))` != 0 → `sub_7E6E5C` = `CMonSeason2GameStrategy`
+    (new 0x10D0, vtable 0xC6BB3C);
+  - map id == 114 → `sub_7E6E90` → `sub_7E6807` = `CConfusedFightGameStrategy` (new 0x968, vtable 0xC6B8AC);
+  - còn lại (đường thường) → `sub_7E6DBD` → `sub_7E9613(0)` = `CNormalGameStrategy`.
+- **vf12 của các strategy chỉ nhận 2 opcode**:
+  - `CNormalGameStrategy/CConfusedFightGameStrategy__vf12` (0x7E8E43): opcode **188** → `sub_7E8BD9`
+    (`u8 slot, u16 a, u16 b` — nếu `slot < count` (`sub_6E3D75`), lấy bomber slot (`sub_6E5C2B`), đọc vf40
+    (điểm/hạng?) rồi `sub_574296(a, giá trị, b)`); opcode **197** → `sub_7E8C6D` (`u16 a` →
+    `sub_574296(a, 0, 0)`); opcode khác → trả 0 (do đó luôn rơi sang bước 2/3).
+  - `CHiddenCatchStrategy__vf12`/`vf16` (0x7E6D11/0x7E6D1D, dùng cho CMonSeason2) = no-op, trả 0.
+- **Kết luận TODO (a)**: *trong CGameStage (và chuỗi fallback) không tồn tại handler S→C phát lại 141/142 của người
+  khác*. Giải thích khả dĩ: chuyển động của người chơi khác client tự mô phỏng theo seed/tick (cùng map + cùng
+  seed trong 501/189), còn trạng thái cuối/bù được đồng bộ bằng gói **356** (§5g) và **176** (tt), hoặc chỉ là C→S
+  để server đối soát. Đây là suy luận — **CHƯA KIỂ runtime** (cần log bắt tay để xác nhận server có phát lại hay không).
+
+### 5g. Opcode 356 (S→C, `sub_7155DA` 0x7155DA) — blob "sync lượt" ✅ cấu trúc (CHƯA KIỂ runtime)
+Guard: feature stub == 0, `this[5400] != 2`, `sub_9B6F75(4) != 0`. Đọc `DecodeBlob`; phần nội dung đúng thứ tự:
+ (`OnPkt_multi_344...`), field đọc tuần tự bằng `sub_A62F40` (u8) và `sub_A62F70` (u16):
+- `sub_70F346` (0x70F346): `u8 count`, rồi count × {`u8 x_new`, `u8 y_new`, `u8 flag`} — đặt/xoá object trên ô (row,col)
+  `flag == 0xFF` → xoá (`sub_729573` rồi vf92(0), vf12(0)); nhánh khác: nếu ô cũ còn object
+  (`sub_7292F3(x, y)`) thì gỡ, rồi đặt vào ô mới (`sub_729573`/`sub_7294CA`). CHƯA KIỂ (nghĩa thực của hai nhánh).
+- `sub_707A13` (0x707A13): `u16 count`, count × {`u16`, `u16`, `u8 px`, `u8 py`} — mỗi entry gọi `sub_728F9E`
+  (40*px, 40*py+39, px, py, x1, x2, 0, str, −1) — spawn/drop vật (cùng mẫu `sub_728F9E` với 303/171).
+- `sub_70048C` (0x70048C): `u16 count`, count × {`u16`, `u16`} → `sub_89AF2C(a, b)` (cặp stat, CHƯA KIỂ).
+- `sub_707AD3` (0x707AD3): `u16 count` — lặp người 0..count (bomber `sub_6E5C2B(i)`):
+  `u8 c`; nếu c≠0 đọc thêm {`u8 v4`, `u8 v18`, `u8 v17`, `u8 v16`}: nếu v4 ≠ 255 → bomber vf424(3, 12686),
+  vf328(v4) (đổi đồ/skin lên bomber), cập nhật 4 box qua `sub_89B0D4` theo object tìm được
+  (`v8 = sub_89EF9B(v4)`, box 132/144/156/168); `sub_594D51(v18)`, `sub_599557(v17)`, v16≠0 → vf452(0).
+  c==0 → `sub_592ADE(0)`. CHƯA KIỂ từng field (nhiều khả năng là thay đổi trang bị/chỉ số của người chơi).
+- `sub_7004DA` (0x7004DA): `u8 count`, count × {`u8 a`, `u8 b`} → object theo id `sub_6E2119(b)` rồi
+  `sub_5B4AE9(b, a, 0, 0)` (set vị trí(?) trực tiếp, CHƯA KIỂ).
+- Sau tất cả: `this[5400] = 2` (chuyển trạng thái vòng).
+
+### 5h. Gói 146 — KẾT THÚC lượt + phần thưởng (TODO b, ✅ cấu trúc; CHƯA KIỂ runtime)
+```
+On_146 (sub_70DE4C 0x70DE4C) — phần 1 gọi sub_70A647 (0x70A647):
+  u32 Block_a             // Decode4; đưa vào context qua sub_6E2054 — CHƯA KIỂ ý nghĩa
+  u32 round_len   → this[4887]
+  u32 dur1, dur2  → this[4934], this[4935] (×1000 hai cái — ms)
+  u8  flag_a      → box (sub_413F32); this[4936] = 0
+  // tính "thời gian phòng": this[4913] != 0 ? 30 : *(dword_E60934 + 468824) → sub_6E20AD
+  // bật hiệu ứng vf424(24, 11814/11832) trên các object trong context
+  // tạo dialog kết quả cỡ malloc 0xE8/0xA0/0xA4/0xB0 theo nhánh feature
+  //  (58/win-condition, "BonusMazeMap01/02", "Dialog/DialogBonus"...)
+  ---- phần "điểm/BXH": ----
+  u32 key         // nếu key != 0: htonl(key) → sub_9B54FE(key, extra)
+  u16 extra       // (arg thứ 2 của sub_9B54FE)
+  u8  flag_top    // sub_9B5989(flag_top)
+  // 18 vòng (i = 0..17; CGameStage dùng 16 slot 0..15 — sao 18? CHƯA KIỂ):
+  u8 on                                   // Decode1
+  sub_8E99A3(&id, i)                      // id người của slot i
+  if on != 0:
+      3 × { u32 val,      // Decode4
+            u16 st }      // Decode2 (low half; mảng 3 phần tử {u32, u16})
+      nếu sub_8EAC0E(i) != 0 → sub_9B5C5A(i, mảng, val, ...)   // lưu BXH/thưởng của slot i (CHƯA KIỂ)
+  elif id == 0: sub_70307F(-1, 0, -1)  // "bỏ người" của slot (CHƯA KIỂ)
+  sub_9B5998(sub_8E9A6B(0))
+  memset(this+4890, 0xFF, 0x10)    // 4×u32 top → = -1 (danh sách top rỗng)
+  duyệt this[5413]: gọi vf8 (offset 32) từng elem[2]; nếu không vf8 nào trả ≠0 → vf160 (offset 620) của this
+  duyệt this[5413]: gọi vf11 (offset 44); nếu ≠0 tạo dialog tiếp theo (sub_73E525 + sub_6E17DB)
+  sub_7074E0(a, b, c, d) với giá trị từ bảng "ItemShield"/"ItemTeamshield" (÷30) — CHƯA KIỂ
+---- phần 2 (trong On_146/sub_70DE4C sau sub_70A647) ----
+  reset "sẵn sàng" của người chơi (sub_8E99A3 v.v.)
+  nếu sub_9B6F75(4) → this[5400] = 1
+```
+- **Ý nghĩa (suy đoán mạnh)**: 146 = "kết thúc lượt": nhận số liệu (BXH từng slot bằng 3 cặp {u32,u16}), thông số lượt tiếp
+  (round_len t1/t2/ms…), bật lại theo ready. Server giả lập cần phần u32/u16 đúng thứ tự. **CHƯA KIỂ runtime**
+  (cần log để biết 146 có phải bắt buộc, và ý nghĩa 3 cặp {u32,u16} (có thể là rank/score/time)).
+- **On_128** (`sub_71458E`, §5c): vẫn là bảng subtype 1..25 tài nguyên, không thấy subtype riêng "kết thúc ván":
+  giữ nguyên như §5c.
+- **On_204** (`sub_7071AC` 0x7071AC): `u16 a, u16 b, u8 c, u8 d, u32 e, u32 f, u8 g`; nếu (e == −1 && f == −1)
+  → `sub_726107(b, c, d)`; rồi `sub_725E7F(f, e, c, d, a, b, 10, str, −1, g)`. dùng "mẫu hiệu ứng"
+  tương tự 303/171 (`sub_725E7F` có vẻ cùng họ `sub_728F9E`) — có thể là hiệu ứng nổ/di chuyển; CHƯA KIỂ,
+  không kết luận là kết thúc ván.
 
 ### 5e. Bổ sung opcode "sự kiện trong trận" (đọc từ decompile)
 - **On_163** 0x716735: bắt đầu bằng 4 field chung, sau đó switch theo subtype:
@@ -302,3 +384,11 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
   thất bại → `sub_70307F(target, 4, -1)`.
 - **On_215** `sub_7129C4`: `u16 id, u8` → hộp thoại "Banned..." + `sub_708FFE(30/31, 0)` (bị đuổi khỏi trận).
 - **On_216** `sub_70DDB4`: hộp thoại `aHordeeventMove` + ra khỏi trận `sub_708FFE(0, 0)` (CHƯA KIỂ).
+
+### TODO phân tích tiếp (cập nhật)
+- (b) đã chốt cấu trúc **146** (§5h); cần log runtime để confirm và hiểu 3 cặp {u32,u16}; subtype On_128 chưa gỡ.
+- (c) thứ tự bắt đầu lượt: server nhận 139/140 rồi đáp mode 2/4 của 189; thêm suy đoán: **146 → 189** (kết
+  lượt cũ trước rồi sang lượt mới); cả hai CHƯA KIỂ runtime.
+- (d) ý nghĩa từng field phần 3 (c/d/e) của 501 vẫn CHƯA KIỂ.
+- (a) **ĐÃ GIẢI**: không có handler 141/142 S→C (và cả 188/197 chỉ qua strategy, xem §5f); Nếu làm server nhiều người thật, nên bắt log kiểm xem server có gửi 176 (định vị lại player theo slot)
+  giữa trận không.
