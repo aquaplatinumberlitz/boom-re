@@ -154,3 +154,42 @@ Chuyển tiếp → handler (`= function đế received at, alias trong IDA`):
 | 571 | `sub_71ADEC` | 0x71ADEC |
 | 572 | `sub_709D5E` | 0x709D5E |
 | 578 | `CGameStage__On_578` | 0x70065D |
+
+## 4. Gói opcode 501 (S→C "begin battle", handler 0x6C4978) — đọc từ decompile, CHƯA KIỂ runtime
+Điều kiện mở lớn trước (guard `sub_8DAB40()/8DAD87()/8DAD95()`): chỉ nhánh "sảnh thường" đọc đầy đủ — CHƯA KIỂ.
+
+```text
+opcode 501 (S→C):
+  u8 ok                       // Decode1; ==0 → hộp thoại aCannotlaunchas, DỪNG (không đổi stage)
+  // ---- phần người chơi (như opcode 103), lặp v2[4770] (đã lưu từ opcode 103ulus) lần ----
+  u8 c                              // c≠0: chỉ DecodeBuf 3 → sub_8E977D(idx, buf)  (update trạng thái ô)
+                                    // c==0: entry đầy đủ: u32 id, blob(thông tin như 103), DecodeBuf 3,
+                                    //       u8 (sub_8E8F21), sub_572A05 + vf149(this+592)
+  // ---- phần trận ----
+  u32 seed                    → sub_8E77E4            // seed random của trận
+  u16 map_id                  → sub_8EAB95            // so với tên map bên trong csdl (sub_736FE3)
+  str map_name                (u16 độ dài + byte)     // phải trùng _mbsnbcmp tên map_id; khác → aInvalidmapretu
+  u32 type                    → sub_6DE36E (≠0 bắt buộc), sub_6DD49B (cờ phụ)
+  u8 p0                       → sub_8E78CB
+  u8 pcount                   → sub_8E9027 (số người trong phần dưới)
+  pcount × { u8 slot, u8 a, u8 b, u32 c, u32 d, u32 e }   // slot → sub_8E8EFF(slot,0);
+        // khi sub_8E99A3(slot) tìm thấy người: c≥0 → sub_67900E(c) (CHƯA KIỂ), d → sub_67901A (CHƯA KIỂ),
+        // e → sub_9B69F7(0/1, e) cho người thứ 0/1 (lưu trù năng vị trí của 2 người chơi đầu)
+  // ---- vòng 16 slot ----
+  while slot < 16: if ô đó <khác null> và Decode1(u8) != 0 → sub_985703(a2)   // đọc phụ (CHƯA KIỂ)
+  // ---- thoát hợp lệ ----
+  sub_6734D5(0x15, 1, 0);  sub_8F391D(13)      // ĐỔI stage 13
+```
+
+### §2b Map/theme nạp ở vf44/vf147 — tóm lại
+- **Tên map** đọc từ bảng cache (sub_736FE3(u16 id) — `cache+4`, từng bản ghi std::string stride 56; `this = dword_E60A10`
+  ở BGM-pick vf155) — bảng được \(nạp từ gói **231** (`CStage__On_231` 0x6E0C5A, cùng "bộ dạng" gói 13): `blob` được
+  ghi cache `fxdynmapinfo.ssd` (sub_A62C20), phân tách `sub_6E077C(this, reader)`.
+- blob của 231 (đọc qua subreader obf): `u16 count` (`sub_A62F70`), rồi **check `sub_A62570 == this[3]`** (khác →
+  `sub_6DB3ED` rồi thoaktion); mỗi bản ghi: `u32` (→ sub_A62FB0 `sub_911168`), `u8`, `str` **file map** (nạp `"Map/%s"`),
+  `str` (theme?), `u8`, `u8` (mã theme: 89 = `"Theme/SweetCandy"`, 138 = `"Theme/ThemeDefault"`, khác → `"Theme/%s"`),
+  `str`, `str`, `u8`, `u8`, `u32` màu (sub_A2A5E0(B2,B1,B0)), `u8` (`/10==1` → `%=10` + cờ phụ), `u8`, `u8`, `u16`, `u8`,
+  `u32`. Sau mỗi bản ghi gọi `sub_6E03A8, sub_6E048D`.
+- BGM: vf155 (0x70EEF3) tra tên nhạc từ bảng/gói theo map id (`sub_6DDBAB`), các sự kiện đều là hiệu ứng resource.
+CHƯA KIỂ: format fieldValue của bản ghi 231 theo Nghena cứng - nhưng **phải gửi 231 trước 501** để có tên map (vf147
+truy bảng; nếu thiếu khả năng sẽ lệch/dừng trong sub_736FE3 với bác bảng rỗng → vanney boots VNA hết).
