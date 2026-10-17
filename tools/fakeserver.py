@@ -153,11 +153,12 @@ def create_room_ok(room_no=1):
     return obf_body(83, ("u8", 0), ("u16", room_no), ("u32", 0), ("u8", 0), ("u8", 0), ("u8", 0))
 
 
-def room_player(slot=0, user_id=1000, name="tester", host=1, character=0, team=0):
+def room_player(slot=0, user_id=1000, name="tester", chief=True, character=0, team=0):
     """Opcode 103 (CSessionStage__OnPacket -> stage vf141; CPrepareStage: 0x692446 builds CSetPlayerOnPreparePacket
     (sub_57343E) = CSetPlayerPacket sub_573146 + CSlotAccessoryPacket sub_572A05, then vf149 + sub_691E66).
     sub_573146: u8 slot, u32 user id, u8 (+16; 0 forces the next u32 to -1), u8, u8, u32, 3 bytes bitfield
-    (byte0 bit0 = ready (On_106), byte1 & 0x3F = character, byte2 & 0x1F = team), blob profile (sub_679434: str, u8,
+    (byte0 bit0 = ready (On_106), bit1 = room chief (sub_8EA9B0 checks it for our own slot), byte1 & 0x3F = character,
+    byte2 & 0x1F = team), blob profile (sub_679434: str, u8,
     u8, u32, u8, u32, u16, u32, u32, u32, u32, u8, u32, str, u16 ...), u8, u8 (<=1), u8, str, str, blob, u8 flag
     (!= 0 -> blob). sub_572A05: u16, u8 n x (u8, u16), u8 m x (u32 x3), u8 (<=22 / 101..102 / 255), u8, u32 x3,
     u8 k x (u32 x3), u32 x2, bool, u32, u16, str. Meanings mostly unmapped (CHƯA KIỂM); blobs are padded with zeros so
@@ -165,12 +166,21 @@ def room_player(slot=0, user_id=1000, name="tester", host=1, character=0, team=0
     nm = name.encode("cp1258")
     profile = b"\x00" + struct.pack("<H", len(nm)) + nm + bytes(256)
     pad = b"\x00" + bytes(256)
-    f = [("u8", slot), ("u32", user_id), ("u8", host), ("u8", 0), ("u8", 0), ("u32", 0),
-         ("buf", bytes([0, character & 0x3F, team & 0x1F])),
+    f = [("u8", slot), ("u32", user_id), ("u8", 0), ("u8", 0), ("u8", 0), ("u32", 0),
+         ("buf", bytes([0x02 if chief else 0, character & 0x3F, team & 0x1F])),
          ("blob", profile), ("u8", 0), ("u8", 0), ("u8", 0), ("str", name), ("str", ""), ("blob", pad), ("u8", 0),
          ("u16", 0), ("u8", 0), ("u8", 0), ("u8", 255), ("u8", 0), ("u32", 0), ("u32", 0), ("u32", 0), ("u8", 0),
          ("u32", 0), ("u32", 0), ("u8", 0), ("u32", 0), ("u16", 0), ("str", "")]
     return obf_body(103, *f)
+
+
+def room_slot_state(slot=0, chief=True, ready=False, character=0, team=0):
+    """Opcode 106 (CPrepareStage__On_106 0x6C6BC9): u8 slot, 3 bytes state (DecodeBuf; byte0 bit0 ready, bit1 chief,
+    byte1 & 0x3F character, byte2 & 0x1F team), u8 (sub_8E8E68(slot, v)). For our own slot with the ready bit unchanged
+    the client calls stage vf153(this, 1) (CPrepareStage__vf153): enables the room buttons (sub_A7195B) and shows
+    PRE_Bt_Start when we are chief (PRE_Bt_Ready otherwise). Without it the buttons stay disabled."""
+    st = bytes([(0x02 if chief else 0) | (0x01 if ready else 0), character & 0x3F, team & 0x1F])
+    return obf_body(106, ("u8", slot), ("buf", st), ("u8", 0))
 
 
 def login_ok(name="tester", players=1):
@@ -181,7 +191,8 @@ def login_ok(name="tester", players=1):
          ("u8", 0), ("u16", 0), ("u8", players), ("u64", 0)]
     for i in range(players):
         f += [("u32", 1000 + i), ("u32", 0), ("u16", 0), ("u16", 0),   # sub_9B698F, sub_9B69AB
-              ("u32", 0), ("str", name), ("u8", 0),                    # sub_99A71D, sub_99A746 (name), sub_99AC50
+              ("u32", 1000 + i), ("str", name), ("u8", 0),             # sub_99A71D = PLAYER ID (must match the
+              # user id in room opcode 103, else the client does not treat that slot as ours), sub_99A746 = name
               ("str", name), ("str", ""),                              # sub_99A817, sub_99A783
               ("u8", 0), ("u32", 0), ("u8", 0), ("u8", 0), ("u16", 0), ("u8", 0), ("u8", 0),
               ("u32", 0), ("u32", 0), ("u8", 0), ("u8", 0), ("u8", 0),
@@ -330,7 +341,7 @@ async def handle(reader, writer, port, log):
                     log(f"[{port}] create room {parse_create_room(body)}")
                     replies = [create_room_ok()]
                 if op == 337:  # sent on entering the waiting room (stage 12) -> put ourselves into slot 0
-                    replies = [room_player()]
+                    replies = [room_player(), room_slot_state()]
                 if op == 395:  # lobby square: request square info -> area/map/theme, then the user list
                     replies = [square_info(), square_users(), room_list()]
                 if op == 0:

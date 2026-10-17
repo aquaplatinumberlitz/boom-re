@@ -477,3 +477,17 @@ chuyển tiếp `CSessionStage__OnPacket` → `CChatStage__OnPacket`). `CSession
 - Opcode 104 (vf143) = rời phòng (`u8 slot`; nếu là mình thì hiện Banned… và về stage trước).
 - Còn thiếu: dòng chat "CoupleEntrance" (một field 103 để mặc định), bản đồ trống, nút vẫn là "SẴN SÀNG" (client chưa coi
   mình là chủ phòng) và bấm không gửi gì → cần gói thông tin phòng / chủ phòng / bản đồ (agent `a-room` đang phân tích).
+
+### Cập nhật 10: nút BẮT ĐẦU bật (2026-10-17)
+Ảnh `docs/waiting_room_start.png`: ô 1 "TRƯỞNG PHÒNG", nút **BẮT ĐẦU**, khung nhân vật ("NHANH NHẨU").
+- **Id người chơi = field 5 của gói login** (`sub_99A71D`; xác nhận theo `docs/oc_d-login.md` của agent d-login + IDA).
+  Trước đây fakeserver gửi 0 ở đó (giá trị 1000 nằm ở field 1 `sub_9B698F` – khác). Phải khớp user id của opcode 103,
+  nếu không client không coi ô đó là của mình.
+- Trưởng phòng = bit1 byte0 của trạng thái ô (`sub_8EA9B0` duyệt ô của các người chơi của mình).
+- **Opcode 106** (`room_slot_state()`): `u8 slot, 3 byte trạng thái (DecodeBuf), u8`. Ô của mình + bit sẵn sàng không đổi →
+  `CPrepareStage__vf153(this, 1)`: bật các nút (`sub_A7195B`), sprite `PRE_Bt_Start` nếu là trưởng phòng
+  (`PRE_Bt_Ready` nếu không). Thiếu gói này thì nút phòng bị tắt — bấm không có gì.
+- Sự kiện nút phòng: `CPrepareStage__vf5` → `sub_6CB7B6` (chặn nếu `this[15139]->vf44()!=0`, không lấy được trạng thái ô,
+  hoặc `this[4777]!=0`). `0xBBA` (chỉ trưởng phòng) → vf152 hộp thoại chọn bản đồ; `0xBBB` → `sub_6C95AD` → `sub_6C63B6`.
+- Bấm BẮT ĐẦU một mình → hộp thoại **"SmallPlayerNo"** (client tự chặn: thiếu người).
+- Sau 106, client gửi opcode 88 (`u16, u32`) — chưa trả lời.
