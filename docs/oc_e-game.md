@@ -217,7 +217,7 @@ opcode 189 (S→C):
   u32 -> this[4887]      (Decode4; CHƯA KIỂ — có vẻ giới hạn thời gian lượt)
   u16 map_id             (Decode2; được phép dùng cho sub_8EAB95, vf147 — giống map id trong 501)
   mode 1: u8×16 → sub_70E357(...): set map id, gọi vf147 (tạo lại round) rồi C→S gửi 139 {bool 1}
-  mode 2: u8 v18??  (Decode1) + u16 (Decode2) + u32 (Decode4)
+  mode 2: u16 (Decode2) + u8 (Decode1) + u32 (Decode4)
           → sub_70DF00(...): nhánh "thiếu 12 bomber" hoặc nhánh đầy đủ (so this[5410]-this[5409] >> 2), sau đó C→S 140
   mode 4: u16 (Decode2) + u8 (Decode1) + u8 (Decode1) → sub_70DFF9(...): đầy đủ 12 bomber có RTTI CGOBomber
           + dùng malloc 0xA18, gửi C→S 140 sau khi sync xong
@@ -232,6 +232,6 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
 | 139 | `sub_70E357` 0x70E357 (do On_189 mode 1 dẫn) | `bool 1` |
 | 140 | `sub_70DF00` 0x70DF00 / `sub_70DFF9` 0x70DFF9 / `sub_71AD24` 0x71AD24 | `bool 1` |
 | 141 | `sub_70E9FC` 0x70E9FC / `sub_70EADB` 0x70EADB — client **tự gửi trong vòng tick** `sub_71B521` (khi hết hạn stamp this[19676] / step theo seed sub_654153(3) % 12 == 0) | `u2 uid` (sub_6E2000), `u2 map_id` (sub_8E9977), `u8 n` (số ô bước, clamp 0..3), n × {`u8`, `u8`} — 2 byte mỗi ô, đọc từ queue di chuyển (sub_6EE7A1 / sub_6ED146) |
-| 142 | `sub_71B275` 0x71B275 (vòng tick, thi this[21956] != 0, thời gian cách nhau ≥ 2000) | `u2 uid`, `u2 map_id`, `u8 nblocks` (clamped 0..10), mỗi block: `u8 ncell`, ncell × {`u8`, `u8`} |
+| 142 | `sub_71B275` 0x71B275 (vòng tick khi this[21956] != 0, cách nhau ≥ 2000 tick) != 0, thời gian cách nhau ≥ 2000) | `u2 uid`, `u2 map_id`, `u8 nblocks` (clamped 0..10), mỗi block: `u8 ncell`, ncell × {`u8`, `u8`} |
 | 143 | `sub_71751A` 0x71751A — *đây là gói đặt bom*, caller: `CMapActionBomb__vf4` 0x752B44 (nút/nhấn bom) + `sub_76D342` | `u2 uid`, `u8 count` (= số cell), `u2 x?`, `u2 y?`, `u8 dir?`, `u32`, `u2` , rồi count × {`u8`, `u8`} |
-|  | còn lại từ các phím phụ: `sub_702FCA` (209), `sub_702DE4` (115), `sub_70307F` (158), `sub_70326A/70330E/7033A3/7034FF` (126), `sub_703825` (175), `sub_706FC0` (135), `sub_70732A` (99), `sub_707F0F` (192), `sub_7083EC` (211), `sub_70A3EC` (132), `sub_70B0B3` (196), `sub_70D9BE` (207), `sub_70DFF9` Ngoài nói trên (140), `sub_70E7D6` (CHƯA KIỂ opcode), `sub_70EBE4` (179), `sub_70E9FC` tự nói trên (141), `sub_70F090` (174), `sub_7100B2` (197), `sub_716B75` (136), `sub_71751A` bản thân (143), `sub_7190C6` (184), `sub_719A3C` (203), `sub_71B275` nói trên (142), `sub_6F4365` (148), `sub_6FB1FE`/`sub_6FA7AB` (183), `sub_703A3?` (unclear) | (1×) thông tin phụ (CHƯA KIỂ) |
+|—| còn lại: các gói phụ: `sub_702FCA` (209), `sub_702DE4` (115), `sub_70307F` (158), `sub_70326A/70330E/7033A3/7034FF` (126), `sub_703825` (175), `sub_706FC0` (135), `sub_70732A` (99), `sub_707F0F` (192), `sub_7083EC` (211), `sub_70A3EC` (132), `sub_70B0B3` (196), `sub_70D9BE` (207), `sub_70DFF9` Ngoài nói trên (140), `sub_70E7D6` (CHƯA KIỂ opcode), `sub_70EBE4` (179), `sub_70E9FC` tự nói trên (141), `sub_70F090` (174), `sub_7100B2` (197), `sub_716B75` (136), `sub_71751A` bản thân (143), `sub_7190C6` (184), `sub_719A3C` (203), `sub_71B275` nói trên (142), `sub_6F4365` (148), `sub_6FB1FE`/`sub_6FA7AB` (183), `sub_703A3?` (unclear) | (1×) thông tin phụ (CHƯA KIỂ) |
