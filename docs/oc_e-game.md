@@ -277,14 +277,14 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
 4. Bắt đầu lượt: gửi **189** (mode 2/4 như §5a) — client trả C→S **139**/`140`.
 5. Đồng bộ di chuyển: client tự gửi **141** (và 142); SERVER PHẢI phát lại cho người chơi khác — *chưa tìm handler
    nhận được tương ứng trong CGameStage__OnPacket* (CHƯA KIỂ — cần tiếp tục tra).
-6. Đặt bom: client gửi **143** (`CMapActionBomb__vf4`); server phải phát hiệu ứng (chuyên 158/145/…) — CHƯA KIỂ.
+6. Đặt bom: client gửi **143** (`CMapActionBomb__vf4`); server phải phát hiệu ứng (nhiều khả năng qua 158/145/163) — CHƯA KIỂ.
 7. Kết thúc ván: chưa chốt (On_146/128/204?) — CHƯA KIỂ.
 
 ### TODO phân tích tiếp
-- (a) tìm handler S→C tương ứng C→S 141/142 (broadPath của người khác);
+- (a) tìm handler S→C tương ứng C→S 141/142 (băng di chuyển của người khác);
 - (b) gói kết thúc ván: On_146, On_128 subtype, On_204;
-- (c) gọi lược bắt đầu: bắt server nhận 139/140 (modewire), mode2/mode4 luồng đầy đủ;
-- (d) chính từng field của phần 3 (c/d/e) của *501* vẫn CHƯA KIỂ.
+- (c) thứ tự bắt đầu lượt: server nhận 139/140 rồi đáp mode2/mode4 của 189;
+- (d) ý nghĩa từng field phần 3 (c/d/e) của 501 vẫn CHƯA KIỂ.
 
 ### 5e. Bổ sung opcode "sự kiện trong trận" (đọc từ decompile)
 - **On_163** 0xC716735: bắt đầu bằng 4 field chung, sau đó switch theo subtype:
