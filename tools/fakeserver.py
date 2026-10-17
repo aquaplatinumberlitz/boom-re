@@ -9,7 +9,8 @@ import boomproto as bp
 CLIENT_VERSION = 116  # sub_8E2494
 HEADER_TYPE = 0       # row of the opcode substitution table, 0..15
 ROOM_TYPE = int(__import__('os').environ.get('ROOM_TYPE', '19'))
-MAP_INDEX = int(__import__('os').environ.get('MAP_INDEX', '0'))  # room_map(); index into the client's map table  # see create_room_ok(); 14 = 1-player start allowed
+MAP_INDEX = int(__import__('os').environ.get('MAP_INDEX', '0'))
+AUTO_START = float(__import__('os').environ.get('AUTO_START', '0'))  # >0: send opcode 501 N s after entering a room  # room_map(); index into the client's map table  # see create_room_ok(); 14 = 1-player start allowed
 
 
 def hello_packet(header_type=HEADER_TYPE, version=CLIENT_VERSION):
@@ -240,6 +241,25 @@ def map_checksums():
                     ("u32", zlib.adler32(dyn_map_blob(), 0)), ("u32", 0), ("u8", 0), ("u32", 0))
 
 
+def match_start(map_entry=BATTLE_MAPS[0], dyn_index=0, room_type=None, seed=12345, slots=((0, 0, 0),)):
+    """Opcode 501 (CPrepareStage__On_501 0x6C4978) = start the match -> sub_8F391D(13) (CGameStage). Server-driven: the
+    handler does not require a prior opcode 97, so the server can start the match itself.
+    u8 result (1 = ok, else "CannotLaunchAs"); [per-slot block only on special channel kinds sub_8DAB40/8DAD87/8DAD95];
+    u32 seed (sub_8E77E4, sub_65412D(3, seed)); u16 CPlayMapInfoList index (sub_8EAB95); str map name — must be a prefix
+    match of that CPlayMapInfoList entry (sub_736FE3), else "InvalidMapReturn"; u32 CDynamicMapMan index (sub_6DE36E);
+    u8 room type (sub_8E78CB); u8 (sub_8E7636); u8 n; n x (u8 slot, u8 (+96 of the 580-byte slot record, sub_8E76A3;
+    a slot with a player needs it != -1), u8 (sub_8E8EBB), u32 (>=0 -> sub_67900E), u32 (sub_67901A), u32 (sub_9B69F7 for
+    our own slot)); then every slot 0..15 must pass sub_6BE6D0, else the client goes back (stage [15141]) + opcode 81;
+    then u8 flag (!= 0 -> sub_985703 extra data) -> CGameStage."""
+    name, _theme, _file, idx = map_entry
+    f = [("u8", 1), ("u32", seed), ("u16", idx), ("str", name), ("u32", dyn_index),
+         ("u8", ROOM_TYPE if room_type is None else room_type), ("u8", 0), ("u8", len(slots))]
+    for slot, pos, team in slots:
+        f += [("u8", slot), ("u8", pos), ("u8", team), ("u32", 0), ("u32", 0), ("u32", 0)]
+    f += [("u8", 0)]
+    return obf_body(501, *f)
+
+
 def login_ok(name="tester", players=1):
     """CLoginStage__On_4 0x8534F3: u8 result 0 = success -> sub_852BCA 0x852BCA (field order from the decompile;
     meaning of most fields still unknown, zeros are accepted). `players` must equal the 1P/2P count
@@ -399,6 +419,16 @@ async def handle(reader, writer, port, log):
                     replies = [create_room_ok(room_type=ROOM_TYPE)]
                 if op == 337:  # sent on entering the waiting room (stage 12) -> put ourselves into slot 0
                     replies = [room_player(), room_slot_state(), room_map(MAP_INDEX)]
+                    if AUTO_START:  # server-driven match start (opcode 501) a few seconds later
+                        async def _start(delay=AUTO_START):
+                            await asyncio.sleep(delay)
+                            r = match_start()
+                            writer.write(sess.send(r))
+                            await writer.drain()
+                            log(f"[{port}] S->C opcode 501 (auto start)")
+                        asyncio.ensure_future(_start())
+                if op == 97:  # client Start (passed its own checks) -> start the match
+                    replies = [match_start()]
                 if op == 395:  # lobby square: request square info -> area/map/theme, then the user list
                     replies = [square_info(), square_users(), room_list(), map_checksums(), dyn_map_info()]
                 if op == 0:

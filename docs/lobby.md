@@ -510,3 +510,15 @@ chuyển tiếp `CSessionStage__OnPacket` → `CChatStage__OnPacket`). `CSession
   (2 CantDecideMap, 3 AllMustReady, 4 SmallPlayerNo, 5 SmallMapPlayer[2], 6 SmallTeamNo, …), cũng dùng cho **opcode 116**.
 - Nút BẮT ĐẦU = `sub_6C869F` (vf77): kiểm tra → gửi **opcode 97** (blob + thông tin map `sub_6DF9FB`) → `this[4777]=3`.
 - Hiện tại: "CantDecideMap" — hộp thoại map vẫn liệt kê 0 map (bộ lọc `sub_6DEE48` loại hết; đang đo bằng gdb).
+
+### Cập nhật 12: bắt đầu trận do server chủ động (501) → CGameStage (2026-10-17) — DỪNG
+- **Opcode 501** (`CPrepareStage__On_501` 0x6C4978, định dạng trong `match_start()`; đối chiếu `docs/oc_a-room.md` của
+  agent a-room + IDA) không đòi client gửi 97 trước, nên server tự bắt đầu trận được (`AUTO_START=<giây>`). Điều kiện: tên
+  map khớp tiền tố mục `CPlayMapInfoList` (`sub_736FE3`), chỉ số map hợp lệ (`sub_6DE36E`), và cả 16 ô qua `sub_6BE6D0`
+  (ô có người cần u8 thứ hai của bản ghi ≠ -1). Client gửi 298 rồi tạo `CGameStage` (stage 13).
+- Khối VM `sub_9682DE` (0x9682E5, Init(chỉ số) của object thành viên 2 instance, gọi từ ctor `sub_9683B4`) được thay bằng
+  bản tối thiểu trong `tools/devirt.py` — **suy ra từ ctor/dtor, chưa kiểm bằng trace**.
+- Sau đó client crash trong vùng VM khi game context nạp map (backtrace qua 0x6ED8A6 → vùng `CGamePlayMap__Load`).
+  **Dừng tại đây**: phần này nằm ở khối bảo vệ của Themida; chờ người dùng quyết hướng tiếp theo.
+- Hộp thoại chọn map vẫn liệt kê 0 map dù bộ lọc `sub_6DEE48` cho qua cả 3 map (gdb: RET=1) — vấn đề ở bước nhóm map,
+  chưa xử lý (không cần cho đường 501).

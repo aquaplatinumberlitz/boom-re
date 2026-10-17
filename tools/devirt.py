@@ -161,6 +161,23 @@ BLOCKS = [
             jmp {0x8F38F3:#x}
         """,
     ),
+    dict(
+        site=0x9682E5, cont=0x968385, func="sub_9682DE (Init(index) of a 2-instance CGameStage member object)",
+        # Reached when entering a match: CStageMgr__ChangeStage -> CGameStage ctor sub_70CBAF -> sub_9683B4 (member ctor)
+        # -> sub_9682DE(this, 0); also sub_71A9EC (game reset) calls it for both instances with index 0 and 1.
+        # The whole body (0x9682E5..0x968372) is virtualized; native code resumes at the epilog 0x968385
+        # (pop edi/esi/ebp; ret 4). Layout from the ctor sub_9683B4 / dtor sub_968236: u8 box +0, u32 boxes +12/+24,
+        # boxes +36/+48, sub-readers +60/+96, two sub_965B1F containers, object +0xB4 — the ctor already builds every
+        # box with 0. NOT recovered from a trace (no snapshot yet): minimal equivalent = store the index in the u8 box
+        # (setter sub_414059, __thiscall, ret 4). Context at the site: esi = this, [ebp+8] = index.
+        asm=f"""
+            movzx eax, byte ptr [ebp + 8]
+            push eax
+            mov ecx, esi
+            call {0x414059:#x}
+            jmp {0x968385:#x}
+        """,
+    ),
 ]
 
 
