@@ -61,7 +61,7 @@ log cho stage 13 suy theo cùng pattern (CHƯA KIỂ xref trực tiếp). Luồn
 - Blob của 231 (đọc qua subreader obf như gói 14): `u16 count` (`sub_A62F70`), rồi **check `sub_A62570 == this[3]`**
   (khác → `sub_6DB3ED` rồi thoát); mỗi bản ghi: `u32` (`sub_A62FB0`, dùng `sub_911168`), `u8`, `str` **tên file map**
   (nạp `"Map/%s"`), `str` (theme?), `u8`, `u8` (mã theme: 89 = "Theme/SweetCandy", 138 = "Theme/ThemeDefault", khác →
-  `"Theme/%s"`%), `str`, `str`, `u8`, `u8`, `u32` màu (sub_A2A5E0(B2,B1,B0)), `u8` (style: `/10==1` → `%=10` + cờ),
+  `"Theme/%s"`), `str`, `str`, `u8`, `u8`, `u32` màu (sub_A2A5E0(B2,B1,B0)), `u8` (style: `/10==1` → `%=10` + cờ),
   `u8`, `u8`, `u16`, `u8`, `u32`. Sau mỗi bản ghi `sub_6E03A8(&record)`; cuối `sub_6E048D`, `sub_6E06A0`.
 - BGM: vf155 (0x70EEF3) chọn `"%s.mp3"` theo map id (`sub_6DDBAB` từ bảng).
 - CHƯA KIỂ: ý nghĩa từng field của bản ghi 231; nhưng **phải gửi 231 (đúng tên map id) trước 501** để `sub_736FE3`
