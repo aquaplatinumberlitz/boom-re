@@ -235,3 +235,45 @@ CHƯA KIỂ: mode chính xác tại(decoded role map 2/4), giá trị các u32 �
 | 142 | `sub_71B275` 0x71B275 (vòng tick khi this[21956] != 0, cách nhau ≥ 2000 tick) != 0, thời gian cách nhau ≥ 2000) | `u2 uid`, `u2 map_id`, `u8 nblocks` (clamped 0..10), mỗi block: `u8 ncell`, ncell × {`u8`, `u8`} |
 | 143 | `sub_71751A` 0x71751A — *đây là gói đặt bom*, caller: `CMapActionBomb__vf4` 0x752B44 (nút/nhấn bom) + `sub_76D342` | `u2 uid`, `u8 count` (= số cell), `u2 x?`, `u2 y?`, `u8 dir?`, `u32`, `u2` , rồi count × {`u8`, `u8`} |
 |—| còn lại: các gói phụ: `sub_702FCA` (209), `sub_702DE4` (115), `sub_70307F` (158), `sub_70326A/70330E/7033A3/7034FF` (126), `sub_703825` (175), `sub_706FC0` (135), `sub_70732A` (99), `sub_707F0F` (192), `sub_7083EC` (211), `sub_70A3EC` (132), `sub_70B0B3` (196), `sub_70D9BE` (207), `sub_70DFF9` Ngoài nói trên (140), `sub_70E7D6` (CHƯA KIỂ opcode), `sub_70EBE4` (179), `sub_70E9FC` tự nói trên (141), `sub_70F090` (174), `sub_7100B2` (197), `sub_716B75` (136), `sub_71751A` bản thân (143), `sub_7190C6` (184), `sub_719A3C` (203), `sub_71B275` nói trên (142), `sub_6F4365` (148), `sub_6FB1FE`/`sub_6FA7AB` (183), `sub_703A3?` (unclear) | (1×) thông tin phụ (CHƯA KIỂ) |
+
+### 5c. Opcode S→C đáng chú ý của CGameStage (ngoài bảng §3; cấu trúc đọc từ decompile, ý nghĩa CHƯA KIỂ)
+- **On_106** `sub_7019AE` 0x7019AE: co rút ít: `u8 slot, DecodeBuf 3` → `sub_8E977D(slot, buf)` — cập nhật trạng thái
+  ô/người (cùng kiểu field như opcode 103, khác là chỉ mức 3 byte, décid[])
+- **On_147** `CGameStage__On_147` 0x701AB1: `u8 slot` — tra thể loại đồ vật từ slot; nếu hàm có thắt nhiên {
+  `sub_6E5C2B(slot)`, `sub_58D4DA` <bool>, vf tại offset 56 của slot + 1536 } khác 0 → `sub_7264DE(1, -1)` — CO (CHƯA KIỂ).
+- **On_148/149** `sub_704CD8/704D77`: `u8 slot, bool` → `sub_8E99A3(slot)` và `+ 1528 + 36/52` (bật/tắt charm).
+- **On_150** `sub_6FFF78` 0x6FFF78: `u8 slot` → `this[slot + 4895] = 1`.
+- **On_145** `sub_701A48`: `u8 slot, u16 which(1..25), u32, u32` → `sub_6EB940(slot, which, x, y)` (đột nhập sự thay đổi
+  object bản đồ/có hệ quả 25 kiểu).
+- **On_146** `sub_70DE4C`: gọi phổ `sub_70A647(this, pkt)` (CHƯA KIỂ format); sau đó reset những người "đã sẵn sàng";
+  nếu `sub_9B6F75(4)` → `this[5400] = 1`. Có vẻ là **chuẩn bị lượt tiếp**.
+- **On_155** `CGameStage__On_155` 0x701E8B: Field chính: `u8` (so với id của mình qua `sub_6E2000`,
+  `u8 (nibble cao = loại 4.., nibble thấp = nhìn ở`), `u16 idx`, `u8`, `u8`, `u8`, `u8` — hiệu ứng âm ảnh/hh
+  (co (`sub_6734D5(0x4C/0x9D/0x9F)`), hành động về "mình" có tác động (sub_591045/50).
+- **On_157** `CGameStage__On_157` 0x7068DE: `u8 id`, `u16`, `u8`, `u8`, `u8`, `u8`, `u8` — gọi `sub_730EF4`; nếu thất bại
+  → phổ tin `sub_70307F(id, 2, -1)`. Có vẻ như **hiệu ứng vật phản => CRITICAL MAP** (CHƯA KIỂ).
+- **On_158** `CGameStage__On_158` 0x715E90: to lớn: `u8 code`, `u8 id`, `u8`, `u8`, `u8`, `u16 type` (có thể 97/99/100/103
+  = hiệu quả tiền/vàng), `u16 itemId`, `bool` — v الآ پاس item/tiền pickup; CHƯA các nhánh chính xác.
+- **On_164** `CGameStage__On_164` 0x701765: `u16 slot`, `u32`, hiệu ứng picking kiểu hay money add 212 —互通 item chỉ tiến
+  độ gold/điểm.
+- **On_151** (0x70205B, dùng chung với quảng trường `On_477`): `u8 n`, n × {`u16 id`, `u8`, phụ `u32`}.
+- **On_152** (0x7064AC, dùng chung `On_478`): đúng copy của để tới map people.
+- **On_153** 0x70679A: `u8 (≤4), u16 slot, u32, u8` → hiệu ứng màu (CHƯA KIỂ).
+- **On_107** 0x703D01: `u16 (≤0xF), u8 flag, u16 (≤0xF), u16` → set/unset của 8E8C5C/8E8CB1 (item trên người chơi).
+- **On_128** `sub_71458E` 0x71458E: `u8 subtype {1..25}` — mỗi subtype là một "lợi x/score change"; field với id u16,
+  số lượng số (u8/u16/u32/u64/str). CHƯA KIỂ chi tiết từng subtype.
+- **On_25** 0x7127B3: `str` → phân tách token (sub_70ECEF) → cửa sổ/nhại người khác.
+- **On_81** 0x70C8C1: `u32 slot/uid, str` — hiển thị text trên người chơi.
+- **On_231** (dải `CStage` trên): gửi tới bất kỳ sảnh nào nhưng đã kiểm (guard `sub_8AB40 > 0`) một lỗi thiếu cache —
+  cần được Trôi qua bước (xem §2b) — và rất nên đúng nhài trước gói 501.
+
+### 5d. Minimum server để trận chạy (giai đoạn đã kiểm một nửa)
+1. Send **231** trước (đây `blob` dạng gói 14? như described §2b) để csh trận có tên map徙.
+2. Handles房间 chờ nhận "BẮT ĐẦU" (hoặc chính vẫn bấm) — server gửi **501** đúng format §4 (map_name phải khớp
+   map_id trong **231**).
+3. Client đổi sang stage 13, load map set theme (từ **231**) — rồi gửi C→S **139** trước? CHƯA KIỂ thứ tự: 139/140 là
+   trả lời của client cho server gói **189** — so với server bắt buộc gửi 189 như §5a và coi client để toi answer.
+
+TODO phân tích tiếp: (a) tìm gói server nhận ở phía client "đà queue di chuyển của bạn khác" (mới có C→S 141/142,
+CHƯA thấy dispatch handler tương ứng — nhiều khả năng là 150-166 connectors; (b) xác định gói kết thúc ván (On_146 5th
+? Or On_128 subtypes); (c) định dẫn gọi lược sweep "phawn mặt bắt đầu khi client gửi 139/140 (má sự kiện).
