@@ -8,6 +8,7 @@ unpacked_ca.exe.*
 *.nam
 *.til
 assets/
+boomKR/
 tools/unlicense.exe
 
 # Logs / scratch
