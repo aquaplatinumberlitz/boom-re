@@ -434,6 +434,12 @@ Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
   Hiệu ứng của từng `kind` lên nhân vật (tốc độ/số bom/tầm nổ): CHƯA KIỂM.
   fakeserver: `ITEM_ACK=1`; server Rust: luôn trả 158 cho 117, `ITEMS="x,y,kind;…"` gửi 553 trước 501 (`server/tests/bomb.rs` khớp byte với fakeserver).
 
+- **Dùng vật phẩm (Ctrl)** (đang làm, `logs/xvfb/item_use1/2`): bấm Ctrl khi đang tự do → ô VẬT PHẨM trống **ngay** (client tự trừ) và client gửi
+  **C→S 120 subtype 0** (`sub_57762F`, thành phần dùng vật phẩm): phần riêng sau đầu 120 = `u8 1`, `u16 kind (256)`, `u8 0`, `u32 0`. Không thấy hiệu ứng trên màn hình
+  với `kind 1`. Khi đang bị nhốt trong bong bóng: Ctrl **không** dùng được vật phẩm này (vẫn ×01, không gửi gì) ⇒ không phải kim.
+  Bảng thuộc tính vật phẩm: `assets/fx/Attr/ItemAttr.bin` (mục `Ship/*`: Airship, Owl, Turtle, Octopus…, rồi `Item/*`: ItemBomb, ItemFire, ItemRoller, ItemShoe,
+  ItemPunch, ItemMaxPower, …, ItemHPNeedle…). Ánh xạ `kind` (553) → tên: đang dò bằng cách đặt nhiều `kind` lên map.
+
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
 |---|---|---|
