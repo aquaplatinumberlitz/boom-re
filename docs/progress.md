@@ -161,7 +161,8 @@ Ghi chép trước đó về phần crash map: [docs/lobby.md](lobby.md) "Cập 
 ## 6. Việc tiếp theo (theo thứ tự ưu tiên)
 
 0. **(2026-10-18)** Điều khiển đã mở tới mức nhân vật nhận phím; chặn tiếp theo là **khối VM 0x6EFD4A** (đặt bom) —
-   chủ dự án. Phía server làm được song song: kiểm ý nghĩa u32 của 189 / chuỗi 189 mode 1 có đúng với server gốc,
+   chủ dự án. Đầu vào native cho việc viết lại (khung hàm, cổng, 12 tham số + giá trị runtime, `CGameMsgCache`,
+   hàm song sinh, suy luận "bảng 41 → C→S 112"): [docs/vm_6EFD4A_inputs.md](vm_6EFD4A_inputs.md). Phía server làm được song song: kiểm ý nghĩa u32 của 189 / chuỗi 189 mode 1 có đúng với server gốc,
    gói kết thúc lượt 146, đồng hồ "GIỚI HẠN" (this[19736/19740] từ 190).
 1. ~~Mở điều khiển nhân vật trong trận~~ — đã phân định: giả thuyết 1 (thiếu 189 mode 1/mode 0). Mục cũ giữ để tham khảo:
    - Snapshot + emulate `0x736C27` trên client gốc (viết lại thật khối nạp map) — hoặc trước đó, chụp pre/post
