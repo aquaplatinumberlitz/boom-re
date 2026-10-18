@@ -259,6 +259,47 @@ lấy từ API đã fake). Đây là hạn chế của lớp `--fake-native` so 
 "verify 6 khối". Muốn đủ: (a) nâng lớp fake API ngang `vmemu`, hoặc (b) dùng `vmemu` cho phần chạy và
 để `vmdevirt` chỉ lo decode/emit.
 
+
+## 12. Emit C có tham số (round 7)
+
+`trace` giờ bắt **ecx + 4 arg stack** tại mỗi lần rời VM; `emit` in chúng theo đúng thứ tự. Kết quả cho
+`8F346C` (`decomp/emit_8F346C.c`):
+
+```c
+void vm_block_8F346C(void *self)
+{
+    // 22 lần ghi vào .data/.text ngoài section VM (thường là scratch của VM)
+    // 192 địa chỉ heap/stack bị ghi (object game) — xem JSON
+    call_888462((void *)0x19c3a8, 0xf);            // #0  SendPkt__Begin
+    call_A65280((void *)0x19c3a8, 0x4aba478);      // #1  SendPkt__Encode4
+    call_A65280((void *)0x19c3a8, 0x0);            // #2
+    call_A65280((void *)0x19c3a8, 0x0);            // #3
+    call_8F2B34((void *)0x19c333, 0x46c8593e);     // #4  (chưa rõ — nghi anti-cheat)
+    call_692EC4((void *)0x19c332, 0x46c8593e);     // #5  (chưa rõ)
+    call_888609((void *)0x19c3a8, 0x46c8593e);     // #6  SendPkt__Send
+}
+```
+
+So với bản viết tay trong `tools/devirt.py`:
+
+```c
+lea ecx, [ebp - 0x50]        ;  == ecx 0x19c3a8 mà tool bắt được
+push 0xF                     ;  == arg0 0xf
+call 0x888462                ;  Begin
+push [ebp-0x1C]              ;  == arg0 0x4aba478
+lea ecx, [ebp - 0x50]
+call 0xA65280                ;  Encode4  (x3)
+...
+call 0x888609                ;  Send
+```
+
+⇒ **Cấu trúc khớp**: cùng object `ecx`, cùng `0xF`, cùng 3 lần Encode4, cùng Send. Khác biệt: 2 arg của
+Encode4 #2/#3 ra `0x0` (bản viết tay đẩy `[ebp-0x18]`, `[ebp-0x24]` — có thể đúng là 0 trong snapshot này,
+chưa xác minh) và 2 call "thừa" #4/#5.
+
+Đây là mức "emit C đọc được" đầu tiên: **đúng thứ tự + đúng tham số cho các call đã biết**, còn thiếu phần
+ghi object (192 địa chỉ heap) đang chỉ thống kê chứ chưa in ra biểu thức.
+
 ## 5b. Đường áp dụng sang bản KR
 
 Bản KR (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`) **đang bị pack**:

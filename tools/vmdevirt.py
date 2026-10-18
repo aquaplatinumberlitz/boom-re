@@ -523,12 +523,14 @@ def cmd_trace(a):
                   for k in ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp", "esp")}
     writes, calls, exits = {}, collections.Counter(), []
     vmcalls = collections.Counter()
+    vmseq = []             # thứ tự các lần rời VM (để so với bản devirt tay)
     last = [None]          # địa chỉ cuối, để chỉ đếm lần ĐẦU vào một hàm image
     n = [0]
     stop = [None]
     cyc = Cycle()
     md_t = md32(detail=True) if (a.cycle or a.fake_native) else None
     stop_vip = int(a.stop_vip, 16) if a.stop_vip else None
+    hub_count = a.hub_count
     disp_t = int(a.disp, 16) if a.disp else None
     hub_hits = [0]
     SCRATCH = 0x70000000
@@ -559,7 +561,7 @@ def cmd_trace(a):
         if stop_vip is not None and disp_t is not None and addr == disp_t:
             if mu8.reg_read(getattr(X, "UC_X86_REG_" + (a.vip_reg or "esi").upper())) == stop_vip:
                 hub_hits[0] += 1
-                if hub_hits[0] >= 2:
+                if hub_hits[0] >= hub_count:
                     stop[0] = "cycle"
                     print(f"hub {stop_vip:#x} reached {hub_hits[0]} times -> one iteration")
                     mu8.emu_stop()
@@ -587,6 +589,14 @@ def cmd_trace(a):
         elif a.fake_native and armed[0] and img.base <= addr < img.base + len(img.raw):
             if addr != site and prev_in_vm:
                 vmcalls[addr] += 1
+                if len(vmseq) < 200:
+                    # capture thiscall ecx + up to 4 stack arguments (cdecl layout)
+                    esp = mu8.reg_read(X.UC_X86_REG_ESP)
+                    try:
+                        args = struct.unpack("<4I", mu8.mem_read(esp + 4, 16))
+                    except Exception:
+                        args = (0, 0, 0, 0)
+                    vmseq.append((addr, mu8.reg_read(X.UC_X86_REG_ECX), args))
             # left the VM into game code that lives in the dumped image: execute it, unless the
             # caller told us to skip it (anti-cheat / integrity checks that need a real process).
             if addr in skips:
@@ -670,6 +680,11 @@ def cmd_trace(a):
     for k in start_regs:
         if start_regs[k] != end_regs[k]:
             print(f"  {k}: {start_regs[k]:#010x} -> {end_regs[k]:#010x}")
+    if vmseq:
+        print("\nthứ tự rời VM (một vòng):")
+        for i, (x, ecx, args) in enumerate(vmseq[:a.show]):
+            astr = " ".join(f"{v:#x}" for v in args)
+            print(f"   {i:2d}. {x:#010x}  ecx={ecx:#x}  args=[{astr}]")
     if vmcalls:
         print(f"\nVM -> native targets (một vòng): {len(vmcalls)} hàm, {sum(vmcalls.values())} lần")
         for k, c in vmcalls.most_common(12):
@@ -687,6 +702,8 @@ def cmd_trace(a):
                                "eip": hex(w[5])} for w in groups[g]] for g in groups},
                "exits": [hex(x) for x in exits],
                "vmcalls": {hex(k): v for k, v in vmcalls.items()},
+               "vmseq": [{"addr": hex(x), "ecx": hex(ecx), "args": [hex(v) for v in args]}
+                         for x, ecx, args in vmseq],
                "regs_start": {k: hex(v) for k, v in start_regs.items()},
                "regs_end": {k: hex(v) for k, v in end_regs.items()}}
         pathlib.Path(a.json).write_text(json.dumps(out, indent=1))
@@ -742,7 +759,7 @@ def cmd_lift(a):
         if stop_vip is not None and disp_t is not None and addr == disp_t:
             if mu8.reg_read(getattr(X, "UC_X86_REG_" + (a.vip_reg or "esi").upper())) == stop_vip:
                 hub_hits[0] += 1
-                if hub_hits[0] >= 2:
+                if hub_hits[0] >= hub_count:
                     stop[0] = "cycle"
                     print(f"hub {stop_vip:#x} reached {hub_hits[0]} times -> one iteration")
                     mu8.emu_stop()
@@ -1392,17 +1409,40 @@ def cmd_emit(a):
     lines.append(f"void vm_block_{int(t['site'], 16):X}(void *self)")
     lines.append("{")
     w = t.get("writes", {})
-    if ctx and w.get("ctx"):
-        lines.append("    // VM context fields (giá trị cuối quan sát được)")
+    # the VM's own section + context are internal state: not effects the game observes
+    vm_lo = vm_hi = None
+    try:
+        prof = json.loads((ROOT / "decomp" / "vm_profile.json").read_text())
+        vm_lo = min(int(x["lo"], 16) for x in prof["themida_sections"])
+        vm_hi = max(int(x["hi"], 16) for x in prof["themida_sections"])
+    except Exception:
+        pass
+
+    def internal(addr):
+        return vm_lo is not None and vm_lo <= addr < vm_hi
+
+    if w.get("image"):
+        keep = [e for e in w["image"] if not internal(int(e["addr"], 16))]
+        lines.append(f"    // {len(keep)} lần ghi vào .data/.text ngoài section VM (thường là scratch của VM)")
+    if w.get("heap"):
+        lines.append(f"    // {len(w['heap'])} địa chỉ heap/stack bị ghi (object game) — xem JSON")
+    if ctx and w.get("ctx") and a.verbose:
+        lines.append("")
+        lines.append("    // state nội bộ VM (chỉ khi --verbose)")
         for e in w["ctx"]:
             off = int(e["addr"], 16) - ctx
             lines.append(f"    ctx[{off:#05x}] = {e['last']};   // {e['n']} lần ghi")
-    if w.get("image"):
-        lines.append("    // game globals / image data")
-        for e in w["image"]:
-            lines.append(f"    *(uint32_t *){e['addr']} = {e['last']};   // {e['n']} lần")
-    if w.get("heap"):
-        lines.append(f"    // {len(w['heap'])} địa chỉ heap/stack bị ghi — xem JSON để biết chi tiết")
+    seq = t.get("vmseq") or []
+    if seq:
+        lines.append("    // chuỗi gọi native, đúng thứ tự quan sát được (ecx = con trỏ this)")
+        for i, e in enumerate(seq):
+            tgt = int(e["addr"], 16)
+            ecx = int(e["ecx"], 16)
+            args = [int(x, 16) for x in e["args"]]
+            shown = args[:2]
+            lines.append(f"    call_{tgt:X}((void *){ecx:#x}, {', '.join(hex(x) for x in shown)});"
+                         f"   // #{i}")
+        lines.append("")
     calls = t.get("calls") or {}
     if calls:
         lines.append("    // lời gọi native (đã fake khi chạy)")
@@ -1524,8 +1564,10 @@ def main():
     ap.add_argument("--length", default="0x1000", help="bytes to decode when --end is absent")
     ap.add_argument("--disp", help="địa chỉ lệnh dispatch (hex); bỏ trống thì tự dò jmp [reg]")
     ap.add_argument("--vip-reg", default="esi", help="thanh ghi giữ VIP (mặc định esi)")
+    ap.add_argument("--verbose", action="store_true", help="emit cả state nội bộ VM (ctx)")
     ap.add_argument("--fake-ret", default="scratch",
                     help="giá trị trả về khi fake API: 'scratch' (con trỏ tới vùng 64KB) hoặc số")
+    ap.add_argument("--hub-count", type=int, default=2, help="dừng khi hub đạt N lần (mặc định 2)")
     ap.add_argument("--stop-vip", help="dừng khi VIP quay lại địa chỉ này lần thứ 2 (một vòng)")
     ap.add_argument("--skip", action="append", default=[],
                     help="addr[=eax]: bỏ qua hàm native trong image (vd anti-cheat), giả lập return")
