@@ -242,9 +242,9 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 log(format!("[{port}] shop request -> 289"));
                 let _ = tx.send(pk::shop_enter_ok());
             } else if op == 38 {
-                // after 289: enter-shop request (sub_7EFB6A): u8, u8 n, n x (str name, u32 id), u8. The answer is unknown
-                // (S->C 7 like a channel join does nothing); the client waits
-                log(format!("[{port}] shop enter 38 (no answer known yet)"));
+                // after 289: enter-shop request (sub_7EFB6A): u8, u8 n, n x (str name, u32 id), u8 -> 20 (CStage__On_20, stage 14)
+                log(format!("[{port}] shop enter 38 -> 20"));
+                let _ = tx.send(pk::shop_data());
             } else if op == 95 && body.len() >= 6 {
                 // kick by the master (sub_6C6E36 "SureToBan"): u32 user id (+12 of the slot record), u8
                 let target = proto::get_int(&body[2..], 4, true) as u32;

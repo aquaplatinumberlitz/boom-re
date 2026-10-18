@@ -159,7 +159,7 @@ Phân bố opcode theo nhóm:
 
 | ID | Tính năng | Bằng chứng | Trạng thái | Rust |
 |---|---|---|---|---|
-| G1 | shop | `CShopStageNew` (14 opcode); nút → 325 → 289 → C→S 38 rồi chờ: gói trả lời 38 chưa tìm ra; cần S→C 23 trước (lobby.md Cập nhật 19) | 🟡 | 🟡 |
+| G1 | shop | `CShopStageNew` (14 opcode); nút → 325 → 289 → C→S 38 → **S→C 20** → stage shop mở; danh sách hàng trống: cần 64/225/65 (lobby.md Cập nhật 20) | 🟡 | 🟡 |
 | G2 | mua đồ | `CBuyItemListDlg` (50 hàm) | ⬜ | ⬜ |
 | G3 | túi đồ / trang bị | class `CItem*` | ⬜ | ⬜ |
 | G4 | cash / nạp tiền | chưa thấy dispatcher | ⬜ | ⬜ |
@@ -191,7 +191,7 @@ Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 3. **F10** vật phẩm rơi — hiện/nhặt/dùng được (1 người); chưa kiểm 2 người.
 4. ~~**E5/E7/E9/E12** phòng~~ **xong phần chính**: danh sách phòng, chọn map, sẵn sàng/đội/nhân vật, BẮT ĐẦU, đóng ô, đuổi, chủ phòng. Còn: sửa tên/mật khẩu phòng (85).
 5. ~~**D1** chat~~ **xong** (phòng/sảnh/trận); còn thì thầm (D2).
-6. **G1** shop: nút → 325 → 289 → C→S 38 — **kẹt ở gói trả lời 38** (lobby.md Cập nhật 19).
+6. **G1** shop: vào được (S→C 20); còn đổ hàng qua 64/225/65 và mua (lobby.md Cập nhật 20).
 7. **F11** `0x736C27`: Forest01 (phòng 0) chạy được; map/loại phòng khác chưa kiểm hết.
 8. Các mode F13–F20, G2–G9 (túi đồ, exp, quest…): chưa bắt đầu.
 

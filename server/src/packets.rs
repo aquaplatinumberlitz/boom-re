@@ -549,6 +549,19 @@ pub fn account_info(name: &str) -> Vec<u8> {
     p.blob(&b.0).build()
 }
 
+/// Opcode 20 (CStage__On_20): shop entry data, the answer to C->S 38. u8 slot, u8, 4 x u32; [feature 67] u8, 4 x u32, str;
+/// [186] bool; [176] u8 n (+ SYSTEMTIME 8 x u16 if n != 0); u32, u32, u32, u8, u32, str, blob {u32 n, n x (u8 idx, u32, str)},
+/// u32 count, count x blob. Ends with sub_8F391D(14) when E60884+900 == 14 (the shop stage).
+pub fn shop_data() -> Vec<u8> {
+    let mut p = Packet::new(20).u8(0).u8(0).u32(0).u32(0).u32(0).u32(0);
+    p = p.u8(0).u32(0).u32(0).u32(0).u32(0).str("");
+    p = p.u8(0).u8(0);
+    p = p.u32(0).u32(0).u32(0).u8(0).u32(0).str("");
+    let mut b = Le(vec![0]);
+    b.u32(0);
+    p.blob(&b.0).u32(0).build()
+}
+
 /// Opcode 289 (sub_6952A5 -> sub_7EFC2E): answer to C->S 325 (shop button). u8 ok: 1 -> sub_8BE528 + sub_7EFB6A (enter the shop),
 /// 0 -> "CannotConnectToShop".
 pub fn shop_enter_ok() -> Vec<u8> {

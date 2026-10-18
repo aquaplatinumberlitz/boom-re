@@ -624,7 +624,25 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
   server Rust chỉ coi 337 là vào phòng khi vừa trả 83 (`room_pending`), nếu không thì bỏ qua (trước đó người chơi bị xếp vào phòng chung khi đang ở sảnh).
 - Bấm shop → **C→S 325** `{u8}` (`sub_7EFA8E`, state 2) → server trả **S→C 289** `{u8 1}` (`sub_6952A5` → `sub_7EFC2E`: `sub_8BE528`, `sub_7EFB6A`) →
   client gửi **C→S 38** (`u8, u8 n, n × (str tên, u32 id), u8`; sau đó `sub_8BC634` → C→S 330 nếu có phiên cũ) và **C→S 102** `{u8 1}` rồi **chờ**.
-  Gói trả lời cho 38 CHƯA TÌM RA (S→C 7 kiểu vào kênh: không tác dụng). Stage shop (`CShopStageNew`, ctor 0x807358) chỉ được tạo trong
-  `CStageMgr__ChangeStage` (vùng bị Themida làm rối quanh 0x8F91E1) — id stage chưa biết (có thể không phải hằng số trong code thường).
+  → trả lời là **S→C 20** (Cập nhật 20).
 - Tên ở sảnh vẫn là "aName01" (không lấy từ str của 23) — nguồn tên sảnh CHƯA KIỂM.
 
+
+## Cập nhật 20 (2026-10-19) — S→C 20 = trả lời 38: vào được SIÊU THỊ ✅ runtime (G1)
+- **S→C 20** (`CStage__On_20` 0x6A3F88) là gói trả lời cho C→S 38. Cuối hàm: nếu `E60884+900 == 14` → `sub_8F391D(14)` (**stage 14 = shop**,
+  `CShopStageNew`); byte này do nút shop đặt. Bố cục: `u8 slot, u8, u32, u32, u32, u32`; [tính năng 67] `u8, 4×u32, str`; [186] `bool`;
+  [176] `u8 n` (+ SYSTEMTIME 8×u16 nếu n ≠ 0); **`u32 bản FxStock, u32 bản StringTable, u32 bản PackageMap`**, `u8, u32, str`,
+  blob {`u32 n`, n × (`u8 idx, u32, str`)} (`sub_8B141B`), `u32 k`, k × blob. Server Rust gửi toàn 0 → màn shop mở (`docs/shop_open.png`):
+  thẻ ĐẶC BIỆT/VẬT PHẨM/…, tên tester1, VÀNG/XU/BẠC = 0, danh sách trống.
+- 3 số phiên bản so với file đệm trên máy (`FxStock.ini`, `StringTable.ini`, `PackageMap.ini` — blob, phiên bản = trường +20 của blob,
+  `sub_8A1631`/`sub_8A15BF`/`sub_8A16A3`). Không có file / khác bản → client xin server:
+  | C→S | hàm gửi | S→C trả lời | nội dung (blob, ghi lại vào file .ini) |
+  |---|---|---|---|
+  | 276 | `sub_8B28EC` | **64** (`sub_8B25A2`) | FxStock: `u16 n`, n × bản ghi hàng (`sub_8A1190`) |
+  | 278 | `sub_8B2A35` | **225** (`sub_8B26FB`) | StringTable: `u16 n`, n × (`u32 id, str`) |
+  | 256 | `sub_8B2994` | **65** (`sub_8B27FB`) | PackageMap: `u16 n`, n × (`u32, u32`) |
+  Khi đủ cả 3 (`this+8/9/10`), `sub_8B2064` dựng danh sách hàng.
+- Bản ghi hàng FxStock (`sub_8A1190`; blob u8/u16/u32 = `sub_A62F40/A62F70/A62FB0`): `u32 (+8), u8 loại (+20, switch 0..103 ở sub_8A074C),
+  str tên (+32), u32 (+88), u32 mã vật phẩm (+100, tra sub_8BD7CD), u32 (+112), str (+124), u32 (+152), u32 (+164), u16 (+176), u8 (+188),
+  u16 (+200), u16 (+212), u32 (+224), u8 (+236), u8 (+248), u32 (+260), u16 (+272), u32 (+284), u32 (+296), u8 (+308)`. Ý nghĩa: CHƯA KIỂM.
+- Sau 20 client còn gửi 298 (`sub_9ADBDF`: `str tên, bool 1`) và 260 (`bool`); chưa trả lời.
