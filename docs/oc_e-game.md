@@ -383,8 +383,15 @@ Ví dụ thật (slot 0, ô cột 14 hàng 1; server gửi khoá 10000 trong 189
 #### 5a-5c. Sau khi bị bom nổ trúng (đang làm, 2026-10-18)
 Quan sát (`logs/xvfb/boom2`, `logs/xvfb/rust_boom`): ngay sau 151 client gửi **C→S 120**; ~6.3 s sau (nhân vật chết) gửi **C→S 162** rồi **120** lần nữa.
 Server giả chưa trả gì → nhân vật nằm đó, ván không kết thúc.
-- 120 dựng bởi `CGOCAHeroGameBomber__vf112` (0x5AF165) / 0x758410: `sub_88851B(120)` (gói nhóm) + `bool a3`, `bool (vf)`, `u16 sub_58D56D`, `u16 sub_58D575`,
-  `u32 sub_8F2ADB` (thời gian) — thân gói quan sát được dài hơn (có thể nhiều bản ghi trong một gói nhóm). CHƯA KIỂM từng trường.
+- **C→S 120 = sự kiện của bomber** (gói nhóm `sub_88851B(120)`), phần đầu do `CGOCAHeroGameBomber__vf112` (0x5AF165) ghi, rồi người gọi ghi phần riêng:
+  ```
+  u16 op 120 | u8 SUBTYPE | u8 cờ (bomber vf) | u16 x px (cột*40) | u16 y px (hàng*40+39) | u32 thời gian (sub_8F2ADB) | phần riêng theo subtype
+  ```
+  Subtype quan sát/đọc được (vf112 gọi qua `(*this+448)(this, pkt, subtype)`):
+  - **11** — `CGOCAHeroGameBomber__vf121` trạng thái 3 (**bị nhốt** trong bong bóng): + blob (`sub_9C86D5/9C86E9`, thông tin người/bom gây ra). Gửi ngay sau 151.
+  - **13** — `CGameStage__vf150` 0x7172E7 (**chết**, ~6 s sau khi bị nhốt): + blob (`sub_9C8CDA`). (gọi từ `sub_7172A7` ← tick 0x718D51.)
+  - 17 — vf121 trạng thái 0: + u32 1 hoặc 2; 26 — vf121 trạng thái 2: không thêm. CHƯA KIỂM ý nghĩa.
+  Ví dụ: `subtype 11, cờ 0, x 560, y 79, t 5349, blob 14 B` rồi `subtype 13, …, blob 11 B`.
 - 162 có nhiều nơi dựng (`CGOCAHeroGameBomber__vf6_1` 0x5A3681: `u16, u16 0, u16 box+1394, u16 box+1397`; `CGOGameBomb__vf45`; `CHiddenCatchPlayMap`…). CHƯA KIỂM nơi nào gửi.
 
 ### 5b. C→S các gói client tự gửi khi chơi

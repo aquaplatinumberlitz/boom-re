@@ -16,6 +16,7 @@ TURN_MODE = int(__import__('os').environ.get('TURN_MODE', '4'))      # mode fiel
 GO_START = float(__import__('os').environ.get('GO_START', '0'))      # >0: send opcode 190 ("GO", sub_70E7D6, sets phase this[5402]=2) N s after 189
 BEGIN_START = float(__import__('os').environ.get('BEGIN_START', '0'))  # >0: send opcode BEGIN_OP (191 round begin / 146 round + scores) N s after 190
 BEGIN_OP = int(__import__('os').environ.get('BEGIN_OP', '191'))
+DEATH_END = float(__import__('os').environ.get('DEATH_END', '0'))  # >0: N s after C->S 120 subtype 13 (death) send 146 (round result)
 BOMB_PLACE = int(__import__('os').environ.get('BOMB_PLACE', '0'))  # 1: answer C->S 111 with S->C 152 (bomb confirmed + id)
 BOMB_ECHO = float(__import__('os').environ.get('BOMB_ECHO', '0'))  # >0: N s after C->S 111 send S->C 151 (explode) for bomb ids 0..BOMB_IDS-1
 BOMB_IDS = int(__import__('os').environ.get('BOMB_IDS', '32'))
@@ -558,6 +559,16 @@ async def handle(reader, writer, port, log):
                 if op == 77:  # create room (dialog XÁC NHẬN) -> opcode 83 success -> waiting room (stage 12)
                     log(f"[{port}] create room {parse_create_room(body)}")
                     replies = [create_room_ok(room_type=ROOM_TYPE)]
+                if op == 120 and len(body) > 2:  # bomber event (group packet: u8 subtype written by bomber vf112)
+                    sub = bp.get_int(body[2:], 1, True)
+                    log(f"[{port}] bomber event 120 subtype {sub}")
+                    if sub == 13 and DEATH_END:  # CGameStage vf150 = player died -> EXPERIMENT: end the round with 146
+                        async def _end(delay=DEATH_END):
+                            await asyncio.sleep(delay)
+                            writer.write(sess.send(round_result(key=10000, slots={0: [(1, 1), (0, 0), (0, 0)]})))
+                            await writer.drain()
+                            log(f"[{port}] S->C opcode 146 (round result after death)")
+                        asyncio.ensure_future(_end())
                 if op == 111 and BOMB_PLACE:  # bomb record -> server confirmation 152 with a fresh bomb id
                     rec = parse_bomb_record(body)
                     sess.bomb_id = getattr(sess, "bomb_id", 0) + 1
