@@ -529,13 +529,15 @@ def bomb_placed(rec, bomb_id):
 def map_items(brick_items=(), floor_items=()):
     """S->C 553 (CStage__OnPacket -> sub_6A5A5E 0x6A5A5E): item layout of the next map, stored in the room context
     (dword_E60884 vectors +339/+343/+347) and consumed by CGamePlayMap__Load (sub_729F44): blob, inner little-endian:
-      u16 n1, n1 x {u16 index, u8 x, u8 y, u32 kind}  -- item hidden in the brick at (x, y): sub_5BF485(tile, kind, index)
-      u16 n2, n2 x {u16 index, u8 x, u8 y, u32 kind}  -- item lying on the floor
+      u16 n1, n1 x {u16 index, u8 x, u8 y, u32 kind}  -- item lying on the floor (room ctx +339 -> sub_729F44 2nd loop, sub_71FCFE)
+      u16 n2, n2 x {u16 index, u8 x, u8 y, u32 kind}  -- item hidden in the brick at (x, y) (+343 -> sub_5BF485(tile, kind, index))
       u16 n3, n3 x {u16, u32, u32}                     -- CHUA KIEM
     index < 1000 = slot in the item table (sub_89AEA3), kind != 0 makes the broken brick spawn the item (sub_5B6578)."""
     import struct
-    inner = struct.pack("<H", len(brick_items)) + b"".join(struct.pack("<HBBI", i, x, y, k) for i, x, y, k in brick_items)
-    inner += struct.pack("<H", len(floor_items)) + b"".join(struct.pack("<HBBI", i, x, y, k) for i, x, y, k in floor_items)
+    # order checked with gdb (logs/xvfb/item2): CGamePlayMap__Load calls sub_729F44(list +339, list +343) and sub_729F44
+    # treats its SECOND argument as the brick list -> the first list in the packet is the floor list, the second the bricks
+    inner = struct.pack("<H", len(floor_items)) + b"".join(struct.pack("<HBBI", i, x, y, k) for i, x, y, k in floor_items)
+    inner += struct.pack("<H", len(brick_items)) + b"".join(struct.pack("<HBBI", i, x, y, k) for i, x, y, k in brick_items)
     inner += struct.pack("<H", 0)
     return obf_body(553, ("blob", inner))
 
