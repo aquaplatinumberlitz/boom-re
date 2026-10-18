@@ -380,6 +380,13 @@ Ví dụ thật (slot 0, ô cột 14 hàng 1; server gửi khoá 10000 trong 189
 - Đã loại trên đường tìm: bảng factory gói (`dword_EA78E8`/`dword_E64B20`, lúc chạy chỉ opcode 70), `CNetSyncMan` (đồng bộ NPC), `CGameStage::vf61` 0x70922B
   (gói trận u16 subtype + byte khoá, có kiểm độ dài — nghi kênh UDP), `CSessionStage__On_143` (16 × 2 byte trạng thái ô).
 
+#### 5a-5c. Sau khi bị bom nổ trúng (đang làm, 2026-10-18)
+Quan sát (`logs/xvfb/boom2`, `logs/xvfb/rust_boom`): ngay sau 151 client gửi **C→S 120**; ~6.3 s sau (nhân vật chết) gửi **C→S 162** rồi **120** lần nữa.
+Server giả chưa trả gì → nhân vật nằm đó, ván không kết thúc.
+- 120 dựng bởi `CGOCAHeroGameBomber__vf112` (0x5AF165) / 0x758410: `sub_88851B(120)` (gói nhóm) + `bool a3`, `bool (vf)`, `u16 sub_58D56D`, `u16 sub_58D575`,
+  `u32 sub_8F2ADB` (thời gian) — thân gói quan sát được dài hơn (có thể nhiều bản ghi trong một gói nhóm). CHƯA KIỂM từng trường.
+- 162 có nhiều nơi dựng (`CGOCAHeroGameBomber__vf6_1` 0x5A3681: `u16, u16 0, u16 box+1394, u16 box+1397`; `CGOGameBomb__vf45`; `CHiddenCatchPlayMap`…). CHƯA KIỂM nơi nào gửi.
+
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
 |---|---|---|
