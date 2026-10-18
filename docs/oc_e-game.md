@@ -461,7 +461,9 @@ Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
   "kết quả lượt" mà là **bắt đầu lượt + bảng UDP**): `u32 rank_key` ≠ 0 → `htonl` → `sub_9B54FE` = **MTUDP HostCreate tới máy chủ relay** (`u16` cổng đi kèm);
   18 slot × {`u8 on`; on → 3 × (`u32 ip`, `u16 cổng`) → `sub_9B5C5A(slot, …)` = tạo peer + HostCreate tới từng địa chỉ}. Gói 15 (đăng nhập) chứa host + 3 cổng
   nhưng client **không** gửi UDP tới đó (thử `UDP_PORTS=7000,7001,7002` + `tools/udp_sniff.py`: 0 gói).
-  Server Rust: lưu (ip1, ip2, port) từ 92; khi `PLAYERS` > 1 gửi **146 kèm bảng peer** (127.0.0.1, ip1, ip2 với cổng của từng client) thay cho 191 — đang thử.
+  Server Rust: lưu (ip1, ip2, port) từ 92; khi `PLAYERS` > 1 gửi **146 kèm bảng peer** (127.0.0.1, ip1, ip2 với cổng của từng client) thay cho 191.
+  ✅ **Di chuyển đồng bộ hai chiều** (`logs/duo/t3`, `logs/duo/t4`, `docs/duo_sync.png`: 3 ảnh đầu = màn A, 3 ảnh sau = màn B): A sang trái → B thấy; B đi xuống →
+  A thấy. Các client nói chuyện **trực tiếp qua UDP (P2P)**, server chỉ cần trao địa chỉ (không relay, `rank_key` = 0).
 - Ô xuất phát: cả hai về cùng ô góc phải trên — `pos` trong 501 (đang = slot) hoặc khối slot của 189 mode 1 chưa đúng nghĩa. CHƯA KIỂM.
 
 ### 5b. C→S các gói client tự gửi khi chơi

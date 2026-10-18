@@ -81,7 +81,7 @@ Phân bố opcode theo nhóm:
 | B9 | byte thứ 2 của header khi A=2 | `0xF4`, client không kiểm tra | 🟡 | `protocol.md` | — |
 | B10 | gói nhóm C→S (`sub_88851B`: 111, 112, 120, 145…) | 111/120 giải mã được, mỗi bản ghi một gói | 🟡 | `oc_e-game.md` §5a-5 | 🟡 |
 | B11 | khoá phiên trận (u32 của 189 → `this[4887]`, byte đầu gói trận) | IDA + runtime (bản ghi 111 mang khoá) | 🟡 | `oc_e-game.md` §5a-4 | 🟡 |
-| B12 | kênh UDP P2P giữa các client | `CUDPPeer`, `CUDPPeerMan`, `CSendPacketUDP`, `CNMP2P*`; cổng UDP trong gói 15 đang gửi 0 | ⬜ (cần cho F9) | — | ⬜ |
+| B12 | kênh UDP P2P giữa các client | client báo địa chỉ bằng C→S 92, server phát bảng peer trong S→C 146 → MTUDP P2P trực tiếp, đồng bộ di chuyển ✅ (`docs/duo_sync.png`); relay (`rank_key`) chưa dùng | ✅ | — | ⬜ |
 | B13 | báo cáo ngẫu nhiên kiểu anti-cheat C→S 141/142 | `sub_71B521` (tick), không phải di chuyển | 🟡 (server bỏ qua được) | `oc_e-game.md` §5b | — |
 
 ## C. Account / auth / session
@@ -138,7 +138,7 @@ Phân bố opcode theo nhóm:
 | F6b | cứu đồng đội đang bị nhốt / kim (`ItemNiddle`) | chưa | ⬜ | ⬜ |
 | F7 | kết thúc lượt / điểm | 146 chạy được (`5aee4e4`); **bảng điểm 18 slot gửi giá trị giả, ý nghĩa chưa kiểm** | 🟡 | 🟡 |
 | F8 | kết thúc ván → về phòng chờ | S→C 173 `{0,0}` → về phòng chờ → **trận mới** (`b1fc290`); server Rust xử lý C→S 120; danh sách kết quả trong 173 chưa kiểm | ✅ | ✅ |
-| F9 | nhiều người chơi trong trận | 2 client cùng phòng + cùng vào trận (`tools/duo.sh`, server Rust `hub.rs`); **di chuyển chưa đồng bộ** (cần kênh UDP B12) | 🟡 | ⬜ |
+| F9 | nhiều người chơi trong trận | 2 client cùng phòng + cùng vào trận (`tools/duo.sh`, `hub.rs`); **di chuyển đồng bộ 2 chiều** qua UDP P2P (C→S 92 → S→C 146 bảng peer); bom/chết/vật phẩm nhiều người chưa kiểm | 🟡 | ⬜ |
 | F10 | item / power-up rơi | gạch vỡ client tự tính, báo C→S 135; vật phẩm trong gạch do server gửi trước 501 bằng S→C **553** (`oc_e-game.md` §5a-5d); vật phẩm **hiện được** (danh sách 2 của 553, (a,b) = (x,y), kind 1 = bạch tuộc tím); gạch thường không giấu được | 🟡 | 🟡 |
 | F10b | nhặt / dùng vật phẩm | nhặt: C→S 117 → server 158; bị động (bom +1, tầm nổ) client tự áp dụng; dùng Ctrl (kim thoát bong bóng) → C→S 120 subtype 1/0, không cần trả lời (`oc_e-game.md` §5a-5d, `docs/items.md`) | ✅ | ✅ |
 | F11 | map load trong trận | `0x736C27` skip; emulate với object map thật = vòng lặp 0 lần (Village01, phòng 19) → tương đương; map/loại phòng khác chưa kiểm | 🟡 | — |
