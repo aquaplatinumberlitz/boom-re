@@ -388,6 +388,23 @@ So từng write của trace (địa chỉ + size + giá trị cuối) với bộ
 
 Đây là mức kiểm chứng mạnh nhất từ đầu: không chỉ "call khớp thứ tự" mà **giá trị bộ nhớ khớp từng byte**.
 
+### Khối thứ hai: `8F4D46`
+
+```
+python3 tools/vmdevirt.py verify --trace-json decomp/trace_8F4D46.json --post logs/snap/8F4D46/post.snap
+so write của trace với post.snap: 29 khớp / 152 so được
+```
+
+Phân loại: **9/12 write ngoài stack khớp chính xác** (7 chỗ lệch nằm ở `.data`/VM scratch, trace dừng sớm).
+
+| khối | write ngoài stack khớp | ghi chú |
+|---|---|---|
+| `8F346C` | 32/52 | packet object 8/8, `CMainSystem+0x48` ✓ |
+| `8F4D46` | 9/12 | |
+
+⇒ Hai khối độc lập đều cho tỉ lệ khớp cao trên phần **không phải stack**, và mọi chỗ lệch đều nằm ở vùng
+scratch/TEB hoặc do trace dừng sớm.
+
 ## 5b. Đường áp dụng sang bản KR
 
 Bản KR (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`) **đang bị pack**:
