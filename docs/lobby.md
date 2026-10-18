@@ -600,3 +600,17 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
   Trong trận: Enter → gõ → Enter gửi cùng C→S 18; 28 hiện dòng chữ đè góc dưới trái màn trận (`docs/chat_game.png`).
   Chưa làm: thì thầm (D2), màu/kiểu riêng cho chat người chơi.
 
+## Cập nhật 18 (2026-10-19) — tên người chơi, rời phòng, đuổi người, chủ phòng ✅ runtime 2 client (E9)
+- **Tên hiển thị** (dưới ô trong phòng, bảng kết quả, điều kiện đuổi) lấy từ **blob hồ sơ trong 103** (`sub_679434`: `str tên` đầu tiên — chuỗi blob
+  = **u32 độ dài** + byte, `sub_A63A40`), KHÔNG phải trường `str` sau blob. Server cũ ghi độ dài u16 → tên rỗng. Sửa xong: `docs/room_names.png`
+  (tester1 / tester2). Bố cục hồ sơ: `str tên, u8, u8, u32, u8, u32, u16, u32, u32, u32, u32, u8, u32, str, u16×4, u32, u32, u32×4`.
+- **S→C 103/104/105** đi qua `CSessionStage__OnPacket`: 103 → vf141 (vào ô), **104 → vf143 (rời ô)**, 105 → vf144.
+  104 = `u8 slot, u32 id, u8 (1 = bị siêu-chủ đuổi)`. Nếu ô bị xoá là của chính mình (`CPrepareStage__vf143`) → hộp thoại **BannedByLeader**
+  (hoặc ChiefBanned / BannedBySuper) rồi về stage trước (`sub_8F391D(this[15141])`) + C→S 81.
+- **Đuổi**: chủ phòng bấm chân dung người khác (sự kiện 850+slot, `sub_6C9413`; cần người đó có tên và chưa sẵn sàng) → hộp **SureToBan** → ĐỒNG Ý →
+  **C→S 95** (`sub_6C6E36`): `u32 id người chơi (+12 bản ghi slot), u8`. Server: kiểm người gửi là chủ phòng → 104 cho cả phòng (kể cả người bị đuổi)
+  → bỏ khỏi phòng. Chạy thật `logs/duo/t20`, `docs/room_kicked_B.png` (B: BannedByLeader, phòng trống). B về hẳn sảnh sau khi đóng hộp: CHƯA KIỂM.
+  Bấm ô trống thay vào đó gửi 94 (đóng/mở ô). Lệnh chat có tên (CPrepareStage vf77 case 16) cũng gọi `sub_6C6E36`.
+- **Rời phòng / ngắt kết nối**: server gửi 104 cho người còn lại (trước đây không gửi → ô "ma"); C→S 81 = quay lại stage trước (`sub_8F2F14`).
+- **Chủ phòng** = người vào đầu (`Room.chief`), không còn cố định slot 0; chủ rời → người slot nhỏ nhất làm chủ (106 với bit chủ phòng). 97 chỉ nhận từ chủ phòng.
+

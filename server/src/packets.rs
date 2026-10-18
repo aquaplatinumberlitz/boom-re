@@ -243,9 +243,10 @@ pub fn create_room_ok(room_no: u16, room_type: u8, team_mode: u8) -> Vec<u8> {
 
 /// Opcode 103: player in a room slot (CSetPlayerPacket sub_573146 + CSlotAccessoryPacket sub_572A05).
 pub fn room_player(slot: u8, user_id: u32, name: &str, chief: bool, character: u8, team: u8) -> Vec<u8> {
-    let nm = cp1258(name);
+    // profile blob (sub_679434): str name (u32 length, sub_A63A40) first, then numbers (zeros); the name shown in the room / result
+    // window and needed by the kick check (sub_6C9413) comes from here, not from the str field further down
     let mut profile = Le::default();
-    profile.u8(0).u16(nm.len() as u16).bytes(&nm).bytes(&[0; 256]);
+    profile.u8(0).str(name).bytes(&[0; 256]);
     let mut pad = Le::default();
     pad.u8(0).bytes(&[0; 256]);
     let p = Packet::new(103).u8(slot).u32(user_id).u8(0).u8(0).u8(0).u32(0);
@@ -526,5 +527,11 @@ pub fn game_result(ranks: &[(u8, u8)]) -> Vec<u8> {
         }
     }
     Packet::new(168).blob(&b.0).build()
+}
+
+/// Opcode 104 (CSessionStage__OnPacket -> vf143, CPrepareStage__vf143 0x6C6A0B / CSessionStage__vf143): a player left the slot.
+/// `u8 slot, u32 user id, u8 by super-master`. When the slot is our own the client shows BannedByLeader and returns to the lobby.
+pub fn player_left(slot: u8, user_id: u32) -> Vec<u8> {
+    Packet::new(104).u8(slot).u32(user_id).u8(0).build()
 }
 

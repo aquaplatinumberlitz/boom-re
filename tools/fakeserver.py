@@ -184,9 +184,9 @@ def room_player(slot=0, user_id=1000, name="tester", chief=True, character=0, te
     u8, u32, u8, u32, u16, u32, u32, u32, u32, u8, u32, str, u16 ...), u8, u8 (<=1), u8, str, str, blob, u8 flag
     (!= 0 -> blob). sub_572A05: u16, u8 n x (u8, u16), u8 m x (u32 x3), u8 (<=22 / 101..102 / 255), u8, u32 x3,
     u8 k x (u32 x3), u32 x2, bool, u32, u16, str. Meanings mostly unmapped (CHƯA KIỂM); blobs are padded with zeros so
-    sub-readers never run dry. Opcode 104 (vf143) = player leaves (u8 slot)."""
+    sub-readers never run dry. Opcode 104 (vf143) = player leaves (u8 slot, u32 id, u8)."""
     nm = name.encode("cp1258")
-    profile = b"\x00" + struct.pack("<H", len(nm)) + nm + bytes(256)
+    profile = b"\x00" + struct.pack("<I", len(nm)) + nm + bytes(256)  # blob strings: u32 length (sub_A63A40); name shown in the room
     pad = b"\x00" + bytes(256)
     f = [("u8", slot), ("u32", user_id), ("u8", 0), ("u8", 0), ("u8", 0), ("u32", 0),
          ("buf", bytes([0x02 if chief else 0, character & 0x3F, team & 0x1F])),

@@ -33,6 +33,8 @@ pub struct Room {
     pub closed: u16,
     /// Incremented at every match start (stale end-of-match timers compare it).
     pub match_no: u32,
+    /// User id of the room master (first one in; passed on when it leaves).
+    pub chief: Option<u32>,
 }
 
 pub struct Hub {
@@ -84,9 +86,11 @@ impl Hub {
     pub fn update_member(&self, user_id: u32, f: impl FnOnce(&mut Member)) {
         let pkt = {
             let mut r = self.room.lock().unwrap();
+            let chief_id = r.chief;
             let Some(m) = r.members.iter_mut().find(|m| m.user_id == user_id) else { return };
             f(m);
-            crate::packets::room_slot_state(m.slot, m.slot == 0, m.ready, m.character, m.team)
+            let chief = chief_id == Some(m.user_id);
+            crate::packets::room_slot_state(m.slot, chief, m.ready, m.character, m.team)
         };
         self.broadcast(&pkt);
     }
@@ -150,6 +154,46 @@ impl Hub {
             hub.broadcast(&crate::packets::match_over());
         });
         true
+    }
+}
+
+impl Hub {
+    /// Remove a member from the room (left, kicked or disconnected): S->C 104 {u8 slot, u32 id, u8 0} to everybody still in the
+    /// room (`notify_self` also to the leaver: a kicked client shows "BannedByLeader" and goes back to the lobby, CPrepareStage__vf143).
+    /// A new master (lowest slot) gets its 106 with the master bit. Returns the freed slot.
+    pub fn leave_room(&self, user_id: u32, notify_self: bool) -> Option<u8> {
+        let (slot, others, new_chief) = {
+            let mut r = self.room.lock().unwrap();
+            let i = r.members.iter().position(|m| m.user_id == user_id)?;
+            let m = r.members.remove(i);
+            let pkt = crate::packets::player_left(m.slot, user_id);
+            if notify_self {
+                let _ = m.tx.send(pkt.clone());
+            }
+            let mut new_chief = None;
+            if r.members.is_empty() {
+                r.started = false;
+                r.map = None;
+                r.closed = 0;
+                r.chief = None;
+            } else if r.chief == Some(user_id) {
+                let next = r.members.iter().min_by_key(|m| m.slot).unwrap();
+                let (id, pkt) = (next.user_id, crate::packets::room_slot_state(next.slot, true, false, next.character, next.team));
+                r.chief = Some(id);
+                new_chief = Some(pkt);
+            }
+            let others: Vec<_> = r.members.iter().map(|m| m.tx.clone()).collect();
+            for t in &others {
+                let _ = t.send(pkt.clone());
+            }
+            (m.slot, others, new_chief)
+        };
+        if let Some(p) = new_chief {
+            for t in &others {
+                let _ = t.send(p.clone());
+            }
+        }
+        Some(slot)
     }
 }
 

@@ -232,6 +232,21 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                         }
                     }
                 }
+            } else if op == 95 && body.len() >= 6 {
+                // kick by the master (sub_6C6E36 "SureToBan"): u32 user id (+12 of the slot record), u8
+                let target = proto::get_int(&body[2..], 4, true) as u32;
+                let is_chief = hub.room.lock().unwrap().chief == Some(user_id);
+                log(format!("[{port}] kick user {target} by {user_id} (master: {is_chief})"));
+                if is_chief && target != user_id && hub.leave_room(target, true).is_some() {
+                    hub.push_room_list(cfg.room_type);
+                }
+            } else if op == 81 && in_room {
+                // back to the lobby from the room (sub_8F2F14)
+                log(format!("[{port}] user {user_id} leaves the room"));
+                in_room = false;
+                if hub.leave_room(user_id, false).is_some() {
+                    hub.push_room_list(cfg.room_type);
+                }
             } else if op == 87 && body.len() >= 7 {
                 // READY of a non-master (sub_6C31ED): blob (sub_8FD1D5, room/player info), bool ready, u32. Answer: 106 with bit 0.
                 let ready = proto::get_int(&body[body.len() - 5..], 1, true) != 0;
@@ -241,7 +256,7 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 // START by the master (sub_6C869F, after its own all-ready check) -> server-driven match start
                 let start = {
                     let mut r = hub.room.lock().unwrap();
-                    let ok = !r.started && !r.members.is_empty();
+                    let ok = !r.started && !r.members.is_empty() && r.chief == Some(user_id);
                     if ok {
                         r.started = true;
                         for m in r.members.iter_mut() {
@@ -329,15 +344,7 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
             }
         }
     }
-    if in_room {
-        let mut r = hub.room.lock().unwrap();
-        r.members.retain(|m| m.user_id != user_id);
-        if r.members.is_empty() {
-            r.started = false;
-            r.map = None;
-            r.closed = 0;
-        }
-        drop(r);
+    if in_room && hub.leave_room(user_id, false).is_some() {
         hub.push_room_list(cfg.room_type);
     }
     log(format!("[{port}] close {peer}"));
@@ -517,29 +524,33 @@ fn room_map_of(hub: &Hub, cfg: &Config) -> (u32, u16) {
 }
 
 fn enter_room(hub: &Arc<Hub>, cfg: &Arc<Config>, log: &Log, port: u16, user_id: u32, tx: &mpsc::UnboundedSender<Vec<u8>>) {
-    let (slot, others, start, closed) = {
+    let (slot, others, start, closed, chief) = {
         let mut r = hub.room.lock().unwrap();
         r.members.retain(|m| m.user_id != user_id);
         let closed = r.closed;
         let slot = (0..16u8).find(|s| closed & (1 << s) == 0 && !r.members.iter().any(|m| m.slot == *s)).unwrap_or(0);
         let others: Vec<(u8, u32, String, bool, u8, u8)> =
             r.members.iter().map(|m| (m.slot, m.user_id, m.name.clone(), m.ready, m.character, m.team)).collect();
+        if r.chief.is_none() || !r.members.iter().any(|m| Some(m.user_id) == r.chief) {
+            r.chief = Some(user_id);
+        }
         r.members.push(Member { user_id, name: hub::player_name(user_id), slot, tx: tx.clone(), udp: None, team: 0, character: 0, ready: false, dead: false });
         let start = !r.started && r.members.len() >= cfg.players && cfg.auto_start > 0.0;
         if start {
             r.started = true;
         }
-        (slot, others, start, closed)
+        (slot, others, start, closed, r.chief)
     };
     let name = hub::player_name(user_id);
     log(format!("[{port}] user {user_id} enters the room in slot {slot} ({} others)", others.len()));
     // the newcomer: everybody already in the room, then itself
     for (s, id, nm, ready, ch, team) in &others {
-        let _ = tx.send(pk::room_player(*s, *id, nm, *s == 0, *ch, *team));
-        let _ = tx.send(pk::room_slot_state(*s, *s == 0, *ready, *ch, *team));
+        let _ = tx.send(pk::room_player(*s, *id, nm, chief == Some(*id), *ch, *team));
+        let _ = tx.send(pk::room_slot_state(*s, chief == Some(*id), *ready, *ch, *team));
     }
-    let _ = tx.send(pk::room_player(slot, user_id, &name, slot == 0, 0, 0));
-    let _ = tx.send(pk::room_slot_state(slot, slot == 0, false, 0, 0));
+    let me_chief = chief == Some(user_id);
+    let _ = tx.send(pk::room_player(slot, user_id, &name, me_chief, 0, 0));
+    let _ = tx.send(pk::room_slot_state(slot, me_chief, false, 0, 0));
     for s in (0..16u8).filter(|s| closed & (1 << s) != 0) {
         let _ = tx.send(pk::slot_closed(s, true));
     }
@@ -547,8 +558,8 @@ fn enter_room(hub: &Arc<Hub>, cfg: &Arc<Config>, log: &Log, port: u16, user_id: 
     let _ = tx.send(pk::room_map(map_index, map_code));
     // the others: the newcomer
     for m in hub.room.lock().unwrap().members.iter().filter(|m| m.user_id != user_id) {
-        let _ = m.tx.send(pk::room_player(slot, user_id, &name, slot == 0, 0, 0));
-        let _ = m.tx.send(pk::room_slot_state(slot, slot == 0, false, 0, 0));
+        let _ = m.tx.send(pk::room_player(slot, user_id, &name, me_chief, 0, 0));
+        let _ = m.tx.send(pk::room_slot_state(slot, me_chief, false, 0, 0));
     }
     if start {
         tokio::spawn(match_flow(hub.clone(), cfg.clone(), log.clone(), port, cfg.auto_start));
