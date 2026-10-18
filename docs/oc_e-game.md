@@ -352,7 +352,7 @@ u32 rec+0x08  KHOÁ PHIÊN (sub_6EFBCA → sub_6FFFA0 = this[4887], = u32 của 
 u8  rec+0x00  chỉ số context (arg_0 = ctx[490549])   u8 slot
 u32 rec+0x0C  (arg_8 = box bom +280)      u8 rec+0x10 hàng (y)               u8 rec+0x14 cột (x)
 u8  rec+0x30  (arg_C = sub_59119D bom)    u8 rec+0x34  u8 rec+0x38  u8 rec+0x3C   (arg_20/24/28)
-u8  rec+0x18  (arg_18 = bomber vf31)      u32 rec+0x1C (arg_1C = box bom +192)   u8 rec+0x40 cờ (arg_2C)
+u8  rec+0x18  (arg_18 = bomber vf31 = **tầm nổ**, 1 → 2 sau ItemFire)      u32 rec+0x1C (arg_1C = box bom +192)   u8 rec+0x40 cờ (arg_2C)
 if (cờ & 3): u8 rec+0x20, u8 rec+0x24, u8 rec+0x28, u16 rec+0x2C        (chỉ đường sub_6EFEE3 16 tham số)
 ```
 Ví dụ thật (slot 0, ô cột 14 hàng 1; server gửi khoá 10000 trong 189): `khoá=10000, 0, 0, 0, 1, 14, 1, 0, 0, 0, 1, 1, 0`. Ý nghĩa từng field ngoài hàng/cột: CHƯA KIỂM.
@@ -439,6 +439,10 @@ Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
   với `kind 1`. Khi đang bị nhốt trong bong bóng: Ctrl **không** dùng được vật phẩm này (vẫn ×01, không gửi gì) ⇒ không phải kim.
   Bảng thuộc tính vật phẩm: `assets/fx/Attr/ItemAttr.bin` (mục `Ship/*`: Airship, Owl, Turtle, Octopus…, rồi `Item/*`: ItemBomb, ItemFire, ItemRoller, ItemShoe,
   ItemPunch, ItemMaxPower, …, ItemHPNeedle…). Ánh xạ `kind` (553) → tên: đang dò bằng cách đặt nhiều `kind` lên map.
+
+- **Hiệu ứng vật phẩm nhặt được (bị động) — client tự áp dụng sau 158** ✅ (`FLOOR_ITEMS="13,0,1;14,1,0"`, `logs/xvfb/item_use3`, `docs/battle_item_effects.png`):
+  nhặt `kind 1` ItemFire rồi `kind 0` ItemBomb (2 lần 117 → 158) → đặt được **2 bom liền nhau** (2 bản ghi 111, số thứ tự bom 0 và 20) và trường `r18` của 111
+  (bomber vf31) tăng **1 → 2** = tầm nổ; vụ nổ phá gạch xa hơn. Server không cần gửi gì thêm ngoài 158 (server Rust gán id bom 1, 2 và nổ từng quả).
 
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
