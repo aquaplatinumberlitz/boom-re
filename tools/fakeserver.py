@@ -16,6 +16,7 @@ TURN_MODE = int(__import__('os').environ.get('TURN_MODE', '4'))      # mode fiel
 GO_START = float(__import__('os').environ.get('GO_START', '0'))      # >0: send opcode 190 ("GO", sub_70E7D6, sets phase this[5402]=2) N s after 189
 BEGIN_START = float(__import__('os').environ.get('BEGIN_START', '0'))  # >0: send opcode BEGIN_OP (191 round begin / 146 round + scores) N s after 190
 BEGIN_OP = int(__import__('os').environ.get('BEGIN_OP', '191'))
+ITEM_ACK = int(__import__('os').environ.get('ITEM_ACK', '0'))  # 1: answer C->S 117 (item pickup) with S->C 158
 ITEMS = __import__('os').environ.get('ITEMS', '')  # 'x,y,kind;...' -> S->C 553 before 501 (items hidden in bricks)
 MATCH_END = float(__import__('os').environ.get('MATCH_END', '0'))  # >0: N s after C->S 120 subtype 13 send 173 (match over -> waiting room)
 DEATH_END = float(__import__('os').environ.get('DEATH_END', '0'))  # >0: N s after C->S 120 subtype 13 (death) send 146 (round result)
@@ -541,6 +542,25 @@ def map_items(brick_items=(), floor_items=()):
     inner += struct.pack("<H", 0)
     return obf_body(553, ("blob", inner))
 
+
+def parse_item_pick(body):
+    """C->S 117 (CGameMsgCache vf9 0x6F0874, table 21 record written by sub_6F2ECE when a bomber steps on an item, sub_5B098A):
+    u8 ctx, u8 slot, u8 rec+12 (a5[1]), u8 rec+16 (a5[0]), u16 item index (sub_5B61A9), u16 item kind (sub_5B61B4),
+    u32 time (sub_6EFBB8), u32 session key (sub_6EFBCA), u8 rec+36."""
+    o = 2
+    out = {}
+    for k, n in (("ctx", 1), ("slot", 1), ("a", 1), ("b", 1), ("index", 2), ("kind", 2), ("time", 4), ("key", 4), ("flag", 1)):
+        out[k] = bp.get_int(body[o:], n, True); o += n
+    return out
+
+
+def item_picked(r):
+    """S->C 158 (CGameStage__On_158 0x715E90): server confirms the pickup -> sub_6F001E clears the pending 117 record (ctx, index),
+    then applies the item to the player. Order: u8 ok, u8 ctx (== context index), u8 slot, u8, u8, u16 index, u16 kind, bool.
+    The two middle u8 are guessed to be the record's a/b (position?)."""
+    return obf_body(158, ("u8", 1), ("u8", r["ctx"]), ("u8", r["slot"]), ("u8", r["a"]), ("u8", r["b"]),
+                    ("u16", r["index"]), ("u16", r["kind"]), ("u8", 0))
+
 async def handle(reader, writer, port, log):
     peer = writer.get_extra_info("peername")
     log(f"[{port}] connect from {peer}")
@@ -594,6 +614,10 @@ async def handle(reader, writer, port, log):
                             await writer.drain()
                             log(f"[{port}] S->C opcode 146 (round result after death)")
                         asyncio.ensure_future(_end())
+                if op == 117 and ITEM_ACK:  # item pickup request -> confirm with 158
+                    r = parse_item_pick(body)
+                    log(f"[{port}] item pick {r} -> 158")
+                    replies = [item_picked(r)]
                 if op == 111 and BOMB_PLACE:  # bomb record -> server confirmation 152 with a fresh bomb id
                     rec = parse_bomb_record(body)
                     sess.bomb_id = getattr(sess, "bomb_id", 0) + 1

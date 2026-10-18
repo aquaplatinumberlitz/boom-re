@@ -71,6 +71,7 @@ Biến môi trường (đặt trước lệnh):
 | `PLAY_START` | 0 | > 0: gửi 189 **mode 0** N giây sau 190 → phase 3, đồng hồ chạy (oc_e-game §5a-3) |
 | `BEGIN_START` / `BEGIN_OP` | 0 / 191 | > 0: gửi opcode `BEGIN_OP` (191 round begin, 146 kết quả, **552** gói của `sub_71580C`) N giây sau 190 |
 | `POST_PLAY_START` | 0 | > 0: gửi **191** N giây sau 189 mode 0 — start đồng hồ context 0 ⇒ **vòng mô phỏng chạy** (bắt buộc để đi/đặt bom thật) |
+| `ITEMS` / `ITEM_ACK` | — / 0 | `ITEMS="x,y,kind;…"`: gửi **553** (vật phẩm trên map) trước 501; `ITEM_ACK=1` (fakeserver; Rust luôn bật): trả **158** cho mỗi C→S 117 (nhặt vật phẩm) |
 | `MATCH_END` | 0 (Rust: 3) | > 0: N giây sau C→S 120/13 (chết) gửi **173** → về phòng chờ (ưu tiên hơn `DEATH_END`) |
 | `DEATH_END` | 0 | (fakeserver) > 0: N giây sau C→S 120 subtype 13 (chết) gửi **146** → lượt mới |
 | `BOMB_PLACE` / `BOMB_ECHO` | 0 / 0 | (fakeserver) `BOMB_PLACE=1`: trả **152** cho mỗi C→S 111 (gán id); `BOMB_ECHO=N`: N giây sau gửi **151** nổ (id 0..`BOMB_IDS`-1). Server Rust: `BOMB_FUSE` (mặc định 2.5) làm cả hai |

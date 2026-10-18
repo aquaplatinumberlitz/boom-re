@@ -376,3 +376,60 @@ pub fn bomb_explode(ids: &[u16], arg: u32) -> Vec<u8> {
 pub fn match_over() -> Vec<u8> {
     Packet::new(173).u8(0).u8(0).build()
 }
+
+/// C->S 117: item pickup request (CGameMsgCache vf9 0x6F0874; record written by sub_6F2ECE when a bomber steps on an item).
+#[derive(Clone, Debug, Default)]
+pub struct ItemPick {
+    pub ctx: u8,
+    pub slot: u8,
+    pub a: u8,
+    pub b: u8,
+    pub index: u16,
+    pub kind: u16,
+    pub time: u32,
+    pub key: u32,
+    pub flag: u8,
+}
+
+pub fn parse_item_pick(body: &[u8]) -> Option<ItemPick> {
+    let mut o = 2usize;
+    let mut take = |n: usize| -> Option<u64> {
+        let v = body.get(o..o + n).map(|b| crate::proto::get_int(b, n, true));
+        o += n;
+        v
+    };
+    Some(ItemPick {
+        ctx: take(1)? as u8,
+        slot: take(1)? as u8,
+        a: take(1)? as u8,
+        b: take(1)? as u8,
+        index: take(2)? as u16,
+        kind: take(2)? as u16,
+        time: take(4)? as u32,
+        key: take(4)? as u32,
+        flag: take(1)? as u8,
+    })
+}
+
+/// S->C 158 (CGameStage__On_158 0x715E90): pickup confirmed -> sub_6F001E clears the pending 117 record, sub_706E0A applies the item.
+/// u8 ok, u8 ctx, u8 slot, u8, u8 (echo of the record's a/b — guessed), u16 index, u16 kind, bool. Verified 2026-10-18 (item stays picked).
+pub fn item_picked(r: &ItemPick) -> Vec<u8> {
+    Packet::new(158).u8(1).u8(r.ctx).u8(r.slot).u8(r.a).u8(r.b).u16(r.index).u16(r.kind).u8(0).build()
+}
+
+/// S->C 553 (CStage__OnPacket -> sub_6A5A5E): item layout of the next map, must arrive before 501. Blob (little-endian inner):
+/// list 1 (floor, sub_71FCFE), list 2 (spawned at map load / hidden in CGOTileFixedBox), list 3 empty. Entries {u16 index, u8 x, u8 y, u32 kind}.
+pub fn map_items(floor: &[(u16, u8, u8, u32)], placed: &[(u16, u8, u8, u32)]) -> Vec<u8> {
+    let mut inner = Vec::new();
+    for list in [floor, placed] {
+        inner.extend_from_slice(&(list.len() as u16).to_le_bytes());
+        for &(i, x, y, k) in list {
+            inner.extend_from_slice(&i.to_le_bytes());
+            inner.push(x);
+            inner.push(y);
+            inner.extend_from_slice(&k.to_le_bytes());
+        }
+    }
+    inner.extend_from_slice(&0u16.to_le_bytes());
+    Packet::new(553).blob(&inner).build()
+}

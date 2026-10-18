@@ -419,10 +419,20 @@ Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
   cạnh ô xuất phát. Gạch thường ở Village01 **không** nhận vật phẩm (`sub_5BF485` không chạy; gạch vỡ có trường item = -1) — chỉ ô `CGOTileFixedBox` mới
   giấu được. Thứ tự toạ độ (a,b) và bảng `kind` (1, 2 → lò xo tím?) đang kiểm. `index` < 1000 = ô trong bảng vật phẩm (`sub_89AEA3`).
 
-- **Toạ độ và nhặt vật phẩm** (`ITEMS="13,0,1"`, `logs/xvfb/item4`, `docs/battle_item_pickup.png`): bản ghi `{index 0, a=13, b=0, kind 1}` ở danh sách 2 → vật phẩm hiện đúng
-  ô cột 13 hàng 0 ⇒ **(a, b) = (x cột, y hàng)**; `kind 1` = vật phẩm hình bạch tuộc tím. Bước vào ô: vật phẩm biến mất và client gửi **C→S 117**
-  (`a51c5a5a5a57a569a46996ca470296ca74855a`, CHƯA GIẢI MÃ); server không trả lời → bước ra thì **vật phẩm hiện lại** ⇒ việc nhặt do **server xác nhận**
-  (ứng viên trả lời: S→C 158 `CGameStage__On_158`, có `u16 itemId`). CHƯA LÀM.
+- **Toạ độ** (`ITEMS="13,0,1"`, `logs/xvfb/item4`): bản ghi `{index 0, a=13, b=0, kind 1}` ở danh sách 2 → vật phẩm hiện đúng ô cột 13 hàng 0 ⇒ **(a, b) = (x cột, y hàng)**;
+  `kind 1` = vật phẩm hình bạch tuộc tím.
+- **Nhặt vật phẩm = C→S 117 → S→C 158** ✅ runtime (`ITEM_ACK=1`, `logs/xvfb/item5`, `docs/battle_item_picked.png`, gdb `tools/gdb/item158.gdb`):
+  bước vào ô → client ghi bản ghi chờ vào bảng 21 của `CGameMsgCache` (`sub_6F2ECE`, gọi từ `sub_5B098A`) và `vf9` (0x6F0874) gửi **117** (gói nhóm):
+  ```
+  u8 ctx | u8 slot | u8 a (rec+12) | u8 b (rec+16; quan sát = cột 13) | u16 index vật phẩm (sub_5B61A9) | u16 kind (sub_5B61B4; quan sát 256)
+  u32 thời gian (sub_6EFBB8) | u32 khoá phiên (sub_6EFBCA) | u8 (rec+36)
+  ```
+  Không có trả lời → vật phẩm hiện lại khi bước ra. Server trả **158** (`CGameStage__On_158` 0x715E90):
+  `u8 ok (≠0 mới áp dụng)`, `u8 ctx (== chỉ số context)`, `u8 slot`, `u8`, `u8` (đang gửi lại a/b — đoán), `u16 index`, `u16 kind`, `bool`
+  → `sub_6F001E` xoá bản ghi chờ (khớp ctx + index), `sub_706E0A(slot, kind)` áp dụng vật phẩm → **vật phẩm mất hẳn**; sau đó client gửi C→S 162 (CHƯA GIẢI MÃ, nghi
+  cập nhật hiệu ứng/túi vật phẩm). Kiểm với server Rust (`logs/xvfb/rust_item`, `docs/battle_item_slot.png`): `kind 1` (bạch tuộc tím) vào **ô VẬT PHẨM (Ctrl) ×01** = vật phẩm dùng chủ động.
+  Hiệu ứng của từng `kind` lên nhân vật (tốc độ/số bom/tầm nổ): CHƯA KIỂM.
+  fakeserver: `ITEM_ACK=1`; server Rust: luôn trả 158 cho 117, `ITEMS="x,y,kind;…"` gửi 553 trước 501 (`server/tests/bomb.rs` khớp byte với fakeserver).
 
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |

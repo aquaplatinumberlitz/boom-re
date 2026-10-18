@@ -31,6 +31,8 @@ pub struct Config {
     pub death_end: f64,
     /// >0: N s after C->S 120 subtype 13 (death) send 173 (match over -> waiting room). Takes precedence over death_end.
     pub match_end: f64,
+    /// Items placed on the map before each match (S->C 553 list 2): "x,y,kind;..." from env ITEMS.
+    pub items: Vec<(u8, u8, u32)>,
     /// Address handed to the client in opcodes 7/15 (must be reachable from the client; 127.0.0.1 for Wine).
     pub server_ip: [u8; 4],
     pub maps: Vec<BattleMap>,
@@ -55,6 +57,14 @@ impl Config {
             bomb_fuse: env("BOMB_FUSE", 2.5),
             death_end: env("DEATH_END", 0.0),
             match_end: env("MATCH_END", 3.0),
+            items: std::env::var("ITEMS")
+                .unwrap_or_default()
+                .split(';')
+                .filter_map(|e| {
+                    let v: Vec<u32> = e.split(',').filter_map(|x| x.trim().parse().ok()).collect();
+                    (v.len() == 3).then(|| (v[0] as u8, v[1] as u8, v[2]))
+                })
+                .collect(),
             server_ip: env::<std::net::Ipv4Addr>("SERVER_IP", std::net::Ipv4Addr::LOCALHOST).octets(),
             maps,
         }
@@ -115,6 +125,12 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log) {
             log(format!("[{port}] C->S opcode {op} body {}", hex(&body)));
             for r in replies(op, port, &cfg) {
                 let _ = tx.send(r);
+            }
+            if op == 117 {
+                if let Some(r) = pk::parse_item_pick(&body) {
+                    log(format!("[{port}] item pick {r:?} -> 158"));
+                    let _ = tx.send(pk::item_picked(&r));
+                }
             }
             if op == 111 && cfg.bomb_fuse > 0.0 {
                 if let Some(rec) = pk::parse_bomb_record(&body) {
@@ -184,6 +200,11 @@ async fn match_flow(tx: mpsc::UnboundedSender<Vec<u8>>, cfg: Arc<Config>, log: L
     let wait = |s: f64| tokio::time::sleep(Duration::from_secs_f64(s));
     let map = &cfg.maps[0];
     wait(cfg.auto_start).await;
+    if !cfg.items.is_empty() {
+        // item layout must arrive before 501 (read when the map loads)
+        let placed: Vec<(u16, u8, u8, u32)> = cfg.items.iter().enumerate().map(|(i, &(x, y, k))| (i as u16, x, y, k)).collect();
+        let _ = tx.send(pk::map_items(&[], &placed));
+    }
     let _ = tx.send(pk::match_start(map, 0, cfg.room_type, 12345, &[(0, 0, 0)]));
     log(format!("[{port}] match flow: 501"));
     if cfg.turn_start <= 0.0 {
