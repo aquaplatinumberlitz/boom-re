@@ -116,7 +116,7 @@ Phân bố opcode theo nhóm:
 | E2 | sảnh quảng trường `CLobbySquareStage` (49) | load xong, nút TẠO PHÒNG | ✅ | ✅ |
 | E3 | `CSquareStage` (41) | 395/466/467 trả lời được | 🟡 | 🟡 |
 | E4 | tạo phòng | dialog tạo phòng, map Village01 | ✅ | ✅ |
-| E5 | danh sách phòng / vào phòng | một phần | 🟡 | 🟡 |
+| E5 | danh sách phòng / vào phòng | S→C 88 (định dạng phòng), C→S 78 (vào phòng) → 83; 2 client: B thấy phòng của A và vào được (`lobby.md` cập nhật 13) | ✅ | ✅ |
 | E6 | phòng chờ `CPrepareStage` (36) | người chơi, trưởng phòng, nút BẮT ĐẦU | ✅ | ✅ |
 | E7 | chọn map trong phòng | hiện `Village01`; hộp thoại từng trống | 🟡 | 🟡 |
 | E8 | bắt đầu trận | 501 → 189 mode 1 → 190 → 189 mode 0 → **191** (191 phải sau 189 mode 0) | ✅ | ✅ |

@@ -541,3 +541,12 @@ chuyển tiếp `CSessionStage__OnPacket` → `CChatStage__OnPacket`). `CSession
   `ThemeDefault`); client nhận (fxdynmapinfo.ssd ghi), vẫn vào trận Village01 bình thường; hộp thoại vẫn rỗng (cùng lỗi
   bộ lọc trên).
 
+## Cập nhật 13 (2026-10-18 đêm) — danh sách phòng + vào phòng người khác ✅ runtime (2 client)
+- **S→C 88** (`sub_4D0F56`): `u16 n`; nếu n ≠ 0: blob (tag 0 + little-endian) n × bản ghi (`sub_6ACBB5`):
+  `u16 số phòng (session, < 560/1049 — hiện "S02" cho 1)`, `u32 id phòng`, `u32 len + tên`, `u8 +76 có mật khẩu`, `u8 +88`, `u8 +104 đang chơi`,
+  `u16 +116`, `u8 +128 số người`, `u8 +140`, `u8 +152 tối đa`, `u8 +92`, `u32 +176`, `u8, u8` (`sub_97C722`), `u8 +200`, `u8 n2` (n2 × {u8 k; k==0: u32}, `sub_6ACA64`).
+  Bấm được khi `+128 < +152` và `+104 == 0` (`sub_6AC879`). Trường không ghi chú: CHƯA KIỂM (gửi 0).
+- Bấm ô phòng (nút 2500+i, `sub_4D1436` → `sub_4CB829`) → **C→S 78**: `u16 số phòng`, `u32 id phòng`, [`bool 1` nếu `sub_8DAD14`], `str mật khẩu` (hỏi khi +76 ≠ 0),
+  `u8 n người chơi trên máy`, n × `u8` (nhân vật). Server trả **83** như tạo phòng → client vào phòng chờ → 337 → server xếp vào slot kế tiếp.
+- Server Rust (`hub.rs`): 88 liệt kê phòng chung ("Phong 1", người/8, WAITING/đang chơi), gửi lại cho mọi client đang ở sảnh khi có người vào/rời phòng.
+  Chạy thật (`logs/duo/t5`, `docs/lobby_room_list.png`): A tạo phòng; B thấy "S02 Phong 1 WAITING 1/8", bấm vào → C→S 78 → 83 → phòng chờ → cả hai vào trận.

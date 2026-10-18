@@ -194,6 +194,36 @@ pub fn room_list() -> Vec<u8> {
     Packet::new(88).u16(0).build()
 }
 
+/// One room of the lobby list (opcode 88).
+pub struct RoomEntry {
+    pub session: u16, // room slot in the lobby (< 560), sent back in C->S 78
+    pub room_id: u32, // sent back in C->S 78
+    pub name: String,
+    pub password: bool, // +76: != 0 -> the client asks for a password before joining
+    pub playing: bool,  // +104: != 0 -> not joinable
+    pub players: u8,    // +128
+    pub max_players: u8, // +152: joinable while players < max_players
+    pub room_type: u8,  // +88 (guess)
+}
+
+/// Opcode 88 (lobby room list, sub_4D0F56): u16 n; blob (tag 0 + little-endian) n x {u16 session, u32 room id, u32 len + name,
+/// u8 +76 password, u8 +88, u8 +104 playing, u16 +116, u8 +128 players, u8 +140, u8 +152 max, u8 +92, u32 +176, u8, u8 (sub_97C722),
+/// u8 +200, u8 n2 = 0 (sub_6ACA64)} (sub_6ACBB5). Fields without a comment are unknown and sent as 0.
+pub fn room_list_with(rooms: &[RoomEntry]) -> Vec<u8> {
+    if rooms.is_empty() {
+        return room_list();
+    }
+    let mut b = Le::default();
+    b.u8(0);
+    for r in rooms {
+        let nm = cp1258(&r.name);
+        b.u16(r.session).u32(r.room_id).u32(nm.len() as u32).bytes(&nm);
+        b.u8(r.password as u8).u8(r.room_type).u8(r.playing as u8).u16(0).u8(r.players).u8(0).u8(r.max_players).u8(0).u32(0);
+        b.u8(0).u8(0).u8(0).u8(0);
+    }
+    Packet::new(88).u16(rooms.len() as u16).blob(&b.0).build()
+}
+
 /// CStage__On_234: misc checksums; the dyn-map checksum gates opcode 231.
 pub fn map_checksums(maps: &[BattleMap]) -> Vec<u8> {
     let mut b = Le::default();

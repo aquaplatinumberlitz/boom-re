@@ -26,11 +26,13 @@ pub struct Room {
 pub struct Hub {
     next_user: AtomicU32,
     pub room: Mutex<Room>,
+    /// Connections currently in the lobby (sent 395): they get the room list again when the room changes.
+    pub lobby: Mutex<Vec<UnboundedSender<Vec<u8>>>>,
 }
 
 impl Default for Hub {
     fn default() -> Self {
-        Hub { next_user: AtomicU32::new(1000), room: Mutex::new(Room::default()) }
+        Hub { next_user: AtomicU32::new(1000), room: Mutex::new(Room::default()), lobby: Mutex::new(Vec::new()) }
     }
 }
 
@@ -61,6 +63,38 @@ impl Hub {
         let mut r = self.room.lock().unwrap();
         r.next_bomb_id = r.next_bomb_id.wrapping_add(1).max(1);
         r.next_bomb_id
+    }
+}
+
+impl Hub {
+    /// Opcode 88 for the current state: the shared room (if anybody is in it).
+    pub fn room_list(&self, room_type: u8) -> Vec<u8> {
+        let r = self.room.lock().unwrap();
+        let rooms: Vec<crate::packets::RoomEntry> = if r.members.is_empty() {
+            vec![]
+        } else {
+            vec![crate::packets::RoomEntry {
+                session: 1,
+                room_id: 1,
+                name: "Phong 1".into(),
+                password: false,
+                playing: r.started,
+                players: r.members.len() as u8,
+                max_players: 8,
+                room_type,
+            }]
+        };
+        crate::packets::room_list_with(&rooms)
+    }
+
+    /// Send the room list again to everybody in the lobby (drops closed connections).
+    pub fn push_room_list(&self, room_type: u8) {
+        let pkt = self.room_list(room_type);
+        let mut lobby = self.lobby.lock().unwrap();
+        lobby.retain(|t| !t.is_closed());
+        for t in lobby.iter() {
+            let _ = t.send(pkt.clone());
+        }
     }
 }
 

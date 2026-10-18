@@ -147,9 +147,21 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 user_id = find_user(&body, hub.known_users()).unwrap_or(1000);
                 log(format!("[{port}] channel login user {user_id}"));
                 let _ = tx.send(pk::channel_enter_ok(now_utc()));
+            } else if op == 395 {
+                // lobby entry: same replies as before but with the real room list
+                hub.lobby.lock().unwrap().push(tx.clone());
+                for r in replies(op, port, &cfg) {
+                    let _ = tx.send(if proto::get_int(&r, 2, true) == 88 { hub.room_list(cfg.room_type) } else { r });
+                }
+            } else if op == 78 {
+                // join a room from the lobby list (sub_4CB829: u16 session, u32 room id, str password, ...) -> same answer as create
+                log(format!("[{port}] join room request from user {user_id}"));
+                let _ = tx.send(pk::create_room_ok(1, cfg.room_type, 0));
             } else if op == 337 {
                 in_room = true;
+                hub.lobby.lock().unwrap().retain(|t| !t.same_channel(&tx));
                 enter_room(&hub, &cfg, &log, port, user_id, &tx);
+                hub.push_room_list(cfg.room_type);
             } else {
                 for r in replies(op, port, &cfg) {
                     let _ = tx.send(r);
@@ -209,6 +221,8 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
         if r.members.is_empty() {
             r.started = false;
         }
+        drop(r);
+        hub.push_room_list(cfg.room_type);
     }
     log(format!("[{port}] close {peer}"));
 }
