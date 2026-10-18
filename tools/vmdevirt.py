@@ -650,21 +650,210 @@ def cmd_lift(a):
         print(f"-> {a.json}")
 
 
+def cmd_profile(a):
+    """Emit decomp/vm_profile.json: everything the emitter needs, discovered not hardcoded."""
+    from unicorn import UC_HOOK_CODE, UC_HOOK_MEM_WRITE, UC_HOOK_MEM_UNMAPPED, UcError
+    from unicorn import x86_const as X
+    from capstone.x86 import X86_OP_MEM, X86_OP_REG
+    site = int(a.site, 16)
+    img = Image(a.exe)
+    md = md32()
+    secs = img.themida_sections()
+    sites = scan_sites(img, md)
+    heads = collections.Counter()
+    for va, kind, tgt in sites:
+        head, _ = follow_stub(img, md, tgt)
+        heads[head] += 1
+    prof = {"image": str(img.path.name), "base": hex(img.base), "entry": hex(img.entry),
+            "themida_sections": [{"name": n, "lo": hex(lo), "hi": hex(hi)} for n, lo, hi in secs],
+            "sites": len(sites), "stub_heads": {hex(k): v for k, v in heads.most_common(4) if k}}
+    print(f"[discover] {len(sites)} sites, {len([h for h in heads if h])} stub heads")
+
+    snap = Snap(a.snap)
+    vm_lo, vm_hi = img.vm_range()
+    mu = build_uc(snap=snap)
+    setup_from_snap(mu, snap, img, site)
+    lock = [None]
+    forms = collections.Counter()
+    ctxw = collections.Counter()
+    md_d = md32(detail=True)
+    n = [0]
+
+    def on_code(mu8, addr, size, u):
+        n[0] += 1
+        if n[0] > a.max:
+            u and None
+            mu8.emu_stop()
+            return
+        b = bytes(mu8.mem_read(addr, 2))
+        if b[0] == 0xF0 and b[1] == 0x0F:            # lock cmpxchg ...
+            i = next(md_d.disasm(bytes(mu8.mem_read(addr, 12)), addr), None)
+            if i and i.operands:
+                op = i.operands[0]
+                if op.type == X86_OP_MEM:
+                    ad = op.mem.disp
+                    for reg, sc in ((op.mem.base, 1), (op.mem.index, op.mem.scale)):
+                        if reg:
+                            ad = (ad + mu8.reg_read(reg) * sc) & 0xFFFFFFFF
+                    if lock[0] is None:
+                        lock[0] = ad
+        if b[0] == 0xFF and ((b[1] >> 3) & 7) in (4, 5):
+            i = next(md_d.disasm(bytes(mu8.mem_read(addr, 10)), addr), None)
+            if i and i.operands:
+                op = i.operands[0]
+                if op.type == X86_OP_REG:
+                    forms["jmp/call reg"] += 1
+                elif op.type == X86_OP_MEM:
+                    if op.mem.index and op.mem.scale == 4:
+                        forms[f"jmp/call [base+idx*4+{op.mem.disp:#x}]"] += 1
+                    elif op.mem.base and not op.mem.index:
+                        forms[f"jmp/call [base{op.mem.disp:+#x}]"] += 1
+                    else:
+                        forms["jmp/call [mem] other"] += 1
+
+    def on_write(mu8, access, addr, size, val, u):
+        if vm_lo <= addr < vm_hi:
+            ctxw[addr] += 1
+
+    def on_unmapped(mu8, access, addr, size, val, u):
+        mu8.emu_stop()
+
+    mu.hook_add(UC_HOOK_CODE, on_code)
+    mu.hook_add(UC_HOOK_MEM_WRITE, on_write)
+    mu.hook_add(UC_HOOK_MEM_UNMAPPED, on_unmapped)
+    try:
+        mu.emu_start(site, 0xFFFFFFFF)
+    except UcError:
+        pass
+    anchor = lock[0]
+    lock_off = int(a.lock_off, 16)
+    base = int(a.ctx, 16) if a.ctx else (anchor - lock_off if anchor else None)
+    print(f"[run] {n[0]} insns, spinlock field {anchor if anchor is None else hex(anchor)}, "
+          f"ctx base {base if base is None else hex(base)}")
+    prof["ctx"] = {"anchor": hex(anchor) if anchor else None, "base": hex(base) if base else None,
+                   "lock_offset": hex(lock_off)}
+    prof["dispatch_forms"] = dict(forms.most_common(10))
+    prof["ctx_fields_written"] = ({hex(k - base): v for k, v in sorted(ctxw.items())}
+                                  if base else {hex(k): v for k, v in sorted(ctxw.items())})
+    print("[dispatch]")
+    for k, v in forms.most_common(6):
+        print(f"   {v:6d}  {k}")
+    if base:
+        print("[ctx fields written]")
+        for k, v in sorted(ctxw.items())[:20]:
+            print(f"   ctx+{k - base:#05x}  x{v}")
+    out = pathlib.Path(a.json or (ROOT / "decomp" / "vm_profile.json"))
+    out.write_text(json.dumps(prof, indent=1))
+    print(f"-> {out}")
+
+
+def read_handler_table(img, ctx, span=0x1000):
+    """The VM keeps its handler table inside the context, indexed by a pre-scaled opcode:
+    `jmp [ctx + idx*4]`. Entries are absolute code pointers into the VM section."""
+    vm_lo, vm_hi = img.vm_range()
+    out = []
+    for off in range(0, span, 4):
+        if not img.readable(ctx + off):
+            break
+        v = img.dword(ctx + off)
+        if vm_lo <= v < vm_hi:
+            out.append((off >> 2, v))
+    return out
+
+
+def describe_handler(img, md, addr, max_insn=40):
+    """Walk a handler (following direct jmp inside the VM) and collect its features."""
+    vm_lo, vm_hi = img.vm_range()
+    feats = {"pushfd": 0, "lods": 0, "dispatch": 0, "pops": 0, "ret": 0, "call": 0, "n": 0}
+    first = []
+    va, seen = addr, set()
+    for _ in range(max_insn):
+        if va in seen or not (vm_lo <= va < vm_hi):
+            break
+        seen.add(va)
+        i = next(md.disasm(img.read(va, 16), va), None)
+        if i is None:
+            break
+        feats["n"] += 1
+        m, o = i.mnemonic, i.op_str
+        if m == "pushfd":
+            feats["pushfd"] += 1
+        elif m.startswith("lods"):
+            feats["lods"] += 1
+        elif m == "pop":
+            feats["pops"] += 1
+        elif m == "ret":
+            feats["ret"] += 1
+            break
+        elif m in ("jmp", "call") and "[" in o:
+            if "* 4]" in o or "*4]" in o:
+                feats["dispatch"] += 1
+            if m == "call":
+                feats["call"] += 1
+            break
+        if not first:
+            first.append(f"{m} {o}")
+        if m == "jmp" and o.startswith("0x"):
+            va = int(o, 16)
+            continue
+        if m.startswith("j") or m == "jmp":
+            break
+        va += i.size
+    return feats, " ".join(first)
+
+
+def cmd_handlers(a):
+    """Enumerate the in-context handler table and classify every handler."""
+    img = Image(a.exe)
+    md = md32()
+    ctx = int(a.ctx, 16)
+    table = read_handler_table(img, ctx)
+    print(f"handler table at ctx {ctx:#x}: {len(table)} entries")
+    if not table:
+        return
+    rows = []
+    classes = collections.Counter()
+    for idx, addr in table:
+        f, text = describe_handler(img, md, addr)
+        if f["ret"] and f["pops"] >= 5:
+            cls = "vm_exit"
+        elif f["pushfd"]:
+            cls = "flagop"
+        elif f["dispatch"]:
+            cls = "block_dispatch"
+        elif f["lods"]:
+            cls = "bytecode_read"
+        else:
+            cls = "block"
+        classes[cls] += 1
+        rows.append({"opcode": hex(idx), "addr": hex(addr), "class": cls, **f, "first": text})
+    print("classes:", dict(classes))
+    for r in rows[:a.show]:
+        print(f"  op {r['opcode']:>6}  {r['addr']:>10}  {r['class']:<15} "
+              f"n={r['n']:<3} pushfd={r['pushfd']} lods={r['lods']} disp={r['dispatch']} pops={r['pops']}  {r['first']}")
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps(rows, indent=1))
+        print(f"-> {a.json}")
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift"])
+    ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift",
+                                    "profile", "handlers"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
     ap.add_argument("--site", help="VM site (hex)")
     ap.add_argument("--cont", help="continuation address (hex), stop when reached")
     ap.add_argument("--ctx", help="VM context base (hex) for field offsets")
+    ap.add_argument("--lock-off", default="0x7C", help="ctx offset of the spinlock field")
     ap.add_argument("--snap", help="pre.snap produced by win/snap.bat")
     ap.add_argument("--max", type=int, default=4_000_000)
     ap.add_argument("--max-writes", type=int, default=200_000)
     ap.add_argument("--show", type=int, default=60)
     ap.add_argument("--json")
     a = ap.parse_args()
-    {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps,
-     "ctx": cmd_ctx, "trace": cmd_trace, "lift": cmd_lift}[a.cmd](a)
+    {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps, "ctx": cmd_ctx,
+     "trace": cmd_trace, "lift": cmd_lift, "profile": cmd_profile,
+     "handlers": cmd_handlers}[a.cmd](a)
 
 
 if __name__ == "__main__":

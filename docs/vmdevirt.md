@@ -10,61 +10,69 @@ công cụ `tools/vmdevirt.py` khai thác được gì. Số liệu đều từ 
 |---|---|---|
 | Prologue | `pushfq` + junk stack shuffle | **giống** (`pushfd` tại `0x11EE128`, junk y hệt) |
 | Đồng bộ | `lock cmpxchg [ctx+0xD3],1` + `pause` | **giống**, nhưng field `ctx+0x7C` (`lock cmpxchg` tại `0x11EECB0`) |
+| Bảng handler | 658 entry, base ở `ctx+0xD7`, `idx*8` | **178 entry, base = chính `ctx`, `idx*4`, idx đã nhân sẵn** |
+| Tính chất bảng | fixup bằng image base lúc entry | **tĩnh tuyệt đối** (xem §3) |
 | Phân rã code | 1 handler = 1 basic block liền mạch, tự chain | **chia vụn**: mean straight-line run **6.66 lệnh**, median 5, 63.6% run ≤6, nối bằng `jmp` trực tiếp |
-| Dispatch | `jmp [table + idx*8]` | `jmp [ctx + offset riêng từng site]` (slot cache trong ctx) |
-| Bảng handler | 658 entry liền nhau | **không có** bảng liền nhau; slot rải trong ctx (`ctx+0xB8..ctx+0x31C` quan sát được) |
-| Ý nghĩa | phân loại 650 handler là đủ | **phải trace**; không có "handler" để phân loại |
+| Dispatch | `jmp [table + idx*8]` | `jmp [edi + eax*4]` với `edi = ctx`, `eax = idx` (đo thực tế: `0x43`, `0x81`, `0x56`) |
+| Ý nghĩa | phân loại 650 handler là đủ | bảng enumerate được **tĩnh**, nhưng thân handler bị xé nhỏ ⇒ ngữ nghĩa phải lấy bằng **trace** |
 
-⇒ Với bản VN, phương pháp "enumerate + classify handler" của bài **không áp dụng**. Cái áp dụng được là
-phần **trace → lift → emit**, đúng hướng `tools/vmemu.py` + `tools/devirt.py` đang làm tay.
+⇒ Cái áp dụng được từ bài: enumerate + phân loại handler theo mẫu (`pushfd` → flag-op), và tách
+"profile" khỏi engine. Cái **không** áp dụng: giả định mỗi handler là một block tự chứa.
 
 ## 2. Context của VM (bản VN)
 
 Anchor xác định bằng spinlock: lần ghi `1` vào `0x11EDE68` tại `0x11EECB0` là `lock cmpxchg [edi+0x7C]`
-⇒ **ctx base = `0x11EDDEC`**, field khoá `sync` ở `+0x7C`.
+⇒ **ctx base = `0x11EDDEC`** (lấy `edi` tại chính lệnh đó), field khoá `sync` ở `+0x7C`.
 
-Offsets quan sát được (ghi trong lúc entry / trong vòng chạy):
+Kiểm chứng độc lập: cuối một khối, `edi = 0x11EDDEC`; tại site dispatch, `edi = 0x11EDDEC` và
+`[edi + eax*4]` cho đúng handler.
 
 | offset | nội dung | nguồn |
 |---|---|---|
-| `+0x00..+0x1C` | vùng lưu host register (8 dword, ghi ngay sau entry) | write trace |
-| `+0x08..+0x1C` | giá trị trỏ vào stack (`0x0019C6E8`, `0x0019C4BC`, …) | snapshot |
+| `+0x00..+0x1C` | vùng lưu host register / VM register (ghi ngay sau entry) | write trace |
+| `+0x64`, `+0x74` | field dữ liệu (vd `+0x64` nhận `0x02752BE8` rồi `xor edx`) | lift |
 | `+0x7C` | `sync` (spinlock) | `0x11EECB0` |
-| `+0xB8..+0x31C` | **slot cache đích nhảy** của từng dispatch site (170 slot đã thấy ở snapshot) | snapshot + trace |
-| `+0xA0` (theo base `0x11EDE80`) | bắt đầu dãy con trỏ vào section VM | snapshot |
+| `+0x94..+0xF48` | **bảng handler**: 178 entry, mỗi entry 4 byte, chỉ số = `offset/4` (0x25..0x3D2) | đọc file |
 
-Không có immediate nào bằng `0x11EDDEC` trong section VM (đã quét: 0 lần) ⇒ ctx được tính từ hằng số
-rối, nên phải lấy **động** qua spinlock, không hardcode được.
+## 3. Bảng handler là tĩnh (đã kiểm chứng)
 
-## 3. Dispatch thực tế
+So 3 snapshot độc lập (`8F346C`, `8F4D46`, `8F5F40`) và so với byte trong `unpacked_ca.exe`:
 
-- 400k lệnh: **977 lần** `jmp/call [mem]`, **0 lần** `jmp reg`.
-- 32 slot khác nhau, ví dụ `[0x11EDFF0] → 0x11F7467` (277 lần), `[0x11EDEF8] → 0x11F6CB8` (142 lần).
-- Nghĩa là **mỗi site dispatch có slot riêng** trong ctx (không phải `table[idx]`).
+- 178/178 entry **giống nhau** giữa 3 snapshot;
+- 178/178 entry **giống byte trong file** (0 khác).
 
-Hệ quả cho devirt: "handler" không phải đơn vị; đơn vị là **đoạn thẳng** (mean 6.66 lệnh) và luồng thật
-chỉ lấy được bằng trace. Bản KR (2026) nhiều khả năng dùng thiết kế FALCON, nên tool phải hỗ trợ **cả hai
-backend**: `threaded` (VN) và `chained` (FALCON).
+⇒ Không phải cache runtime. Đây là bảng hằng nằm trong section VM, nên **enumerate được mà không cần chạy**:
+
+```
+python3 tools/vmdevirt.py handlers --ctx 11EDDEC --json decomp/vm_handlers.json
+handler table at ctx 0x11eddec: 178 entries
+classes: {'block': 117, 'bytecode_read': 45, 'flagop': 16}
+```
+
+`decomp/vm_handlers.json` ghi: opcode, địa chỉ, class đoán, số `pushfd`/`lods`/`dispatch`/`pop`.
+Class ở đây là **đoán theo mẫu tĩnh** (walk 40 lệnh theo `jmp` trực tiếp), chưa phải ngữ nghĩa — vì thân
+handler bị xé nhỏ nên walk tĩnh không đi hết được. Bước tiếp theo: chạy từng entry bằng Unicorn và ghi
+tác dụng thật (thanh ghi/flags/bộ nhớ) → đó mới là ngữ nghĩa dùng để emit.
 
 ## 4. `tools/vmdevirt.py` — trạng thái
 
 ```
-python3 tools/vmdevirt.py discover            # sections, 603 site, 388 stub head
-python3 tools/vmdevirt.py jumps --snap ... --site 8F346C   # dispatch + slot
-python3 tools/vmdevirt.py ctx   --snap ... --site 8F346C   # dump context sau 1 khối
+python3 tools/vmdevirt.py discover [--json out.json]     # sections, site, stub head
+python3 tools/vmdevirt.py profile  --snap ... --site ...  # ctx + dispatch form -> decomp/vm_profile.json
+python3 tools/vmdevirt.py handlers --ctx ...               # bảng handler -> decomp/vm_handlers.json
+python3 tools/vmdevirt.py ctx      --snap ... --site ...   # dump context sau 1 khối
+python3 tools/vmdevirt.py trace    --snap ... --site ... --cont ...  # tác dụng khối (ctx/image/heap, regs)
+python3 tools/vmdevirt.py lift     --snap ... --site ... --cont ... --ctx ...
 ```
 
-Đã có: PE 32-bit, nhận diện section Themida, quét site (`E8/E9` từ `.text` vào vùng VM), follow stub,
-snapshot replay (BSNP), FS qua GDT, log ghi bộ nhớ + chuyển nhánh gián tiếp, dò bảng/slot, dump ctx.
+Số liệu chạy thật:
 
-Số liệu chạy được:
-
-- `discover`: 603 site → 388 stub head; head `0x11EE3B0` xuất hiện **73 lần** = đúng 73 marker `EB 10 57 4C 20`.
-- `jumps`: phân biệt `jmp [mem]` vs `jmp reg`, dựng histogram slot→đích.
-- `ctx`: chạy tới lần rời VM đầu tiên, dump ctx; phát hiện `0x11EDDE0..0x11EDE0F` + slot cache.
-
-Chưa có (kế hoạch): `trace` (ghi toàn bộ trace 1 khối tới `cont`, lọc junk), `summary` (tóm tắt tác dụng
-khối: ctx field, global/object write, native call), `emit` (sinh C), backend `chained` cho FALCON.
+- `discover`: **607 site → 390 stub head**; head `0x11EE3B0` xuất hiện **73 lần** = đúng 73 marker.
+- `profile`: tự tìm spinlock (`0x11EDE68`) → tự suy `ctx = 0x11EDDEC`; dispatch chỉ **một dạng duy nhất**
+  `jmp [base+idx*4+0x0]`, 1469 lần trong 600k lệnh; field ctx bị ghi: `+0x00..+0x1C`, `+0x74`, `+0x7C`.
+- `lift` khối `8F346C`: **7094 lệnh unique**, chỉ **36 lệnh có ngữ nghĩa** (chạm ctx/image/heap) — tức
+  tỉ lệ junk ~99.5%, và phần ngữ nghĩa in ra kèm offset ctx (vd `add dword ptr [edx], ebp ; ctx+0x84`).
+- `trace` khối `8F346C`: 15 write vào ctx, 9 write vào image, 105 write vùng stack/heap, `edi` cuối = ctx.
 
 ## 5. Đường áp dụng sang bản KR
 

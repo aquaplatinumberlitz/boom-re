@@ -1,0 +1,60 @@
+{
+ "image": "unpacked_ca.exe",
+ "base": "0x400000",
+ "entry": "0x9e5efe",
+ "themida_sections": [
+  {
+   "name": ".idata  ",
+   "lo": "0x11e3000",
+   "hi": "0x11e4000"
+  },
+  {
+   "name": "        ",
+   "lo": "0x11e4000",
+   "hi": "0x1479000"
+  },
+  {
+   "name": "rfsnoyxf",
+   "lo": "0x1479000",
+   "hi": "0x16ab000"
+  },
+  {
+   "name": "vztotnlg",
+   "lo": "0x16ab000",
+   "hi": "0x16ac000"
+  },
+  {
+   "name": "ypbnwzcn",
+   "lo": "0x16ac000",
+   "hi": "0x16ad000"
+  }
+ ],
+ "sites": 607,
+ "stub_heads": {
+  "0x11ee3b0": 73,
+  "0x126b435": 6,
+  "0x11e576a": 4
+ },
+ "ctx": {
+  "anchor": "0x11ede68",
+  "base": "0x11eddec",
+  "lock_offset": "0x7c"
+ },
+ "dispatch_forms": {
+  "jmp/call [base+idx*4+0x0]": 1469
+ },
+ "ctx_fields_written": {
+  "-0x6a46": 1,
+  "0x0": 7,
+  "0x4": 1,
+  "0x8": 6,
+  "0xc": 5,
+  "0x10": 1,
+  "0x14": 5,
+  "0x15": 1,
+  "0x18": 2,
+  "0x1c": 32,
+  "0x74": 1,
+  "0x7c": 1
+ }
+}
