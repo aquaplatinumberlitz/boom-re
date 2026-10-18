@@ -31,7 +31,7 @@ Game chia thành các "stage" (màn). Client ghi stage hiện tại vào `wine/B
 | 10 | Đăng nhập + chọn kênh (`CSelectServerStage`) | ✅ kênh tự hiện, click vào kênh được | `docs/channel_autoshow.png` |
 | 11 | Sảnh quảng trường (`CLobbySquareStage`) | ✅ load xong, nút TẠO PHÒNG chạy | `docs/lobby_loaded.png`, `docs/create_room_dialog.png` |
 | 12 | Phòng chờ (`CPrepareStage`) | ✅ có người chơi (trưởng phòng), map Village01, nút BẮT ĐẦU bật | `docs/waiting_room_start.png`, `docs/map_dialog_village.png` |
-| 13 | Trận đấu (`CGameStage`) | 🟡 mô phỏng chạy (cần 191 sau 189 mode 0), nhân vật **đi được**, đặt bom → 111 → server 152 → 151 → **bom nổ**, nhân vật bị nhốt/chết; chưa nhiều người, chưa kết thúc ván | `docs/battle_bomb_explode.png` | `docs/battle_phase3.png`, `docs/battle_turn_LRUD.png` |
+| 13 | Trận đấu (`CGameStage`) | 🟡 mô phỏng chạy (cần 191 sau 189 mode 0), nhân vật **đi được**, đặt bom → 111 → 152 → 151 → **bom nổ**, bị nhốt/chết (C→S 120) → 146 lượt mới hoặc **173 về phòng chờ**; chưa nhiều người, chưa vật phẩm | `docs/battle_bomb_explode.png` | `docs/battle_phase3.png`, `docs/battle_turn_LRUD.png` |
 
 Những phần **chưa làm** ở các màn đã qua (không chặn đường vào trận):
 - Hộp thoại **chọn map** trong phòng liệt kê 0 map (báo "CantDecideMap"). Server đang tự gán map cho phòng.
@@ -71,6 +71,7 @@ Biến môi trường (đặt trước lệnh):
 | `PLAY_START` | 0 | > 0: gửi 189 **mode 0** N giây sau 190 → phase 3, đồng hồ chạy (oc_e-game §5a-3) |
 | `BEGIN_START` / `BEGIN_OP` | 0 / 191 | > 0: gửi opcode `BEGIN_OP` (191 round begin, 146 kết quả, **552** gói của `sub_71580C`) N giây sau 190 |
 | `POST_PLAY_START` | 0 | > 0: gửi **191** N giây sau 189 mode 0 — start đồng hồ context 0 ⇒ **vòng mô phỏng chạy** (bắt buộc để đi/đặt bom thật) |
+| `MATCH_END` | 0 (Rust: 3) | > 0: N giây sau C→S 120/13 (chết) gửi **173** → về phòng chờ (ưu tiên hơn `DEATH_END`) |
 | `DEATH_END` | 0 | (fakeserver) > 0: N giây sau C→S 120 subtype 13 (chết) gửi **146** → lượt mới |
 | `BOMB_PLACE` / `BOMB_ECHO` | 0 / 0 | (fakeserver) `BOMB_PLACE=1`: trả **152** cho mỗi C→S 111 (gán id); `BOMB_ECHO=N`: N giây sau gửi **151** nổ (id 0..`BOMB_IDS`-1). Server Rust: `BOMB_FUSE` (mặc định 2.5) làm cả hai |
 | `SERVER_IP` | 127.0.0.1 | (**chỉ server Rust**) địa chỉ client được dặn kết nối ở gói 7 và 15; client trong WinBoat cần `172.18.0.50` |
@@ -176,8 +177,8 @@ Ghi chép trước đó về phần crash map: [docs/lobby.md](lobby.md) "Cập 
 ## 6. Việc tiếp theo (theo thứ tự ưu tiên)
 
 1. ~~Gói C→S 111~~ ✅, ~~bom nổ~~ ✅ (2026-10-18 đêm): 111 → **152** (gán id) → **151** (nổ) — `oc_e-game.md` §5a-5/5a-5b. Tiếp trong trận:
-   ~~chết → lượt mới~~ ✅ (client báo C→S 120 subtype 11 bị nhốt / 13 chết; server 146 → lượt mới, hồi sinh — `oc_e-game.md` §5a-5c). Tiếp: kết thúc cả trận/về phòng
-   chờ, vật phẩm rơi từ gạch, nhiều người chơi (relay 111/152/151/120 cho mọi client), thời gian nổ thật.
+   ~~chết → lượt mới~~ ✅ (client báo C→S 120 subtype 11 bị nhốt / 13 chết; server 146 → lượt mới, hồi sinh — `oc_e-game.md` §5a-5c). ~~Kết thúc trận → phòng chờ~~ ✅ (S→C **173**). Tiếp:
+   vật phẩm rơi từ gạch, nhiều người chơi (relay 111/152/151/120 cho mọi client), thời gian nổ thật.
 2. ~~Dump `CGamePlayMap`~~ ✅: emulate với object thật — khối `0x736C27` là vòng lặp 0 lần với Village01/phòng 19 (skip tương đương); thử thêm map/loại phòng 20/33 nếu cần.
 3. **Vùng anti-cheat A1xxxx** (43 site, skip khi chạm) và các khối còn lại: `0x966FEC` (mồ côi).
 4. **Mở đủ map**: thay 3 map tự soạn bằng danh sách 1019 map (server Rust đã có `ALL_MAPS=1`); làm hộp thoại chọn map liệt kê được; xem map có khoá theo cấp không.

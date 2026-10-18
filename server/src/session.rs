@@ -27,6 +27,10 @@ pub struct Config {
     pub post_play_start: f64,
     /// >0: answer C->S 111 (bomb) with 152 (id) and explode it with 151 after this many seconds; 0 = ignore bombs.
     pub bomb_fuse: f64,
+    /// >0: N s after C->S 120 subtype 13 (death) send 146 (round result -> next round).
+    pub death_end: f64,
+    /// >0: N s after C->S 120 subtype 13 (death) send 173 (match over -> waiting room). Takes precedence over death_end.
+    pub match_end: f64,
     /// Address handed to the client in opcodes 7/15 (must be reachable from the client; 127.0.0.1 for Wine).
     pub server_ip: [u8; 4],
     pub maps: Vec<BattleMap>,
@@ -49,6 +53,8 @@ impl Config {
             play_start: env("PLAY_START", 0.0),
             post_play_start: env("POST_PLAY_START", 0.0),
             bomb_fuse: env("BOMB_FUSE", 2.5),
+            death_end: env("DEATH_END", 0.0),
+            match_end: env("MATCH_END", 3.0),
             server_ip: env::<std::net::Ipv4Addr>("SERVER_IP", std::net::Ipv4Addr::LOCALHOST).octets(),
             maps,
         }
@@ -120,6 +126,23 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log) {
                     tokio::spawn(async move {
                         tokio::time::sleep(Duration::from_secs_f64(fuse)).await;
                         let _ = tx2.send(pk::bomb_explode(&[id], 2));
+                    });
+                }
+            }
+            if op == 120 && body.len() > 2 {
+                // bomber event: u8 subtype (11 trapped, 13 died; oc_e-game.md section 5a-5c)
+                let sub = proto::get_int(&body[2..], 1, true) as u8;
+                log(format!("[{port}] bomber event 120 subtype {sub}"));
+                if sub == 13 && (cfg.match_end > 0.0 || cfg.death_end > 0.0) {
+                    let (tx2, cfg2) = (tx.clone(), cfg.clone());
+                    tokio::spawn(async move {
+                        if cfg2.match_end > 0.0 {
+                            tokio::time::sleep(Duration::from_secs_f64(cfg2.match_end)).await;
+                            let _ = tx2.send(pk::match_over());
+                        } else {
+                            tokio::time::sleep(Duration::from_secs_f64(cfg2.death_end)).await;
+                            let _ = tx2.send(pk::round_result(0, 10000, (180, 30), 0, (0, 0, 0), &[(0, [(1, 1), (0, 0), (0, 0)])]));
+                        }
                     });
                 }
             }

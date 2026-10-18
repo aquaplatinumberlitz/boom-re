@@ -370,3 +370,9 @@ pub fn bomb_explode(ids: &[u16], arg: u32) -> Vec<u8> {
     }
     p.build()
 }
+
+/// S->C 173 (CGameStage dispatch case 153 -> vf149 0x7132xx): match over. u8 (sub_8E75D2), u8 0 (no player list) -> the 16 slots are reset and
+/// the client changes to stage 12 (waiting room; 11 when sub_8DACD5() says so). Verified 2026-10-18: client goes back to the room, re-sends 337.
+pub fn match_over() -> Vec<u8> {
+    Packet::new(173).u8(0).u8(0).build()
+}

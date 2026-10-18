@@ -16,6 +16,7 @@ TURN_MODE = int(__import__('os').environ.get('TURN_MODE', '4'))      # mode fiel
 GO_START = float(__import__('os').environ.get('GO_START', '0'))      # >0: send opcode 190 ("GO", sub_70E7D6, sets phase this[5402]=2) N s after 189
 BEGIN_START = float(__import__('os').environ.get('BEGIN_START', '0'))  # >0: send opcode BEGIN_OP (191 round begin / 146 round + scores) N s after 190
 BEGIN_OP = int(__import__('os').environ.get('BEGIN_OP', '191'))
+MATCH_END = float(__import__('os').environ.get('MATCH_END', '0'))  # >0: N s after C->S 120 subtype 13 send 173 (match over -> waiting room)
 DEATH_END = float(__import__('os').environ.get('DEATH_END', '0'))  # >0: N s after C->S 120 subtype 13 (death) send 146 (round result)
 BOMB_PLACE = int(__import__('os').environ.get('BOMB_PLACE', '0'))  # 1: answer C->S 111 with S->C 152 (bomb confirmed + id)
 BOMB_ECHO = float(__import__('os').environ.get('BOMB_ECHO', '0'))  # >0: N s after C->S 111 send S->C 151 (explode) for bomb ids 0..BOMB_IDS-1
@@ -562,6 +563,13 @@ async def handle(reader, writer, port, log):
                 if op == 120 and len(body) > 2:  # bomber event (group packet: u8 subtype written by bomber vf112)
                     sub = bp.get_int(body[2:], 1, True)
                     log(f"[{port}] bomber event 120 subtype {sub}")
+                    if sub == 13 and MATCH_END:  # EXPERIMENT: 173 = CGameStage vf149 -> slots reset, ChangeStage 12 (or 11)
+                        async def _over(delay=MATCH_END):
+                            await asyncio.sleep(delay)
+                            writer.write(sess.send(obf_body(173, ("u8", 0), ("u8", 0))))
+                            await writer.drain()
+                            log(f"[{port}] S->C opcode 173 (match over)")
+                        asyncio.ensure_future(_over())
                     if sub == 13 and DEATH_END:  # CGameStage vf150 = player died -> EXPERIMENT: end the round with 146
                         async def _end(delay=DEATH_END):
                             await asyncio.sleep(delay)

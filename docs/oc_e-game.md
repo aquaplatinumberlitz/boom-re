@@ -398,6 +398,12 @@ Server giả chưa trả gì → nhân vật nằm đó, ván không kết thúc
 slot 0 có điểm)`) → client **sang lượt mới**: nhân vật hồi sinh ở ô xuất phát, HUD "GIỚI HẠN" đặt lại (01:55 rồi đếm lùi), client gửi C→S 180. Tức 146 = "kết quả lượt +
 bắt đầu lượt kế" (đúng §5a-4: 146 cũng start đồng hồ). Kết thúc cả trận / về phòng chờ: gói khác (ứng viên 571 `sub_71ADEC`, 117) — CHƯA LÀM.
 
+**Kết thúc trận → về phòng chờ: S→C 173** ✅ runtime (`MATCH_END=3`, `logs/xvfb/over1`): `CGameStage__OnPacket` case 153 (+20 = 173) → `vf149` (0x7132xx):
+`u8` → `sub_8E75D2`; đặt lại 16 slot; `u8 có danh sách`; nếu ≠ 0: `u32`, `u16 n`, n × {`u8` + blob}, rồi n × {trạng thái slot/người chơi …}; cuối cùng
+`ChangeStage(12)` (hoặc 11 khi `sub_8DACD5()`). Gói tối thiểu `{u8 0, u8 0}` → client về **phòng chờ** (`dne:12`), gửi lại 337 → server trả 103/106/113 như lúc vào phòng;
+với `AUTO_START` server lại gửi 501 → **trận mới**. Vòng lặp đầy đủ sảnh → phòng → trận → chết → phòng → trận chạy được (fakeserver + server Rust `MATCH_END`, mặc định 3 s).
+Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
+
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
 |---|---|---|
