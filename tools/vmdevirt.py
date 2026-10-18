@@ -1763,10 +1763,78 @@ def cmd_doctor(a):
     print("  bước tiếp: profile --snap <pre.snap> --site <site>; handlers --ctx <ctx>; opcodes ...")
 
 
+def cmd_opsrc(a):
+    """Identify which register a push/pop opcode moves.
+
+    Between two dispatches the host ESP moves by ±4. For a push, the value written at the new
+    top is compared with each register's previous value; for a pop, the value read from the old
+    top is compared with each register's new value. A stable match names the register.
+    """
+    from unicorn import UC_HOOK_CODE, UcError
+    from unicorn import x86_const as X
+    site = int(a.site, 16)
+    disp = int(a.disp, 16)
+    ctx = int(a.ctx, 16)
+    img = Image(a.exe)
+    snap = Snap(a.snap)
+    mu = build_uc(snap=snap)
+    setup_from_snap(mu, snap, img, site)
+    REG = {k: getattr(X, "UC_X86_REG_" + k.upper())
+           for k in ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp", "esp")}
+    prev = [None]
+    n = [0]
+    push_src = collections.defaultdict(collections.Counter)
+    pop_dst = collections.defaultdict(collections.Counter)
+
+    def on_code(mu8, addr, size, u):
+        n[0] += 1
+        if n[0] > a.max:
+            mu8.emu_stop()
+            return
+        if addr != disp:
+            return
+        rv = {k: mu8.reg_read(v) for k, v in REG.items()}
+        op = mu8.reg_read(X.UC_X86_REG_EAX)
+        if prev[0]:
+            pop, prg, pesp = prev[0]
+            if rv["esp"] == pesp - 4:
+                try:
+                    val = struct.unpack("<I", mu8.mem_read(pesp - 4, 4))[0]
+                except Exception:
+                    val = None
+                m = [k for k in prg if k != "esp" and prg[k] == val]
+                push_src[pop][",".join(m) or "imm/mem"] += 1
+            elif rv["esp"] == pesp + 4:
+                try:
+                    val = struct.unpack("<I", mu8.mem_read(pesp, 4))[0]
+                except Exception:
+                    val = None
+                m = [k for k in rv if k != "esp" and rv[k] == val]
+                pop_dst[pop][",".join(m) or "?"] += 1
+        prev[0] = (op, rv, rv["esp"])
+
+    mu.hook_add(UC_HOOK_CODE, on_code)
+    try:
+        mu.emu_start(site, 0xFFFFFFFF)
+    except UcError:
+        pass
+    print("PUSH — nguồn (khớp thanh ghi trước đó):")
+    for op in sorted(push_src):
+        print(f"  op {op:#04x}: {push_src[op].most_common(2)}")
+    print("\nPOP — đích (thanh ghi nhận giá trị):")
+    for op in sorted(pop_dst):
+        print(f"  op {op:#04x}: {pop_dst[op].most_common(2)}")
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps({
+            "push": {hex(k): dict(v) for k, v in push_src.items()},
+            "pop": {hex(k): dict(v) for k, v in pop_dst.items()}}, indent=1))
+        print(f"-> {a.json}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift",
-                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit", "cfg", "verify", "doctor"])
+                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit", "cfg", "verify", "doctor", "opsrc"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
     ap.add_argument("--site", help="VM site (hex)")
     ap.add_argument("--cont", help="continuation address (hex), stop when reached")
@@ -1810,7 +1878,7 @@ def main():
     {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps, "ctx": cmd_ctx,
      "trace": cmd_trace, "lift": cmd_lift, "profile": cmd_profile,
      "handlers": cmd_handlers, "bytecode": cmd_bytecode, "decode": cmd_decode,
-     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit, "cfg": cmd_cfg, "verify": cmd_verify, "doctor": cmd_doctor}[a.cmd](a)
+     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit, "cfg": cmd_cfg, "verify": cmd_verify, "doctor": cmd_doctor, "opsrc": cmd_opsrc}[a.cmd](a)
 
 
 if __name__ == "__main__":

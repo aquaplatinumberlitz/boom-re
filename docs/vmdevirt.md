@@ -590,6 +590,30 @@ python3 tools/vmdevirt.py vfx --snap logs/snap/8F346C/pre.snap --site 8F346C \
         --disp 11F9E81 --ctx 11EDDEC --vsp-reg esp --json decomp/vm_vfx.json
 ```
 
+
+### Thanh ghi mà push/pop di chuyển (`opsrc`)
+
+So giá trị đẩy vào stack với thanh ghi trước đó (push), hoặc giá trị lấy ra với thanh ghi sau đó (pop):
+
+| op | size | Δesp | nguồn/đích | kết luận |
+|---|---|---|---|---|
+| `0x3b` | 5 | −4 | `imm/mem` 92/92 | **push imm32** |
+| `0x2e` | 2 | −4 | `imm/mem` 7/7 | **push imm8** |
+| `0x87` | 1 | −4 | `edx` 190/190 | **push edx** |
+| `0x81` | 1 | +4 | `edx` 400/400 | **pop edx** |
+| `0x66` | 1 | +4 | `edx` 122/122 | **pop edx** |
+| `0xa6`, `0xc7`, `0x56`, `0xcb`, `0x59`, `0xb1` | 1-2 | +4 | `edx` | **pop edx** |
+| `0x91` | 1 | −4 | `imm/mem` 80, `ecx` 21 | chưa chắc (2 biến thể?) |
+| `0x43` | 2 | −4 | `imm/mem` 157, `edx` 26 | chưa chắc |
+
+⇒ `edx` là **thanh ghi tích luỹ** của VM: mọi `pop` đổ vào `edx`, và `push edx` là op riêng.
+Điều này khớp với việc `devirt.py` viết tay thường thấy `mov edx, [ebp-...]` trước các chuỗi xử lý.
+
+Kết quả: `decomp/vm_opcode_regs.json`, lệnh `opsrc`.
+
+**Còn thiếu**: 16 opcode "không đụng stack" (arithmetic/load/store) chưa phân loại; 2 opcode mơ hồ ở
+trên; và chưa biết thứ tự toán hạng để dựng biểu thức.
+
 ### Còn thiếu để có ngữ nghĩa đầy đủ
 
 - **Thanh ghi nào** được push/pop (hiện chỉ biết "có push 4 byte", chưa biết `push eax` hay `push ebx`).
