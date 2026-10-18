@@ -645,4 +645,19 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
 - Bản ghi hàng FxStock (`sub_8A1190`; blob u8/u16/u32 = `sub_A62F40/A62F70/A62FB0`): `u32 (+8), u8 loại (+20, switch 0..103 ở sub_8A074C),
   str tên (+32), u32 (+88), u32 mã vật phẩm (+100, tra sub_8BD7CD), u32 (+112), str (+124), u32 (+152), u32 (+164), u16 (+176), u8 (+188),
   u16 (+200), u16 (+212), u32 (+224), u8 (+236), u8 (+248), u32 (+260), u16 (+272), u32 (+284), u32 (+296), u8 (+308)`. Ý nghĩa: CHƯA KIỂM.
-- Sau 20 client còn gửi 298 (`sub_9ADBDF`: `str tên, bool 1`) và 260 (`bool`); chưa trả lời.
+- Sau 20 client còn gửi 298 (`sub_9ADBDF`: `str tên, bool 1`) và 260 (`bool`, `sub_800DF0`); chưa trả lời (không cần cho mua bán).
+- **Ví tiền** trong 20: u32 thứ 2 = **lucci = VÀNG** (`sub_9B754B`, E60848+324), u32 thứ 3 = gcoupon (+396), u32 thứ 4 = **capoint = BẠC**
+  (+420). **XU = cash** (+348) chỉ được ghi qua `stage->vf84` (`u8 slot, u32`) = CStage case 221 = **S→C 223** — nhưng trong stage shop
+  223 bị `sub_803416` hiểu là **kết quả mua** (gửi 223 lúc vào shop → hiện "BuyItem"). 223 gửi ở sảnh (sau 23) chưa làm XU đổi: CHƯA KIỂM.
+- **Danh mục vật phẩm S→C 51** (`CStage__On_51` → `sub_8C0009`, bảng băm `dword_E60814+12`): blob {`u16 n`, n × (`u32 id, u8 loại, str,
+  u32 +60, u32 +72, u32 +84, str, u16, u8`)}. Đường dẫn icon theo loại (`sub_8BBFE8`): loại 0/2/… = chính `str`; 19 (trang phục) =
+  `Icon/A{nhân vật +60}_{bộ phận +72}_{số +84}icon` (`A%02d_%2d_%04d`, bộ phận `sub_58E281`: 0..9 → ×10, 10→21, 11→41, 12→22).
+  Server Rust gửi 51 ngay sau 23.
+- Bản ghi FxStock — trường đã kiểm: `+20 loại` (→ thẻ `sub_8A074C`: loại 2 → VẬT PHẨM/Item00), `+32 tên hiển thị`, `+100 mã vật phẩm (51)`,
+  `+152 giá`, **`+176 u16 cấp tối thiểu`** (> cấp người chơi → "LevelAbove"), **`+248 u8 loại tiền`** (`sub_8A04EA`: 0 cash/XU,
+  1 lucci/VÀNG, 2 gcoupon, 5 capoint), `+284 u32 cờ` (bit 0x4/0x8/0x20/0x40 ẩn), **`+308 u8 hiển thị` ≠ 0**.
+  Gói (+package) lấy món con qua PackageMap (`sub_8A9ED3`).
+- **Mua**: MUA → hộp MUA VẬT PHẨM → MUA → client tự kiểm tiền/cấp (`sub_8ABDB9`, `sub_8AB906`) → **C→S 261** (`sub_8AF502`/`sub_8A9833`:
+  `u32 mã hàng, u8 loại tiền, u8, u8, u8, u8`) → **S→C 223 `{u8 0}`** = thành công (`sub_8AF6B7`; mã lỗi: 1/5 ErrorBuying, 24 ErrorBuying2,
+  40 ProcessOther, 41 ErrorWrongItem, 45 NotRegistered…, 9 CantBuyExceed + u32, 22/23 bỏ qua) → "BuyItem", VÀNG trừ ở client
+  (`docs/shop_items.png`, `docs/shop_buy_ok.png`: 5000 → 4900). Server Rust: 2 món thử (`SHOP_ITEMS`), VÀNG 5000, chưa lưu túi đồ.

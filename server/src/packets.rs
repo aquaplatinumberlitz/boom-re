@@ -549,17 +549,76 @@ pub fn account_info(name: &str) -> Vec<u8> {
     p.blob(&b.0).build()
 }
 
-/// Opcode 20 (CStage__On_20): shop entry data, the answer to C->S 38. u8 slot, u8, 4 x u32; [feature 67] u8, 4 x u32, str;
+/// Gold (lucci, VANG) given on shop entry; the client deducts prices itself after a 223 ok.
+pub const SHOP_GOLD: u32 = 5000;
+
+/// Opcode 20 (CStage__On_20): shop entry data, the answer to C->S 38. u8 slot, u8, 4 x u32 (?, lucci/VANG sub_9B754B,
+/// gcoupon sub_9B6973, capoint/BAC sub_9B6936); [feature 67] u8, 4 x u32, str;
 /// [186] bool; [176] u8 n (+ SYSTEMTIME 8 x u16 if n != 0); u32, u32, u32, u8, u32, str, blob {u32 n, n x (u8 idx, u32, str)},
 /// u32 count, count x blob. Ends with sub_8F391D(14) when E60884+900 == 14 (the shop stage).
 pub fn shop_data() -> Vec<u8> {
-    let mut p = Packet::new(20).u8(0).u8(0).u32(0).u32(0).u32(0).u32(0);
+    let mut p = Packet::new(20).u8(0).u8(0).u32(0).u32(SHOP_GOLD).u32(0).u32(0);
     p = p.u8(0).u32(0).u32(0).u32(0).u32(0).str("");
     p = p.u8(0).u8(0);
     p = p.u32(0).u32(0).u32(0).u8(0).u32(0).str("");
     let mut b = Le(vec![0]);
     b.u32(0);
     p.blob(&b.0).u32(0).build()
+}
+
+/// Shop test catalog: (stock id, item id, stock type, name, icon path, price)
+pub const SHOP_ITEMS: &[(u32, u32, u8, &str, &str, u32)] = &[
+    (1, 1001, 2, "Test A", "Icon/A02_10_0001icon", 100),
+    (2, 1002, 2, "Test B", "Icon/A02_21_0001icon", 200),
+];
+
+/// Opcode 51 (CStage__On_51 -> sub_8C0009, item catalog into dword_E60814): blob {u16 n, n x (u32 id, u8 type, str, u32 +60,
+/// u32 +72, u32 +84, str, u16, u8)}. The icon path comes from the type (sub_8BBFE8): type 2 -> the str itself, 19 (avatar) ->
+/// A{char +60}_{part +72}_{num +84}.
+pub fn item_catalog() -> Vec<u8> {
+    let mut b = Le(vec![0]);
+    b.u16(SHOP_ITEMS.len() as u16);
+    for &(_, id, kind, _, icon, _) in SHOP_ITEMS {
+        b.u32(id).u8(kind).str(icon).u32(0).u32(0).u32(0).str("").u16(0).u8(0);
+    }
+    Packet::new(51).blob(&b.0).build()
+}
+
+/// Opcode 64 (sub_8B25A2, FxStock.ini): blob {u16 n, n x stock record (sub_8A1190)}.
+pub fn shop_stock() -> Vec<u8> {
+    let mut b = Le(vec![0]);
+    b.u16(SHOP_ITEMS.len() as u16);
+    for &(stock, id, kind, name, _, price) in SHOP_ITEMS {
+        b.u32(stock).u8(kind).str(name).u32(price).u32(id).u32(1).str("");
+        // +248 = currency (sub_8A04EA): 0 cash (XU), 1 lucci (VANG), 2 gcoupon, 5 capoint (BAC)
+        b.u32(price).u32(price).u16(0).u8(0).u16(0).u16(0).u32(0).u8(0).u8(1).u32(0).u16(0).u32(0).u32(0).u8(1);
+    }
+    Packet::new(64).blob(&b.0).build()
+}
+
+/// Opcode 225 (sub_8B26FB, StringTable.ini): blob {u16 n, n x (u32 id, str)}.
+pub fn shop_strings() -> Vec<u8> {
+    let mut b = Le(vec![0]);
+    b.u16(0);
+    Packet::new(225).blob(&b.0).build()
+}
+
+/// Opcode 65 (sub_8B27FB, PackageMap.ini): blob {u16 n, n x (u32 package stock id, u32 member stock id)}.
+pub fn shop_packages() -> Vec<u8> {
+    let mut b = Le(vec![0]);
+    b.u16(0);
+    Packet::new(65).blob(&b.0).build()
+}
+
+/// Opcode 223 (CStage case 221 -> stage vf84 -> sub_9B691A, E60848+348 = cash / XU): u8 slot, u32 cash. Answer to C->S 260.
+pub fn cash_balance(cash: u32) -> Vec<u8> {
+    Packet::new(223).u8(0).u32(cash).build()
+}
+
+/// Opcode 223 inside the shop stage (sub_803416 -> sub_8AF6B7): purchase result, u8 code. 0 = ok ("BuyItem", item applied
+/// locally by sub_8ADBC9), 1/5 ErrorBuying, 24 ErrorBuying2, 40 ProcessOther, 41 ErrorWrongItem, 45 NotRegistered..., 22/23 ignored.
+pub fn buy_result(code: u8) -> Vec<u8> {
+    Packet::new(223).u8(code).build()
 }
 
 /// Opcode 289 (sub_6952A5 -> sub_7EFC2E): answer to C->S 325 (shop button). u8 ok: 1 -> sub_8BE528 + sub_7EFB6A (enter the shop),

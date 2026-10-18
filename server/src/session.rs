@@ -161,6 +161,8 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 // lobby entry: same replies as before but with the real room list
                 hub.lobby.lock().unwrap().push(tx.clone());
                 let _ = tx.send(pk::account_info(&hub::player_name(user_id)));
+                let _ = tx.send(pk::item_catalog());
+                let _ = tx.send(pk::cash_balance(10000));
                 for r in replies(op, port, &cfg) {
                     let _ = tx.send(if proto::get_int(&r, 2, true) == 88 { hub.room_list(cfg.room_type) } else { r });
                 }
@@ -245,6 +247,18 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 // after 289: enter-shop request (sub_7EFB6A): u8, u8 n, n x (str name, u32 id), u8 -> 20 (CStage__On_20, stage 14)
                 log(format!("[{port}] shop enter 38 -> 20"));
                 let _ = tx.send(pk::shop_data());
+            } else if op == 260 {
+                // sent on shop entry (sub_800DF0): bool. Answer unknown; 223 here is taken as a purchase result (sub_803416)
+                log(format!("[{port}] shop 260"));
+            } else if op == 261 {
+                // buy (sub_8AF502 -> sub_8A9833 stock record), after the client-side money/level checks -> 223 {u8 0}
+                log(format!("[{port}] buy 261 -> 223 ok"));
+                let _ = tx.send(pk::buy_result(0));
+            } else if op == 276 || op == 278 || op == 256 {
+                // shop list requests after 20 when the cached .ini version differs: FxStock -> 64, StringTable -> 225, PackageMap -> 65
+                let pkt = match op { 276 => pk::shop_stock(), 278 => pk::shop_strings(), _ => pk::shop_packages() };
+                log(format!("[{port}] shop list {op}"));
+                let _ = tx.send(pkt);
             } else if op == 95 && body.len() >= 6 {
                 // kick by the master (sub_6C6E36 "SureToBan"): u32 user id (+12 of the slot record), u8
                 let target = proto::get_int(&body[2..], 4, true) as u32;
