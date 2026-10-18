@@ -5,6 +5,7 @@
   "distinct_effects": 4,
   "dominant": {
    "share": "764/1009",
+   "vsp_delta": 4,
    "regs": [
     "eax",
     "ebx",
@@ -20,6 +21,7 @@
   "distinct_effects": 2,
   "dominant": {
    "share": "426/519",
+   "vsp_delta": -4,
    "regs": [
     "eax",
     "ebx",
@@ -34,6 +36,7 @@
   "distinct_effects": 2,
   "dominant": {
    "share": "415/464",
+   "vsp_delta": -4,
    "regs": [
     "eax",
     "ebx",
@@ -48,6 +51,7 @@
   "distinct_effects": 2,
   "dominant": {
    "share": "185/350",
+   "vsp_delta": -2,
    "regs": [
     "eax",
     "ebx",
@@ -62,6 +66,7 @@
   "distinct_effects": 2,
   "dominant": {
    "share": "309/321",
+   "vsp_delta": 4,
    "regs": [
     "eax",
     "ebx",
@@ -77,6 +82,7 @@
   "distinct_effects": 2,
   "dominant": {
    "share": "269/281",
+   "vsp_delta": -4,
    "regs": [
     "eax",
     "ebx",
@@ -91,6 +97,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "244/244",
+   "vsp_delta": -4,
    "regs": [
     "eax",
     "ebx",
@@ -105,6 +112,7 @@
   "distinct_effects": 2,
   "dominant": {
    "share": "222/224",
+   "vsp_delta": 4,
    "regs": [
     "eax",
     "ebx",
@@ -119,6 +127,7 @@
   "distinct_effects": 44,
   "dominant": {
    "share": "22/65",
+   "vsp_delta": 4,
    "regs": [
     "eax",
     "ebx",
@@ -133,6 +142,7 @@
   "distinct_effects": 24,
   "dominant": {
    "share": "16/53",
+   "vsp_delta": 4,
    "regs": [
     "eax",
     "ebx",
@@ -147,6 +157,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "21/21",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx",
@@ -161,6 +172,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "18/18",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx"
@@ -174,6 +186,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "17/17",
+   "vsp_delta": 4,
    "regs": [
     "eax",
     "ebx",
@@ -188,6 +201,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "16/16",
+   "vsp_delta": -4,
    "regs": [
     "eax",
     "ebx",
@@ -202,6 +216,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "14/14",
+   "vsp_delta": 4,
    "regs": [
     "eax",
     "ebx",
@@ -216,6 +231,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "7/7",
+   "vsp_delta": -2,
    "regs": [
     "eax",
     "ebx",
@@ -230,6 +246,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "6/6",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx"
@@ -243,6 +260,7 @@
   "distinct_effects": 2,
   "dominant": {
    "share": "4/5",
+   "vsp_delta": 4,
    "regs": [
     "eax",
     "ebx",
@@ -258,6 +276,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "5/5",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx"
@@ -271,6 +290,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "5/5",
+   "vsp_delta": -4,
    "regs": [
     "eax",
     "ebx",
@@ -285,6 +305,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "4/4",
+   "vsp_delta": -2,
    "regs": [
     "eax",
     "ebx",
@@ -299,6 +320,7 @@
   "distinct_effects": 2,
   "dominant": {
    "share": "3/4",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx"
@@ -312,6 +334,7 @@
   "distinct_effects": 2,
   "dominant": {
    "share": "1/2",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx",
@@ -326,6 +349,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "2/2",
+   "vsp_delta": -2,
    "regs": [
     "eax",
     "ebx",
@@ -340,6 +364,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "2/2",
+   "vsp_delta": 2,
    "regs": [
     "eax",
     "ebx",
@@ -354,6 +379,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "2/2",
+   "vsp_delta": -2,
    "regs": [
     "eax",
     "ebx",
@@ -368,6 +394,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "2/2",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx"
@@ -381,6 +408,7 @@
   "distinct_effects": 2,
   "dominant": {
    "share": "1/2",
+   "vsp_delta": 2,
    "regs": [
     "eax",
     "ebx",
@@ -401,6 +429,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "2/2",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx"
@@ -414,6 +443,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "2/2",
+   "vsp_delta": 4,
    "regs": [
     "eax",
     "ebx",
@@ -429,6 +459,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "2/2",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx",
@@ -444,6 +475,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "2/2",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx"
@@ -457,6 +489,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "1/1",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx"
@@ -470,6 +503,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "1/1",
+   "vsp_delta": 8,
    "regs": [
     "eax",
     "ebx",
@@ -484,6 +518,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "1/1",
+   "vsp_delta": 0,
    "regs": [
     "eax",
     "ebx"
@@ -497,6 +532,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "1/1",
+   "vsp_delta": -2,
    "regs": [
     "eax",
     "ebx",
@@ -512,6 +548,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "1/1",
+   "vsp_delta": -2,
    "regs": [
     "eax",
     "ebx",
@@ -526,6 +563,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "1/1",
+   "vsp_delta": -2,
    "regs": [
     "eax",
     "ebx",
@@ -540,6 +578,7 @@
   "distinct_effects": 1,
   "dominant": {
    "share": "1/1",
+   "vsp_delta": -4,
    "regs": [
     "eax",
     "ebx",

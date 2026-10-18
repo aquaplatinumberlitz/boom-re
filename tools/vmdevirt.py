@@ -1304,7 +1304,8 @@ def cmd_vfx(a):
     vreg = getattr(X, "UC_X86_REG_" + (a.vip_reg or "esi").upper())
     FE = int(a.fields, 16)          # how much of the context to diff
     REGS = {k: getattr(X, "UC_X86_REG_" + k.upper()) for k in ("eax", "ebx", "ecx", "edx", "edi", "ebp", "esp")}
-    prev = [None]                   # (op, vip, ctx_bytes, regs)
+    vsp_off = int(a.vsp_off, 16)
+    prev = [None]                   # (op, vip, ctx_bytes, regs, vsp)
     sigs = collections.defaultdict(collections.Counter)
     counts = collections.Counter()
     n, stop, armed, calls = [0], [None], [False], [0]
@@ -1346,19 +1347,30 @@ def cmd_vfx(a):
         vip = mu8.reg_read(vreg)
         cur = bytes(mu8.mem_read(ctx, FE))
         rv = {k: mu8.reg_read(v) for k, v in REGS.items()}
+        if a.vsp_reg:
+            try:
+                vsp = mu8.reg_read(getattr(X, "UC_X86_REG_" + a.vsp_reg.upper()))
+            except Exception:
+                vsp = None
+        else:
+            try:
+                vsp = struct.unpack("<I", mu8.mem_read(ctx + vsp_off, 4))[0]
+            except Exception:
+                vsp = None
         if prev[0] is not None:
-            pop, pvip, pctx, prg = prev[0]
+            pop, pvip, pctx, prg, pvsp = prev[0]
             rmask = tuple(sorted(k for k in REGS if rv[k] != prg[k]))
+            dvsp = (vsp - pvsp) if (vsp is not None and pvsp is not None) else None
             changes = []
             for i in range(0, FE, 4):
                 old = struct.unpack_from("<I", pctx, i)[0]
                 new = struct.unpack_from("<I", cur, i)[0]
                 if old != new:
                     changes.append((i, old, new))
-            kind = (rmask, tuple(sorted((i, o, nv) for i, o, nv in changes)))
+            kind = (dvsp, rmask, tuple(sorted((i, o, nv) for i, o, nv in changes)))
             sigs[pop][kind] += 1
         counts[op] += 1
-        prev[0] = (op, vip, cur, rv)
+        prev[0] = (op, vip, cur, rv, vsp)
 
     mu.hook_add(UC_HOOK_CODE, on_code)
     try:
@@ -1375,8 +1387,9 @@ def cmd_vfx(a):
         if top:
             k, cnt = top[0]
             row["dominant"] = {"share": f"{cnt}/{sum(sig.values())}",
-                               "regs": list(k[0]),
-                               "changes": [[hex(i), hex(o), hex(nv)] for i, o, nv in k[1]]}
+                               "vsp_delta": k[0],
+                               "regs": list(k[1]),
+                               "changes": [[hex(i), hex(o), hex(nv)] for i, o, nv in k[2]]}
         out.append(row)
     # determinism: how many opcodes have one dominant effect?
     det = sum(1 for r in out if r.get("dominant") and
@@ -1384,6 +1397,7 @@ def cmd_vfx(a):
     print(f"opcodes whose every occurrence produced the same ctx effect-set: {det}/{len(out)}")
     for r in out[:a.show]:
         print(f"  op {r['opcode']:>6} n={r['count']:<6} effects={r['distinct_effects']:<3} "
+              f"vsp={r.get('dominant', {}).get('vsp_delta')} "
               f"dominant={r.get('dominant', {}).get('share', '-')} "
               f"regs={','.join(r.get('dominant', {}).get('regs') or [])}")
         for ch in (r.get("dominant", {}).get("changes") or [])[:4]:
@@ -1764,6 +1778,8 @@ def main():
     ap.add_argument("--fake-native", action="store_true",
                     help="không chạy code ngoài VM: giả lập return khi VM gọi hàm native/API")
     ap.add_argument("--fields", default="0x94", help="số byte ctx đem diff")
+    ap.add_argument("--vsp-off", default="0xc", help="offset của VSP trong ctx (nếu không dùng --vsp-reg)")
+    ap.add_argument("--vsp-reg", default="esp", help="thanh ghi giữ VSP ('-' để dùng ctx field)")
     ap.add_argument("--trace", help="trace JSON (từ lệnh trace --json)")
     ap.add_argument("--opcodes", default=str(ROOT / "decomp" / "vm_opcodes.json"))
     ap.add_argument("--sizes", default=str(ROOT / "decomp" / "vm_bytecode.json"))

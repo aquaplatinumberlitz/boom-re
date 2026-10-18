@@ -551,6 +551,51 @@ python3 tools/vmdevirt.py emit --trace decomp/trace_iter_8F346C.json --json deco
 python3 tools/vmdevirt.py verify --trace-json decomp/trace_iter_8F346C.json --post logs/snap/8F346C/post.snap
 ```
 
+
+## 19. Ngữ nghĩa opcode — kết quả đầu (round 15)
+
+Thử 2 giả thuyết cho VSP, cả hai đều cho kết quả rõ ràng:
+
+| giả thuyết | kết quả |
+|---|---|
+| VSP là field `ctx+0x0C` | **sai** — delta luôn 0 ở mọi dispatch |
+| VSP là **thanh ghi `esp`** (VM dùng luôn host stack) | **đúng** — delta ổn định theo opcode |
+
+Đo `Δesp` giữa 2 dispatch, ghép với VI size đã học:
+
+| op | size | Δesp | count | suy ra |
+|---|---|---|---|---|
+| `0x87` | 1 | −4 | 1584 | **push reg** |
+| `0x91` | 1 | −4 | 790 | **push reg** |
+| `0x43` | 2 | −4 | 1433 | **push imm8** (sign-extend) |
+| `0x2e` | 2 | −4 | 59 | **push imm8** |
+| `0x3b` | 5 | −4 | 848 | **push imm32** |
+| `0x71` | 3 | −2 | 1060 | **push imm16** |
+| `0x81` | 1 | +4 | 3089 | **pop reg** |
+| `0x66` | 1 | +4 | 989 | **pop reg** |
+| `0xa6` | 1 | +4 | 650 | **pop reg** |
+| `0x56`, `0xc7`, `0xcb`, `0x59` | 1-2 | +4 | | **pop** |
+| `0x76`, `0xb8`, `0xa0`, `0x7d`, `0x55`, `0xb4` | 1 | 0 | | **không đụng stack** (arithmetic/load) |
+| `0x67`, `0x7b`, `0x80` | — | — | | **branch** |
+
+Phân bố 46 opcode: **15 push, 12 pop, 16 không đụng stack, 3 branch**.
+
+Điểm mạnh: **size khớp với Δesp** — op size 5 push 32-bit, size 3 push 16-bit, size 2 push 8-bit
+(sign-extend), size 1 push register. Đây chính là phép "nhận diện vpush/vpop" của bài gốc, làm tự động.
+
+Kết quả lưu ở `decomp/vm_opcode_classes.json`; lệnh:
+
+```
+python3 tools/vmdevirt.py vfx --snap logs/snap/8F346C/pre.snap --site 8F346C \
+        --disp 11F9E81 --ctx 11EDDEC --vsp-reg esp --json decomp/vm_vfx.json
+```
+
+### Còn thiếu để có ngữ nghĩa đầy đủ
+
+- **Thanh ghi nào** được push/pop (hiện chỉ biết "có push 4 byte", chưa biết `push eax` hay `push ebx`).
+- Các op `none` (16 cái): arithmetic/load/store — cần đọc thân handler để biết phép toán.
+- Với push/pop: cần xác định **thứ tự** toán hạng trong ngăn xếp ảo để dựng biểu thức.
+
 ## 5b. Đường áp dụng sang bản KR
 
 Bản KR (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`) **đang bị pack**:
