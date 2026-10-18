@@ -1314,10 +1314,50 @@ def cmd_vfx(a):
         print(f"-> {a.json}")
 
 
+def cmd_emit(a):
+    """Emit C from a trace JSON: the writes the block made, grouped by region, plus the native
+    calls it performed. This is effect-based emission (what devirt.py writes by hand), not a
+    faithful per-instruction translation."""
+    t = json.loads(pathlib.Path(a.trace).read_text())
+    ctx = int(t["ctx"], 16) if t.get("ctx") else None
+    lines = []
+    partial = t.get("stop") != "cont"
+    lines.append(f"// block {t['site']} -> {t.get('cont')}   stop={t.get('stop')}   "
+                 f"insns={t.get('insn')}")
+    if partial:
+        lines.append("// PARTIAL: khối không chạy tới cont — các hiệu ứng dưới đây KHÔNG đầy đủ.")
+    lines.append("")
+    lines.append(f"void vm_block_{int(t['site'], 16):X}(void *self)")
+    lines.append("{")
+    w = t.get("writes", {})
+    if ctx and w.get("ctx"):
+        lines.append("    // VM context fields (giá trị cuối quan sát được)")
+        for e in w["ctx"]:
+            off = int(e["addr"], 16) - ctx
+            lines.append(f"    ctx[{off:#05x}] = {e['last']};   // {e['n']} lần ghi")
+    if w.get("image"):
+        lines.append("    // game globals / image data")
+        for e in w["image"]:
+            lines.append(f"    *(uint32_t *){e['addr']} = {e['last']};   // {e['n']} lần")
+    if w.get("heap"):
+        lines.append(f"    // {len(w['heap'])} địa chỉ heap/stack bị ghi — xem JSON để biết chi tiết")
+    calls = t.get("calls") or {}
+    if calls:
+        lines.append("    // lời gọi native (đã fake khi chạy)")
+        for k, c in sorted(calls.items(), key=lambda kv: -kv[1])[:10]:
+            lines.append(f"    //   {k} x{c}")
+    lines.append("}")
+    src = "\n".join(lines) + "\n"
+    print(src)
+    if a.json:
+        pathlib.Path(a.json).write_text(src)
+        print(f"-> {a.json}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift",
-                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx"])
+                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
     ap.add_argument("--site", help="VM site (hex)")
     ap.add_argument("--cont", help="continuation address (hex), stop when reached")
@@ -1329,6 +1369,7 @@ def main():
     ap.add_argument("--fake-native", action="store_true",
                     help="không chạy code ngoài VM: giả lập return khi VM gọi hàm native/API")
     ap.add_argument("--fields", default="0x94", help="số byte ctx đem diff")
+    ap.add_argument("--trace", help="trace JSON (từ lệnh trace --json)")
     ap.add_argument("--opcodes", default=str(ROOT / "decomp" / "vm_opcodes.json"))
     ap.add_argument("--sizes", default=str(ROOT / "decomp" / "vm_bytecode.json"))
     ap.add_argument("--start", help="bytecode start (hex)")
@@ -1344,7 +1385,7 @@ def main():
     {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps, "ctx": cmd_ctx,
      "trace": cmd_trace, "lift": cmd_lift, "profile": cmd_profile,
      "handlers": cmd_handlers, "bytecode": cmd_bytecode, "decode": cmd_decode,
-     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx}[a.cmd](a)
+     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit}[a.cmd](a)
 
 
 if __name__ == "__main__":
