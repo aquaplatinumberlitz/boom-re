@@ -419,6 +419,11 @@ Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
   cạnh ô xuất phát. Gạch thường ở Village01 **không** nhận vật phẩm (`sub_5BF485` không chạy; gạch vỡ có trường item = -1) — chỉ ô `CGOTileFixedBox` mới
   giấu được. Thứ tự toạ độ (a,b) và bảng `kind` (1, 2 → lò xo tím?) đang kiểm. `index` < 1000 = ô trong bảng vật phẩm (`sub_89AEA3`).
 
+- **Toạ độ và nhặt vật phẩm** (`ITEMS="13,0,1"`, `logs/xvfb/item4`, `docs/battle_item_pickup.png`): bản ghi `{index 0, a=13, b=0, kind 1}` ở danh sách 2 → vật phẩm hiện đúng
+  ô cột 13 hàng 0 ⇒ **(a, b) = (x cột, y hàng)**; `kind 1` = vật phẩm hình bạch tuộc tím. Bước vào ô: vật phẩm biến mất và client gửi **C→S 117**
+  (`a51c5a5a5a57a569a46996ca470296ca74855a`, CHƯA GIẢI MÃ); server không trả lời → bước ra thì **vật phẩm hiện lại** ⇒ việc nhặt do **server xác nhận**
+  (ứng viên trả lời: S→C 158 `CGameStage__On_158`, có `u16 itemId`). CHƯA LÀM.
+
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
 |---|---|---|
