@@ -293,8 +293,8 @@ Số liệu runtime (`tools/gdb/phase_clock.gdb`, bp tick lấy mẫu 1/400):
   phải-trên và **quay mặt theo ←→↑↓** (`docs/battle_turn_LRUD.png`, `docs/battle_phase3.png`). Không đi được vì ô spawn
   bị chặn (viền/cây/gạch) — cần đặt bom.
 - Space (đặt bom) → **crash trong VM**: EIP 0x11FB494, stack `sub_708CC8` → ctx vf8 case 4 (0x6E5F2A) →
-  `CGOCAHeroGameBomber__vf6_2` (call tại 0x5B1FB5) → `sub_6EFD24` = site VM **0x6EFD4A** (vmtriage P1). Phần khối VM
-  do chủ dự án xử lý.
+  `CGOCAHeroGameBomber__vf6_2` (call tại 0x5B1FB5) → `sub_6EFD24` = site VM **0x6EFD4A** (vmtriage P1). Khối VM này
+  đã được viết lại (2026-10-18, `docs/vm_6EFD4A_inputs.md` §8).
 
 CHƯA KIỂ: ý nghĩa u32 của 189 (this[4887]) và v13/T[5] truyền vào start; mode 1 hợp với trận thường hay chỉ là
 "nạp lại round" (thứ tự server gốc chưa biết — đây là chuỗi tối thiểu chạy được).

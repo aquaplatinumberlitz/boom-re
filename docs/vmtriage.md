@@ -1,5 +1,8 @@
 # Triage khối VM còn lại (tĩnh, 2026-10-16)
 
+> **Cập nhật 2026-10-18:** đây là triage TĨNH ban đầu; cột ưu tiên/"đã skip" trong các bảng dưới đã lỗi thời. Trạng thái hiện tại từng khối: [devirt.md](devirt.md#bảng-trạng-thái-khối-vm-nguồn-sự-thật-duy-nhất).
+> Đính chính: các site `0x6EFD4A`, `0x71581A`, `0x9682E5`, `0x5A6E89`, `0x6F287E`, `0x754C82`, `0x8E5519` đã xử lý; `sub_711E7F`/`sub_708192`/`sub_705F63` là code mutate, không phải VM.
+
 Rà soát 56 site `vm` trong `decomp/themida_entries.json` + 3 site ngoài JSON (8F54E4, 8F5F40, 5788C9).
 Không chạy động, không sửa binary, không commit. DB IDA (`unpacked_ca.exe.i64`, idalib) chỉ đọc, không save.
 

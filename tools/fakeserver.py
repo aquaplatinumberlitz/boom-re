@@ -539,7 +539,7 @@ async def handle(reader, writer, port, log):
                                     log(f"[{port}] S->C opcode 190 (GO)")
                                     if BEGIN_START:  # 191 round begin: starts CGameClock with a real base + time limit
                                         await asyncio.sleep(BEGIN_START)
-                                        r = round_result() if BEGIN_OP == 146 else round_begin()
+                                        r = round_result() if BEGIN_OP == 146 else (obf_body(552, ("u32", 0)) if BEGIN_OP == 552 else round_begin())
                                         writer.write(sess.send(r))
                                         await writer.drain()
                                         log(f"[{port}] S->C opcode {BEGIN_OP} (round begin)")

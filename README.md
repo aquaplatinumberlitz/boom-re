@@ -17,7 +17,10 @@ Tài liệu:
 | [docs/runtime.md](docs/runtime.md) | Chạy client: thứ tự khởi động, mã lỗi, patch bộ nhớ, mạng WinBoat, Wine, **sửa IAT bản dump** |
 | [docs/progress.md](docs/progress.md) | **Tiến độ + handoff**: đang ở đâu, chạy thử, việc tiếp theo |
 | [docs/lobby.md](docs/lobby.md) | Kênh → sảnh → phòng chờ → bắt đầu trận: nhật ký từng bước, địa chỉ hàm |
-| [docs/devirt.md](docs/devirt.md) | Hàm bị Themida ảo hoá, danh sách, phương pháp viết lại |
+| [docs/devirt.md](docs/devirt.md) | **Bảng trạng thái 15 khối VM đã xử lý** + 3 đường viết lại (skip / emulate trên snapshot cũ / snapshot tại site) |
+| [docs/vmtriage.md](docs/vmtriage.md) | Triage tĩnh 56 site VM (lịch sử; trạng thái hiện tại ở devirt.md) |
+| [docs/vm_6EFD4A_inputs.md](docs/vm_6EFD4A_inputs.md) | Khối đặt bom `0x6EFD4A`: khung hàm, tham số, **kết quả viết lại (§8)** |
+| [docs/vmdevirt.md](docs/vmdevirt.md), [docs/devirt-themida-huong-dan.md](docs/devirt-themida-huong-dan.md) | Công cụ devirt tổng quát `tools/vmdevirt.py` (đang dở) + hướng dẫn cho người mới |
 | [docs/map.md](docs/map.md) | Định dạng map |
 | `docs/oc_*.md` | Ghi chép của agent OpenCode (chưa audit hết, xem `docs/progress.md` mục 7) |
 
@@ -25,7 +28,7 @@ Tài liệu:
 
 ## Trạng thái
 
-Cập nhật 2026-10-17. Bản ngắn gọn cho người mới: [docs/progress.md](docs/progress.md).
+Cập nhật 2026-10-18. Bản ngắn gọn cho người mới: [docs/progress.md](docs/progress.md).
 
 | Phần | Trạng thái | Ở đâu |
 |---|---|---|
@@ -38,14 +41,15 @@ Cập nhật 2026-10-17. Bản ngắn gọn cho người mới: [docs/progress.m
 | Màn chọn kênh (stage 10) | ✅ kênh tự hiện (hook), click vào kênh được | `docs/lobby.md` |
 | Sảnh quảng trường (stage 11) | ✅ load xong (sửa 10 byte hỏng 0x592C09), TẠO PHÒNG chạy | `docs/lobby.md` |
 | Phòng chờ (stage 12) | ✅ người chơi, trưởng phòng, map Village01, nút BẮT ĐẦU bật; hộp thoại chọn map còn trống | `docs/lobby.md` |
-| Trận đấu (stage 13) | ❌ nhận 501, tạo `CGameStage`, rồi crash khi nạp map (vùng Themida bảo vệ) — **chủ dự án đang tự xử lý** | `docs/progress.md` mục 5 |
+| Trận đấu (stage 13) | 🟡 vào trận, nạp map, HUD, nhân vật nhận phím, **đặt bom chạy**; chưa gửi gói bom/di chuyển lên server (C→S 111?) | `docs/progress.md`, `docs/devirt.md` |
 | Pack `.idx/.idd` + sprite → PNG | ✅ 108.726 PNG, 965 map, 645 ogg | `docs/assets.md`, `tools/idf.py`, `tools/i16.py` |
 | Định dạng `.map`, `Attr/*`, frame animation | ⬜ | `decomp/CGamePlayMap__Load.c` |
 | Client gốc (Themida) + patch bộ nhớ | ✅ chạy tới đăng nhập trong WinBoat; ❌ không render (VM không GPU); ❌ Wine (anti-VM Themida) | `docs/runtime.md` |
 | Bản dump chạy trong Wine (**hướng đang theo**) | ✅ **chạy tới phòng chờ**: đăng nhập → kênh → sảnh → phòng chờ | `tools/rebuild_wine.sh`, `docs/devirt.md` |
-| Hàm bị Themida ảo hoá | 🟡 7/56 khối viết lại (khởi động, `ChangeStage`, vòng lặp chính 3 khối, keep-alive, `sub_9682DE` tạm) + 1 hook | `docs/devirt.md`, `tools/devirt.py`, `tools/vmemu.py`, `tools/launcher/snap.c` |
+| Hàm bị Themida ảo hoá | 🟡 **15 khối** trong `tools/devirt.py` (viết lại hoặc skip có căn cứ); còn `0x736C27` (skip), `0x966FEC`, 43 site anti-cheat A1xxxx | `docs/devirt.md` (bảng trạng thái), `tools/devirt.py`, `tools/vmemu.py` |
+| Devirt tổng quát (`tools/vmdevirt.py`) | 🟡 bảng handler/ctx/opcode có; chưa emit C | `docs/vmdevirt.md` |
 | Client gốc trong WinBoat có hình | ✅ D3D9 phần mềm (wined3d + Mesa llvmpipe) | `win/swd3d.bat`, `thirdparty/swd3d/` |
-| Server thật (Rust) | ⬜ chưa bắt đầu; `tools/fakeserver.py` là đặc tả sống | |
+| Server thật (Rust) | 🟡 khung `server/` chạy được tới trận (login → kênh → sảnh → phòng → 501/189/190); `tools/fakeserver.py` là đặc tả sống | `docs/progress.md` mục 12 |
 
 ### Đã kiểm chứng trên client thật
 - Codec `boomproto.py` giải mã đúng packet thật của client (CRC8 khớp); seq byte, obfuscate số đúng.
@@ -64,10 +68,10 @@ Cập nhật 2026-10-17. Bản ngắn gọn cho người mới: [docs/progress.m
 
 Danh sách đầy đủ, có thứ tự ưu tiên: [docs/progress.md](docs/progress.md#6-việc-tiếp-theo-theo-thứ-tự-ưu-tiên). Tóm tắt:
 
-1. **[chủ dự án]** Qua chỗ crash nạp map khi vào trận.
-2. Mở đủ map: danh sách map đầy đủ từ `fx.idx`, hộp thoại chọn map, kiểm tra khoá map theo cấp.
-3. Audit `docs/oc_*.md` (agent OpenCode) trước khi dùng.
-4. Các gói trong trận (`docs/oc_e-game.md`), rồi server thật bằng **Rust** (`tools/fakeserver.py` là đặc tả sống).
+1. Gói **C→S 111** (flush bản ghi đặt bom): tìm điều kiện flush của `CGameMsgCache::vf8`.
+2. Dump `CGamePlayMap` để viết lại thật khối `0x736C27`; xử lý site anti-cheat A1xxxx khi chạm.
+3. Mở đủ map (1019), sảnh/phòng nhiều người, các gói trong trận; audit `docs/oc_*.md`.
+4. Hoàn thiện server **Rust** (`server/`) dùng `tools/fakeserver.py` + `docs/` làm đặc tả.
 
 ---
 
@@ -185,7 +189,7 @@ tools/rebuild_wine.sh
 | 0xA388C0 / 0xA37880 | `PackFS__AttachIdf` / `CData__LoadFromPack` | pack |
 | 0x7354FD | `CGamePlayMap__Load` | map (có khối bị ảo hoá) |
 | 0x8F8EEC | `CStageMgr__ChangeStage` | bảng id → stage trong `docs/devirt.md` |
-| 0x8F4D01 | vòng lặp chính (`CFxApp__vf5` gọi) | 3 khối VM lớn — chặn hiện tại |
+| 0x8F4D01 | vòng lặp chính (`CFxApp__vf5` gọi) | 3 khối VM lớn — đã viết lại (`docs/devirt.md`) |
 | 0x11EE128 | VM entry Themida | `docs/devirt.md`; khối kết thúc ở marker `EB 10 57 4C 20` |
 | 0xC0F000–0xC0F7FF | IAT gốc | `decomp/iat_resolved.json` |
 | 0x1900000 / 0x16AD000 | IAT giả của unlicense | 3 mục sai, xem `docs/runtime.md` |
@@ -204,7 +208,11 @@ tools/rebuild_wine.sh
 | `tools/patch_client.py` | patch file: bỏ HackShield, bỏ patch-check, đổi IP |
 | `tools/fix_iat.py` | giải IAT gốc (`report`/`export`) và build `ca_fixed.exe` (`build`) |
 | `tools/rebuild_wine.sh` | fix_iat → devirt → patch → chạy bản dump trong winedbg |
-| `tools/devirt.py` | khối VM viết lại (`BLOCKS`) → `ca_devirt.exe` |
+| `tools/devirt.py` | khối VM viết lại / skip (`BLOCKS`, 15 khối) + `HOOKS` → `ca_devirt.exe` |
+| `tools/vmdevirt.py` | devirt tổng quát (discover/profile/handlers/opcodes/trace) — `docs/vmdevirt.md` |
+| `tools/match_gdb.sh`, `tools/gdb/*.gdb` | chạy cả trận (đăng nhập → phòng → 501… → phím + Space×3) dưới gdb; các script gdb theo chủ đề |
+| `tools/battle_drive.ps1`, `tools/snap_retry.sh`, `win/snap_bisect*.bat` | tự động hoá client gốc trong WinBoat để chụp snapshot (`docs/runtime.md`) |
+| `server/` | server Rust (`cargo run --release`, env như fakeserver + `SERVER_IP`) |
 | `tools/vmtrace.py`, `tools/launcher/inject.c`, `win/vmtrace.bat` | quan sát một khối VM trên client gốc (cave + snapshot + diff) |
 | `tools/launcher/snap.c`, `win/snap.bat` | snapshot toàn bộ bộ nhớ client gốc tại một site VM (pre/post) |
 | `tools/vmemu.py`, `tools/snapdiff.py` | emulate khối VM trên snapshot (Unicorn), so với diff thật — quy trình trong `docs/devirt.md` |

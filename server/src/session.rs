@@ -23,6 +23,8 @@ pub struct Config {
     pub begin_start: f64,
     pub begin_op: u16,
     pub play_start: f64,
+    /// Address handed to the client in opcodes 7/15 (must be reachable from the client; 127.0.0.1 for Wine).
+    pub server_ip: [u8; 4],
     pub maps: Vec<BattleMap>,
 }
 
@@ -41,6 +43,7 @@ impl Config {
             begin_start: env("BEGIN_START", 0.0),
             begin_op: env("BEGIN_OP", 191),
             play_start: env("PLAY_START", 0.0),
+            server_ip: env::<std::net::Ipv4Addr>("SERVER_IP", std::net::Ipv4Addr::LOCALHOST).octets(),
             maps,
         }
     }
@@ -111,9 +114,9 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log) {
 fn replies(op: u16, port: u16, cfg: &Config) -> Vec<Vec<u8>> {
     match op {
         0 => pk::login_replies(),
-        1 => vec![pk::login_ok("tester", 1), pk::login_net_info("127.0.0.1", [0, 0, 0])],
+        1 => vec![pk::login_ok("tester", 1), pk::login_net_info(&std::net::Ipv4Addr::from(cfg.server_ip).to_string(), [0, 0, 0])],
         40 => vec![pk::channel_list(&["Kenh 1", "Kenh 2", "Kenh 3", "Kenh 4"], 100), pk::channel_status(&[10, 20, 30, 40])],
-        5 => vec![pk::channel_join_ok([127, 0, 0, 1], port, 10, 0)],
+        5 => vec![pk::channel_join_ok(cfg.server_ip, port, 10, 0)],
         6 => vec![pk::channel_enter_ok(now_utc())],
         77 => vec![pk::create_room_ok(1, cfg.room_type, 0)],
         337 => vec![
@@ -152,7 +155,9 @@ async fn match_flow(tx: mpsc::UnboundedSender<Vec<u8>>, cfg: Arc<Config>, log: L
     let _ = tx.send(pk::round_go((120, 30), 0, 0, 0));
     if cfg.begin_start > 0.0 {
         wait(cfg.begin_start).await;
-        let r = if cfg.begin_op == 146 {
+        let r = if cfg.begin_op == 552 {
+            crate::packets::Packet::new(552).u32(0).build()
+        } else if cfg.begin_op == 146 {
             pk::round_result(0, 1, (180, 30), 0, (0, 0, 0), &[])
         } else {
             pk::round_begin(0, 180_000, 30_000, 0)

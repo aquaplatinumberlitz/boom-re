@@ -133,6 +133,7 @@ def main():
     ap.add_argument("--skip", action="append", default=[], help="addr[=eax]: do not execute this native, fake its return")
     ap.add_argument("--fake-api", action="store_true", help="fake Windows API entries instead of executing them")
     ap.add_argument("--quiet-api", action="store_true", help="do not log API entries")
+    ap.add_argument("--overlay", action="append", default=[], help="ADDR:FILE raw memory image (e.g. a gdb dump from the running dump client) written after the snapshot is loaded")
     ap.add_argument("--writes", action="store_true", help="also log writes made inside executed native calls")
     a = ap.parse_args()
 
@@ -176,6 +177,18 @@ def main():
     for kv in a.set_reg:
         k, v = kv.split("=")
         regs[k] = int(v, 0)
+    for ov in a.overlay:
+        addr_, _, fn_ = ov.partition(":")
+        blob_ = open(fn_, "rb").read()
+        addr_ = int(addr_, 16)
+        lo_, hi_ = addr_ & ~0xFFF, (addr_ + len(blob_) + 0xFFF) & ~0xFFF
+        for pg in range(lo_, hi_, 0x1000):
+            try:
+                mu.mem_map(pg, 0x1000, UC_PROT_ALL)
+            except Exception:
+                pass  # already mapped by the snapshot
+        mu.mem_write(addr_, blob_)
+        print(f"overlay {len(blob_):#x} bytes at {addr_:#x}")
     stack_hi = regs["esp"] + 0x2000
     for k, v in regs.items():
         mu.reg_write(getattr(X, "UC_X86_REG_" + k.upper()), v)

@@ -1,5 +1,8 @@
 # Đầu vào để viết lại khối VM 0x6EFD4A (`sub_6EFD24`) — chỉ phần native quanh khối
 
+> **Đã xong (2026-10-18):** khối đã được viết lại — xem **§8** (kết quả) và §9. **Suy luận ở §3 ("bảng 41 → C→S 112") là SAI**: khối ghi vào bảng vòng 13/17, flush qua `vf8` → C→S **111**.
+> Các §1–§7 giữ làm tài liệu gốc về khung hàm/cổng/tham số.
+
 Soạn 2026-10-18 (Claude Opus 5.5) cho chủ dự án. **Không có phân tích bên trong khối VM**: chỉ gồm khung hàm, cổng
 native, hàm gọi, tham số (tĩnh + giá trị runtime), object `this`, các hàm "song sinh" native cùng lớp và phía flush gói.
 Phần "suy luận" được đánh dấu rõ — cần kiểm lại khi viết lại.
@@ -138,3 +141,40 @@ Giá trị trả về: vf6_2 **bỏ qua**; sau lời gọi nó gọi `(bomber-0x
   làm thêm việc ngoài ghi bản ghi; kích thước 0x18F cũng gợi ý vậy).
 - Ý nghĩa `ctx[490549]` (arg_0), các box `v6+280/+376/+192/+328/+340`.
 - Giá trị trả về mong đợi (`sub_5B089D` có dùng).
+
+---
+
+## 8. Kết quả viết lại (2026-10-18) — khối đã được devirt, thay cho suy luận §3 ("bảng 41 → op 112") là SAI
+
+**Phương pháp (không cần client gốc vào trận):** `tools/vmemu.py 6EFD4A --snap logs/snap/8F5F40/pre.snap --run-natives --quiet-api
+--writes --pre-asm <khung hàm>` — snapshot cũ của client gốc đã đủ trạng thái runtime của Themida; khung hàm (12 tham số, `this`,
+prolog, `[ebp-0x24]=this`) tự dựng bằng `--pre-asm`; các vector của `this` giả lập bằng vùng nhớ do tay đặt (+0x44, +0x34, +0x10,
++0xF4). Đổi từng tham số sang giá trị khác nhau để thấy tham số nào đi vào field nào.
+
+**Khối làm gì** (cùng bản ghi/vòng với hàm native 16 tham số `sub_6EFEE3`, flush `vf8` → C→S **111**, KHÔNG phải bảng 41/op 112):
+```
+rec = this[13] + 0x44 * (this[4]*slot + count[slot])      ; count = vector this+0x44 (operator[] sub_421AB9), rec = this+0x34 (sub_6EEED9)
+rec[+0x08] = sub_6EFBCA()          ; tick
+rec[+0x04] = 1
+rec[+0x00] = arg_0   rec[+0x0C] = arg_8   rec[+0x10] = arg_10  rec[+0x14] = arg_14  rec[+0x18] = arg_18  rec[+0x1C] = arg_1C
+rec[+0x30] = (u8)arg_C   rec[+0x34] = arg_20  rec[+0x38] = arg_24  rec[+0x3C] = arg_28  rec[+0x40] = (u8)arg_2C
+++count[slot]
+if (!(arg_2C & 4)) sub_6EFC07(this, slot)        ; ++this[61][slot]
+return eax (leftover: con trỏ do 6EFC07 để lại, hoặc arg_2C khi bỏ qua)
+```
+Khác `sub_6EFEE3`: không ghi 4 field +0x20..+0x2C; điều kiện gọi 6EFC07 khác. `slot = arg_4`.
+
+**Kiểm chứng trên client chạy thật (Wine, gdb `tools/gdb/msgcache_rec.gdb`):** Space → khối vào/ra không crash; bản ghi đọc lại khớp tham số
+(`ARGS 0 0 0 1 0 e 1 1 0 0 0 0` → `REC 0 1 <tick> 0 0 e 1 1 0 0 0 0 .. [0x30]=1 ..`, `count[0]=1`). Bom hiện trên map (bóng nước xanh ở ô xuất phát).
+Cài đặt: `tools/devirt.py` BLOCKS (site 0x6EFD4A → cont 0x6EFEDC).
+
+**Chưa kiểm:** C→S **111** có được gửi không (breakpoint `vf8` không bắn trong ~15 s sau Space — chưa rõ điều kiện flush); mọi tổ hợp tham số
+(chỉ thử đổi arg_2C và dữ liệu field); nhánh khác nếu có.
+
+## 9. Ghi chú về client gốc trong WinBoat (2026-10-18)
+
+- Client gốc **bị Themida giết khi code bị patch** (thoát `0xC0000005`, thường lúc đổi màn; bản dump lần đầu cho thấy thanh ghi + stack bị zero rồi nhảy tới 0).
+  Chỉ cần giữ 13 patch HackShield lúc đăng nhập (xem `win/snap_bisect.bat`) thì đi được tới phòng chờ; patch 9 chỗ ở sảnh làm chết ngay.
+- Muốn tới trận phải nhập tay/driver (`tools/battle_drive.ps1`, tọa độ 1024x768 × 0.78125 vì cửa sổ guest 800x600; cửa sổ ban đầu bị minimize).
+- Server giả phải trả `SERVER_IP=172.18.0.50` (biến env của server Rust), không phải 127.0.0.1.
+- Vì cách emulate trên snapshot cũ đã đủ nên **không cần** client gốc vào trận để chụp snapshot cho các khối game khác.

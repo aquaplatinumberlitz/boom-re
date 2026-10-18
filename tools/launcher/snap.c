@@ -90,8 +90,8 @@ int main(int argc, char **argv) {
     const char *dir = argv[1]; DWORD site = strtoul(argv[2], 0, 16);
     DWORD cont = (argc > 3 && argv[3][0] != '-') ? strtoul(argv[3], 0, 16) : 0;
     DWORD timeout = argc > 4 ? strtoul(argv[4], 0, 10) : 120000;
-    Patch p[16]; int np = 0;
-    for (int i = 5; i < argc && np < 15; i++) {
+    Patch p[48]; int np = 0;
+    for (int i = 5; i < argc && np < 47; i++) {
         char tmp[200]; strncpy(tmp, argv[i], sizeof tmp - 1); tmp[sizeof tmp - 1] = 0;
         char *a = strtok(tmp, ":"), *o = strtok(0, ":"), *n = strtok(0, ":");
         if (!a || !o || !n) continue;

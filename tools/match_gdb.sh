@@ -31,8 +31,8 @@ sleep 1; export DISPLAY=:77
     echo "key $k $(date +%T)" >> "$OUT/driver.txt"
     xdotool keydown $k; sleep 1.5; xdotool keyup $k; sleep 1
   done
-  xdotool key space; sleep 2
-  import -window root "$OUT/match_after.png" 2>/dev/null
+  for n in 1 2 3; do xdotool key space; sleep 2; done
+  import -window root "$OUT/match_after.png" 2>/dev/null; sleep 8; import -window root "$OUT/match_after2.png" 2>/dev/null
   echo "keys done $(date +%T)" >> "$OUT/driver.txt" ) &
 CLK=$!
 ( cd wine/Boom && rm -f CALog.log && cat "$CMDS" \

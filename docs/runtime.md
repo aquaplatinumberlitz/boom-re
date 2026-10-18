@@ -2,7 +2,7 @@
 
 Ghi lại những gì đã thử để **chạy được client thật** nối vào server giả, và vì sao từng cách thành/bại.
 
-## Trạng thái (2026-10-16)
+## Trạng thái (2026-10-16; cập nhật 2026-10-18 ở cuối file)
 
 | Cách chạy | Mạng / login | Hiển thị | Ghi chú |
 |---|---|---|---|
@@ -138,3 +138,16 @@ tự động tới đúng màn hình là chuyện riêng, không liên quan đ�
 Phạm vi đã khẳng định: đặt breakpoint + đọc bộ nhớ theo script. Chưa khẳng định:
 sửa hết mọi vướng runtime (VD: `set`-ghi bộ nhớ, watchpoint phần cứng vẫn cần thử
 riêng từng cái).
+
+## Client gốc trong WinBoat (2026-10-18)
+
+Dùng để chụp snapshot bộ nhớ lúc VM chạy đúng (`win/snap.bat`, `tools/launcher/snap.c`). Kết quả thực tế:
+- Cửa sổ game trong guest là **800x600** và bị **minimize** lúc mở → script click phải khôi phục cửa sổ và nhân tọa độ 1024x768 với 0.78125 (`tools/battle_drive.ps1`).
+- Phải có **server trả đúng địa chỉ**: server Rust `SERVER_IP=172.18.0.50` (container `boomsrv` cùng mạng `winboat_default`); 127.0.0.1 = chính guest → "không vào được kênh".
+- HackShield: `snap.bat` phải vá 13 chỗ `Feature_IsDisabled(212)` lúc đăng nhập (xem `win/snap_bisect.bat`) + `0x8E701D` + `0x69E636`; thiếu thì client thoát 0.5 s sau đăng nhập
+  (khung anticheat). Vá thêm 9 chỗ ở sảnh (0x595372, 0x59E869, 0x59E98A, 0x68BB28, 0x690AEC, 0x69E62E, 0x6AA235, 0x6B0070, 0x6B0278) thì khối VM chống sửa code
+  zero thanh ghi + stack rồi nhảy tới 0 (dump WER: EIP 0, ESP trỏ vào vùng toàn 0).
+- Client gốc bị giết ngẫu nhiên (exit `0xC0000005`, không có dump WER) khi code đã bị patch, thường lúc đổi màn; tới stage 13 vẫn chết sau 501. `tools/snap_retry.sh` thử lại nhiều lần.
+  **Kết luận:** không đưa được client gốc vào trận ổn định → dùng snapshot cũ + dựng khung hàm trong `tools/vmemu.py` (`docs/devirt.md`).
+- RDP vào WinBoat hay bị reset: `docker restart WinBoat` rồi nạp lại luật DNAT (mất khi restart); `/app:program:cmd.exe,cmd:/c <bat>` chỉ chạy được khi không có phiên RDP khác.
+- Bẫy shell: `pkill -f xfreerdp3` có thể giết luôn shell → dùng `pkill -x xfreerdp3`.

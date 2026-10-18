@@ -1,4 +1,4 @@
-# Tiến độ & handoff (cập nhật 2026-10-18)
+# Tiến độ & handoff (cập nhật 2026-10-18, cuối ngày)
 
 File này dành cho **người mới vào dự án**: đọc từ trên xuống là biết đang ở đâu, chạy thử thế nào, việc gì còn dở.
 Chi tiết kỹ thuật từng bước nằm ở các file khác (link ở từng mục).
@@ -8,13 +8,16 @@ Chi tiết kỹ thuật từng bước nằm ở các file khác (link ở từn
 ## 1. Tóm tắt 1 phút
 
 - Game: **Boom Online** (VNG, bản Việt của *Crazy Arcade / BnB*). Server gốc đã chết; ta dịch ngược client để viết
-  **server giả lập**. Hiện server giả là `tools/fakeserver.py` (Python); sau này viết lại bằng **Rust**.
+  **server giả lập**: `tools/fakeserver.py` (Python, đặc tả sống) và **server Rust** `server/` (mục 12) — dùng Rust cho chạy thử.
 - Client gốc bị pack Themida. Ta dùng **bản dump đã unpack + sửa** (`ca_fixed_patched.exe`) chạy trong **Wine**.
-- **Đã chạy được:** đăng nhập → chọn kênh → sảnh (quảng trường) → tạo phòng → phòng chờ có người chơi, có map,
-  nút BẮT ĐẦU bật → server gửi lệnh bắt đầu trận → client tạo màn trận (stage 13).
-- **Đang kẹt (2026-10-18):** trong trận, nhân vật đã nhận phím (quay mặt theo hướng) sau chuỗi 501 → 189 mode 1 → 190
-  → 189 mode 0; **đặt bom thì crash** trong khối VM `sub_6EFD24` (site 0x6EFD4A). Các khối VM (0x736C27, 0x6EFD4A…)
-  **do chủ dự án tự xử lý** — người khác/Claude không đụng vào (xem [mục 5](#5-tiến-độ-vào-trận-2026-10-18)).
+- **Chạy được:** đăng nhập → chọn kênh → sảnh → tạo phòng → phòng chờ → bắt đầu trận → **vào trận (stage 13), nhân vật nhận phím,
+  đặt bom (hiện bóng nước)**. Chuỗi server tối thiểu: 501 → 189 mode 1 → 190 → 189 mode 0 (mục 3.3).
+- **Khối VM Themida:** `tools/devirt.py` có **15 khối** (viết lại hoặc skip có căn cứ) — bảng trạng thái từng khối ở
+  [docs/devirt.md](devirt.md#bảng-trạng-thái-khối-vm-nguồn-sự-thật-duy-nhất). Khối đặt bom `0x6EFD4A` và handler gói 552 đã viết lại bằng
+  **emulate trên snapshot cũ** (không cần đưa client gốc vào trận). Còn dở: `0x736C27` (nạp map, đang skip), gói **C→S 111** (flush bản ghi đặt bom)
+  chưa thấy được gửi, vùng anti-cheat A1xxxx (skip khi chạm).
+- Song song có công cụ devirt tổng quát `tools/vmdevirt.py` (bảng handler/ctx/opcode, chưa emit được C) — [docs/vmdevirt.md](vmdevirt.md);
+  hướng dẫn cho người mới: [docs/devirt-themida-huong-dan.md](devirt-themida-huong-dan.md).
 
 ---
 
@@ -28,7 +31,7 @@ Game chia thành các "stage" (màn). Client ghi stage hiện tại vào `wine/B
 | 10 | Đăng nhập + chọn kênh (`CSelectServerStage`) | ✅ kênh tự hiện, click vào kênh được | `docs/channel_autoshow.png` |
 | 11 | Sảnh quảng trường (`CLobbySquareStage`) | ✅ load xong, nút TẠO PHÒNG chạy | `docs/lobby_loaded.png`, `docs/create_room_dialog.png` |
 | 12 | Phòng chờ (`CPrepareStage`) | ✅ có người chơi (trưởng phòng), map Village01, nút BẮT ĐẦU bật | `docs/waiting_room_start.png`, `docs/map_dialog_village.png` |
-| 13 | Trận đấu (`CGameStage`) | 🟡 2026-10-18: nạp map, HUD; phase 3 + đồng hồ trận chạy (189 mode 1 → 190 → 189 mode 0); nhân vật quay theo phím; **đặt bom crash ở VM 0x6EFD4A** | `docs/battle_phase3.png`, `docs/battle_turn_LRUD.png` |
+| 13 | Trận đấu (`CGameStage`) | 🟡 nạp map, HUD; phase 3 + đồng hồ trận chạy (189 mode 1 → 190 → 189 mode 0); nhân vật quay/nhận phím; **đặt bom chạy** (VM 0x6EFD4A đã viết lại); chưa có gói di chuyển/bom lên server (C→S 111?), chưa nhiều người | `docs/battle_phase3.png`, `docs/battle_turn_LRUD.png` |
 
 Những phần **chưa làm** ở các màn đã qua (không chặn đường vào trận):
 - Hộp thoại **chọn map** trong phòng liệt kê 0 map (báo "CantDecideMap"). Server đang tự gán map cho phòng.
@@ -66,6 +69,8 @@ Biến môi trường (đặt trước lệnh):
 | `TURN_START` / `TURN_MODE` | 0 / 4 | > 0: gửi 189 (mode `TURN_MODE`) N giây sau 501. **Dùng `TURN_MODE=1`** (mode 1 start đồng hồ trận) |
 | `GO_START` | 0 | > 0: gửi 190 "GO" N giây sau 189 |
 | `PLAY_START` | 0 | > 0: gửi 189 **mode 0** N giây sau 190 → phase 3, đồng hồ chạy (oc_e-game §5a-3) |
+| `BEGIN_START` / `BEGIN_OP` | 0 / 191 | > 0: gửi opcode `BEGIN_OP` (191 round begin, 146 kết quả, **552** gói của `sub_71580C`) N giây sau 190 |
+| `SERVER_IP` | 127.0.0.1 | (**chỉ server Rust**) địa chỉ client được dặn kết nối ở gói 7 và 15; client trong WinBoat cần `172.18.0.50` |
 
 Chuỗi vào trận chơi được: `AUTO_START=5 TURN_START=10 TURN_MODE=1 GO_START=3 PLAY_START=4`.
 
@@ -79,9 +84,14 @@ CLICKS="975,38,3 385,50,4 437,612,10 512,384,8" tools/xvfb_join.sh
 ```
 - `CLICKS="x,y,giây ..."`: sau khi vào sảnh, click lần lượt từng toạ độ rồi chờ số giây; mỗi click chụp `logs/xvfb/click_<i>.png`.
 - Kết quả đúng: `wine/Boom/CALog.log` có lần lượt `dne:10`, `dne:11`, `dne:12`.
-- Muốn thử vào trận: chạy server với `AUTO_START=5`, rồi chạy lệnh CLICKS ở trên → hiện tại client sẽ crash sau 501.
+- Vào trận + bấm phím + gdb tự động: `tools/match_gdb.sh <file.gdb> <outdir>` (đăng nhập → phòng → 501/189/190/189 → mũi tên + Space×3; ảnh `match_*.png`).
+  Ví dụ: `GREP='ARGS|EXIT|REC|CRASH' TURN_MODE=1 PLAY_START=4 tools/match_gdb.sh tools/gdb/msgcache_rec.gdb logs/xvfb/x`.
+
+### 3.4b Client gốc trong WinBoat (chỉ để chụp snapshot VM)
+Thư mục `win/`, `tools/battle_drive.ps1`, `tools/snap_retry.sh` — bị Themida giết khi code bị patch, chi tiết và bẫy: [docs/runtime.md](runtime.md#client-gốc-trong-winboat-2026-10-18). Không cần cho đường đi chính (emulate trên snapshot cũ đủ cho các khối đã làm).
 
 ### 3.5 Debug (gdb)
+Các file lệnh gdb trong `tools/gdb/`: `input_gates`/`input_dispatch` (đường phím), `phase_clock` (phase + đồng hồ), `msgcache_*` (khối 0x6EFD4A: vào/ra, bản ghi), `h552` (handler 552), `init9682` (Init(index)), `dump_stage` (dump `CGameStage` để emulate).
 `tools/wine_gdb.sh <file_lệnh_gdb>` chạy client dưới `winedbg --gdb` + gdb, tự đăng nhập; `JOIN=1` để click vào kênh,
 `CLICKS=` như trên. Kết quả ở `logs/xvfb/gdb.txt`. Dưới gdb mọi thứ chậm ~3 lần. Chi tiết:
 [docs/runtime.md](runtime.md), memory `reference-winedbg-gdb`.
@@ -114,7 +124,9 @@ Chi tiết + địa chỉ hàm client của từng bước: [docs/lobby.md](lobb
 
 ---
 
-## 5. Tiến độ vào trận (2026-10-18)
+## 5. Tiến độ vào trận (2026-10-18) — LỊCH SỬ (trạng thái hiện tại ở mục 1 và `docs/devirt.md`)
+
+> Mục này giữ nhật ký các bước đã làm; các giả thuyết "khối VM do chủ dự án tự xử lý" đã được thay bằng kết quả ở `docs/devirt.md`.
 
 **Cập nhật 2026-10-18 (Claude Opus 5.5, bước 1 "lần ngược từ triệu chứng" bằng gdb) — chi tiết `oc_e-game.md` §5a-3:**
 - **Giả thuyết 1 đúng** (thiếu gói), không phải do skip 0x736C27: phím ←↑→↓/Space đi hết đường input tới controller
@@ -124,7 +136,7 @@ Chi tiết + địa chỉ hàm client của từng bước: [docs/lobby.md](lobb
   (phase 2 → 3) resume. Fakeserver thêm `PLAY_START`. Chuỗi `TURN_MODE=1 … PLAY_START=4` → nhân vật hiện ở spawn và
   quay mặt theo phím (`docs/battle_turn_LRUD.png`); không đi được vì spawn bị chặn — phải đặt bom.
 - **Kẹt mới:** Space (đặt bom) → crash trong VM `sub_6EFD24` (site 0x6EFD4A, gọi từ `CGOCAHeroGameBomber__vf6_2`
-  0x5B1FB5). Khối VM → chủ dự án xử lý.
+  0x5B1FB5). Khối VM đã viết lại sau đó (2026-10-18, `docs/vm_6EFD4A_inputs.md` §8).
 - Công cụ: `tools/match_gdb.sh <gdb_file> <outdir>` (full flow + bấm phím) với `tools/gdb/{input_gates,input_dispatch,
   phase_clock}.gdb`.
 
@@ -160,36 +172,16 @@ Ghi chép trước đó về phần crash map: [docs/lobby.md](lobby.md) "Cập 
 
 ## 6. Việc tiếp theo (theo thứ tự ưu tiên)
 
-0. **(2026-10-18)** Điều khiển đã mở tới mức nhân vật nhận phím; chặn tiếp theo là **khối VM 0x6EFD4A** (đặt bom) —
-   chủ dự án. Đầu vào native cho việc viết lại (khung hàm, cổng, 12 tham số + giá trị runtime, `CGameMsgCache`,
-   hàm song sinh, suy luận "bảng 41 → C→S 112"): [docs/vm_6EFD4A_inputs.md](vm_6EFD4A_inputs.md). Phía server làm được song song: kiểm ý nghĩa u32 của 189 / chuỗi 189 mode 1 có đúng với server gốc,
-   gói kết thúc lượt 146, đồng hồ "GIỚI HẠN" (this[19736/19740] từ 190).
-1. ~~Mở điều khiển nhân vật trong trận~~ — đã phân định: giả thuyết 1 (thiếu 189 mode 1/mode 0). Mục cũ giữ để tham khảo:
-   - Snapshot + emulate `0x736C27` trên client gốc (viết lại thật khối nạp map) — hoặc trước đó, chụp pre/post
-     snapshot của khối để liệt kê đúng vùng nhớ/field khối tác động;
-   - Đọc vòng tick `sub_71B521` (điều kiện client gửi 141) và nguồn HUD "GIỚI HAN"/overlay THỜI GIAN để biết
-     state nào còn thiếu — khả năng là gói **356** (§5g `oc_e-game.md`) hoặc **176**;
-   - Giải nghĩa `sub_70A385(a4, a5, a6)` (set vị trí/đội 12 bomber?) để gửi 189 đúng tham số;
-   - Nếu runtime vẫn crash trong vòng chat/game loop → thêm skip thí nghiệm cho 0x5A6E89 / 0x6F287E / 0x754C82.
-2. **Viết lại thật 2 khối skip** (0x736C27, 0x5788C9): snapshot client gốc trong WinBoat (`win/snap.bat`) +
-   `tools/vmemu.py` + `tools/snapdiff.py` theo [docs/devirt.md](devirt.md); đã đoán được cont = 0x736D6C / cont = jmp
-   0x414543. Cần bấm đúng các patch của `patch_client.py` vào snap.bat và nâng `MAX_PATCHES` của `snap.c` nếu thiếu.
-2b. **(2026-10-18) Phía server** — đã làm: khoá phiên 189/`ctx[490549]`, tham số start đồng hồ, 191, 146 (đối chiếu
-   lại IDA), "GIỚI HẠN" (00:00 là đúng với 501 + map thường; giới hạn đến từ map đặc biệt/opcode 117/component) —
-   `oc_e-game.md` §5a-4. **Server Rust** `server/` (xem mục 12). Còn: bộ lọc hộp thoại map (`lobby.md` Cập nhật 13).
-3. **Mở đủ map** — 2026-10-18: `ALL_MAPS=1` gửi đủ 1019 map (fakeserver + Rust); hộp thoại vẫn rỗng do bộ lọc
-   `sub_6DF1B0` trả 0 (`lobby.md` Cập nhật 13). Ghi chú cũ:
-   - Thay 3 map tự soạn trong `BATTLE_MAPS` bằng danh sách đầy đủ: client nạp mọi mục `Map/*` trong pack `fx.idx` theo
-     thứ tự chữ cái (1019 mục) → chỉ số = vị trí trong danh sách đó (`tools/idf.py` đọc được pack).
-   - Làm cho hộp thoại chọn map liệt kê được: lỗi nằm ở bước nhóm map (bộ lọc `sub_6DEE48` đã cho qua cả 3 map).
-   - Tìm xem map có khoá theo cấp nhân vật không (chưa ai phân tích; nghi ở gói map riêng của người chơi cho loại phòng 14,
-     hoặc gói 231).
-4. **Audit tài liệu của agent OpenCode** trước khi dùng (mục 7).
-5. Kiểm lại `sub_9682DE` bằng trace thật.
-6. Sảnh/phòng đầy đủ: danh sách người, danh sách phòng, nhiều người chơi (`docs/oc_c-square.md`, `docs/oc_a-room.md`).
-7. Viết server thật bằng Rust, dùng `tools/fakeserver.py` + `docs/` làm đặc tả.
-
----
+1. **Gói C→S 111 (flush bản ghi đặt bom)**: khối `0x6EFD4A` đã ghi bản ghi vào bảng vòng `CGameMsgCache` 13/17 (`vm_6EFD4A_inputs.md` §8) nhưng
+   hàm flush `vf8` không bắn trong ~15 s sau Space. Tìm điều kiện flush (tick/pha trận), xác nhận `C->S opcode 111` và định dạng — đầu vào trực tiếp cho server.
+2. **Dump `CGamePlayMap`** (object > 11 MB) để viết lại thật khối `0x736C27` (hiện plain skip; emulate trên object trống chỉ thấy 1 lời gọi `sub_414543`).
+3. **Vùng anti-cheat A1xxxx** (43 site, skip khi chạm) và các khối còn lại: `0x966FEC` (mồ côi).
+4. **Mở đủ map**: thay 3 map tự soạn bằng danh sách 1019 map (server Rust đã có `ALL_MAPS=1`); làm hộp thoại chọn map liệt kê được; xem map có khoá theo cấp không.
+5. **Audit tài liệu của agent OpenCode** trước khi dùng (mục 7); kiểm lại `sub_9682DE`/các suy luận cũ nếu cần.
+6. **Sảnh/phòng đầy đủ**: danh sách người, danh sách phòng, nhiều người chơi, gói trong trận (di chuyển/bom/kết thúc lượt: `docs/oc_e-game.md`, `docs/oc_c-square.md`, `docs/oc_a-room.md`).
+7. **Server Rust hoàn chỉnh** (`server/`, mục 12) dùng `tools/fakeserver.py` + `docs/` làm đặc tả.
+8. (Tuỳ chọn) Devirt tổng quát `tools/vmdevirt.py` → emit C (`docs/vmdevirt.md` §8: còn chặn ở ngữ nghĩa 46 opcode + key rolling); chưa cần cho đường đi hiện tại vì
+   cách emulate-trên-snapshot đã đủ cho các khối game.
 
 ## 7. Tài liệu do agent OpenCode viết
 
@@ -216,7 +208,7 @@ Tất cả nằm trong pipeline `tools/rebuild_wine.sh`, không sửa tay file e
 | Sửa gì | Ở đâu | Vì sao |
 |---|---|---|
 | Sửa IAT | `tools/fix_iat.py` | bản dump không có bảng import đúng |
-| Thay khối VM bằng code viết tay (`BLOCKS`) | `tools/devirt.py` | VM Themida không chạy được trong bản dump; quy trình: [docs/devirt.md](devirt.md) |
+| Thay khối VM bằng code viết tay (`BLOCKS`, 15 khối) | `tools/devirt.py` | VM Themida không chạy được trong bản dump; trạng thái từng khối + quy trình: [docs/devirt.md](devirt.md) |
 | Hook: kênh tự hiện (`HOOKS`, sau `On_16`) | `tools/devirt.py` | gốc phải click mới vẽ lại ô kênh |
 | Tắt HackShield, bỏ kiểm patch, đổi IP server | `tools/patch_client.py` | chạy với server giả |
 | Khôi phục 10 byte hỏng ở 0x592C09 | `tools/patch_client.py` | bản dump hỏng ở đây → crash khi nạp map sảnh |
@@ -317,8 +309,8 @@ Khung server thật, port 1:1 từ `tools/fakeserver.py` (đặc tả vẫn là 
   đọc `fx.idx` (`ALL_MAPS=1`), `src/session.rs` luồng phiên (tokio; cùng biến môi trường với fakeserver), `src/main.rs`.
 - Kiểm chứng: `cargo test` — **mọi builder và cả hai chiều đóng khung khớp từng byte với fakeserver** (`tests/golden.txt`
   sinh bởi `python3 tools/gen_golden.py > server/tests/golden.txt`; sinh lại khi sửa fakeserver), danh sách 1019 map khớp.
-- Chạy: `cd server && cargo run --release -- --log ../logs/server.log` (env như mục 3.3). **Chưa chạy với client thật**
-  (client đang bận phiên test khác lúc viết) — lần chạy đầu nên so log với fakeserver.
+- Chạy: `cd server && cargo run --release -- --log ../logs/server.log` (env như mục 3.3). **Đã chạy với client gốc trong WinBoat**
+  (2026-10-18, `SERVER_IP=172.18.0.50`) tới phòng chờ và vào trận; chạy với bản dump trong Wine vẫn dùng `fakeserver.py` (`match_gdb.sh`) — chưa so log hai server cho cùng một chuỗi.
 - Việc tiếp: parse gói C→S có cấu trúc (77, 97, 139/140, 111/112/145 của `CGameMsgCache`), nhiều người chơi/phòng,
   relay gói trận theo khoá phiên (`oc_e-game.md` §5a-4).
 

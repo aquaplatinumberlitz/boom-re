@@ -162,19 +162,46 @@ BLOCKS = [
         """,
     ),
     dict(
-        site=0x9682E5, cont=0x968385, func="sub_9682DE (Init(index) of a 2-instance CGameStage member object)",
-        # Reached when entering a match: CStageMgr__ChangeStage -> CGameStage ctor sub_70CBAF -> sub_9683B4 (member ctor)
-        # -> sub_9682DE(this, 0); also sub_71A9EC (game reset) calls it for both instances with index 0 and 1.
-        # The whole body (0x9682E5..0x968372) is virtualized; native code resumes at the epilog 0x968385
-        # (pop edi/esi/ebp; ret 4). Layout from the ctor sub_9683B4 / dtor sub_968236: u8 box +0, u32 boxes +12/+24,
-        # boxes +36/+48, sub-readers +60/+96, two sub_965B1F containers, object +0xB4 — the ctor already builds every
-        # box with 0. NOT recovered from a trace (no snapshot yet): minimal equivalent = store the index in the u8 box
-        # (setter sub_414059, __thiscall, ret 4). Context at the site: esi = this, [ebp+8] = index.
+        site=0x9682E5, cont=0x968385, func="sub_9682DE (Init(index) of the 2-instance CGameStage member object)",
+        # Evidence: tools/vmemu.py on logs/snap/8F5F40/pre.snap, ctor sub_9683B4 and a direct call Init(1) on a zero object: the VM only
+        # calls these natives (12 calls, same sequence for index 0 and 1; the first argument is the index): box setters/resets of every
+        # member. Object layout: +0 u8 box (sub_414059), +0xC/+0x18 u32 boxes (sub_413F32 = -1), +0x24/+0x30 (sub_41411C = 0),
+        # +0x60/+0x3C sub-readers (sub_A62630), +0x84/+0x90/+0x9C/+0xA8 u32 boxes (sub_413F32 = -1), +0xB4 object (sub_50BA05).
+        # Context at the site: esi = this, [ebp+8] = index; ebx is not used.
         asm=f"""
-            movzx eax, byte ptr [ebp + 8]
-            push eax
+            push dword ptr [ebp + 8]
             mov ecx, esi
             call {0x414059:#x}
+            push -1
+            lea ecx, [esi + 0xC]
+            call {0x413F32:#x}
+            push -1
+            lea ecx, [esi + 0x18]
+            call {0x413F32:#x}
+            push 0
+            lea ecx, [esi + 0x24]
+            call {0x41411C:#x}
+            push 0
+            lea ecx, [esi + 0x30]
+            call {0x41411C:#x}
+            lea ecx, [esi + 0x60]
+            call {0xA62630:#x}
+            lea ecx, [esi + 0x3C]
+            call {0xA62630:#x}
+            push -1
+            lea ecx, [esi + 0x84]
+            call {0x413F32:#x}
+            push -1
+            lea ecx, [esi + 0x90]
+            call {0x413F32:#x}
+            push -1
+            lea ecx, [esi + 0x9C]
+            call {0x413F32:#x}
+            push -1
+            lea ecx, [esi + 0xA8]
+            call {0x413F32:#x}
+            lea ecx, [esi + 0xB4]
+            call {0x50BA05:#x}
             jmp {0x968385:#x}
         """,
     ),
@@ -188,6 +215,122 @@ BLOCKS = [
         # kinds 20/33, unknown for others) dropped on purpose; room type 19 needs none of it.
         asm=f"""
             jmp {0x736D6C:#x}
+        """,
+    ),
+    dict(
+        site=0x6EFD4A, cont=0x6EFEDC, func="sub_6EFD24 (CGameMsgCache ring-table setter used by bomb placement)",
+        # Evidence: tools/vmemu.py on a pre-snapshot of the original client (logs/snap/8F5F40/pre.snap) with a hand-built
+        # frame (12 args, this = CGameMsgCache, vectors this+0x34 / this+0x44, this+0xF4): the VM calls sub_421AB9(this+0x44,
+        # slot) [count vector operator[]], sub_6EEED9(this+0x34, ...) [record vector operator[]], sub_6EFBCA() [tick], writes a
+        # 0x44-byte record, ++count[slot], and calls sub_6EFC07(slot) unless (arg_2C & 4). Field mapping verified with distinct
+        # arg values (docs/vm_6EFD4A_inputs.md section 8). Same record/ring as the native 16-arg sibling sub_6EFEE3 (flush
+        # vf8 -> C->S 111), minus its four fields +0x20..+0x2C. Return value = leftover eax (6EFC07's pointer, or arg_2C).
+        # Context at the site: this at [ebp-0x24], arg_k at [ebp+8+k]; ebx/esi/edi are saved by the prolog.
+        asm=f"""
+            mov ebx, dword ptr [ebp - 0x24]
+            mov esi, dword ptr [ebp + 0xC]
+            mov eax, dword ptr [ebx + 0x44]
+            lea edi, [eax + esi*4]
+            mov esi, dword ptr [ebx + 0x10]
+            imul esi, dword ptr [ebp + 0xC]
+            add esi, dword ptr [edi]
+            imul esi, esi, 0x44
+            add esi, dword ptr [ebx + 0x34]
+            call {0x6EFBCA:#x}
+            mov dword ptr [esi + 8], eax
+            mov dword ptr [esi + 4], 1
+            mov eax, dword ptr [ebp + 8]
+            mov dword ptr [esi], eax
+            mov eax, dword ptr [ebp + 0x10]
+            mov dword ptr [esi + 0xC], eax
+            mov eax, dword ptr [ebp + 0x18]
+            mov dword ptr [esi + 0x10], eax
+            mov eax, dword ptr [ebp + 0x1C]
+            mov dword ptr [esi + 0x14], eax
+            mov eax, dword ptr [ebp + 0x20]
+            mov dword ptr [esi + 0x18], eax
+            mov eax, dword ptr [ebp + 0x24]
+            mov dword ptr [esi + 0x1C], eax
+            mov al, byte ptr [ebp + 0x14]
+            mov byte ptr [esi + 0x30], al
+            mov eax, dword ptr [ebp + 0x28]
+            mov dword ptr [esi + 0x34], eax
+            mov eax, dword ptr [ebp + 0x2C]
+            mov dword ptr [esi + 0x38], eax
+            mov eax, dword ptr [ebp + 0x30]
+            mov dword ptr [esi + 0x3C], eax
+            mov al, byte ptr [ebp + 0x34]
+            mov byte ptr [esi + 0x40], al
+            inc dword ptr [edi]
+            movzx eax, byte ptr [ebp + 0x34]
+            test al, 4
+            jnz d24_done
+            push dword ptr [ebp + 0xC]
+            mov ecx, ebx
+            call {0x6EFC07:#x}
+        d24_done:
+            jmp {0x6EFEDC:#x}
+        """,
+    ),
+    dict(
+        site=0x5a6e89, cont=0x5a6f64, func="CGOBomber__vf21 random check (skip)",
+        # guard: [esi+0x2718] counter, rand()%1001 < ebx -> VM (anti-cheat style sampling).
+        # The native code in front takes `jge cont` for ~99% of the calls (rand() % N >= threshold), so the original game runs
+        # without this VM chunk almost always; a plain jmp is the common path. (docs/vmtriage.md, class S.)
+        asm=f"""
+            jmp {0x5a6f64:#x}
+        """,
+    ),
+    dict(
+        site=0x6f287e, cont=0x6f2923, func="sub_6F27EE random tail (skip)",
+        # guard: rand()%999 >= 10 -> cont; the struct setter work before the site is native.
+        # The native code in front takes `jge cont` for ~99% of the calls (rand() % N >= threshold), so the original game runs
+        # without this VM chunk almost always; a plain jmp is the common path. (docs/vmtriage.md, class S.)
+        asm=f"""
+            jmp {0x6f2923:#x}
+        """,
+    ),
+    dict(
+        site=0x754c82, cont=0x754d20, func="CMapScriptStageClear__vf7 random check in NPC loop (skip)",
+        # guard: rand()%995 >= 10 -> cont (loop over NPC objects).
+        # The native code in front takes `jge cont` for ~99% of the calls (rand() % N >= threshold), so the original game runs
+        # without this VM chunk almost always; a plain jmp is the common path. (docs/vmtriage.md, class S.)
+        asm=f"""
+            jmp {0x754d20:#x}
+        """,
+    ),
+    dict(
+        site=0x71581A, cont=0x7158E4, func="sub_71580C (CGameStage__OnPacket case 552 handler)",
+        # Evidence: tools/vmemu.py on logs/snap/8F5F40/pre.snap + a gdb dump of the live CGameStage (tools/gdb/dump_stage.gdb ->
+        # logs/stagedump/stage.bin, --overlay), fake packet (+0x10 buf, +0x20 limit, +0x24 cursor, +0x28 mode). The VM only makes these
+        # native calls, in this order, unconditionally (same sequence for different packet values; no direct writes):
+        #   CGameMsgCache__vf3(this + 0x4AC0, 1); RecvPkt__Decode4(packet) [result unused]; sub_711E7F(this); sub_708192(this);
+        #   sub_414543(this + 0x4AB4) [Themida check hub]; sub_705F63(this). The three CGameStage methods are mutated (not VM) code.
+        # Context at the site: esi = this (CGameStage), [ebp+8] = packet (RecvPkt*). Return value is junk (ignored by the dispatcher).
+        asm=f"""
+            lea ecx, [esi + 0x4AC0]
+            push 1
+            call {0x6F292B:#x}
+            mov ecx, dword ptr [ebp + 8]
+            call {0xA65750:#x}
+            mov ecx, esi
+            call {0x711E7F:#x}
+            mov ecx, esi
+            call {0x708192:#x}
+            lea ecx, [esi + 0x4AB4]
+            call {0x414543:#x}
+            mov ecx, esi
+            call {0x705F63:#x}
+            jmp {0x7158E4:#x}
+        """,
+    ),
+    dict(
+        site=0x8E5519, cont=0x8E5547, func="CFxApp__vf6 shutdown tail (skip)",
+        # CFxApp__vf6 (0x8E50D1) is the app SHUTDOWN: it walks every global singleton and calls its deleting destructor (vf0(1)),
+        # guarded by Feature_IsDisabled(0xB8/0x3C). The chunk at 0x8E5519 (0x2E bytes) is at the very end of it; it only runs on exit,
+        # so a plain jmp to the continuation (0x8E5547) is enough to avoid a crash while closing the game.
+        asm=f"""
+            jmp {0x8E5547:#x}
         """,
     ),
     dict(
