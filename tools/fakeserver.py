@@ -16,6 +16,9 @@ TURN_MODE = int(__import__('os').environ.get('TURN_MODE', '4'))      # mode fiel
 GO_START = float(__import__('os').environ.get('GO_START', '0'))      # >0: send opcode 190 ("GO", sub_70E7D6, sets phase this[5402]=2) N s after 189
 BEGIN_START = float(__import__('os').environ.get('BEGIN_START', '0'))  # >0: send opcode BEGIN_OP (191 round begin / 146 round + scores) N s after 190
 BEGIN_OP = int(__import__('os').environ.get('BEGIN_OP', '191'))
+BOMB_ECHO = float(__import__('os').environ.get('BOMB_ECHO', '0'))  # >0: N s after C->S 111 send S->C 151 (explode) for bomb ids 0..BOMB_IDS-1
+BOMB_IDS = int(__import__('os').environ.get('BOMB_IDS', '32'))
+BOMB_ARG = int(__import__('os').environ.get('BOMB_ARG', '2'))
 POST_PLAY_START = float(__import__('os').environ.get('POST_PLAY_START', '0'))  # >0: send 191 (round begin) N s after 189 mode 0 (ctx0 clock start)
 PLAY_START = float(__import__('os').environ.get('PLAY_START', '0'))  # >0: send opcode 189 mode 0 (sub_70E511: phase 3 + resume clock) N s after 190
 
@@ -517,6 +520,16 @@ async def handle(reader, writer, port, log):
                 if op == 77:  # create room (dialog XÁC NHẬN) -> opcode 83 success -> waiting room (stage 12)
                     log(f"[{port}] create room {parse_create_room(body)}")
                     replies = [create_room_ok(room_type=ROOM_TYPE)]
+                if op == 111 and BOMB_ECHO:  # bomb record (CGameMsgCache ring) -> EXPERIMENT: explode via 151 {n, n x (u16 id, u8 0, u32 arg)}
+                    async def _boom(delay=BOMB_ECHO):
+                        await asyncio.sleep(delay)
+                        f = [("u8", BOMB_IDS)]
+                        for i in range(BOMB_IDS):
+                            f += [("u16", i), ("u8", 0), ("u32", BOMB_ARG)]
+                        writer.write(sess.send(obf_body(151, *f)))
+                        await writer.drain()
+                        log(f"[{port}] S->C opcode 151 (explode ids 0..{BOMB_IDS - 1}, arg {BOMB_ARG})")
+                    asyncio.ensure_future(_boom())
                 if op == 337:  # sent on entering the waiting room (stage 12) -> put ourselves into slot 0
                     replies = [room_player(), room_slot_state(), room_map(MAP_INDEX)]
                     if AUTO_START:  # server-driven match start (opcode 501) a few seconds later

@@ -20,7 +20,7 @@ Cập nhật 2026-10-18. `tools/devirt.py` `BLOCKS` hiện có **15 khối**; c�
 | 0x5A6E89 / 0x6F287E / 0x754C82 | guard `rand() % N` (anti-cheat lấy mẫu) | skip | ✅ plain skip = đường 99% của game gốc | chưa chạm 1% |
 | 0x8E5519 | `CFxApp__vf6` (đuôi tắt app) | skip | ✅ chỉ chạy lúc thoát | chưa thử đóng game |
 | 0x5788C9 | `CBombOwner__vf33` (1 lệnh `jmp 0x414543` bị đè) | skip | ✅ khôi phục đúng lệnh gốc (mẫu "jmp bị chiếm đoạt", `vmtriage.md` §3a) | chạy qua |
-| 0x736C27 | `CGamePlayMap__Load` đuôi | skip | 🟡 **chưa viết lại** (emulate object trống chỉ thấy `sub_414543`; cần dump `CGamePlayMap`) | skip không chặn điều khiển |
+| 0x736C27 | `CGamePlayMap__Load` đuôi | skip + emu | 🟡 emulate với **object map thật** (dump 11 MB, `tools/gdb/dump_map.gdb`): chỉ gọi `sub_414543(ebx+0x8F480C)` + đặt biến đếm `[ebp-0x308]=0` (không đọc sau cont) = vòng lặp 0 lần với Village01/phòng 19 → skip tương đương; thân vòng cho map/loại phòng khác **chưa biết** | skip không chặn điều khiển |
 | 0x966FEC | `sub_966FDE` | — | ⬜ hàm mồ côi (0 xref), chưa chạm | — |
 | 0xA12E59–0xA17A24 (43 site) | anti-cheat/system-info | — | ⬜ skip khi chạm (cont = marker+0x12, `vmtriage.md` §3b) | — |
 

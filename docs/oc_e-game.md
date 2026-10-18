@@ -339,8 +339,9 @@ OnEnter: reset (5378 <- clock ctx0), SELECT idx=0 (ctx0)
 đổi phase (ret 0x70C663): SELECT idx=0 -> quay về ctx0 — đồng hồ ctx0 CHƯA start -> tick chỉ chạy vf161 (chờ), vf159 không bao giờ chạy
 ```
 ⇒ **Chuỗi server chạy được:** `501 → 189 mode 1 → 190 → 189 mode 0 → 191` (191 *sau* 189 mode 0, khi đã về ctx0). fakeserver/server Rust: `POST_PLAY_START=2`.
-Kết quả chạy thật (`logs/xvfb/postplay`): `CGameStage::vf159` (bước mô phỏng) chạy mỗi tick, HUD "GIỚI HẠN" đếm, bom **nổ** (nhân vật bị nhốt trong bong bóng của chính
-bom mình ở ô xuất phát), và client gửi **C→S 111**. Thứ tự gói của server gốc vẫn CHƯA BIẾT — đây là chuỗi tối thiểu làm mô phỏng chạy.
+Kết quả chạy thật (`logs/xvfb/postplay`): `CGameStage::vf159` (bước mô phỏng) chạy mỗi tick, HUD "GIỚI HẠN" đếm, nhân vật **đi được** (`logs/xvfb/walk2/step_*.png`), và client gửi **C→S 111**. Bom **chưa nổ** (bóng nước vẫn nằm
+đó sau ~20 s): `CGOCAHeroGameBomber__vf6_2` chỉ tạo bom cục bộ (`sub_5B0053`) khi `bomber vf35` (box +184) ≠ 0; ngược lại (người chơi mạng) chỉ ghi
+bản ghi 111 — nổ do server điều khiển (ứng viên: S→C **151** `CGameStage__On_151` → `ctx sub_6E9994(id, 0, u32)` → `sub_7324C0` = nổ bom có id = box bom +168). Thứ tự gói của server gốc vẫn CHƯA BIẾT — đây là chuỗi tối thiểu làm mô phỏng chạy.
 
 **Flush:** `CGameStage::vf159` → `sub_6FFE4C` → `CGameMsgCache::vf3(0)` → `vf4`,`vf5`(slot) → nếu `count[slot] != 0` → `vf8(slot)` (0x6F06ED): mỗi bản ghi
 một gói 111, rồi `count[slot] = 0`. (`vf3(1)` cũng được gọi trong handler gói 552 và lúc dựng stage.)

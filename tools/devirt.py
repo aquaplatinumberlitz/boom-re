@@ -206,13 +206,17 @@ BLOCKS = [
         """,
     ),
     dict(
-        site=0x736C27, cont=0x736D6C, func="CGamePlayMap__Load success tail (EXPERIMENT: plain skip)",
+        site=0x736C27, cont=0x736D6C, func="CGamePlayMap__Load success tail (skip, emulated: no effect for room 19 / Village01)",
         # Themida chunk spans 0x736C27..0x736D5A (marker EB 10 57 4C 20 at 0x736D5A, 16 bytes mutated);
         # native visible ONLY from marker end 0x736D6C: mov ecx,[0xE60884]; call sub_8EC54D; mov bl,1;
         # jmp loc_736B2C (cleanup path) -> mov al,bl -> epilog. cont reads NO incoming registers (ecx/bl
         # clobbered right away; cleanup uses only ebp-locals alreadly initialized) -> a plain jmp is a valid
         # no-op substitute for the chunk. Chunk's own work (registering the fresh 0x90 ctor object for room
         # kinds 20/33, unknown for others) dropped on purpose; room type 19 needs none of it.
+        # 2026-10-18: emulated (tools/vmemu.py on logs/snap/8F5F40/pre.snap + live dump of the CGamePlayMap object
+        # logs/mapdump/map.bin (11 MB at ebx) + the Load frame logs/mapdump/stack.bin, tools/gdb/dump_map.gdb): the chunk only
+        # calls the box getter sub_414543(ebx + 0x8F480C) and sets the loop counter [ebp-0x308] = 0 (not read after cont), i.e. a
+        # loop with 0 iterations for this map/room. The loop body for other maps/room kinds is still unknown.
         asm=f"""
             jmp {0x736D6C:#x}
         """,
