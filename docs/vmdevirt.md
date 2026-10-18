@@ -143,9 +143,9 @@ này khớp với việc harness của repo (`tools/vmemu.py`) cũng không exit
 | Stage 1B — phân loại handler | 🟡 **một phần** | 46 opcode có handler; phân loại *cấu trúc* (pushfd/lods/dispatch/size) xong; **ngữ nghĩa chưa** |
 | Stage 2 — encoding VI | ✅ **xong** | 44/46 opcode có kích thước nhất quán, 0 xung đột; 3 opcode nhánh (0x67, 0x7B, 0x80) |
 | Stage 2 — decode toàn stream | ❌ **bị chặn** | bytecode mã hoá rolling key (4 giả thuyết khoá đều fail); chỉ decode được đoạn **đã chạy** qua trace |
-| Stage 2 — CFG | 🟡 **một phần** | có danh sách VI đã chạy + nhánh; chưa dựng đồ thị đầy đủ |
+| Stage 2 — CFG | ✅ **xong (đường đã chạy)** | 24 block, 23 cạnh, 6 back-edge, hub `0x135B33B` |
 | Stage 3 — emit C | ❌ **chưa** | phụ thuộc ngữ nghĩa 46 opcode; "semantics" hiện chỉ là sketch, bị junk chi phối |
-| Verify với 6 khối `tools/devirt.py` | ❌ **chưa** | mới verify bảng handler vs runtime |
+| Verify với 6 khối `tools/devirt.py` | 🟡 **một phần** | 8F346C: 5/8 call ground truth đúng thứ tự (§11) |
 | `decomp/vm_profile.json` | ✅ | sinh tự động |
 | Áp dụng sang KR | ⏸ **chờ dump** | KR đang pack, không có dump thì không chạy được gì |
 
@@ -228,6 +228,36 @@ vòng" hiện tại (hub lần 2) cắt sớm hơn toàn bộ flow của khối.
 ### Profile hợp nhất
 
 `decomp/vm_profile.json` giờ gộp cả `opcodes` (46) và `handlers` (178) ⇒ một file đọc là đủ cho emitter.
+
+
+## 11. Đối chiếu call sequence với bản devirt tay (round 6)
+
+Chạy `trace --stop-vip 135B33B --hub-count 8` trên `8F346C`, ghi **thứ tự** rời VM, so với
+`tools/devirt.py`:
+
+| # | tool (thứ tự thật) | tên | bản viết tay (`devirt.py`) |
+|---|---|---|---|
+| 0 | `0x888462` | SendPkt__Begin | ✅ có |
+| 1 | `0xA65280` | SendPkt__Encode4 | ✅ có |
+| 2 | `0xA65280` | SendPkt__Encode4 | ✅ có |
+| 3 | `0xA65280` | SendPkt__Encode4 | ✅ có |
+| 4 | `0x8F2B34` | (không tên rõ) | ❌ **không có trong bản viết tay** |
+| 5 | `0x692EC4` | (không tên rõ) | ❌ **không có trong bản viết tay** |
+| 6 | `0x888609` | SendPkt__Send | ✅ có |
+
+- **5/8 call ground truth được phục hồi đúng thứ tự** (Begin → 3×Encode4 → Send).
+- Còn thiếu `0x8884DC` (dtor), `0x8E1C72`, `0x8F2803` — trace dừng trước khi tới.
+- **2 call "thừa"** (`0x8F2B34`, `0x692EC4`): nhiều khả năng là phần **anti-cheat/HackShield** mà comment
+  trong `devirt.py` nói đã bỏ ("Dropped: rand()-driven HackShield checks"). Chưa xác minh dứt điểm —
+  ghi là giả thuyết, không phải kết luận.
+
+Giới hạn gặp phải: sau `SendPkt__Send`, trace chết ở `unmapped 0x46C8586E` (native deref một con trỏ
+lấy từ API đã fake). Đây là hạn chế của lớp `--fake-native` so với `tools/vmemu.py` (có bảng syscall/API
+đầy đủ hơn), không phải lỗi của decode VM.
+
+⇒ **Kết luận verify:** đối chiếu *một phần* đã thành công (thứ tự call khớp), nhưng chưa đủ để tuyên bố
+"verify 6 khối". Muốn đủ: (a) nâng lớp fake API ngang `vmemu`, hoặc (b) dùng `vmemu` cho phần chạy và
+để `vmdevirt` chỉ lo decode/emit.
 
 ## 5b. Đường áp dụng sang bản KR
 
