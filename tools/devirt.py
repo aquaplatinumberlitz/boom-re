@@ -221,7 +221,7 @@ BLOCKS = [
         site=0x6EFD4A, cont=0x6EFEDC, func="sub_6EFD24 (CGameMsgCache ring-table setter used by bomb placement)",
         # Evidence: tools/vmemu.py on a pre-snapshot of the original client (logs/snap/8F5F40/pre.snap) with a hand-built
         # frame (12 args, this = CGameMsgCache, vectors this+0x34 / this+0x44, this+0xF4): the VM calls sub_421AB9(this+0x44,
-        # slot) [count vector operator[]], sub_6EEED9(this+0x34, ...) [record vector operator[]], sub_6EFBCA() [tick], writes a
+        # slot) [count vector operator[]], sub_6EEED9(this+0x34, ...) [record vector operator[]], sub_6EFBCA() [session key = stage this[4887]], writes a
         # 0x44-byte record, ++count[slot], and calls sub_6EFC07(slot) unless (arg_2C & 4). Field mapping verified with distinct
         # arg values (docs/vm_6EFD4A_inputs.md section 8). Same record/ring as the native 16-arg sibling sub_6EFEE3 (flush
         # vf8 -> C->S 111), minus its four fields +0x20..+0x2C. Return value = leftover eax (6EFC07's pointer, or arg_2C).

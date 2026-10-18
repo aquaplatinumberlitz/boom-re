@@ -154,7 +154,7 @@ prolog, `[ebp-0x24]=this`) tự dựng bằng `--pre-asm`; các vector của `th
 **Khối làm gì** (cùng bản ghi/vòng với hàm native 16 tham số `sub_6EFEE3`, flush `vf8` → C→S **111**, KHÔNG phải bảng 41/op 112):
 ```
 rec = this[13] + 0x44 * (this[4]*slot + count[slot])      ; count = vector this+0x44 (operator[] sub_421AB9), rec = this+0x34 (sub_6EEED9)
-rec[+0x08] = sub_6EFBCA()          ; tick
+rec[+0x08] = sub_6EFBCA()          ; khoá phiên (this[4887], oc_e-game §5a-4)
 rec[+0x04] = 1
 rec[+0x00] = arg_0   rec[+0x0C] = arg_8   rec[+0x10] = arg_10  rec[+0x14] = arg_14  rec[+0x18] = arg_18  rec[+0x1C] = arg_1C
 rec[+0x30] = (u8)arg_C   rec[+0x34] = arg_20  rec[+0x38] = arg_24  rec[+0x3C] = arg_28  rec[+0x40] = (u8)arg_2C
@@ -165,7 +165,7 @@ return eax (leftover: con trỏ do 6EFC07 để lại, hoặc arg_2C khi bỏ qu
 Khác `sub_6EFEE3`: không ghi 4 field +0x20..+0x2C; điều kiện gọi 6EFC07 khác. `slot = arg_4`.
 
 **Kiểm chứng trên client chạy thật (Wine, gdb `tools/gdb/msgcache_rec.gdb`):** Space → khối vào/ra không crash; bản ghi đọc lại khớp tham số
-(`ARGS 0 0 0 1 0 e 1 1 0 0 0 0` → `REC 0 1 <tick> 0 0 e 1 1 0 0 0 0 .. [0x30]=1 ..`, `count[0]=1`). Bom hiện trên map (bóng nước xanh ở ô xuất phát).
+(`ARGS 0 0 0 1 0 e 1 1 0 0 0 0` → `REC 0 1 <khoá phiên 0x2710> 0 0 e 1 1 0 0 0 0 .. [0x30]=1 ..`, `count[0]=1`). Bom hiện trên map (bóng nước xanh ở ô xuất phát).
 Cài đặt: `tools/devirt.py` BLOCKS (site 0x6EFD4A → cont 0x6EFEDC).
 
 **Chưa kiểm:** C→S **111** có được gửi không (breakpoint `vf8` không bắn trong ~15 s sau Space — chưa rõ điều kiện flush); mọi tổ hợp tham số

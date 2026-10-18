@@ -325,6 +325,37 @@ CHƯA KIỂ: ý nghĩa u32 của 189 (this[4887]) và v13/T[5] truyền vào sta
   thái kết quả), không crash.
 - Opcode 531/532/572 (`sub_70A158`/`sub_70A04B`/`sub_709D5E`) cũng start đồng hồ — chế độ đặc biệt, chưa xem.
 
+### 5a-5. Vòng mô phỏng chạy được: đồng hồ của **context 0** + gói C→S 111 ✅ runtime (2026-10-18 tối, Claude)
+
+**Đính chính §5a-3** ("189 mode 1 start đồng hồ" là chưa đủ): `CGameStage` giữ **danh sách context trận** (vector `stage+0x5484..0x5488`),
+context đang chọn ở `stage+0x547C` (`sub_6FFFDB`), chọn bằng `sub_704E16(idx)`. Còn vòng tick (`vf46` 0x70572A) đọc đồng hồ qua con trỏ
+**cache** `stage+0x5378`, chỉ được cập nhật trong reset `sub_71A9EC` (gọi ở OnEnter `vf44` và 0x71AD8F) = đồng hồ của context lúc reset.
+
+Đo bằng gdb (`tools/gdb/ctx_select.gdb`, `clock_stop.gdb`):
+```
+OnEnter: reset (5378 <- clock ctx0), SELECT idx=0 (ctx0)
+189 mode 1: SELECT idx=1 (ctx1 mới, ret 0x70C6E3) -> START clock ctx1 (sub_70E357)
+191 (nếu gửi trước 189 mode 0): START clock ctx1
+đổi phase (ret 0x70C663): SELECT idx=0 -> quay về ctx0 — đồng hồ ctx0 CHƯA start -> tick chỉ chạy vf161 (chờ), vf159 không bao giờ chạy
+```
+⇒ **Chuỗi server chạy được:** `501 → 189 mode 1 → 190 → 189 mode 0 → 191` (191 *sau* 189 mode 0, khi đã về ctx0). fakeserver/server Rust: `POST_PLAY_START=2`.
+Kết quả chạy thật (`logs/xvfb/postplay`): `CGameStage::vf159` (bước mô phỏng) chạy mỗi tick, HUD "GIỚI HẠN" đếm, bom **nổ** (nhân vật bị nhốt trong bong bóng của chính
+bom mình ở ô xuất phát), và client gửi **C→S 111**. Thứ tự gói của server gốc vẫn CHƯA BIẾT — đây là chuỗi tối thiểu làm mô phỏng chạy.
+
+**Flush:** `CGameStage::vf159` → `sub_6FFE4C` → `CGameMsgCache::vf3(0)` → `vf4`,`vf5`(slot) → nếu `count[slot] != 0` → `vf8(slot)` (0x6F06ED): mỗi bản ghi
+một gói 111, rồi `count[slot] = 0`. (`vf3(1)` cũng được gọi trong handler gói 552 và lúc dựng stage.)
+
+**C→S 111 — đặt bom** (bản ghi 68 B của bảng vòng 13/17; ghi bởi `sub_6EFD24` khối VM 0x6EFD4A hoặc `sub_6EFEE3` native):
+```
+u32 rec+0x08  KHOÁ PHIÊN (sub_6EFBCA → sub_6FFFA0 = this[4887], = u32 của gói 189; §5a-4)
+u8  rec+0x00  chỉ số context (arg_0 = ctx[490549])   u8 slot
+u32 rec+0x0C  (arg_8 = box bom +280)      u8 rec+0x10 hàng (y)               u8 rec+0x14 cột (x)
+u8  rec+0x30  (arg_C = sub_59119D bom)    u8 rec+0x34  u8 rec+0x38  u8 rec+0x3C   (arg_20/24/28)
+u8  rec+0x18  (arg_18 = bomber vf31)      u32 rec+0x1C (arg_1C = box bom +192)   u8 rec+0x40 cờ (arg_2C)
+if (cờ & 3): u8 rec+0x20, u8 rec+0x24, u8 rec+0x28, u16 rec+0x2C        (chỉ đường sub_6EFEE3 16 tham số)
+```
+Ví dụ thật (slot 0, ô cột 14 hàng 1; server gửi khoá 10000 trong 189): `khoá=10000, 0, 0, 0, 1, 14, 1, 0, 0, 0, 1, 1, 0`. Ý nghĩa từng field ngoài hàng/cột: CHƯA KIỂM.
+
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
 |---|---|---|
@@ -332,7 +363,7 @@ CHƯA KIỂ: ý nghĩa u32 của 189 (this[4887]) và v13/T[5] truyền vào sta
 | 140 | `sub_70DF00` 0x70DF00 / `sub_70DFF9` 0x70DFF9 / `sub_71AD24` 0x71AD24 | `bool 1` |
 | 141 | `sub_70E9FC` 0x70E9FC / `sub_70EADB` 0x70EADB — client **tự gửi trong vòng tick** `sub_71B521` (khi hết hạn stamp this[19676] / step theo seed sub_654153(3) % 12 == 0) | `u2 uid` (sub_6E2000), `u2 map_id` (sub_8E9977), `u8 n` (số ô bước, clamp 0..3), n × {`u8`, `u8`} — 2 byte mỗi ô, đọc từ queue di chuyển (sub_6EE7A1 / sub_6ED146) |
 | 142 | `sub_71B275` 0x71B275 (vòng tick khi this[21956] != 0, cách nhau ≥ 2000 tick) != 0, thời gian cách nhau ≥ 2000) | `u2 uid`, `u2 map_id`, `u8 nblocks` (clamped 0..10), mỗi block: `u8 ncell`, ncell × {`u8`, `u8`} |
-| 143 | `sub_71751A` 0x71751A — *đây là gói đặt bom*, caller: `CMapActionBomb__vf4` 0x752B44 (nút/nhấn bom) + `sub_76D342` | `u2 uid`, `u8 count` (= số cell), `u2 x?`, `u2 y?`, `u8 dir?`, `u32`, `u2` , rồi count × {`u8`, `u8`} |
+| 143 | `sub_71751A` 0x71751A — (agent đoán *gói đặt bom*; **runtime 2026-10-18: Space trong trận thường gửi 111, không phải 143**, xem §5a-5), caller: `CMapActionBomb__vf4` 0x752B44 (nút/nhấn bom) + `sub_76D342` | `u2 uid`, `u8 count` (= số cell), `u2 x?`, `u2 y?`, `u8 dir?`, `u32`, `u2` , rồi count × {`u8`, `u8`} |
 |—| còn lại: các gói phụ: `sub_702FCA` (209), `sub_702DE4` (115), `sub_70307F` (158), `sub_70326A/70330E/7033A3/7034FF` (126), `sub_703825` (175), `sub_706FC0` (135), `sub_70732A` (99), `sub_707F0F` (192), `sub_7083EC` (211), `sub_70A3EC` (132), `sub_70B0B3` (196), `sub_70D9BE` (207), `sub_70DFF9` Ngoài nói trên (140), `sub_70E9FC` tự nói trên (141), `sub_70F090` (174), `sub_7100B2` (197), `sub_716B75` (136), `sub_71751A` bản thân (143), `sub_7190C6` (184), `sub_719A3C` (203), `sub_71B275` nói trên (142), `sub_6F4365` (148), `sub_6FB1FE`/`sub_6FA7AB` (183), `sub_703A3?` (unclear) | (1×) thông tin phụ (CHƯA KIỂ) |
 
 > Sửa (2026-10-17): `sub_70E7D6` **không phải gói C→S** — đó là handler opcode **190 S→C "GO"** (dispatch case 190,

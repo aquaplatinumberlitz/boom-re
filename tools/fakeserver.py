@@ -16,6 +16,7 @@ TURN_MODE = int(__import__('os').environ.get('TURN_MODE', '4'))      # mode fiel
 GO_START = float(__import__('os').environ.get('GO_START', '0'))      # >0: send opcode 190 ("GO", sub_70E7D6, sets phase this[5402]=2) N s after 189
 BEGIN_START = float(__import__('os').environ.get('BEGIN_START', '0'))  # >0: send opcode BEGIN_OP (191 round begin / 146 round + scores) N s after 190
 BEGIN_OP = int(__import__('os').environ.get('BEGIN_OP', '191'))
+POST_PLAY_START = float(__import__('os').environ.get('POST_PLAY_START', '0'))  # >0: send 191 (round begin) N s after 189 mode 0 (ctx0 clock start)
 PLAY_START = float(__import__('os').environ.get('PLAY_START', '0'))  # >0: send opcode 189 mode 0 (sub_70E511: phase 3 + resume clock) N s after 190
 
 
@@ -549,6 +550,11 @@ async def handle(reader, writer, port, log):
                                         writer.write(sess.send(r))
                                         await writer.drain()
                                         log(f"[{port}] S->C opcode 189 (mode 0, play)")
+                                        if POST_PLAY_START:  # 191 after the switch back to ctx 0 -> starts the clock the tick reads
+                                            await asyncio.sleep(POST_PLAY_START)
+                                            writer.write(sess.send(round_begin()))
+                                            await writer.drain()
+                                            log(f"[{port}] S->C opcode 191 (round begin, post-play)")
                         asyncio.ensure_future(_start())
                 if op == 97:  # client Start (passed its own checks) -> start the match
                     replies = [match_start()]

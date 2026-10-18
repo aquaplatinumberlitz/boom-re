@@ -23,6 +23,8 @@ pub struct Config {
     pub begin_start: f64,
     pub begin_op: u16,
     pub play_start: f64,
+    /// >0: send 191 (round begin) N s after 189 mode 0 — starts the clock of context 0, the one the match tick reads.
+    pub post_play_start: f64,
     /// Address handed to the client in opcodes 7/15 (must be reachable from the client; 127.0.0.1 for Wine).
     pub server_ip: [u8; 4],
     pub maps: Vec<BattleMap>,
@@ -43,6 +45,7 @@ impl Config {
             begin_start: env("BEGIN_START", 0.0),
             begin_op: env("BEGIN_OP", 191),
             play_start: env("PLAY_START", 0.0),
+            post_play_start: env("POST_PLAY_START", 0.0),
             server_ip: env::<std::net::Ipv4Addr>("SERVER_IP", std::net::Ipv4Addr::LOCALHOST).octets(),
             maps,
         }
@@ -167,6 +170,10 @@ async fn match_flow(tx: mpsc::UnboundedSender<Vec<u8>>, cfg: Arc<Config>, log: L
     if cfg.play_start > 0.0 {
         wait(cfg.play_start).await;
         let _ = tx.send(pk::round_start(map, 0, 10000, (1, 1, 12345), (1, 1)));
+        if cfg.post_play_start > 0.0 {
+            wait(cfg.post_play_start).await;
+            let _ = tx.send(pk::round_begin(0, 180_000, 30_000, 0));
+        }
     }
 }
 
