@@ -1685,10 +1685,74 @@ def cmd_verify(a):
         print(f"-> {a.json}")
 
 
+def cmd_doctor(a):
+    """Decide whether a binary is ready for devirtualization, before any analysis is attempted.
+
+    Checks the packer tells (entropy, tiny IAT, entry in a stub section, no VM markers, no handler
+    table), then the VM tells (markers, dispatch form, table). This is the gate for a new target
+    such as the KR client.
+    """
+    import math
+    img = Image(a.exe)
+    md = md32()
+    print(f"file {img.path.name}  {len(img.raw)} bytes  base {img.base:#x}  entry {img.entry:#x}")
+    print(f"{'section':<12} {'va':>10} {'size':>10} {'entropy':>8}")
+    secs = []
+    for name, rva, vsz, rsz in img.sections:
+        d = img.raw[rva:rva + rsz]
+        if not d:
+            continue
+        c = collections.Counter(d)
+        h = -sum(v / len(d) * math.log2(v / len(d)) for v in c.values())
+        secs.append((name, rva, rsz, h))
+        print(f"{name!r:<12} {img.base + rva:#10x} {rsz:#10x} {h:8.2f}")
+    markers = []
+    start = 0
+    pat = b"\xEB\x10WL "
+    while True:
+        i = img.raw.find(pat, start)
+        if i < 0:
+            break
+        markers.append(img.base + i)
+        start = i + 1
+    iat = next((rsz for name, rva, vsz, rsz in img.sections if name.strip() == ".idata"), 0)
+    entry_sec = img.section_at(img.entry)[0]
+    entry_off = img.entry - (img.base + img.section_at(img.entry)[1]) if entry_sec else 0
+    entry_size = 0
+    for name, rva, vsz, rsz in img.sections:
+        lo = img.base + rva
+        if lo <= img.entry < lo + max(vsz, rsz):
+            entry_size = max(vsz, rsz)
+    tsecs = img.themida_sections()
+    high = [s for s in secs if s[3] > 7.9 and s[0] not in (".text", ".rsrc")]
+    print(f"\nmarkers 'EB 10 57 4C 20' : {len(markers)}")
+    print(f".idata size             : {iat:#x}")
+    print(f"entry                   : {img.entry:#x} in {entry_sec!r}, section size {entry_size:#x}")
+    print(f"Themida-like sections   : {[s[0] for s in tsecs]}")
+    print(f"sections entropy > 7.9  : {[s[0] for s in high]}")
+    packed = (len(markers) == 0 and iat <= 0x400) or (entry_sec is not None and entry_size <= 0x1000)
+    print()
+    if packed:
+        print("VERDICT: PACKED / chưa unpack — devirt trên file này vô nghĩa.")
+        print("  cần dump tại OEP trước (chạy client thật rồi dump), sau đó chạy lại doctor.")
+        if high:
+            print(f"  dấu hiệu: section entropy cao {[s[0] for s in high]}, IAT {iat:#x}, "
+                  f"0 marker, entry nằm trong section {entry_size:#x} byte")
+        return
+    if not markers:
+        print("VERDICT: có thể đã unpack nhưng KHÔNG thấy marker quen thuộc — VM có thể là đời khác.")
+        print("  bước tiếp: `discover` để xem có site/head hợp lý không, rồi `profile --snap` để dò ctx.")
+        return
+    sites = scan_sites(img, md)
+    print(f"VERDICT: UNPACKED, sẵn sàng devirt.")
+    print(f"  {len(markers)} marker, {len(sites)} site jmp vào vùng VM")
+    print("  bước tiếp: profile --snap <pre.snap> --site <site>; handlers --ctx <ctx>; opcodes ...")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift",
-                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit", "cfg", "verify"])
+                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit", "cfg", "verify", "doctor"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
     ap.add_argument("--site", help="VM site (hex)")
     ap.add_argument("--cont", help="continuation address (hex), stop when reached")
@@ -1730,7 +1794,7 @@ def main():
     {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps, "ctx": cmd_ctx,
      "trace": cmd_trace, "lift": cmd_lift, "profile": cmd_profile,
      "handlers": cmd_handlers, "bytecode": cmd_bytecode, "decode": cmd_decode,
-     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit, "cfg": cmd_cfg, "verify": cmd_verify}[a.cmd](a)
+     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit, "cfg": cmd_cfg, "verify": cmd_verify, "doctor": cmd_doctor}[a.cmd](a)
 
 
 if __name__ == "__main__":

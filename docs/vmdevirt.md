@@ -147,7 +147,7 @@ này khớp với việc harness của repo (`tools/vmemu.py`) cũng không exit
 | Stage 3 — emit C | ❌ **chưa** | phụ thuộc ngữ nghĩa 46 opcode; "semantics" hiện chỉ là sketch, bị junk chi phối |
 | Verify với 6 khối `tools/devirt.py` | 🟡 **một phần** | 8F346C: 5/8 call đúng thứ tự (§11), 32/52 write khớp post.snap (§15) |
 | `decomp/vm_profile.json` | ✅ | sinh tự động |
-| Áp dụng sang KR | ⏸ **chờ dump** | KR đang pack, không có dump thì không chạy được gì |
+| Áp dụng sang KR | ⏸ **chờ dump** | `doctor` xác nhận KR đang pack; runbook §16 sẵn sàng |
 
 **Chặn hiện tại (theo thứ tự):**
 1. Ngữ nghĩa 46 opcode — phải đọc từng handler như bài gốc (nhìn lệnh ngay trước `pushfd`, nhìn
@@ -404,6 +404,41 @@ Phân loại: **9/12 write ngoài stack khớp chính xác** (7 chỗ lệch n�
 
 ⇒ Hai khối độc lập đều cho tỉ lệ khớp cao trên phần **không phải stack**, và mọi chỗ lệch đều nằm ở vùng
 scratch/TEB hoặc do trace dừng sớm.
+
+
+## 16. Đường áp dụng sang bản KR (runbook)
+
+Bản KR cuối (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`, 10.141.152 byte) — đo bằng `doctor`:
+
+```
+markers 'EB 10 57 4C 20' : 0
+.idata size             : 0x200
+entry                   : 0x225D000 in 'gsowkarq', section size 0x1000
+sections entropy > 7.9  : ['   \x00    ', 'gulxdsye']
+VERDICT: PACKED / chưa unpack
+```
+
+⇒ **Không devirt trực tiếp được.** Phải dump tại OEP trước. Runbook:
+
+| bước | lệnh | kỳ vọng |
+|---|---|---|
+| 1 | `python3 tools/vmdevirt.py doctor <exe>` | phải ra `UNPACKED` |
+| 2 | dump client KR tại OEP (đường của repo: `win/snap.bat <SITE>` / live dump) | file dump + snapshot |
+| 3 | `doctor <dump>` | thấy marker, thấy site |
+| 4 | `discover <dump>` | `sites` + `stub_heads`; nếu 0 site ⇒ VM đời khác, xem bước 8 |
+| 5 | `profile <dump> --snap <pre.snap> --site <site>` | tự dò ctx + dạng dispatch |
+| 6 | `handlers --ctx <ctx>` | bảng handler (nếu có) |
+| 7 | `opcodes`, `cfg`, `trace`, `emit`, `verify` | như đã làm với VN |
+| 8 | nếu dispatch là `jmp [table + idx*k]` liền mạch / handler tự chain | đó là kiểu **FALCON** — cần thêm backend `chained` (chưa viết) |
+
+Điểm đã chuẩn bị sẵn cho KR:
+
+- Mọi hằng số (ctx, lock offset, bảng, size VI) đều **discover**, không hardcode.
+- `doctor` chặn sớm nếu file còn pack — tránh mất thời gian.
+- `profile` gộp `opcodes` + `handlers` vào một JSON, nên engine không phụ thuộc bản VN.
+- Nếu KR là VM đời mới (FALCON), phần **dùng lại được**: PE loader, site scan, stub follow, snapshot
+  replay, emulation harness, `verify`. Phần **phải làm mới**: decode VI (vì FALCON dùng
+  `next_idx` + `vip_delta` tường minh, không phải bytecode mã hoá rolling như bản VN).
 
 ## 5b. Đường áp dụng sang bản KR
 
