@@ -394,6 +394,10 @@ Server giả chưa trả gì → nhân vật nằm đó, ván không kết thúc
   Ví dụ: `subtype 11, cờ 0, x 560, y 79, t 5349, blob 14 B` rồi `subtype 13, …, blob 11 B`.
 - 162 có nhiều nơi dựng (`CGOCAHeroGameBomber__vf6_1` 0x5A3681: `u16, u16 0, u16 box+1394, u16 box+1397`; `CGOGameBomb__vf45`; `CHiddenCatchPlayMap`…). CHƯA KIỂM nơi nào gửi.
 
+**Kết thúc lượt bằng 146 (thí nghiệm `DEATH_END=2`, `logs/xvfb/end1`, `docs/battle_round146.png`):** 2 s sau 120/13 server gửi **146** (`round_result(key=10000,
+slot 0 có điểm)`) → client **sang lượt mới**: nhân vật hồi sinh ở ô xuất phát, HUD "GIỚI HẠN" đặt lại (01:55 rồi đếm lùi), client gửi C→S 180. Tức 146 = "kết quả lượt +
+bắt đầu lượt kế" (đúng §5a-4: 146 cũng start đồng hồ). Kết thúc cả trận / về phòng chờ: gói khác (ứng viên 571 `sub_71ADEC`, 117) — CHƯA LÀM.
+
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
 |---|---|---|
