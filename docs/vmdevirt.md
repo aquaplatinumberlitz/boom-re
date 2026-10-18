@@ -187,6 +187,48 @@ phải có snapshot ở một khối **thẳng** (ví dụ `8F452B`, `8F8F69` �
 **Hệ quả cho mục tiêu:** verify emit C với 6 khối cần thêm snapshot. Việc này cần chạy client gốc trên
 Windows/Wine (`win/snap.bat <SITE>`) — nằm ngoài phạm vi tự động của round này.
 
+
+## 10. CFG + dừng theo "hub" (round 5)
+
+### CFG của stream VI đã chạy
+
+```
+python3 tools/vmdevirt.py cfg --snap logs/snap/8F346C/pre.snap --site 8F346C --disp 11F9E81 --max 6000000
+insns 4621780  dispatches 11340
+basic blocks 24  edges 23  back edges 6
+block sizes: min 27  max 3282  mean 472.5
+```
+
+- 24 basic block, 23 cạnh, **6 back-edge** ⇒ khối này **có loop**, không phải tuyến tính.
+- Hub của loop: `0x135B33B` (đích của nhiều cạnh lùi, cũng là `jmp` target của site `8F346C`).
+- Lỗi đã sửa: trước đó tao coi "VIP delta ≤ 16" là tuần tự ⇒ nhảy ngắn bị nuốt, CFG chỉ ra 3 block.
+  Đúng phải là: size của opcode = delta **phổ biến nhất**, khác nó thì là nhánh.
+
+### Dừng theo hub ⇒ đúng một vòng
+
+Thêm `--stop-vip ADDR`: dừng khi VIP quay lại hub lần thứ 2. Trên `8F346C`:
+
+```
+hub 0x135b33b reached 2 times -> one iteration
+insns 3947362  stop cycle  exits 2
+```
+
+⇒ Lần đầu tiên có **một đơn vị ngữ nghĩa xác định** cho khối loop: một vòng = 3.947.362 lệnh.
+
+### Kiểm chứng với bản viết tay (đối chiếu đầu tiên)
+
+`tools/devirt.py` viết tay cho `8F346C`: `push 0xF; call 0x888462` (CSendPacket/SendPkt__Begin), sau đó
+`0xA65280` ×3 (Encode4), `0x888609` (Send), `0x8884DC` (dtor), `0x8E1C72`, `0x8F2803`.
+
+Tool báo **đích rời VM đầu tiên trong một vòng: `0x888462`** — khớp. Các call sau chưa tới vì biên "một
+vòng" hiện tại (hub lần 2) cắt sớm hơn toàn bộ flow của khối.
+
+Đây là **đối chiếu đầu tiên có bằng chứng** giữa tool và bản devirt tay. Chưa phải verify đầy đủ.
+
+### Profile hợp nhất
+
+`decomp/vm_profile.json` giờ gộp cả `opcodes` (46) và `handlers` (178) ⇒ một file đọc là đủ cho emitter.
+
 ## 5b. Đường áp dụng sang bản KR
 
 Bản KR (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`) **đang bị pack**:

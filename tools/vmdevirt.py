@@ -522,10 +522,15 @@ def cmd_trace(a):
     start_regs = {k: mu.reg_read(getattr(X, "UC_X86_REG_" + k.upper()))
                   for k in ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp", "esp")}
     writes, calls, exits = {}, collections.Counter(), []
+    vmcalls = collections.Counter()
+    last = [None]          # địa chỉ cuối, để chỉ đếm lần ĐẦU vào một hàm image
     n = [0]
     stop = [None]
     cyc = Cycle()
     md_t = md32(detail=True) if (a.cycle or a.fake_native) else None
+    stop_vip = int(a.stop_vip, 16) if a.stop_vip else None
+    disp_t = int(a.disp, 16) if a.disp else None
+    hub_hits = [0]
     SCRATCH = 0x70000000
     try:
         from unicorn import UC_PROT_ALL
@@ -549,6 +554,16 @@ def cmd_trace(a):
             stop[0] = "cont"
             mu8.emu_stop()
             return
+        prev_in_vm = last[0] is not None and vm_lo <= last[0] < vm_hi
+        last[0] = addr
+        if stop_vip is not None and disp_t is not None and addr == disp_t:
+            if mu8.reg_read(getattr(X, "UC_X86_REG_" + (a.vip_reg or "esi").upper())) == stop_vip:
+                hub_hits[0] += 1
+                if hub_hits[0] >= 2:
+                    stop[0] = "cycle"
+                    print(f"hub {stop_vip:#x} reached {hub_hits[0]} times -> one iteration")
+                    mu8.emu_stop()
+                    return
         if a.cycle and md_t is not None:
             b = bytes(mu8.mem_read(addr, 2))
             if b[0] == 0xFF and ((b[1] >> 3) & 7) in (4, 5):
@@ -570,6 +585,8 @@ def cmd_trace(a):
         if vm_lo <= addr < vm_hi:
             armed[0] = True
         elif a.fake_native and armed[0] and img.base <= addr < img.base + len(img.raw):
+            if addr != site and prev_in_vm:
+                vmcalls[addr] += 1
             # left the VM into game code that lives in the dumped image: execute it, unless the
             # caller told us to skip it (anti-cheat / integrity checks that need a real process).
             if addr in skips:
@@ -653,6 +670,10 @@ def cmd_trace(a):
     for k in start_regs:
         if start_regs[k] != end_regs[k]:
             print(f"  {k}: {start_regs[k]:#010x} -> {end_regs[k]:#010x}")
+    if vmcalls:
+        print(f"\nVM -> native targets (một vòng): {len(vmcalls)} hàm, {sum(vmcalls.values())} lần")
+        for k, c in vmcalls.most_common(12):
+            print(f"   {k:#010x} x{c}")
     if calls:
         print("\nfaked native returns:", len(calls), "sites; top:")
         for k, c in calls.most_common(10):
@@ -665,6 +686,7 @@ def cmd_trace(a):
                "writes": {g: [{"addr": hex(w[0]), "size": w[1], "n": w[2], "first": w[3], "last": w[4],
                                "eip": hex(w[5])} for w in groups[g]] for g in groups},
                "exits": [hex(x) for x in exits],
+               "vmcalls": {hex(k): v for k, v in vmcalls.items()},
                "regs_start": {k: hex(v) for k, v in start_regs.items()},
                "regs_end": {k: hex(v) for k, v in end_regs.items()}}
         pathlib.Path(a.json).write_text(json.dumps(out, indent=1))
@@ -715,6 +737,16 @@ def cmd_lift(a):
             stop[0] = "cont"
             mu8.emu_stop()
             return
+        prev_in_vm = last[0] is not None and vm_lo <= last[0] < vm_hi
+        last[0] = addr
+        if stop_vip is not None and disp_t is not None and addr == disp_t:
+            if mu8.reg_read(getattr(X, "UC_X86_REG_" + (a.vip_reg or "esi").upper())) == stop_vip:
+                hub_hits[0] += 1
+                if hub_hits[0] >= 2:
+                    stop[0] = "cycle"
+                    print(f"hub {stop_vip:#x} reached {hub_hits[0]} times -> one iteration")
+                    mu8.emu_stop()
+                    return
         if addr in seen:
             return
         i = next(md.disasm(bytes(mu8.mem_read(addr, 15)), addr), None)
@@ -860,6 +892,14 @@ def cmd_profile(a):
         print("[ctx fields written]")
         for k, v in sorted(ctxw.items())[:20]:
             print(f"   ctx+{k - base:#05x}  x{v}")
+    # fold in whatever the later stages already produced, so the profile is one file to read
+    for key, name in (("opcodes", "vm_opcodes.json"), ("handlers", "vm_handlers.json")):
+        q = ROOT / "decomp" / name
+        if q.exists():
+            try:
+                prof[key] = json.loads(q.read_text())
+            except Exception:
+                pass
     out = pathlib.Path(a.json or (ROOT / "decomp" / "vm_profile.json"))
     out.write_text(json.dumps(prof, indent=1))
     print(f"-> {out}")
@@ -1376,10 +1416,95 @@ def cmd_emit(a):
         print(f"-> {a.json}")
 
 
+def cmd_cfg(a):
+    """Build the CFG of the executed virtual-instruction stream.
+
+    Blocks are split at every branch opcode and at every branch target. Edges are the observed
+    transitions; the not-taken edge of a branch is only known when that path also executed, so
+    unobserved edges stay explicitly unknown.
+    """
+    from unicorn import UC_HOOK_CODE, UcError
+    from unicorn import x86_const as X
+    site = int(a.site, 16)
+    disp = int(a.disp, 16)
+    img = Image(a.exe)
+    snap = Snap(a.snap)
+    mu = build_uc(snap=snap)
+    setup_from_snap(mu, snap, img, site)
+    vreg = getattr(X, "UC_X86_REG_" + (a.vip_reg or "esi").upper())
+    seq, n, stop = [], [0], [None]
+
+    def on_code(mu8, addr, size, u):
+        n[0] += 1
+        if n[0] > a.max:
+            stop[0] = "budget"
+            mu8.emu_stop()
+            return
+        if addr == disp:
+            seq.append((mu8.reg_read(vreg), mu8.reg_read(X.UC_X86_REG_EAX)))
+
+    mu.hook_add(UC_HOOK_CODE, on_code)
+    try:
+        mu.emu_start(site, 0xFFFFFFFF)
+    except UcError as e:
+        stop[0] = stop[0] or f"uc {e}"
+    print(f"insns {n[0]}  dispatches {len(seq)}  stop {stop[0]}")
+    # two passes: an opcode's size is its most common VIP delta; anything else is a branch
+    deltas = collections.defaultdict(collections.Counter)
+    for (v1, o1), (v2, _) in zip(seq, seq[1:]):
+        d = v2 - v1
+        if 0 < d <= 16:
+            deltas[o1][d] += 1
+    sizes = {o: c.most_common(1)[0][0] for o, c in deltas.items()}
+    branches = set()
+    for (v1, o1), (v2, _) in zip(seq, seq[1:]):
+        d = v2 - v1
+        if o1 in sizes and d != sizes[o1]:
+            branches.add(o1)
+        elif o1 not in sizes:
+            branches.add(o1)
+    blocks, edges = [], collections.Counter()
+    cur = []
+    starts = set()
+    targets = {}
+    for (v1, o1), (v2, o2) in zip(seq, seq[1:]):
+        cur.append((v1, o1))
+        d = v2 - v1
+        if o1 in branches:
+            targets.setdefault(v2, set()).add((v1, o1))
+            edges[(v1, v2)] += 1
+            blocks.append(cur)
+            cur = []
+            starts.add(v2)
+    if cur:
+        blocks.append(cur)
+    loops = [(v1, v2) for (v1, v2) in edges if v2 <= v1]
+    print(f"basic blocks {len(blocks)}  edges {len(edges)}  back edges {len(loops)}")
+    print(f"block sizes: min {min(len(b) for b in blocks)}  max {max(len(b) for b in blocks)}  "
+          f"mean {sum(len(b) for b in blocks)/len(blocks):.1f}")
+    print(f"branch targets reached: {len(targets)}")
+    print("largest blocks:")
+    for b in sorted(blocks, key=len, reverse=True)[:5]:
+        ops = " ".join(f"{o:02x}" for _, o in b[:10])
+        print(f"   {b[0][0]:#x} len={len(b):<5} ops: {ops}")
+    print("top edges (from -> to, count):")
+    for (v1, v2), c in edges.most_common(8):
+        kind = "back" if v2 <= v1 else "fwd"
+        print(f"   {v1:#x} -> {v2:#x}  x{c}  ({kind})")
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps(
+            {"blocks": [{"start": hex(b[0][0]), "ops": [hex(o) for _, o in b],
+                         "vips": [hex(v) for v, _ in b]} for b in blocks[:5000]],
+             "edges": [{"from": hex(a_), "to": hex(b_), "n": c, "back": b_ <= a_}
+                       for (a_, b_), c in edges.most_common()],
+             "dispatch": len(seq), "stop": stop[0]}, indent=1))
+        print(f"-> {a.json}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift",
-                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit"])
+                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit", "cfg"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
     ap.add_argument("--site", help="VM site (hex)")
     ap.add_argument("--cont", help="continuation address (hex), stop when reached")
@@ -1401,6 +1526,7 @@ def main():
     ap.add_argument("--vip-reg", default="esi", help="thanh ghi giữ VIP (mặc định esi)")
     ap.add_argument("--fake-ret", default="scratch",
                     help="giá trị trả về khi fake API: 'scratch' (con trỏ tới vùng 64KB) hoặc số")
+    ap.add_argument("--stop-vip", help="dừng khi VIP quay lại địa chỉ này lần thứ 2 (một vòng)")
     ap.add_argument("--skip", action="append", default=[],
                     help="addr[=eax]: bỏ qua hàm native trong image (vd anti-cheat), giả lập return")
     ap.add_argument("--cycle", action="store_true",
@@ -1411,7 +1537,7 @@ def main():
     {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps, "ctx": cmd_ctx,
      "trace": cmd_trace, "lift": cmd_lift, "profile": cmd_profile,
      "handlers": cmd_handlers, "bytecode": cmd_bytecode, "decode": cmd_decode,
-     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit}[a.cmd](a)
+     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit, "cfg": cmd_cfg}[a.cmd](a)
 
 
 if __name__ == "__main__":
