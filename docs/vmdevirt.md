@@ -145,7 +145,7 @@ này khớp với việc harness của repo (`tools/vmemu.py`) cũng không exit
 | Stage 2 — decode toàn stream | ❌ **bị chặn** | bytecode mã hoá rolling key (4 giả thuyết khoá đều fail); chỉ decode được đoạn **đã chạy** qua trace |
 | Stage 2 — CFG | ✅ **xong (đường đã chạy)** | 24 block, 23 cạnh, 6 back-edge, hub `0x135B33B` |
 | Stage 3 — emit C | ❌ **chưa** | phụ thuộc ngữ nghĩa 46 opcode; "semantics" hiện chỉ là sketch, bị junk chi phối |
-| Verify với 6 khối `tools/devirt.py` | 🟡 **một phần** | 8F346C: 5/8 call ground truth đúng thứ tự (§11) |
+| Verify với 6 khối `tools/devirt.py` | 🟡 **một phần** | 8F346C: 5/8 call đúng thứ tự (§11) + 1 hiệu ứng khớp post.snap (§14) |
 | `decomp/vm_profile.json` | ✅ | sinh tự động |
 | Áp dụng sang KR | ⏸ **chờ dump** | KR đang pack, không có dump thì không chạy được gì |
 
@@ -327,6 +327,40 @@ tiếp (không qua call). Đây là loại write mà bản viết tay của `dev
 **Kết luận về emit:** với khối `8F346C`, hiệu ứng game thấy được **chủ yếu là chuỗi call**; write object
 rất ít (12 địa chỉ, phần lớn là TEB + packet object). Điều này khớp với cách `devirt.py` viết khối này:
 một chuỗi `call` + 1 phép gán field do native thực hiện.
+
+
+## 14. Kiểm chứng chéo với snapshot thật (round 9)
+
+Không cần chạy tới `cont` vẫn kiểm chứng được **từng hiệu ứng**, nếu có `post.snap` (bộ nhớ sau khi khối
+chạy xong, do client gốc chụp). Lệnh mới:
+
+```
+python3 tools/vmdevirt.py verify --pre logs/snap/8F346C/pre.snap \
+        --post logs/snap/8F346C/post.snap --value 4ABA478 --at DA05050
+```
+
+Kết quả:
+
+```
+value 0x4aba478: pre 3 hit(s), post 4 hit(s)
+  chỉ có trong post (block đã ghi ở đây): 1
+     0x0da05050
+  tại địa chỉ chỉ định 0xda05050: pre=không, post=có
+```
+
+Diễn giải:
+
+- `0x4ABA478` là giá trị `time` mà **trace của tool** bắt được làm `arg0` của `SendPkt__Encode4` #1.
+- `0xDA05050` = `0xDA05008 + 0x48`. `0xDA05008` là con trỏ `CMainSystem` (xuất hiện trong ctx/thanh ghi).
+- `devirt.py` viết tay cho khối này: **"CMainSystem+0x48 = time"**.
+- `pre.snap` **không** có giá trị đó tại `0xDA05050`, `post.snap` **có**.
+
+⇒ Đây là **kiểm chứng độc lập, khép kín** cho một hiệu ứng: tool quan sát đúng giá trị, và bộ nhớ thật sau
+khối chứa đúng giá trị đó tại đúng nơi bản viết tay nói. Không phụ thuộc vào việc emulation có chạy hết khối
+hay không.
+
+Cách dùng tổng quát: với mỗi giá trị scalar mà trace bắt được (tham số call, giá trị ghi), chạy `verify` để
+tìm địa chỉ "chỉ có trong post" — đó là nơi khối đã ghi.
 
 ## 5b. Đường áp dụng sang bản KR
 

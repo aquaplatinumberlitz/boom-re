@@ -1563,10 +1563,70 @@ def cmd_cfg(a):
         print(f"-> {a.json}")
 
 
+def _snap_regions(path):
+    raw = open(path, "rb").read()
+    magic, ver, n = struct.unpack_from("<4sII", raw, 0)
+    if magic != b"BSNP":
+        raise SystemExit(f"{path}: not a BSNP snapshot")
+    off, out = 52, []
+    for _ in range(n):
+        b, sz, pr, t = struct.unpack_from("<4I", raw, off)
+        off += 16
+        out.append((b, sz, t, raw[off:off + sz]))
+        off += sz
+    return out
+
+
+def cmd_verify(a):
+    """Check an emitted effect against the real pre/post snapshots of the same block.
+
+    For a dword value captured by the trace, find where it lives before and after the block.
+    An address present only in `post` is a place the block wrote -- independent ground truth
+    for the emitted C.
+    """
+    val = int(a.value, 16)
+    pack = struct.pack("<I", val)
+    def hits(path):
+        out = []
+        for b, sz, t, d in _snap_regions(path):
+            i = 0
+            while True:
+                i = d.find(pack, i)
+                if i < 0:
+                    break
+                out.append((b + i, t))
+                i += 1
+                if len(out) > 4000:
+                    return out
+        return out
+    pre = hits(a.pre)
+    post = hits(a.post)
+    pres = {x for x, _ in pre}
+    print(f"value {val:#x}: pre {len(pre)} hit(s), post {len(post)} hit(s)")
+    new = [(x, t) for x, t in post if x not in pres]
+    gone = [(x, t) for x, t in pre if x not in {y for y, _ in post}]
+    print(f"  chỉ có trong post (block đã ghi ở đây): {len(new)}")
+    for x, t in new[:a.show]:
+        print(f"     {x:#010x}  type {t:#x}")
+    print(f"  chỉ có trong pre (bị ghi đè/mất): {len(gone)}")
+    for x, t in gone[:a.show]:
+        print(f"     {x:#010x}  type {t:#x}")
+    if a.at:
+        at = int(a.at, 16)
+        print(f"  tại địa chỉ chỉ định {at:#x}: pre={'có' if at in pres else 'không'}, "
+              f"post={'có' if at in {y for y, _ in post} else 'không'}")
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps(
+            {"value": hex(val), "pre": [hex(x) for x, _ in pre],
+             "post": [hex(x) for x, _ in post],
+             "post_only": [hex(x) for x, _ in new]}, indent=1))
+        print(f"-> {a.json}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift",
-                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit", "cfg"])
+                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit", "cfg", "verify"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
     ap.add_argument("--site", help="VM site (hex)")
     ap.add_argument("--cont", help="continuation address (hex), stop when reached")
@@ -1591,6 +1651,10 @@ def main():
                     help="giá trị trả về khi fake API: 'scratch' (con trỏ tới vùng 64KB) hoặc số")
     ap.add_argument("--hub-count", type=int, default=2, help="dừng khi hub đạt N lần (mặc định 2)")
     ap.add_argument("--stop-vip", help="dừng khi VIP quay lại địa chỉ này lần thứ 2 (một vòng)")
+    ap.add_argument("--pre", help="pre.snap (trước khối)")
+    ap.add_argument("--post", help="post.snap (sau khối)")
+    ap.add_argument("--value", help="giá trị dword cần kiểm (hex)")
+    ap.add_argument("--at", help="địa chỉ kỳ vọng (hex)")
     ap.add_argument("--skip", action="append", default=[],
                     help="addr[=eax]: bỏ qua hàm native trong image (vd anti-cheat), giả lập return")
     ap.add_argument("--cycle", action="store_true",
@@ -1601,7 +1665,7 @@ def main():
     {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps, "ctx": cmd_ctx,
      "trace": cmd_trace, "lift": cmd_lift, "profile": cmd_profile,
      "handlers": cmd_handlers, "bytecode": cmd_bytecode, "decode": cmd_decode,
-     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit, "cfg": cmd_cfg}[a.cmd](a)
+     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit, "cfg": cmd_cfg, "verify": cmd_verify}[a.cmd](a)
 
 
 if __name__ == "__main__":
