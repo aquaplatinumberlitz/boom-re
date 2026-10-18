@@ -1,0 +1,376 @@
+[
+ {
+  "addr": "0x11ee70c",
+  "insn": "cmp",
+  "ops": "eax, dword ptr [edi + 0x8c]",
+  "touch": [
+   [
+    "ctx",
+    "0x8c"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11eecb0",
+  "insn": "lock cmpxchg",
+  "ops": "dword ptr [edi + 0x7c], ecx",
+  "touch": [
+   [
+    "ctx",
+    "0x7c"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11eecbe",
+  "insn": "lodsb",
+  "ops": "al, byte ptr [esi]",
+  "touch": [
+   [
+    "img",
+    "0x136019b"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f9e81",
+  "insn": "jmp",
+  "ops": "dword ptr [edi + eax*4]",
+  "touch": [
+   [
+    "ctx",
+    "0x10c"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f6cb8",
+  "insn": "lodsb",
+  "ops": "al, byte ptr [esi]",
+  "touch": [
+   [
+    "img",
+    "0x136019c"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11fde8d",
+  "insn": "lea",
+  "ops": "eax, [edi + eax*4]",
+  "touch": [
+   [
+    "ctx",
+    "0xc"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f5f30",
+  "insn": "pop",
+  "ops": "dword ptr [edx]",
+  "touch": [
+   [
+    "ctx",
+    "0xc"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f39b1",
+  "insn": "lodsb",
+  "ops": "al, byte ptr [esi]",
+  "touch": [
+   [
+    "img",
+    "0x13601ac"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f3b5c",
+  "insn": "mov",
+  "ops": "byte ptr [edx], al",
+  "touch": [
+   [
+    "ctx",
+    "0x74"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f1f1f",
+  "insn": "lodsd",
+  "ops": "eax, dword ptr [esi]",
+  "touch": [
+   [
+    "img",
+    "0x13601c4"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11ef7f1",
+  "insn": "lodsw",
+  "ops": "ax, word ptr [esi]",
+  "touch": [
+   [
+    "img",
+    "0x13601cc"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11fb494",
+  "insn": "push",
+  "ops": "dword ptr [edx]",
+  "touch": [
+   [
+    "ctx",
+    "0x14"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11fab1c",
+  "insn": "lodsb",
+  "ops": "al, byte ptr [esi]",
+  "touch": [
+   [
+    "img",
+    "0x1360230"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f85c3",
+  "insn": "pop",
+  "ops": "dword ptr [edi + eax*4]",
+  "touch": [
+   [
+    "ctx",
+    "0x1c"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f461f",
+  "insn": "movzx",
+  "ops": "ax, byte ptr [edx]",
+  "touch": [
+   [
+    "ctx",
+    "0x8"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11fbd1a",
+  "insn": "mov",
+  "ops": "byte ptr [ebx], dh",
+  "touch": [
+   [
+    "ctx",
+    "0x8"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f613c",
+  "insn": "lodsb",
+  "ops": "al, byte ptr [esi]",
+  "touch": [
+   [
+    "img",
+    "0x136046c"
+   ]
+  ]
+ },
+ {
+  "addr": "0x1200d6c",
+  "insn": "push",
+  "ops": "dword ptr [edi + 0x8c]",
+  "touch": [
+   [
+    "ctx",
+    "0x8c"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11fb259",
+  "insn": "lodsb",
+  "ops": "al, byte ptr [esi]",
+  "touch": [
+   [
+    "img",
+    "0x13605f2"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f51ca",
+  "insn": "push",
+  "ops": "dword ptr [edi + eax*4]",
+  "touch": [
+   [
+    "ctx",
+    "0x0"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11efe48",
+  "insn": "lodsd",
+  "ops": "eax, dword ptr [esi]",
+  "touch": [
+   [
+    "img",
+    "0x1360ad5"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11fde53",
+  "insn": "mov",
+  "ops": "dword ptr [edx], ebx",
+  "touch": [
+   [
+    "ctx",
+    "0x84"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f199f",
+  "insn": "add",
+  "ops": "dword ptr [edx], ebp",
+  "touch": [
+   [
+    "ctx",
+    "0x84"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f19a2",
+  "insn": "shl",
+  "ops": "dword ptr [edx], 4",
+  "touch": [
+   [
+    "ctx",
+    "0x84"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f19a5",
+  "insn": "shr",
+  "ops": "dword ptr [edx], 1",
+  "touch": [
+   [
+    "ctx",
+    "0x84"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f603b",
+  "insn": "add",
+  "ops": "dword ptr [ebx], 0xd9f35069",
+  "touch": [
+   [
+    "ctx",
+    "0x84"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11ffe1b",
+  "insn": "mov",
+  "ops": "dword ptr [edi + 0x64], 0x2752be8",
+  "touch": [
+   [
+    "ctx",
+    "0x64"
+   ]
+  ]
+ },
+ {
+  "addr": "0x1200d39",
+  "insn": "xor",
+  "ops": "dword ptr [edi + 0x64], edx",
+  "touch": [
+   [
+    "ctx",
+    "0x64"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f6819",
+  "insn": "push",
+  "ops": "dword ptr [ebx]",
+  "touch": [
+   [
+    "ctx",
+    "0x1c"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f5d20",
+  "insn": "add",
+  "ops": "dword ptr [eax], esi",
+  "touch": [
+   [
+    "ctx",
+    "0x64"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f7c76",
+  "insn": "push",
+  "ops": "dword ptr [edi + 0x64]",
+  "touch": [
+   [
+    "ctx",
+    "0x64"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11f7c1d",
+  "insn": "pop",
+  "ops": "dword ptr [edi + 0x84]",
+  "touch": [
+   [
+    "ctx",
+    "0x84"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11fd8e8",
+  "insn": "lodsd",
+  "ops": "eax, dword ptr [esi]",
+  "touch": [
+   [
+    "img",
+    "0x1360adf"
+   ]
+  ]
+ },
+ {
+  "addr": "0x11fd8e9",
+  "insn": "cmp",
+  "ops": "dword ptr [edi + 0x84], 0",
+  "touch": [
+   [
+    "ctx",
+    "0x84"
+   ]
+  ]
+ }
+]

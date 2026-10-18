@@ -70,9 +70,14 @@ Số liệu chạy thật:
 - `discover`: **607 site → 390 stub head**; head `0x11EE3B0` xuất hiện **73 lần** = đúng 73 marker.
 - `profile`: tự tìm spinlock (`0x11EDE68`) → tự suy `ctx = 0x11EDDEC`; dispatch chỉ **một dạng duy nhất**
   `jmp [base+idx*4+0x0]`, 1469 lần trong 600k lệnh; field ctx bị ghi: `+0x00..+0x1C`, `+0x74`, `+0x7C`.
-- `lift` khối `8F346C`: **7094 lệnh unique**, chỉ **36 lệnh có ngữ nghĩa** (chạm ctx/image/heap) — tức
-  tỉ lệ junk ~99.5%, và phần ngữ nghĩa in ra kèm offset ctx (vd `add dword ptr [edx], ebp ; ctx+0x84`).
-- `trace` khối `8F346C`: 15 write vào ctx, 9 write vào image, 105 write vùng stack/heap, `edi` cuối = ctx.
+- `lift`/`trace` khối `8F346C`: **7094 lệnh unique**, chỉ **36 lệnh có ngữ nghĩa** (chạm ctx/image/heap) —
+  tỉ lệ junk ~99.5%, phần ngữ nghĩa in kèm offset ctx (vd `add dword ptr [edx], ebp ; ctx+0x84`).
+  `trace` ghi 15 write vào ctx, 9 write vào image, 105 write stack/heap, `edi` cuối = ctx.
+
+  **Cảnh báo (đã kiểm chứng):** cả 3 khối `8F346C`, `8F4D46`, `8F5F40` đều dừng vì `budget` chứ **chưa tới
+  `cont`** — tức trace đang chứa cả pool VM chung, *không phải riêng một khối*. Số "7094 unique" là pool,
+  không phải kích thước khối. Muốn có ngữ nghĩa khối phải sửa điều kiện dừng (hiện tool in WARNING khi
+  điều này xảy ra). Đây là việc tiếp theo trước khi tin bất kỳ output `lift` nào.
 
 ## 5. Đường áp dụng sang bản KR
 

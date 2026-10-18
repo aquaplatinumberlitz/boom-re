@@ -520,6 +520,8 @@ def cmd_trace(a):
     end_regs = {k: mu.reg_read(getattr(X, "UC_X86_REG_" + k.upper()))
                 for k in ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp", "esp")}
     print(f"insns {n[0]}  stop {stop[0]}  exits {len(exits)}")
+    if cont is not None and stop[0] != "cont":
+        print("WARNING: chưa tới cont — số liệu dưới đây gồm cả code chạy sau khi khối kết thúc.")
     for lbl, lo, hi in (("ctx", ctx, ctx + 0x400) if ctx else ("ctx", 0, 0),
                         ("image", img.base, img.base + len(img.raw))):
         pass
@@ -637,6 +639,9 @@ def cmd_lift(a):
     except UcError as e:
         stop[0] = stop[0] or f"uc {e}"
     print(f"insns {n[0]}  unique {len(order)}  stop {stop[0]}")
+    if cont is not None and stop[0] != "cont":
+        print("WARNING: chưa tới cont — trace này là cả pool VM đã chạy, KHÔNG phải riêng khối; "
+              "đừng dùng để kết luận ngữ nghĩa khối.")
     sem = [x for x in order if seen[x][2]]
     print(f"semantic instructions (touch ctx/image/heap): {len(sem)} / {len(order)}\n")
     for addr in sem[:a.show]:
