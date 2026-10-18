@@ -280,7 +280,7 @@ Phương pháp: `tools/vmemu.py <SITE> --snap logs/snap/8F5F40/pre.snap --run-na
 | site | hàm | kết quả | kiểm runtime |
 |---|---|---|---|
 | 0x6EFD4A | `sub_6EFD24` | ghi bản ghi 68 B vào bảng vòng `CGameMsgCache` 13/17 (flush op 111) — chi tiết `vm_6EFD4A_inputs.md` §8 | Space không crash, bản ghi khớp tham số (gdb `msgcache_rec.gdb`) |
-| 0x71581A | `sub_71580C` (gói 552) | không điều kiện: `MsgCache.vf3(1)`, `Decode4(packet)` (bỏ kết quả), `sub_711E7F`, `sub_708192`, `sub_414543(this+0x4AB4)`, `sub_705F63` | server gửi 552 (`BEGIN_OP=552`): vào/ra handler không crash (gdb `h552.gdb`) |
+| 0x71581A | `sub_71580C` (gói 552) | không điều kiện: `MsgCache.vf3(1)`, `Decode4(packet)` (bỏ kết quả), `sub_711E7F`, `sub_708192`, `sub_414543(this+0x4AB4)` (box getter), `sub_705F63` | server gửi 552 (`BEGIN_OP=552`): vào/ra handler không crash (gdb `h552.gdb`) |
 | 0x9682E5 | `sub_9682DE` Init(index) | gán index + reset 12 thành viên (box -1/0, sub-readers, object +0xB4) — thay bản tạm | gdb `init9682.gdb`: 4 lần vào/ra (2 ctor + reset idx 0/1), không crash |
 | 0x5A6E89, 0x6F287E, 0x754C82 | guard `rand() % N` | plain `jmp cont` = đường đi ~99% của game gốc | build; chưa có lần chạy nào chạm 1% |
 
@@ -288,7 +288,7 @@ Ghi chú: `sub_711E7F`/`sub_708192`/`sub_705F63` nhảy vào section Themida (`j
 không phải VM — 59 điểm "unknown" trong `decomp/themida_entries.json` thuộc loại này. Packet (`RecvPkt`): +0x10 buffer, +0x20 giới hạn,
 +0x24 con trỏ đọc, +0x28 chế độ (khác 0 → số bị XOR), +0x30 cờ lỗi.
 
-**0x736C27 (`CGamePlayMap__Load` tail) — emulate thử, chưa viết lại:** với `ebx` = object trống, khối chỉ gọi `sub_414543(ebx + 0x8F480C)` (hub check của Themida)
+**0x736C27 (`CGamePlayMap__Load` tail) — emulate thử, chưa viết lại:** với `ebx` = object trống, khối chỉ gọi box getter `sub_414543(ebx + 0x8F480C)`
 rồi thoát (không ghi gì) → chunk ~0x136 byte của hàm gốc rất có thể là vòng duyệt danh sách (rỗng với object trống). Muốn biết nó làm gì với map thật cần bộ nhớ
 `CGamePlayMap` (object > 11 MB, `this+0xA832E8` là danh sách) — chưa dump được. Skip hiện tại không chặn điều khiển (đã kiểm), giữ nguyên.
 **0x8E5519 (`CFxApp__vf6`)**: đây là đoạn tắt app (duyệt hết singleton gọi dtor), chỉ chạy lúc thoát → plain skip. **0x966FEC**: hàm mồ côi (0 xref), chưa chạm.
@@ -315,3 +315,5 @@ Kiểm chứng quan trọng: `[ctx + opcode*4]` so với EIP handler thực tế
 Điều **chưa** làm được (ghi rõ để khỏi tưởng nhầm): bytecode bị mã hoá rolling key nên không decode tĩnh
 được toàn stream; ngữ nghĩa 46 opcode chưa xác định (mới có size/nhánh/handler). Chi tiết + báo cáo độ phủ:
 [vmdevirt.md](vmdevirt.md).
+
+Đính chính (2026-10-18): `sub_414543` là **getter của box bool/u32 chống sửa bộ nhớ** (cùng họ `sub_578344`/`sub_413F32`), không phải "hub check Themida"; giải mã box: con trỏ dữ liệu ở `box+8`, 4 byte + byte khoá k (k=0→42; out=k^b; k+=b+42) — xem `tools/gdb/bomb_ids.gdb`.

@@ -176,6 +176,7 @@ Ghi chép trước đó về phần crash map: [docs/lobby.md](lobby.md) "Cập 
 1. ~~Gói C→S 111~~ ✅ (2026-10-18 đêm): flush qua `vf159` → `MsgCache.vf3(0)` → `vf5` → `vf8`; cần đồng hồ context 0 chạy (`POST_PLAY_START`).
    Định dạng: `oc_e-game.md` §5a-5. **Tiếp:** bom chưa nổ — tìm gói S→C mà server phải phát lại (ứng viên: hàm nhận gói trận `CGameStage::vf61`
    0x70922B, subtype u16 + byte khoá; chưa tìm được ai gọi nó — có thể từ đường UDP `CSendPacketUDP`/cổng UDP trong gói 15).
+   Đã biết thêm (`oc_e-game.md` §5a-5b): bom mạng nằm trong pool với id -1; S→C **151** đặt/đẩy bom theo id nhưng cần id đã gán — còn thiếu gói gán id.
 2. **Dump `CGamePlayMap`** (object > 11 MB) để viết lại thật khối `0x736C27` (hiện plain skip; emulate trên object trống chỉ thấy 1 lời gọi `sub_414543`).
 3. **Vùng anti-cheat A1xxxx** (43 site, skip khi chạm) và các khối còn lại: `0x966FEC` (mồ côi).
 4. **Mở đủ map**: thay 3 map tự soạn bằng danh sách 1019 map (server Rust đã có `ALL_MAPS=1`); làm hộp thoại chọn map liệt kê được; xem map có khoá theo cấp không.

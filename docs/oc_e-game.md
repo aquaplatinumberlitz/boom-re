@@ -357,6 +357,19 @@ if (cờ & 3): u8 rec+0x20, u8 rec+0x24, u8 rec+0x28, u16 rec+0x2C        (chỉ
 ```
 Ví dụ thật (slot 0, ô cột 14 hàng 1; server gửi khoá 10000 trong 189): `khoá=10000, 0, 0, 0, 1, 14, 1, 0, 0, 0, 1, 1, 0`. Ý nghĩa từng field ngoài hàng/cột: CHƯA KIỂM.
 
+#### 5a-5b. Bom chưa nổ — điều tra (2026-10-18 đêm, CHƯA XONG)
+- `CGOCAHeroGameBomber__vf6_2` (Space): nếu `bomber vf35` = box `bomber+0x6AC` ≠ 0 → tạo bom **cục bộ** `sub_5B0053` (gán id `sub_591209`, đặt `sub_7324C0`);
+  nếu = 0 → chỉ lấy bom trong pool (`vf18(1)`, `CGOGameBomb`, id box +168 = **-1**, số thứ tự box +280 = giá trị gửi trong 111) và gửi **111**.
+  Box +0x6AC chỉ được đặt (`sub_599C68`) bởi các chế độ đặc biệt (SnowBear/SnowBall/IamBoss) ⇒ người chơi thường luôn đi đường mạng: **server phải trả lời**.
+- **S→C 151** (`CGameStage__On_151`): `u8 n`, n × {`u16 id`, `u8 kind`, nếu kind==0: `u32`} → `ctx sub_6E9994(id, kind, u32)`: tìm bom có id (box +168) == id
+  (`sub_6E4341`, `sub_6E7EF8`); kind 0 → `sub_7324C0(bom, u32)` (đặt bom lên map → `sub_72D669` → `CGOGameBomb vf37`), kind 1 → đẩy bom tới ô khác.
+  Thí nghiệm `BOMB_ECHO=2` (fakeserver gửi 151 id 0..31 sau 111): client nhận, `sub_6E9994` chạy nhưng **không tìm thấy bom** (id vẫn -1, `sub_591209` không được gọi)
+  — `tools/gdb/bomb151.gdb`, `logs/xvfb/bomb151`.
+- ⇒ Còn thiếu một gói S→C **gán id** cho bom vừa đặt (hoặc tạo bom từ bản ghi 111 phát lại). Đã loại: bảng factory gói `dword_EA78E8`/`dword_E64B20`
+  (lúc chạy chỉ có opcode 70), `CNetSyncMan` (đồng bộ NPC), `CGameStage::vf61` 0x70922B (gói trận u16 subtype + byte khoá, có kiểm độ dài — có thể là kênh
+  UDP; chưa tìm được nơi gọi), `CSessionStage__On_143` (16 × 2 byte trạng thái ô). Hướng tiếp: tìm mọi chỗ ghi box +168 của `CGOGameBomb`
+  (`sub_577EED`/`sub_413F32` trên `this+42`) và đi ngược lên handler gói; hoặc so với client KR/bản khác nếu có log mạng thật.
+
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
 |---|---|---|
