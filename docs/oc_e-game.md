@@ -434,11 +434,11 @@ Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
   Hiệu ứng của từng `kind` lên nhân vật (tốc độ/số bom/tầm nổ): CHƯA KIỂM.
   fakeserver: `ITEM_ACK=1`; server Rust: luôn trả 158 cho 117, `ITEMS="x,y,kind;…"` gửi 553 trước 501 (`server/tests/bomb.rs` khớp byte với fakeserver).
 
-- **Dùng vật phẩm (Ctrl)** (đang làm, `logs/xvfb/item_use1/2`): bấm Ctrl khi đang tự do → ô VẬT PHẨM trống **ngay** (client tự trừ) và client gửi
-  **C→S 120 subtype 0** (`sub_57762F`, thành phần dùng vật phẩm): phần riêng sau đầu 120 = `u8 1`, `u16 kind (256)`, `u8 0`, `u32 0`. Không thấy hiệu ứng trên màn hình
-  với `kind 1`. Khi đang bị nhốt trong bong bóng: Ctrl **không** dùng được vật phẩm này (vẫn ×01, không gửi gì) ⇒ không phải kim.
-  Bảng thuộc tính vật phẩm: `assets/fx/Attr/ItemAttr.bin` (mục `Ship/*`: Airship, Owl, Turtle, Octopus…, rồi `Item/*`: ItemBomb, ItemFire, ItemRoller, ItemShoe,
-  ItemPunch, ItemMaxPower, …, ItemHPNeedle…). Ánh xạ `kind` (553) → tên: đang dò bằng cách đặt nhiều `kind` lên map.
+- **Dùng vật phẩm (Ctrl)** ✅ runtime với **kim** (`kind 117` ItemNiddle, `FLOOR_ITEMS="13,0,117"`, `logs/xvfb/needle1`, `docs/battle_item_needle.png`):
+  nhặt kim (117 → 158) → kim vào ô VẬT PHẨM (Ctrl) ×01 → tự đặt bom, bị nhốt (120 subtype 11) → bấm Ctrl → **nhân vật thoát bong bóng, sống tiếp**, ô trống.
+  Client gửi **C→S 120 subtype 1** (thoát bong bóng, chỉ phần đầu 120) rồi **120 subtype 0** (dùng vật phẩm: `u8 1`, `u16 kind`, `u8 0`, `u32 0`).
+  Không cần server trả lời — hiệu ứng do client tự làm (server chỉ cần phát lại cho người chơi khác khi có nhiều người). Hàm dùng vật phẩm: `sub_57762F`.
+  Vật phẩm Ctrl khác (khiên `kind 123` 2000 ms, phi tiêu 115, thuốc 119, lò xo 120…): cùng đường, chưa thử từng loại. Bảng `kind`: `docs/items.md`.
 
 - **Hiệu ứng vật phẩm nhặt được (bị động) — client tự áp dụng sau 158** ✅ (`FLOOR_ITEMS="13,0,1;14,1,0"`, `logs/xvfb/item_use3`, `docs/battle_item_effects.png`):
   nhặt `kind 1` ItemFire rồi `kind 0` ItemBomb (2 lần 117 → 158) → đặt được **2 bom liền nhau** (2 bản ghi 111, số thứ tự bom 0 và 20) và trường `r18` của 111
