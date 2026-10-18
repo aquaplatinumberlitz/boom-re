@@ -31,6 +31,8 @@ pub struct Room {
     pub map: Option<(u32, u16)>,
     /// Slots closed by the room master (C->S 94), bit i = slot i.
     pub closed: u16,
+    /// Incremented at every match start (stale end-of-match timers compare it).
+    pub match_no: u32,
 }
 
 pub struct Hub {
@@ -123,3 +125,31 @@ impl Hub {
 pub fn player_name(user_id: u32) -> String {
     format!("tester{}", user_id - 1000 + 1)
 }
+
+impl Hub {
+    /// End the running match `match_no` (if it is still the current one): 168 with the given ranks, then 173 after `delay` s.
+    pub fn finish_match(self: &std::sync::Arc<Self>, match_no: u32, ranks: Vec<(u8, u8)>, delay: f64) -> bool {
+        {
+            let r = self.room.lock().unwrap();
+            if !r.started || r.match_no != match_no {
+                return false;
+            }
+        }
+        self.room.lock().unwrap().match_no += 1; // a second decision (death + timeout) is ignored
+        self.broadcast(&crate::packets::game_result(&ranks));
+        let hub = self.clone();
+        tokio::spawn(async move {
+            tokio::time::sleep(std::time::Duration::from_secs_f64(delay)).await;
+            {
+                let mut r = hub.room.lock().unwrap();
+                r.started = false;
+                for m in r.members.iter_mut() {
+                    m.dead = false;
+                }
+            }
+            hub.broadcast(&crate::packets::match_over());
+        });
+        true
+    }
+}
+

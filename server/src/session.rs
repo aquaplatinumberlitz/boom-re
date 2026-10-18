@@ -19,6 +19,9 @@ pub struct Config {
     pub map_index: u32,
     /// Match start packet: 501 (everybody on start point 0) or 117 (start point per slot).
     pub start_op: u16,
+    /// Round time in s, counted from 191/146: the HUD clock is 120 s for normal maps (ctx+490518 default; 190/191/146 times do not
+    /// change it). When it runs out the server ends the match (0 = never).
+    pub round_time: f64,
     pub auto_start: f64,
     pub turn_start: f64,
     pub turn_mode: u8,
@@ -56,6 +59,7 @@ impl Config {
             room_type: env("ROOM_TYPE", 19),
             map_index: env("MAP_INDEX", 0),
             start_op: env("START_OP", 117),
+            round_time: env("ROUND_TIME", 120.0),
             auto_start: env("AUTO_START", 0.0),
             turn_start: env("TURN_START", 0.0),
             turn_mode: env("TURN_MODE", 4),
@@ -306,20 +310,9 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                         .then(|| r.members.iter().map(|m| (m.slot, if m.dead { 2 } else { 1 })).collect::<Vec<_>>())
                 };
                 if let Some(ranks) = survivors {
-                    log(format!("[{port}] match decided: ranks {ranks:?} -> 168, 173 in {}s", cfg.match_end.max(3.0)));
-                    hub.broadcast(&pk::game_result(&ranks));
-                    let (hub2, wait_s) = (hub.clone(), cfg.match_end.max(3.0) + 5.0);
-                    tokio::spawn(async move {
-                        tokio::time::sleep(Duration::from_secs_f64(wait_s)).await;
-                        {
-                            let mut r = hub2.room.lock().unwrap();
-                            r.started = false;
-                            for m in r.members.iter_mut() {
-                                m.dead = false;
-                            }
-                        }
-                        hub2.broadcast(&pk::match_over());
-                    });
+                    let no = hub.room.lock().unwrap().match_no;
+                    log(format!("[{port}] match decided: ranks {ranks:?} -> 168, 173 in {}s", cfg.match_end.max(3.0) + 5.0));
+                    hub.finish_match(no, ranks, cfg.match_end.max(3.0) + 5.0);
                 } else if sub == 13 && hub.room.lock().unwrap().members.len() <= 1 && (cfg.match_end > 0.0 || cfg.death_end > 0.0) {
                     let (hub2, cfg2) = (hub.clone(), cfg.clone());
                     tokio::spawn(async move {
@@ -381,9 +374,14 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16, delay:
     // the map is read after the wait: the master may still pick one (C->S 88) in the meantime
     let (map_index, _) = room_map_of(&hub, &cfg);
     let map = cfg.maps.get(map_index as usize).unwrap_or(&cfg.maps[0]);
-    for m in hub.room.lock().unwrap().members.iter_mut() {
-        m.dead = false;
-    }
+    let match_no = {
+        let mut r = hub.room.lock().unwrap();
+        for m in r.members.iter_mut() {
+            m.dead = false;
+        }
+        r.match_no += 1;
+        r.match_no
+    };
     if !cfg.items.is_empty() || !cfg.floor_items.is_empty() {
         // item layout must arrive before 501 (read when the map loads); list 1 = floor, list 2 = hidden in bricks
         let bricks: Vec<(u16, u8, u8, u32)> = cfg.items.iter().enumerate().map(|(i, &(x, y, k))| (i as u16, x, y, k)).collect();
@@ -397,7 +395,8 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16, delay:
         // other player vanish from the match (logs/duo/t13)
         let full: Vec<(u8, u8, u8, u8, u8)> =
             hub.room.lock().unwrap().members.iter().map(|m| (m.slot, 0, m.slot, m.slot, m.team)).collect();
-        hub.broadcast(&pk::match_start_full(map, map_index, cfg.room_type, 12345, &full));
+        // time byte 0: it only applies when the map record enables a custom time (sub_8E7E3F, set from sub_6DD49B(map))
+        hub.broadcast(&pk::match_start_full(map, map_index, cfg.room_type, 12345, &full, 0));
     } else {
         hub.broadcast(&pk::match_start(map, map_index, cfg.room_type, 12345, &slots));
     }
@@ -420,7 +419,7 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16, delay:
         return;
     }
     wait(cfg.go_start).await;
-    hub.broadcast(&pk::round_go((120, 30), 0, 0, 0));
+    hub.broadcast(&pk::round_go((if cfg.round_time > 0.0 { cfg.round_time as u32 } else { 120 }, 30), 0, 0, 0));
     if cfg.begin_start > 0.0 {
         wait(cfg.begin_start).await;
         let r = if cfg.begin_op == 552 {
@@ -437,6 +436,7 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16, delay:
         hub.broadcast(&pk::round_start(map, 0, 10000, (1, 1, 12345), (1, 1)));
         if cfg.post_play_start > 0.0 {
             wait(cfg.post_play_start).await;
+            let rt = if cfg.round_time > 0.0 { cfg.round_time as u32 } else { 180 };
             // 146 = round begin + UDP peer table (sub_70A647: per slot 3 x (u32 ip, u16 port) -> sub_9B5C5A -> MTUDP HostCreate);
             // fall back to 191 when some client did not report its UDP address (C->S 92)
             let peers: Option<Vec<(usize, [(u32, u16); 3])>> = hub
@@ -450,9 +450,22 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16, delay:
             match peers {
                 Some(p) if cfg.players > 1 => {
                     log(format!("[{port}] 146 with UDP peers {p:x?}"));
-                    hub.broadcast(&pk::round_result(0, 10000, (180, 30), 0, (0, 0, 0), &p));
+                    hub.broadcast(&pk::round_result(0, 10000, (rt, 30), 0, (0, 0, 0), &p));
                 }
-                _ => hub.broadcast(&pk::round_begin(0, 180_000, 30_000, 0)),
+                _ => hub.broadcast(&pk::round_begin(0, rt * 1000, 30_000, 0)),
+            }
+            if cfg.round_time > 0.0 {
+                // time limit: the HUD clock counts down the time of 191/146 and stops at 00:00 without sending anything ->
+                // the server ends the match: everybody still alive ranks 1
+                let (hub2, log2, t) = (hub.clone(), log.clone(), cfg.round_time);
+                tokio::spawn(async move {
+                    tokio::time::sleep(Duration::from_secs_f64(t + 1.0)).await;
+                    let ranks: Vec<(u8, u8)> =
+                        hub2.room.lock().unwrap().members.iter().map(|m| (m.slot, if m.dead { 2 } else { 1 })).collect();
+                    if hub2.finish_match(match_no, ranks.clone(), 8.0) {
+                        log2(format!("[{port}] time up: ranks {ranks:?} -> 168, 173"));
+                    }
+                });
             }
         }
     }

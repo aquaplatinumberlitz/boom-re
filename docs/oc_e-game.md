@@ -418,6 +418,12 @@ Gửi hạng 1 cho người còn sống, 2 cho người đã chết (rút gọn 
 "HOÀN HẢO" = thắng), cột BẮT/CỨU/EXP/VÀNG = 0; tên trống (CHƯA KIỂM nguồn tên). Server Rust: khi C→S 120/13 làm số đội còn sống ≤ 1 (≥ 2 người) → 168
 cho cả phòng, rồi 173 sau `MATCH_END` + 5 s (cửa sổ kết quả cần thời gian). 1 người: giữ như cũ (173 sau `MATCH_END`).
 
+**Hết giờ** (2026-10-19, `logs/mapf/timeout*.log`, `logs/xvfb/timeup_2.png`): đồng hồ HUD "GIỚI HẠN" đếm **120 s từ 191/146** rồi dừng ở 00:00 — client
+**không gửi gì**, server phải kết thúc. Giới hạn nằm ở `ctx+490518` (`sub_6E1F0C`), mặc định 120 s; thời gian trong 190/191/146 không đổi nó (thử 40 s: HUD vẫn
+1:49 sau 10 s). Chỉ khi `sub_8E7E3F()` (cờ đặt từ bản ghi map, `sub_8E7E46(sub_6DD49B(map))` trong On_117) thì `sub_71A9EC` ghi đè bằng byte thời gian
+của 117 (×1000). Server Rust: `ROUND_TIME` (mặc định 120) tính từ lúc gửi 191/146 → hết giờ gửi 168 (người còn sống hạng 1) → 173; số trận `match_no`
+để timer cũ / quyết định thứ hai (chết + hết giờ) bị bỏ qua.
+
 #### 5a-5d. Gạch vỡ và vật phẩm (đang làm, 2026-10-18)
 - **Gạch vỡ do client tự tính** (`logs/xvfb/brick1`): bom nổ cạnh gạch → gạch biến mất, client báo **C→S 135** (`sub_706FC0`, gọi từ `sub_5BF711`
   "vỡ gạch"): `u8 y(hàng)`, `u8 x(cột)`, `u8 slot`, `u16 -1`. Ví dụ `{1, 13, 0, 0xFFFF}` = gạch ở hàng 1 cột 13.

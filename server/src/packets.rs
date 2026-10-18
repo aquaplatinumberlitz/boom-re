@@ -290,7 +290,7 @@ pub fn match_start(map: &BattleMap, dyn_index: u32, room_type: u8, seed: u32, sl
 /// n x {u8 slot, u8 (+84; != 0 hides the player: logs/duo/t13), u8 start point (+124), u8 pos (+96), u8 team (+112), u8, i8 partner slot (-1), u32, u32 (<0: keep),
 /// u32, u32, u8 0}}, u8 0 (no 985703 blob), u8 time (x1000 -> room+78*4), u8 event-NPC stage (-1),
 /// u8, u16 n3, blob {tag 0} (n3 x records).
-pub fn match_start_full(map: &BattleMap, dyn_index: u32, room_type: u8, seed: u32, slots: &[(u8, u8, u8, u8, u8)]) -> Vec<u8> {
+pub fn match_start_full(map: &BattleMap, dyn_index: u32, room_type: u8, seed: u32, slots: &[(u8, u8, u8, u8, u8)], time_s: u8) -> Vec<u8> {
     let mut b = Le(vec![0]);
     for _ in 0..8 {
         b.u16(0);
@@ -299,7 +299,7 @@ pub fn match_start_full(map: &BattleMap, dyn_index: u32, room_type: u8, seed: u3
     for &(slot, r84, spawn, pos, team) in slots {
         b.u8(slot).u8(r84).u8(spawn).u8(pos).u8(team).u8(0).u8(0xFF).u32(0).u32(0).u32(0).u32(0).u8(0);
     }
-    Packet::new(117).u8(0).blob(&b.0).u8(0).u8(0).u8(0xFF).u8(0).u16(0).blob(&[0]).build()
+    Packet::new(117).u8(0).blob(&b.0).u8(0).u8(time_s).u8(0xFF).u8(0).u16(0).blob(&[0]).build()
 }
 
 /// Opcode 189 (sub_70E5C4): round command. u32 = session key (this[4887]); mode 0 = play (phase 2 -> 3),
