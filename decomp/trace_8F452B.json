@@ -1,0 +1,2175 @@
+{
+ "site": "0x8f452b",
+ "cont": "0x8f45a7",
+ "insn": 5133746,
+ "stop": "unmapped 0x8489002c from 0x11fb494",
+ "ctx": "0x11eddec",
+ "writes": {
+  "ctx": [
+   {
+    "addr": "0x11ede68",
+    "size": 4,
+    "n": 7,
+    "first": 1,
+    "last": 1,
+    "eip": "0x11eecb0"
+   },
+   {
+    "addr": "0x11eddf8",
+    "size": 4,
+    "n": 13,
+    "first": 5000,
+    "last": 5000,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11eddf0",
+    "size": 4,
+    "n": 15,
+    "first": 112098992,
+    "last": 112098992,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11eddec",
+    "size": 4,
+    "n": 30,
+    "first": 1688856,
+    "last": 1688756,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11ede04",
+    "size": 4,
+    "n": 31,
+    "first": 1688740,
+    "last": 1,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11ede60",
+    "size": 1,
+    "n": 3,
+    "first": 2,
+    "last": 2,
+    "eip": "0x11f3b5c"
+   },
+   {
+    "addr": "0x11eddfc",
+    "size": 4,
+    "n": 13,
+    "first": 0,
+    "last": 1879048192,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11eddf4",
+    "size": 4,
+    "n": 45,
+    "first": 10000,
+    "last": 2223570944,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11ede00",
+    "size": 4,
+    "n": 23,
+    "first": 10020827,
+    "last": 2223570944,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11ede08",
+    "size": 4,
+    "n": 178,
+    "first": 2097686,
+    "last": 2099846,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11eddfd",
+    "size": 1,
+    "n": 6,
+    "first": 1,
+    "last": 219,
+    "eip": "0x11fbd1a"
+   },
+   {
+    "addr": "0x11eddfc",
+    "size": 1,
+    "n": 2,
+    "first": 0,
+    "last": 208,
+    "eip": "0x11fbd1a"
+   },
+   {
+    "addr": "0x11eddfc",
+    "size": 2,
+    "n": 1,
+    "first": 9984,
+    "last": 9984,
+    "eip": "0x11f11ba"
+   },
+   {
+    "addr": "0x11ede70",
+    "size": 4,
+    "n": 36,
+    "first": 561412059,
+    "last": 2,
+    "eip": "0x11fde53"
+   },
+   {
+    "addr": "0x11ede50",
+    "size": 4,
+    "n": 18,
+    "first": 41233384,
+    "last": 1,
+    "eip": "0x11ffe1b"
+   }
+  ],
+  "image": [
+   {
+    "addr": "0x11e6c40",
+    "size": 4,
+    "n": 1,
+    "first": 1,
+    "last": 1,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e74dc",
+    "size": 4,
+    "n": 1,
+    "first": 112098992,
+    "last": 112098992,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x124250d",
+    "size": 4,
+    "n": 1,
+    "first": 10000,
+    "last": 10000,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e6dec",
+    "size": 4,
+    "n": 1,
+    "first": 283909928,
+    "last": 283909928,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e74ce",
+    "size": 4,
+    "n": 1,
+    "first": 0,
+    "last": 0,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e62ad",
+    "size": 4,
+    "n": 1,
+    "first": 1680219059,
+    "last": 1680219059,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e7707",
+    "size": 4,
+    "n": 1,
+    "first": 7,
+    "last": 7,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e73a1",
+    "size": 4,
+    "n": 1,
+    "first": 1985894876,
+    "last": 1985894876,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e7156",
+    "size": 4,
+    "n": 1,
+    "first": 2018020037,
+    "last": 2018020037,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e5e41",
+    "size": 4,
+    "n": 1,
+    "first": 1882481874,
+    "last": 1882481874,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e7409",
+    "size": 4,
+    "n": 1,
+    "first": 3819125342,
+    "last": 3819125342,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x1225831",
+    "size": 4,
+    "n": 1,
+    "first": 1477024149,
+    "last": 1477024149,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e5cf3",
+    "size": 4,
+    "n": 1,
+    "first": 1882424804,
+    "last": 1882424804,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e66f1",
+    "size": 4,
+    "n": 1,
+    "first": 367793574,
+    "last": 367793574,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e627e",
+    "size": 4,
+    "n": 1,
+    "first": 1,
+    "last": 1,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0xeee654",
+    "size": 4,
+    "n": 1,
+    "first": 9384183,
+    "last": 9384183,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0xeee650",
+    "size": 4,
+    "n": 1,
+    "first": 9383005,
+    "last": 9383005,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0xeee65c",
+    "size": 4,
+    "n": 1,
+    "first": 9384438,
+    "last": 9384438,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0xeee658",
+    "size": 4,
+    "n": 1,
+    "first": 9382991,
+    "last": 9382991,
+    "eip": "0x11f5f30"
+   },
+   {
+    "addr": "0x11e641d",
+    "size": 4,
+    "n": 1,
+    "first": 5,
+    "last": 5,
+    "eip": "0x11f5f30"
+   }
+  ],
+  "heap": [
+   {
+    "addr": "0x19c4b8",
+    "size": 4,
+    "n": 290,
+    "first": 226980689,
+    "last": 20296539,
+    "eip": "0x1360153"
+   },
+   {
+    "addr": "0x19c4b4",
+    "size": 4,
+    "n": 1758,
+    "first": 2097686,
+    "last": 1688856,
+    "eip": "0x11ee128"
+   },
+   {
+    "addr": "0x19c4b0",
+    "size": 4,
+    "n": 6191,
+    "first": 8432,
+    "last": 2097666,
+    "eip": "0x11ee129"
+   },
+   {
+    "addr": "0x19c4ac",
+    "size": 4,
+    "n": 16732,
+    "first": 1688752,
+    "last": 1879048192,
+    "eip": "0x11ee131"
+   },
+   {
+    "addr": "0x19c4a8",
+    "size": 4,
+    "n": 35469,
+    "first": 1688752,
+    "last": 10000,
+    "eip": "0x11ee134"
+   },
+   {
+    "addr": "0x19c4a4",
+    "size": 4,
+    "n": 59563,
+    "first": 5000,
+    "last": 0,
+    "eip": "0x11ee142"
+   },
+   {
+    "addr": "0x19c4a0",
+    "size": 4,
+    "n": 77435,
+    "first": 1688752,
+    "last": 1,
+    "eip": "0x11ee14b"
+   },
+   {
+    "addr": "0x19c49c",
+    "size": 4,
+    "n": 79343,
+    "first": 1688736,
+    "last": 1,
+    "eip": "0x11ee1e6"
+   },
+   {
+    "addr": "0x19c498",
+    "size": 4,
+    "n": 65119,
+    "first": 0,
+    "last": 1688856,
+    "eip": "0x11ee200"
+   },
+   {
+    "addr": "0x19c494",
+    "size": 4,
+    "n": 43259,
+    "first": 245629760,
+    "last": 112098992,
+    "eip": "0x11ee208"
+   },
+   {
+    "addr": "0x19c490",
+    "size": 4,
+    "n": 23352,
+    "first": 1688856,
+    "last": 5000,
+    "eip": "0x11ee209"
+   },
+   {
+    "addr": "0x19c48c",
+    "size": 4,
+    "n": 10497,
+    "first": 1050176563,
+    "last": 0,
+    "eip": "0x11ee229"
+   },
+   {
+    "addr": "0x19c488",
+    "size": 4,
+    "n": 4028,
+    "first": 0,
+    "last": 18800108,
+    "eip": "0x11ee336"
+   },
+   {
+    "addr": "0x19c484",
+    "size": 4,
+    "n": 1322,
+    "first": 1688712,
+    "last": 338972531,
+    "eip": "0x11ee339"
+   },
+   {
+    "addr": "0x19c480",
+    "size": 4,
+    "n": 362,
+    "first": 1,
+    "last": 0,
+    "eip": "0x11ee33f"
+   },
+   {
+    "addr": "0x19c47c",
+    "size": 4,
+    "n": 85,
+    "first": 112098992,
+    "last": 2223570944,
+    "eip": "0x11ee3e6"
+   },
+   {
+    "addr": "0x19c478",
+    "size": 4,
+    "n": 23,
+    "first": 10000,
+    "last": 1879048192,
+    "eip": "0x11ee3ec"
+   },
+   {
+    "addr": "0x19c48e",
+    "size": 2,
+    "n": 1792,
+    "first": 226,
+    "last": 56824,
+    "eip": "0x11fc337"
+   },
+   {
+    "addr": "0x19c48e",
+    "size": 1,
+    "n": 311,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c486",
+    "size": 2,
+    "n": 187,
+    "first": 242,
+    "last": 0,
+    "eip": "0x1200969"
+   },
+   {
+    "addr": "0x19c48a",
+    "size": 2,
+    "n": 626,
+    "first": 13731,
+    "last": 226,
+    "eip": "0x11f74b0"
+   },
+   {
+    "addr": "0x19c492",
+    "size": 2,
+    "n": 4089,
+    "first": 0,
+    "last": 56824,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c48e",
+    "size": 4,
+    "n": 7056,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c48a",
+    "size": 4,
+    "n": 2811,
+    "first": 1688718,
+    "last": 1,
+    "eip": "0x11f3678"
+   },
+   {
+    "addr": "0x19c486",
+    "size": 4,
+    "n": 946,
+    "first": 20296550,
+    "last": 1688718,
+    "eip": "0x11f3679"
+   },
+   {
+    "addr": "0x19c482",
+    "size": 4,
+    "n": 264,
+    "first": 249,
+    "last": 1,
+    "eip": "0x11ff5d9"
+   },
+   {
+    "addr": "0x19c48a",
+    "size": 1,
+    "n": 97,
+    "first": 255,
+    "last": 29,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c488",
+    "size": 2,
+    "n": 69,
+    "first": 1,
+    "last": 206,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c485",
+    "size": 1,
+    "n": 5,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c482",
+    "size": 2,
+    "n": 38,
+    "first": 56628,
+    "last": 214,
+    "eip": "0x1200969"
+   },
+   {
+    "addr": "0x19c47e",
+    "size": 4,
+    "n": 41,
+    "first": 18799931,
+    "last": 221,
+    "eip": "0x11ff5d9"
+   },
+   {
+    "addr": "0x19c486",
+    "size": 1,
+    "n": 22,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c492",
+    "size": 1,
+    "n": 816,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c496",
+    "size": 2,
+    "n": 7655,
+    "first": 56824,
+    "last": 56816,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c492",
+    "size": 4,
+    "n": 14622,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c48c",
+    "size": 2,
+    "n": 169,
+    "first": 1,
+    "last": 204,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c489",
+    "size": 1,
+    "n": 12,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c496",
+    "size": 1,
+    "n": 1750,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c49a",
+    "size": 2,
+    "n": 11190,
+    "first": 56816,
+    "last": 56812,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c496",
+    "size": 4,
+    "n": 24447,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c490",
+    "size": 2,
+    "n": 458,
+    "first": 1,
+    "last": 203,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c48d",
+    "size": 1,
+    "n": 47,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c49a",
+    "size": 1,
+    "n": 2866,
+    "first": 29,
+    "last": 114,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c49e",
+    "size": 2,
+    "n": 12937,
+    "first": 56812,
+    "last": 56836,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c49a",
+    "size": 4,
+    "n": 32423,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c494",
+    "size": 2,
+    "n": 960,
+    "first": 1,
+    "last": 209,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c491",
+    "size": 1,
+    "n": 110,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c49e",
+    "size": 1,
+    "n": 3558,
+    "first": 29,
+    "last": 51,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c4a2",
+    "size": 2,
+    "n": 11696,
+    "first": 56836,
+    "last": 56836,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c49e",
+    "size": 4,
+    "n": 33289,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c498",
+    "size": 2,
+    "n": 1556,
+    "first": 1,
+    "last": 209,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c495",
+    "size": 1,
+    "n": 211,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c4a2",
+    "size": 1,
+    "n": 3275,
+    "first": 29,
+    "last": 108,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c4a6",
+    "size": 2,
+    "n": 8298,
+    "first": 56836,
+    "last": 56828,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c4a2",
+    "size": 4,
+    "n": 26769,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c49c",
+    "size": 2,
+    "n": 1944,
+    "first": 1,
+    "last": 207,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c499",
+    "size": 1,
+    "n": 253,
+    "first": 43,
+    "last": 101,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c4a6",
+    "size": 1,
+    "n": 2235,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c4aa",
+    "size": 2,
+    "n": 4647,
+    "first": 56828,
+    "last": 56820,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c4a6",
+    "size": 4,
+    "n": 16999,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c4a0",
+    "size": 2,
+    "n": 1924,
+    "first": 1,
+    "last": 205,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c49d",
+    "size": 1,
+    "n": 217,
+    "first": 43,
+    "last": 108,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c4aa",
+    "size": 1,
+    "n": 1146,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c4ae",
+    "size": 2,
+    "n": 2088,
+    "first": 56820,
+    "last": 56832,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c4aa",
+    "size": 4,
+    "n": 9097,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c4a4",
+    "size": 2,
+    "n": 1575,
+    "first": 1,
+    "last": 208,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c4a1",
+    "size": 1,
+    "n": 122,
+    "first": 43,
+    "last": 100,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c4ae",
+    "size": 1,
+    "n": 468,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c4b2",
+    "size": 2,
+    "n": 708,
+    "first": 56832,
+    "last": 56840,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c4ae",
+    "size": 4,
+    "n": 3892,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c4a8",
+    "size": 2,
+    "n": 1068,
+    "first": 1,
+    "last": 210,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c4a5",
+    "size": 1,
+    "n": 56,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c4b2",
+    "size": 1,
+    "n": 146,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c4b6",
+    "size": 2,
+    "n": 167,
+    "first": 56840,
+    "last": 20608,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c4b2",
+    "size": 4,
+    "n": 982,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c4b6",
+    "size": 1,
+    "n": 27,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c4ba",
+    "size": 2,
+    "n": 21,
+    "first": 50360,
+    "last": 20608,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c4b6",
+    "size": 4,
+    "n": 84,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c4b0",
+    "size": 2,
+    "n": 278,
+    "first": 1,
+    "last": 1,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c4ad",
+    "size": 1,
+    "n": 3,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c4ac",
+    "size": 2,
+    "n": 602,
+    "first": 1,
+    "last": 46336,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c4a9",
+    "size": 1,
+    "n": 17,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c4ac",
+    "size": 1,
+    "n": 131,
+    "first": 29,
+    "last": 255,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c4a8",
+    "size": 1,
+    "n": 192,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c4a4",
+    "size": 1,
+    "n": 234,
+    "first": 255,
+    "last": 0,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c4b0",
+    "size": 1,
+    "n": 43,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c4b4",
+    "size": 2,
+    "n": 48,
+    "first": 56829,
+    "last": 40676,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c4a0",
+    "size": 1,
+    "n": 282,
+    "first": 255,
+    "last": 46,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c49c",
+    "size": 1,
+    "n": 291,
+    "first": 255,
+    "last": 101,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c4a7",
+    "size": 1,
+    "n": 9,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c4a3",
+    "size": 1,
+    "n": 13,
+    "first": 43,
+    "last": 108,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c498",
+    "size": 1,
+    "n": 211,
+    "first": 255,
+    "last": 107,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c49f",
+    "size": 1,
+    "n": 5,
+    "first": 43,
+    "last": 50,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c49b",
+    "size": 1,
+    "n": 8,
+    "first": 43,
+    "last": 110,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c494",
+    "size": 1,
+    "n": 105,
+    "first": 255,
+    "last": 29,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c497",
+    "size": 1,
+    "n": 6,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c490",
+    "size": 1,
+    "n": 39,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c493",
+    "size": 1,
+    "n": 9,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c480",
+    "size": 2,
+    "n": 3,
+    "first": 20225,
+    "last": 20225,
+    "eip": "0x12003b4"
+   },
+   {
+    "addr": "0x19c484",
+    "size": 2,
+    "n": 15,
+    "first": 26528,
+    "last": 20225,
+    "eip": "0x12003c3"
+   },
+   {
+    "addr": "0x19c48c",
+    "size": 1,
+    "n": 16,
+    "first": 29,
+    "last": 255,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c488",
+    "size": 1,
+    "n": 5,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c47a",
+    "size": 4,
+    "n": 4,
+    "first": 10599,
+    "last": 2688,
+    "eip": "0x11fea99"
+   },
+   {
+    "addr": "0x19c47e",
+    "size": 2,
+    "n": 4,
+    "first": 20225,
+    "last": 20225,
+    "eip": "0x12003b4"
+   },
+   {
+    "addr": "0x19c482",
+    "size": 1,
+    "n": 2,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c474",
+    "size": 4,
+    "n": 5,
+    "first": 1845498298,
+    "last": 352145195,
+    "eip": "0x11fd149"
+   },
+   {
+    "addr": "0x19c48b",
+    "size": 1,
+    "n": 1,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c487",
+    "size": 1,
+    "n": 1,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c470",
+    "size": 4,
+    "n": 1,
+    "first": 1,
+    "last": 1,
+    "eip": "0xa15086"
+   },
+   {
+    "addr": "0x19c46c",
+    "size": 4,
+    "n": 1,
+    "first": 112098992,
+    "last": 112098992,
+    "eip": "0xa15087"
+   },
+   {
+    "addr": "0x19c468",
+    "size": 4,
+    "n": 1,
+    "first": 5000,
+    "last": 5000,
+    "eip": "0xa15088"
+   },
+   {
+    "addr": "0x19c464",
+    "size": 4,
+    "n": 378,
+    "first": 227701131,
+    "last": 1688728,
+    "eip": "0x1410a87"
+   },
+   {
+    "addr": "0x19c460",
+    "size": 4,
+    "n": 2397,
+    "first": 2097670,
+    "last": 1879048192,
+    "eip": "0x11ee128"
+   },
+   {
+    "addr": "0x19c45c",
+    "size": 4,
+    "n": 6678,
+    "first": 8432,
+    "last": 2223570988,
+    "eip": "0x11ee129"
+   },
+   {
+    "addr": "0x19c458",
+    "size": 4,
+    "n": 12960,
+    "first": 1688668,
+    "last": 2117862568,
+    "eip": "0x11ee131"
+   },
+   {
+    "addr": "0x19c454",
+    "size": 4,
+    "n": 19922,
+    "first": 1688668,
+    "last": 2223570945,
+    "eip": "0x11ee134"
+   },
+   {
+    "addr": "0x19c450",
+    "size": 4,
+    "n": 26084,
+    "first": 5000,
+    "last": 2117862568,
+    "eip": "0x11ee142"
+   },
+   {
+    "addr": "0x19c44c",
+    "size": 4,
+    "n": 29576,
+    "first": 1688668,
+    "last": 1688660,
+    "eip": "0x11ee14b"
+   },
+   {
+    "addr": "0x19c448",
+    "size": 4,
+    "n": 28669,
+    "first": 1688652,
+    "last": 1688656,
+    "eip": "0x11ee1e6"
+   },
+   {
+    "addr": "0x19c444",
+    "size": 4,
+    "n": 23950,
+    "first": 0,
+    "last": 1688652,
+    "eip": "0x11ee200"
+   },
+   {
+    "addr": "0x19c440",
+    "size": 4,
+    "n": 16802,
+    "first": 245629760,
+    "last": 18800128,
+    "eip": "0x11ee208"
+   },
+   {
+    "addr": "0x19c43c",
+    "size": 4,
+    "n": 9979,
+    "first": 1688756,
+    "last": 2223570944,
+    "eip": "0x11ee209"
+   },
+   {
+    "addr": "0x19c438",
+    "size": 4,
+    "n": 5178,
+    "first": 1050176563,
+    "last": 1688700,
+    "eip": "0x11ee229"
+   },
+   {
+    "addr": "0x19c434",
+    "size": 4,
+    "n": 2389,
+    "first": 0,
+    "last": 1688756,
+    "eip": "0x11ee336"
+   },
+   {
+    "addr": "0x19c430",
+    "size": 4,
+    "n": 1121,
+    "first": 1688628,
+    "last": 18800132,
+    "eip": "0x11ee339"
+   },
+   {
+    "addr": "0x19c42c",
+    "size": 4,
+    "n": 485,
+    "first": 1,
+    "last": 18800108,
+    "eip": "0x11ee33f"
+   },
+   {
+    "addr": "0x19c428",
+    "size": 4,
+    "n": 162,
+    "first": 112098992,
+    "last": 18800112,
+    "eip": "0x11ee3e6"
+   },
+   {
+    "addr": "0x19c424",
+    "size": 4,
+    "n": 38,
+    "first": 10000,
+    "last": 18800120,
+    "eip": "0x11ee3ec"
+   },
+   {
+    "addr": "0x19c43a",
+    "size": 2,
+    "n": 899,
+    "first": 226,
+    "last": 56884,
+    "eip": "0x11fc337"
+   },
+   {
+    "addr": "0x19c43a",
+    "size": 1,
+    "n": 171,
+    "first": 29,
+    "last": 255,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c432",
+    "size": 2,
+    "n": 174,
+    "first": 242,
+    "last": 56628,
+    "eip": "0x1200969"
+   },
+   {
+    "addr": "0x19c436",
+    "size": 2,
+    "n": 418,
+    "first": 13731,
+    "last": 56884,
+    "eip": "0x11f74b0"
+   },
+   {
+    "addr": "0x19c43e",
+    "size": 2,
+    "n": 1713,
+    "first": 0,
+    "last": 20225,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c43a",
+    "size": 4,
+    "n": 3025,
+    "first": 27099,
+    "last": 2595,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c436",
+    "size": 4,
+    "n": 1445,
+    "first": 1688634,
+    "last": 1688756,
+    "eip": "0x11f3678"
+   },
+   {
+    "addr": "0x19c432",
+    "size": 4,
+    "n": 678,
+    "first": 21016992,
+    "last": 18800187,
+    "eip": "0x11f3679"
+   },
+   {
+    "addr": "0x19c42e",
+    "size": 4,
+    "n": 289,
+    "first": 249,
+    "last": 18799931,
+    "eip": "0x11ff5d9"
+   },
+   {
+    "addr": "0x19c436",
+    "size": 1,
+    "n": 83,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c434",
+    "size": 2,
+    "n": 39,
+    "first": 1,
+    "last": 204,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c431",
+    "size": 1,
+    "n": 8,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c42e",
+    "size": 2,
+    "n": 62,
+    "first": 56628,
+    "last": 56628,
+    "eip": "0x1200969"
+   },
+   {
+    "addr": "0x19c42a",
+    "size": 4,
+    "n": 99,
+    "first": 18799931,
+    "last": 18799931,
+    "eip": "0x11ff5d9"
+   },
+   {
+    "addr": "0x19c432",
+    "size": 1,
+    "n": 33,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c43e",
+    "size": 1,
+    "n": 362,
+    "first": 29,
+    "last": 255,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c442",
+    "size": 2,
+    "n": 2904,
+    "first": 56824,
+    "last": 22324,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c43e",
+    "size": 4,
+    "n": 5732,
+    "first": 27099,
+    "last": 22331,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c438",
+    "size": 2,
+    "n": 78,
+    "first": 1,
+    "last": 203,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c435",
+    "size": 1,
+    "n": 8,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c442",
+    "size": 1,
+    "n": 690,
+    "first": 29,
+    "last": 255,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c446",
+    "size": 2,
+    "n": 4005,
+    "first": 56816,
+    "last": 52,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c442",
+    "size": 4,
+    "n": 9278,
+    "first": 27099,
+    "last": 59,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c43c",
+    "size": 2,
+    "n": 170,
+    "first": 1,
+    "last": 209,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c439",
+    "size": 1,
+    "n": 20,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c446",
+    "size": 1,
+    "n": 1030,
+    "first": 29,
+    "last": 255,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c44a",
+    "size": 2,
+    "n": 4570,
+    "first": 56812,
+    "last": 52,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c446",
+    "size": 4,
+    "n": 12353,
+    "first": 27099,
+    "last": 59,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c440",
+    "size": 2,
+    "n": 366,
+    "first": 1,
+    "last": 20225,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c43d",
+    "size": 1,
+    "n": 45,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c44a",
+    "size": 1,
+    "n": 1217,
+    "first": 29,
+    "last": 255,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c44e",
+    "size": 2,
+    "n": 4430,
+    "first": 56836,
+    "last": 52,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c44a",
+    "size": 4,
+    "n": 13940,
+    "first": 27099,
+    "last": 59,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c444",
+    "size": 2,
+    "n": 558,
+    "first": 1,
+    "last": 62148,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c441",
+    "size": 1,
+    "n": 66,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c44e",
+    "size": 1,
+    "n": 1175,
+    "first": 29,
+    "last": 255,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c452",
+    "size": 2,
+    "n": 3650,
+    "first": 56836,
+    "last": 36,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c44e",
+    "size": 4,
+    "n": 14248,
+    "first": 27099,
+    "last": 43,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c448",
+    "size": 2,
+    "n": 883,
+    "first": 1,
+    "last": 61952,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c445",
+    "size": 1,
+    "n": 86,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c452",
+    "size": 1,
+    "n": 949,
+    "first": 29,
+    "last": 255,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c456",
+    "size": 2,
+    "n": 2555,
+    "first": 56828,
+    "last": 0,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c452",
+    "size": 4,
+    "n": 13625,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c44c",
+    "size": 2,
+    "n": 1107,
+    "first": 1,
+    "last": 208,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c449",
+    "size": 1,
+    "n": 75,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c456",
+    "size": 1,
+    "n": 672,
+    "first": 29,
+    "last": 255,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c45a",
+    "size": 2,
+    "n": 1519,
+    "first": 56820,
+    "last": 226,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c456",
+    "size": 4,
+    "n": 11207,
+    "first": 27099,
+    "last": 1688670,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c450",
+    "size": 2,
+    "n": 1300,
+    "first": 1,
+    "last": 22497,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c44d",
+    "size": 1,
+    "n": 47,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c45a",
+    "size": 1,
+    "n": 390,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c45e",
+    "size": 2,
+    "n": 795,
+    "first": 56832,
+    "last": 44,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c45a",
+    "size": 4,
+    "n": 7761,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c454",
+    "size": 2,
+    "n": 1428,
+    "first": 1,
+    "last": 44500,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c451",
+    "size": 1,
+    "n": 32,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c45e",
+    "size": 1,
+    "n": 175,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c462",
+    "size": 2,
+    "n": 249,
+    "first": 56840,
+    "last": 56828,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c45e",
+    "size": 4,
+    "n": 3805,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c462",
+    "size": 1,
+    "n": 51,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c466",
+    "size": 2,
+    "n": 91,
+    "first": 50276,
+    "last": 56832,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c462",
+    "size": 4,
+    "n": 952,
+    "first": 27099,
+    "last": 1,
+    "eip": "0x11f684d"
+   },
+   {
+    "addr": "0x19c458",
+    "size": 2,
+    "n": 1251,
+    "first": 1,
+    "last": 1,
+    "eip": "0x11ffa92"
+   },
+   {
+    "addr": "0x19c455",
+    "size": 1,
+    "n": 19,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c45c",
+    "size": 2,
+    "n": 818,
+    "first": 20257,
+    "last": 59970,
+    "eip": "0x11ef2d6"
+   },
+   {
+    "addr": "0x19c45c",
+    "size": 1,
+    "n": 232,
+    "first": 29,
+    "last": 125,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c460",
+    "size": 2,
+    "n": 327,
+    "first": 5000,
+    "last": 45056,
+    "eip": "0x11f684b"
+   },
+   {
+    "addr": "0x19c458",
+    "size": 1,
+    "n": 325,
+    "first": 255,
+    "last": 125,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c459",
+    "size": 1,
+    "n": 2,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c454",
+    "size": 1,
+    "n": 334,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c453",
+    "size": 1,
+    "n": 23,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c44c",
+    "size": 1,
+    "n": 181,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c448",
+    "size": 1,
+    "n": 119,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c44f",
+    "size": 1,
+    "n": 14,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c450",
+    "size": 1,
+    "n": 266,
+    "first": 255,
+    "last": 29,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c447",
+    "size": 1,
+    "n": 8,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c444",
+    "size": 1,
+    "n": 78,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c43f",
+    "size": 1,
+    "n": 3,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c440",
+    "size": 1,
+    "n": 40,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c44b",
+    "size": 1,
+    "n": 16,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c43c",
+    "size": 1,
+    "n": 12,
+    "first": 255,
+    "last": 29,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c428",
+    "size": 2,
+    "n": 4,
+    "first": 20225,
+    "last": 5316,
+    "eip": "0x12003b4"
+   },
+   {
+    "addr": "0x19c42c",
+    "size": 2,
+    "n": 8,
+    "first": 14806,
+    "last": 5120,
+    "eip": "0x12003c3"
+   },
+   {
+    "addr": "0x19c434",
+    "size": 1,
+    "n": 2,
+    "first": 29,
+    "last": 29,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c430",
+    "size": 2,
+    "n": 20,
+    "first": 13731,
+    "last": 206,
+    "eip": "0x11f74b0"
+   },
+   {
+    "addr": "0x19c430",
+    "size": 1,
+    "n": 3,
+    "first": 255,
+    "last": 29,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c426",
+    "size": 4,
+    "n": 23,
+    "first": 4244496346,
+    "last": 18799931,
+    "eip": "0x11fa3c4"
+   },
+   {
+    "addr": "0x19c422",
+    "size": 4,
+    "n": 5,
+    "first": 31832,
+    "last": 27963,
+    "eip": "0x11fea99"
+   },
+   {
+    "addr": "0x19c426",
+    "size": 2,
+    "n": 4,
+    "first": 20225,
+    "last": 27956,
+    "eip": "0x12003b4"
+   },
+   {
+    "addr": "0x19c42a",
+    "size": 2,
+    "n": 14,
+    "first": 31832,
+    "last": 56628,
+    "eip": "0x12003c3"
+   },
+   {
+    "addr": "0x19c42e",
+    "size": 1,
+    "n": 9,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c438",
+    "size": 1,
+    "n": 4,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c42d",
+    "size": 1,
+    "n": 3,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c420",
+    "size": 4,
+    "n": 5,
+    "first": 50929,
+    "last": 10000,
+    "eip": "0x11fea99"
+   },
+   {
+    "addr": "0x19c424",
+    "size": 2,
+    "n": 1,
+    "first": 20225,
+    "last": 20225,
+    "eip": "0x12003b4"
+   },
+   {
+    "addr": "0x19c42c",
+    "size": 1,
+    "n": 1,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c41e",
+    "size": 4,
+    "n": 1,
+    "first": 8144,
+    "last": 8144,
+    "eip": "0x11fea99"
+   },
+   {
+    "addr": "0x19c422",
+    "size": 2,
+    "n": 1,
+    "first": 20225,
+    "last": 20225,
+    "eip": "0x12003b4"
+   },
+   {
+    "addr": "0x19c42a",
+    "size": 1,
+    "n": 1,
+    "first": 255,
+    "last": 255,
+    "eip": "0x11fc673"
+   },
+   {
+    "addr": "0x19c464",
+    "size": 2,
+    "n": 127,
+    "first": 56824,
+    "last": 50340,
+    "eip": "0x120092e"
+   },
+   {
+    "addr": "0x19c460",
+    "size": 1,
+    "n": 63,
+    "first": 29,
+    "last": 125,
+    "eip": "0x11fc339"
+   },
+   {
+    "addr": "0x19c443",
+    "size": 1,
+    "n": 1,
+    "first": 43,
+    "last": 43,
+    "eip": "0x11f550d"
+   },
+   {
+    "addr": "0x19c41c",
+    "size": 4,
+    "n": 1,
+    "first": 352145195,
+    "last": 352145195,
+    "eip": "0x11f0353"
+   }
+  ],
+  "stack": []
+ },
+ "exits": [
+  "0x8f452b",
+  "0x5bd0604"
+ ],
+ "vmcalls": {
+  "0xa15080": 1
+ },
+ "vmseq": [
+  {
+   "addr": "0xa15080",
+   "ecx": "0x2710",
+   "args": [
+    "0x1e0c0f98",
+    "0x0",
+    "0x19c790",
+    "0x6a1cd00"
+   ]
+  }
+ ],
+ "regs_start": {
+  "eax": "0x98e7db",
+  "ebx": "0x1",
+  "ecx": "0x2710",
+  "edx": "0x0",
+  "esi": "0x6ae7eb0",
+  "edi": "0x1388",
+  "ebp": "0x19c518",
+  "esp": "0x19c4bc"
+ },
+ "regs_end": {
+  "eax": "0x91",
+  "ebx": "0x7e3c0417",
+  "ecx": "0x1",
+  "edx": "0x8489002c",
+  "esi": "0x140e441",
+  "edi": "0x11eddec",
+  "ebp": "0x19c4b4",
+  "esp": "0x19c460"
+ }
+}

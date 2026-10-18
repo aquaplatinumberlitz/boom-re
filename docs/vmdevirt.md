@@ -145,7 +145,7 @@ này khớp với việc harness của repo (`tools/vmemu.py`) cũng không exit
 | Stage 2 — decode toàn stream | ❌ **bị chặn** | bytecode mã hoá rolling key (4 giả thuyết khoá đều fail); chỉ decode được đoạn **đã chạy** qua trace |
 | Stage 2 — CFG | ✅ **xong (đường đã chạy)** | 24 block, 23 cạnh, 6 back-edge, hub `0x135B33B` |
 | Stage 3 — emit C | ❌ **chưa** | phụ thuộc ngữ nghĩa 46 opcode; "semantics" hiện chỉ là sketch, bị junk chi phối |
-| Verify với 6 khối `tools/devirt.py` | 🟡 **một phần** | 3 khối: call 5/8 + 3/6 đúng tham số, write 32/52 + 9/12 + 2/4 (§15,§17) |
+| Verify với 6 khối `tools/devirt.py` | 🟡 **4 khối** | thêm `8F452B`: 4/6 write khớp tuyệt đối (§20) |
 | `decomp/vm_profile.json` | ✅ | sinh tự động |
 | Áp dụng sang KR | ⏸ **chờ dump** | `doctor` xác nhận KR đang pack; runbook §16 sẵn sàng |
 
@@ -619,6 +619,58 @@ trên; và chưa biết thứ tự toán hạng để dựng biểu thức.
 - **Thanh ghi nào** được push/pop (hiện chỉ biết "có push 4 byte", chưa biết `push eax` hay `push ebx`).
 - Các op `none` (16 cái): arithmetic/load/store — cần đọc thân handler để biết phép toán.
 - Với push/pop: cần xác định **thứ tự** toán hạng trong ngăn xếp ảo để dựng biểu thức.
+
+
+## 20. Vào WinBoat và lấy snapshot mới (round 16)
+
+Đường vào guest (không cần mật khẩu desktop cho phần chạy lệnh, nhưng cần để mở cmd):
+
+| bước | cách |
+|---|---|
+| QMP | `127.0.0.1:47292` (container `WinBoat`, QEMU 7149) — `human-monitor-command` |
+| Ảnh màn hình | QMP `screendump /shared/x.ppm`; `/shared` (container) = `/home/admin` (host) |
+| Gõ phím | QMP `sendkey`, **một kết nối, nghỉ 100ms/phím** (gửi dồn thì guest nuốt phím) |
+| Chuột | `input-send-event` (usb-tablet) — cần để focus ô mật khẩu |
+| Đăng nhập | user `admin`; **phải tắt Caps Lock** (màn hình báo "Caps Lock is on" nếu không) |
+
+Tool: `tools/qmp_guest.py` (`shot`, `key`, `type`, `click`, `combo`).
+
+### Snapshot `8F452B` (khối init)
+
+Chạy trong cmd của guest: `\\host.lan\Data\boom-re\win\snap.bat 8F452B 8F45A7 180000`
+
+Kết quả: **`pre.snap` 264 MB** (1022 region, site hit ở 10.250 ms), nhưng **không có `post.snap`** —
+process chết `c0000005` sau 60 s (client không có server nên đi sai đường sau khối).
+
+### Verify khối 4 bằng ground truth của `devirt.py`
+
+`devirt.py` cho `8F452B`: callbacks `0xEEE650..65C = 8F2C5D, 8F30F7, 8F2C4F, 8F31F6`; thêm
+`0xEED860[256]` CRC32, `0xEEE07C = 0x4A65000A`, `0xEEE088 = 1`, `0xEEE08C = tick`.
+
+Trace tool (5,1M lệnh):
+
+| địa chỉ | ground truth | tool | |
+|---|---|---|---|
+| `0xEEE650` | `0x8F2C5D` | `0x8F2C5D` | ✅ |
+| `0xEEE654` | `0x8F30F7` | `0x8F30F7` | ✅ |
+| `0xEEE658` | `0x8F2C4F` | `0x8F2C4F` | ✅ |
+| `0xEEE65C` | `0x8F31F6` | `0x8F31F6` | ✅ |
+| `0xEEE07C` | `0x4A65000A` | — | chưa tới |
+| `0xEEE088` | `1` | — | chưa tới |
+| CRC table | 256 dword | 0 | chưa tới |
+
+Trace dừng ở `unmapped 0x8489002C` (native dùng giá trị API đã fake làm con trỏ) — hạn chế đã biết của
+`--fake-native`, không phải sai decode.
+
+⇒ **4/6 write khớp tuyệt đối** trên khối thứ tư, gồm đúng 4 con trỏ callback — ground truth đặc thù nhất
+trong cả 6 khối.
+
+### `8F8F69` chưa lấy được
+
+Đó là `CStageMgr__ChangeStage` — chỉ chạy khi **đổi stage**, tức phải vào được game (login + server giả).
+Trong khi `8F452B` chạy ngay lúc khởi động nên lấy được. Muốn có `8F8F69`: chạy `tools/fakeserver.py` trên
+host, cho client login (creds trong `docs/protocol.md`), rồi `snap.bat 8F8F69 8F8FCA` — hoặc dùng chiêu
+`--pre-asm sub_8F391D(10)` trên snapshot `8F5F40` như repo đã làm.
 
 ## 5b. Đường áp dụng sang bản KR
 
