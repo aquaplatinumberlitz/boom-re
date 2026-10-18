@@ -6,7 +6,7 @@ S=$(dirname "$(realpath "$0")"); CMDS=$(realpath "$1"); OUT=$(realpath -m "$2");
 mkdir -p "$OUT"
 cd /home/admin/boom-re
 pkill -9 -f "[c]a_fixed_patched" 2>/dev/null; pkill -9 -f "[X]vfb :77" 2>/dev/null; sleep 1
-AUTO_START=5 TURN_START=10 TURN_MODE=${TURN_MODE:-4} GO_START=3 PLAY_START=${PLAY_START:-0} POST_PLAY_START=${POST_PLAY_START:-0} BOMB_ECHO=${BOMB_ECHO:-0} BOMB_PLACE=${BOMB_PLACE:-0} DEATH_END=${DEATH_END:-0} MATCH_END=${MATCH_END:-0} BEGIN_START=${BEGIN_START:-0} BEGIN_OP=${BEGIN_OP:-191} \
+AUTO_START=5 TURN_START=10 TURN_MODE=${TURN_MODE:-4} GO_START=3 PLAY_START=${PLAY_START:-0} POST_PLAY_START=${POST_PLAY_START:-0} BOMB_ECHO=${BOMB_ECHO:-0} BOMB_PLACE=${BOMB_PLACE:-0} DEATH_END=${DEATH_END:-0} MATCH_END=${MATCH_END:-0} ITEMS=${ITEMS:-} BEGIN_START=${BEGIN_START:-0} BEGIN_OP=${BEGIN_OP:-191} \
   $( [ -n "$RUST" ] && echo server/target/release/boom-server || echo python3 tools/fakeserver.py ) --log "$OUT/fakeserver.log" > "$OUT/fakeserver.out" 2>&1 & FS=$!
 Xvfb :77 -screen 0 1024x768x24 -nolisten tcp >/dev/null 2>&1 & XP=$!
 sleep 1; export DISPLAY=:77

@@ -404,6 +404,19 @@ bắt đầu lượt kế" (đúng §5a-4: 146 cũng start đồng hồ). Kết 
 với `AUTO_START` server lại gửi 501 → **trận mới**. Vòng lặp đầy đủ sảnh → phòng → trận → chết → phòng → trận chạy được (fakeserver + server Rust `MATCH_END`, mặc định 3 s).
 Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
 
+#### 5a-5d. Gạch vỡ và vật phẩm (đang làm, 2026-10-18)
+- **Gạch vỡ do client tự tính** (`logs/xvfb/brick1`): bom nổ cạnh gạch → gạch biến mất, client báo **C→S 135** (`sub_706FC0`, gọi từ `sub_5BF711`
+  "vỡ gạch"): `u8 y(hàng)`, `u8 x(cột)`, `u8 slot`, `u16 -1`. Ví dụ `{1, 13, 0, 0xFFFF}` = gạch ở hàng 1 cột 13.
+- **Vật phẩm trong gạch do server gửi trước khi vào trận — S→C 553** (`CStage__OnPacket` → `sub_6A5A5E`): một blob (sub-reader, số little-endian):
+  ```
+  u16 n1, n1 × {u16 index, u8 x, u8 y, u32 kind}   vật phẩm giấu trong gạch ở (x, y)  -> room ctx +339 -> CGamePlayMap__Load -> sub_729F44 -> sub_5BF485(gạch, kind, index)
+  u16 n2, n2 × {u16 index, u8 x, u8 y, u32 kind}   vật phẩm nằm sẵn trên nền         -> room ctx +343
+  u16 n3, n3 × {u16, u32, u32}                       CHƯA KIỂM                         -> room ctx +347
+  ```
+  `index` < 1000 = ô trong bảng vật phẩm của map (`sub_89AEA3`: ghi `kind` vào ô `index`). Khi gạch vỡ (`sub_5BF711`): nếu `kind` của ô đó ≠ 0 và
+  `sub_5B617B` cho phép → client **tự sinh vật phẩm** (`sub_5B6578`). Danh sách được đọc lúc nạp map (OnEnter stage 13) nên phải gửi **trước 501**.
+  Giá trị `kind` hợp lệ (bóng nước, thuốc, giày…): CHƯA BIẾT — đang thử.
+
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
 |---|---|---|

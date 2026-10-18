@@ -16,6 +16,7 @@ TURN_MODE = int(__import__('os').environ.get('TURN_MODE', '4'))      # mode fiel
 GO_START = float(__import__('os').environ.get('GO_START', '0'))      # >0: send opcode 190 ("GO", sub_70E7D6, sets phase this[5402]=2) N s after 189
 BEGIN_START = float(__import__('os').environ.get('BEGIN_START', '0'))  # >0: send opcode BEGIN_OP (191 round begin / 146 round + scores) N s after 190
 BEGIN_OP = int(__import__('os').environ.get('BEGIN_OP', '191'))
+ITEMS = __import__('os').environ.get('ITEMS', '')  # 'x,y,kind;...' -> S->C 553 before 501 (items hidden in bricks)
 MATCH_END = float(__import__('os').environ.get('MATCH_END', '0'))  # >0: N s after C->S 120 subtype 13 send 173 (match over -> waiting room)
 DEATH_END = float(__import__('os').environ.get('DEATH_END', '0'))  # >0: N s after C->S 120 subtype 13 (death) send 146 (round result)
 BOMB_PLACE = int(__import__('os').environ.get('BOMB_PLACE', '0'))  # 1: answer C->S 111 with S->C 152 (bomb confirmed + id)
@@ -524,6 +525,20 @@ def bomb_placed(rec, bomb_id):
         f += [("u8", 0)]
     return obf_body(152, *f)
 
+
+def map_items(brick_items=(), floor_items=()):
+    """S->C 553 (CStage__OnPacket -> sub_6A5A5E 0x6A5A5E): item layout of the next map, stored in the room context
+    (dword_E60884 vectors +339/+343/+347) and consumed by CGamePlayMap__Load (sub_729F44): blob, inner little-endian:
+      u16 n1, n1 x {u16 index, u8 x, u8 y, u32 kind}  -- item hidden in the brick at (x, y): sub_5BF485(tile, kind, index)
+      u16 n2, n2 x {u16 index, u8 x, u8 y, u32 kind}  -- item lying on the floor
+      u16 n3, n3 x {u16, u32, u32}                     -- CHUA KIEM
+    index < 1000 = slot in the item table (sub_89AEA3), kind != 0 makes the broken brick spawn the item (sub_5B6578)."""
+    import struct
+    inner = struct.pack("<H", len(brick_items)) + b"".join(struct.pack("<HBBI", i, x, y, k) for i, x, y, k in brick_items)
+    inner += struct.pack("<H", len(floor_items)) + b"".join(struct.pack("<HBBI", i, x, y, k) for i, x, y, k in floor_items)
+    inner += struct.pack("<H", 0)
+    return obf_body(553, ("blob", inner))
+
 async def handle(reader, writer, port, log):
     peer = writer.get_extra_info("peername")
     log(f"[{port}] connect from {peer}")
@@ -597,6 +612,11 @@ async def handle(reader, writer, port, log):
                     if AUTO_START:  # server-driven match start (opcode 501) a few seconds later
                         async def _start(delay=AUTO_START):
                             await asyncio.sleep(delay)
+                            if ITEMS:  # item layout must arrive before the map is loaded (stage 13 OnEnter)
+                                its = [tuple(int(v) for v in e.split(",")) for e in ITEMS.split(";") if e]
+                                writer.write(sess.send(map_items(brick_items=[(n, x, y, k) for n, (x, y, k) in enumerate(its)])))
+                                await writer.drain()
+                                log(f"[{port}] S->C opcode 553 (items {its})")
                             r = match_start()
                             writer.write(sess.send(r))
                             await writer.drain()
