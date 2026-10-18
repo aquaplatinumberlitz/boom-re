@@ -186,13 +186,14 @@ Phân bố opcode theo nhóm:
 
 Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 
-1. ~~F8 kết thúc ván~~ **xong** (`b1fc290`); ~~F6/F7 chết/lượt~~ **xong** (`5aee4e4`).
-2. **F9** nhiều người trong trận (mới 1 người) — cần B12 (UDP P2P) + server phát 111/152/151/120 cho mọi client.
-3. **F10** vật phẩm rơi — đang làm (553 + 135 đã tìm, còn mã `kind`).
-4. ~~**E5/E7** danh sách phòng + chọn map~~ **xong** (Forest01 chơi được với `ROOM_TYPE=0`).
-5. **D1** chat: phòng/sảnh/trận **xong** (18 → 28); còn thì thầm (D2).
-6. **F11** `0x736C27`: kiểm thêm map/loại phòng khác (20/33) — với Village01/phòng 19 skip đã chứng minh tương đương.
-7. Các mode F13–F20: chỉ làm khi map/mode tương ứng được mở.
+1. ~~F8 kết thúc ván~~ **xong** (`b1fc290`); ~~F6/F7 chết/lượt~~ **xong** (`5aee4e4`); kết quả trận **168** + hết giờ **xong** (`f668ca5`, `7875200`).
+2. ~~**F9** nhiều người trong trận~~ **chạy được**: UDP P2P, ô xuất phát riêng (117), bom/nhốt/chết/kết quả với 2 người. Còn: cứu đồng đội (F6b), vật phẩm 2 người.
+3. **F10** vật phẩm rơi — hiện/nhặt/dùng được (1 người); chưa kiểm 2 người.
+4. ~~**E5/E7/E9/E12** phòng~~ **xong phần chính**: danh sách phòng, chọn map, sẵn sàng/đội/nhân vật, BẮT ĐẦU, đóng ô, đuổi, chủ phòng. Còn: sửa tên/mật khẩu phòng (85).
+5. ~~**D1** chat~~ **xong** (phòng/sảnh/trận); còn thì thầm (D2).
+6. **G1** shop: nút → 325 → 289 → C→S 38 — **kẹt ở gói trả lời 38** (lobby.md Cập nhật 19).
+7. **F11** `0x736C27`: Forest01 (phòng 0) chạy được; map/loại phòng khác chưa kiểm hết.
+8. Các mode F13–F20, G2–G9 (túi đồ, exp, quest…): chưa bắt đầu.
 
 ## Cách cập nhật checklist này
 
