@@ -34,6 +34,8 @@ pub struct Config {
     pub match_end: f64,
     /// Number of clients in the room before the server starts the match (AUTO_START seconds after the last one entered).
     pub players: usize,
+    /// The 3 ports sent in opcode 15 next to the host (UDP endpoints of the server? env UDP_PORTS="a,b,c").
+    pub udp_ports: [u16; 3],
     /// Items placed on the map before each match (S->C 553 list 2): "x,y,kind;..." from env ITEMS.
     pub items: Vec<(u8, u8, u32)>,
     /// Items lying on the floor (553 list 1): env FLOOR_ITEMS.
@@ -63,6 +65,10 @@ impl Config {
             death_end: env("DEATH_END", 0.0),
             match_end: env("MATCH_END", 3.0),
             players: env("PLAYERS", 1usize),
+            udp_ports: {
+                let v: Vec<u16> = std::env::var("UDP_PORTS").unwrap_or_default().split(',').filter_map(|x| x.trim().parse().ok()).collect();
+                [v.first().copied().unwrap_or(0), v.get(1).copied().unwrap_or(0), v.get(2).copied().unwrap_or(0)]
+            },
             floor_items: parse_items("FLOOR_ITEMS"),
             items: std::env::var("ITEMS")
                 .unwrap_or_default()
@@ -135,7 +141,7 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 user_id = hub.new_user();
                 log(format!("[{port}] login -> user {user_id}"));
                 let _ = tx.send(pk::login_ok_as(&hub::player_name(user_id), user_id, 1));
-                let _ = tx.send(pk::login_net_info(&std::net::Ipv4Addr::from(cfg.server_ip).to_string(), [0, 0, 0]));
+                let _ = tx.send(pk::login_net_info(&std::net::Ipv4Addr::from(cfg.server_ip).to_string(), cfg.udp_ports));
             } else if op == 6 {
                 // channel login on a new connection: find which account it is (u32 user id somewhere in the body)
                 user_id = find_user(&body, hub.known_users()).unwrap_or(1000);
@@ -165,6 +171,16 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                         tokio::time::sleep(Duration::from_secs_f64(fuse)).await;
                         hub2.broadcast(&pk::bomb_explode(&[id], 2));
                     });
+                }
+            }
+            if op == 92 && body.len() >= 12 {
+                // C->S 92 (CGameStage vf161 0x7027B0, once at match start): u32 ip1, u32 ip2 (sub_9B5552), u16 UDP port (sub_9B555E), ...
+                let ip1 = proto::get_int(&body[2..], 4, true) as u32;
+                let ip2 = proto::get_int(&body[6..], 4, true) as u32;
+                let uport = proto::get_int(&body[10..], 2, true) as u16;
+                log(format!("[{port}] udp info user {user_id}: {:08x} {:08x} port {uport}", ip1, ip2));
+                if let Some(m) = hub.room.lock().unwrap().members.iter_mut().find(|m| m.user_id == user_id) {
+                    m.udp = Some((ip1, ip2, uport));
                 }
             }
             if op == 120 && body.len() > 2 {
@@ -263,7 +279,23 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16) {
         hub.broadcast(&pk::round_start(map, 0, 10000, (1, 1, 12345), (1, 1)));
         if cfg.post_play_start > 0.0 {
             wait(cfg.post_play_start).await;
-            hub.broadcast(&pk::round_begin(0, 180_000, 30_000, 0));
+            // 146 = round begin + UDP peer table (sub_70A647: per slot 3 x (u32 ip, u16 port) -> sub_9B5C5A -> MTUDP HostCreate);
+            // fall back to 191 when some client did not report its UDP address (C->S 92)
+            let peers: Option<Vec<(usize, [(u32, u16); 3])>> = hub
+                .room
+                .lock()
+                .unwrap()
+                .members
+                .iter()
+                .map(|m| m.udp.map(|(a, b, p)| (m.slot as usize, [(0x7F00_0001, p), (a, p), (b, p)])))
+                .collect();
+            match peers {
+                Some(p) if cfg.players > 1 => {
+                    log(format!("[{port}] 146 with UDP peers {p:x?}"));
+                    hub.broadcast(&pk::round_result(0, 10000, (180, 30), 0, (0, 0, 0), &p));
+                }
+                _ => hub.broadcast(&pk::round_begin(0, 180_000, 30_000, 0)),
+            }
         }
     }
 }
@@ -314,7 +346,7 @@ fn enter_room(hub: &Arc<Hub>, cfg: &Arc<Config>, log: &Log, port: u16, user_id: 
         r.members.retain(|m| m.user_id != user_id);
         let slot = (0..16u8).find(|s| !r.members.iter().any(|m| m.slot == *s)).unwrap_or(0);
         let others: Vec<(u8, u32, String)> = r.members.iter().map(|m| (m.slot, m.user_id, m.name.clone())).collect();
-        r.members.push(Member { user_id, name: hub::player_name(user_id), slot, tx: tx.clone() });
+        r.members.push(Member { user_id, name: hub::player_name(user_id), slot, tx: tx.clone(), udp: None });
         let start = !r.started && r.members.len() >= cfg.players && cfg.auto_start > 0.0;
         if start {
             r.started = true;

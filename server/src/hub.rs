@@ -12,6 +12,8 @@ pub struct Member {
     pub name: String,
     pub slot: u8,
     pub tx: UnboundedSender<Vec<u8>>,
+    /// From C->S 92 (match start): two local IPv4 (as sent) and the client's UDP port.
+    pub udp: Option<(u32, u32, u16)>,
 }
 
 #[derive(Default)]

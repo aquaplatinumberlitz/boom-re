@@ -455,6 +455,13 @@ Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
   **vị trí/di chuyển không đồng bộ qua TCP**. Client có engine UDP riêng (`MTUDPBase`, `MTUDPClient`, `CUDPPeer`, `CUDPPeerServer/Client`, `CUDPPeerMan`,
   chuỗi `ErrNoUDP`, `CheckUDPChecking`) — nghi chủ phòng làm UDP server, người khác nối vào; địa chỉ/cổng lấy từ gói nào: CHƯA RÕ (ứng viên: các u32 trong 103,
   host + 3 cổng của gói 15 — server đang gửi cổng 0).
+- **Địa chỉ UDP đi qua TCP** (IDA, 2026-10-18 tối): client mở socket UDP riêng (`ss`: wineserver nghe 0.0.0.0:97xx) và **báo cho server bằng C→S 92**
+  (`CGameStage vf161` 0x7027B0, một lần khi vào trận): `u32 ip1, u32 ip2` (`sub_9B5552`, IP LAN, byte theo thứ tự mạng như số BE), `u16 cổng UDP`
+  (`sub_9B555E`), `u32` (map), rồi mỗi người chơi trên máy (≤2) `bool ×4`. Server trả bảng peer trong **S→C 146** (`sub_70A647`, ĐÍNH CHÍNH: 146 không chỉ là
+  "kết quả lượt" mà là **bắt đầu lượt + bảng UDP**): `u32 rank_key` ≠ 0 → `htonl` → `sub_9B54FE` = **MTUDP HostCreate tới máy chủ relay** (`u16` cổng đi kèm);
+  18 slot × {`u8 on`; on → 3 × (`u32 ip`, `u16 cổng`) → `sub_9B5C5A(slot, …)` = tạo peer + HostCreate tới từng địa chỉ}. Gói 15 (đăng nhập) chứa host + 3 cổng
+  nhưng client **không** gửi UDP tới đó (thử `UDP_PORTS=7000,7001,7002` + `tools/udp_sniff.py`: 0 gói).
+  Server Rust: lưu (ip1, ip2, port) từ 92; khi `PLAYERS` > 1 gửi **146 kèm bảng peer** (127.0.0.1, ip1, ip2 với cổng của từng client) thay cho 191 — đang thử.
 - Ô xuất phát: cả hai về cùng ô góc phải trên — `pos` trong 501 (đang = slot) hoặc khối slot của 189 mode 1 chưa đúng nghĩa. CHƯA KIỂM.
 
 ### 5b. C→S các gói client tự gửi khi chơi
