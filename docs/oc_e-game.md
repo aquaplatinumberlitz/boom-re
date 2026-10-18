@@ -464,7 +464,31 @@ Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
   Server Rust: lưu (ip1, ip2, port) từ 92; khi `PLAYERS` > 1 gửi **146 kèm bảng peer** (127.0.0.1, ip1, ip2 với cổng của từng client) thay cho 191.
   ✅ **Di chuyển đồng bộ hai chiều** (`logs/duo/t3`, `logs/duo/t4`, `docs/duo_sync.png`: 3 ảnh đầu = màn A, 3 ảnh sau = màn B): A sang trái → B thấy; B đi xuống →
   A thấy. Các client nói chuyện **trực tiếp qua UDP (P2P)**, server chỉ cần trao địa chỉ (không relay, `rank_key` = 0).
-- Ô xuất phát: cả hai về cùng ô góc phải trên — `pos` trong 501 (đang = slot) hoặc khối slot của 189 mode 1 chưa đúng nghĩa. CHƯA KIỂM.
+- ~~Ô xuất phát: cả hai về cùng ô~~ → **đã giải, xem §5a-7.**
+
+### 5a-7. Ô xuất phát + gói bắt đầu trận đầy đủ S→C 117 ✅ runtime (2026-10-19)
+- Bomber được đặt **một lần** khi `CGameStage` khởi tạo: `CGameStage__vf44` → `sub_71A9EC` → `vf147(map, Block)` → `sub_715C3A` → `sub_6EC1DA`:
+  với mỗi slot i, `Block[i]` = **chỉ số điểm xuất phát** trong danh sách điểm của map (mục 8 byte x,y, `sub_7223A1`; ngoài khoảng → (0,0)) →
+  `sub_6EB788(slot, …, x, y)`. `Block[i]` = `sub_8E9BF6(i)` = box **+124 của bản ghi slot** (580 byte) trong `dword_E60884`.
+  gdb (`tools/gdb/spawn.gdb`): Village01, slot 0 điểm 0 → ô (cột 14, hàng 0) = góc trên phải; các slot −1 → (0,0) (không có người).
+- **On_501 luôn ghi +124 = 0** (`push edi` với edi = 0 tại 0x6C4E1E) ⇒ với 501 mọi người chơi cùng điểm 0 (cùng ô). Khối 16 byte của 189 mode 1 cũng là
+  điểm xuất phát (`sub_70E357` → `vf147`), nhưng lúc đó map đã nạp nên không đặt lại (gdb: chỉ 1 lần `sub_6EC1DA`).
+- Người đặt +124 theo từng slot: **CPrepareStage__On_117** (bắt đầu trận cho phòng thường), 571 (`sub_71ADEC`), `CGameStage__vf149/vf153`.
+- **S→C 117** (`CPrepareStage__On_117`, `match_start_full()` trong `server/src/packets.rs`):
+  ```
+  u8 cờ (≠0: danh sách hồ sơ từng slot như nhánh đầu 501 — gửi 0)
+  blob {tag 0, little-endian:
+    u16×8 SYSTEMTIME (sub_A630B0), u32 seed (sub_8E77E4, sub_65412D(3,seed)), u16 chỉ số CPlayMapInfoList, str tên map (kiểm tiền tố như 501),
+    u32 chỉ số bảng 231 (sub_6DE36E), u8 loại phòng, u8 (sub_8E7636), u8 n slot, u8 ×3 (sub_8E7A56), u8 n2 + n2×u32 (id vật phẩm, sub_8BD7CD),
+    [loại phòng 18/21/25/26 (sub_9752A8): khối sub_467D5D], [loại 16: u8 cờ (+ u8)],
+    n × {u8 slot, u8 (+84), u8 ĐIỂM XUẤT PHÁT (+124), u8 pos (+96), u8 đội (+112), u8 (sub_679047), i8 slot cặp (−1 = không),
+         u32 (sub_679107), u32 (≥0 → sub_67900E), u32 (sub_67901A), u32 (sub_9B69F7), u8 cờ (≠0 → khối sub_97EDBC)}}
+  u8 (≠0: blob sub_985703), u8 thời gian ×1000 → phòng+0x138, u8 stage NPC sự kiện (−1), u8 (sub_8E7C8E), u16 n3, blob {tag 0; n3 bản ghi}
+  ```
+  Mọi slot có người phải có pos ≠ −1 (`sub_6BE6D0`), không thì về phòng. Xong → `sub_8F391D(…, 13)` (vào trận) như 501.
+- Server Rust: `START_OP=117` (mặc định; 501 vẫn chọn được) gửi slot i → điểm i. Chạy thật 2 client (`logs/duo/t7`, `docs/duo_spawn_A.png`,
+  `docs/duo_spawn_B.png`): A ở góc trên phải, B ở góc dưới trái, di chuyển vẫn đồng bộ. 1 client: trận chạy bình thường (189/190/191, C→S 139/180).
+  Trường chưa kiểm (gửi 0): +84, u8 sau đội, 4 u32, các u8 sau blob.
 
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |

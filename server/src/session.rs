@@ -17,6 +17,8 @@ use crate::hub::{self, Hub, Member};
 pub struct Config {
     pub room_type: u8,
     pub map_index: u32,
+    /// Match start packet: 501 (everybody on start point 0) or 117 (start point per slot).
+    pub start_op: u16,
     pub auto_start: f64,
     pub turn_start: f64,
     pub turn_mode: u8,
@@ -53,6 +55,7 @@ impl Config {
         Config {
             room_type: env("ROOM_TYPE", 19),
             map_index: env("MAP_INDEX", 0),
+            start_op: env("START_OP", 117),
             auto_start: env("AUTO_START", 0.0),
             turn_start: env("TURN_START", 0.0),
             turn_mode: env("TURN_MODE", 4),
@@ -294,13 +297,28 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16) {
         hub.broadcast(&pk::map_items(&floor, &bricks));
     }
     let slots: Vec<(u8, u8, u8)> = hub.room.lock().unwrap().members.iter().map(|m| (m.slot, m.slot, 0)).collect();
-    hub.broadcast(&pk::match_start(map, map_index, cfg.room_type, 12345, &slots));
-    log(format!("[{port}] match flow: 501 map {map_index}"));
+    if cfg.start_op == 117 {
+        // start point i for slot i (501 puts everybody on start point 0)
+        let full: Vec<(u8, u8, u8, u8)> = slots.iter().map(|&(s, p, t)| (s, s, p, t)).collect();
+        hub.broadcast(&pk::match_start_full(map, map_index, cfg.room_type, 12345, &full));
+    } else {
+        hub.broadcast(&pk::match_start(map, map_index, cfg.room_type, 12345, &slots));
+    }
+    log(format!("[{port}] match flow: {} map {map_index}", cfg.start_op));
     if cfg.turn_start <= 0.0 {
         return;
     }
     wait(cfg.turn_start).await;
-    hub.broadcast(&pk::round_start(map, cfg.turn_mode, 10000, (1, 1, 12345), (hub.slot_mask(), 1)));
+    if cfg.turn_mode == 1 {
+        // start point per slot: slot i -> start point i (all on index 1 put everybody on the same cell)
+        let mut spawns = [0u8; 16];
+        for m in &hub.room.lock().unwrap().members {
+            spawns[m.slot as usize] = m.slot;
+        }
+        hub.broadcast(&pk::round_load(map, 10000, &spawns));
+    } else {
+        hub.broadcast(&pk::round_start(map, cfg.turn_mode, 10000, (1, 1, 12345), (hub.slot_mask(), 1)));
+    }
     if cfg.go_start <= 0.0 {
         return;
     }

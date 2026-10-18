@@ -276,6 +276,26 @@ pub fn match_start(map: &BattleMap, dyn_index: u32, room_type: u8, seed: u32, sl
     p.u8(0).build()
 }
 
+/// Opcode 117 (CPrepareStage__On_117 0x6CCDxx): full match start (the normal-room variant of 501). Unlike 501, which sets
+/// every slot's start point (+124 of the room slot record, read by CGameStage__vf44 -> sub_71A9EC -> vf147) to 0, this carries
+/// it per slot, so players spawn on different cells. Layout (docs/oc_e-game.md section 5a-7):
+/// u8 0 (no per-slot profile list), blob {tag 0; u16x8 SYSTEMTIME; u32 seed; u16 CPlayMapInfoList index; str map name;
+/// u32 231-table index; u8 room type; u8 (sub_8E7636); u8 n; u8 x3 (sub_8E7A56); u8 n2 (n2 x u32 item ids);
+/// n x {u8 slot, u8 (+84), u8 start point (+124), u8 pos (+96), u8 team (+112), u8, i8 partner slot (-1), u32, u32 (<0: keep),
+/// u32, u32, u8 0}}, u8 0 (no 985703 blob), u8 time (x1000 -> room+78*4), u8 event-NPC stage (-1),
+/// u8, u16 n3, blob {tag 0} (n3 x records).
+pub fn match_start_full(map: &BattleMap, dyn_index: u32, room_type: u8, seed: u32, slots: &[(u8, u8, u8, u8)]) -> Vec<u8> {
+    let mut b = Le(vec![0]);
+    for _ in 0..8 {
+        b.u16(0);
+    }
+    b.u32(seed).u16(map.idx).str(&map.name).u32(dyn_index).u8(room_type).u8(0).u8(slots.len() as u8).u8(0).u8(0).u8(0).u8(0);
+    for &(slot, spawn, pos, team) in slots {
+        b.u8(slot).u8(0).u8(spawn).u8(pos).u8(team).u8(0).u8(0xFF).u32(0).u32(0).u32(0).u32(0).u8(0);
+    }
+    Packet::new(117).u8(0).blob(&b.0).u8(0).u8(0).u8(0xFF).u8(0).u16(0).blob(&[0]).build()
+}
+
 /// Opcode 189 (sub_70E5C4): round command. u32 = session key (this[4887]); mode 0 = play (phase 2 -> 3),
 /// 1 = load round (+ clock start, client answers 139), 2/4 = other round loads (client answers 140).
 pub fn round_start(map: &BattleMap, mode: u8, key: u32, extra2: (u16, u8, u32), extra4: (u16, u8)) -> Vec<u8> {
@@ -291,6 +311,12 @@ pub fn round_start(map: &BattleMap, mode: u8, key: u32, extra2: (u16, u8, u32), 
         _ => {}
     }
     p.build()
+}
+
+/// Opcode 189 mode 1 with explicit start points: `spawns[slot]` = index into the map's start-point list (8-byte x,y entries,
+/// `sub_7223A1`), read by `sub_6EC1DA` when the round loads (vf147 -> sub_715C3A). Same index for two slots = same cell.
+pub fn round_load(map: &BattleMap, key: u32, spawns: &[u8; 16]) -> Vec<u8> {
+    spawns.iter().fold(Packet::new(189).u8(1).u32(key).u16(map.idx), |p, &v| p.u8(v)).build()
 }
 
 /// Opcode 190 (sub_70E7D6): "GO" — phase 2, clock paused, overlay THỜI GIAN.
