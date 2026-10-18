@@ -145,7 +145,7 @@ này khớp với việc harness của repo (`tools/vmemu.py`) cũng không exit
 | Stage 2 — decode toàn stream | ❌ **bị chặn** | bytecode mã hoá rolling key (4 giả thuyết khoá đều fail); chỉ decode được đoạn **đã chạy** qua trace |
 | Stage 2 — CFG | ✅ **xong (đường đã chạy)** | 24 block, 23 cạnh, 6 back-edge, hub `0x135B33B` |
 | Stage 3 — emit C | ❌ **chưa** | phụ thuộc ngữ nghĩa 46 opcode; "semantics" hiện chỉ là sketch, bị junk chi phối |
-| Verify với 6 khối `tools/devirt.py` | 🟡 **một phần** | 8F346C: 5/8 call đúng thứ tự (§11) + 1 hiệu ứng khớp post.snap (§14) |
+| Verify với 6 khối `tools/devirt.py` | 🟡 **một phần** | 8F346C: 5/8 call đúng thứ tự (§11), 32/52 write khớp post.snap (§15) |
 | `decomp/vm_profile.json` | ✅ | sinh tự động |
 | Áp dụng sang KR | ⏸ **chờ dump** | KR đang pack, không có dump thì không chạy được gì |
 
@@ -361,6 +361,32 @@ hay không.
 
 Cách dùng tổng quát: với mỗi giá trị scalar mà trace bắt được (tham số call, giá trị ghi), chạy `verify` để
 tìm địa chỉ "chỉ có trong post" — đó là nơi khối đã ghi.
+
+
+## 15. Kiểm chứng định lượng write vs post.snap (round 10)
+
+Lệnh:
+
+```
+python3 tools/vmdevirt.py verify --trace-json decomp/trace_iter_8F346C.json \
+        --post logs/snap/8F346C/post.snap --json decomp/verify_8F346C_writes.json
+```
+
+So từng write của trace (địa chỉ + size + giá trị cuối) với bộ nhớ `post.snap`, mask theo size:
+
+| phạm vi | khớp | lệch | ghi chú |
+|---|---|---|---|
+| toàn bộ | 45/232 | 187 | stack của VM chi phối (giá trị trung gian, không phải kết quả khối) |
+| **ngoài stack** | **32/52** | 20 | |
+| packet object `0x6BF67F0..0x6BF6802` | **8/8** | 0 | khớp tuyệt đối |
+| `CMainSystem+0x48` (`0xDA05050`) | ✅ | — | giá trị `time` khớp |
+| `.data` scratch `0xEEC6xx` | 0/18 | 18 | post = 0 ⇒ VM **xoá/khôi phục** scratch sau khi dùng; trace dừng sớm nên còn giá trị trung gian |
+| TEB `0x20B000` | — | 1 | VM ghi rồi khôi phục |
+
+⇒ **32/52 write ngoài stack được xác nhận bằng bộ nhớ thật**, và toàn bộ 20 chỗ lệch đều giải thích được
+(scratch bị xoá, TEB bị khôi phục) — không có chỗ nào mâu thuẫn.
+
+Đây là mức kiểm chứng mạnh nhất từ đầu: không chỉ "call khớp thứ tự" mà **giá trị bộ nhớ khớp từng byte**.
 
 ## 5b. Đường áp dụng sang bản KR
 

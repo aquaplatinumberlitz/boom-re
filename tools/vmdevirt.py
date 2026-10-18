@@ -1584,6 +1584,68 @@ def cmd_verify(a):
     An address present only in `post` is a place the block wrote -- independent ground truth
     for the emitted C.
     """
+    if a.trace_json:
+        t = json.loads(pathlib.Path(a.trace_json).read_text())
+        post_r = _snap_regions(a.post)
+
+        def rd(ad, size):
+            for b, sz, tt, d in post_r:
+                if b <= ad < b + sz and ad - b + size <= len(d):
+                    return int.from_bytes(d[ad - b:ad - b + size], "little")
+            return None
+
+        rows, match, diff, unm = [], 0, 0, 0
+        for group in ("image", "heap"):
+            for e in t.get("writes", {}).get(group, []):
+                ad, size, last = int(e["addr"], 16), e["size"], e["last"]
+                mask = (1 << (8 * size)) - 1 if size < 4 else 0xFFFFFFFF
+                v = rd(ad, size)
+                if v is None:
+                    unm += 1
+                elif (v & mask) == (last & mask):
+                    match += 1
+                    rows.append((ad, last, v, "match"))
+                else:
+                    diff += 1
+                    rows.append((ad, last, v, "diff"))
+        total = match + diff
+        print(f"so write của trace với post.snap: {match} khớp / {total} so được "
+              f"({diff} lệch, {unm} không map)")
+        if diff:
+            print("  các địa chỉ lệch (trace -> post):")
+            for ad, last, v, kind in rows:
+                if kind == "diff":
+                    print(f"    {ad:#010x}  trace={last:#x}  post={v:#x}")
+        if a.json:
+            pathlib.Path(a.json).write_text(json.dumps(
+                {"match": match, "diff": diff, "unmapped": unm,
+                 "rows": [{"addr": hex(ad), "trace": last, "post": v, "kind": k}
+                          for ad, last, v, k in rows]}, indent=1))
+            print(f"-> {a.json}")
+        return
+    if a.addr:
+        pre_r, post_r = _snap_regions(a.pre), _snap_regions(a.post)
+
+        def rd(regs, ad):
+            for b, sz, t, d in regs:
+                if b <= ad < b + sz:
+                    try:
+                        return struct.unpack_from("<I", d, ad - b)[0]
+                    except Exception:
+                        return None
+            return None
+
+        print(f"{'address':>12} {'pre':>12} {'post':>12}  changed")
+        changed = 0
+        for spec in a.addr:
+            ad = int(spec, 16)
+            v1, v2 = rd(pre_r, ad), rd(post_r, ad)
+            ok = v1 != v2
+            changed += ok
+            f = lambda v: "unmapped" if v is None else hex(v)
+            print(f"{ad:#12x} {f(v1):>12} {f(v2):>12}  {'YES' if ok else '-'}")
+        print(f"\n{changed}/{len(a.addr)} địa chỉ thay đổi giữa pre và post")
+        return
     val = int(a.value, 16)
     pack = struct.pack("<I", val)
     def hits(path):
@@ -1653,6 +1715,9 @@ def main():
     ap.add_argument("--stop-vip", help="dừng khi VIP quay lại địa chỉ này lần thứ 2 (một vòng)")
     ap.add_argument("--pre", help="pre.snap (trước khối)")
     ap.add_argument("--post", help="post.snap (sau khối)")
+    ap.add_argument("--trace-json", help="trace JSON: so mọi write của trace với post.snap")
+    ap.add_argument("--addr", action="append", default=[],
+                    help="so giá trị dword tại địa chỉ này giữa pre và post (lặp được)")
     ap.add_argument("--value", help="giá trị dword cần kiểm (hex)")
     ap.add_argument("--at", help="địa chỉ kỳ vọng (hex)")
     ap.add_argument("--skip", action="append", default=[],
