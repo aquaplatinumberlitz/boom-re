@@ -20,5 +20,5 @@ fn item_pick_158_and_553_match_fakeserver() {
     let r = pk::parse_item_pick(&unhex("a51c5a5a5a57a569a46996ca470a96ca74855a")).unwrap();
     assert_eq!((r.ctx, r.slot, r.a, r.b, r.index, r.kind, r.key), (0, 0, 0, 13, 0, 256, 10000));
     assert_eq!(pk::item_picked(&r), unhex("a5f75b5a5a5a57a569a4695a"));
-    assert_eq!(pk::map_items(&[], &[(0, 13, 0, 1)]), unhex("a74096ca538696ca5d8d97ca53959bca539596ca5295a5695a"));
+    assert_eq!(pk::map_items(&[], &[(0, 13, 0, 1)]), unhex("a74096ca538196ca5c8d96ca539596ca539496cb5e9596ca5395"));
 }

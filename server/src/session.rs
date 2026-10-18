@@ -33,6 +33,8 @@ pub struct Config {
     pub match_end: f64,
     /// Items placed on the map before each match (S->C 553 list 2): "x,y,kind;..." from env ITEMS.
     pub items: Vec<(u8, u8, u32)>,
+    /// Items lying on the floor (553 list 1): env FLOOR_ITEMS.
+    pub floor_items: Vec<(u8, u8, u32)>,
     /// Address handed to the client in opcodes 7/15 (must be reachable from the client; 127.0.0.1 for Wine).
     pub server_ip: [u8; 4],
     pub maps: Vec<BattleMap>,
@@ -57,6 +59,7 @@ impl Config {
             bomb_fuse: env("BOMB_FUSE", 2.5),
             death_end: env("DEATH_END", 0.0),
             match_end: env("MATCH_END", 3.0),
+            floor_items: parse_items("FLOOR_ITEMS"),
             items: std::env::var("ITEMS")
                 .unwrap_or_default()
                 .split(';')
@@ -200,10 +203,12 @@ async fn match_flow(tx: mpsc::UnboundedSender<Vec<u8>>, cfg: Arc<Config>, log: L
     let wait = |s: f64| tokio::time::sleep(Duration::from_secs_f64(s));
     let map = &cfg.maps[0];
     wait(cfg.auto_start).await;
-    if !cfg.items.is_empty() {
-        // item layout must arrive before 501 (read when the map loads)
-        let placed: Vec<(u16, u8, u8, u32)> = cfg.items.iter().enumerate().map(|(i, &(x, y, k))| (i as u16, x, y, k)).collect();
-        let _ = tx.send(pk::map_items(&[], &placed));
+    if !cfg.items.is_empty() || !cfg.floor_items.is_empty() {
+        // item layout must arrive before 501 (read when the map loads); list 1 = floor, list 2 = hidden in bricks
+        let bricks: Vec<(u16, u8, u8, u32)> = cfg.items.iter().enumerate().map(|(i, &(x, y, k))| (i as u16, x, y, k)).collect();
+        let n = bricks.len();
+        let floor: Vec<(u16, u8, u8, u32)> = cfg.floor_items.iter().enumerate().map(|(i, &(x, y, k))| ((n + i) as u16, x, y, k)).collect();
+        let _ = tx.send(pk::map_items(&floor, &bricks));
     }
     let _ = tx.send(pk::match_start(map, 0, cfg.room_type, 12345, &[(0, 0, 0)]));
     log(format!("[{port}] match flow: 501"));
@@ -257,4 +262,16 @@ fn now_utc() -> [u16; 6] {
 
 fn hex(b: &[u8]) -> String {
     b.iter().map(|x| format!("{x:02x}")).collect()
+}
+
+/// "x,y,kind;..." from an env var.
+fn parse_items(var: &str) -> Vec<(u8, u8, u32)> {
+    std::env::var(var)
+        .unwrap_or_default()
+        .split(';')
+        .filter_map(|e| {
+            let v: Vec<u32> = e.split(',').filter_map(|x| x.trim().parse().ok()).collect();
+            (v.len() == 3).then(|| (v[0] as u8, v[1] as u8, v[2]))
+        })
+        .collect()
 }

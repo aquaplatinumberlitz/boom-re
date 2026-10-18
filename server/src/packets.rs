@@ -418,15 +418,15 @@ pub fn item_picked(r: &ItemPick) -> Vec<u8> {
 }
 
 /// S->C 553 (CStage__OnPacket -> sub_6A5A5E): item layout of the next map, must arrive before 501. Blob (little-endian inner):
-/// list 1 (floor, sub_71FCFE), list 2 (spawned at map load / hidden in CGOTileFixedBox), list 3 empty. Entries {u16 index, u8 x, u8 y, u32 kind}.
+/// u8 reader tag 0, then list 1 (items lying on the floor, sub_71FCFE), list 2 (hidden in the brick at (x, y), sub_5BF485), list 3 empty. Entries {u16 index, u8 x, u8 y, u32 kind}.
 pub fn map_items(floor: &[(u16, u8, u8, u32)], placed: &[(u16, u8, u8, u32)]) -> Vec<u8> {
-    let mut inner = Vec::new();
+    let mut inner = vec![0u8]; // reader tag 0 = raw copy (sub_A62580)
     for list in [floor, placed] {
         inner.extend_from_slice(&(list.len() as u16).to_le_bytes());
         for &(i, x, y, k) in list {
             inner.extend_from_slice(&i.to_le_bytes());
+            inner.push(y); // row first (verified: logs/xvfb/item_kinds4)
             inner.push(x);
-            inner.push(y);
             inner.extend_from_slice(&k.to_le_bytes());
         }
     }

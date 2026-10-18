@@ -407,30 +407,30 @@ Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
 #### 5a-5d. Gạch vỡ và vật phẩm (đang làm, 2026-10-18)
 - **Gạch vỡ do client tự tính** (`logs/xvfb/brick1`): bom nổ cạnh gạch → gạch biến mất, client báo **C→S 135** (`sub_706FC0`, gọi từ `sub_5BF711`
   "vỡ gạch"): `u8 y(hàng)`, `u8 x(cột)`, `u8 slot`, `u16 -1`. Ví dụ `{1, 13, 0, 0xFFFF}` = gạch ở hàng 1 cột 13.
-- **Vật phẩm do server gửi trước khi vào trận — S→C 553** (`CStage__OnPacket` → `sub_6A5A5E`): một blob (sub-reader, số little-endian), 3 danh sách
-  `{u16 n, n × bản ghi}` → room ctx +339 / +343 / +347 → `CGamePlayMap__Load` (`sub_729F44`) đọc lúc nạp map (OnEnter stage 13) ⇒ phải gửi **trước 501**:
+- **Vật phẩm do server gửi trước khi vào trận — S→C 553** (`CStage__OnPacket` → `sub_6A5A5E`) ✅ runtime (2026-10-18 tối, `logs/xvfb/item_kinds3/4`,
+  `docs/battle_item_kinds.png`): một blob, inner **bắt đầu bằng byte tag 0** (raw copy, `sub_A62580` — thiếu thì mọi thứ lệch 1 byte), rồi số little-endian:
   ```
-  danh sách 1 (+339): n × {u16 index, u8 a, u8 b, u32 kind}   -> sub_729F44 vòng 2: sub_89AEA3 + sub_71FCFE  (gdb: không sinh gì với các toạ độ đã thử)
-  danh sách 2 (+343): n × {u16 index, u8 a, u8 b, u32 kind}   -> sub_729F44 vòng 1: ô (a,b) là CGOTileFixedBox (sub_7292F3, grid[101*a+b], trạng thái 2)
-                                                                   -> sub_5BF485 (giấu trong ô); không phải -> vật phẩm khác (sub_5C0985) -> sinh ngay sub_5B6578
-  danh sách 3 (+347): n × {u16, u32, u32}                       CHƯA KIỂM
+  u8 0 (tag)
+  u16 n1, n1 × {u16 index, u8 hàng (y), u8 cột (x), u32 kind}   VẬT PHẨM NẰM TRÊN NỀN  (room ctx +339 -> sub_729F44 vòng 2 -> sub_71FCFE)
+  u16 n2, n2 × {u16 index, u8 hàng (y), u8 cột (x), u32 kind}   VẬT PHẨM GIẤU TRONG GẠCH (+343 -> sub_729F44 vòng 1 -> sub_5BF485, chỉ ô CGOTileFixedBox)
+  u16 n3, n3 × {u16, u32, u32}                                    CHƯA KIỂM (+347)
   ```
-  Runtime (`logs/xvfb/item3`, `docs/battle_item_floor.png`): 4 bản ghi ở danh sách 2 → 4 lần `sub_5B6578` lúc nạp map, **một vật phẩm (lò xo tím) hiện trên nền**
-  cạnh ô xuất phát. Gạch thường ở Village01 **không** nhận vật phẩm (`sub_5BF485` không chạy; gạch vỡ có trường item = -1) — chỉ ô `CGOTileFixedBox` mới
-  giấu được. Thứ tự toạ độ (a,b) và bảng `kind` (1, 2 → lò xo tím?) đang kiểm. `index` < 1000 = ô trong bảng vật phẩm (`sub_89AEA3`).
-
-- **Toạ độ** (`ITEMS="13,0,1"`, `logs/xvfb/item4`): bản ghi `{index 0, a=13, b=0, kind 1}` ở danh sách 2 → vật phẩm hiện đúng ô cột 13 hàng 0 ⇒ **(a, b) = (x cột, y hàng)**;
-  `kind 1` = vật phẩm hình bạch tuộc tím.
+  Gửi **trước 501** (đọc lúc nạp map). `index` < 1000, mỗi vật phẩm một index riêng (`sub_89AEA3` đăng ký `kind` vào ô `index`).
+  **`kind` = thứ tự vật phẩm trong `assets/fx/Attr/ItemAttr.bin` mục `Item/*` tính từ 0** (đã thấy trên màn hình 0..12 theo đúng thứ tự):
+  0 ItemBomb (bóng nước, +1 bom), 1 ItemFire (thuốc, +tầm nổ), 2 ItemRoller, 3 ItemShoe (giày), 4 ItemPunch, 5 ItemMaxPower, 6 ItemHollow, 7 ItemSkeleton0,
+  8 ItemSkeleton1, 9 ItemMoonWalk, 10 ItemSuperMan, 11 ItemGreenDevil, 12 ItemRandomBox (rương) … (danh sách đầy đủ: parse `ItemAttr.bin`, 138 mục).
+  Đặt 50 vật phẩm: 50 lần `sub_5B6578`, 50 lần đăng ký; vật phẩm ở ô cây/gạch vẫn vẽ chồng lên (server phải tự chọn ô trống).
+- ~~Toạ độ (a,b) = (x,y), kind 1 = bạch tuộc~~ — **SAI**, do gói thiếu byte tag (đọc lệch 1 byte); đúng ở trên: (hàng, cột), kind theo `ItemAttr.bin`.
 - **Nhặt vật phẩm = C→S 117 → S→C 158** ✅ runtime (`ITEM_ACK=1`, `logs/xvfb/item5`, `docs/battle_item_picked.png`, gdb `tools/gdb/item158.gdb`):
   bước vào ô → client ghi bản ghi chờ vào bảng 21 của `CGameMsgCache` (`sub_6F2ECE`, gọi từ `sub_5B098A`) và `vf9` (0x6F0874) gửi **117** (gói nhóm):
   ```
-  u8 ctx | u8 slot | u8 a (rec+12) | u8 b (rec+16; quan sát = cột 13) | u16 index vật phẩm (sub_5B61A9) | u16 kind (sub_5B61B4; quan sát 256)
+  u8 ctx | u8 slot | u8 a (rec+12) | u8 b (rec+16) | u16 index vật phẩm (sub_5B61A9) | u16 kind (sub_5B61B4) — các số 13/256 quan sát được trước đây là do 553 đọc lệch
   u32 thời gian (sub_6EFBB8) | u32 khoá phiên (sub_6EFBCA) | u8 (rec+36)
   ```
   Không có trả lời → vật phẩm hiện lại khi bước ra. Server trả **158** (`CGameStage__On_158` 0x715E90):
   `u8 ok (≠0 mới áp dụng)`, `u8 ctx (== chỉ số context)`, `u8 slot`, `u8`, `u8` (đang gửi lại a/b — đoán), `u16 index`, `u16 kind`, `bool`
   → `sub_6F001E` xoá bản ghi chờ (khớp ctx + index), `sub_706E0A(slot, kind)` áp dụng vật phẩm → **vật phẩm mất hẳn**; sau đó client gửi C→S 162 (CHƯA GIẢI MÃ, nghi
-  cập nhật hiệu ứng/túi vật phẩm). Kiểm với server Rust (`logs/xvfb/rust_item`, `docs/battle_item_slot.png`): `kind 1` (bạch tuộc tím) vào **ô VẬT PHẨM (Ctrl) ×01** = vật phẩm dùng chủ động.
+  cập nhật hiệu ứng/túi vật phẩm). Kiểm với server Rust (`logs/xvfb/rust_item`, `docs/battle_item_slot.png`): vật phẩm (đọc lệch, kind thật không rõ) vào **ô VẬT PHẨM (Ctrl) ×01** = loại dùng chủ động.
   Hiệu ứng của từng `kind` lên nhân vật (tốc độ/số bom/tầm nổ): CHƯA KIỂM.
   fakeserver: `ITEM_ACK=1`; server Rust: luôn trả 158 cho 117, `ITEMS="x,y,kind;…"` gửi 553 trước 501 (`server/tests/bomb.rs` khớp byte với fakeserver).
 
