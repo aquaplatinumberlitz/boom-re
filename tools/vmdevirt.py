@@ -217,42 +217,62 @@ def build_uc(snap=None, img=None):
 
 # ---------------------------------------------------------------- run + hooks
 
-def run(mu, entry, vm_lo, vm_hi, max_insn=4_000_000, stop_on_exit=False, log_n=20000):
+def run(mu, entry, vm_lo, vm_hi, max_insn=4_000_000, stop_on_exit=False, log_n=20000,
+        stop_leave=False):
     """Run and record: writes into the VM section, indirect transfers (dispatcher), exits."""
     from unicorn import (UC_HOOK_CODE, UC_HOOK_MEM_WRITE, UC_HOOK_MEM_UNMAPPED,
                          UC_HOOK_MEM_READ_UNMAPPED, UC_PROT_ALL, UcError)
     from unicorn import x86_const as X
+    from capstone.x86 import X86_OP_MEM, X86_OP_REG
     md = md32(detail=True)
     ev = {"insn": 0, "writes": collections.Counter(), "vals": {}, "ind": [],
           "exit": None, "stop": None, "eip": entry, "pages": collections.Counter(),
           "seq": []}
 
+    armed = [not stop_leave]      # stop_leave: only stop once we have entered the VM range
+
     def on_code(mu8, addr, size, u):
         ev["insn"] += 1
         ev["eip"] = addr
         ev["pages"][addr & ~0xFFF] += 1
+        if not armed[0] and vm_lo <= addr < vm_hi:
+            armed[0] = True
+        if stop_leave and armed[0] and not (vm_lo <= addr < vm_hi):
+            ev["stop"] = ev["stop"] or "leave_vm"
+            ev["exit"] = addr
+            mu8.emu_stop()
+            return
         if ev["insn"] > max_insn:
             ev["stop"] = "budget"
             mu8.emu_stop()
             return
-        # indirect branch: FF /4 (jmp r/m) or FF /5 (call r/m) with a 1-byte opcode
+        # indirect branch: FF /4 (jmp r/m) or FF /5 (call r/m)
         b = mu8.mem_read(addr, 2)
-        if b[0] == 0xFF and ((b[1] >> 3) & 7) in (4, 5) and (b[1] & 0xC0) == 0:
+        if b[0] == 0xFF and ((b[1] >> 3) & 7) in (4, 5):
             i = next(md.disasm(bytes(mu8.mem_read(addr, 8)), addr), None)
             if i is None or not i.operands:
                 return
-            opnd = i.operands[0]
-            slot = None
-            if opnd.type == 3 and opnd.mem.base == 0 and opnd.mem.disp:  # X86_OP_MEM
-                slot = opnd.mem.disp & 0xFFFFFFFF
-            tgt = mu8.reg_read(X.UC_X86_REG_EIP) if False else None
-            if slot is not None:
+            op = i.operands[0]
+            slot, tgt = None, None
+            if op.type == X86_OP_MEM:
+                # full addressing mode: [base + index*scale + disp]
+                slot = op.mem.disp & 0xFFFFFFFF
+                for reg, scale in ((op.mem.base, 1), (op.mem.index, op.mem.scale)):
+                    if reg:
+                        try:
+                            rv = mu8.reg_read(getattr(X, "UC_X86_REG_" + md.reg_name(reg).upper()))
+                        except Exception:
+                            rv = 0
+                        slot = (slot + rv * scale) & 0xFFFFFFFF
                 try:
                     tgt = struct.unpack("<I", mu8.mem_read(slot, 4))[0]
                 except Exception:
                     tgt = None
-            else:
-                tgt = i.op_str
+            elif op.type == X86_OP_REG:
+                try:
+                    tgt = mu8.reg_read(getattr(X, "UC_X86_REG_" + md.reg_name(op.reg).upper()))
+                except Exception:
+                    tgt = None
             if len(ev["ind"]) < log_n:
                 ev["ind"].append((addr, slot, tgt))
             if stop_on_exit and isinstance(tgt, int) and not (vm_lo <= tgt < vm_hi):
@@ -399,16 +419,252 @@ def cmd_jumps(a):
         print(f"-> {a.json}")
 
 
+def cmd_ctx(a):
+    """Run one VM block to its exit and dump the context structure it maintained."""
+    site = int(a.site, 16)
+    img = Image(a.exe)
+    snap = Snap(a.snap)
+    vm_lo, vm_hi = img.vm_range()
+    mu = build_uc(snap=snap)
+    setup_from_snap(mu, snap, img, site)
+    ev = run(mu, site, vm_lo, vm_hi, max_insn=a.max, stop_leave=True)
+    print(f"insns {ev['insn']} stop {ev['stop']} exit {ev['exit'] if ev['exit'] is None else hex(ev['exit'])}")
+    addrs = sorted({k[0] for k in ev["writes"]})
+    if not addrs:
+        print("no VM-section writes")
+        return
+    # cluster: the context is the densest run of written addresses
+    clusters, cur = [], [addrs[0]]
+    for x in addrs[1:]:
+        if x - cur[-1] <= 0x40:
+            cur.append(x)
+        else:
+            clusters.append(cur)
+            cur = [x]
+    clusters.append(cur)
+    clusters.sort(key=len, reverse=True)
+    lo, hi = clusters[0][0] & ~0xF, clusters[0][-1] | 0xF
+    print(f"ctx cluster {lo:#x}..{hi:#x} ({len(clusters[0])} fields written)")
+    print(f"\n{'off':>6} {'value':>10}  kind")
+    for off in range(lo, hi + 1, 4):
+        try:
+            v = struct.unpack("<I", mu.mem_read(off, 4))[0]
+        except Exception:
+            continue
+        if v == 0:
+            kind = "-"
+        elif vm_lo <= v < vm_hi:
+            sec, _, _ = img.section_at(v)
+            kind = f"ptr VM ({sec!r})"
+        elif img.base <= v < img.base + len(img.raw):
+            sec, _, _ = img.section_at(v)
+            kind = f"ptr image ({sec!r})"
+        else:
+            kind = ""
+        mark = "*" if (off, 4) in ev["writes"] or (off, 1) in ev["writes"] or (off, 2) in ev["writes"] else " "
+        print(f"{off - lo:#06x} {v:#010x}  {mark} {kind}")
+
+
+def cmd_trace(a):
+    """Record one VM block from `site` to `cont` and summarise its effects on the process."""
+    from unicorn import UC_HOOK_CODE, UC_HOOK_MEM_WRITE, UC_HOOK_MEM_UNMAPPED, UcError
+    from unicorn import x86_const as X
+    site = int(a.site, 16)
+    cont = int(a.cont, 16) if a.cont else None
+    img = Image(a.exe)
+    snap = Snap(a.snap)
+    vm_lo, vm_hi = img.vm_range()
+    ctx = int(a.ctx, 16) if a.ctx else None
+    mu = build_uc(snap=snap)
+    setup_from_snap(mu, snap, img, site)
+    start_regs = {k: mu.reg_read(getattr(X, "UC_X86_REG_" + k.upper()))
+                  for k in ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp", "esp")}
+    writes, calls, exits = {}, collections.Counter(), []
+    n = [0]
+    stop = [None]
+
+    def on_code(mu8, addr, size, u):
+        n[0] += 1
+        if n[0] > a.max:
+            stop[0] = "budget"
+            mu8.emu_stop()
+            return
+        if cont is not None and addr == cont:
+            stop[0] = "cont"
+            mu8.emu_stop()
+            return
+        if not (vm_lo <= addr < vm_hi):
+            # execution left the VM: a native call or a vm-exit. Record the landing address.
+            if len(exits) < 200:
+                exits.append(addr)
+
+    def on_write(mu8, access, addr, size, val, u):
+        k = (addr, size)
+        if k in writes:
+            writes[k][0] += 1
+            writes[k][2] = val
+        elif len(writes) < a.max_writes:
+            writes[k] = [1, val, val, mu8.reg_read(X.UC_X86_REG_EIP)]
+
+    def on_unmapped(mu8, access, addr, size, val, u):
+        stop[0] = f"unmapped {addr:#x} from {mu8.reg_read(X.UC_X86_REG_EIP):#x}"
+        mu8.emu_stop()
+
+    mu.hook_add(UC_HOOK_CODE, on_code)
+    mu.hook_add(UC_HOOK_MEM_WRITE, on_write)
+    mu.hook_add(UC_HOOK_MEM_UNMAPPED, on_unmapped)
+    try:
+        mu.emu_start(site, 0xFFFFFFFF)
+    except UcError as e:
+        stop[0] = stop[0] or f"uc {e}"
+    end_regs = {k: mu.reg_read(getattr(X, "UC_X86_REG_" + k.upper()))
+                for k in ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp", "esp")}
+    print(f"insns {n[0]}  stop {stop[0]}  exits {len(exits)}")
+    for lbl, lo, hi in (("ctx", ctx, ctx + 0x400) if ctx else ("ctx", 0, 0),
+                        ("image", img.base, img.base + len(img.raw))):
+        pass
+    groups = {"ctx": [], "image": [], "heap": [], "stack": []}
+    for (addr, size), (cnt, first, last, eip) in writes.items():
+        if ctx and ctx <= addr < ctx + 0x400:
+            groups["ctx"].append((addr, size, cnt, first, last, eip))
+        elif img.base <= addr < img.base + len(img.raw):
+            groups["image"].append((addr, size, cnt, first, last, eip))
+        elif addr > 0x10000000:
+            groups["stack"].append((addr, size, cnt, first, last, eip))
+        else:
+            groups["heap"].append((addr, size, cnt, first, last, eip))
+    for g in ("ctx", "image", "heap"):
+        print(f"\n{g} writes: {len(groups[g])}")
+        for addr, size, cnt, first, last, eip in sorted(groups[g])[:a.show]:
+            off = f"{addr - ctx:+#05x}" if (ctx and g == "ctx") else ""
+            print(f"  [{addr:#010x}] {off:<8} {size}B x{cnt:<4} {first:#010x} -> {last:#010x}  (first at {eip:#x})")
+    print(f"\nregister delta:")
+    for k in start_regs:
+        if start_regs[k] != end_regs[k]:
+            print(f"  {k}: {start_regs[k]:#010x} -> {end_regs[k]:#010x}")
+    if exits:
+        print(f"\nleft VM {len(exits)} times, first: {[hex(x) for x in exits[:6]]}")
+    if a.json:
+        out = {"site": hex(site), "cont": hex(cont) if cont else None, "insn": n[0], "stop": stop[0],
+               "ctx": hex(ctx) if ctx else None,
+               "writes": {g: [{"addr": hex(w[0]), "size": w[1], "n": w[2], "first": w[3], "last": w[4],
+                               "eip": hex(w[5])} for w in groups[g]] for g in groups},
+               "exits": [hex(x) for x in exits],
+               "regs_start": {k: hex(v) for k, v in start_regs.items()},
+               "regs_end": {k: hex(v) for k, v in end_regs.items()}}
+        pathlib.Path(a.json).write_text(json.dumps(out, indent=1))
+        print(f"-> {a.json}")
+
+
+def cmd_lift(a):
+    """Replay a block and print its semantic spine: every unique instruction that touches
+    the VM context, image data or heap, with ctx offsets resolved."""
+    from unicorn import UC_HOOK_CODE, UC_HOOK_MEM_UNMAPPED, UcError
+    from unicorn import x86_const as X
+    from capstone.x86 import X86_OP_MEM, X86_OP_REG, X86_OP_IMM
+    site = int(a.site, 16)
+    cont = int(a.cont, 16) if a.cont else None
+    img = Image(a.exe)
+    snap = Snap(a.snap)
+    vm_lo, vm_hi = img.vm_range()
+    ctx = int(a.ctx, 16) if a.ctx else None
+    mu = build_uc(snap=snap)
+    setup_from_snap(mu, snap, img, site)
+    md = md32(detail=True)
+    REGS = {getattr(X, "UC_X86_REG_" + k.upper()): k for k in
+            ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp", "esp")}
+    seen = {}
+    order = []
+    n = [0]
+    stop = [None]
+
+    def operand_addr(mu8, op):
+        if op.type != X86_OP_MEM:
+            return None
+        a_ = op.mem.disp & 0xFFFFFFFF
+        for reg, scale in ((op.mem.base, 1), (op.mem.index, op.mem.scale)):
+            if reg:
+                try:
+                    a_ = (a_ + mu8.reg_read(reg) * scale) & 0xFFFFFFFF
+                except Exception:
+                    return None
+        return a_
+
+    def on_code(mu8, addr, size, u):
+        n[0] += 1
+        if n[0] > a.max:
+            stop[0] = "budget"
+            mu8.emu_stop()
+            return
+        if cont is not None and addr == cont:
+            stop[0] = "cont"
+            mu8.emu_stop()
+            return
+        if addr in seen:
+            return
+        i = next(md.disasm(bytes(mu8.mem_read(addr, 15)), addr), None)
+        if i is None:
+            return
+        touches = []
+        for op in i.operands:
+            maddr = operand_addr(mu8, op)
+            if maddr is None:
+                continue
+            if ctx and ctx <= maddr < ctx + 0x400:
+                touches.append(("ctx", maddr - ctx, maddr))
+            elif img.base <= maddr < img.base + len(img.raw):
+                touches.append(("img", maddr, maddr))
+            elif not (0x00100000 <= maddr < 0x10000000):
+                touches.append(("heap", maddr, maddr))
+        vals = []
+        for op in i.operands:
+            if op.type == X86_OP_REG and op.reg in REGS:
+                try:
+                    vals.append(f"{REGS[op.reg]}={mu8.reg_read(op.reg):#x}")
+                except Exception:
+                    pass
+        seen[addr] = (i.mnemonic, i.op_str, tuple(touches), vals)
+        order.append(addr)
+
+    def on_unmapped(mu8, access, addr, size, val, u):
+        stop[0] = f"unmapped {addr:#x}"
+        mu8.emu_stop()
+
+    mu.hook_add(UC_HOOK_CODE, on_code)
+    mu.hook_add(UC_HOOK_MEM_UNMAPPED, on_unmapped)
+    try:
+        mu.emu_start(site, 0xFFFFFFFF)
+    except UcError as e:
+        stop[0] = stop[0] or f"uc {e}"
+    print(f"insns {n[0]}  unique {len(order)}  stop {stop[0]}")
+    sem = [x for x in order if seen[x][2]]
+    print(f"semantic instructions (touch ctx/image/heap): {len(sem)} / {len(order)}\n")
+    for addr in sem[:a.show]:
+        mn, ops, touches, vals = seen[addr]
+        t = " ".join(f"{k}{off if k != 'ctx' else f'+{off:#x}'}" for k, off, _ in touches)
+        print(f"  {addr:#010x}  {mn:<8} {ops:<34}  ; {t}")
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps(
+            [{"addr": hex(x), "insn": seen[x][0], "ops": seen[x][1],
+              "touch": [[k, hex(o)] for k, o, _ in seen[x][2]]} for x in sem], indent=1))
+        print(f"-> {a.json}")
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["sites", "discover", "jumps"])
+    ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
-    ap.add_argument("--site", help="VM site (hex), required for jumps")
+    ap.add_argument("--site", help="VM site (hex)")
+    ap.add_argument("--cont", help="continuation address (hex), stop when reached")
+    ap.add_argument("--ctx", help="VM context base (hex) for field offsets")
     ap.add_argument("--snap", help="pre.snap produced by win/snap.bat")
     ap.add_argument("--max", type=int, default=4_000_000)
+    ap.add_argument("--max-writes", type=int, default=200_000)
+    ap.add_argument("--show", type=int, default=60)
     ap.add_argument("--json")
     a = ap.parse_args()
-    {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps}[a.cmd](a)
+    {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps,
+     "ctx": cmd_ctx, "trace": cmd_trace, "lift": cmd_lift}[a.cmd](a)
 
 
 if __name__ == "__main__":
