@@ -158,6 +158,35 @@ này khớp với việc harness của repo (`tools/vmemu.py`) cũng không exit
 **Ước lượng:** để emit C cho một khối đơn giản cần (1) ngữ nghĩa ~46 opcode, (2) một mô hình ngăn xếp ảo
 (VSP) đúng, (3) emit + verify. Mỗi phần là vài giờ làm việc có kiểm chứng, không phải một bước.
 
+
+## 9. Fake native — trạng thái và giới hạn (round 4)
+
+Để chạy một khối tới `cont`, code native mà VM gọi phải chạy được. Đã nâng `--fake-native`:
+
+| Cơ chế | Hành vi |
+|---|---|
+| Hàm native **trong image** (.text) | **chạy thật** (dump đã có code) |
+| Hàm **ngoài image** (DLL/hệ thống) | không chạy: đọc return address ở `[esp]`, set `eax`, chỉnh `esp` theo `ret imm16` |
+| `jmp far` (WoW64 syscall) | set `eax`, pop stub, `esp += 4` |
+| `--skip ADDR[=eax]` | bỏ qua hàm native trong image (anti-cheat/integrity), giả lập return |
+| `--fake-ret` | `scratch` = trả con trỏ tới vùng 64 KB zeroed (tránh native deref null) hoặc một số cụ thể |
+
+Đo trên `8F4D46` (`cont 0x8F5468`):
+
+| cấu hình | kết quả |
+|---|---|
+| fake mọi thứ, `eax=0` | chết ở `0xa1333f` — đúng vùng **anti-cheat** (0xA12E59..0xA17A24) |
+| + `--skip A12E50 A14800 A13A10` | chạy 8.0M lệnh, rồi `unmapped 0x0` (native deref null vì API fake trả 0) |
+| + `--fake-ret scratch` | chạy **20M lệnh không crash**, nhưng **vẫn không tới `cont`** |
+
+Lý do không tới `cont`: ba snapshot hiện có (`8F346C`, `8F4D46`, `8F5F40`) đều nằm trong **vòng lặp chính**
+`sub_8F4D01`; sau khi VM nhả về code native, luồng quay lại vòng lặp (và vào lại VM) chứ không đi thẳng tới
+nhãn `cont`. Đây là giới hạn của *bộ snapshot hiện có*, không phải của thuật toán: muốn kiểm chứng emit C
+phải có snapshot ở một khối **thẳng** (ví dụ `8F452B`, `8F8F69` — chưa có snap).
+
+**Hệ quả cho mục tiêu:** verify emit C với 6 khối cần thêm snapshot. Việc này cần chạy client gốc trên
+Windows/Wine (`win/snap.bat <SITE>`) — nằm ngoài phạm vi tự động của round này.
+
 ## 5b. Đường áp dụng sang bản KR
 
 Bản KR (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`) **đang bị pack**:

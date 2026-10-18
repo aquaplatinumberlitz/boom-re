@@ -526,6 +526,17 @@ def cmd_trace(a):
     stop = [None]
     cyc = Cycle()
     md_t = md32(detail=True) if (a.cycle or a.fake_native) else None
+    SCRATCH = 0x70000000
+    try:
+        from unicorn import UC_PROT_ALL
+        mu.mem_map(SCRATCH, 0x10000, UC_PROT_ALL)
+    except Exception:
+        pass
+    fake_ret = SCRATCH if a.fake_ret == "scratch" else int(a.fake_ret, 0)
+    skips = {}
+    for spec in (a.skip or []):
+        k, _, v = spec.partition("=")
+        skips[int(k, 16)] = int(v, 0) if v else 0
     armed = [False]
 
     def on_code(mu8, addr, size, u):
@@ -558,8 +569,18 @@ def cmd_trace(a):
                             return
         if vm_lo <= addr < vm_hi:
             armed[0] = True
+        elif a.fake_native and armed[0] and img.base <= addr < img.base + len(img.raw):
+            # left the VM into game code that lives in the dumped image: execute it, unless the
+            # caller told us to skip it (anti-cheat / integrity checks that need a real process).
+            if addr in skips:
+                ra = fake_native(mu8, md_t, addr, ret_val=skips[addr],
+                                 vm_lo=img.base, vm_hi=img.base + len(img.raw))
+                if ra is not None:
+                    calls[f"{addr:#x} (skipped)"] += 1
+                    return
+            return
         elif a.fake_native and armed[0] and md_t is not None:
-            # left the VM: game function or DLL API. Do not execute it, fake the return.
+            # left the image entirely (DLL / system): do not execute it, fake the return.
             try:
                 b0 = bytes(mu8.mem_read(addr, 1))[0]
             except Exception:
@@ -571,7 +592,8 @@ def cmd_trace(a):
                 mu8.reg_write(X.UC_X86_REG_ESP, mu8.reg_read(X.UC_X86_REG_ESP) + 4)
                 calls["syscall"] += 1
                 return
-            ra = fake_native(mu8, md_t, addr, ret_val=0, vm_lo=vm_lo, vm_hi=vm_hi)
+            ra = fake_native(mu8, md_t, addr, ret_val=fake_ret,
+                             vm_lo=img.base, vm_hi=img.base + len(img.raw))
             if ra is None:
                 stop[0] = stop[0] or f"left VM to {addr:#x} (no VM return addr)"
                 mu8.emu_stop()
@@ -1377,6 +1399,10 @@ def main():
     ap.add_argument("--length", default="0x1000", help="bytes to decode when --end is absent")
     ap.add_argument("--disp", help="địa chỉ lệnh dispatch (hex); bỏ trống thì tự dò jmp [reg]")
     ap.add_argument("--vip-reg", default="esi", help="thanh ghi giữ VIP (mặc định esi)")
+    ap.add_argument("--fake-ret", default="scratch",
+                    help="giá trị trả về khi fake API: 'scratch' (con trỏ tới vùng 64KB) hoặc số")
+    ap.add_argument("--skip", action="append", default=[],
+                    help="addr[=eax]: bỏ qua hàm native trong image (vd anti-cheat), giả lập return")
     ap.add_argument("--cycle", action="store_true",
                     help="dừng khi (handler idx, VIP) lặp lại: lấy đúng một vòng của khối loop")
     ap.add_argument("--show", type=int, default=60)
