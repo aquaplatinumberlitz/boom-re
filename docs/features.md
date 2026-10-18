@@ -27,7 +27,7 @@ Cập nhật số liệu tự động: `python3 tools/feature_stats.py` (đọc 
 | hàm/vtable đã đặt tên | 20.682 / 3699 vtable |
 | opcode server giả đã xử lý | **84 / 520 (16,2%)** |
 | khối VM Themida | 73 (14 trong `devirt.py`) |
-| stage đã chơi được | 1 → 13 |
+| stage đã chơi được | 1 → 13, **trọn 1 ván** (kết thúc → phòng chờ → ván mới) |
 
 Phân bố opcode theo nhóm:
 
@@ -126,9 +126,9 @@ Phân bố opcode theo nhóm:
 | F3 | di chuyển nhân vật | ←↑→↓ đi được | ✅ |
 | F4 | đặt bom | Space → C→S 111 | ✅ |
 | F5 | bom nổ | S→C 152 (gán id) → 151 (nổ) | ✅ |
-| F6 | chết / hồi sinh | bị bom nổ → chết | 🟡 |
-| F7 | kết thúc lượt / điểm | 146 (round result) | 🟡 |
-| F8 | kết thúc ván → về phòng chờ | 173 gửi được, client chưa xác nhận | 🟡 |
+| F6 | chết / hồi sinh | bom nổ → C→S 120 subtype 13 → 146 → lượt mới, hồi sinh, đồng hồ đặt lại (`5aee4e4`) | ✅ |
+| F7 | kết thúc lượt / điểm | 146 round result, chạy được (`5aee4e4`) | ✅ |
+| F8 | kết thúc ván → về phòng chờ | S→C 173 → về phòng chờ → **trận mới** (`b1fc290`); server Rust xử lý C→S 120 | ✅ |
 | F9 | nhiều người chơi trong trận | mới 1 người | ⬜ |
 | F10 | item / power-up rơi | chưa | ⬜ |
 | F11 | map load trong trận | `0x736C27` đang **skip** | 🟡 |
@@ -175,11 +175,11 @@ Phân bố opcode theo nhóm:
 
 Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 
-1. **F8** kết thúc ván → về phòng chờ (thiếu là không chơi được ván thứ 2).
-2. **F9** nhiều người trong trận (mới 1 người).
-3. **F7/F6** điểm + chết/hồi sinh đầy đủ (hiện mới một phần).
+1. ~~F8 kết thúc ván~~ **xong** (`b1fc290`); ~~F6/F7 chết/lượt~~ **xong** (`5aee4e4`).
+2. **F9** nhiều người trong trận (mới 1 người) — chặn việc test mode nhiều người.
+3. **F10** vật phẩm rơi (chưa có).
 4. **E5/E7** danh sách phòng + chọn map (để chơi map khác Village01).
-5. **D1** chat (để kiểm tra kênh phòng).
+5. **D1** chat (38 opcode, chưa làm gì).
 6. **F11** `0x736C27` viết lại thật (đang skip — rủi ro trạng thái map).
 7. Các mode F13–F20: chỉ làm khi map/mode tương ứng được mở.
 
