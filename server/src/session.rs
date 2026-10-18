@@ -201,6 +201,33 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 let ch = proto::get_int(&body[3..], 1, true) as u8;
                 log(format!("[{port}] character {ch}"));
                 hub.update_member(user_id, |m| m.character = ch & 0x3F);
+            } else if op == 18 && body.len() >= 4 {
+                // chat (sub_6709C2 <- CChatStage sub_68929F): u8 flag, u8 n, n x str lines. Echo to the room (or the lobby) as 28.
+                let n = proto::get_int(&body[3..], 1, true) as usize;
+                let mut pos = 4;
+                let mut lines = Vec::new();
+                for _ in 0..n.min(8) {
+                    if pos + 2 > body.len() || pos + 2 + proto::get_int(&body[pos..], 2, true) as usize > body.len() {
+                        break;
+                    }
+                    let (raw, used) = proto::get_str(&body[pos..], true);
+                    lines.push(proto::from_cp1258(&raw));
+                    pos += used;
+                }
+                let name = hub::player_name(user_id);
+                log(format!("[{port}] chat {name}: {lines:?}"));
+                for l in lines {
+                    let pkt = pk::chat_line(&format!("{name} : {l}"));
+                    if in_room {
+                        hub.broadcast(&pkt);
+                    } else {
+                        let mut lobby = hub.lobby.lock().unwrap();
+                        lobby.retain(|t| !t.is_closed());
+                        for t in lobby.iter() {
+                            let _ = t.send(pkt.clone());
+                        }
+                    }
+                }
             } else if op == 87 && body.len() >= 7 {
                 // READY of a non-master (sub_6C31ED): blob (sub_8FD1D5, room/player info), bool ready, u32. Answer: 106 with bit 0.
                 let ready = proto::get_int(&body[body.len() - 5..], 1, true) != 0;

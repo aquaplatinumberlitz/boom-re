@@ -589,3 +589,13 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
   Đặt nhân vật vào u8 +84 của 117 làm người kia biến mất khỏi trận (`logs/duo/t13`) ⇒ +84 giữ 0.
 - Chạy thật `logs/duo/t12`, `t14`: B (vào sau) đổi đội, đổi nhân vật, sẵn sàng → A bấm BẮT ĐẦU → C→S 97 → cả hai vào trận, xuất phát 2 góc.
 
+## Cập nhật 17 (2026-10-19) — chat phòng/sảnh ✅ runtime (D1)
+- **C→S 18** (`sub_6709C2` ← `sub_68929F` ← `CChatStage__vf77`; tạo bằng `SendPkt__Begin` 0x888462, KHÔNG qua `sub_88849F` nên tìm theo
+  `push 12h` trước `SendPkt__Begin`): `u8 cờ (0 = chat thường), u8 n, n × str` (các dòng). Trường hợp loa (`v32` 14/15: biểu tượng sao/tim)
+  client gửi thêm **C→S 72** trước. Ví dụ: `a57b 5a 5b a561…` = 18 {0, 1, "xin chao"}.
+- **S→C 28** (`CChatStage__OnPacket` → `sub_6855DF`): `str nội dung, u8 kiểu` — 0 = hiện nguyên văn (vf76 → khung chat), 1 = nội dung là khoá
+  bảng chuỗi (`sub_98DB56`), 2 = định dạng đặc biệt (`sub_9D46EB` khi `dword_E60FBC`), 3 = khoá + tham số (`sub_6A622C`/`sub_992F53`).
+  (S→C 18 đi tới `vf57` rỗng — không dùng.)
+- Server Rust: 18 → `"tên : nội dung"` qua 28 cho cả phòng (đang ở phòng) hoặc cả sảnh. Ảnh `docs/chat_room.png` (dòng `tester1 : xin chao`).
+  Chưa làm: chat trong trận (CGameStage), thì thầm (D2), màu/kiểu riêng cho chat người chơi.
+

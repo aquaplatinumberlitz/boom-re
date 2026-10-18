@@ -500,3 +500,10 @@ pub fn map_items(floor: &[(u16, u8, u8, u32)], placed: &[(u16, u8, u8, u32)]) ->
     inner.extend_from_slice(&0u16.to_le_bytes());
     Packet::new(553).blob(&inner).build()
 }
+
+/// Opcode 28 (CChatStage__OnPacket -> sub_6855DF): one chat/notice line, `str text, u8 kind` (0 = show as is, 1 = text is a
+/// string-table key, 2/3 = special formats). The client shows the text in the chat box of the lobby / waiting room.
+pub fn chat_line(text: &str) -> Vec<u8> {
+    Packet::new(28).str(text).u8(0).build()
+}
+
