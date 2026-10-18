@@ -145,7 +145,7 @@ này khớp với việc harness của repo (`tools/vmemu.py`) cũng không exit
 | Stage 2 — decode toàn stream | ❌ **bị chặn** | bytecode mã hoá rolling key (4 giả thuyết khoá đều fail); chỉ decode được đoạn **đã chạy** qua trace |
 | Stage 2 — CFG | ✅ **xong (đường đã chạy)** | 24 block, 23 cạnh, 6 back-edge, hub `0x135B33B` |
 | Stage 3 — emit C | ❌ **chưa** | phụ thuộc ngữ nghĩa 46 opcode; "semantics" hiện chỉ là sketch, bị junk chi phối |
-| Verify với 6 khối `tools/devirt.py` | 🟡 **một phần** | 8F346C: 5/8 call đúng thứ tự (§11), 32/52 write khớp post.snap (§15) |
+| Verify với 6 khối `tools/devirt.py` | 🟡 **một phần** | 3 khối: call 5/8 + 3/6 đúng tham số, write 32/52 + 9/12 + 2/4 (§15,§17) |
 | `decomp/vm_profile.json` | ✅ | sinh tự động |
 | Áp dụng sang KR | ⏸ **chờ dump** | `doctor` xác nhận KR đang pack; runbook §16 sẵn sàng |
 
@@ -439,6 +439,43 @@ VERDICT: PACKED / chưa unpack
 - Nếu KR là VM đời mới (FALCON), phần **dùng lại được**: PE loader, site scan, stub follow, snapshot
   replay, emulation harness, `verify`. Phần **phải làm mới**: decode VI (vì FALCON dùng
   `next_idx` + `vip_delta` tường minh, không phải bytecode mã hoá rolling như bản VN).
+
+
+## 17. Khối thứ ba `8F5F40` (round 12)
+
+### Call sequence — khớp 3 call đầu, đúng cả tham số
+
+| # | tool | tham số tool bắt | `devirt.py` viết tay |
+|---|---|---|---|
+| 0 | `0x9DBE57` | `arg0 = 0xC` | `push 0xC; call 0x9DBE57` ✅ |
+| 1 | `0x67C820` | `arg0 = 0x19C5A8`, `ecx = 0x70000000` (giá trị fake new) | `lea edx,[ebp-0x140]; push edx; mov ecx,eax; call 0x67C820` ✅ |
+| 2 | `0x8F2C6B` | `arg0 = 0x1` | `push 1; call 0x8F2C6B` ✅ |
+
+Kiểm chứng đáng chú ý: `ebp` lúc vào = `0x19C6E8` ⇒ `ebp-0x140 = 0x19C5A8` — **đúng con trỏ stack mà tool bắt
+được**, tức VM tự tính đúng địa chỉ frame và truyền làm tham số.
+
+Ground truth còn `0x412B76`, `0x9995B1`, `0x441A4C` — trace dừng trước.
+
+### Write vs post.snap
+
+```
+8F5F40: tổng 9/121 so được; ngoài stack 2/4 khớp
+   0xEEE660 trace=0x2E7E0  post=0x2E7E1   diff   (tick counter nội bộ Themida)
+   0xEEE664 trace=0xB912A5F post=0xC322CAC diff   (tick counter)
+   0xE60950 trace=0x84     post=0x84      match
+   0xE6094C trace=0x20A    post=0x20A     match
+```
+
+Hai chỗ lệch là **bộ đếm tick** — native bị fake nên không tăng như thật; đúng như dự đoán, không phải
+sai đường thực thi.
+
+### Tổng hợp 3 khối
+
+| khối | call ground truth khớp | write ngoài stack khớp |
+|---|---|---|
+| `8F346C` | 5/8 (đúng thứ tự) | 32/52 |
+| `8F4D46` | 0/2 call (chưa tới native) | 9/12 |
+| `8F5F40` | 3/6 (đúng thứ tự + tham số) | 2/4 |
 
 ## 5b. Đường áp dụng sang bản KR
 
