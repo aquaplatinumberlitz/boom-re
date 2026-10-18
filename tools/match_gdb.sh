@@ -1,0 +1,45 @@
+#!/bin/sh
+# gdb run of a full match: login -> room -> 501 -> 189 (TURN_MODE) -> 190 -> 189 mode 0 (PLAY_START) -> arrow keys + Space.
+# usage: tools/match_gdb.sh <gdb_cmds> <outdir> [secs]   (gdb files: tools/gdb/*.gdb; GREP= pattern to summarise gdb.txt)
+S=$(dirname "$(realpath "$0")"); CMDS=$(realpath "$1"); OUT=$(realpath -m "$2"); SECS=${3:-420}
+mkdir -p "$OUT"
+cd /home/admin/boom-re
+pkill -9 -f "[c]a_fixed_patched" 2>/dev/null; pkill -9 -f "[X]vfb :77" 2>/dev/null; sleep 1
+AUTO_START=5 TURN_START=10 TURN_MODE=${TURN_MODE:-4} GO_START=3 PLAY_START=${PLAY_START:-0} \
+  python3 tools/fakeserver.py --log "$OUT/fakeserver.log" > "$OUT/fakeserver.out" 2>&1 & FS=$!
+Xvfb :77 -screen 0 1024x768x24 -nolisten tcp >/dev/null 2>&1 & XP=$!
+sleep 1; export DISPLAY=:77
+( for a in $(seq 1 18); do
+    grep -q 'dne:10' wine/Boom/CALog.log 2>/dev/null && break
+    xdotool mousemove 575 602 click 1; sleep 0.4; xdotool type --delay 50 tester; sleep 0.2
+    xdotool mousemove 575 634 click 1; sleep 0.4; xdotool type --delay 50 1234; sleep 0.2
+    xdotool mousemove 581 733 click 1; sleep 10
+  done
+  for a in $(seq 1 30); do grep -q 'dne:10' wine/Boom/CALog.log 2>/dev/null && break; sleep 5; done
+  sleep 20; xdotool mousemove 650 393 click 1
+  for a in $(seq 1 40); do grep -q 'dne:11' wine/Boom/CALog.log 2>/dev/null && break; sleep 5; done
+  sleep 25; i=0
+  for c in 975,38,3 385,50,4 437,612,10 512,384,8; do
+    i=$((i+1)); x=${c%%,*}; r=${c#*,}; y=${r%%,*}; w=${r#*,}
+    xdotool mousemove "$x" "$y" click 1; sleep "$w"; import -window root "$OUT/click_$i.png" 2>/dev/null
+  done
+  for a in $(seq 1 40); do grep -q 'dne:13' wine/Boom/CALog.log 2>/dev/null && break; sleep 5; done
+  echo "dne13 at $(date +%T)" > "$OUT/driver.txt"
+  sleep 60; import -window root "$OUT/match_before.png" 2>/dev/null
+  xdotool mousemove 512 400 click 1; sleep 1
+  for k in Left Right Up Down; do
+    echo "key $k $(date +%T)" >> "$OUT/driver.txt"
+    xdotool keydown $k; sleep 1.5; xdotool keyup $k; sleep 1
+  done
+  xdotool key space; sleep 2
+  import -window root "$OUT/match_after.png" 2>/dev/null
+  echo "keys done $(date +%T)" >> "$OUT/driver.txt" ) &
+CLK=$!
+( cd wine/Boom && rm -f CALog.log && cat "$CMDS" \
+  | env -u WAYLAND_DISPLAY WINEDEBUG=-all timeout "$SECS" winedbg --gdb 'Z:\home\admin\boom-re\wine\Boom\ca_fixed_patched.exe' > "$OUT/gdb.txt" 2>&1 ) &
+GP=$!
+wait $GP
+kill $CLK $XP $FS 2>/dev/null
+cp wine/Boom/CALog.log "$OUT/CALog.log" 2>/dev/null
+grep -E -A60 "${GREP:-CRASH|PHASE|PLAY189|ON189|TICK|CC8|CTX32|STRAT|VF15|DA84|KEYMAP|SETEN}" "$OUT/gdb.txt" | grep -v "^Wine-gdb> *$" | head -80
+cat "$OUT/driver.txt"

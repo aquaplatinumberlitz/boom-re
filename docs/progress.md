@@ -1,4 +1,4 @@
-# Tiến độ & handoff (cập nhật 2026-10-17)
+# Tiến độ & handoff (cập nhật 2026-10-18)
 
 File này dành cho **người mới vào dự án**: đọc từ trên xuống là biết đang ở đâu, chạy thử thế nào, việc gì còn dở.
 Chi tiết kỹ thuật từng bước nằm ở các file khác (link ở từng mục).
@@ -12,9 +12,9 @@ Chi tiết kỹ thuật từng bước nằm ở các file khác (link ở từn
 - Client gốc bị pack Themida. Ta dùng **bản dump đã unpack + sửa** (`ca_fixed_patched.exe`) chạy trong **Wine**.
 - **Đã chạy được:** đăng nhập → chọn kênh → sảnh (quảng trường) → tạo phòng → phòng chờ có người chơi, có map,
   nút BẮT ĐẦU bật → server gửi lệnh bắt đầu trận → client tạo màn trận (stage 13).
-- **Đang kẹt:** client crash khi **nạp map lúc vào trận**, chỗ crash nằm trong vùng code còn bị Themida bảo vệ
-  (xem [mục 5](#5-chỗ-đang-kẹt-vào-trận)). **Người dùng (chủ dự án) đang tự phân tích phần này** — người khác/Claude
-  không đụng vào cho tới khi chủ dự án giao lại.
+- **Đang kẹt (2026-10-18):** trong trận, nhân vật đã nhận phím (quay mặt theo hướng) sau chuỗi 501 → 189 mode 1 → 190
+  → 189 mode 0; **đặt bom thì crash** trong khối VM `sub_6EFD24` (site 0x6EFD4A). Các khối VM (0x736C27, 0x6EFD4A…)
+  **do chủ dự án tự xử lý** — người khác/Claude không đụng vào (xem [mục 5](#5-tiến-độ-vào-trận-2026-10-18)).
 
 ---
 
@@ -28,7 +28,7 @@ Game chia thành các "stage" (màn). Client ghi stage hiện tại vào `wine/B
 | 10 | Đăng nhập + chọn kênh (`CSelectServerStage`) | ✅ kênh tự hiện, click vào kênh được | `docs/channel_autoshow.png` |
 | 11 | Sảnh quảng trường (`CLobbySquareStage`) | ✅ load xong, nút TẠO PHÒNG chạy | `docs/lobby_loaded.png`, `docs/create_room_dialog.png` |
 | 12 | Phòng chờ (`CPrepareStage`) | ✅ có người chơi (trưởng phòng), map Village01, nút BẮT ĐẦU bật | `docs/waiting_room_start.png`, `docs/map_dialog_village.png` |
-| 13 | Trận đấu (`CGameStage`) | 🟡 2026-10-17: nạp map xong, vẽ bản đồ + HUD, client ổn định (2 khối skip 0x736C27/0x5788C9); **chưa điều khiển được nhân vật** — cần thêm gói/state sau 189/190 | `docs/battle_village01.png` |
+| 13 | Trận đấu (`CGameStage`) | 🟡 2026-10-18: nạp map, HUD; phase 3 + đồng hồ trận chạy (189 mode 1 → 190 → 189 mode 0); nhân vật quay theo phím; **đặt bom crash ở VM 0x6EFD4A** | `docs/battle_phase3.png`, `docs/battle_turn_LRUD.png` |
 
 Những phần **chưa làm** ở các màn đã qua (không chặn đường vào trận):
 - Hộp thoại **chọn map** trong phòng liệt kê 0 map (báo "CantDecideMap"). Server đang tự gán map cho phòng.
@@ -63,6 +63,11 @@ Biến môi trường (đặt trước lệnh):
 | `ROOM_TYPE` | 19 | Loại phòng trong gói tạo phòng (83). Loại 19 cho **1 người** bắt đầu được |
 | `MAP_INDEX` | 0 | Map của phòng = chỉ số trong `BATTLE_MAPS` (0 Village01, 1 Forest01, 2 Camp01) |
 | `AUTO_START` | 0 | > 0: server tự gửi lệnh bắt đầu trận (501) sau N giây kể từ lúc vào phòng chờ |
+| `TURN_START` / `TURN_MODE` | 0 / 4 | > 0: gửi 189 (mode `TURN_MODE`) N giây sau 501. **Dùng `TURN_MODE=1`** (mode 1 start đồng hồ trận) |
+| `GO_START` | 0 | > 0: gửi 190 "GO" N giây sau 189 |
+| `PLAY_START` | 0 | > 0: gửi 189 **mode 0** N giây sau 190 → phase 3, đồng hồ chạy (oc_e-game §5a-3) |
+
+Chuỗi vào trận chơi được: `AUTO_START=5 TURN_START=10 TURN_MODE=1 GO_START=3 PLAY_START=4`.
 
 Log server (mọi gói vào/ra, đã giải mã) ở `logs/fakeserver_host.log`.
 
@@ -101,14 +106,29 @@ CLICKS="975,38,3 385,50,4 437,612,10 512,384,8" tools/xvfb_join.sh
 | Vào phòng chờ | 337 | 103 (`room_player`), 106 (`room_slot_state`), 113 (`room_map`) | trưởng phòng, ô 0, map |
 | Bấm BẮT ĐẦU | 97 | 501 (`match_start`) | hoặc server tự gửi 501 (`AUTO_START`) |
 | Bắt đầu lượt (server tự) | — | 189 (`round_start`, mode 1/2/4 — `TURN_MODE`) | mode 1 → client trả C→S 139; mode 2 → 140; mode 4 có cổng, sai tham số bị bỏ qua âm thầm |
-| "GO" (server tự) | — | 190 (`round_go`, sau 189 — `GO_START`) | client set phase 2, hiện overlay "THỜI GIAN" giữa màn |
+| "GO" (server tự) | — | 190 (`round_go`, sau 189 — `GO_START`) | client set phase 2 (pause đồng hồ), overlay "THỜI GIAN" |
+| Bắt đầu chơi (server tự) | — | 189 mode 0 (`round_start(mode=0)`, `PLAY_START`) | phase 3, đồng hồ chạy tiếp; cần đồng hồ đã start (189 mode 1) |
 
 Chi tiết + địa chỉ hàm client của từng bước: [docs/lobby.md](lobby.md) (mục "Cập nhật 5" → "Cập nhật 12");
 [docs/oc_e-game.md](oc_e-game.md) §5a/§5a-2 (189/190, đã decompile đủ + kiểm runtime).
 
 ---
 
-## 5. Tiến độ vào trận (2026-10-17) — đã qua nạp map, còn kẹt điều khiển
+## 5. Tiến độ vào trận (2026-10-18)
+
+**Cập nhật 2026-10-18 (Claude Opus 5.5, bước 1 "lần ngược từ triệu chứng" bằng gdb) — chi tiết `oc_e-game.md` §5a-3:**
+- **Giả thuyết 1 đúng** (thiếu gói), không phải do skip 0x736C27: phím ←↑→↓/Space đi hết đường input tới controller
+  bomber (`sub_708CC8` → `CGameContext` vf8 `sub_6E5E05`), mọi cổng đều qua. Thứ đứng im là **mô phỏng**: đồng hồ trận
+  `CGameClock` chưa bao giờ được start (`T[2]=0`) nên tick `vf46` chỉ chạy vòng chờ vf161.
+- Đồng hồ start bởi `sub_6E1AF7` ← `sub_6E2054` ← **189 mode 1** (hoặc mode 4 nhánh B, 191…); 190 pause; **189 mode 0**
+  (phase 2 → 3) resume. Fakeserver thêm `PLAY_START`. Chuỗi `TURN_MODE=1 … PLAY_START=4` → nhân vật hiện ở spawn và
+  quay mặt theo phím (`docs/battle_turn_LRUD.png`); không đi được vì spawn bị chặn — phải đặt bom.
+- **Kẹt mới:** Space (đặt bom) → crash trong VM `sub_6EFD24` (site 0x6EFD4A, gọi từ `CGOCAHeroGameBomber__vf6_2`
+  0x5B1FB5). Khối VM → chủ dự án xử lý.
+- Công cụ: `tools/match_gdb.sh <gdb_file> <outdir>` (full flow + bấm phím) với `tools/gdb/{input_gates,input_dispatch,
+  phase_clock}.gdb`.
+
+### Ghi chép 2026-10-17 — đã qua nạp map, còn kẹt điều khiển
 
 Được giao xử lý trước đó ("viết lại khối 0x736C27"). Kết quả:
 
@@ -140,8 +160,10 @@ Ghi chép trước đó về phần crash map: [docs/lobby.md](lobby.md) "Cập 
 
 ## 6. Việc tiếp theo (theo thứ tự ưu tiên)
 
-1. **Mở điều khiển nhân vật trong trận** (kế tiếp mục 5) — **phân định 2 giả thuyết** (thiếu gói/state hay skip
-   0x736C27 bỏ việc):
+0. **(2026-10-18)** Điều khiển đã mở tới mức nhân vật nhận phím; chặn tiếp theo là **khối VM 0x6EFD4A** (đặt bom) —
+   chủ dự án. Phía server làm được song song: kiểm ý nghĩa u32 của 189 / chuỗi 189 mode 1 có đúng với server gốc,
+   gói kết thúc lượt 146, đồng hồ "GIỚI HẠN" (this[19736/19740] từ 190).
+1. ~~Mở điều khiển nhân vật trong trận~~ — đã phân định: giả thuyết 1 (thiếu 189 mode 1/mode 0). Mục cũ giữ để tham khảo:
    - Snapshot + emulate `0x736C27` trên client gốc (viết lại thật khối nạp map) — hoặc trước đó, chụp pre/post
      snapshot của khối để liệt kê đúng vùng nhớ/field khối tác động;
    - Đọc vòng tick `sub_71B521` (điều kiện client gửi 141) và nguồn HUD "GIỚI HAN"/overlay THỜI GIAN để biết

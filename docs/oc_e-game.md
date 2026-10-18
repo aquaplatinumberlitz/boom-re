@@ -232,7 +232,8 @@ opcode 189 (S→C) — thứ tự đọc: u8 mode, u32, u16 map_id, rồi field 
           [vt+424](0, 9430) nếu sub_58D4DA != 0; rồi gửi C→S **140** {bool 1}.
           ⇒ 140 là phản hồi CỦA CẢ nhánh A và nhánh B (đã chạy thật: mode 4 (1,1,1) → client trả 140 sau 89 ms,
           thấy ở cả run của agent lẫn run tái-build của chủ dự án).
-  mode 0: (không field; chỉ khi this[5402]==2 → sub_70E511: sub_70C5DC(3), vf155(1), …)
+  mode 0: (không field riêng — chỉ header u8/u32/u16; chỉ khi this[5402]==2 → sub_70E511: phase 3, vf155(1),
+          resume đồng hồ trận — xem §5a-3, đã kiểm runtime 2026-10-18)
 ```
 Đã chạy thật (fakeserver `TURN_MODE`): mode 4 với a4=1 → bị cổng từ chối (im lặng); mode 1 → client gửi 139 ✓ +
 nạp lại round (renderer đổi layout, nhân vật về spawn); mode 2 (a4=1,a5=1,a6=12345) → client gửi 140 ✓ (màn hình
@@ -256,6 +257,46 @@ opcode 190 (S→C):
 set. Đồng hồ bên (GIỚI HAN) vẫn 00:00 và nhân vật vẫn chưa điều khiển được — bộ đếm/điều khiển có nguồn khác
 (CHƯA KIỂ — nghi gói 356/176 theo §5g, hoặc bomber cần state từ [vt+424]/loop nguồn khác).
 fakeserver: `round_go()` + env `GO_START`/`TURN_*`.
+
+### 5a-3. Mở điều khiển: phase + đồng hồ trận ✅ runtime (2026-10-18, Claude Opus 5.5, gdb)
+Kết luận: kẹt điều khiển là **thiếu gói (giả thuyết 1)**, không phải do skip 0x736C27. Chuỗi đúng:
+**501 → 189 mode 1 → 190 → 189 mode 0** (fakeserver: `TURN_MODE=1 PLAY_START=4`).
+
+Đường phím (đã kiểm từng bp, `tools/gdb/input_gates.gdb` + `input_dispatch.gdb`):
+- `CGameStage__vf15` 0x7120F6 (WM_KEYDOWN 0x100/UP 0x101/CHAR 0x102; cổng `this[91] >= 256` — runtime 0x10D, qua)
+  → `sub_70DA84` → bảng phím `sub_8DD392` (←↑→↓ = action 0/1/2/3 (VK 25/26/27/28), Space = 4; slot 0)
+  → `sub_708CC8(key, action, slot, down)`: cổng `byte this[0x570A+slot]` (ctor `sub_70CBAF` gán sẵn 01/01 cho slot 0/1;
+  bật/tắt qua sự kiện nội bộ `CGameStage__vf1` 0x7085E5 type 7/6 → `sub_7037E7`) — runtime 01, qua
+  → strategy list `this[5413]` vf17 (+0x44) (obj vt 0xC668AC, trả 0) → game context `this[5407]` (`CGameContext`
+  vt 0xC5466C) vf8 (+0x20) = `sub_6E5E05`: bomber `sub_6E5C77(slot)` → controller `bomber+1524` vf3(dir) /
+  case 4 đặt bom → `CGOCAHeroGameBomber__vf6_2` …
+- Không có gói C→S nào cho di chuyển (cả trước lẫn sau khi mở): input là client-side tới controller bomber.
+
+Vì sao vẫn đứng: tick `CHiddenCatchGameStage__vf46` 0x70572A (slot vt 46 của CGameStage) đọc đồng hồ
+`this[5342]` = `CGameClock` (vt `vt_CGameClock`, nằm ở `ctx+0x1DF05C`, `sub_6E204D`):
+`T[2]` started, `T[3]` cờ, `T[4]` base (timeGetTime), `T[5]` arg start, `T[6..9]` "giữ giá trị", `T[10]` mốc pause,
+`T[12]` tổng thời gian pause. `T[2] == 0` → mỗi tick gọi vf161 (vòng chờ, query bomber theo slot); `sub_6E19F6`
+(elapsed) ≠ 0 → vf159 (bước mô phỏng).
+- **Start**: `sub_6E1AF7(clock, a2)` (T[4]=now−x, T[2]=T[3]=1, xoá pause) — gọi qua `sub_6E2054` (ctx) từ:
+  189 mode 1 (`sub_70E357`, vô điều kiện), 189 mode 4 **chỉ nhánh B**, 191 `sub_709A38`, `sub_709D5E`, `sub_70A04B`,
+  `sub_70A158`, `sub_70A647`; và qua `sub_5A8DA5` trong 190 khi `this[5417]` ≠ 0 (strategy; trận thường = 0).
+- **Pause**: 190 → `sub_6E1B3D` (T[10]=now). **Resume**: `sub_6E1A86` — chỉ từ `sub_70E511`.
+- **Phase** `this[5402]` (`sub_70C5DC`): 189 mode 1 → 1; 190 → 2; **189 mode 0 khi phase == 2 → `sub_70E511`**: phase 3,
+  vf155(1) (BGM), resume clock, `sub_70319B`, strategy vf16, `sub_6FFCC4`, vf74 → `sub_72EFC3`.
+- 189 mode 0 = header chung (`u8 0, u32, u16 map_id`), không có field riêng (map_id → `sub_8EAB95`).
+
+Số liệu runtime (`tools/gdb/phase_clock.gdb`, bp tick lấy mẫu 1/400):
+- 189 mode 4 (nhánh A) → 190 → 189 mode 0: PHASE 0→2→3 ✓, pause/resume ✓ (acc=0xFB8 ≈ 4 s) nhưng **T[2]=0, base=0** suốt
+  → mô phỏng không chạy, không thấy nhân vật trên map.
+- 189 mode 1 → 190 → 189 mode 0: HUD đổi (bộ đếm "00" trên cùng, mũi tên đánh dấu spawn), nhân vật hiện ở spawn góc
+  phải-trên và **quay mặt theo ←→↑↓** (`docs/battle_turn_LRUD.png`, `docs/battle_phase3.png`). Không đi được vì ô spawn
+  bị chặn (viền/cây/gạch) — cần đặt bom.
+- Space (đặt bom) → **crash trong VM**: EIP 0x11FB494, stack `sub_708CC8` → ctx vf8 case 4 (0x6E5F2A) →
+  `CGOCAHeroGameBomber__vf6_2` (call tại 0x5B1FB5) → `sub_6EFD24` = site VM **0x6EFD4A** (vmtriage P1). Phần khối VM
+  do chủ dự án xử lý.
+
+CHƯA KIỂ: ý nghĩa u32 của 189 (this[4887]) và v13/T[5] truyền vào start; mode 1 hợp với trận thường hay chỉ là
+"nạp lại round" (thứ tự server gốc chưa biết — đây là chuỗi tối thiểu chạy được).
 
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |

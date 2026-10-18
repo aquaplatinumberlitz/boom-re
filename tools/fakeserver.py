@@ -14,6 +14,7 @@ AUTO_START = float(__import__('os').environ.get('AUTO_START', '0'))  # >0: send 
 TURN_START = float(__import__('os').environ.get('TURN_START', '0'))  # >0: send opcode 189 N s after 501 (TURN_START counts from the 501 moment)
 TURN_MODE = int(__import__('os').environ.get('TURN_MODE', '4'))      # mode field of opcode 189 (1/2/4, see oc_e-game.md §5a)
 GO_START = float(__import__('os').environ.get('GO_START', '0'))      # >0: send opcode 190 ("GO", sub_70E7D6, sets phase this[5402]=2) N s after 189
+PLAY_START = float(__import__('os').environ.get('PLAY_START', '0'))  # >0: send opcode 189 mode 0 (sub_70E511: phase 3 + resume clock) N s after 190
 
 
 def hello_packet(header_type=HEADER_TYPE, version=CLIENT_VERSION):
@@ -479,6 +480,12 @@ async def handle(reader, writer, port, log):
                                     writer.write(sess.send(r))
                                     await writer.drain()
                                     log(f"[{port}] S->C opcode 190 (GO)")
+                                    if PLAY_START:  # 189 mode 0 while phase == 2 -> sub_70E511: phase 3, clock runs
+                                        await asyncio.sleep(PLAY_START)
+                                        r = round_start(mode=0)
+                                        writer.write(sess.send(r))
+                                        await writer.drain()
+                                        log(f"[{port}] S->C opcode 189 (mode 0, play)")
                         asyncio.ensure_future(_start())
                 if op == 97:  # client Start (passed its own checks) -> start the match
                     replies = [match_start()]
