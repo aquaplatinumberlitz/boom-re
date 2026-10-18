@@ -1831,10 +1831,109 @@ def cmd_opsrc(a):
         print(f"-> {a.json}")
 
 
+def cmd_fit(a):
+    """Fit a simple arithmetic hypothesis to each opcode from trace samples.
+
+    For every virtual instruction we record all general registers before and after. For each
+    opcode, for each register that changes, we test candidate two-operand operations over every
+    sample and keep hypotheses that match ALL samples. This turns "what does opcode X do" into
+    a fitting problem instead of reading 7000 junk instructions.
+    """
+    from unicorn import UC_HOOK_CODE, UcError
+    from unicorn import x86_const as X
+    site = int(a.site, 16)
+    disp = int(a.disp, 16)
+    img = Image(a.exe)
+    snap = Snap(a.snap)
+    mu = build_uc(snap=snap)
+    setup_from_snap(mu, snap, img, site)
+    NAMES = ("eax", "ebx", "ecx", "edx", "esi", "edi", "ebp")
+    REG = {k: getattr(X, "UC_X86_REG_" + k.upper()) for k in NAMES}
+    samples = collections.defaultdict(list)
+    prev = [None]
+    n = [0]
+
+    def on_code(mu8, addr, size, u):
+        n[0] += 1
+        if n[0] > a.max:
+            mu8.emu_stop()
+            return
+        if addr != disp:
+            return
+        rv = tuple(mu8.reg_read(REG[k]) & 0xFFFFFFFF for k in NAMES)
+        op = mu8.reg_read(X.UC_X86_REG_EAX)
+        if prev[0] is not None:
+            pop, prv = prev[0]
+            samples[pop].append((prv, rv))
+        prev[0] = (op, rv)
+
+    mu.hook_add(UC_HOOK_CODE, on_code)
+    try:
+        mu.emu_start(site, 0xFFFFFFFF)
+    except UcError:
+        pass
+    print(f"insns {n[0]}  opcodes with samples {len(samples)}  total samples "
+          f"{sum(len(v) for v in samples.values())}")
+
+    def ops(a_, b_, ti=None, ai=None):
+        yield "a", a_
+        yield "b", b_
+        yield "a+b", (a_ + b_) & 0xFFFFFFFF
+        yield "a-b", (a_ - b_) & 0xFFFFFFFF
+        yield "b-a", (b_ - a_) & 0xFFFFFFFF
+        yield "a&b", a_ & b_
+        yield "a|b", a_ | b_
+        yield "a^b", a_ ^ b_
+        yield "a<<b", (a_ << (b_ & 31)) & 0xFFFFFFFF
+        yield "a>>b", a_ >> (b_ & 31)
+        yield "a*b", (a_ * b_) & 0xFFFFFFFF
+        yield "~a", (~a_) & 0xFFFFFFFF
+        yield "-a", (-a_) & 0xFFFFFFFF
+
+    resolved = {}
+    for op, rows in samples.items():
+        if len(rows) < a.min_samples:
+            continue
+        # chỉ quan tâm thanh ghi thật sự đổi giá trị trong ít nhất một mẫu
+        changed = {ti for ti in range(len(NAMES))
+                   if any(before[ti] != after[ti] for before, after in rows)}
+        best = None
+        for ti in sorted(changed):
+            for ai in range(len(NAMES)):
+                for bi in range(len(NAMES)):
+                    if ai == bi:
+                        continue
+                    if ai == ti and bi == ti:
+                        continue
+                    for hname in ("a+b", "a-b", "b-a", "a&b", "a|b", "a^b", "a<<b",
+                                  "a>>b", "a*b", "~a", "-a", "a", "b"):
+                        ok = all(dict(ops(before[ai], before[bi]))[hname] == after[ti]
+                                 for before, after in rows)
+                        if not ok:
+                            continue
+                        if hname == "a" and ai == ti:
+                            continue          # identity: vô nghĩa
+                        desc = hname.replace("a", NAMES[ai]).replace("b", NAMES[bi])
+                        best = f"{NAMES[ti]} = {desc}"
+                        break
+                    if best:
+                        break
+                if best:
+                    break
+            if best:
+                break
+        if best:
+            resolved[op] = (best, len(rows))
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps(
+            {hex(k): {"hypothesis": v[0], "samples": v[1]} for k, v in resolved.items()}, indent=1))
+        print(f"-> {a.json}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift",
-                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit", "cfg", "verify", "doctor", "opsrc"])
+                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx", "emit", "cfg", "verify", "doctor", "opsrc", "fit"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
     ap.add_argument("--site", help="VM site (hex)")
     ap.add_argument("--cont", help="continuation address (hex), stop when reached")
@@ -1845,6 +1944,7 @@ def main():
     ap.add_argument("--max-writes", type=int, default=200_000)
     ap.add_argument("--fake-native", action="store_true",
                     help="không chạy code ngoài VM: giả lập return khi VM gọi hàm native/API")
+    ap.add_argument("--min-samples", type=int, default=8, help="số mẫu tối thiểu để fit")
     ap.add_argument("--fields", default="0x94", help="số byte ctx đem diff")
     ap.add_argument("--vsp-off", default="0xc", help="offset của VSP trong ctx (nếu không dùng --vsp-reg)")
     ap.add_argument("--vsp-reg", default="esp", help="thanh ghi giữ VSP ('-' để dùng ctx field)")
@@ -1878,7 +1978,7 @@ def main():
     {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps, "ctx": cmd_ctx,
      "trace": cmd_trace, "lift": cmd_lift, "profile": cmd_profile,
      "handlers": cmd_handlers, "bytecode": cmd_bytecode, "decode": cmd_decode,
-     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit, "cfg": cmd_cfg, "verify": cmd_verify, "doctor": cmd_doctor, "opsrc": cmd_opsrc}[a.cmd](a)
+     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx, "emit": cmd_emit, "cfg": cmd_cfg, "verify": cmd_verify, "doctor": cmd_doctor, "opsrc": cmd_opsrc, "fit": cmd_fit}[a.cmd](a)
 
 
 if __name__ == "__main__":

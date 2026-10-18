@@ -672,6 +672,47 @@ Trong khi `8F452B` chạy ngay lúc khởi động nên lấy được. Muốn c
 host, cho client login (creds trong `docs/protocol.md`), rồi `snap.bat 8F8F69 8F8FCA` — hoặc dùng chiêu
 `--pre-asm sub_8F391D(10)` trên snapshot `8F5F40` như repo đã làm.
 
+
+## 21. Có đáng làm ngữ nghĩa 46 opcode không? (đếm trước)
+
+Đếm trên 73 VM entry thật (head `0x11EE3B0`):
+
+| nhóm | số khối |
+|---|---|
+| đã có trong `devirt.py` | 14 |
+| **còn lại** | **59** |
+| trong đó: anti-cheat (`0xA12E59..0xA17A24`) | **58** |
+| trong đó: code game | **1** (`0x966FEC` — hàm mồ côi, 0 xref) |
+
+⇒ **Toàn bộ 58/59 khối còn lại là anti-cheat** — đúng phần repo đã quyết định bỏ. Khối game duy nhất còn
+lại là hàm mồ côi không ai gọi.
+
+**Kết luận:** với mục tiêu của repo (devirt đủ để chơi lại), làm full semantics **không đáng** — nó chỉ có
+giá trị nếu ai đó muốn một devirtualizer tổng quát.
+
+## 22. Hypothesis fitter — đã thử, thất bại, và biết vì sao
+
+Thêm lệnh `fit`: với mỗi opcode, thử khớp `target = f(a,b)` trên mọi mẫu (registers trước/sau mỗi VI).
+
+```
+python3 tools/vmdevirt.py fit --snap logs/snap/8F346C/pre.snap --site 8F346C \
+        --disp 11F9E81 --max 1500000 --min-samples 8
+insns 1500001  opcodes with samples 39  total samples 3679
+resolved 0/39
+```
+
+Kết quả: **0/39 opcode fit được**. Nguyên nhân (không phải bug, đã sửa 2 lỗi và vẫn vậy):
+
+1. Khoảng giữa hai dispatch chứa **nhiều việc**: cập nhật VIP, cập nhật cache dispatch, thanh ghi tạm, và
+   junk — không chỉ phép toán của opcode.
+2. Vì vậy `out = f(in)` không bao giờ đúng cho **mọi** mẫu; `vfx` đã cho thấy cùng một opcode có 2–4
+   effect-set khác nhau.
+3. Muốn tách phần ngữ nghĩa khỏi phần ghi sổ phải **symbolic/abstract interpretation bên trong handler**
+   — đúng phần "khó" đã nêu, không thể lách bằng fitting thống kê.
+
+⇒ Đây là kết quả phủ định có giá trị: nó loại bỏ hướng rẻ tiền và xác nhận chi phí thật của việc lấy ngữ
+nghĩa đầy đủ.
+
 ## 5b. Đường áp dụng sang bản KR
 
 Bản KR (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`) **đang bị pack**:
