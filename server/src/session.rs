@@ -282,7 +282,7 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 if start {
                     tokio::spawn(match_flow(hub.clone(), cfg.clone(), log.clone(), port, 1.0));
                 }
-            } else if op == 337 && !room_pending {
+            } else if op == 337 && !room_pending && !hub.room.lock().unwrap().members.iter().any(|m| m.user_id == user_id) {
                 log(format!("[{port}] 337 outside a room join (data request), ignored"));
             } else if op == 337 {
                 room_pending = false;
