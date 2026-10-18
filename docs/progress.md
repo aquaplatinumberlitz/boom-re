@@ -312,7 +312,8 @@ Khung server thật, port 1:1 từ `tools/fakeserver.py` (đặc tả vẫn là 
 - Kiểm chứng: `cargo test` — **mọi builder và cả hai chiều đóng khung khớp từng byte với fakeserver** (`tests/golden.txt`
   sinh bởi `python3 tools/gen_golden.py > server/tests/golden.txt`; sinh lại khi sửa fakeserver), danh sách 1019 map khớp.
 - Chạy: `cd server && cargo run --release -- --log ../logs/server.log` (env như mục 3.3). **Đã chạy với client gốc trong WinBoat**
-  (2026-10-18, `SERVER_IP=172.18.0.50`) tới phòng chờ và vào trận; chạy với bản dump trong Wine vẫn dùng `fakeserver.py` (`match_gdb.sh`) — chưa so log hai server cho cùng một chuỗi.
+  (2026-10-18, `SERVER_IP=172.18.0.50`) tới phòng chờ; và **với bản dump trong Wine trọn một trận** (`RUST=1 tools/match_play.sh …`, `logs/xvfb/rust_boom`):
+  đăng nhập → phòng → 501/189/190/189/191 → đi lại → đặt bom → 152 → 151 → bom nổ (`BOMB_FUSE`, mặc định 2.5 s).
 - Việc tiếp: parse gói C→S có cấu trúc (77, 97, 139/140, 111/112/145 của `CGameMsgCache`), nhiều người chơi/phòng,
   relay gói trận theo khoá phiên (`oc_e-game.md` §5a-4).
 

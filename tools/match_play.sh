@@ -1,12 +1,13 @@
 #!/bin/sh
 # gdb run of a full match + walking test (KEYS=): login -> room -> 501 -> 189 (TURN_MODE) -> 190 -> 189 mode 0 (PLAY_START) -> arrow keys + Space.
+# RUST=1: use the Rust server (server/target/release/boom-server) instead of tools/fakeserver.py
 # usage: tools/match_gdb.sh <gdb_cmds> <outdir> [secs]   (gdb files: tools/gdb/*.gdb; GREP= pattern to summarise gdb.txt)
 S=$(dirname "$(realpath "$0")"); CMDS=$(realpath "$1"); OUT=$(realpath -m "$2"); SECS=${3:-420}
 mkdir -p "$OUT"
 cd /home/admin/boom-re
 pkill -9 -f "[c]a_fixed_patched" 2>/dev/null; pkill -9 -f "[X]vfb :77" 2>/dev/null; sleep 1
 AUTO_START=5 TURN_START=10 TURN_MODE=${TURN_MODE:-4} GO_START=3 PLAY_START=${PLAY_START:-0} POST_PLAY_START=${POST_PLAY_START:-0} BOMB_ECHO=${BOMB_ECHO:-0} BOMB_PLACE=${BOMB_PLACE:-0} BEGIN_START=${BEGIN_START:-0} BEGIN_OP=${BEGIN_OP:-191} \
-  python3 tools/fakeserver.py --log "$OUT/fakeserver.log" > "$OUT/fakeserver.out" 2>&1 & FS=$!
+  $( [ -n "$RUST" ] && echo server/target/release/boom-server || echo python3 tools/fakeserver.py ) --log "$OUT/fakeserver.log" > "$OUT/fakeserver.out" 2>&1 & FS=$!
 Xvfb :77 -screen 0 1024x768x24 -nolisten tcp >/dev/null 2>&1 & XP=$!
 sleep 1; export DISPLAY=:77
 ( for a in $(seq 1 18); do
