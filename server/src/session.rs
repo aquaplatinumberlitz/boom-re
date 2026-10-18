@@ -157,6 +157,31 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 // join a room from the lobby list (sub_4CB829: u16 session, u32 room id, str password, ...) -> same answer as create
                 log(format!("[{port}] join room request from user {user_id}"));
                 let _ = tx.send(pk::create_room_ok(1, cfg.room_type, 0));
+            } else if op == 88 && body.len() >= 8 {
+                // map choice in the waiting room (sub_6C3557): u16 CPlayMapInfoList index (sub_6DC06C), u32 231-table index.
+                // The client locks its buttons (vf153(0), state 1) until 113 arrives (CPrepareStage__On_113 -> vf153(1)).
+                let code = proto::get_int(&body[2..], 2, true) as u16;
+                let index = proto::get_int(&body[4..], 4, true) as u32;
+                let ok = (index as usize) < cfg.maps.len();
+                log(format!("[{port}] map choice from user {user_id}: index {index} code {code}{}", if ok { "" } else { " (unknown, ignored)" }));
+                if ok {
+                    hub.room.lock().unwrap().map = Some((index, code));
+                    hub.broadcast(&pk::room_map(index, code));
+                } else {
+                    let (i, c) = room_map_of(&hub, &cfg);
+                    let _ = tx.send(pk::room_map(i, c));
+                }
+            } else if op == 94 && body.len() >= 4 {
+                // open/close an empty slot (sub_6BE8AF, room master): u8 slot, u8 closed. The client waits (state 2) for the
+                // 106 of that slot; bit 0 of its flags = closed for an empty slot (ready for a taken one), On_106 0x6C6BC9.
+                let slot = proto::get_int(&body[2..], 1, true) as u8;
+                let closed = proto::get_int(&body[3..], 1, true) != 0;
+                log(format!("[{port}] slot {slot} closed={closed}"));
+                if slot < 16 {
+                    let mut r = hub.room.lock().unwrap();
+                    if closed { r.closed |= 1 << slot } else { r.closed &= !(1 << slot) }
+                }
+                hub.broadcast(&pk::room_slot_state(slot, false, closed, 0, 0));
             } else if op == 337 {
                 in_room = true;
                 hub.lobby.lock().unwrap().retain(|t| !t.same_channel(&tx));
@@ -220,6 +245,8 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
         r.members.retain(|m| m.user_id != user_id);
         if r.members.is_empty() {
             r.started = false;
+            r.map = None;
+            r.closed = 0;
         }
         drop(r);
         hub.push_room_list(cfg.room_type);
@@ -255,8 +282,10 @@ fn replies(op: u16, port: u16, cfg: &Config) -> Vec<Vec<u8>> {
 /// Server-driven match: 501 -> 189 (TURN_MODE) -> 190 -> 191/146 -> 189 mode 0 (docs/oc_e-game.md §5a-3).
 async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16) {
     let wait = |s: f64| tokio::time::sleep(Duration::from_secs_f64(s));
-    let map = &cfg.maps[0];
     wait(cfg.auto_start).await;
+    // the map is read after the wait: the master may still pick one (C->S 88) in the meantime
+    let (map_index, _) = room_map_of(&hub, &cfg);
+    let map = cfg.maps.get(map_index as usize).unwrap_or(&cfg.maps[0]);
     if !cfg.items.is_empty() || !cfg.floor_items.is_empty() {
         // item layout must arrive before 501 (read when the map loads); list 1 = floor, list 2 = hidden in bricks
         let bricks: Vec<(u16, u8, u8, u32)> = cfg.items.iter().enumerate().map(|(i, &(x, y, k))| (i as u16, x, y, k)).collect();
@@ -265,8 +294,8 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16) {
         hub.broadcast(&pk::map_items(&floor, &bricks));
     }
     let slots: Vec<(u8, u8, u8)> = hub.room.lock().unwrap().members.iter().map(|m| (m.slot, m.slot, 0)).collect();
-    hub.broadcast(&pk::match_start(map, 0, cfg.room_type, 12345, &slots));
-    log(format!("[{port}] match flow: 501"));
+    hub.broadcast(&pk::match_start(map, map_index, cfg.room_type, 12345, &slots));
+    log(format!("[{port}] match flow: 501 map {map_index}"));
     if cfg.turn_start <= 0.0 {
         return;
     }
@@ -354,18 +383,24 @@ fn find_user(body: &[u8], known: std::ops::Range<u32>) -> Option<u32> {
 
 /// Opcode 337 (entering the waiting room): put the user into the shared room, tell everybody, start the match
 /// when `PLAYERS` clients are in. Slot 0 = room chief.
+/// The room's map: the last C->S 88 choice, else MAP_INDEX (code 0 = let the client look it up).
+fn room_map_of(hub: &Hub, cfg: &Config) -> (u32, u16) {
+    hub.room.lock().unwrap().map.unwrap_or((cfg.map_index, 0))
+}
+
 fn enter_room(hub: &Arc<Hub>, cfg: &Arc<Config>, log: &Log, port: u16, user_id: u32, tx: &mpsc::UnboundedSender<Vec<u8>>) {
-    let (slot, others, start) = {
+    let (slot, others, start, closed) = {
         let mut r = hub.room.lock().unwrap();
         r.members.retain(|m| m.user_id != user_id);
-        let slot = (0..16u8).find(|s| !r.members.iter().any(|m| m.slot == *s)).unwrap_or(0);
+        let closed = r.closed;
+        let slot = (0..16u8).find(|s| closed & (1 << s) == 0 && !r.members.iter().any(|m| m.slot == *s)).unwrap_or(0);
         let others: Vec<(u8, u32, String)> = r.members.iter().map(|m| (m.slot, m.user_id, m.name.clone())).collect();
         r.members.push(Member { user_id, name: hub::player_name(user_id), slot, tx: tx.clone(), udp: None });
         let start = !r.started && r.members.len() >= cfg.players && cfg.auto_start > 0.0;
         if start {
             r.started = true;
         }
-        (slot, others, start)
+        (slot, others, start, closed)
     };
     let name = hub::player_name(user_id);
     log(format!("[{port}] user {user_id} enters the room in slot {slot} ({} others)", others.len()));
@@ -376,7 +411,11 @@ fn enter_room(hub: &Arc<Hub>, cfg: &Arc<Config>, log: &Log, port: u16, user_id: 
     }
     let _ = tx.send(pk::room_player(slot, user_id, &name, slot == 0, 0, 0));
     let _ = tx.send(pk::room_slot_state(slot, slot == 0, false, 0, 0));
-    let _ = tx.send(pk::room_map(cfg.map_index, 0));
+    for s in (0..16u8).filter(|s| closed & (1 << s) != 0) {
+        let _ = tx.send(pk::room_slot_state(s, false, true, 0, 0));
+    }
+    let (map_index, map_code) = room_map_of(hub, cfg);
+    let _ = tx.send(pk::room_map(map_index, map_code));
     // the others: the newcomer
     for m in hub.room.lock().unwrap().members.iter().filter(|m| m.user_id != user_id) {
         let _ = m.tx.send(pk::room_player(slot, user_id, &name, slot == 0, 0, 0));

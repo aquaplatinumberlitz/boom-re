@@ -509,7 +509,7 @@ chuyển tiếp `CSessionStage__OnPacket` → `CChatStage__OnPacket`). `CSession
   chơi (`sub_9B63AA`), nên fakeserver mặc định loại 19 (`ROOM_TYPE`). Lỗi BẮT ĐẦU hiển thị bởi `sub_6C710D(mã)`
   (2 CantDecideMap, 3 AllMustReady, 4 SmallPlayerNo, 5 SmallMapPlayer[2], 6 SmallTeamNo, …), cũng dùng cho **opcode 116**.
 - Nút BẮT ĐẦU = `sub_6C869F` (vf77): kiểm tra → gửi **opcode 97** (blob + thông tin map `sub_6DF9FB`) → `this[4777]=3`.
-- Hiện tại: "CantDecideMap" — hộp thoại map vẫn liệt kê 0 map (bộ lọc `sub_6DEE48` loại hết; đang đo bằng gdb).
+- Hiện tại: "CantDecideMap" — hộp thoại map vẫn liệt kê 0 map (bộ lọc `sub_6DEE48` loại hết; đang đo bằng gdb). **Đã giải: xem Cập nhật 15.**
 
 ### Cập nhật 12: bắt đầu trận do server chủ động (501) → CGameStage (2026-10-17) — DỪNG
 - **Opcode 501** (`CPrepareStage__On_501` 0x6C4978, định dạng trong `match_start()`; đối chiếu `docs/oc_a-room.md` của
@@ -541,7 +541,7 @@ chuyển tiếp `CSessionStage__OnPacket` → `CChatStage__OnPacket`). `CSession
   `ThemeDefault`); client nhận (fxdynmapinfo.ssd ghi), vẫn vào trận Village01 bình thường; hộp thoại vẫn rỗng (cùng lỗi
   bộ lọc trên).
 
-## Cập nhật 13 (2026-10-18 đêm) — danh sách phòng + vào phòng người khác ✅ runtime (2 client)
+## Cập nhật 14 (2026-10-18 đêm) — danh sách phòng + vào phòng người khác ✅ runtime (2 client)
 - **S→C 88** (`sub_4D0F56`): `u16 n`; nếu n ≠ 0: blob (tag 0 + little-endian) n × bản ghi (`sub_6ACBB5`):
   `u16 số phòng (session, < 560/1049 — hiện "S02" cho 1)`, `u32 id phòng`, `u32 len + tên`, `u8 +76 có mật khẩu`, `u8 +88`, `u8 +104 đang chơi`,
   `u16 +116`, `u8 +128 số người`, `u8 +140`, `u8 +152 tối đa`, `u8 +92`, `u32 +176`, `u8, u8` (`sub_97C722`), `u8 +200`, `u8 n2` (n2 × {u8 k; k==0: u32}, `sub_6ACA64`).
@@ -550,3 +550,24 @@ chuyển tiếp `CSessionStage__OnPacket` → `CChatStage__OnPacket`). `CSession
   `u8 n người chơi trên máy`, n × `u8` (nhân vật). Server trả **83** như tạo phòng → client vào phòng chờ → 337 → server xếp vào slot kế tiếp.
 - Server Rust (`hub.rs`): 88 liệt kê phòng chung ("Phong 1", người/8, WAITING/đang chơi), gửi lại cho mọi client đang ở sảnh khi có người vào/rời phòng.
   Chạy thật (`logs/duo/t5`, `docs/lobby_room_list.png`): A tạo phòng; B thấy "S02 Phong 1 WAITING 1/8", bấm vào → C→S 78 → 83 → phòng chờ → cả hai vào trận.
+
+## Cập nhật 15 (2026-10-19) — chọn map trong phòng ✅ runtime (E7)
+Ảnh: `docs/map_select_dialog.png` (hộp thoại đủ map, chọn Forest01), `docs/battle_forest01.png` (trận trên Forest01).
+Hộp thoại trống có **hai nguyên nhân**:
+1. **Loại phòng 19 → bộ lọc mode 6.** Mode của `CDynamicMapMan` (box +120, `sub_6DC035`) đặt từ loại phòng qua `sub_6DBB1C(sub_68FE9C(loại))`
+   (gọi trong `sub_6B86CB` tạo phòng, `sub_6BFC2A` On_94…). Bảng `sub_68FE9C`: 0 → mode 0, 14/17 → 3, 15 → 1, **19 → 6**, 20 → 7, 27 → 8,
+   32 → 9, 33 → 10, khác → 2. Mode 6 (`sub_6DCE87`) chỉ nhận map có (`+41 == 0xF1` hoặc `+40 == 12`) hoặc (`+40 == 1` và `+41 == 0`), và `+101 ≠ 0` —
+   map thường của ta (`+40 = 0`, `+41 = 1`) bị loại hết. Mode 0 (`sub_6DCD82`) cho qua (gdb `tools/gdb/maplist.gdb`: 3/3 map vào danh sách).
+   ⇒ chơi nhiều người / chọn map dùng **`ROOM_TYPE=0`** (loại 19 chỉ để 1 người bấm BẮT ĐẦU được).
+2. **Nút bị khoá chờ server.** Vào phòng, client gửi ngay **C→S 88** (`sub_6C3557`: `u16 chỉ số CPlayMapInfoList` (`sub_6DC06C`), `u32 chỉ số
+   bảng 231`; ví dụ `954, 0` = Village01), đặt state `this[4777] = 1` và `vf153(0)` (khoá nút CHỌN BẢN ĐỒ/BẮT ĐẦU). Chỉ **S→C 113** gỡ khoá:
+   `CPrepareStage__On_113` đưa state 1 → 0 rồi `vf153(1)`. Server cũ không trả gì cho 88 ⇒ nút mờ, bấm không mở hộp thoại.
+   - Trả lời: 113 `{u16 0, u16 chỉ số CPlayMapInfoList, u32 chỉ số 231}` (dội lại đúng 2 giá trị client gửi). u16 kết quả = 1 → thông báo
+     `MapSelectPlayer` + u8.
+- Chọn map trong hộp thoại → XÁC NHẬN → C→S 88 (`223, 1` = Forest01) → server lưu vào phòng, broadcast 113 → phòng hiện map mới; 501 gửi đúng
+  map/chỉ số (`match_start(map, index)`) → trận Forest01 chạy (đồng hồ chạy, nhân vật đứng góc trên trái).
+- **Đóng/mở ô (C→S 94)** (`sub_6BE8AF`, chỉ chủ phòng): `u8 slot, u8 đóng`; client đặt state 2 + `vf153(0)` và chờ **S→C 106** của ô đó
+  (`On_106`: chủ phòng, bit 0 cờ đổi → state 2 → 0, `vf153(1)`). Bit 0 cờ 106 = **đóng** với ô trống (= sẵn sàng với ô có người); bit 2–4
+  (`0x1C`) chưa rõ. Server Rust: mask `closed` của phòng, bỏ ô đóng khi xếp chỗ, gửi trạng thái ô đóng cho người mới vào.
+- Server Rust: `session.rs` op 88 / op 94, `hub.rs` `Room.map`/`Room.closed`; match_flow đọc map **sau** `AUTO_START` (chủ phòng còn kịp chọn).
+

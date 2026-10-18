@@ -109,6 +109,9 @@ opcode 88 (client→server): u16 (sub_6DC06C(id) = u16 tại bản ghi-map[id]+1
   u32 id). Hoàn; nghĩa server trả lại = **94** (sub_6C450D) cập nhật phòng. CHƯA KIỂ
   cho giá trị sample.
 
+- ✅ **Runtime (2026-10-19):** server trả **113** `{u16 0, u16, u32}` (dội lại 2 giá trị của 88) → `On_113` state 1→0, `vf153(1)` mở
+  khoá nút. Không trả thì nút CHỌN BẢN ĐỒ/BẮT ĐẦU bị khoá mãi. Chi tiết + C→S 94/S→C 106 (đóng/mở ô): `docs/lobby.md` Cập nhật 15.
+
 ### 2c. Map/theme id hợp lệ 🟢/❓
 
 - `sub_6DC339(id)` (bản ghi+41): mode/loại của map; `sub_6DC06C(id)` (+112): u16 chỉ số.

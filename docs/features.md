@@ -118,10 +118,10 @@ Phân bố opcode theo nhóm:
 | E4 | tạo phòng | dialog tạo phòng, map Village01 | ✅ | ✅ |
 | E5 | danh sách phòng / vào phòng | S→C 88 (định dạng phòng), C→S 78 (vào phòng) → 83; 2 client: B thấy phòng của A và vào được (`lobby.md` cập nhật 13) | ✅ | ✅ |
 | E6 | phòng chờ `CPrepareStage` (36) | người chơi, trưởng phòng, nút BẮT ĐẦU | ✅ | ✅ |
-| E7 | chọn map trong phòng | hiện `Village01`; hộp thoại từng trống | 🟡 | 🟡 |
+| E7 | chọn map trong phòng | C→S 88 → S→C 113; cần loại phòng 0 (19 = bộ lọc mode 6 loại hết map); Forest01 chơi được (lobby.md Cập nhật 15) | ✅ | ✅ |
 | E8 | bắt đầu trận | 501 → 189 mode 1 → 190 → 189 mode 0 → **191** (191 phải sau 189 mode 0) | ✅ | ✅ |
 | E12 | sẵn sàng / đội / chọn nhân vật trong phòng | mới 1 người, chưa làm | ⬜ | ⬜ |
-| E9 | kick / đổi chủ phòng / option phòng | trong E6 dispatcher | ⬜ | ⬜ |
+| E9 | kick / đổi chủ phòng / option phòng | đóng/mở ô: C→S 94 → S→C 106 ✅; kick/đổi chủ chưa | 🟡 | 🟡 |
 | E10 | `CHiddenCatchPrepareStage` (33) | mode riêng, dispatcher | ⬜ | ⬜ |
 | E11 | vào kênh (enter channel) | stage 10 → 11 | ✅ | ✅ |
 
@@ -189,7 +189,7 @@ Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 1. ~~F8 kết thúc ván~~ **xong** (`b1fc290`); ~~F6/F7 chết/lượt~~ **xong** (`5aee4e4`).
 2. **F9** nhiều người trong trận (mới 1 người) — cần B12 (UDP P2P) + server phát 111/152/151/120 cho mọi client.
 3. **F10** vật phẩm rơi — đang làm (553 + 135 đã tìm, còn mã `kind`).
-4. **E5/E7** danh sách phòng + chọn map (để chơi map khác Village01).
+4. ~~**E5/E7** danh sách phòng + chọn map~~ **xong** (Forest01 chơi được với `ROOM_TYPE=0`).
 5. **D1** chat (38 opcode, chưa làm gì).
 6. **F11** `0x736C27`: kiểm thêm map/loại phòng khác (20/33) — với Village01/phòng 19 skip đã chứng minh tương đương.
 7. Các mode F13–F20: chỉ làm khi map/mode tương ứng được mở.

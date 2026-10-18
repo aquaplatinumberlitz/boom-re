@@ -21,6 +21,10 @@ pub struct Room {
     pub members: Vec<Member>,
     pub started: bool,
     pub next_bomb_id: u16,
+    /// Map chosen in the room (C->S 88): index into the 231 table, `CPlayMapInfoList` index. None = server default.
+    pub map: Option<(u32, u16)>,
+    /// Slots closed by the room master (C->S 94), bit i = slot i.
+    pub closed: u16,
 }
 
 pub struct Hub {

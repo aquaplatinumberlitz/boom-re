@@ -63,7 +63,7 @@ Biến môi trường (đặt trước lệnh):
 
 | Biến | Mặc định | Ý nghĩa |
 |---|---|---|
-| `ROOM_TYPE` | 19 | Loại phòng trong gói tạo phòng (83). Loại 19 cho **1 người** bắt đầu được |
+| `ROOM_TYPE` | 19 | Loại phòng trong gói tạo phòng (83). Loại 19 cho **1 người** bắt đầu được, nhưng hộp thoại chọn map trống (bộ lọc mode 6); **0** = phòng thường, chọn map được (lobby.md Cập nhật 15) |
 | `MAP_INDEX` | 0 | Map của phòng = chỉ số trong `BATTLE_MAPS` (0 Village01, 1 Forest01, 2 Camp01) |
 | `AUTO_START` | 0 | > 0: server tự gửi lệnh bắt đầu trận (501) sau N giây kể từ lúc vào phòng chờ |
 | `TURN_START` / `TURN_MODE` | 0 / 4 | > 0: gửi 189 (mode `TURN_MODE`) N giây sau 501. **Dùng `TURN_MODE=1`** (mode 1 start đồng hồ trận) |
