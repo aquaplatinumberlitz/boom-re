@@ -300,6 +300,34 @@ chưa xác minh) và 2 call "thừa" #4/#5.
 Đây là mức "emit C đọc được" đầu tiên: **đúng thứ tự + đúng tham số cho các call đã biết**, còn thiếu phần
 ghi object (192 địa chỉ heap) đang chỉ thống kê chứ chưa in ra biểu thức.
 
+
+## 13. Phân loại write trong emit (round 8)
+
+Trace `8F346C` có 192 "heap" write, nhưng phân loại theo frame (`regs_start.ebp`, `.esp`):
+
+| loại | số | xử lý |
+|---|---|---|
+| stack của VM (quanh ebp/esp lúc vào) | **180** | bỏ qua — junk push/pop |
+| ra ngoài stack | **12** | in ra để kiểm tay |
+| object/biến game thật | **0** | (không có) |
+
+12 địa chỉ đó:
+
+```
+0x20B000      n=10  (TEB — VM ghi vào TEB, dấu vết anti-debug/anti-cheat)
+0x6BF67F0     n=1   last=0xF        <- trùng loại gói SendPkt__Begin(0xF)
+0x6BF67F2..   n=1   last=0xA5, 0x67, 0x32A77B11, 0x446EFB83, ...
+0x6C45B90     n=1   last=0x2B
+0x6C45BCC     n=1   last=0x13
+```
+
+`0x6BF67F0 = 0xF` khớp với `SendPkt__Begin(0xF)` ⇒ đây nhiều khả năng là **object packet** mà VM ghi trực
+tiếp (không qua call). Đây là loại write mà bản viết tay của `devirt.py` phải tái hiện bằng tay.
+
+**Kết luận về emit:** với khối `8F346C`, hiệu ứng game thấy được **chủ yếu là chuỗi call**; write object
+rất ít (12 địa chỉ, phần lớn là TEB + packet object). Điều này khớp với cách `devirt.py` viết khối này:
+một chuỗi `call` + 1 phép gán field do native thực hiện.
+
 ## 5b. Đường áp dụng sang bản KR
 
 Bản KR (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`) **đang bị pack**:

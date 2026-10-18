@@ -1425,7 +1425,29 @@ def cmd_emit(a):
         keep = [e for e in w["image"] if not internal(int(e["addr"], 16))]
         lines.append(f"    // {len(keep)} lần ghi vào .data/.text ngoài section VM (thường là scratch của VM)")
     if w.get("heap"):
-        lines.append(f"    // {len(w['heap'])} địa chỉ heap/stack bị ghi (object game) — xem JSON")
+        rs = t.get("regs_start") or {}
+        try:
+            ebp0 = int(rs.get("ebp", "0x0"), 16)
+            esp0 = int(rs.get("esp", "0x0"), 16)
+        except Exception:
+            ebp0 = esp0 = 0
+        stack_n = other = 0
+        objs = []
+        for e in w["heap"]:
+            ad = int(e["addr"], 16)
+            if (ebp0 and abs(ad - ebp0) < 0x800) or (esp0 and abs(ad - esp0) < 0x800):
+                stack_n += 1
+            else:
+                other += 1
+                objs.append(e)
+        if stack_n:
+            lines.append(f"    // {stack_n} địa chỉ là stack của VM (bỏ qua)")
+        if other:
+            lines.append(f"    // {other} địa chỉ ngoài stack — kiểm tra tay:")
+            for e in sorted(objs, key=lambda x: -x["n"])[:20]:
+                lines.append(f"    //   {e['addr']} n={e['n']} last={e['last']:#x}")
+        else:
+            lines.append("    // 0 write ra object/biến game ngoài stack")
     if ctx and w.get("ctx") and a.verbose:
         lines.append("")
         lines.append("    // state nội bộ VM (chỉ khi --verbose)")
