@@ -1,0 +1,4037 @@
+[
+{
+"kind": 0,
+"name": "Item/ItemBomb",
+"sprite": "Item/Bomb",
+"weight": 3650,
+"f160": 0,
+"group": 1,
+"f184": [
+1,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 1,
+"name": "Item/ItemFire",
+"sprite": "Item/Fire",
+"weight": 2800,
+"f160": 0,
+"group": 1,
+"f184": [
+2,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 2,
+"name": "Item/ItemRoller",
+"sprite": "Item/Roller",
+"weight": 2000,
+"f160": 0,
+"group": 1,
+"f184": [
+3,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 3,
+"name": "Item/ItemShoe",
+"sprite": "Item/Shoe",
+"weight": 150,
+"f160": 0,
+"group": 1,
+"f184": [
+4,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 4,
+"name": "Item/ItemPunch",
+"sprite": "Item/Punch",
+"weight": 300,
+"f160": 0,
+"group": 1,
+"f184": [
+5,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 5,
+"name": "Item/ItemMaxPower",
+"sprite": "Item/MaxPower",
+"weight": 150,
+"f160": 0,
+"group": 1,
+"f184": [
+6,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 6,
+"name": "Item/ItemHollow",
+"sprite": "Item/Hollow",
+"weight": 200,
+"f160": 0,
+"group": 1,
+"f184": [
+7,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 7,
+"name": "Item/ItemSkeleton0",
+"sprite": "Item/Skeleton0",
+"weight": 200,
+"f160": 0,
+"group": 1,
+"f184": [
+8,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 8,
+"name": "Item/ItemSkeleton1",
+"sprite": "Item/Skeleton1",
+"weight": 200,
+"f160": 0,
+"group": 1,
+"f184": [
+9,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 9,
+"name": "Item/ItemMoonWalk",
+"sprite": "Item/MoonWalk",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+10,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 10,
+"name": "Item/ItemSuperMan",
+"sprite": "Item/SuperMan",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+11,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 11,
+"name": "Item/ItemGreenDevil",
+"sprite": "Item/GreenDevil",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+12,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 12,
+"name": "Item/ItemRandomBox",
+"sprite": "Item/RandomBox",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+13,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 13,
+"name": "Item/ItemLifeItem",
+"sprite": "Item/LifeItem",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+14,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 14,
+"name": "Item/ItemSnow",
+"sprite": "Item/ItemSnow",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+18,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 15,
+"name": "Item/ItemBlackDevil",
+"sprite": "Item/BlackDevil",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 16,
+"name": "Item/ItemSuperStar",
+"sprite": "Item/SuperStar",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 17,
+"name": "Item/ItemHPNeedle",
+"sprite": "Item/MonS2Niddle",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+27,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 18,
+"name": "Item/ItemCloneBomber",
+"sprite": "Item/CloneBomber",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+28,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 19,
+"name": "GoldFlag",
+"sprite": "Item/ItemGoldFlag",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 20,
+"name": "RuinsSlate",
+"sprite": "Item/RuinsSlate",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 21,
+"name": "Item/EventItem00",
+"sprite": "Icon/EventItem00",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 22,
+"name": "Item/EventItem01",
+"sprite": "Icon/EventItem01",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 23,
+"name": "Item/EventItem02",
+"sprite": "Icon/EventItem02",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 24,
+"name": "Item/EventItem03",
+"sprite": "Icon/EventItem03",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 25,
+"name": "Item/EventItem04",
+"sprite": "Icon/EventItem04",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 26,
+"name": "Item/EventItem05",
+"sprite": "Icon/EventItem05",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 27,
+"name": "Item/EventItem06",
+"sprite": "Icon/EventItem06",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 28,
+"name": "Item/EventItem07",
+"sprite": "Icon/EventItem07",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 29,
+"name": "Item/EventItem08",
+"sprite": "Icon/EventItem08",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 30,
+"name": "Item/EventItem09",
+"sprite": "Icon/EventItem09",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 31,
+"name": "Item/EventItem10",
+"sprite": "Icon/EventItem10",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 32,
+"name": "ItemCollectReward",
+"sprite": "Icon/ItemCollectReward",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+99,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 33,
+"name": "Item/ItemMonsterStop",
+"sprite": "Item/MonsterStop",
+"weight": 0,
+"f160": 0,
+"group": 3,
+"f184": [
+1,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 34,
+"name": "Item/ItemAirship",
+"sprite": "Item/Airship",
+"weight": 150,
+"f160": 0,
+"group": 2,
+"f184": [
+1,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 35,
+"name": "Item/ItemOwl",
+"sprite": "Item/Owl",
+"weight": 350,
+"f160": 0,
+"group": 2,
+"f184": [
+2,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 36,
+"name": "Item/ItemTurtle0",
+"sprite": "Item/Turtle0",
+"weight": 340,
+"f160": 0,
+"group": 2,
+"f184": [
+3,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 37,
+"name": "Item/ItemTurtle1",
+"sprite": "Item/Turtle1",
+"weight": 60,
+"f160": 0,
+"group": 2,
+"f184": [
+4,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 38,
+"name": "Item/ItemAirshipBroken",
+"sprite": "Item/AirshipBroken",
+"weight": 70,
+"f160": 0,
+"group": 2,
+"f184": [
+5,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 39,
+"name": "Item/ItemOctopus0",
+"sprite": "Item/Octopus0",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+6,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 40,
+"name": "Item/ItemOctopus1",
+"sprite": "Item/Octopus1",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+7,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 41,
+"name": "Item/ItemRailCar",
+"sprite": "Item/RailCar",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+8,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 42,
+"name": "Chicken",
+"sprite": "Item/Chicken",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+9,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 43,
+"name": "Item/ItemKart",
+"sprite": "Item/Kart",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+11,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 44,
+"name": "Item/ItemKart0",
+"sprite": "Item/Kart",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+11,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 45,
+"name": "Tank",
+"sprite": "Item/Tank",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+12,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 46,
+"name": "Larva",
+"sprite": "Item/Larva",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+13,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 47,
+"name": "MonS2Tank",
+"sprite": "Item/WaterTank1",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+14,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 48,
+"name": "MonS2UpgradeTank",
+"sprite": "Item/WaterTank2",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+15,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 49,
+"name": "Shark",
+"sprite": "Item/Shark",
+"weight": 0,
+"f160": 0,
+"group": 2,
+"f184": [
+16,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 50,
+"name": "LucciBronze",
+"sprite": "Item/CoinBronze",
+"weight": 800,
+"f160": 0,
+"group": 99,
+"f184": [
+10,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 51,
+"name": "LucciSilver",
+"sprite": "Item/CoinSilver",
+"weight": 1100,
+"f160": 0,
+"group": 99,
+"f184": [
+20,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 52,
+"name": "LucciGold",
+"sprite": "Item/CoinGold",
+"weight": 250,
+"f160": 0,
+"group": 99,
+"f184": [
+50,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 53,
+"name": "LucciPocketBronze",
+"sprite": "Item/CoinPocketBronze",
+"weight": 30,
+"f160": 0,
+"group": 99,
+"f184": [
+100,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 54,
+"name": "LucciPocketSilver",
+"sprite": "Item/CoinPocketSilver",
+"weight": 30,
+"f160": 0,
+"group": 99,
+"f184": [
+200,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 55,
+"name": "LucciPocketGold",
+"sprite": "Item/CoinPocketGold",
+"weight": 15,
+"f160": 0,
+"group": 99,
+"f184": [
+500,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 56,
+"name": "LucciPocketGoldEx",
+"sprite": "Item/CoinPocketGoldEx",
+"weight": 0,
+"f160": 0,
+"group": 99,
+"f184": [
+500,
+-1,
+0,
+0,
+1
+]
+},
+{
+"kind": 57,
+"name": "LucciPocket333",
+"sprite": "Item/CoinPocketGoldSpecial",
+"weight": 0,
+"f160": 0,
+"group": 99,
+"f184": [
+333,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 58,
+"name": "LucciPocketXmas",
+"sprite": "Item/CoinPocketGoldXmas",
+"weight": 0,
+"f160": 0,
+"group": 99,
+"f184": [
+500,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 59,
+"name": "LucciPocketSpecial",
+"sprite": "Item/CoinPocketGoldSpecial",
+"weight": 0,
+"f160": 0,
+"group": 99,
+"f184": [
+1000,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 60,
+"name": "LucciPocketRandom",
+"sprite": "Item/CoinPocketRandom",
+"weight": 0,
+"f160": 0,
+"group": 99,
+"f184": [
+2000,
+-1,
+0,
+0,
+1
+]
+},
+{
+"kind": 61,
+"name": "LucciSnowRandom",
+"sprite": "Item/CoinSnowRandom",
+"weight": 0,
+"f160": 0,
+"group": 99,
+"f184": [
+2000,
+-1,
+0,
+0,
+1
+]
+},
+{
+"kind": 62,
+"name": "AIBattleReward",
+"sprite": "Item/AIBattleReward",
+"weight": 0,
+"f160": 0,
+"group": 96,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 63,
+"name": "AIBattleEventNpcReward",
+"sprite": "Item/AIBattleEventReward",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+1,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 64,
+"name": "BonusMapReward",
+"sprite": "Item/BonusMapReward",
+"weight": 0,
+"f160": 0,
+"group": 93,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 65,
+"name": "BonusMapReward2",
+"sprite": "Item/BonusMapReward2",
+"weight": 0,
+"f160": 0,
+"group": 106,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 66,
+"name": "BonusMapReward3",
+"sprite": "Item/BonusMapReward3",
+"weight": 0,
+"f160": 0,
+"group": 108,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 67,
+"name": "BonusMapReward4",
+"sprite": "Item/BonusMapReward4",
+"weight": 0,
+"f160": 0,
+"group": 110,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 68,
+"name": "BonusMapSweetCandy",
+"sprite": "Item/BonusMapSweetCandy",
+"weight": 0,
+"f160": 0,
+"group": 109,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 69,
+"name": "MonsterEventNpcReward",
+"sprite": "Item/MonsterEventReward",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+2,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 70,
+"name": "BonusBigReward",
+"sprite": "Item/BonusBigReward",
+"weight": 0,
+"f160": 0,
+"group": 91,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 71,
+"name": "BonusBigReward02",
+"sprite": "Item/BonusBigReward02",
+"weight": 0,
+"f160": 0,
+"group": 91,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 72,
+"name": "BigMonsterReward",
+"sprite": "Item/BigMonsterReward",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+3,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 73,
+"name": "DarkEventReward",
+"sprite": "Item/DarkEventReward",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+4,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 74,
+"name": "RPGCollectItem",
+"sprite": "Item/RPGCollectItem",
+"weight": 0,
+"f160": 0,
+"group": 89,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 75,
+"name": "PharaohReward",
+"sprite": "Item/NpcRewardBox00",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+5,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 76,
+"name": "FortuneStarReward",
+"sprite": "Item/AIBattleEventReward",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+7,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 77,
+"name": "StalkerReward",
+"sprite": "Item/StokerBox",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+8,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 78,
+"name": "GolemRunRewardA",
+"sprite": "Item/NpcRewardBox00",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+6,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 79,
+"name": "GolemRunRewardB",
+"sprite": "Item/NpcRewardBox01",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+6,
+1,
+0,
+0,
+1
+]
+},
+{
+"kind": 80,
+"name": "GolemRunRewardC",
+"sprite": "Item/NpcRewardBox02",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+6,
+2,
+0,
+0,
+1
+]
+},
+{
+"kind": 81,
+"name": "GolemRunRewardD",
+"sprite": "Item/NpcRewardBox03",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+6,
+3,
+0,
+0,
+1
+]
+},
+{
+"kind": 82,
+"name": "AntarcticRewardA",
+"sprite": "Item/NpcRewardBox00",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+10,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 83,
+"name": "AntarcticRewardB",
+"sprite": "Item/NpcRewardBox01",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+10,
+1,
+0,
+0,
+1
+]
+},
+{
+"kind": 84,
+"name": "AntarcticRewardC",
+"sprite": "Item/NpcRewardBox02",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+10,
+2,
+0,
+0,
+1
+]
+},
+{
+"kind": 85,
+"name": "AntarcticRewardD",
+"sprite": "Item/NpcRewardBox03",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+10,
+3,
+0,
+0,
+1
+]
+},
+{
+"kind": 86,
+"name": "MonSeason2BossReward",
+"sprite": "Item/MonS2BossReward",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+9,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 87,
+"name": "BonusLargeGourd00A",
+"sprite": "Item/TreasuredChest00",
+"weight": 0,
+"f160": 0,
+"group": 101,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 88,
+"name": "BonusLargeGourd00B",
+"sprite": "Item/TreasuredChest00",
+"weight": 0,
+"f160": 0,
+"group": 101,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 89,
+"name": "BonusLargeGourd01",
+"sprite": "Item/TreasuredChest01",
+"weight": 0,
+"f160": 0,
+"group": 102,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 90,
+"name": "PresentBoxEvent",
+"sprite": "Item/EventBox",
+"weight": 0,
+"f160": 0,
+"group": 104,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 91,
+"name": "NpcCaptainReward",
+"sprite": "Item/WhiteAngelBox",
+"weight": 0,
+"f160": 0,
+"group": 107,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 92,
+"name": "SantaReward",
+"sprite": "Item/SantaBox",
+"weight": 0,
+"f160": 0,
+"group": 80,
+"f184": [
+8,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 93,
+"name": "AIBattleQuestReward",
+"sprite": "Item/AIBattleReward",
+"weight": 0,
+"f160": 0,
+"group": 94,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 94,
+"name": "AIBattleQuestNote",
+"sprite": "Item/note",
+"weight": 0,
+"f160": 0,
+"group": 94,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 95,
+"name": "TreasureBronze",
+"sprite": "Item/CoinBronze",
+"weight": 0,
+"f160": 0,
+"group": 97,
+"f184": [
+10,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 96,
+"name": "TreasureSilver",
+"sprite": "Item/CoinSilver",
+"weight": 0,
+"f160": 0,
+"group": 97,
+"f184": [
+20,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 97,
+"name": "TreasureGold",
+"sprite": "Item/CoinGold",
+"weight": 0,
+"f160": 0,
+"group": 97,
+"f184": [
+50,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 98,
+"name": "TreasurePocketBronze",
+"sprite": "Item/CoinPocketBronze",
+"weight": 0,
+"f160": 0,
+"group": 97,
+"f184": [
+100,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 99,
+"name": "TreasurePocketSilver",
+"sprite": "Item/CoinPocketSilver",
+"weight": 0,
+"f160": 0,
+"group": 97,
+"f184": [
+200,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 100,
+"name": "TreasurePocketGold",
+"sprite": "Item/CoinPocketGold",
+"weight": 0,
+"f160": 0,
+"group": 97,
+"f184": [
+500,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 101,
+"name": "Alphabet01",
+"sprite": "Item/Alphabet_01",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+1,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 102,
+"name": "Alphabet02",
+"sprite": "Item/Alphabet_02",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+2,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 103,
+"name": "Alphabet03",
+"sprite": "Item/Alphabet_03",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+3,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 104,
+"name": "Alphabet04",
+"sprite": "Item/Alphabet_04",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+4,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 105,
+"name": "Alphabet05",
+"sprite": "Item/Alphabet_05",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+5,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 106,
+"name": "Alphabet06",
+"sprite": "Item/Alphabet_06",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+6,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 107,
+"name": "Alphabet07",
+"sprite": "Item/Alphabet_07",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+7,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 108,
+"name": "Alphabet08",
+"sprite": "Item/Alphabet_08",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+8,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 109,
+"name": "Alphabet09",
+"sprite": "Item/Alphabet_09",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+9,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 110,
+"name": "Alphabet10",
+"sprite": "Item/Alphabet_10",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+10,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 111,
+"name": "Alphabet11",
+"sprite": "Item/Alphabet_11",
+"weight": 0,
+"f160": 0,
+"group": 98,
+"f184": [
+11,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 112,
+"name": "RedDevil",
+"sprite": "Item/RedDevil",
+"weight": 80,
+"f160": 0,
+"group": 1,
+"f184": [
+4,
+15,
+0,
+0,
+1
+]
+},
+{
+"kind": 113,
+"name": "Skate",
+"sprite": "Item/Skate",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+15,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 114,
+"name": "Camouflage",
+"sprite": "Item/Mask",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+19,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 115,
+"name": "Item/ItemDart",
+"sprite": "Item/Dart",
+"weight": 0,
+"f160": 3,
+"group": 21,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 116,
+"name": "Item/ItemOxygen",
+"sprite": "Item/Oxygen",
+"weight": 0,
+"f160": 1,
+"group": 22,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 117,
+"name": "Item/ItemNiddle",
+"sprite": "Item/Niddle",
+"weight": 0,
+"f160": 1,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 118,
+"name": "Item/ItemScanner",
+"sprite": "Item/Scanner",
+"weight": 0,
+"f160": 1,
+"group": 24,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 119,
+"name": "Item/ItemPotion",
+"sprite": "Item/Potion",
+"weight": 0,
+"f160": 3,
+"group": 25,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 120,
+"name": "Spring",
+"sprite": "Item/Spring",
+"weight": 0,
+"f160": 3,
+"group": 26,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 121,
+"name": "Drill",
+"sprite": "Item/Drill",
+"weight": 0,
+"f160": 3,
+"group": 27,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 122,
+"name": "RemoteBomb",
+"sprite": "Item/RadioBomb",
+"weight": 0,
+"f160": 3,
+"group": 28,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 123,
+"name": "Item/ItemShield",
+"sprite": "Item/Shield",
+"weight": 0,
+"f160": 2,
+"group": 29,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 124,
+"name": "Item/ItemSensor",
+"sprite": "Item/Sensor",
+"weight": 0,
+"f160": 6,
+"group": 30,
+"f184": [
+30000,
+5000,
+0,
+0,
+0
+]
+},
+{
+"kind": 125,
+"name": "Nitro",
+"sprite": "Item/Nitro",
+"weight": 0,
+"f160": 3,
+"group": 31,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 126,
+"name": "Item/ItemFuel",
+"sprite": "Item/ItemEnergy",
+"weight": 0,
+"f160": 1,
+"group": 32,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 127,
+"name": "HollowBomb",
+"sprite": "Item/HollowBomb",
+"weight": 0,
+"f160": 3,
+"group": 33,
+"f184": [
+16,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 128,
+"name": "Goggle",
+"sprite": "Item/Swimming",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+17,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 129,
+"name": "Item/ItemCookieRoller",
+"sprite": "Item/CookieRoller",
+"weight": 0,
+"f160": 1,
+"group": 34,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 130,
+"name": "Item/ItemFakeHedgehog",
+"sprite": "Item/FakeHedgehog",
+"weight": 0,
+"f160": 10,
+"group": 41,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 131,
+"name": "Item/ItemSuperHedgehog",
+"sprite": "Item/SuperHedgehog",
+"weight": 0,
+"f160": 1,
+"group": 42,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 132,
+"name": "Item/ItemCpNiddle",
+"sprite": "Item/ItemCpNiddle",
+"weight": 0,
+"f160": 1,
+"group": 45,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 133,
+"name": "Item/ItemSJNeedle1",
+"sprite": "Item/ItemSJNeedle1",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 134,
+"name": "Item/ItemSJNeedle2",
+"sprite": "Item/ItemSJNeedle2",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+1,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 135,
+"name": "Item/ItemSJNeedle3",
+"sprite": "Item/ItemSJNeedle3",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+2,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 136,
+"name": "Item/ItemSJNeedle4",
+"sprite": "Item/ItemSJNeedle4",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+3,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 137,
+"name": "Item/ItemSJNeedle5",
+"sprite": "Item/ItemSJNeedle5",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+4,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 138,
+"name": "Item/ItemSJNeedle6",
+"sprite": "Item/ItemSJNeedle6",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+5,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 139,
+"name": "Item/ItemSJNeedle7",
+"sprite": "Item/ItemSJNeedle7",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+6,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 140,
+"name": "Item/ItemCokeNeedle",
+"sprite": "Item/ItemCokeNeedle",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+7,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 141,
+"name": "Item/ItemNeedle_Bazzi",
+"sprite": "Item/ItemNeedle_Bazzi",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 142,
+"name": "Item/ItemNeedle_Marid",
+"sprite": "Item/ItemNeedle_Marid",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 143,
+"name": "Item/ItemNeedle_Uni",
+"sprite": "Item/ItemNeedle_Uni",
+"weight": 0,
+"f160": 1,
+"group": 46,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 144,
+"name": "Item/ItemRescueCoin",
+"sprite": "Item/ItemRescueCoin",
+"weight": 0,
+"f160": 1,
+"group": 47,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 145,
+"name": "Item/ItemNeedleG",
+"sprite": "Item/NeedleG",
+"weight": 0,
+"f160": 1,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 146,
+"name": "Item/ItemSensorG",
+"sprite": "Item/SensorG",
+"weight": 0,
+"f160": 6,
+"group": 30,
+"f184": [
+30000,
+5000,
+0,
+0,
+0
+]
+},
+{
+"kind": 147,
+"name": "SpringG",
+"sprite": "Item/SpringG",
+"weight": 0,
+"f160": 3,
+"group": 26,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 148,
+"name": "RemoteBombG",
+"sprite": "Item/RadioBombG",
+"weight": 0,
+"f160": 3,
+"group": 28,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 149,
+"name": "Item/ItemWildGinseng",
+"sprite": "Item/ItemWildGinseng",
+"weight": 0,
+"f160": 1,
+"group": 48,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 150,
+"name": "Item/ResurrectionItem",
+"sprite": "Item/ResurrectionItem",
+"weight": 0,
+"f160": 1,
+"group": 49,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 151,
+"name": "Item/ResurrectionItemAIBattle",
+"sprite": "Item/ResurrectionItemAIBattle",
+"weight": 0,
+"f160": 1,
+"group": 49,
+"f184": [
+1,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 152,
+"name": "Item/ItemTeamShield",
+"sprite": "Item/TeamShield",
+"weight": 0,
+"f160": 1,
+"group": 51,
+"f184": [
+5000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 153,
+"name": "Item/ItemMyriadGinseng",
+"sprite": "Item/ItemMyriadGinseng",
+"weight": 0,
+"f160": 1,
+"group": 48,
+"f184": [
+0,
+0,
+1,
+0,
+0
+]
+},
+{
+"kind": 154,
+"name": "Item/ItemSnowSensor",
+"sprite": "Item/ItemSnowSensor",
+"weight": 0,
+"f160": 99,
+"group": 52,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 155,
+"name": "Item/ItemAutoShield",
+"sprite": "Item/ItemAutoShield",
+"weight": 0,
+"f160": 2,
+"group": 53,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 156,
+"name": "Item/ItemCoupleAutoShield",
+"sprite": "Item/ItemCoupleAutoShield",
+"weight": 0,
+"f160": 1,
+"group": 54,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 157,
+"name": "Item/ItemNeedleC",
+"sprite": "Item/NeedleC",
+"weight": 0,
+"f160": 1,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 158,
+"name": "Item/ItemShieldC",
+"sprite": "Item/ShieldC",
+"weight": 0,
+"f160": 2,
+"group": 29,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 159,
+"name": "Item/ItemRescueCoinC",
+"sprite": "Item/ItemRescueCoinC",
+"weight": 0,
+"f160": 1,
+"group": 47,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 160,
+"name": "Item/ItemSensorC",
+"sprite": "Item/SensorC",
+"weight": 0,
+"f160": 6,
+"group": 30,
+"f184": [
+30000,
+5000,
+0,
+0,
+0
+]
+},
+{
+"kind": 161,
+"name": "SpringC",
+"sprite": "Item/SpringC",
+"weight": 0,
+"f160": 3,
+"group": 26,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 162,
+"name": "Item/ItemWildGinsengC",
+"sprite": "Item/ItemWildGinsengC",
+"weight": 0,
+"f160": 1,
+"group": 48,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 163,
+"name": "Item/ItemDartC",
+"sprite": "Item/DartC",
+"weight": 0,
+"f160": 3,
+"group": 21,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 164,
+"name": "Item/ItemMyriadGinsengC",
+"sprite": "Item/ItemMyriadGinsengC",
+"weight": 0,
+"f160": 1,
+"group": 48,
+"f184": [
+0,
+0,
+1,
+0,
+0
+]
+},
+{
+"kind": 165,
+"name": "Item/ItemTeamShieldC",
+"sprite": "Item/TeamShieldC",
+"weight": 0,
+"f160": 1,
+"group": 51,
+"f184": [
+5000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 166,
+"name": "Item/ItemSnowSensorC",
+"sprite": "Item/ItemSnowSensorC",
+"weight": 0,
+"f160": 99,
+"group": 52,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 167,
+"name": "Item/ItemAutoShieldC",
+"sprite": "Item/ItemAutoShieldC",
+"weight": 0,
+"f160": 2,
+"group": 53,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 168,
+"name": "Item/ItemJavelin",
+"sprite": "Item/ItemJavelin",
+"weight": 0,
+"f160": 3,
+"group": 55,
+"f184": [
+50,
+65,
+0,
+0,
+0
+]
+},
+{
+"kind": 169,
+"name": "Item/ItemNeedleSP",
+"sprite": "Item/NeedleSP",
+"weight": 0,
+"f160": 1,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 170,
+"name": "Item/ItemShieldSP",
+"sprite": "Item/ShieldSP",
+"weight": 0,
+"f160": 2,
+"group": 29,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 171,
+"name": "Item/ItemRescueCoinSP",
+"sprite": "Item/ItemRescueCoinSP",
+"weight": 0,
+"f160": 1,
+"group": 47,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 172,
+"name": "Item/ItemSensorSP",
+"sprite": "Item/SensorSP",
+"weight": 0,
+"f160": 6,
+"group": 30,
+"f184": [
+30000,
+5000,
+0,
+0,
+0
+]
+},
+{
+"kind": 173,
+"name": "SpringSP",
+"sprite": "Item/SpringSP",
+"weight": 0,
+"f160": 3,
+"group": 26,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 174,
+"name": "Item/ItemWildGinsengSP",
+"sprite": "Item/ItemWildGinsengSP",
+"weight": 0,
+"f160": 1,
+"group": 48,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 175,
+"name": "Item/ItemDartSP",
+"sprite": "Item/DartSP",
+"weight": 0,
+"f160": 3,
+"group": 21,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 176,
+"name": "Item/ItemNeedleFD",
+"sprite": "Item/NeedleFD",
+"weight": 0,
+"f160": 1,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 177,
+"name": "Item/ItemShieldFD",
+"sprite": "Item/ShieldFD",
+"weight": 0,
+"f160": 2,
+"group": 29,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 178,
+"name": "Item/ItemSpringFD",
+"sprite": "Item/SpringFD",
+"weight": 0,
+"f160": 3,
+"group": 26,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 179,
+"name": "Item/ItemSensorFD",
+"sprite": "Item/SensorFD",
+"weight": 0,
+"f160": 6,
+"group": 30,
+"f184": [
+30000,
+5000,
+0,
+0,
+0
+]
+},
+{
+"kind": 180,
+"name": "Item/ItemWildGinsengFD",
+"sprite": "Item/ItemWildGinsengFD",
+"weight": 0,
+"f160": 1,
+"group": 48,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 181,
+"name": "Item/ItemDartFD",
+"sprite": "Item/DartFD",
+"weight": 0,
+"f160": 3,
+"group": 21,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 182,
+"name": "Item/ItemCanFD",
+"sprite": "Item/CanFD",
+"weight": 0,
+"f160": 1,
+"group": 12,
+"f184": [
+4,
+3,
+7,
+6,
+0
+]
+},
+{
+"kind": 183,
+"name": "Item/ItemSpannerFD",
+"sprite": "Item/SpannerFD",
+"weight": 0,
+"f160": 1,
+"group": 12,
+"f184": [
+1,
+5,
+0,
+0,
+0
+]
+},
+{
+"kind": 184,
+"name": "Item/ItemScannerFD",
+"sprite": "Item/ScannerFD",
+"weight": 0,
+"f160": 1,
+"group": 24,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 185,
+"name": "Item/ItemPotionFD",
+"sprite": "Item/PotionFD",
+"weight": 0,
+"f160": 3,
+"group": 25,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 186,
+"name": "Item/ItemMotorFD",
+"sprite": "Item/MotorFD",
+"weight": 0,
+"f160": 1,
+"group": 13,
+"f184": [
+8,
+9,
+0,
+0,
+0
+]
+},
+{
+"kind": 187,
+"name": "Item/ItemNitroFD",
+"sprite": "Item/NitroFD",
+"weight": 0,
+"f160": 3,
+"group": 31,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 188,
+"name": "Item/ItemFuelFD",
+"sprite": "Item/ItemEnergyFD",
+"weight": 0,
+"f160": 1,
+"group": 32,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 189,
+"name": "Item/ItemSuperHedgehogFD",
+"sprite": "Item/SuperHedgehogFD",
+"weight": 0,
+"f160": 1,
+"group": 42,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 190,
+"name": "Item/ItemFakeHedgehogFD",
+"sprite": "Item/FakeHedgehogFD",
+"weight": 0,
+"f160": 10,
+"group": 41,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 191,
+"name": "Item/ItemBond",
+"sprite": "Item/Bond",
+"weight": 0,
+"f160": 3,
+"group": 11,
+"f184": [
+1,
+0,
+0,
+1,
+0
+]
+},
+{
+"kind": 192,
+"name": "Item/ItemTrap",
+"sprite": "Item/Trap",
+"weight": 0,
+"f160": 2,
+"group": 11,
+"f184": [
+2,
+1,
+1,
+0,
+0
+]
+},
+{
+"kind": 193,
+"name": "Pin",
+"sprite": "Item/Pushpin",
+"weight": 0,
+"f160": 3,
+"group": 11,
+"f184": [
+4,
+0,
+1,
+1,
+0
+]
+},
+{
+"kind": 194,
+"name": "Banana1",
+"sprite": "Item/Banana00",
+"weight": 0,
+"f160": 1,
+"group": 11,
+"f184": [
+3,
+0,
+0,
+1,
+0
+]
+},
+{
+"kind": 195,
+"name": "Banana2",
+"sprite": "Item/Banana01",
+"weight": 0,
+"f160": 2,
+"group": 11,
+"f184": [
+3,
+0,
+0,
+1,
+0
+]
+},
+{
+"kind": 196,
+"name": "Banana3",
+"sprite": "Item/Banana02",
+"weight": 0,
+"f160": 3,
+"group": 11,
+"f184": [
+3,
+0,
+0,
+1,
+0
+]
+},
+{
+"kind": 197,
+"name": "Banana8",
+"sprite": "Item/Banana03",
+"weight": 0,
+"f160": 8,
+"group": 11,
+"f184": [
+3,
+0,
+0,
+1,
+0
+]
+},
+{
+"kind": 198,
+"name": "Item/ItemSpanner",
+"sprite": "Item/Spanner",
+"weight": 0,
+"f160": 1,
+"group": 12,
+"f184": [
+1,
+5,
+0,
+0,
+0
+]
+},
+{
+"kind": 199,
+"name": "Item/ItemMonS2Spanner",
+"sprite": "Item/MonS2Spanner",
+"weight": 0,
+"f160": 3,
+"group": 12,
+"f184": [
+15,
+14,
+0,
+0,
+0
+]
+},
+{
+"kind": 200,
+"name": "Item/ItemCan",
+"sprite": "Item/Can",
+"weight": 0,
+"f160": 1,
+"group": 12,
+"f184": [
+4,
+3,
+7,
+6,
+0
+]
+},
+{
+"kind": 201,
+"name": "Item/ItemMotor",
+"sprite": "Item/Motor",
+"weight": 0,
+"f160": 1,
+"group": 13,
+"f184": [
+8,
+9,
+0,
+0,
+0
+]
+},
+{
+"kind": 202,
+"name": "Item/ItemCanG",
+"sprite": "Item/CanG",
+"weight": 0,
+"f160": 1,
+"group": 12,
+"f184": [
+4,
+3,
+7,
+6,
+0
+]
+},
+{
+"kind": 203,
+"name": "Item/ItemCanC",
+"sprite": "Item/CanC",
+"weight": 0,
+"f160": 1,
+"group": 12,
+"f184": [
+4,
+3,
+7,
+6,
+0
+]
+},
+{
+"kind": 204,
+"name": "QuestionMark",
+"sprite": "Item/QuestionMark",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+21,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 205,
+"name": "Basket00",
+"sprite": "Item/Basket00",
+"weight": 0,
+"f160": 0,
+"group": 4,
+"f184": [
+22,
+99,
+0,
+0,
+1
+]
+},
+{
+"kind": 206,
+"name": "MarblePot00",
+"sprite": "Item/ItemPot",
+"weight": 0,
+"f160": 0,
+"group": 4,
+"f184": [
+30,
+999,
+0,
+0,
+1
+]
+},
+{
+"kind": 207,
+"name": "BonusMapKey",
+"sprite": "Item/BonusMapKey",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+24,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 208,
+"name": "LiquidMedicine",
+"sprite": "Item/LiquidMedicine",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+25,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 209,
+"name": "ItemClover",
+"sprite": "Item/ItemClover",
+"weight": 0,
+"f160": 0,
+"group": 1,
+"f184": [
+26,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 210,
+"name": "ItemExpBronze",
+"sprite": "Item/ItemExpBronze",
+"weight": 0,
+"f160": 0,
+"group": 100,
+"f184": [
+10,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 211,
+"name": "ItemExpSilver",
+"sprite": "Item/ItemExpSilver",
+"weight": 0,
+"f160": 0,
+"group": 100,
+"f184": [
+20,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 212,
+"name": "ItemExpGold",
+"sprite": "Item/ItemExpGold",
+"weight": 0,
+"f160": 0,
+"group": 100,
+"f184": [
+30,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 213,
+"name": "ItemCpGold",
+"sprite": "Item/CApointAni",
+"weight": 0,
+"f160": 0,
+"group": 103,
+"f184": [
+1,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 214,
+"name": "ItemCpPocket",
+"sprite": "Item/CApointPocket",
+"weight": 0,
+"f160": 0,
+"group": 103,
+"f184": [
+3,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 215,
+"name": "NeedleRPG",
+"sprite": "Item/NeedleRPG",
+"weight": 0,
+"f160": 9999,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+1000,
+0
+]
+},
+{
+"kind": 216,
+"name": "ResurrectionItemRPG",
+"sprite": "Item/ResurrectionItemRPG",
+"weight": 0,
+"f160": 9999,
+"group": 49,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 217,
+"name": "Item/ItemWildGinsengRPG",
+"sprite": "Item/ItemWildGinsengRPG",
+"weight": 0,
+"f160": 9999,
+"group": 48,
+"f184": [
+0,
+0,
+0,
+30000,
+0
+]
+},
+{
+"kind": 218,
+"name": "Item/ItemRescueCoinRPG",
+"sprite": "Item/ItemRescueCoinRPG",
+"weight": 0,
+"f160": 9999,
+"group": 47,
+"f184": [
+0,
+0,
+0,
+1000,
+0
+]
+},
+{
+"kind": 219,
+"name": "Item/ItemStrengthPotionRPGType1Lv1",
+"sprite": "Item/ItemStrengthPotionRPGType1Lv1",
+"weight": 0,
+"f160": 9999,
+"group": 50,
+"f184": [
+250,
+0,
+0,
+17000,
+0
+]
+},
+{
+"kind": 220,
+"name": "Item/ItemStrengthPotionRPGType1Lv2",
+"sprite": "Item/ItemStrengthPotionRPGType1Lv2",
+"weight": 0,
+"f160": 9999,
+"group": 50,
+"f184": [
+350,
+0,
+0,
+17000,
+0
+]
+},
+{
+"kind": 221,
+"name": "Item/ItemStrengthPotionRPGType1Lv3",
+"sprite": "Item/ItemStrengthPotionRPGType1Lv3",
+"weight": 0,
+"f160": 9999,
+"group": 50,
+"f184": [
+500,
+0,
+0,
+17000,
+0
+]
+},
+{
+"kind": 222,
+"name": "Item/ItemStrengthPotionRPGType1Lv4",
+"sprite": "Item/ItemStrengthPotionRPGType1Lv4",
+"weight": 0,
+"f160": 9999,
+"group": 50,
+"f184": [
+700,
+0,
+0,
+17000,
+0
+]
+},
+{
+"kind": 223,
+"name": "Item/ItemStrengthPotionRPGType2Lv1",
+"sprite": "Item/ItemStrengthPotionRPGType2Lv1",
+"weight": 0,
+"f160": 9999,
+"group": 50,
+"f184": [
+0,
+50,
+0,
+100,
+0
+]
+},
+{
+"kind": 224,
+"name": "DrillRPG",
+"sprite": "Item/DrillRPG",
+"weight": 0,
+"f160": 4,
+"group": 27,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 225,
+"name": "Item/ItemNeedleE",
+"sprite": "Item/ItemNeedleE",
+"weight": 0,
+"f160": 1,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 226,
+"name": "Item/ItemNeedleL",
+"sprite": "Item/ItemNeedleL",
+"weight": 0,
+"f160": 1,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 227,
+"name": "Item/ItemRescueCoinE",
+"sprite": "Item/ItemRescueCoinE",
+"weight": 0,
+"f160": 1,
+"group": 47,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 228,
+"name": "Item/ItemRescueCoinL",
+"sprite": "Item/ItemRescueCoinL",
+"weight": 0,
+"f160": 1,
+"group": 47,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 229,
+"name": "Item/ItemWildGinsengE",
+"sprite": "Item/ItemWildGinsengE",
+"weight": 0,
+"f160": 1,
+"group": 48,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 230,
+"name": "Item/ItemWildGinsengL",
+"sprite": "Item/ItemWildGinsengL",
+"weight": 0,
+"f160": 1,
+"group": 48,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 231,
+"name": "Item/ItemShieldE",
+"sprite": "Item/ShieldE",
+"weight": 0,
+"f160": 2,
+"group": 29,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 232,
+"name": "Item/ItemShieldL",
+"sprite": "Item/ShieldL",
+"weight": 0,
+"f160": 2,
+"group": 29,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 233,
+"name": "Item/GolemKey",
+"sprite": "Item/GolemKey",
+"weight": 0,
+"f160": 0,
+"group": 79,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 234,
+"name": "Skill00",
+"sprite": "Item/SkillDirBomb",
+"weight": 0,
+"f160": 1,
+"group": 60,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 235,
+"name": "Skill01",
+"sprite": "Item/SkillNuclear",
+"weight": 0,
+"f160": 2,
+"group": 60,
+"f184": [
+1,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 236,
+"name": "Skill02",
+"sprite": "Item/SkillCrossBomb",
+"weight": 0,
+"f160": 3,
+"group": 60,
+"f184": [
+2,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 237,
+"name": "SkillSnow00",
+"sprite": "Item/ItemBigSnowBall",
+"weight": 0,
+"f160": 99,
+"group": 60,
+"f184": [
+3,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 238,
+"name": "SkillThrowNuclearBomb",
+"sprite": "Item/MonS2SkillNuclear",
+"weight": 0,
+"f160": 1,
+"group": 60,
+"f184": [
+4,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 239,
+"name": "Item/BingGo01",
+"sprite": "Icon/BingGo01",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+1,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 240,
+"name": "Item/BingGo02",
+"sprite": "Icon/BingGo02",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+2,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 241,
+"name": "Item/BingGo03",
+"sprite": "Icon/BingGo03",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+3,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 242,
+"name": "Item/BingGo04",
+"sprite": "Icon/BingGo04",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+4,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 243,
+"name": "Item/BingGo05",
+"sprite": "Icon/BingGo05",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+5,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 244,
+"name": "Item/BingGo06",
+"sprite": "Icon/BingGo06",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+6,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 245,
+"name": "Item/BingGo07",
+"sprite": "Icon/BingGo07",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+7,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 246,
+"name": "Item/BingGo08",
+"sprite": "Icon/BingGo08",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+8,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 247,
+"name": "Item/BingGo09",
+"sprite": "Icon/BingGo09",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+9,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 248,
+"name": "Item/BingGo10",
+"sprite": "Icon/BingGo10",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+10,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 249,
+"name": "Item/BingGo11",
+"sprite": "Icon/BingGo11",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+11,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 250,
+"name": "Item/BingGo12",
+"sprite": "Icon/BingGo12",
+"weight": 0,
+"f160": 0,
+"group": 105,
+"f184": [
+12,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 251,
+"name": "Item/ItemNiddlePlus",
+"sprite": "Item/ItemNiddleplus",
+"weight": 0,
+"f160": 2,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+1,
+1
+]
+},
+{
+"kind": 252,
+"name": "Item/ShieldPlus",
+"sprite": "Item/Shieldplus",
+"weight": 0,
+"f160": 3,
+"group": 29,
+"f184": [
+2000,
+1000,
+0,
+1,
+1
+]
+},
+{
+"kind": 253,
+"name": "Item/WinningNeedle",
+"sprite": "Item/WinningNeedle",
+"weight": 0,
+"f160": 1,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 254,
+"name": "Item/WinningShield",
+"sprite": "Item/WinningShield",
+"weight": 0,
+"f160": 2,
+"group": 29,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 255,
+"name": "Item/WinningDart",
+"sprite": "Item/WinningDart",
+"weight": 0,
+"f160": 3,
+"group": 21,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 256,
+"name": "Item/WinningScanner",
+"sprite": "Item/WinningScanner",
+"weight": 0,
+"f160": 1,
+"group": 24,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 257,
+"name": "Item/WinningSpring",
+"sprite": "Item/WinningSpring",
+"weight": 0,
+"f160": 3,
+"group": 26,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 258,
+"name": "Item/WinningSensor",
+"sprite": "Item/WinningSensor",
+"weight": 0,
+"f160": 6,
+"group": 30,
+"f184": [
+30000,
+5000,
+0,
+0,
+0
+]
+},
+{
+"kind": 259,
+"name": "Item/WinningNeedleC",
+"sprite": "Item/WinningNeedleC",
+"weight": 0,
+"f160": 1,
+"group": 23,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 260,
+"name": "Item/WinningShieldC",
+"sprite": "Item/WinningShieldC",
+"weight": 0,
+"f160": 2,
+"group": 29,
+"f184": [
+2000,
+1000,
+0,
+0,
+0
+]
+},
+{
+"kind": 261,
+"name": "Item/WinningDartC",
+"sprite": "Item/WinningDartC",
+"weight": 0,
+"f160": 3,
+"group": 21,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 262,
+"name": "Item/WinningScannerC",
+"sprite": "Item/WinningScannerC",
+"weight": 0,
+"f160": 1,
+"group": 24,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 263,
+"name": "Item/WinningSpringC",
+"sprite": "Item/WinningSpringC",
+"weight": 0,
+"f160": 3,
+"group": 26,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 264,
+"name": "Item/WinningSensorC",
+"sprite": "Item/WinningSensorC",
+"weight": 0,
+"f160": 6,
+"group": 30,
+"f184": [
+30000,
+5000,
+0,
+0,
+0
+]
+},
+{
+"kind": 265,
+"name": "Item/WinningHeart",
+"sprite": "Item/WinningHeart",
+"weight": 0,
+"f160": 0,
+"group": 111,
+"f184": [
+0,
+0,
+0,
+0,
+0
+]
+},
+{
+"kind": 266,
+"name": "Item/HCHint",
+"sprite": "Item/HCHint",
+"weight": 0,
+"f160": 1,
+"group": 1000,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 267,
+"name": "Item/SnowBigBall",
+"sprite": "Item/ItemBigSnowBall",
+"weight": 0,
+"f160": 3,
+"group": 60,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+},
+{
+"kind": 268,
+"name": "Item/SnowFastCast",
+"sprite": "Item/ItemFastCast",
+"weight": 0,
+"f160": 1,
+"group": 113,
+"f184": [
+0,
+0,
+0,
+0,
+1
+]
+}
+]
