@@ -308,6 +308,10 @@ rồi thoát (không ghi gì) → chunk ~0x136 byte của hàm gốc rất có t
 
 Kiểm chứng quan trọng: `[ctx + opcode*4]` so với EIP handler thực tế — **3.680/3.680 khớp, 0 lệch**.
 
+Đã verify định lượng với snapshot thật: `8F346C` 32/52 write ngoài stack khớp `post.snap`, `8F4D46` 9/12,
+`8F5F40` 2/4; call sequence khớp `devirt.py` đến từng tham số (kể cả con trỏ `ebp-0x140`). CFG: 24 block,
+6 back-edge, hub `0x135B33B`. Bàn giao đầy đủ + việc còn lại: [vmdevirt.md](vmdevirt.md) §18.
+
 Điều **chưa** làm được (ghi rõ để khỏi tưởng nhầm): bytecode bị mã hoá rolling key nên không decode tĩnh
 được toàn stream; ngữ nghĩa 46 opcode chưa xác định (mới có size/nhánh/handler). Chi tiết + báo cáo độ phủ:
 [vmdevirt.md](vmdevirt.md).

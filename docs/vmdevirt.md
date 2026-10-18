@@ -477,6 +477,80 @@ sai đường thực thi.
 | `8F4D46` | 0/2 call (chưa tới native) | 9/12 |
 | `8F5F40` | 3/6 (đúng thứ tự + tham số) | 2/4 |
 
+
+## 18. Bàn giao (round 13)
+
+### Tool làm được gì
+
+`tools/vmdevirt.py` — 17 lệnh, không hardcode hằng số nào của bản VN (mọi thứ discover từ file + snapshot):
+
+```
+doctor     chặn sớm: file còn pack hay đã sẵn sàng devirt
+sites      liệt kê site jmp vào vùng VM + stub head
+discover   section, site, head (tổng quan nhanh)
+jumps      phân tích chuyển nhánh gián tiếp (dispatch)
+ctx        dump VM context sau một khối
+trace      chạy khối: write (ctx/image/heap), call, args, đích rời VM
+lift       rút các lệnh "có ngữ nghĩa" (bỏ junk)
+profile    sinh decomp/vm_profile.json (gộp cả opcodes + handlers)
+handlers   enumerate + phân loại bảng handler
+bytecode   học encoding VI từ trace (opcode -> size, opcode nhánh)
+decode     decode tuyến tính (chỉ dùng được khi bytecode không mã hoá)
+opcodes    ghép bảng handler + size + đặc trưng -> bản đồ opcode
+semantics  sketch ngữ nghĩa từng handler (chưa dùng được để emit)
+vfx        hiệu ứng mỗi VI (diff ctx + thanh ghi giữa 2 dispatch)
+cfg        CFG của stream VI đã chạy
+emit       sinh C từ trace (call + args + phân loại write)
+verify     đối chiếu pre/post snapshot: theo giá trị hoặc so mọi write
+```
+
+### Số liệu (bản VN, `unpacked_ca.exe`)
+
+| hạng mục | kết quả | bằng chứng |
+|---|---|---|
+| site / stub head | 607 / 390 | head `0x11EE3B0` xuất hiện 73 lần = 73 marker |
+| VM context | `0x11EDDEC`, lock `+0x7C` | tự dò từ spinlock `0x11EECB0`; xác nhận bằng `edi` cuối khối |
+| bảng handler | 178 entry, `ctx+0x94..0xF48` | tĩnh: khớp 3 snapshot + file; **3680/3680 dispatch khớp runtime** |
+| opcode map | 46 opcode, 46/46 có handler | 44/46 đo được size, **0 xung đột**, 3 opcode nhánh |
+| CFG | 24 block, 23 cạnh, 6 back-edge | hub `0x135B33B`; sửa được bug "nhảy ngắn bị nuốt" |
+| một vòng | 3.947.362 lệnh | `--stop-vip 135B33B --hub-count 2` |
+| emit C | call + args + phân loại write | khớp cấu trúc bản viết tay `8F346C`, `8F5F40` |
+| verify | 3 khối | `8F346C` 32/52, `8F4D46` 9/12, `8F5F40` 2/4 write ngoài stack khớp post.snap |
+| KR | `doctor` = PACKED | runbook §16 sẵn sàng |
+
+### Chưa làm được (và vì sao)
+
+1. **Ngữ nghĩa 46 opcode** — cần abstract-interpret thân handler để bóc opaque predicate + stack shuffle.
+   `semantics` hiện chỉ là sketch bị hằng số rối chi phối. Đây là việc nhiều ngày, không phải vài lệnh.
+2. **decode toàn stream** — bytecode mã hoá **rolling key** (4 giả thuyết khoá đều thất bại: 254–262 giá trị
+   khác nhau). Chỉ decode được phần **đã chạy** qua trace. Muốn decode nhánh chưa chạy phải hiểu hàm cập
+   nhật khoá.
+3. **verify đủ 6 khối** — chỉ 3 khối có snapshot. 3 khối còn lại (`8F452B`, `8F8F69`, `8F54E4`) chưa có
+   snapshot ⇒ cần chạy client gốc (`win/snap.bat <SITE>`).
+4. **emit trung thực từng VI** — phụ thuộc (1).
+
+### Việc tiếp theo, theo thứ tự
+
+1. Chạy `win/snap.bat 8F452B` và `8F8F69` → `trace` → `emit` → `verify` để nâng verify lên 5–6 khối.
+2. Nếu cần emit trung thực: viết abstract interpreter cho handler (dùng `vfx` làm oracle).
+3. Khi có dump KR: `doctor` → `discover` → `profile` → xem dispatch form; nếu là `jmp [table+idx*k]` liền
+   mạch thì viết backend `chained` (FALCON), phần còn lại dùng nguyên.
+
+### Cách chạy lại toàn bộ trên bản VN
+
+```bash
+python3 tools/vmdevirt.py doctor
+python3 tools/vmdevirt.py profile --snap logs/snap/8F346C/pre.snap --site 8F346C
+python3 tools/vmdevirt.py handlers --ctx 11EDDEC --json decomp/vm_handlers.json
+python3 tools/vmdevirt.py opcodes --snap logs/snap/8F346C/pre.snap --site 8F346C \
+        --disp 11F9E81 --ctx 11EDDEC --json decomp/vm_opcodes.json
+python3 tools/vmdevirt.py cfg --snap logs/snap/8F346C/pre.snap --site 8F346C --disp 11F9E81 --max 6000000
+python3 tools/vmdevirt.py trace --snap logs/snap/8F346C/pre.snap --site 8F346C \
+        --disp 11F9E81 --stop-vip 135B33B --hub-count 8 --ctx 11EDDEC --fake-native --json decomp/trace_iter_8F346C.json
+python3 tools/vmdevirt.py emit --trace decomp/trace_iter_8F346C.json --json decomp/emit_8F346C.c
+python3 tools/vmdevirt.py verify --trace-json decomp/trace_iter_8F346C.json --post logs/snap/8F346C/post.snap
+```
+
 ## 5b. Đường áp dụng sang bản KR
 
 Bản KR (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`) **đang bị pack**:
