@@ -10,6 +10,7 @@ use tokio::sync::mpsc;
 use crate::maps::BattleMap;
 use crate::packets::{self as pk, HEADER_TYPE};
 use crate::proto::{self, SeqState};
+use crate::hub::{self, Hub, Member};
 
 /// Server settings; env names match tools/fakeserver.py so the same test recipes work.
 #[derive(Clone, Debug)]
@@ -31,6 +32,8 @@ pub struct Config {
     pub death_end: f64,
     /// >0: N s after C->S 120 subtype 13 (death) send 173 (match over -> waiting room). Takes precedence over death_end.
     pub match_end: f64,
+    /// Number of clients in the room before the server starts the match (AUTO_START seconds after the last one entered).
+    pub players: usize,
     /// Items placed on the map before each match (S->C 553 list 2): "x,y,kind;..." from env ITEMS.
     pub items: Vec<(u8, u8, u32)>,
     /// Items lying on the floor (553 list 1): env FLOOR_ITEMS.
@@ -59,6 +62,7 @@ impl Config {
             bomb_fuse: env("BOMB_FUSE", 2.5),
             death_end: env("DEATH_END", 0.0),
             match_end: env("MATCH_END", 3.0),
+            players: env("PLAYERS", 1usize),
             floor_items: parse_items("FLOOR_ITEMS"),
             items: std::env::var("ITEMS")
                 .unwrap_or_default()
@@ -90,7 +94,7 @@ async fn writer_task(mut sock: tokio::net::tcp::OwnedWriteHalf, mut rx: mpsc::Un
     }
 }
 
-pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log) {
+pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub: Arc<Hub>) {
     let peer = sock.peer_addr().map(|a| a.to_string()).unwrap_or_default();
     log(format!("[{port}] connect from {peer}"));
     let (mut rd, mut wr) = sock.into_split();
@@ -102,7 +106,8 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log) {
 
     let mut st = SeqState { header_type: HEADER_TYPE, ..Default::default() };
     let mut buf = Vec::new();
-    let mut next_bomb_id: u16 = 0;
+    let mut user_id: u32 = 0; // account of this connection (from opcode 1, or found in opcode 6 on the channel connection)
+    let mut in_room = false;
     let mut chunk = vec![0u8; 65536];
     loop {
         let n = match tokio::time::timeout(Duration::from_secs(120), rd.read(&mut chunk)).await {
@@ -126,25 +131,39 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log) {
             st.seq_s = st.seq_s.wrapping_add(st.dseq_s);
             let op = proto::get_int(&body, 2, true) as u16;
             log(format!("[{port}] C->S opcode {op} body {}", hex(&body)));
-            for r in replies(op, port, &cfg) {
-                let _ = tx.send(r);
+            if op == 1 {
+                user_id = hub.new_user();
+                log(format!("[{port}] login -> user {user_id}"));
+                let _ = tx.send(pk::login_ok_as(&hub::player_name(user_id), user_id, 1));
+                let _ = tx.send(pk::login_net_info(&std::net::Ipv4Addr::from(cfg.server_ip).to_string(), [0, 0, 0]));
+            } else if op == 6 {
+                // channel login on a new connection: find which account it is (u32 user id somewhere in the body)
+                user_id = find_user(&body, hub.known_users()).unwrap_or(1000);
+                log(format!("[{port}] channel login user {user_id}"));
+                let _ = tx.send(pk::channel_enter_ok(now_utc()));
+            } else if op == 337 {
+                in_room = true;
+                enter_room(&hub, &cfg, &log, port, user_id, &tx);
+            } else {
+                for r in replies(op, port, &cfg) {
+                    let _ = tx.send(r);
+                }
             }
             if op == 117 {
                 if let Some(r) = pk::parse_item_pick(&body) {
                     log(format!("[{port}] item pick {r:?} -> 158"));
-                    let _ = tx.send(pk::item_picked(&r));
+                    hub.broadcast(&pk::item_picked(&r));
                 }
             }
             if op == 111 && cfg.bomb_fuse > 0.0 {
                 if let Some(rec) = pk::parse_bomb_record(&body) {
-                    next_bomb_id = next_bomb_id.wrapping_add(1).max(1);
-                    let id = next_bomb_id;
+                    let id = hub.next_bomb_id();
                     log(format!("[{port}] bomb {rec:?} -> 152 id {id}, 151 in {}s", cfg.bomb_fuse));
-                    let _ = tx.send(pk::bomb_placed(&rec, id));
-                    let (tx2, fuse) = (tx.clone(), cfg.bomb_fuse);
+                    hub.broadcast(&pk::bomb_placed(&rec, id));
+                    let (hub2, fuse) = (hub.clone(), cfg.bomb_fuse);
                     tokio::spawn(async move {
                         tokio::time::sleep(Duration::from_secs_f64(fuse)).await;
-                        let _ = tx2.send(pk::bomb_explode(&[id], 2));
+                        hub2.broadcast(&pk::bomb_explode(&[id], 2));
                     });
                 }
             }
@@ -153,21 +172,26 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log) {
                 let sub = proto::get_int(&body[2..], 1, true) as u8;
                 log(format!("[{port}] bomber event 120 subtype {sub}"));
                 if sub == 13 && (cfg.match_end > 0.0 || cfg.death_end > 0.0) {
-                    let (tx2, cfg2) = (tx.clone(), cfg.clone());
+                    let (hub2, cfg2) = (hub.clone(), cfg.clone());
                     tokio::spawn(async move {
                         if cfg2.match_end > 0.0 {
                             tokio::time::sleep(Duration::from_secs_f64(cfg2.match_end)).await;
-                            let _ = tx2.send(pk::match_over());
+                            hub2.room.lock().unwrap().started = false;
+                            hub2.broadcast(&pk::match_over());
                         } else {
                             tokio::time::sleep(Duration::from_secs_f64(cfg2.death_end)).await;
-                            let _ = tx2.send(pk::round_result(0, 10000, (180, 30), 0, (0, 0, 0), &[(0, [(1, 1), (0, 0), (0, 0)])]));
+                            hub2.broadcast(&pk::round_result(0, 10000, (180, 30), 0, (0, 0, 0), &[(0, [(1, 1), (0, 0), (0, 0)])]));
                         }
                     });
                 }
             }
-            if op == 337 && cfg.auto_start > 0.0 {
-                tokio::spawn(match_flow(tx.clone(), cfg.clone(), log.clone(), port));
-            }
+        }
+    }
+    if in_room {
+        let mut r = hub.room.lock().unwrap();
+        r.members.retain(|m| m.user_id != user_id);
+        if r.members.is_empty() {
+            r.started = false;
         }
     }
     log(format!("[{port}] close {peer}"));
@@ -199,7 +223,7 @@ fn replies(op: u16, port: u16, cfg: &Config) -> Vec<Vec<u8>> {
 }
 
 /// Server-driven match: 501 -> 189 (TURN_MODE) -> 190 -> 191/146 -> 189 mode 0 (docs/oc_e-game.md §5a-3).
-async fn match_flow(tx: mpsc::UnboundedSender<Vec<u8>>, cfg: Arc<Config>, log: Log, port: u16) {
+async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16) {
     let wait = |s: f64| tokio::time::sleep(Duration::from_secs_f64(s));
     let map = &cfg.maps[0];
     wait(cfg.auto_start).await;
@@ -208,20 +232,21 @@ async fn match_flow(tx: mpsc::UnboundedSender<Vec<u8>>, cfg: Arc<Config>, log: L
         let bricks: Vec<(u16, u8, u8, u32)> = cfg.items.iter().enumerate().map(|(i, &(x, y, k))| (i as u16, x, y, k)).collect();
         let n = bricks.len();
         let floor: Vec<(u16, u8, u8, u32)> = cfg.floor_items.iter().enumerate().map(|(i, &(x, y, k))| ((n + i) as u16, x, y, k)).collect();
-        let _ = tx.send(pk::map_items(&floor, &bricks));
+        hub.broadcast(&pk::map_items(&floor, &bricks));
     }
-    let _ = tx.send(pk::match_start(map, 0, cfg.room_type, 12345, &[(0, 0, 0)]));
+    let slots: Vec<(u8, u8, u8)> = hub.room.lock().unwrap().members.iter().map(|m| (m.slot, m.slot, 0)).collect();
+    hub.broadcast(&pk::match_start(map, 0, cfg.room_type, 12345, &slots));
     log(format!("[{port}] match flow: 501"));
     if cfg.turn_start <= 0.0 {
         return;
     }
     wait(cfg.turn_start).await;
-    let _ = tx.send(pk::round_start(map, cfg.turn_mode, 10000, (1, 1, 12345), (1, 1)));
+    hub.broadcast(&pk::round_start(map, cfg.turn_mode, 10000, (1, 1, 12345), (hub.slot_mask(), 1)));
     if cfg.go_start <= 0.0 {
         return;
     }
     wait(cfg.go_start).await;
-    let _ = tx.send(pk::round_go((120, 30), 0, 0, 0));
+    hub.broadcast(&pk::round_go((120, 30), 0, 0, 0));
     if cfg.begin_start > 0.0 {
         wait(cfg.begin_start).await;
         let r = if cfg.begin_op == 552 {
@@ -231,14 +256,14 @@ async fn match_flow(tx: mpsc::UnboundedSender<Vec<u8>>, cfg: Arc<Config>, log: L
         } else {
             pk::round_begin(0, 180_000, 30_000, 0)
         };
-        let _ = tx.send(r);
+        hub.broadcast(&r);
     }
     if cfg.play_start > 0.0 {
         wait(cfg.play_start).await;
-        let _ = tx.send(pk::round_start(map, 0, 10000, (1, 1, 12345), (1, 1)));
+        hub.broadcast(&pk::round_start(map, 0, 10000, (1, 1, 12345), (1, 1)));
         if cfg.post_play_start > 0.0 {
             wait(cfg.post_play_start).await;
-            let _ = tx.send(pk::round_begin(0, 180_000, 30_000, 0));
+            hub.broadcast(&pk::round_begin(0, 180_000, 30_000, 0));
         }
     }
 }
@@ -274,4 +299,44 @@ fn parse_items(var: &str) -> Vec<(u8, u8, u32)> {
             (v.len() == 3).then(|| (v[0] as u8, v[1] as u8, v[2]))
         })
         .collect()
+}
+
+/// Find a known account id stored as an obfuscated u32 anywhere in a body (opcode 6 carries the id from the login).
+fn find_user(body: &[u8], known: std::ops::Range<u32>) -> Option<u32> {
+    (2..body.len().saturating_sub(3)).map(|i| proto::get_int(&body[i..], 4, true) as u32).find(|v| known.contains(v))
+}
+
+/// Opcode 337 (entering the waiting room): put the user into the shared room, tell everybody, start the match
+/// when `PLAYERS` clients are in. Slot 0 = room chief.
+fn enter_room(hub: &Arc<Hub>, cfg: &Arc<Config>, log: &Log, port: u16, user_id: u32, tx: &mpsc::UnboundedSender<Vec<u8>>) {
+    let (slot, others, start) = {
+        let mut r = hub.room.lock().unwrap();
+        r.members.retain(|m| m.user_id != user_id);
+        let slot = (0..16u8).find(|s| !r.members.iter().any(|m| m.slot == *s)).unwrap_or(0);
+        let others: Vec<(u8, u32, String)> = r.members.iter().map(|m| (m.slot, m.user_id, m.name.clone())).collect();
+        r.members.push(Member { user_id, name: hub::player_name(user_id), slot, tx: tx.clone() });
+        let start = !r.started && r.members.len() >= cfg.players && cfg.auto_start > 0.0;
+        if start {
+            r.started = true;
+        }
+        (slot, others, start)
+    };
+    let name = hub::player_name(user_id);
+    log(format!("[{port}] user {user_id} enters the room in slot {slot} ({} others)", others.len()));
+    // the newcomer: everybody already in the room, then itself
+    for (s, id, nm) in &others {
+        let _ = tx.send(pk::room_player(*s, *id, nm, *s == 0, 0, 0));
+        let _ = tx.send(pk::room_slot_state(*s, *s == 0, false, 0, 0));
+    }
+    let _ = tx.send(pk::room_player(slot, user_id, &name, slot == 0, 0, 0));
+    let _ = tx.send(pk::room_slot_state(slot, slot == 0, false, 0, 0));
+    let _ = tx.send(pk::room_map(cfg.map_index, 0));
+    // the others: the newcomer
+    for m in hub.room.lock().unwrap().members.iter().filter(|m| m.user_id != user_id) {
+        let _ = m.tx.send(pk::room_player(slot, user_id, &name, slot == 0, 0, 0));
+        let _ = m.tx.send(pk::room_slot_state(slot, slot == 0, false, 0, 0));
+    }
+    if start {
+        tokio::spawn(match_flow(hub.clone(), cfg.clone(), log.clone(), port));
+    }
 }

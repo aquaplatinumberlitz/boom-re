@@ -444,6 +444,19 @@ Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
   nhặt `kind 1` ItemFire rồi `kind 0` ItemBomb (2 lần 117 → 158) → đặt được **2 bom liền nhau** (2 bản ghi 111, số thứ tự bom 0 và 20) và trường `r18` của 111
   (bomber vf31) tăng **1 → 2** = tầm nổ; vụ nổ phá gạch xa hơn. Server không cần gửi gì thêm ngoài 158 (server Rust gán id bom 1, 2 và nổ từng quả).
 
+### 5a-6. Hai người chơi (đang làm, 2026-10-18 tối)
+- **Chạy 2 client cùng lúc:** `tools/duo.sh <outdir>` — client A: Xvfb :77, `WINEPREFIX=~/.wine`, `wine/Boom`; client B: Xvfb :78, `~/.wine2`, `wine/Boom2`
+  (prefix riêng → wineserver riêng → khoá chỉ-một-bản `Global\FxClient…` không đụng nhau). `CLICKS_A/B`, `KEYS_A/B`, `RUST=1`.
+- **Server Rust có phòng chung** (`server/src/hub.rs`): mỗi lần đăng nhập (op 1) cấp id 1000, 1001…; op 6 trên kết nối kênh mang id (tìm u32 trong thân gói);
+  mọi client vào phòng (337) đều vào **một phòng**, slot theo thứ tự (slot 0 = chủ phòng); người mới nhận 103/106 của người cũ và ngược lại;
+  đủ `PLAYERS` người → 501 (danh sách slot) + chuỗi 189/190/189/191 phát cho cả phòng; 152/151 (bom) và 158 (vật phẩm) phát cho cả phòng.
+- **Kết quả** (`logs/duo/t2`, `docs/duo_match_B.png`): cả 2 client vào chung phòng chờ rồi **cùng vào trận**, HUD hiện **2 người chơi**.
+  Nhưng mỗi client chỉ thấy nhân vật mình di chuyển, nhân vật kia đứng yên ở ô xuất phát (hai nhân vật cùng xuất hiện ở góc phải trên) ⇒
+  **vị trí/di chuyển không đồng bộ qua TCP**. Client có engine UDP riêng (`MTUDPBase`, `MTUDPClient`, `CUDPPeer`, `CUDPPeerServer/Client`, `CUDPPeerMan`,
+  chuỗi `ErrNoUDP`, `CheckUDPChecking`) — nghi chủ phòng làm UDP server, người khác nối vào; địa chỉ/cổng lấy từ gói nào: CHƯA RÕ (ứng viên: các u32 trong 103,
+  host + 3 cổng của gói 15 — server đang gửi cổng 0).
+- Ô xuất phát: cả hai về cùng ô góc phải trên — `pos` trong 501 (đang = slot) hoặc khối slot của 189 mode 1 chưa đúng nghĩa. CHƯA KIỂM.
+
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |
 |---|---|---|

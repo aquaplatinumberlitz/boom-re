@@ -39,17 +39,18 @@ async fn main() -> std::io::Result<()> {
         maps::default_maps()
     };
     let cfg = Arc::new(Config::from_env(maps));
+    let hub = Arc::new(boom_server::hub::Hub::default());
     log(format!("config {cfg:?}").chars().take(300).collect());
 
     let mut tasks = Vec::new();
     for port in ports {
         let listener = tokio::net::TcpListener::bind(("0.0.0.0", port)).await?;
         log(format!("listening on {port}"));
-        let (cfg, log) = (cfg.clone(), log.clone());
+        let (cfg, log, hub) = (cfg.clone(), log.clone(), hub.clone());
         tasks.push(tokio::spawn(async move {
             loop {
                 if let Ok((sock, _)) = listener.accept().await {
-                    tokio::spawn(session::handle(sock, port, cfg.clone(), log.clone()));
+                    tokio::spawn(session::handle(sock, port, cfg.clone(), log.clone(), hub.clone()));
                 }
             }
         }));

@@ -103,9 +103,14 @@ pub fn login_replies() -> Vec<Vec<u8>> {
 
 /// CLoginStage__On_4 0x8534F3 (fields: tools/fakeserver.py login_ok). Player id = 1000 + i must match opcode 103.
 pub fn login_ok(name: &str, players: u8) -> Vec<u8> {
+    login_ok_as(name, 1000, players)
+}
+
+/// Opcode 4 with the account id `first_id` (+i for 2-player logins); each connected client needs its own id.
+pub fn login_ok_as(name: &str, first_id: u32, players: u8) -> Vec<u8> {
     let mut p = Packet::new(4).u8(0).u8(0).u16(0).u8(players).u64(0);
     for i in 0..players as u32 {
-        p = p.u32(1000 + i).u32(0).u16(0).u16(0).u32(1000 + i).str(name).u8(0).str(name).str("");
+        p = p.u32(first_id + i).u32(0).u16(0).u16(0).u32(first_id + i).str(name).u8(0).str(name).str("");
         p = p.u8(0).u32(0).u8(0).u8(0).u16(0).u8(0).u8(0).u32(0).u32(0).u8(0).u8(0).u8(0);
         p = p.u16(0).u16(0).u32(0).u8(0).u8(0).u32(0).u8(0).u8(0).u32(0).u8(0);
     }
@@ -248,7 +253,7 @@ pub fn round_start(map: &BattleMap, mode: u8, key: u32, extra2: (u16, u8, u32), 
     match mode {
         1 => {
             for i in 0..16 {
-                p = p.u8((i == 0) as u8);
+                p = p.u8((extra4.0 >> i) as u8 & 1); // mode 1: per-slot active flags (bit i of extra4.0)
             }
         }
         2 => p = p.u16(extra2.0).u8(extra2.1).u32(extra2.2),
