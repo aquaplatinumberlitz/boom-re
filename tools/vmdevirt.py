@@ -1148,10 +1148,70 @@ def cmd_opcodes(a):
         print(f"-> {a.json}")
 
 
+def cmd_semantics(a):
+    """First-pass semantics for every observed opcode: walk its handler and keep the
+    instructions that actually do work (touch ctx/stack/memory or a register), skipping the
+    junk that only shuffles pushes and pops."""
+    img = Image(a.exe)
+    md = md32()
+    rows = json.loads(pathlib.Path(a.opcodes).read_text())
+    vm_lo, vm_hi = img.vm_range()
+    ctx = int(a.ctx, 16)
+    out = []
+    for r in rows:
+        h = r.get("handler")
+        if not h:
+            continue
+        va = int(h, 16)
+        seen, body = set(), []
+        for _ in range(28):
+            if va in seen or not (vm_lo <= va < vm_hi):
+                break
+            seen.add(va)
+            i = next(md.disasm(img.read(va, 16), va), None)
+            if i is None:
+                break
+            m, o = i.mnemonic, i.op_str
+            # keep the instruction if it is not pure stack shuffling
+            keep = any(k in o for k in ("[edi", "[esi", "[esp +", "[esp -", "pushfd", "lods", "eax,", "ecx,", "edx,", "ebx,"))
+            if m in ("xor", "add", "sub", "and", "or", "shl", "shr", "sar", "not", "neg", "imul", "mul", "div",
+                     "cmp", "test", "movzx", "movsx", "inc", "dec", "xchg", "lodsb", "lodsw", "lodsd", "pushfd"):
+                keep = True
+            if keep and len(body) < 10:
+                tag = ""
+                if "[edi" in o:
+                    try:
+                        import re
+                        m2 = re.search(r"\[edi \+ (0x[0-9a-f]+)\]", o)
+                        if m2:
+                            tag = f"ctx+{int(m2.group(1), 16):#x}"
+                    except Exception:
+                        pass
+                body.append({"addr": hex(va), "insn": f"{m} {o}", "ctx": tag})
+            if m == "jmp" and o.startswith("0x"):
+                va = int(o, 16)
+                continue
+            if m.startswith("j") or m in ("ret", "jmp") or (m == "call" and not o.startswith("0x")):
+                break
+            va += i.size
+        out.append({"opcode": r["opcode"], "handler": h, "size": r.get("size"),
+                    "branch": bool(r.get("branch_hits")), "body": body})
+    with_body = sum(1 for r in out if r["body"])
+    print(f"semantics sketched for {with_body}/{len(out)} opcodes")
+    for r in out[:a.show]:
+        print(f"\n  op {r['opcode']} size={r['size']} handler={r['handler']}"
+              + (" [BRANCH]" if r["branch"] else ""))
+        for b in r["body"][:6]:
+            print(f"      {b['insn']:<44} {b['ctx']}")
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps(out, indent=1))
+        print(f"\n-> {a.json}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift",
-                                    "profile", "handlers", "bytecode", "decode", "opcodes"])
+                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
     ap.add_argument("--site", help="VM site (hex)")
     ap.add_argument("--cont", help="continuation address (hex), stop when reached")
@@ -1162,6 +1222,7 @@ def main():
     ap.add_argument("--max-writes", type=int, default=200_000)
     ap.add_argument("--fake-native", action="store_true",
                     help="không chạy code ngoài VM: giả lập return khi VM gọi hàm native/API")
+    ap.add_argument("--opcodes", default=str(ROOT / "decomp" / "vm_opcodes.json"))
     ap.add_argument("--sizes", default=str(ROOT / "decomp" / "vm_bytecode.json"))
     ap.add_argument("--start", help="bytecode start (hex)")
     ap.add_argument("--end", help="bytecode end (hex, exclusive)")
@@ -1176,7 +1237,7 @@ def main():
     {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps, "ctx": cmd_ctx,
      "trace": cmd_trace, "lift": cmd_lift, "profile": cmd_profile,
      "handlers": cmd_handlers, "bytecode": cmd_bytecode, "decode": cmd_decode,
-     "opcodes": cmd_opcodes}[a.cmd](a)
+     "opcodes": cmd_opcodes, "semantics": cmd_semantics}[a.cmd](a)
 
 
 if __name__ == "__main__":

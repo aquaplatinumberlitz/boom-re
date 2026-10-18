@@ -132,6 +132,32 @@ Có xử lý `jmp far` (WoW64 syscall: set eax, pop stub).
 45 KB bytecode rồi gọi native, tức `cont` không phải điểm dừng khả dụng cho khối loop/keep-alive. Kết luận
 này khớp với việc harness của repo (`tools/vmemu.py`) cũng không exit sau 3M bước.
 
+
+## 8. Báo cáo độ phủ so với mục tiêu
+
+| Hạng mục | Trạng thái | Bằng chứng |
+|---|---|---|
+| Stage 1 — discovery (section, site, stub head) | ✅ **xong** | 607 site → 390 head; head `0x11EE3B0` = 73 lần = 73 marker |
+| Stage 1B — VM context | ✅ **xong** | `0x11EDDEC`, tự dò qua spinlock `0x11EECB0`; xác nhận bằng `edi` cuối khối + tại dispatch |
+| Stage 1B — bảng handler | ✅ **xong** | 178 entry trong `ctx+0x94..+0xF48`; tĩnh (3 snapshot + file); **3.680/3.680 dispatch khớp** |
+| Stage 1B — phân loại handler | 🟡 **một phần** | 46 opcode có handler; phân loại *cấu trúc* (pushfd/lods/dispatch/size) xong; **ngữ nghĩa chưa** |
+| Stage 2 — encoding VI | ✅ **xong** | 44/46 opcode có kích thước nhất quán, 0 xung đột; 3 opcode nhánh (0x67, 0x7B, 0x80) |
+| Stage 2 — decode toàn stream | ❌ **bị chặn** | bytecode mã hoá rolling key (4 giả thuyết khoá đều fail); chỉ decode được đoạn **đã chạy** qua trace |
+| Stage 2 — CFG | 🟡 **một phần** | có danh sách VI đã chạy + nhánh; chưa dựng đồ thị đầy đủ |
+| Stage 3 — emit C | ❌ **chưa** | phụ thuộc ngữ nghĩa 46 opcode; "semantics" hiện chỉ là sketch, bị junk chi phối |
+| Verify với 6 khối `tools/devirt.py` | ❌ **chưa** | mới verify bảng handler vs runtime |
+| `decomp/vm_profile.json` | ✅ | sinh tự động |
+| Áp dụng sang KR | ⏸ **chờ dump** | KR đang pack, không có dump thì không chạy được gì |
+
+**Chặn hiện tại (theo thứ tự):**
+1. Ngữ nghĩa 46 opcode — phải đọc từng handler như bài gốc (nhìn lệnh ngay trước `pushfd`, nhìn
+   thao tác trên ngăn xếp ảo). Sketch tự động hiện tại bị hằng số rối chi phối, **không dùng được**.
+2. `cont` không dùng được cho khối loop ⇒ cần đơn vị "một vòng" (chưa chốt được fingerprint đúng).
+3. Bytecode rolling cipher ⇒ không decode được nhánh chưa chạy.
+
+**Ước lượng:** để emit C cho một khối đơn giản cần (1) ngữ nghĩa ~46 opcode, (2) một mô hình ngăn xếp ảo
+(VSP) đúng, (3) emit + verify. Mỗi phần là vài giờ làm việc có kiểm chứng, không phải một bước.
+
 ## 5b. Đường áp dụng sang bản KR
 
 Bản KR (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`) **đang bị pack**:
