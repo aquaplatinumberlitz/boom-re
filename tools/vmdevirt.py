@@ -1208,10 +1208,116 @@ def cmd_semantics(a):
         print(f"\n-> {a.json}")
 
 
+def cmd_vfx(a):
+    """Per-virtual-instruction effects: diff the VM context between two dispatches and group
+    the resulting change-sets by opcode. Repeated identical effect sets are the opcode's
+    empirical semantics."""
+    from unicorn import UC_HOOK_CODE, UcError
+    from unicorn import x86_const as X
+    site = int(a.site, 16)
+    disp = int(a.disp, 16)
+    ctx = int(a.ctx, 16)
+    img = Image(a.exe)
+    md = md32(detail=True)
+    snap = Snap(a.snap)
+    mu = build_uc(snap=snap)
+    setup_from_snap(mu, snap, img, site)
+    vreg = getattr(X, "UC_X86_REG_" + (a.vip_reg or "esi").upper())
+    FE = int(a.fields, 16)          # how much of the context to diff
+    REGS = {k: getattr(X, "UC_X86_REG_" + k.upper()) for k in ("eax", "ebx", "ecx", "edx", "edi", "ebp", "esp")}
+    prev = [None]                   # (op, vip, ctx_bytes, regs)
+    sigs = collections.defaultdict(collections.Counter)
+    counts = collections.Counter()
+    n, stop, armed, calls = [0], [None], [False], [0]
+    md_t = md
+    vm_lo, vm_hi = img.vm_range()
+
+    def fake_at(mu8, addr):
+        """Fake a native call and return True when handled."""
+        esp = mu8.reg_read(X.UC_X86_REG_ESP)
+        try:
+            ra = struct.unpack("<I", mu8.mem_read(esp, 4))[0]
+        except Exception:
+            return False
+        if not (vm_lo <= ra < vm_hi):
+            return False
+        mu8.reg_write(X.UC_X86_REG_EAX, 0)
+        mu8.reg_write(X.UC_X86_REG_ESP, esp + 4)
+        mu8.reg_write(X.UC_X86_REG_EIP, ra)
+        return True
+
+    def on_code(mu8, addr, size, u):
+        n[0] += 1
+        if n[0] > a.max:
+            stop[0] = "budget"
+            mu8.emu_stop()
+            return
+        if vm_lo <= addr < vm_hi:
+            armed[0] = True
+        elif armed[0]:
+            if fake_at(mu8, addr):
+                calls[0] += 1
+            else:
+                stop[0] = f"left VM to {addr:#x}"
+                mu8.emu_stop()
+            return
+        if addr != disp:
+            return
+        op = mu8.reg_read(X.UC_X86_REG_EAX)
+        vip = mu8.reg_read(vreg)
+        cur = bytes(mu8.mem_read(ctx, FE))
+        rv = {k: mu8.reg_read(v) for k, v in REGS.items()}
+        if prev[0] is not None:
+            pop, pvip, pctx, prg = prev[0]
+            rmask = tuple(sorted(k for k in REGS if rv[k] != prg[k]))
+            changes = []
+            for i in range(0, FE, 4):
+                old = struct.unpack_from("<I", pctx, i)[0]
+                new = struct.unpack_from("<I", cur, i)[0]
+                if old != new:
+                    changes.append((i, old, new))
+            kind = (rmask, tuple(sorted((i, o, nv) for i, o, nv in changes)))
+            sigs[pop][kind] += 1
+        counts[op] += 1
+        prev[0] = (op, vip, cur, rv)
+
+    mu.hook_add(UC_HOOK_CODE, on_code)
+    try:
+        mu.emu_start(site, 0xFFFFFFFF)
+    except UcError as e:
+        stop[0] = stop[0] or f"uc {e}"
+    print(f"insns {n[0]}  dispatches {sum(counts.values())}  faked natives {calls[0]}  stop {stop[0]}")
+    print(f"opcodes observed: {len(counts)}")
+    out = []
+    for op, c in counts.most_common():
+        sig = sigs.get(op, collections.Counter())
+        top = sig.most_common(1)
+        row = {"opcode": hex(op), "count": c, "distinct_effects": len(sig)}
+        if top:
+            k, cnt = top[0]
+            row["dominant"] = {"share": f"{cnt}/{sum(sig.values())}",
+                               "regs": list(k[0]),
+                               "changes": [[hex(i), hex(o), hex(nv)] for i, o, nv in k[1]]}
+        out.append(row)
+    # determinism: how many opcodes have one dominant effect?
+    det = sum(1 for r in out if r.get("dominant") and
+              r["dominant"]["share"].split("/")[0] == r["dominant"]["share"].split("/")[1])
+    print(f"opcodes whose every occurrence produced the same ctx effect-set: {det}/{len(out)}")
+    for r in out[:a.show]:
+        print(f"  op {r['opcode']:>6} n={r['count']:<6} effects={r['distinct_effects']:<3} "
+              f"dominant={r.get('dominant', {}).get('share', '-')} "
+              f"regs={','.join(r.get('dominant', {}).get('regs') or [])}")
+        for ch in (r.get("dominant", {}).get("changes") or [])[:4]:
+            print(f"        ctx+{int(ch[0],16):#05x}: {ch[1]} -> {ch[2]}")
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps(out, indent=1))
+        print(f"-> {a.json}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift",
-                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics"])
+                                    "profile", "handlers", "bytecode", "decode", "opcodes", "semantics", "vfx"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
     ap.add_argument("--site", help="VM site (hex)")
     ap.add_argument("--cont", help="continuation address (hex), stop when reached")
@@ -1222,6 +1328,7 @@ def main():
     ap.add_argument("--max-writes", type=int, default=200_000)
     ap.add_argument("--fake-native", action="store_true",
                     help="không chạy code ngoài VM: giả lập return khi VM gọi hàm native/API")
+    ap.add_argument("--fields", default="0x94", help="số byte ctx đem diff")
     ap.add_argument("--opcodes", default=str(ROOT / "decomp" / "vm_opcodes.json"))
     ap.add_argument("--sizes", default=str(ROOT / "decomp" / "vm_bytecode.json"))
     ap.add_argument("--start", help="bytecode start (hex)")
@@ -1237,7 +1344,7 @@ def main():
     {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps, "ctx": cmd_ctx,
      "trace": cmd_trace, "lift": cmd_lift, "profile": cmd_profile,
      "handlers": cmd_handlers, "bytecode": cmd_bytecode, "decode": cmd_decode,
-     "opcodes": cmd_opcodes, "semantics": cmd_semantics}[a.cmd](a)
+     "opcodes": cmd_opcodes, "semantics": cmd_semantics, "vfx": cmd_vfx}[a.cmd](a)
 
 
 if __name__ == "__main__":

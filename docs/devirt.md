@@ -3,18 +3,42 @@
 Mục tiêu: chạy được bản dump `ca_fixed.exe` (không còn Themida) trong Wine trên host có GPU.
 IAT đã sửa xong (`docs/runtime.md` → "Sửa IAT"). Việc còn lại là các đoạn code bị Themida ảo hoá.
 
-## Trạng thái (2026-10-16, tối)
+## Bảng trạng thái khối VM (nguồn sự thật duy nhất)
 
-> **Mới hơn (2026-10-17):** bản dump đã chạy tới **trận đấu (stage 13): nạp map xong + vẽ bản đồ + client ổn định** nhờ 2 khối
-> skip thí nghiệm 0x736C27 / 0x5788C9 (bảng dưới); có thêm khối tạm `sub_9682DE` và hook kênh tự hiện (`HOOKS`).
-> Tiến độ hiện tại: [progress.md](progress.md).
+Cập nhật 2026-10-18. `tools/devirt.py` `BLOCKS` hiện có **15 khối**; cột "cách" nói bằng chứng: **snap** = snapshot chụp tại site trên client gốc (`win/snap.bat`) + emulate/diff;
+**emu** = emulate trên snapshot cũ với khung hàm dựng bằng `--pre-asm` (+ `--overlay` dump sống), không cần client gốc vào trận; **skip** = `jmp cont` có căn cứ tĩnh.
 
-- ✅ **Bản dump chạy trong Wine: intro → màn đăng nhập → đăng nhập vào `tools/fakeserver.py` → màn chọn kênh (stage 10)**.
-  Keep-alive opcode 15 mỗi 5 s. Thử: `tools/xvfb_login.sh` (Xvfb riêng, tự gõ tài khoản, chụp `logs/xvfb/login_*.png`).
-- Đã devirtualize **6 khối** (bảng dưới, ✅). Phương pháp chuẩn: [Snapshot + emulate](#quy-trình-snapshot--emulate-khối-vm).
+| site | hàm | cách | trạng thái | kiểm runtime (Wine) |
+|---|---|---|---|---|
+| 0x8F452B | `sub_8F4421` (init trong `CFxApp__InitMain`) | snap | ✅ viết lại | client chạy tới đăng nhập |
+| 0x8F8F69 | `CStageMgr__ChangeStage` | snap | ✅ viết lại | đổi stage 1→10→11→12→13 |
+| 0x8F4D46 / 0x8F54E4 / 0x8F5F40 | vòng lặp chính `sub_8F4D01` (init / đổi stage / định kỳ) | snap + emu | ✅ viết lại (bỏ anti-cheat) | chạy liên tục |
+| 0x8F346C | `sub_8F3409` keep-alive 5 s | snap + emu | ✅ viết lại | opcode 15 mỗi 5 s |
+| 0x9682E5 | `sub_9682DE` `Init(index)` | emu | ✅ viết lại (reset 12 thành viên, §Khối viết lại bằng emulate) | gdb: 4 lần vào/ra, không crash |
+| 0x6EFD4A | `sub_6EFD24` (đặt bom → bản ghi bảng vòng `CGameMsgCache`) | emu | ✅ viết lại, **chưa kiểm gói C→S 111** | Space: không crash, bản ghi khớp tham số, bom hiện |
+| 0x71581A | `sub_71580C` (handler gói 552) | emu + overlay | ✅ viết lại | gói 552: vào/ra không crash |
+| 0x5A6E89 / 0x6F287E / 0x754C82 | guard `rand() % N` (anti-cheat lấy mẫu) | skip | ✅ plain skip = đường 99% của game gốc | chưa chạm 1% |
+| 0x8E5519 | `CFxApp__vf6` (đuôi tắt app) | skip | ✅ chỉ chạy lúc thoát | chưa thử đóng game |
+| 0x5788C9 | `CBombOwner__vf33` (1 lệnh `jmp 0x414543` bị đè) | skip | ✅ khôi phục đúng lệnh gốc (mẫu "jmp bị chiếm đoạt", `vmtriage.md` §3a) | chạy qua |
+| 0x736C27 | `CGamePlayMap__Load` đuôi | skip | 🟡 **chưa viết lại** (emulate object trống chỉ thấy `sub_414543`; cần dump `CGamePlayMap`) | skip không chặn điều khiển |
+| 0x966FEC | `sub_966FDE` | — | ⬜ hàm mồ côi (0 xref), chưa chạm | — |
+| 0xA12E59–0xA17A24 (43 site) | anti-cheat/system-info | — | ⬜ skip khi chạm (cont = marker+0x12, `vmtriage.md` §3b) | — |
+
+Khác: hook `CSelectServerStage__On_16` (`HOOKS`) dựng lại ô kênh; 59 điểm "unknown" trong `decomp/themida_entries.json` là code **mutate** (chạy native, vd `sub_711E7F`) — không phải VM.
+Chi tiết từng khối mới: [vm_6EFD4A_inputs.md](vm_6EFD4A_inputs.md) (§8), mục "Khối viết lại bằng emulate" cuối file này; triage tĩnh gốc: [vmtriage.md](vmtriage.md);
+công cụ devirt tổng quát (đang dở): [vmdevirt.md](vmdevirt.md); hướng dẫn cho người mới: [devirt-themida-huong-dan.md](devirt-themida-huong-dan.md).
+
+### Ba đường thêm một khối mới (chọn từ rẻ đến đắt)
+1. **skip** — khi native ngay trước site đã có `jge cont` với `rand()%N`, hoặc khối chỉ chạy lúc thoát, hoặc là 1 lệnh bị đè (tìm hàm song sinh).
+2. **emu trên snapshot cũ** — `tools/vmemu.py <SITE> --snap logs/snap/8F5F40/pre.snap --run-natives --quiet-api [--writes] --pre-asm <khung hàm> [--overlay ADDR:FILE]`.
+   Khung hàm: đặt `ecx`/thanh ghi, push tham số, `call <hàm>`; object game lấy từ dump sống (`tools/gdb/dump_stage.gdb`). Đổi giá trị tham số để biết tham số nào đi vào đâu, nhánh nào đổi.
+   Bẫy: VM đi lạc khi object thiếu (con trỏ null, vtable null) → nạp thêm bộ nhớ thật; chuỗi `CALL` giống nhau với nhiều giá trị khác nhau = không điều kiện.
+3. **snap tại site trên client gốc** — chỉ khi cần trạng thái runtime riêng; client gốc bị Themida giết khi bị patch (`runtime.md` → "Client gốc trong WinBoat").
+
+## Trạng thái lịch sử (2026-10-16)
+
+- Bản dump chạy trong Wine: intro → đăng nhập → chọn kênh (xem `progress.md` cho trạng thái sau đó).
 - HackShield tắt bằng **chính công tắc của game**: `Feature_IsDisabled(212)` → 1 ở 22 chỗ gọi (`tools/patch_client.py`); BlackCipher bỏ qua.
-- Chưa chạm: các khối VM ở lobby/phòng/ván (`CGamePlayMap__Load`, `CGOBomber__vf21`, `sub_71580C`…) — làm khi tới.
-- Tiếp theo (protocol, không phải VM): danh sách kênh opcode 14 đang crash — `docs/protocol.md` → "Màn chọn kênh"; rồi lobby (stage 11).
 
 ## Quy trình snapshot + emulate khối VM
 
@@ -246,3 +270,44 @@ Bản dump dừng ở màn hình intro. Thực chất process thoát mã 9 (`App
   - diff: nhiều thay đổi trên object `CMainWnd` ([esi]) + ~18 dword global; cần đọc kỹ để tái hiện (chưa xong).
 
 Các script phụ thêm: `tools/wine_bt.sh` (attach winedbg lấy bt), `tools/wine_dbg.sh` (break first-chance trong Xvfb).
+
+## Khối viết lại bằng emulate trên snapshot cũ (2026-10-18, không cần client gốc vào trận) — chi tiết
+
+Phương pháp: `tools/vmemu.py <SITE> --snap logs/snap/8F5F40/pre.snap --run-natives --pre-asm <khung hàm>` — snapshot cũ của client gốc đã có
+đủ trạng thái runtime của Themida; khung hàm + đối tượng game dựng bằng `--pre-asm` hoặc nạp từ dump sống của client chạy trong Wine
+(`tools/gdb/dump_stage.gdb` → `--overlay ADDR:FILE`). Đổi giá trị tham số/gói để xem tham số nào vào field nào, nhánh nào đổi.
+
+| site | hàm | kết quả | kiểm runtime |
+|---|---|---|---|
+| 0x6EFD4A | `sub_6EFD24` | ghi bản ghi 68 B vào bảng vòng `CGameMsgCache` 13/17 (flush op 111) — chi tiết `vm_6EFD4A_inputs.md` §8 | Space không crash, bản ghi khớp tham số (gdb `msgcache_rec.gdb`) |
+| 0x71581A | `sub_71580C` (gói 552) | không điều kiện: `MsgCache.vf3(1)`, `Decode4(packet)` (bỏ kết quả), `sub_711E7F`, `sub_708192`, `sub_414543(this+0x4AB4)`, `sub_705F63` | server gửi 552 (`BEGIN_OP=552`): vào/ra handler không crash (gdb `h552.gdb`) |
+| 0x9682E5 | `sub_9682DE` Init(index) | gán index + reset 12 thành viên (box -1/0, sub-readers, object +0xB4) — thay bản tạm | gdb `init9682.gdb`: 4 lần vào/ra (2 ctor + reset idx 0/1), không crash |
+| 0x5A6E89, 0x6F287E, 0x754C82 | guard `rand() % N` | plain `jmp cont` = đường đi ~99% của game gốc | build; chưa có lần chạy nào chạm 1% |
+
+Ghi chú: `sub_711E7F`/`sub_708192`/`sub_705F63` nhảy vào section Themida (`jmp 0x13xxxxx`) nhưng là code **mutate** (chạy native, quay về .text),
+không phải VM — 59 điểm "unknown" trong `decomp/themida_entries.json` thuộc loại này. Packet (`RecvPkt`): +0x10 buffer, +0x20 giới hạn,
++0x24 con trỏ đọc, +0x28 chế độ (khác 0 → số bị XOR), +0x30 cờ lỗi.
+
+**0x736C27 (`CGamePlayMap__Load` tail) — emulate thử, chưa viết lại:** với `ebx` = object trống, khối chỉ gọi `sub_414543(ebx + 0x8F480C)` (hub check của Themida)
+rồi thoát (không ghi gì) → chunk ~0x136 byte của hàm gốc rất có thể là vòng duyệt danh sách (rỗng với object trống). Muốn biết nó làm gì với map thật cần bộ nhớ
+`CGamePlayMap` (object > 11 MB, `this+0xA832E8` là danh sách) — chưa dump được. Skip hiện tại không chặn điều khiển (đã kiểm), giữ nguyên.
+**0x8E5519 (`CFxApp__vf6`)**: đây là đoạn tắt app (duyệt hết singleton gọi dtor), chỉ chạy lúc thoát → plain skip. **0x966FEC**: hàm mồ côi (0 xref), chưa chạm.
+
+## Công cụ phân tích VM (nhánh `feat/vmdevirt`, 2026-10-18)
+
+`tools/vmdevirt.py` tự dò cấu trúc VM thay vì hardcode, và đã kiểm chứng trên chính dump này:
+
+| Việc | Lệnh | Kết quả |
+|---|---|---|
+| Liệt kê site + stub head | `discover` | 607 site / 390 head; **6/6 khối đã devirt tay đều được tìm thấy** |
+| Tự dò VM context | `profile --snap ... --site ...` | ra `ctx = 0x11EDDEC` từ spinlock `0x11EECB0` |
+| Bảng handler | `handlers --ctx 11EDDEC` | 178 entry trong `ctx+0x94..+0xF48`, tĩnh (khớp 3 snapshot + file) |
+| Bản đồ opcode | `opcodes --snap ... --disp 11F9E81` | 46 opcode, 46/46 có handler, 44/46 có size, 3 opcode nhánh |
+| Hiệu ứng mỗi VI | `vfx --snap ...` | diff ctx + thanh ghi giữa 2 dispatch, gom theo opcode |
+| Trace / lift | `trace` / `lift` | ghi write ctx/image/heap, hoặc rút lệnh có ngữ nghĩa |
+
+Kiểm chứng quan trọng: `[ctx + opcode*4]` so với EIP handler thực tế — **3.680/3.680 khớp, 0 lệch**.
+
+Điều **chưa** làm được (ghi rõ để khỏi tưởng nhầm): bytecode bị mã hoá rolling key nên không decode tĩnh
+được toàn stream; ngữ nghĩa 46 opcode chưa xác định (mới có size/nhánh/handler). Chi tiết + báo cáo độ phủ:
+[vmdevirt.md](vmdevirt.md).

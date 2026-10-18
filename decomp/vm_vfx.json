@@ -1,0 +1,551 @@
+[
+ {
+  "opcode": "0x81",
+  "count": 1009,
+  "distinct_effects": 4,
+  "dominant": {
+   "share": "764/1009",
+   "regs": [
+    "eax",
+    "ebx",
+    "edx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x87",
+  "count": 519,
+  "distinct_effects": 2,
+  "dominant": {
+   "share": "426/519",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x43",
+  "count": 464,
+  "distinct_effects": 2,
+  "dominant": {
+   "share": "415/464",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x71",
+  "count": 350,
+  "distinct_effects": 2,
+  "dominant": {
+   "share": "185/350",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x66",
+  "count": 321,
+  "distinct_effects": 2,
+  "dominant": {
+   "share": "309/321",
+   "regs": [
+    "eax",
+    "ebx",
+    "edx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x3b",
+  "count": 281,
+  "distinct_effects": 2,
+  "dominant": {
+   "share": "269/281",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x91",
+  "count": 245,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "244/244",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xa6",
+  "count": 224,
+  "distinct_effects": 2,
+  "dominant": {
+   "share": "222/224",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x56",
+  "count": 65,
+  "distinct_effects": 44,
+  "dominant": {
+   "share": "22/65",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xc7",
+  "count": 53,
+  "distinct_effects": 24,
+  "dominant": {
+   "share": "16/53",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x76",
+  "count": 21,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "21/21",
+   "regs": [
+    "eax",
+    "ebx",
+    "edx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xb8",
+  "count": 18,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "18/18",
+   "regs": [
+    "eax",
+    "ebx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xcb",
+  "count": 17,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "17/17",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x2e",
+  "count": 16,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "16/16",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x59",
+  "count": 14,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "14/14",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x6a",
+  "count": 7,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "7/7",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x55",
+  "count": 6,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "6/6",
+   "regs": [
+    "eax",
+    "ebx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xb1",
+  "count": 5,
+  "distinct_effects": 2,
+  "dominant": {
+   "share": "4/5",
+   "regs": [
+    "eax",
+    "ebx",
+    "ecx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x7d",
+  "count": 5,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "5/5",
+   "regs": [
+    "eax",
+    "ebx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x88",
+  "count": 5,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "5/5",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x8e",
+  "count": 4,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "4/4",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xb4",
+  "count": 4,
+  "distinct_effects": 2,
+  "dominant": {
+   "share": "3/4",
+   "regs": [
+    "eax",
+    "ebx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x89",
+  "count": 2,
+  "distinct_effects": 2,
+  "dominant": {
+   "share": "1/2",
+   "regs": [
+    "eax",
+    "ebx",
+    "ecx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xae",
+  "count": 2,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "2/2",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x73",
+  "count": 2,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "2/2",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x4e",
+  "count": 2,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "2/2",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xbb",
+  "count": 2,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "2/2",
+   "regs": [
+    "eax",
+    "ebx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x30",
+  "count": 2,
+  "distinct_effects": 2,
+  "dominant": {
+   "share": "1/2",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": [
+    [
+     "0x0",
+     "0x19c3f8",
+     "0x194008"
+    ]
+   ]
+  }
+ },
+ {
+  "opcode": "0x92",
+  "count": 2,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "2/2",
+   "regs": [
+    "eax",
+    "ebx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xc3",
+  "count": 2,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "2/2",
+   "regs": [
+    "eax",
+    "ebx",
+    "ecx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xa9",
+  "count": 2,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "2/2",
+   "regs": [
+    "eax",
+    "ebx",
+    "ecx",
+    "edx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x7b",
+  "count": 2,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "2/2",
+   "regs": [
+    "eax",
+    "ebx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x4f",
+  "count": 1,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "1/1",
+   "regs": [
+    "eax",
+    "ebx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x4b",
+  "count": 1,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "1/1",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0xa0",
+  "count": 1,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "1/1",
+   "regs": [
+    "eax",
+    "ebx"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x78",
+  "count": 1,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "1/1",
+   "regs": [
+    "eax",
+    "ebx",
+    "ecx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x8f",
+  "count": 1,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "1/1",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x31",
+  "count": 1,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "1/1",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ },
+ {
+  "opcode": "0x26",
+  "count": 1,
+  "distinct_effects": 1,
+  "dominant": {
+   "share": "1/1",
+   "regs": [
+    "eax",
+    "ebx",
+    "esp"
+   ],
+   "changes": []
+  }
+ }
+]
