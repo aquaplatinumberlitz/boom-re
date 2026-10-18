@@ -155,6 +155,8 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 log(format!("[{port}] login -> user {user_id}"));
                 let _ = tx.send(pk::login_ok_as(&hub::player_name(user_id), user_id, 1));
                 let _ = tx.send(pk::login_net_info(&std::net::Ipv4Addr::from(cfg.server_ip).to_string(), cfg.udp_ports));
+                // Vietnamese UI texts (the VN client has none for the UI keys)
+                let _ = tx.send(pk::client_strings(crate::strings::VI));
             } else if op == 6 {
                 // channel login on a new connection: find which account it is (u32 user id somewhere in the body)
                 user_id = find_user(&body, hub.known_users()).unwrap_or(1000);

@@ -6,3 +6,4 @@ pub mod maps;
 pub mod packets;
 pub mod proto;
 pub mod session;
+pub mod strings;

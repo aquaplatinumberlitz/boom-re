@@ -101,6 +101,17 @@ pub fn login_replies() -> Vec<Vec<u8>> {
     ]
 }
 
+/// Opcode 2 with data (CStage__On_2: reloads ClientData/ClientString, then sub_98DE15 merges this blob):
+/// u8 1, blob {u16 n, n x (str key, str text)}. login_replies() keeps the cached form (u8 0).
+pub fn client_strings(table: &[(&str, &str)]) -> Vec<u8> {
+    let mut b = Le(vec![0]);
+    b.u16(table.len() as u16);
+    for &(k, v) in table {
+        b.str(k).str(v);
+    }
+    Packet::new(2).u8(1).blob(&b.0).build()
+}
+
 /// CLoginStage__On_4 0x8534F3 (fields: tools/fakeserver.py login_ok). Player id = 1000 + i must match opcode 103.
 pub fn login_ok(name: &str, players: u8) -> Vec<u8> {
     login_ok_as(name, 1000, players)

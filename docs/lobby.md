@@ -663,3 +663,19 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
   `u32 mã hàng, u8 loại tiền, u8, u8, u8, u8`) → **S→C 223 `{u8 0}`** = thành công (`sub_8AF6B7`; mã lỗi: 1/5 ErrorBuying, 24 ErrorBuying2,
   40 ProcessOther, 41 ErrorWrongItem, 45 NotRegistered…, 9 CantBuyExceed + u32, 22/23 bỏ qua) → "BuyItem", VÀNG trừ ở client
   (`docs/shop_items.png`, `docs/shop_buy_ok.png`: 5000 → 4900). Server Rust: 2 món thử (`SHOP_ITEMS`, A giá VÀNG, B giá XU), ví theo kết nối (XU 3000, VÀNG 5000; trừ khi 261, VÀNG gửi lại trong 20 lần vào shop sau), chưa lưu túi đồ/ví vào đĩa. Sau mua client còn gửi C→S 295 (`sub_800813`) — chưa trả lời.
+
+## Cập nhật 21 (2026-10-19) — chữ giao diện hiện khoá thô ("AllTab", "Square_ChatTab", "BuyItem"…): bảng FxClientString ✅
+- Chữ giao diện tra qua `sub_98DB56(key)` (→ `sub_98DA90`, bảng ở `dword_EEBE28`); không có khoá → hiện chính khoá. Bảng gồm
+  `ClientData/ClientString` (trong fx pack, XML UTF-16 LangID 1066 — **chỉ 4305 câu NPC/quái**, không có khoá UI) + **FxClientString do server
+  gửi (S→C 2)**. Bản VN gốc của khoá UI chỉ có trên server cũ; `Etc/FxLang.bin` (ISTF, ~460 khoá) chỉ có ko/ja/zh và cũng thiếu phần lớn.
+- **S→C 2** (`CStage__On_2`, gửi lúc nào cũng được: tạo bảng mới, nạp ClientString, gộp blob, cài đặt): `u8 1`, blob {`u16 n`, n × (`str khoá,
+  str chữ`)} (`sub_98DE15`). Server Rust gửi ngay sau login OK (op 1) bảng `server/src/strings.rs` (**bản dịch tự viết**; nhãn thẻ con shop
+  Special/Item/Set/Character/Slot là đoán). Khoá thu bằng `tools/gdb/strkeys.gdb` (breakpoint Python ở `sub_98DB56`, in khoá mới) khi đi
+  sảnh → phòng → shop: 202 khoá (SpeakerMacro01-24, RPG*Slot, LobbySquare_Cmd_AreaChange01-20… chưa dịch).
+- Có nhãn ghép 2 khoá: `ItemSum`+`Cash` ("Tổng: XU 200"), `ItemRemainCash`+`Lucci`. Thông báo qua `sub_415B2F` dùng chữ làm chuỗi định dạng
+  (`%d` = số; `sub_992AFA` kiểm khớp kiểu).
+- **Mã hoá**: client dùng Windows-1258; chữ có dấu thanh không có sẵn trong 1258 (ấ, ả, ộ…) phải viết **chữ gốc + byte dấu kết hợp**
+  (0xCC huyền, 0xEC sắc, 0xD2 hỏi, 0xDE ngã, 0xF2 nặng). `proto::cp1258` trước đó dùng `encoding_rs` → ra "&#7845;"; nay tách dấu theo bảng
+  `VI_DECOMP` (sinh bằng Python unicodedata). Client hiển thị đúng (`docs/lobby_strings_vi.png`, `docs/shop_strings_vi.png`).
+- Thanh trên trái giờ hiện "Kenh 1-Quảng trường 1" (khoá `LobbySquare_AreaName01`, xem oc_c-square.md) — không còn "aName01".
+- Còn trống ở sảnh: danh sách người chơi bên trái (thẻ Tất cả/Hội) và 2 ô phía trên nó — CHƯA KIỂM nguồn.
