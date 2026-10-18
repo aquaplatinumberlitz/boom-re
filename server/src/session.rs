@@ -124,6 +124,9 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
     // 83 sent (create/join): the next 337 is the waiting room asking for its players. 337 also comes from the lobby after 23
     // (sub_8C0D23 -> sub_8BC5ED, u32 of dword_E60814) and must not put the user in the room
     let mut room_pending = false;
+    // shop wallet of this connection (not persisted): cash = XU (221), gold = lucci / VANG (20)
+    let mut cash = pk::SHOP_CASH;
+    let mut gold = pk::SHOP_GOLD;
     let mut chunk = vec![0u8; 65536];
     loop {
         let n = match tokio::time::timeout(Duration::from_secs(120), rd.read(&mut chunk)).await {
@@ -162,7 +165,6 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 hub.lobby.lock().unwrap().push(tx.clone());
                 let _ = tx.send(pk::account_info(&hub::player_name(user_id)));
                 let _ = tx.send(pk::item_catalog());
-                let _ = tx.send(pk::cash_balance(10000));
                 for r in replies(op, port, &cfg) {
                     let _ = tx.send(if proto::get_int(&r, 2, true) == 88 { hub.room_list(cfg.room_type) } else { r });
                 }
@@ -246,14 +248,23 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
             } else if op == 38 {
                 // after 289: enter-shop request (sub_7EFB6A): u8, u8 n, n x (str name, u32 id), u8 -> 20 (CStage__On_20, stage 14)
                 log(format!("[{port}] shop enter 38 -> 20"));
-                let _ = tx.send(pk::shop_data());
-            } else if op == 260 {
-                // sent on shop entry (sub_800DF0): bool. Answer unknown; 223 here is taken as a purchase result (sub_803416)
-                log(format!("[{port}] shop 260"));
-            } else if op == 261 {
-                // buy (sub_8AF502 -> sub_8A9833 stock record), after the client-side money/level checks -> 223 {u8 0}
-                log(format!("[{port}] buy 261 -> 223 ok"));
-                let _ = tx.send(pk::buy_result(0));
+                let _ = tx.send(pk::shop_data(gold));
+            } else if op == 260 || op == 259 {
+                // cash requests: 260 on shop entry (sub_800DF0), 259 after a purchase; bool -> 221 {u8 slot, u32 cash}
+                log(format!("[{port}] cash {op} -> 221 ({cash})"));
+                let _ = tx.send(pk::cash_balance(cash));
+            } else if op == 261 && body.len() >= 7 {
+                // buy (sub_8AF502 -> sub_8A9833): u32 stock id, u8 currency, 4 x u8, after the client-side money/level checks.
+                // 223 {u8 0} = ok; the client deducts gold itself but asks for cash again with 259
+                let stock = proto::get_int(&body[2..], 4, true) as u32;
+                let code = match pk::SHOP_ITEMS.iter().find(|it| it.0 == stock) {
+                    Some(&(_, _, _, _, _, price, 0)) if cash >= price => { cash -= price; 0 }
+                    Some(&(_, _, _, _, _, price, 1)) if gold >= price => { gold -= price; 0 }
+                    Some(_) => 1,
+                    None => 41,
+                };
+                log(format!("[{port}] buy {stock} -> 223 {code} (cash {cash}, gold {gold})"));
+                let _ = tx.send(pk::buy_result(code));
             } else if op == 276 || op == 278 || op == 256 {
                 // shop list requests after 20 when the cached .ini version differs: FxStock -> 64, StringTable -> 225, PackageMap -> 65
                 let pkt = match op { 276 => pk::shop_stock(), 278 => pk::shop_strings(), _ => pk::shop_packages() };

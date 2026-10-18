@@ -549,15 +549,17 @@ pub fn account_info(name: &str) -> Vec<u8> {
     p.blob(&b.0).build()
 }
 
-/// Gold (lucci, VANG) given on shop entry; the client deducts prices itself after a 223 ok.
+/// Starting gold (lucci, VANG) sent in 20; the client deducts prices itself after a 223 ok.
 pub const SHOP_GOLD: u32 = 5000;
+/// Starting cash (XU) sent in 221; the client asks again with 259 after a purchase.
+pub const SHOP_CASH: u32 = 3000;
 
 /// Opcode 20 (CStage__On_20): shop entry data, the answer to C->S 38. u8 slot, u8, 4 x u32 (?, lucci/VANG sub_9B754B,
 /// gcoupon sub_9B6973, capoint/BAC sub_9B6936); [feature 67] u8, 4 x u32, str;
 /// [186] bool; [176] u8 n (+ SYSTEMTIME 8 x u16 if n != 0); u32, u32, u32, u8, u32, str, blob {u32 n, n x (u8 idx, u32, str)},
 /// u32 count, count x blob. Ends with sub_8F391D(14) when E60884+900 == 14 (the shop stage).
-pub fn shop_data() -> Vec<u8> {
-    let mut p = Packet::new(20).u8(0).u8(0).u32(0).u32(SHOP_GOLD).u32(0).u32(0);
+pub fn shop_data(gold: u32) -> Vec<u8> {
+    let mut p = Packet::new(20).u8(0).u8(0).u32(0).u32(gold).u32(0).u32(0);
     p = p.u8(0).u32(0).u32(0).u32(0).u32(0).str("");
     p = p.u8(0).u8(0);
     p = p.u32(0).u32(0).u32(0).u8(0).u32(0).str("");
@@ -566,10 +568,10 @@ pub fn shop_data() -> Vec<u8> {
     p.blob(&b.0).u32(0).build()
 }
 
-/// Shop test catalog: (stock id, item id, stock type, name, icon path, price)
-pub const SHOP_ITEMS: &[(u32, u32, u8, &str, &str, u32)] = &[
-    (1, 1001, 2, "Test A", "Icon/A02_10_0001icon", 100),
-    (2, 1002, 2, "Test B", "Icon/A02_21_0001icon", 200),
+/// Shop test catalog: (stock id, item id, stock type, name, icon path, price, currency 0 cash/XU 1 lucci/VANG)
+pub const SHOP_ITEMS: &[(u32, u32, u8, &str, &str, u32, u8)] = &[
+    (1, 1001, 2, "Test A", "Icon/A02_10_0001icon", 100, 1),
+    (2, 1002, 2, "Test B", "Icon/A02_21_0001icon", 200, 0),
 ];
 
 /// Opcode 51 (CStage__On_51 -> sub_8C0009, item catalog into dword_E60814): blob {u16 n, n x (u32 id, u8 type, str, u32 +60,
@@ -578,7 +580,7 @@ pub const SHOP_ITEMS: &[(u32, u32, u8, &str, &str, u32)] = &[
 pub fn item_catalog() -> Vec<u8> {
     let mut b = Le(vec![0]);
     b.u16(SHOP_ITEMS.len() as u16);
-    for &(_, id, kind, _, icon, _) in SHOP_ITEMS {
+    for &(_, id, kind, _, icon, _, _) in SHOP_ITEMS {
         b.u32(id).u8(kind).str(icon).u32(0).u32(0).u32(0).str("").u16(0).u8(0);
     }
     Packet::new(51).blob(&b.0).build()
@@ -588,10 +590,10 @@ pub fn item_catalog() -> Vec<u8> {
 pub fn shop_stock() -> Vec<u8> {
     let mut b = Le(vec![0]);
     b.u16(SHOP_ITEMS.len() as u16);
-    for &(stock, id, kind, name, _, price) in SHOP_ITEMS {
+    for &(stock, id, kind, name, _, price, cur) in SHOP_ITEMS {
         b.u32(stock).u8(kind).str(name).u32(price).u32(id).u32(1).str("");
         // +248 = currency (sub_8A04EA): 0 cash (XU), 1 lucci (VANG), 2 gcoupon, 5 capoint (BAC)
-        b.u32(price).u32(price).u16(0).u8(0).u16(0).u16(0).u32(0).u8(0).u8(1).u32(0).u16(0).u32(0).u32(0).u8(1);
+        b.u32(price).u32(price).u16(0).u8(0).u16(0).u16(0).u32(0).u8(0).u8(cur).u32(0).u16(0).u32(0).u32(0).u8(1);
     }
     Packet::new(64).blob(&b.0).build()
 }
@@ -610,9 +612,10 @@ pub fn shop_packages() -> Vec<u8> {
     Packet::new(65).blob(&b.0).build()
 }
 
-/// Opcode 223 (CStage case 221 -> stage vf84 -> sub_9B691A, E60848+348 = cash / XU): u8 slot, u32 cash. Answer to C->S 260.
+/// Opcode 221 (CStage__OnPacket case 221 -> stage vf84 -> sub_9B691A, E60848+348 = cash / XU): u8 slot, u32 cash.
+/// Answer to C->S 260 (shop entry); CShopStageNew__vf84 also sets the shop's "cash known" flag (+43968).
 pub fn cash_balance(cash: u32) -> Vec<u8> {
-    Packet::new(223).u8(0).u32(cash).build()
+    Packet::new(221).u8(0).u32(cash).build()
 }
 
 /// Opcode 223 inside the shop stage (sub_803416 -> sub_8AF6B7): purchase result, u8 code. 0 = ok ("BuyItem", item applied

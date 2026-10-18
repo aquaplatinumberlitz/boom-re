@@ -647,8 +647,10 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
   u16 (+200), u16 (+212), u32 (+224), u8 (+236), u8 (+248), u32 (+260), u16 (+272), u32 (+284), u32 (+296), u8 (+308)`. Ý nghĩa: CHƯA KIỂM.
 - Sau 20 client còn gửi 298 (`sub_9ADBDF`: `str tên, bool 1`) và 260 (`bool`, `sub_800DF0`); chưa trả lời (không cần cho mua bán).
 - **Ví tiền** trong 20: u32 thứ 2 = **lucci = VÀNG** (`sub_9B754B`, E60848+324), u32 thứ 3 = gcoupon (+396), u32 thứ 4 = **capoint = BẠC**
-  (+420). **XU = cash** (+348) chỉ được ghi qua `stage->vf84` (`u8 slot, u32`) = CStage case 221 = **S→C 223** — nhưng trong stage shop
-  223 bị `sub_803416` hiểu là **kết quả mua** (gửi 223 lúc vào shop → hiện "BuyItem"). 223 gửi ở sảnh (sau 23) chưa làm XU đổi: CHƯA KIỂM.
+  (+420). **XU = cash** (+348) ghi qua `stage->vf84` (`u8 slot, u32`) = **S→C 221** (IDA đánh số case của `CStage__OnPacket` theo opcode
+  gốc — case thấp nhất là 2 — nên "case 221" = opcode 221, không phải 223). **Trả lời C→S 260** (vào shop) **và C→S 259** (sau khi mua; client
+  KHÔNG tự trừ XU mà hỏi lại) bằng 221 → XU hiện số mới (`docs/shop_cash_ok.png`: 3,000 → mua món 200 XU → 2,800). S→C 223 là kết quả mua
+  (stage shop chặn 223 → `sub_803416`); gửi 223 khi không mua → hiện "BuyItem" giả.
 - **Danh mục vật phẩm S→C 51** (`CStage__On_51` → `sub_8C0009`, bảng băm `dword_E60814+12`): blob {`u16 n`, n × (`u32 id, u8 loại, str,
   u32 +60, u32 +72, u32 +84, str, u16, u8`)}. Đường dẫn icon theo loại (`sub_8BBFE8`): loại 0/2/… = chính `str`; 19 (trang phục) =
   `Icon/A{nhân vật +60}_{bộ phận +72}_{số +84}icon` (`A%02d_%2d_%04d`, bộ phận `sub_58E281`: 0..9 → ×10, 10→21, 11→41, 12→22).
@@ -660,4 +662,4 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
 - **Mua**: MUA → hộp MUA VẬT PHẨM → MUA → client tự kiểm tiền/cấp (`sub_8ABDB9`, `sub_8AB906`) → **C→S 261** (`sub_8AF502`/`sub_8A9833`:
   `u32 mã hàng, u8 loại tiền, u8, u8, u8, u8`) → **S→C 223 `{u8 0}`** = thành công (`sub_8AF6B7`; mã lỗi: 1/5 ErrorBuying, 24 ErrorBuying2,
   40 ProcessOther, 41 ErrorWrongItem, 45 NotRegistered…, 9 CantBuyExceed + u32, 22/23 bỏ qua) → "BuyItem", VÀNG trừ ở client
-  (`docs/shop_items.png`, `docs/shop_buy_ok.png`: 5000 → 4900). Server Rust: 2 món thử (`SHOP_ITEMS`), VÀNG 5000, chưa lưu túi đồ.
+  (`docs/shop_items.png`, `docs/shop_buy_ok.png`: 5000 → 4900). Server Rust: 2 món thử (`SHOP_ITEMS`, A giá VÀNG, B giá XU), ví theo kết nối (XU 3000, VÀNG 5000; trừ khi 261, VÀNG gửi lại trong 20 lần vào shop sau), chưa lưu túi đồ/ví vào đĩa. Sau mua client còn gửi C→S 295 (`sub_800813`) — chưa trả lời.
