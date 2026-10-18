@@ -14,6 +14,10 @@ pub struct Member {
     pub tx: UnboundedSender<Vec<u8>>,
     /// From C->S 92 (match start): two local IPv4 (as sent) and the client's UDP port.
     pub udp: Option<(u32, u32, u16)>,
+    /// Waiting-room state sent in 106: team (C->S 89), character (C->S 90), ready (C->S 94 on the own slot).
+    pub team: u8,
+    pub character: u8,
+    pub ready: bool,
 }
 
 #[derive(Default)]
@@ -71,6 +75,18 @@ impl Hub {
 }
 
 impl Hub {
+    /// Change one member's waiting-room state and send its 106 to the whole room (the 106 of its own slot also unlocks the
+    /// client's buttons: CPrepareStage__On_106 resets this[4777] and calls vf153(1)).
+    pub fn update_member(&self, user_id: u32, f: impl FnOnce(&mut Member)) {
+        let pkt = {
+            let mut r = self.room.lock().unwrap();
+            let Some(m) = r.members.iter_mut().find(|m| m.user_id == user_id) else { return };
+            f(m);
+            crate::packets::room_slot_state(m.slot, m.slot == 0, m.ready, m.character, m.team)
+        };
+        self.broadcast(&pkt);
+    }
+
     /// Opcode 88 for the current state: the shared room (if anybody is in it).
     pub fn room_list(&self, room_type: u8) -> Vec<u8> {
         let r = self.room.lock().unwrap();

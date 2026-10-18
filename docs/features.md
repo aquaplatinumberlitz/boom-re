@@ -120,7 +120,7 @@ Phân bố opcode theo nhóm:
 | E6 | phòng chờ `CPrepareStage` (36) | người chơi, trưởng phòng, nút BẮT ĐẦU | ✅ | ✅ |
 | E7 | chọn map trong phòng | C→S 88 → S→C 113; cần loại phòng 0 (19 = bộ lọc mode 6 loại hết map); Forest01 chơi được (lobby.md Cập nhật 15) | ✅ | ✅ |
 | E8 | bắt đầu trận | 501 → 189 mode 1 → 190 → 189 mode 0 → **191** (191 phải sau 189 mode 0) | ✅ | ✅ |
-| E12 | sẵn sàng / đội / chọn nhân vật trong phòng | mới 1 người, chưa làm | ⬜ | ⬜ |
+| E12 | sẵn sàng / đội / chọn nhân vật trong phòng | C→S 87/89/90 → S→C 106 (cờ: bit0 đóng, bit1 chủ, bit2–4 sẵn sàng); chủ phòng bấm BẮT ĐẦU → 97 → trận; đội vào trận qua 117 (lobby.md Cập nhật 16) | ✅ | ✅ |
 | E9 | kick / đổi chủ phòng / option phòng | đóng/mở ô: C→S 94 → S→C 106 ✅; kick/đổi chủ chưa | 🟡 | 🟡 |
 | E10 | `CHiddenCatchPrepareStage` (33) | mode riêng, dispatcher | ⬜ | ⬜ |
 | E11 | vào kênh (enter channel) | stage 10 → 11 | ✅ | ✅ |

@@ -567,7 +567,25 @@ Hộp thoại trống có **hai nguyên nhân**:
 - Chọn map trong hộp thoại → XÁC NHẬN → C→S 88 (`223, 1` = Forest01) → server lưu vào phòng, broadcast 113 → phòng hiện map mới; 501 gửi đúng
   map/chỉ số (`match_start(map, index)`) → trận Forest01 chạy (đồng hồ chạy, nhân vật đứng góc trên trái).
 - **Đóng/mở ô (C→S 94)** (`sub_6BE8AF`, chỉ chủ phòng): `u8 slot, u8 đóng`; client đặt state 2 + `vf153(0)` và chờ **S→C 106** của ô đó
-  (`On_106`: chủ phòng, bit 0 cờ đổi → state 2 → 0, `vf153(1)`). Bit 0 cờ 106 = **đóng** với ô trống (= sẵn sàng với ô có người); bit 2–4
-  (`0x1C`) chưa rõ. Server Rust: mask `closed` của phòng, bỏ ô đóng khi xếp chỗ, gửi trạng thái ô đóng cho người mới vào.
+  (`On_106`: chủ phòng, bit 0 cờ đổi → state 2 → 0, `vf153(1)`). Bit 0 cờ 106 = **đóng ô** (ĐÍNH CHÍNH Cập nhật 16: không phải sẵn sàng). Server Rust: mask `closed` của phòng, bỏ ô đóng khi xếp chỗ, gửi trạng thái ô đóng cho người mới vào.
 - Server Rust: `session.rs` op 88 / op 94, `hub.rs` `Room.map`/`Room.closed`; match_flow đọc map **sau** `AUTO_START` (chủ phòng còn kịp chọn).
+
+## Cập nhật 16 (2026-10-19) — sẵn sàng / đội / nhân vật / BẮT ĐẦU trong phòng ✅ runtime 2 client (E12)
+Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` ≠ 0 và khoá nút (`vf153(0)`) tới khi server trả **106 của slot người đó**
+(`On_106`: bit 0 cờ không đổi → state = 0, `vf153(1)`). Không trả lời ⇒ mọi nút sau đó im (`logs/duo/t9`: B đổi đội rồi kẹt).
+| C→S | hàm | thân | state | server trả |
+|---|---|---|---|---|
+| 89 | `sub_6BE71D` | `u8 = người chơi trên máy << 4 \| đội` | 6 | 106 với đội mới |
+| 90 | `sub_6BE7D0` | `u8 người chơi trên máy, u8 nhân vật` | 5 | 106 với nhân vật mới |
+| 87 | `sub_6C31ED` | blob (`sub_8FD1D5`), `bool sẵn sàng`, `u32` | 4 | 106 với cờ sẵn sàng |
+| 97 | `sub_6C869F` (chủ phòng, sau kiểm AllMustReady) | blob, `u32`, … | 3 | bắt đầu trận (117 → 189/190/189/146) |
+| 94 | `sub_6BE8AF` (chủ phòng, ô trống) | `u8 slot, u8 đóng` | 2 | 106 cờ bit 0 |
+- **Cờ 106** (byte đầu của 3 byte): bit 0 = ô đóng, bit 1 = chủ phòng, **bit 2–4 = trạng thái người chơi (1 = sẵn sàng)** (`sub_6C31ED`:
+  `(cờ >> 2) & 7`, `vf153`: `(cờ & 0x1C) == 4`); byte 2 = nhân vật (6 bit), byte 3 = đội (5 bit). Gửi sẵn sàng bằng bit 0 làm ô của B thành
+  "X" trên màn A (`docs/room_slot_bit0_bug.png`).
+- Kiểm "AllMustReady" là phía client chủ phòng (ảnh `docs/room_team_char_A.png`: B đổi nhân vật vàng + đội cam, A bấm BẮT ĐẦU khi B chưa sẵn sàng).
+- Server Rust: `Member.team/character/ready`, `Hub::update_member` (đổi + phát 106 cho cả phòng); 97 → `match_flow` (trễ 1 s), `AUTO_START=0`
+  để chỉ bắt đầu bằng nút. Đội đi vào trận qua trường đội của 117 ⇒ B hiện đúng màu/nhân vật trong trận (`docs/duo_team_A.png`).
+  Đặt nhân vật vào u8 +84 của 117 làm người kia biến mất khỏi trận (`logs/duo/t13`) ⇒ +84 giữ 0.
+- Chạy thật `logs/duo/t12`, `t14`: B (vào sau) đổi đội, đổi nhân vật, sẵn sàng → A bấm BẮT ĐẦU → C→S 97 → cả hai vào trận, xuất phát 2 góc.
 

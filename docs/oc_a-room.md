@@ -254,10 +254,12 @@ opcode 501 (server→client, "bắt đầu trận"):
 
 | opcode | hướng | fields (thứ tự đọc) | nguồn |
 |---|---|---|---|
-| 94 | client→server | bool slot, bool bit-sẵn-sàng (2×u8 qua EncodeBool) | `sub_6BE8AF`/`sub_6918DD` 0x6BE8AF/0x6918DD |
+| 94 | client→server | u8 slot, u8 đóng — chủ phòng đóng/mở ô trống (ĐÍNH CHÍNH 2026-10-19: không phải sẵn sàng; sẵn sàng = 87, `docs/lobby.md` Cập nhật 16) | `sub_6BE8AF`/`sub_6918DD` 0x6BE8AF/0x6918DD |
 | 94 | server→client | str A, str B, u8 (mode +118), u8 (mode +228) — đổi thông tin phòng | `sub_6C450D` 0x6C450D (nhánh khác `sub_6C43BA` 0x6C43BA: chỉ str A + str B — §7.3) |
 | 85 | client→server | str, str, bool, bool (58?) — sửa thông tin phòng từ dialog (event 0xBBB) | `sub_6C21F6` 0x6C21F6 |
-| 87 | client→server | blob (đã giải mã — §7.1), bool, u32 — luồng BẮT ĐẦU (chế độ thường) | `sub_6C31ED` 0x6C31ED |
+| 87 | client→server | blob (đã giải mã — §7.1), bool, u32 — **SẴN SÀNG** của người không phải chủ phòng (bool = sẵn sàng; runtime 2026-10-19); server trả 106 | `sub_6C31ED` 0x6C31ED |
+| 89 | client→server | u8 = người chơi trên máy << 4 \| đội — đổi đội; server trả 106 | `sub_6BE71D` 0x6BE71D |
+| 90 | client→server | u8 người chơi trên máy, u8 nhân vật — đổi nhân vật; server trả 106 | `sub_6BE7D0` 0x6BE7D0 |
 | 97 | client→server | blob (cùng `sub_8FD1D5` — §7.1), u32 (GetNumNestedThreadSubscriptions) — luồng BẮT ĐẦU host (event 0xDAC); trước gửi: kiểm grade `sub_8DAB89`/`sub_8DAFD7(1)` | `sub_6C869F` 0x6C869F |
 | 88 | client→server | u16 (chỉ số nhóm map), u32 (id map/mode) — chọn map/đổi mode | `sub_6C3557` 0x6C3557 |
 | 212 | client→server | ❓ — event 3600+i | `sub_6C62A4` 0x6C62A4 |

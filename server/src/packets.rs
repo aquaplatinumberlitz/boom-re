@@ -255,10 +255,16 @@ pub fn room_player(slot: u8, user_id: u32, name: &str, chief: bool, character: u
     p.u32(0).u32(0).u8(0).u32(0).u16(0).str("").build()
 }
 
-/// CPrepareStage__On_106 0x6C6BC9: slot state (enables the room buttons for our own slot).
+/// CPrepareStage__On_106 0x6C6BC9: slot state (enables the room buttons for our own slot). Flags byte: bit 0 = slot closed,
+/// bit 1 = room master, bits 2-4 = player state (1 = ready; sub_6C31ED / CPrepareStage__vf153), then 6-bit character, 5-bit team.
 pub fn room_slot_state(slot: u8, chief: bool, ready: bool, character: u8, team: u8) -> Vec<u8> {
-    let st = [(if chief { 2 } else { 0 }) | ready as u8, character & 0x3F, team & 0x1F];
+    let st = [(if chief { 2 } else { 0 }) | if ready { 4 } else { 0 }, character & 0x3F, team & 0x1F];
     Packet::new(106).u8(slot).buf(&st).u8(0).build()
+}
+
+/// 106 for an empty slot: open / closed by the master (C->S 94).
+pub fn slot_closed(slot: u8, closed: bool) -> Vec<u8> {
+    Packet::new(106).u8(slot).buf(&[closed as u8, 0, 0]).u8(0).build()
 }
 
 /// CPrepareStage__On_113: the room's current map (index into the 231 table).
@@ -281,17 +287,17 @@ pub fn match_start(map: &BattleMap, dyn_index: u32, room_type: u8, seed: u32, sl
 /// it per slot, so players spawn on different cells. Layout (docs/oc_e-game.md section 5a-7):
 /// u8 0 (no per-slot profile list), blob {tag 0; u16x8 SYSTEMTIME; u32 seed; u16 CPlayMapInfoList index; str map name;
 /// u32 231-table index; u8 room type; u8 (sub_8E7636); u8 n; u8 x3 (sub_8E7A56); u8 n2 (n2 x u32 item ids);
-/// n x {u8 slot, u8 (+84), u8 start point (+124), u8 pos (+96), u8 team (+112), u8, i8 partner slot (-1), u32, u32 (<0: keep),
+/// n x {u8 slot, u8 (+84; != 0 hides the player: logs/duo/t13), u8 start point (+124), u8 pos (+96), u8 team (+112), u8, i8 partner slot (-1), u32, u32 (<0: keep),
 /// u32, u32, u8 0}}, u8 0 (no 985703 blob), u8 time (x1000 -> room+78*4), u8 event-NPC stage (-1),
 /// u8, u16 n3, blob {tag 0} (n3 x records).
-pub fn match_start_full(map: &BattleMap, dyn_index: u32, room_type: u8, seed: u32, slots: &[(u8, u8, u8, u8)]) -> Vec<u8> {
+pub fn match_start_full(map: &BattleMap, dyn_index: u32, room_type: u8, seed: u32, slots: &[(u8, u8, u8, u8, u8)]) -> Vec<u8> {
     let mut b = Le(vec![0]);
     for _ in 0..8 {
         b.u16(0);
     }
     b.u32(seed).u16(map.idx).str(&map.name).u32(dyn_index).u8(room_type).u8(0).u8(slots.len() as u8).u8(0).u8(0).u8(0).u8(0);
-    for &(slot, spawn, pos, team) in slots {
-        b.u8(slot).u8(0).u8(spawn).u8(pos).u8(team).u8(0).u8(0xFF).u32(0).u32(0).u32(0).u32(0).u8(0);
+    for &(slot, r84, spawn, pos, team) in slots {
+        b.u8(slot).u8(r84).u8(spawn).u8(pos).u8(team).u8(0).u8(0xFF).u32(0).u32(0).u32(0).u32(0).u8(0);
     }
     Packet::new(117).u8(0).blob(&b.0).u8(0).u8(0).u8(0xFF).u8(0).u16(0).blob(&[0]).build()
 }
