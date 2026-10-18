@@ -614,3 +614,17 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
 - **Rời phòng / ngắt kết nối**: server gửi 104 cho người còn lại (trước đây không gửi → ô "ma"); C→S 81 = quay lại stage trước (`sub_8F2F14`).
 - **Chủ phòng** = người vào đầu (`Room.chief`), không còn cố định slot 0; chủ rời → người slot nhỏ nhất làm chủ (106 với bit chủ phòng). 97 chỉ nhận từ chủ phòng.
 
+## Cập nhật 19 (2026-10-19) — S→C 23 thông tin tài khoản; nút SIÊU THỊ (shop) — đang làm
+- **Nút SIÊU THỊ** = sự kiện 6002 của thanh nút chung (`CGlobalButtonDlg__vf5`) → `stage->vf65(-1)` (`CHiddenCatchGameStage__vf65` 0x69D1E6 dùng chung)
+  — **im lặng nếu `sub_9B73E1(dword_E60848)` = 0** (box +288). Box này chỉ đặt = 1 ở cuối **S→C 23** (`CStage` vf59 → `sub_9B974A`).
+- **S→C 23**: `u8 cờ, u8 n` (người chơi trên máy), n × {`u16, u8, u32, u8, u32, u8, u8, u32, u32, u8, u32, u8, u16, u8, str, u8, u8, u32, u8, u8, u8`},
+  n × 4×u32 (`sub_9B6ACA`), blob {cờ ≠ 0: n × {`u32 k`, k × (`str, u8, u32`)}; cờ 0: n × 2 × {`u16 k`, k × (`str, u8`)}}. Ý nghĩa trường: CHƯA KIỂM.
+  Server Rust gửi 23 tối giản (n = 1, số 0, tên) khi vào sảnh (395).
+- Sau 23 client gửi **C→S 337** (`sub_8C0D23` → `sub_8BC5ED`: `u32` của `dword_E60814`) ngay ở sảnh — 337 **không chỉ** là "phòng chờ xin danh sách";
+  server Rust chỉ coi 337 là vào phòng khi vừa trả 83 (`room_pending`), nếu không thì bỏ qua (trước đó người chơi bị xếp vào phòng chung khi đang ở sảnh).
+- Bấm shop → **C→S 325** `{u8}` (`sub_7EFA8E`, state 2) → server trả **S→C 289** `{u8 1}` (`sub_6952A5` → `sub_7EFC2E`: `sub_8BE528`, `sub_7EFB6A`) →
+  client gửi **C→S 38** (`u8, u8 n, n × (str tên, u32 id), u8`; sau đó `sub_8BC634` → C→S 330 nếu có phiên cũ) và **C→S 102** `{u8 1}` rồi **chờ**.
+  Gói trả lời cho 38 CHƯA TÌM RA (S→C 7 kiểu vào kênh: không tác dụng). Stage shop (`CShopStageNew`, ctor 0x807358) chỉ được tạo trong
+  `CStageMgr__ChangeStage` (vùng bị Themida làm rối quanh 0x8F91E1) — id stage chưa biết (có thể không phải hằng số trong code thường).
+- Tên ở sảnh vẫn là "aName01" (không lấy từ str của 23) — nguồn tên sảnh CHƯA KIỂM.
+

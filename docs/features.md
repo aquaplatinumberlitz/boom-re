@@ -159,7 +159,7 @@ Phân bố opcode theo nhóm:
 
 | ID | Tính năng | Bằng chứng | Trạng thái | Rust |
 |---|---|---|---|---|
-| G1 | shop | `CShopStageNew` (14 opcode) | ⬜ | ⬜ |
+| G1 | shop | `CShopStageNew` (14 opcode); nút → 325 → 289 → C→S 38 rồi chờ: gói trả lời 38 chưa tìm ra; cần S→C 23 trước (lobby.md Cập nhật 19) | 🟡 | 🟡 |
 | G2 | mua đồ | `CBuyItemListDlg` (50 hàm) | ⬜ | ⬜ |
 | G3 | túi đồ / trang bị | class `CItem*` | ⬜ | ⬜ |
 | G4 | cash / nạp tiền | chưa thấy dispatcher | ⬜ | ⬜ |

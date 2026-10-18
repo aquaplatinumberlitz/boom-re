@@ -535,3 +535,23 @@ pub fn player_left(slot: u8, user_id: u32) -> Vec<u8> {
     Packet::new(104).u8(slot).u32(user_id).u8(0).build()
 }
 
+/// Opcode 23 (CStage vf59 -> sub_9B974A): account state of the players on this PC; it ends with `this+288 = 1`, the flag the
+/// SHOP button (global event 6002 -> stage vf65) checks before doing anything (sub_9B73E1). u8 flag, u8 n, n x {u16, u8, u32, u8,
+/// u32, u8, u8, u32, u32, u8, u32, u8, u16, u8, str, u8, u8, u32, u8, u8, u8}, n x 4 x u32, blob {flag != 0: n x {u32 k, k x (str,
+/// u8, u32)}; flag 0: n x 2 x {u16 k, k x (str, u8)}}. Field meanings: CHƯA KIỂM (zeros).
+pub fn account_info(name: &str) -> Vec<u8> {
+    let mut p = Packet::new(23).u8(0).u8(1);
+    p = p.u16(0).u8(0).u32(0).u8(0).u32(0).u8(0).u8(0).u32(0).u32(0).u8(0).u32(0).u8(0).u16(0).u8(0).str(name);
+    p = p.u8(0).u8(0).u32(0).u8(0).u8(0).u8(0);
+    p = p.u32(0).u32(0).u32(0).u32(0);
+    let mut b = Le(vec![0]);
+    b.u16(0).u16(0);
+    p.blob(&b.0).build()
+}
+
+/// Opcode 289 (sub_6952A5 -> sub_7EFC2E): answer to C->S 325 (shop button). u8 ok: 1 -> sub_8BE528 + sub_7EFB6A (enter the shop),
+/// 0 -> "CannotConnectToShop".
+pub fn shop_enter_ok() -> Vec<u8> {
+    Packet::new(289).u8(1).build()
+}
+

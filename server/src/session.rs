@@ -121,6 +121,9 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
     let mut buf = Vec::new();
     let mut user_id: u32 = 0; // account of this connection (from opcode 1, or found in opcode 6 on the channel connection)
     let mut in_room = false;
+    // 83 sent (create/join): the next 337 is the waiting room asking for its players. 337 also comes from the lobby after 23
+    // (sub_8C0D23 -> sub_8BC5ED, u32 of dword_E60814) and must not put the user in the room
+    let mut room_pending = false;
     let mut chunk = vec![0u8; 65536];
     loop {
         let n = match tokio::time::timeout(Duration::from_secs(120), rd.read(&mut chunk)).await {
@@ -157,12 +160,14 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
             } else if op == 395 {
                 // lobby entry: same replies as before but with the real room list
                 hub.lobby.lock().unwrap().push(tx.clone());
+                let _ = tx.send(pk::account_info(&hub::player_name(user_id)));
                 for r in replies(op, port, &cfg) {
                     let _ = tx.send(if proto::get_int(&r, 2, true) == 88 { hub.room_list(cfg.room_type) } else { r });
                 }
             } else if op == 78 {
                 // join a room from the lobby list (sub_4CB829: u16 session, u32 room id, str password, ...) -> same answer as create
                 log(format!("[{port}] join room request from user {user_id}"));
+                room_pending = true;
                 let _ = tx.send(pk::create_room_ok(1, cfg.room_type, 0));
             } else if op == 88 && body.len() >= 8 {
                 // map choice in the waiting room (sub_6C3557): u16 CPlayMapInfoList index (sub_6DC06C), u32 231-table index.
@@ -232,6 +237,14 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                         }
                     }
                 }
+            } else if op == 325 {
+                // SHOP button (stage vf65 -> sub_7EFA8E, after 23 set the account flag): u8. 289 {u8 1} -> sub_7EFC2E -> shop stage
+                log(format!("[{port}] shop request -> 289"));
+                let _ = tx.send(pk::shop_enter_ok());
+            } else if op == 38 {
+                // after 289: enter-shop request (sub_7EFB6A): u8, u8 n, n x (str name, u32 id), u8. The answer is unknown
+                // (S->C 7 like a channel join does nothing); the client waits
+                log(format!("[{port}] shop enter 38 (no answer known yet)"));
             } else if op == 95 && body.len() >= 6 {
                 // kick by the master (sub_6C6E36 "SureToBan"): u32 user id (+12 of the slot record), u8
                 let target = proto::get_int(&body[2..], 4, true) as u32;
@@ -269,12 +282,18 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 if start {
                     tokio::spawn(match_flow(hub.clone(), cfg.clone(), log.clone(), port, 1.0));
                 }
+            } else if op == 337 && !room_pending {
+                log(format!("[{port}] 337 outside a room join (data request), ignored"));
             } else if op == 337 {
+                room_pending = false;
                 in_room = true;
                 hub.lobby.lock().unwrap().retain(|t| !t.same_channel(&tx));
                 enter_room(&hub, &cfg, &log, port, user_id, &tx);
                 hub.push_room_list(cfg.room_type);
             } else {
+                if op == 77 {
+                    room_pending = true; // create room -> 83 -> the waiting room sends 337
+                }
                 for r in replies(op, port, &cfg) {
                     let _ = tx.send(r);
                 }
