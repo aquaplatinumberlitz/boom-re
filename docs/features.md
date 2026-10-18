@@ -159,7 +159,7 @@ Phân bố opcode theo nhóm:
 
 | ID | Tính năng | Bằng chứng | Trạng thái | Rust |
 |---|---|---|---|---|
-| G1 | shop | `CShopStageNew` (14 opcode); nút → 325 → 289 → C→S 38 → **S→C 20** → shop mở; 51/64/225/65 đổ hàng; mua 261 → 223 ✅ (VÀNG trừ); XU (cash), túi đồ, lưu trên server: chưa (lobby.md Cập nhật 20) | 🟡 | ✅ |
+| G1 | shop | `CShopStageNew` (14 opcode); nút → 325 → 289 → C→S 38 → **S→C 20** → shop mở; 51/64/225/65 đổ hàng; mua 261 → 223 ✅ (VÀNG trừ); XU (cash), túi đồ, lưu trên server: chưa (lobby.md Cập nhật 20) | 🟡 | 🟡 |
 | G2 | mua đồ | `CBuyItemListDlg` (50 hàm) | ⬜ | ⬜ |
 | G3 | túi đồ / trang bị | class `CItem*` | ⬜ | ⬜ |
 | G4 | cash / nạp tiền | chưa thấy dispatcher | ⬜ | ⬜ |
