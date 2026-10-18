@@ -1,0 +1,10 @@
+[package]
+name = "boom-server"
+version = "0.1.0"
+edition = "2021"
+description = "Boom Online (VBNB_116) server emulator — Rust port of tools/fakeserver.py"
+publish = false
+
+[dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "io-util", "time", "sync"] }
+encoding_rs = "0.8"

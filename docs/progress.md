@@ -174,7 +174,11 @@ Ghi chép trước đó về phần crash map: [docs/lobby.md](lobby.md) "Cập 
 2. **Viết lại thật 2 khối skip** (0x736C27, 0x5788C9): snapshot client gốc trong WinBoat (`win/snap.bat`) +
    `tools/vmemu.py` + `tools/snapdiff.py` theo [docs/devirt.md](devirt.md); đã đoán được cont = 0x736D6C / cont = jmp
    0x414543. Cần bấm đúng các patch của `patch_client.py` vào snap.bat và nâng `MAX_PATCHES` của `snap.c` nếu thiếu.
-3. **Mở đủ map** (làm được ngay, không phụ thuộc phần trên):
+2b. **(2026-10-18) Phía server** — đã làm: khoá phiên 189/`ctx[490549]`, tham số start đồng hồ, 191, 146 (đối chiếu
+   lại IDA), "GIỚI HẠN" (00:00 là đúng với 501 + map thường; giới hạn đến từ map đặc biệt/opcode 117/component) —
+   `oc_e-game.md` §5a-4. **Server Rust** `server/` (xem mục 12). Còn: bộ lọc hộp thoại map (`lobby.md` Cập nhật 13).
+3. **Mở đủ map** — 2026-10-18: `ALL_MAPS=1` gửi đủ 1019 map (fakeserver + Rust); hộp thoại vẫn rỗng do bộ lọc
+   `sub_6DF1B0` trả 0 (`lobby.md` Cập nhật 13). Ghi chú cũ:
    - Thay 3 map tự soạn trong `BATTLE_MAPS` bằng danh sách đầy đủ: client nạp mọi mục `Map/*` trong pack `fx.idx` theo
      thứ tự chữ cái (1019 mục) → chỉ số = vị trí trong danh sách đó (`tools/idf.py` đọc được pack).
    - Làm cho hộp thoại chọn map liệt kê được: lỗi nằm ở bước nhóm map (bộ lọc `sub_6DEE48` đã cho qua cả 3 map).
@@ -302,3 +306,19 @@ Tất cả nằm trong pipeline `tools/rebuild_wine.sh`, không sửa tay file e
 - Ảnh màn trận: `docs/battle_village01.png` (map + HUD), `docs/battle_mode1_spawn.png` (spawn sau mode 1).
 - Log phiên: `logs/xvfb/gdb.txt` (bp HIT6FFCA9 + crash), `logs/fakeserver_host.log` (189/190/139/140), ảnh
   `/tmp/opencode/st_*.png` (tạm thời — copy sang docs nếu cần thêm).
+
+---
+
+## 12. Server Rust (`server/`, 2026-10-18)
+
+Khung server thật, port 1:1 từ `tools/fakeserver.py` (đặc tả vẫn là fakeserver + `docs/`).
+- `src/proto.rs` codec (CRC32/CRC8, XOR payload, int/chuỗi/blob obf, khung, bảng thay opcode `decomp/net/*.bin`),
+  `src/packets.rs` builder S→C (login → kênh → sảnh → phòng → 501/189/190/191/146), `src/maps.rs` bảng 231/234 +
+  đọc `fx.idx` (`ALL_MAPS=1`), `src/session.rs` luồng phiên (tokio; cùng biến môi trường với fakeserver), `src/main.rs`.
+- Kiểm chứng: `cargo test` — **mọi builder và cả hai chiều đóng khung khớp từng byte với fakeserver** (`tests/golden.txt`
+  sinh bởi `python3 tools/gen_golden.py > server/tests/golden.txt`; sinh lại khi sửa fakeserver), danh sách 1019 map khớp.
+- Chạy: `cd server && cargo run --release -- --log ../logs/server.log` (env như mục 3.3). **Chưa chạy với client thật**
+  (client đang bận phiên test khác lúc viết) — lần chạy đầu nên so log với fakeserver.
+- Việc tiếp: parse gói C→S có cấu trúc (77, 97, 139/140, 111/112/145 của `CGameMsgCache`), nhiều người chơi/phòng,
+  relay gói trận theo khoá phiên (`oc_e-game.md` §5a-4).
+

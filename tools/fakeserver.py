@@ -14,6 +14,8 @@ AUTO_START = float(__import__('os').environ.get('AUTO_START', '0'))  # >0: send 
 TURN_START = float(__import__('os').environ.get('TURN_START', '0'))  # >0: send opcode 189 N s after 501 (TURN_START counts from the 501 moment)
 TURN_MODE = int(__import__('os').environ.get('TURN_MODE', '4'))      # mode field of opcode 189 (1/2/4, see oc_e-game.md §5a)
 GO_START = float(__import__('os').environ.get('GO_START', '0'))      # >0: send opcode 190 ("GO", sub_70E7D6, sets phase this[5402]=2) N s after 189
+BEGIN_START = float(__import__('os').environ.get('BEGIN_START', '0'))  # >0: send opcode BEGIN_OP (191 round begin / 146 round + scores) N s after 190
+BEGIN_OP = int(__import__('os').environ.get('BEGIN_OP', '191'))
 PLAY_START = float(__import__('os').environ.get('PLAY_START', '0'))  # >0: send opcode 189 mode 0 (sub_70E511: phase 3 + resume clock) N s after 190
 
 
@@ -209,6 +211,33 @@ BATTLE_MAPS = [("Village01", "Village", "Village01.map", 954),
                ("Camp01", "Camp", "Camp01.map", 104)]
 
 
+def all_battle_maps(boom_dir=None):
+    """Every Map/* entry of fx.idx (1019) as BATTLE_MAPS tuples; the CPlayMapInfoList index is the position among the
+    Map/* entries in idx order. The 3 hand-made maps keep dyn index 0..2 (room_map/match_start defaults), the rest
+    follow in idx order. Theme = longest Theme/* folder name prefixing the map name (after dropping NXCL_/WS_/
+    WinningStreak_), else "ThemeDefault" (code 138 in the 231 parser)."""
+    import os, re
+    import idf
+    boom_dir = pathlib.Path(boom_dir or os.environ.get("BOOM_DIR", pathlib.Path.home() / "Downloads" / "Boom"))
+    _, ents, _ = idf.parse_idx(idf.decrypt_idx((boom_dir / "fx.idx").read_bytes(), idf.KEYS["fx"]))
+    names = [e[0] for e in ents]
+    themes = sorted({n.split("/")[1] for n in names if n.startswith("Theme/")}, key=len, reverse=True)
+    maps = [n[4:] for n in names if n.startswith("Map/")]
+
+    def theme(name):
+        base = re.sub(r"^(NXCL_|WS_|WinningStreak_)", "", name).lower()
+        return next((t for t in themes if base.startswith(t.lower())), "ThemeDefault")
+
+    first = [m[0] for m in BATTLE_MAPS]
+    out = list(BATTLE_MAPS)
+    out += [(n, theme(n), n + ".map", i) for i, n in enumerate(maps) if n not in first]
+    return out
+
+
+if __import__('os').environ.get('ALL_MAPS') == '1':
+    BATTLE_MAPS = all_battle_maps()
+
+
 def _sstr(text):
     """String inside a blob sub-reader (sub_A63A40): u32 LE length + bytes."""
     b = text.encode("cp1258")
@@ -300,6 +329,34 @@ def round_go(times=(120, 30), seed=0, kind=0, flag=0):
     if flag == 0:
         f += [("u8", 0)]
     return obf_body(190, *f)
+
+
+def round_begin(game_time=0, limit_ms=180000, t2_ms=30000, flag=0):
+    """Opcode 191 (S->C sub_709A38, CGameStage__OnPacket case 191) = round begin: this[19700] = 1; u32 game_time ->
+    sub_6E2054 = CGameClock start (sub_6E1AF7: T[5] = game_time, T[4] = now - ping/2, started); u32 limit_ms ->
+    this[19736] and u32 t2_ms -> this[19740] (milliseconds as-is, unlike 190 which multiplies seconds by 1000);
+    u8 flag -> box this+19652. Also clock flag T[3] = 1, bombers sub_592ADE(1) + [vt+424](24, 9860), vf155(1) when no
+    strategy object claims it, shield item timers (sub_7074E0)."""
+    return obf_body(191, ("u32", game_time), ("u32", limit_ms), ("u32", t2_ms), ("u8", flag))
+
+
+def round_result(game_time=0, key=1, t1=180, t2=30, flag=0, rank_key=0, rank_extra=0, rank_flag=0, slots=None):
+    """Opcode 146 (S->C sub_70DE4C -> sub_70A647; field order checked in IDA 2026-10-18). Same head as 191 plus the
+    per-slot score table: u32 game_time -> CGameClock start (sub_6E2054); u32 key -> this[4887] (session key, low byte
+    prefixes every in-game C->S message); u32 t1, u32 t2 (seconds, x1000 -> this[4934]/[4935]); u8 flag -> box;
+    then u32 rank_key (!= 0 -> htonl -> sub_9B54FE(key, u16)), u16 rank_extra, u8 rank_flag (sub_9B5989);
+    18 x {u8 on; if on: 3 x (u32, u16) -> sub_9B5C5A(slot, ...)}. slots: dict slot -> [(u32, u16)] * 3."""
+    f = [("u32", game_time), ("u32", key), ("u32", t1), ("u32", t2), ("u8", flag),
+         ("u32", rank_key), ("u16", rank_extra), ("u8", rank_flag)]
+    slots = slots or {}
+    for i in range(18):
+        if i in slots:
+            f += [("u8", 1)]
+            for v, w in slots[i]:
+                f += [("u32", v), ("u16", w)]
+        else:
+            f += [("u8", 0)]
+    return obf_body(146, *f)
 
 
 def login_ok(name="tester", players=1):
@@ -480,6 +537,12 @@ async def handle(reader, writer, port, log):
                                     writer.write(sess.send(r))
                                     await writer.drain()
                                     log(f"[{port}] S->C opcode 190 (GO)")
+                                    if BEGIN_START:  # 191 round begin: starts CGameClock with a real base + time limit
+                                        await asyncio.sleep(BEGIN_START)
+                                        r = round_result() if BEGIN_OP == 146 else round_begin()
+                                        writer.write(sess.send(r))
+                                        await writer.drain()
+                                        log(f"[{port}] S->C opcode {BEGIN_OP} (round begin)")
                                     if PLAY_START:  # 189 mode 0 while phase == 2 -> sub_70E511: phase 3, clock runs
                                         await asyncio.sleep(PLAY_START)
                                         r = round_start(mode=0)

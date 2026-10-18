@@ -214,7 +214,8 @@ CHƯA KIỂ: ý nghĩa các u32 loại c/d/e của phần 3 và sub-packet của
 ```
 opcode 189 (S→C) — thứ tự đọc: u8 mode, u32, u16 map_id, rồi field theo mode:
   u8 mode (Decode1)
-  u32 -> this[4887]      (Decode4; CHƯA KIỂ — có vẻ giới hạn thời gian lượt; client nhận bình thường)
+  u32 -> this[4887]      (Decode4) = **KHOÁ PHIÊN** (2026-10-18, §5a-4): byte thấp mở đầu mọi gói trận C→S
+                         (`sub_6FFFA0`), gói nhận có byte đầu khác bị `vf61` bỏ
   u16 map_id             (Decode2; dùng cho sub_8EAB95/vf147 — giống map id trong 501)
   mode 1: u8×16 (Block) → sub_70E357: sub_70C5DC(1) (phase this[5402]=1), vf147(map_id, Block)
           (nạp lại round — đi qua skip 0x736C27), tạo 1 bomber cho ta (malloc 0xA18 + sub_5862A5 +
@@ -297,6 +298,32 @@ Số liệu runtime (`tools/gdb/phase_clock.gdb`, bp tick lấy mẫu 1/400):
 
 CHƯA KIỂ: ý nghĩa u32 của 189 (this[4887]) và v13/T[5] truyền vào start; mode 1 hợp với trận thường hay chỉ là
 "nạp lại round" (thứ tự server gốc chưa biết — đây là chuỗi tối thiểu chạy được).
+
+### 5a-4. Khoá phiên, đồng hồ "GIỚI HẠN", 191 và 146 ✅ IDA (+ runtime 191/146 nhận được) (2026-10-18, Claude Opus 5.5)
+- **`this[4887]` = khoá phiên** (ghi bởi 189, 146 `sub_70A647`, 571 `sub_71ADEC`, `sub_70A647`; ctor = 0).
+  `sub_6FFFA0` trả nó; `CGameMsgCache` dùng byte thấp làm byte ĐẦU của mọi gói trận C→S (vf7, `sub_6F058C`, bản ghi
+  vòng `sub_6EFBCA`); `CHiddenCatchGameStage__vf61` (xử lý gói trận nhận về) bỏ gói nếu byte đầu ≠ khoá.
+  Byte thứ hai của các gói đó = **`ctx[490549]` = chỉ số context/lượt** trong danh sách `stage[5409..5410]` (gán ở ctor
+  context `sub_6EE9C9` từ `CGameStage__vf152`; lượt đầu = 0) — cũng chính là `a4` của 189 mode 4 (nhánh A < số context).
+- **Tham số start đồng hồ** (`sub_6E2054(x)` → `sub_6E1AF7`): `T[5] = x` (thời gian game ban đầu; `sub_6E2096` = T[5] +
+  elapsed), `T[4] = timeGetTime() − ping/2` (`sub_8F28D1(E6092C) >> 1`, bù trễ — client tự tính). 189 mode 1 dùng lại
+  T[5] cũ rồi **khôi phục T[4] cũ** (`sub_6E2087(v12)`) → lượt đầu base = 0 (elapsed = uptime). Server không truyền
+  base; chỉ 191/146 truyền `x`.
+- **"GIỚI HẠN" (HUD)** = thời gian còn lại `sub_6E1F27` = `ctx[490518]` − (elapsed − pause), kẹp ≥ 0.
+  `ctx[490518]` chỉ đặt bởi `sub_6E1F0C`: các component chế độ chơi (vf49: 90 s/120 s/180 s/300 s…) và OnEnter
+  `sub_71A9EC` **khi `room[84]` ≠ 0** (= `sub_6DD49B`: map thuộc loại đặc biệt trong bảng 231) với giá trị `room[78]`;
+  `room[78]` = `1000 × u8` chỉ đọc trong **opcode 117** (`CPrepareStage__On_117`, biến thể bắt đầu trận có blob).
+  ⇒ Trận thường qua 501 + Village01: giới hạn 0 → HUD 00:00 là **đúng theo code**, không phải lỗi gói.
+- **Opcode 191** (`sub_709A38`, case 171+20): `u32 x` (start đồng hồ), `u32 t1` → this[19736], `u32 t2` → this[19740]
+  (ms, **không** ×1000), `u8` → box this+19652; this[19700]=1, clock f3=1, bomber `sub_592ADE(1)` + [vt+424](24, 9860),
+  vf155(1) nếu không strategy nào nhận. fakeserver `round_begin()`, env `BEGIN_START` (+`BEGIN_OP=191`). Runtime:
+  nhận, không crash, không đổi HUD (đúng như trên).
+- **Opcode 146** (đối chiếu IDA §5h — cấu trúc đúng, sửa nghĩa): `u32 x` → **start đồng hồ** (không phải "context"),
+  `u32` → **khoá phiên** (không phải round_len), `u32 t1`, `u32 t2` (giây ×1000 → this[4934]/[4935] = 19736/19740),
+  `u8` → box; rồi `u32 rank_key` (≠0 → htonl → `sub_9B54FE`), `u16`, `u8` (`sub_9B5989`); 18 × {`u8 on`; on → 3 ×
+  (`u32`, `u16`) → `sub_9B5C5A`}. fakeserver `round_result()`, `BEGIN_OP=146`. Runtime: nhận, màn hình tối lại (trạng
+  thái kết quả), không crash.
+- Opcode 531/532/572 (`sub_70A158`/`sub_70A04B`/`sub_709D5E`) cũng start đồng hồ — chế độ đặc biệt, chưa xem.
 
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |

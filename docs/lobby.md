@@ -522,3 +522,22 @@ chuyển tiếp `CSessionStage__OnPacket` → `CChatStage__OnPacket`). `CSession
   **Dừng tại đây**: phần này nằm ở khối bảo vệ của Themida; chủ dự án đang tự xử lý (xem `docs/progress.md` mục 5).
 - Hộp thoại chọn map vẫn liệt kê 0 map dù bộ lọc `sub_6DEE48` cho qua cả 3 map (gdb: RET=1) — vấn đề ở bước nhóm map,
   chưa xử lý (không cần cho đường 501).
+
+### Cập nhật 13: hộp thoại chọn map — đo lại (2026-10-18, Claude Opus 5.5)
+- Danh sách của `CMapSelectDialog` (vf36 → `sub_648EA4` → `sub_648E3D` → `CDynamicMapMan::sub_6E0D2C(all)`) chỉ thêm map
+  khi: **bộ lọc `sub_6DF1B0` = `sub_6DEE48(map, 1, all, 1)` ≠ 0**, có nhóm (`sub_6DC8AF` ≠ −1) và nhóm đang mở
+  (`grp[0] == 1`) hoặc `sub_6DC3FD(map)`.
+- Nhóm (vector 48 byte ở `CDynamicMapMan+0x5E58`) dựng **một lần mỗi tiến trình** (`dword_EA4E68`) trong `sub_6E048D`
+  (gọi từ parser 231): bản ghi có byte +40 thoả `sub_9889F4` (1,5,6,7,12,13,18,21,22,24,25,26,29) là tiêu đề nhóm; map
+  thường tìm nhóm theo (+4, +110, +41) (`sub_6DBB28`), không có thì tự tạo nhóm mới (mở, đếm 1).
+- gdb (`tools/gdb/mapdialog.gdb`, 3 map mặc định): nhóm dựng đúng (1 nhóm mới, 2 map vào nhóm), nhưng **bộ lọc trả 0 cho
+  cả 3 map** ⇒ ghi chú cũ "bộ lọc cho qua (RET=1)" là đo nhầm biến thể khác (`sub_6DF1DB` = `sub_6DEE48(map,0,1,1)`).
+- Điều kiện con của `sub_6DEE48` (mode `sub_6DC035` mặc định): `sub_6DCD82`, `sub_6DCF5B(map,0)` (item/khóa map),
+  `sub_6DD516(map, room type)`, `sub_6DC81E`/`sub_8E7F2E`, `sub_6DC856` (+108 == 3), `sub_6DE4CD` (khi all = 0),
+  `sub_6DC43E` (`sub_988A3D(+40)`). Script đo từng điều kiện: `tools/gdb/mapfilter.gdb` (lần chạy bị phiên khác
+  dùng chung Xvfb/client cắt ngang — chạy lại khi rảnh: `JOIN=1 CLICKS="975,38,6 385,50,8 437,612,20 512,384,15
+  900,575,15" sh tools/wine_gdb.sh tools/gdb/mapfilter.gdb tester 1234 480` với fakeserver chạy sẵn).
+- fakeserver `ALL_MAPS=1`: bảng 231 đủ 1019 map (`all_battle_maps()`, theme theo tiền tố thư mục `Theme/*`, không khớp →
+  `ThemeDefault`); client nhận (fxdynmapinfo.ssd ghi), vẫn vào trận Village01 bình thường; hộp thoại vẫn rỗng (cùng lỗi
+  bộ lọc trên).
+
