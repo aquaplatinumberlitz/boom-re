@@ -79,7 +79,60 @@ Số liệu chạy thật:
   không phải kích thước khối. Muốn có ngữ nghĩa khối phải sửa điều kiện dừng (hiện tool in WARNING khi
   điều này xảy ra). Đây là việc tiếp theo trước khi tin bất kỳ output `lift` nào.
 
-## 5. Đường áp dụng sang bản KR
+
+## 6. Opcode map (stage 1B + 2) — kết quả mới
+
+Ghép 3 nguồn: **bảng handler tĩnh** (opcode → địa chỉ), **trace** (opcode → kích thước VI),
+và phân tích tĩnh handler (đặc trưng). Lệnh:
+
+```
+python3 tools/vmdevirt.py opcodes --snap logs/snap/8F346C/pre.snap --site 8F346C \
+        --disp 11F9E81 --ctx 11EDDEC --json decomp/vm_opcodes.json
+```
+
+Kết quả trên khối `8F346C` (4.6M lệnh, 11.340 dispatch):
+
+| chỉ số | giá trị |
+|---|---|
+| opcode quan sát được | **46** |
+| opcode có handler trong bảng tĩnh | **46/46** |
+| opcode đo được kích thước | **44/46** |
+| histogram kích thước | 1 byte ×34, 2 byte ×5, 3 byte ×1, 5 byte ×4 |
+| opcode nhánh (VIP không tuần tự) | **0x67, 0x7B, 0x80** |
+| xung đột kích thước | **0** |
+
+**Kiểm chứng bảng tĩnh:** tại mỗi dispatch, so `[ctx + op*4]` với EIP thực tế của handler kế tiếp —
+**3.680/3.680 khớp, 0 lệch** (1.5M lệnh đầu). ⇒ Bảng tĩnh là authoritative, phân tích tĩnh đáng tin.
+
+### Bytecode bị mã hoá — không decode tĩnh được
+
+Thử decode tuyến tính toàn stream `0x1350128..0x135B33B` (45.587 byte) bằng bảng kích thước:
+**33.151 byte ra opcode lạ** ⇒ sai. Nguyên nhân: handler đọc byte bằng `lodsb al,[esi]; xor al,bl`,
+tức byte trong file **không phải** opcode. Đã kiểm tra khoá:
+
+| giả thuyết | kết quả |
+|---|---|
+| `img[vip] ^ op` | 255 giá trị khác nhau |
+| `img[vip-1] ^ op` | 255 |
+| `img[vip-2] ^ op` | 255 |
+| `img[vip] ^ bl` (bl tại dispatch) | 262 giá trị |
+
+⇒ **khoá rolling**, đổi mỗi lệnh. Muốn decode tĩnh phải hiểu hàm cập nhật khoá (việc RE sâu hơn).
+
+**Hệ quả thực dụng:** không cần decode tĩnh. Trace cho `(vip, opcode)` trực tiếp — đó chính là listing
+của đoạn đã chạy, và nó khớp với bảng tĩnh. Với devirt một khối, chương trình *đã chạy* là đủ.
+
+## 7. Fake native
+
+Thêm `--fake-native`: sau khi đã vào VM, mọi lần rời VM ra ngoài image (hàm game hoặc DLL) đều **không
+chạy** — tool đọc return address ở `[esp]`, set `eax`, chỉnh `esp` theo `ret imm16` của stub, rồi trả về VM.
+Có xử lý `jmp far` (WoW64 syscall: set eax, pop stub).
+
+Đo trên `8F346C` (6M lệnh): 20 lần gọi native được fake, và **vẫn chưa tới `cont`** — vì khối này chạy
+45 KB bytecode rồi gọi native, tức `cont` không phải điểm dừng khả dụng cho khối loop/keep-alive. Kết luận
+này khớp với việc harness của repo (`tools/vmemu.py`) cũng không exit sau 3M bước.
+
+## 5b. Đường áp dụng sang bản KR
 
 Bản KR (`~/Downloads/boom_kr_lastest00967/PatchData/CA.exe`) **đang bị pack**:
 

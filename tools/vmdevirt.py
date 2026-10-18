@@ -215,10 +215,40 @@ def build_uc(snap=None, img=None):
     return mu
 
 
+
+class Cycle:
+    """Detect a repeating window in the dispatch-index stream.
+
+    A "threaded" VM block often loops (poll/keep-alive), so `cont` is never reached. One
+    iteration of that loop is the unit we actually want: stop when the last `p` handler
+    indexes repeat the previous two windows of the same length (3 copies total).
+    """
+
+    def __init__(self, maxp=128, copies=3):
+        self.hist = []
+        self.maxp = maxp
+        self.copies = copies
+        self.period = None
+
+    def push(self, idx):
+        self.hist.append(idx)
+        h = self.hist
+        for p in range(1, min(self.maxp, len(h) // self.copies) + 1):
+            ok = True
+            for c in range(1, self.copies):
+                if h[-p:] != h[-p * (c + 1):-p * c]:
+                    ok = False
+                    break
+            if ok:
+                self.period = p
+                return p
+        return None
+
+
 # ---------------------------------------------------------------- run + hooks
 
 def run(mu, entry, vm_lo, vm_hi, max_insn=4_000_000, stop_on_exit=False, log_n=20000,
-        stop_leave=False):
+        stop_leave=False, cycle=False):
     """Run and record: writes into the VM section, indirect transfers (dispatcher), exits."""
     from unicorn import (UC_HOOK_CODE, UC_HOOK_MEM_WRITE, UC_HOOK_MEM_UNMAPPED,
                          UC_HOOK_MEM_READ_UNMAPPED, UC_PROT_ALL, UcError)
@@ -227,7 +257,8 @@ def run(mu, entry, vm_lo, vm_hi, max_insn=4_000_000, stop_on_exit=False, log_n=2
     md = md32(detail=True)
     ev = {"insn": 0, "writes": collections.Counter(), "vals": {}, "ind": [],
           "exit": None, "stop": None, "eip": entry, "pages": collections.Counter(),
-          "seq": []}
+          "seq": [], "cycle": None}
+    cyc = Cycle()
 
     armed = [not stop_leave]      # stop_leave: only stop once we have entered the VM range
 
@@ -275,6 +306,17 @@ def run(mu, entry, vm_lo, vm_hi, max_insn=4_000_000, stop_on_exit=False, log_n=2
                     tgt = None
             if len(ev["ind"]) < log_n:
                 ev["ind"].append((addr, slot, tgt))
+            if cycle and op.type == X86_OP_MEM and op.mem.index and op.mem.scale == 4:
+                try:
+                    idx = mu8.reg_read(getattr(X, "UC_X86_REG_" + md.reg_name(op.mem.index).upper()))
+                except Exception:
+                    idx = None
+                per = cyc.push(idx)
+                if per is not None:
+                    ev["cycle"] = {"period": per, "at": addr, "dispatches": len(cyc.hist)}
+                    ev["stop"] = ev["stop"] or "cycle"
+                    mu8.emu_stop()
+                    return
             if stop_on_exit and isinstance(tgt, int) and not (vm_lo <= tgt < vm_hi):
                 ev["exit"] = tgt
                 mu8.emu_stop()
@@ -427,7 +469,7 @@ def cmd_ctx(a):
     vm_lo, vm_hi = img.vm_range()
     mu = build_uc(snap=snap)
     setup_from_snap(mu, snap, img, site)
-    ev = run(mu, site, vm_lo, vm_hi, max_insn=a.max, stop_leave=True)
+    ev = run(mu, site, vm_lo, vm_hi, max_insn=a.max, stop_leave=True, cycle=a.cycle)
     print(f"insns {ev['insn']} stop {ev['stop']} exit {ev['exit'] if ev['exit'] is None else hex(ev['exit'])}")
     addrs = sorted({k[0] for k in ev["writes"]})
     if not addrs:
@@ -482,6 +524,9 @@ def cmd_trace(a):
     writes, calls, exits = {}, collections.Counter(), []
     n = [0]
     stop = [None]
+    cyc = Cycle()
+    md_t = md32(detail=True) if (a.cycle or a.fake_native) else None
+    armed = [False]
 
     def on_code(mu8, addr, size, u):
         n[0] += 1
@@ -492,6 +537,48 @@ def cmd_trace(a):
         if cont is not None and addr == cont:
             stop[0] = "cont"
             mu8.emu_stop()
+            return
+        if a.cycle and md_t is not None:
+            b = bytes(mu8.mem_read(addr, 2))
+            if b[0] == 0xFF and ((b[1] >> 3) & 7) in (4, 5):
+                i = next(md_t.disasm(bytes(mu8.mem_read(addr, 10)), addr), None)
+                if i and i.operands:
+                    op = i.operands[0]
+                    if op.type == 3 and op.mem.index and op.mem.scale == 4:
+                        try:
+                            idx = mu8.reg_read(getattr(X, "UC_X86_REG_" + md_t.reg_name(op.mem.index).upper()))
+                        except Exception:
+                            idx = None
+                        per = cyc.push(idx)
+                        if per is not None:
+                            stop[0] = "cycle"
+                            print(f"cycle: period {per} handler-index, "
+                                  f"{len(cyc.hist)} dispatches, at {addr:#x}")
+                            mu8.emu_stop()
+                            return
+        if vm_lo <= addr < vm_hi:
+            armed[0] = True
+        elif a.fake_native and armed[0] and md_t is not None:
+            # left the VM: game function or DLL API. Do not execute it, fake the return.
+            try:
+                b0 = bytes(mu8.mem_read(addr, 1))[0]
+            except Exception:
+                b0 = 0
+            if b0 == 0xEA:                                  # WoW64 syscall transition
+                ra = struct.unpack("<I", mu8.mem_read(mu8.reg_read(X.UC_X86_REG_ESP), 4))[0]
+                mu8.reg_write(X.UC_X86_REG_EAX, 0)
+                mu8.reg_write(X.UC_X86_REG_EIP, ra)
+                mu8.reg_write(X.UC_X86_REG_ESP, mu8.reg_read(X.UC_X86_REG_ESP) + 4)
+                calls["syscall"] += 1
+                return
+            ra = fake_native(mu8, md_t, addr, ret_val=0, vm_lo=vm_lo, vm_hi=vm_hi)
+            if ra is None:
+                stop[0] = stop[0] or f"left VM to {addr:#x} (no VM return addr)"
+                mu8.emu_stop()
+                return
+            calls[f"{addr:#x}"] += 1
+            if len(exits) < 200:
+                exits.append(addr)
             return
         if not (vm_lo <= addr < vm_hi):
             # execution left the VM: a native call or a vm-exit. Record the landing address.
@@ -544,8 +631,12 @@ def cmd_trace(a):
     for k in start_regs:
         if start_regs[k] != end_regs[k]:
             print(f"  {k}: {start_regs[k]:#010x} -> {end_regs[k]:#010x}")
+    if calls:
+        print("\nfaked native returns:", len(calls), "sites; top:")
+        for k, c in calls.most_common(10):
+            print(f"   {k} x{c}")
     if exits:
-        print(f"\nleft VM {len(exits)} times, first: {[hex(x) for x in exits[:6]]}")
+        print(f"left VM {len(exits)} times, first: {[hex(x) for x in exits[:6]]}")
     if a.json:
         out = {"site": hex(site), "cont": hex(cont) if cont else None, "insn": n[0], "stop": stop[0],
                "ctx": hex(ctx) if ctx else None,
@@ -752,6 +843,43 @@ def cmd_profile(a):
     print(f"-> {out}")
 
 
+
+def _ret_imm(mu, md, addr, limit=64):
+    """Bytes popped by `ret imm16` at an API stub (0 for cdecl / plain ret)."""
+    try:
+        raw = bytes(mu.mem_read(addr, 96))
+    except Exception:
+        return 0
+    for i in md.disasm(raw, addr):
+        if i.mnemonic == "ret":
+            return int(i.op_str, 16) if i.op_str else 0
+        if i.mnemonic in ("jmp", "call") and not i.op_str.startswith("0x"):
+            break
+    return 0
+
+
+def fake_native(mu, md, callee, ret_val=0, vm_lo=0, vm_hi=0):
+    """Return from an external call without executing it.
+
+    The VM reached `callee` (a game function or a DLL API). We do not run it: we pop the
+    return address that the `call` pushed, set eax, and let the VM continue. Returns the
+    return address, or None when the stack does not look like a call from the VM.
+    """
+    from unicorn import x86_const as X
+    esp = mu.reg_read(X.UC_X86_REG_ESP)
+    try:
+        ra = struct.unpack("<I", mu.mem_read(esp, 4))[0]
+    except Exception:
+        return None
+    if vm_lo and not (vm_lo <= ra < vm_hi):
+        return None
+    n = _ret_imm(mu, md, callee)
+    mu.reg_write(X.UC_X86_REG_EAX, ret_val)
+    mu.reg_write(X.UC_X86_REG_ESP, esp + 4 + n)
+    mu.reg_write(X.UC_X86_REG_EIP, ra)
+    return ra
+
+
 def read_handler_table(img, ctx, span=0x1000):
     """The VM keeps its handler table inside the context, indexed by a pre-scaled opcode:
     `jmp [ctx + idx*4]`. Entries are absolute code pointers into the VM section."""
@@ -841,10 +969,189 @@ def cmd_handlers(a):
         print(f"-> {a.json}")
 
 
+def cmd_bytecode(a):
+    """Learn the virtual-instruction encoding from a trace, then decode the bytecode statically.
+
+    At every dispatch the VM reveals (opcode, VIP). Consecutive dispatches give the size of the
+    instruction: size = vip_next - vip_cur. A negative or non-adjacent delta means the current
+    VI is a branch/jump. Sizes that disagree across the trace are reported as conflicts.
+    """
+    from unicorn import UC_HOOK_CODE, UcError
+    from unicorn import x86_const as X
+    site = int(a.site, 16)
+    disp = int(a.disp, 16) if a.disp else None
+    img = Image(a.exe)
+    snap = Snap(a.snap)
+    vm_lo, vm_hi = img.vm_range()
+    mu = build_uc(snap=snap)
+    setup_from_snap(mu, snap, img, site)
+    vreg = getattr(X, "UC_X86_REG_" + (a.vip_reg or "esi").upper())
+    seq, n, stop = [], [0], [None]
+
+    def on_code(mu8, addr, size, u):
+        n[0] += 1
+        if n[0] > a.max:
+            stop[0] = "budget"
+            mu8.emu_stop()
+            return
+        if disp is not None and addr != disp:
+            return
+        if disp is None:
+            b = bytes(mu8.mem_read(addr, 2))
+            if not (b[0] == 0xFF and ((b[1] >> 3) & 7) == 4):
+                return
+        op = mu8.reg_read(X.UC_X86_REG_EAX)
+        vip = mu8.reg_read(vreg)
+        seq.append((vip, op))
+
+    mu.hook_add(UC_HOOK_CODE, on_code)
+    try:
+        mu.emu_start(site, 0xFFFFFFFF)
+    except UcError as e:
+        stop[0] = stop[0] or f"uc {e}"
+    print(f"insns {n[0]}  dispatches {len(seq)}  stop {stop[0]}")
+    if len(seq) < 10:
+        return
+    sizes, conflicts, branches = {}, collections.Counter(), collections.Counter()
+    for (v1, o1), (v2, o2) in zip(seq, seq[1:]):
+        d = v2 - v1
+        if 0 < d <= 16:
+            if o1 in sizes and sizes[o1] != d:
+                conflicts[o1] += 1
+            else:
+                sizes[o1] = d
+        else:
+            branches[o1] += 1
+    print(f"opcodes seen {len(set(o for _, o in seq))}  sizes known {len(sizes)}  conflicts {len(conflicts)}")
+    print("size histogram:", dict(collections.Counter(sizes.values())))
+    if branches:
+        print("opcodes with non-sequential follow-up (branch candidates):")
+        for o, c in branches.most_common(10):
+            print(f"   op {o:#04x} x{c}")
+    if conflicts:
+        print("conflicting sizes (same opcode, different length):")
+        for o, c in conflicts.most_common(6):
+            print(f"   op {o:#04x} x{c} (kept {sizes.get(o)})")
+    lo = min(v for v, _ in seq)
+    hi = max(v for v, _ in seq)
+    print(f"VIP span {lo:#x}..{hi:#x}  ({hi - lo + 1} bytes)")
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps(
+            {"sizes": {hex(k): v for k, v in sizes.items()},
+             "branches": {hex(k): v for k, v in branches.items()},
+             "conflicts": {hex(k): v for k, v in conflicts.items()},
+             "vip_lo": hex(lo), "vip_hi": hex(hi), "dispatches": len(seq)}, indent=1))
+        print(f"-> {a.json}")
+
+
+def cmd_decode(a):
+    """Decode the bytecode statically using the learned opcode sizes."""
+    img = Image(a.exe)
+    sizes = {int(k, 16): v for k, v in json.loads(pathlib.Path(a.sizes).read_text())["sizes"].items()}
+    branches = {int(k, 16): v for k, v in json.loads(pathlib.Path(a.sizes).read_text())["branches"].items()}
+    lo = int(a.start, 16)
+    hi = int(a.end, 16) if a.end else lo + int(a.length, 16)
+    pc, out, unknown = lo, [], []
+    hist = collections.Counter()
+    while pc < hi:
+        op = img.read(pc, 1)[0]
+        hist[op] += 1
+        if op in sizes:
+            n = sizes[op]
+        elif op in branches:
+            n = 5          # opcode + signed dword delta (checked below)
+        else:
+            unknown.append(pc)
+            pc += 1
+            continue
+        out.append({"off": pc, "op": op, "size": n, "operands": img.read(pc + 1, max(0, n - 1)).hex()})
+        pc += n
+    print(f"decoded {len(out)} virtual instructions over {hi - lo} bytes")
+    print(f"unknown opcode bytes: {len(unknown)}" + (f" (first: {[hex(x) for x in unknown[:6]]})" if unknown else ""))
+    print("top opcodes:", [(hex(k), v) for k, v in hist.most_common(8)])
+    # branch sanity: does the dword operand land inside the stream on a decoded boundary?
+    starts = {v["off"] for v in out}
+    inside = 0
+    for v in out:
+        if v["op"] in branches and len(v["operands"]) == 8:
+            delta = struct.unpack("<i", bytes.fromhex(v["operands"]))[0]
+            tgt = v["off"] + v["size"] + delta
+            if lo <= tgt < hi and tgt in starts:
+                inside += 1
+    nb = sum(1 for v in out if v["op"] in branches)
+    print(f"branch instructions: {nb}; target lands on a decoded boundary: {inside}")
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps(out[:200000], indent=0))
+        print(f"-> {a.json}")
+
+
+def cmd_opcodes(a):
+    """Join three sources into one opcode map: handler table (static), VI sizes (trace),
+    handler features (static). This is the specification the emitter needs."""
+    from unicorn import UC_HOOK_CODE, UcError
+    from unicorn import x86_const as X
+    site = int(a.site, 16)
+    img = Image(a.exe)
+    md = md32()
+    ctx = int(a.ctx, 16)
+    table = {idx: addr for idx, addr in read_handler_table(img, ctx)}
+    snap = Snap(a.snap)
+    mu = build_uc(snap=snap)
+    setup_from_snap(mu, snap, img, site)
+    vreg = getattr(X, "UC_X86_REG_" + (a.vip_reg or "esi").upper())
+    seq, n, stop = [], [0], [None]
+    disp = int(a.disp, 16)
+
+    def on_code(mu8, addr, size, u):
+        n[0] += 1
+        if n[0] > a.max:
+            stop[0] = "budget"
+            mu8.emu_stop()
+            return
+        if addr == disp:
+            seq.append((mu8.reg_read(vreg), mu8.reg_read(X.UC_X86_REG_EAX)))
+
+    mu.hook_add(UC_HOOK_CODE, on_code)
+    try:
+        mu.emu_start(site, 0xFFFFFFFF)
+    except UcError as e:
+        stop[0] = stop[0] or f"uc {e}"
+    sizes, branches = {}, collections.Counter()
+    for (v1, o1), (v2, _) in zip(seq, seq[1:]):
+        d = v2 - v1
+        if 0 < d <= 16:
+            sizes.setdefault(o1, d)
+        else:
+            branches[o1] += 1
+    print(f"dispatches {len(seq)}  opcodes {len(set(o for _, o in seq))}  stop {stop[0]}")
+    rows = []
+    for op in sorted(set(o for _, o in seq)):
+        h = table.get(op)
+        row = {"opcode": hex(op), "handler": hex(h) if h else None,
+               "size": sizes.get(op), "branch_hits": branches.get(op, 0),
+               "count": sum(1 for _, o in seq if o == op)}
+        if h:
+            feats, first = describe_handler(img, md, h, max_insn=24)
+            row.update({"pushfd": feats["pushfd"], "lods": feats["lods"],
+                        "dispatch": feats["dispatch"], "first": first})
+        rows.append(row)
+    with_h = sum(1 for r in rows if r["handler"])
+    with_sz = sum(1 for r in rows if r["size"])
+    print(f"opcodes with a handler in the table: {with_h}/{len(rows)}")
+    print(f"opcodes with a measured size:        {with_sz}/{len(rows)}")
+    print(f"branch opcodes: {[r['opcode'] for r in rows if r['branch_hits']]}")
+    for r in rows[:a.show]:
+        print(f"  op {r['opcode']:>6} size={str(r['size']):<4} n={r['count']:<5} "
+              f"handler={r['handler']} pushfd={r.get('pushfd')} lods={r.get('lods')}  {r.get('first','')[:44]}")
+    if a.json:
+        pathlib.Path(a.json).write_text(json.dumps(rows, indent=1))
+        print(f"-> {a.json}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["sites", "discover", "jumps", "ctx", "trace", "lift",
-                                    "profile", "handlers"])
+                                    "profile", "handlers", "bytecode", "decode", "opcodes"])
     ap.add_argument("exe", nargs="?", default=str(ROOT / "unpacked_ca.exe"))
     ap.add_argument("--site", help="VM site (hex)")
     ap.add_argument("--cont", help="continuation address (hex), stop when reached")
@@ -853,12 +1160,23 @@ def main():
     ap.add_argument("--snap", help="pre.snap produced by win/snap.bat")
     ap.add_argument("--max", type=int, default=4_000_000)
     ap.add_argument("--max-writes", type=int, default=200_000)
+    ap.add_argument("--fake-native", action="store_true",
+                    help="không chạy code ngoài VM: giả lập return khi VM gọi hàm native/API")
+    ap.add_argument("--sizes", default=str(ROOT / "decomp" / "vm_bytecode.json"))
+    ap.add_argument("--start", help="bytecode start (hex)")
+    ap.add_argument("--end", help="bytecode end (hex, exclusive)")
+    ap.add_argument("--length", default="0x1000", help="bytes to decode when --end is absent")
+    ap.add_argument("--disp", help="địa chỉ lệnh dispatch (hex); bỏ trống thì tự dò jmp [reg]")
+    ap.add_argument("--vip-reg", default="esi", help="thanh ghi giữ VIP (mặc định esi)")
+    ap.add_argument("--cycle", action="store_true",
+                    help="dừng khi (handler idx, VIP) lặp lại: lấy đúng một vòng của khối loop")
     ap.add_argument("--show", type=int, default=60)
     ap.add_argument("--json")
     a = ap.parse_args()
     {"sites": cmd_sites, "discover": cmd_discover, "jumps": cmd_jumps, "ctx": cmd_ctx,
      "trace": cmd_trace, "lift": cmd_lift, "profile": cmd_profile,
-     "handlers": cmd_handlers}[a.cmd](a)
+     "handlers": cmd_handlers, "bytecode": cmd_bytecode, "decode": cmd_decode,
+     "opcodes": cmd_opcodes}[a.cmd](a)
 
 
 if __name__ == "__main__":
