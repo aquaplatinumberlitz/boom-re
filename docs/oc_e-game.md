@@ -404,6 +404,20 @@ bắt đầu lượt kế" (đúng §5a-4: 146 cũng start đồng hồ). Kết 
 với `AUTO_START` server lại gửi 501 → **trận mới**. Vòng lặp đầy đủ sảnh → phòng → trận → chết → phòng → trận chạy được (fakeserver + server Rust `MATCH_END`, mặc định 3 s).
 Danh sách người chơi/kết quả trong 173 khi ≠ 0: CHƯA KIỂM.
 
+**Kết quả trận: S→C 168** ✅ runtime 2 người (2026-10-19, `logs/duo/t15`, `docs/duo_result_B.png`): `CGameStage__OnPacket` case 148 (+20) → `sub_719D08`
+(cần đối tượng kết quả `stage[5394]`, tạo trong `vf147`) → `sub_6F8274`/`sub_6F7C0E` (header) + `sub_6F944D`/`sub_6F7DC1` (16 bản ghi slot) → cửa sổ kết quả
+(`sub_7190C6`, chạy từ tick `vf159` → `sub_719C5D`). Một blob (tag 0, little-endian):
+```
+header: u8, i8, i8 KIỂU (0 = đấu thường; 1/3 = component riêng; 2 = …), u8, u8, u32 (/30 → trễ?), i8 (−1 = không; khác → mỗi người thêm 7 u8, sub_976564),
+        i8, u32 (sub_97B206), u8
+16 × slot: u8 loại (0 trống, 1 người, 2 AI: u8,u8,u8,u16; 3: u8)
+  người: u32, u8 HẠNG (≤ 1 = thắng, sub_6F77B5 đếm), u8, u8, u8, u8 rút gọn (0 → khối exp/điểm ~25 trường: u32,u8,u32,u8,u32,u8,u32×4,u16×4,u8×4,[u32×2],
+         u32,u16,u32,[u8],u16,u32,u32, sub_6F7CB7, sub_6F7748), u32 bit tuỳ chọn (1,2,4,8,0x10,0x40,0x80,0x20 → thêm trường), u8, i8, u32, u8, u8
+```
+Gửi hạng 1 cho người còn sống, 2 cho người đã chết (rút gọn = 1, bit = 0) → màn **"HOÀN HẢO!!"** trên máy người thắng, bảng 2 dòng ("SẶC NƯỚC" = thua,
+"HOÀN HẢO" = thắng), cột BẮT/CỨU/EXP/VÀNG = 0; tên trống (CHƯA KIỂM nguồn tên). Server Rust: khi C→S 120/13 làm số đội còn sống ≤ 1 (≥ 2 người) → 168
+cho cả phòng, rồi 173 sau `MATCH_END` + 5 s (cửa sổ kết quả cần thời gian). 1 người: giữ như cũ (173 sau `MATCH_END`).
+
 #### 5a-5d. Gạch vỡ và vật phẩm (đang làm, 2026-10-18)
 - **Gạch vỡ do client tự tính** (`logs/xvfb/brick1`): bom nổ cạnh gạch → gạch biến mất, client báo **C→S 135** (`sub_706FC0`, gọi từ `sub_5BF711`
   "vỡ gạch"): `u8 y(hàng)`, `u8 x(cột)`, `u8 slot`, `u16 -1`. Ví dụ `{1, 13, 0, 0xFFFF}` = gạch ở hàng 1 cột 13.

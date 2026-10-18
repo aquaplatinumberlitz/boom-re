@@ -507,3 +507,24 @@ pub fn chat_line(text: &str) -> Vec<u8> {
     Packet::new(28).str(text).u8(0).build()
 }
 
+/// Opcode 168 (CGameStage__OnPacket case 148 -> sub_719D08): match result, shown by the result window (sub_7190C6). One blob:
+/// header (sub_6F7C0E) u8, i8, i8 result kind (0 = normal battle), u8, u8, u32 (/30 = delay?), i8 extra (-1 = none, else 7 more u8 per
+/// player, sub_976564), i8, u32 (sub_97B206), u8; then 16 slot records (sub_6F7DC1): u8 kind (0 empty, 1 player, 2 AI, 3);
+/// player: u32, u8 rank (<= 1 = winner, sub_6F77B5), u8, u8, u8, u8 short (1 = skip the exp/score block), u32 option bits (0),
+/// u8, i8, u32, u8, u8.
+pub fn game_result(ranks: &[(u8, u8)]) -> Vec<u8> {
+    let mut b = Le(vec![0]);
+    b.u8(0).u8(0).u8(0).u8(0).u8(0).u32(0).u8(0xFF).u8(0).u32(0).u8(0);
+    for slot in 0..16u8 {
+        match ranks.iter().find(|r| r.0 == slot) {
+            Some(&(_, rank)) => {
+                b.u8(1).u32(0).u8(rank).u8(0).u8(0).u8(0).u8(1).u32(0).u8(0).u8(0).u32(0).u8(0).u8(0);
+            }
+            None => {
+                b.u8(0);
+            }
+        }
+    }
+    Packet::new(168).blob(&b.0).build()
+}
+

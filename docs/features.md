@@ -136,7 +136,7 @@ Phân bố opcode theo nhóm:
 | F5 | bom nổ | S→C 152 (gán id) → 151 (nổ); thời điểm nổ do server quyết (đang 2.5 s, **giá trị gốc chưa biết**); vài trường 152 đang đoán | ✅ | ✅ |
 | F6 | bị nhốt / chết / lượt mới | bom nổ → C→S 120 subtype 11 (bị nhốt) → ~6 s → 120 subtype 13 (chết) → server 146 → lượt mới, hồi sinh (`5aee4e4`) | ✅ | ✅ |
 | F6b | cứu đồng đội đang bị nhốt / kim (`ItemNiddle`) | chưa | ⬜ | ⬜ |
-| F7 | kết thúc lượt / điểm | 146 chạy được (`5aee4e4`); **bảng điểm 18 slot gửi giá trị giả, ý nghĩa chưa kiểm** | 🟡 | 🟡 |
+| F7 | kết thúc lượt / điểm | 146 chạy được (`5aee4e4`); **kết quả trận S→C 168** (hạng từng slot → màn "HOÀN HẢO"/thua, `oc_e-game.md`); server Rust: còn ≤ 1 đội sống → 168 → 173. Bảng điểm 146 và khối exp/vàng của 168 chưa kiểm | 🟡 | 🟡 |
 | F8 | kết thúc ván → về phòng chờ | S→C 173 `{0,0}` → về phòng chờ → **trận mới** (`b1fc290`); server Rust xử lý C→S 120; danh sách kết quả trong 173 chưa kiểm | ✅ | ✅ |
 | F9 | nhiều người chơi trong trận | 2 client cùng phòng + cùng vào trận (`tools/duo.sh`, `hub.rs`); **di chuyển đồng bộ 2 chiều** qua UDP P2P (C→S 92 → S→C 146 bảng peer); **ô xuất phát riêng** qua S→C 117 (`oc_e-game.md` §5a-7); bom/chết/vật phẩm nhiều người chưa kiểm | 🟡 | 🟡 |
 | F10 | item / power-up rơi | gạch vỡ client tự tính, báo C→S 135; vật phẩm trong gạch do server gửi trước 501 bằng S→C **553** (`oc_e-game.md` §5a-5d); vật phẩm **hiện được** (danh sách 2 của 553, (a,b) = (x,y), kind 1 = bạch tuộc tím); gạch thường không giấu được | 🟡 | 🟡 |

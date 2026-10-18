@@ -18,6 +18,8 @@ pub struct Member {
     pub team: u8,
     pub character: u8,
     pub ready: bool,
+    /// Died in the current match (C->S 120 subtype 13).
+    pub dead: bool,
 }
 
 #[derive(Default)]

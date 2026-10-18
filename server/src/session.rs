@@ -292,7 +292,35 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 // bomber event: u8 subtype (11 trapped, 13 died; oc_e-game.md section 5a-5c)
                 let sub = proto::get_int(&body[2..], 1, true) as u8;
                 log(format!("[{port}] bomber event 120 subtype {sub}"));
-                if sub == 13 && (cfg.match_end > 0.0 || cfg.death_end > 0.0) {
+                // several players: the match ends when at most one team is left -> 168 (result: survivors rank 1) then 173
+                let survivors = {
+                    let mut r = hub.room.lock().unwrap();
+                    if let Some(m) = r.members.iter_mut().find(|m| m.user_id == user_id) {
+                        if sub == 13 {
+                            m.dead = true;
+                        }
+                    }
+                    let alive: Vec<&Member> = r.members.iter().filter(|m| !m.dead).collect();
+                    let teams: std::collections::HashSet<u8> = alive.iter().map(|m| m.team).collect();
+                    (sub == 13 && r.members.len() > 1 && teams.len() <= 1)
+                        .then(|| r.members.iter().map(|m| (m.slot, if m.dead { 2 } else { 1 })).collect::<Vec<_>>())
+                };
+                if let Some(ranks) = survivors {
+                    log(format!("[{port}] match decided: ranks {ranks:?} -> 168, 173 in {}s", cfg.match_end.max(3.0)));
+                    hub.broadcast(&pk::game_result(&ranks));
+                    let (hub2, wait_s) = (hub.clone(), cfg.match_end.max(3.0) + 5.0);
+                    tokio::spawn(async move {
+                        tokio::time::sleep(Duration::from_secs_f64(wait_s)).await;
+                        {
+                            let mut r = hub2.room.lock().unwrap();
+                            r.started = false;
+                            for m in r.members.iter_mut() {
+                                m.dead = false;
+                            }
+                        }
+                        hub2.broadcast(&pk::match_over());
+                    });
+                } else if sub == 13 && hub.room.lock().unwrap().members.len() <= 1 && (cfg.match_end > 0.0 || cfg.death_end > 0.0) {
                     let (hub2, cfg2) = (hub.clone(), cfg.clone());
                     tokio::spawn(async move {
                         if cfg2.match_end > 0.0 {
@@ -353,6 +381,9 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16, delay:
     // the map is read after the wait: the master may still pick one (C->S 88) in the meantime
     let (map_index, _) = room_map_of(&hub, &cfg);
     let map = cfg.maps.get(map_index as usize).unwrap_or(&cfg.maps[0]);
+    for m in hub.room.lock().unwrap().members.iter_mut() {
+        m.dead = false;
+    }
     if !cfg.items.is_empty() || !cfg.floor_items.is_empty() {
         // item layout must arrive before 501 (read when the map loads); list 1 = floor, list 2 = hidden in bricks
         let bricks: Vec<(u16, u8, u8, u32)> = cfg.items.iter().enumerate().map(|(i, &(x, y, k))| (i as u16, x, y, k)).collect();
@@ -480,7 +511,7 @@ fn enter_room(hub: &Arc<Hub>, cfg: &Arc<Config>, log: &Log, port: u16, user_id: 
         let slot = (0..16u8).find(|s| closed & (1 << s) == 0 && !r.members.iter().any(|m| m.slot == *s)).unwrap_or(0);
         let others: Vec<(u8, u32, String, bool, u8, u8)> =
             r.members.iter().map(|m| (m.slot, m.user_id, m.name.clone(), m.ready, m.character, m.team)).collect();
-        r.members.push(Member { user_id, name: hub::player_name(user_id), slot, tx: tx.clone(), udp: None, team: 0, character: 0, ready: false });
+        r.members.push(Member { user_id, name: hub::player_name(user_id), slot, tx: tx.clone(), udp: None, team: 0, character: 0, ready: false, dead: false });
         let start = !r.started && r.members.len() >= cfg.players && cfg.auto_start > 0.0;
         if start {
             r.started = true;
