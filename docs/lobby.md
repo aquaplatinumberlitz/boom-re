@@ -597,5 +597,6 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
   bảng chuỗi (`sub_98DB56`), 2 = định dạng đặc biệt (`sub_9D46EB` khi `dword_E60FBC`), 3 = khoá + tham số (`sub_6A622C`/`sub_992F53`).
   (S→C 18 đi tới `vf57` rỗng — không dùng.)
 - Server Rust: 18 → `"tên : nội dung"` qua 28 cho cả phòng (đang ở phòng) hoặc cả sảnh. Ảnh `docs/chat_room.png` (dòng `tester1 : xin chao`).
-  Chưa làm: chat trong trận (CGameStage), thì thầm (D2), màu/kiểu riêng cho chat người chơi.
+  Trong trận: Enter → gõ → Enter gửi cùng C→S 18; 28 hiện dòng chữ đè góc dưới trái màn trận (`docs/chat_game.png`).
+  Chưa làm: thì thầm (D2), màu/kiểu riêng cho chat người chơi.
 

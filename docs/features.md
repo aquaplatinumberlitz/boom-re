@@ -100,7 +100,7 @@ Phân bố opcode theo nhóm:
 
 | ID | Tính năng | Bằng chứng | Trạng thái | Rust |
 |---|---|---|---|---|
-| D1 | chat phòng/kênh | C→S 18 `{u8 0, u8 n, n×str}` → S→C 28 `{str, u8 0}` hiện trong khung chat phòng/sảnh (lobby.md Cập nhật 17); chat trong trận chưa kiểm | 🟡 | 🟡 |
+| D1 | chat phòng/kênh/trận | C→S 18 `{u8 0, u8 n, n×str}` → S→C 28 `{str, u8 0}` hiện trong khung chat phòng/sảnh và trong trận (Enter, `docs/chat_game.png`) (lobby.md Cập nhật 17) | ✅ | ✅ |
 | D2 | whisper / chat riêng | trong D1 | ⬜ | ⬜ |
 | D3 | danh sách bạn | chưa thấy dispatcher riêng | ⬜ | ⬜ |
 | D4 | trao đổi (exchange) | `CExchangeStage` 16 opcode | ⬜ | ⬜ |
@@ -190,7 +190,7 @@ Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 2. **F9** nhiều người trong trận (mới 1 người) — cần B12 (UDP P2P) + server phát 111/152/151/120 cho mọi client.
 3. **F10** vật phẩm rơi — đang làm (553 + 135 đã tìm, còn mã `kind`).
 4. ~~**E5/E7** danh sách phòng + chọn map~~ **xong** (Forest01 chơi được với `ROOM_TYPE=0`).
-5. **D1** chat: phòng/sảnh **xong** (18 → 28); còn trong trận + thì thầm.
+5. **D1** chat: phòng/sảnh/trận **xong** (18 → 28); còn thì thầm (D2).
 6. **F11** `0x736C27`: kiểm thêm map/loại phòng khác (20/33) — với Village01/phòng 19 skip đã chứng minh tương đương.
 7. Các mode F13–F20: chỉ làm khi map/mode tương ứng được mở.
 
