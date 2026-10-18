@@ -16,6 +16,7 @@ TURN_MODE = int(__import__('os').environ.get('TURN_MODE', '4'))      # mode fiel
 GO_START = float(__import__('os').environ.get('GO_START', '0'))      # >0: send opcode 190 ("GO", sub_70E7D6, sets phase this[5402]=2) N s after 189
 BEGIN_START = float(__import__('os').environ.get('BEGIN_START', '0'))  # >0: send opcode BEGIN_OP (191 round begin / 146 round + scores) N s after 190
 BEGIN_OP = int(__import__('os').environ.get('BEGIN_OP', '191'))
+BOMB_PLACE = int(__import__('os').environ.get('BOMB_PLACE', '0'))  # 1: answer C->S 111 with S->C 152 (bomb confirmed + id)
 BOMB_ECHO = float(__import__('os').environ.get('BOMB_ECHO', '0'))  # >0: N s after C->S 111 send S->C 151 (explode) for bomb ids 0..BOMB_IDS-1
 BOMB_IDS = int(__import__('os').environ.get('BOMB_IDS', '32'))
 BOMB_ARG = int(__import__('os').environ.get('BOMB_ARG', '2'))
@@ -484,6 +485,43 @@ class Logger:
             f.write(line + "\n")
 
 
+
+def parse_bomb_record(body):
+    """C->S 111 (CGameMsgCache ring record flushed by vf8 0x6F06ED, oc_e-game.md section 5a-5) -> dict.
+    Order: u16 op, u32 key, u8 ctx, u8 slot, u32 serial (bomb box +280), u8 y (rec+0x10), u8 x (rec+0x14),
+    u8 power (rec+0x30), u8 r34, u8 r38, u8 r3c, u8 r18, u32 r1c, u8 flag (rec+0x40) [+ u8,u8,u8,u16 if flag & 3]."""
+    o = 2
+    def take(n):
+        nonlocal o
+        v = bp.get_int(body[o:], n, True); o += n
+        return v
+    r = {}
+    for k, n in (("key", 4), ("ctx", 1), ("slot", 1), ("serial", 4), ("y", 1), ("x", 1), ("power", 1), ("r34", 1),
+                 ("r38", 1), ("r3c", 1), ("r18", 1), ("r1c", 4), ("flag", 1)):
+        r[k] = take(n)
+    if r["flag"] & 3:
+        r.update(r20=take(1), r24=take(1), r28=take(1), r2c=take(2))
+    return r
+
+
+def bomb_placed(rec, bomb_id):
+    """S->C 152 (CGameStage__On_152 0x7064AC): server confirmation of a bomb -> ctx sub_6E9AF9 -> bomb owner vf20(desc):
+    finds the pooled bomb with serial (box +280) == desc+0 and id == -1, gives it id desc+12 and places it (CGOGameBomb vf37).
+    Field order (decode order, desc offsets from the disassembly of On_152):
+      u8 ctx (== context index), u8 slot, u16 a3 (-> desc+176), u32 desc+0 serial, u32 a4, u32 a5 (owner vf23, no-op for heroes),
+      u8 desc+24 (bomb +428, = rec y), u8 desc+36 (bomb +440, = rec x), u8 desc+48 (bomb +180), u32 desc+60 (bomb +192 = rec r1c),
+      u8 desc+72 flags (&3 -> 3 extra u8), u16 desc+12 = NEW BOMB ID, u16 desc+96, u8 desc+156 (power), u64 desc+168,
+      u8 desc+108 kind (bomb +328 = rec r34), u8 desc+120 (bomb +340 = rec r38), [u8 desc+132 / desc+144 by kind].
+    Mapping from the 111 record is inferred from CGOGameBomb vf37 + the bomb getters; desc+48/+96/+168 values are guesses."""
+    f = [("u8", rec["ctx"]), ("u8", rec["slot"]), ("u16", rec["slot"]), ("u32", rec["serial"]), ("u32", 0), ("u32", 0),
+         ("u8", rec["y"]), ("u8", rec["x"]), ("u8", rec["r18"]), ("u32", rec["r1c"]), ("u8", rec["flag"])]
+    if rec["flag"] & 3:
+        f += [("u8", rec.get("r20", 0)), ("u8", rec.get("r24", 0)), ("u8", rec.get("r28", 0))]
+    f += [("u16", bomb_id), ("u16", 0), ("u8", rec["power"]), ("u64", 0), ("u8", rec["r34"]), ("u8", rec["r38"])]
+    if rec["r34"] in (1, 2) or (rec["r34"] == 4 and rec["r38"] == 4):
+        f += [("u8", 0)]
+    return obf_body(152, *f)
+
 async def handle(reader, writer, port, log):
     peer = writer.get_extra_info("peername")
     log(f"[{port}] connect from {peer}")
@@ -520,6 +558,11 @@ async def handle(reader, writer, port, log):
                 if op == 77:  # create room (dialog XÁC NHẬN) -> opcode 83 success -> waiting room (stage 12)
                     log(f"[{port}] create room {parse_create_room(body)}")
                     replies = [create_room_ok(room_type=ROOM_TYPE)]
+                if op == 111 and BOMB_PLACE:  # bomb record -> server confirmation 152 with a fresh bomb id
+                    rec = parse_bomb_record(body)
+                    sess.bomb_id = getattr(sess, "bomb_id", 0) + 1
+                    log(f"[{port}] bomb record {rec} -> 152 id {sess.bomb_id}")
+                    replies = [bomb_placed(rec, sess.bomb_id)]
                 if op == 111 and BOMB_ECHO:  # bomb record (CGameMsgCache ring) -> EXPERIMENT: explode via 151 {n, n x (u16 id, u8 0, u32 arg)}
                     async def _boom(delay=BOMB_ECHO):
                         await asyncio.sleep(delay)

@@ -12,7 +12,7 @@ Chi tiết kỹ thuật từng bước nằm ở các file khác (link ở từn
 - Client gốc bị pack Themida. Ta dùng **bản dump đã unpack + sửa** (`ca_fixed_patched.exe`) chạy trong **Wine**.
 - **Chạy được:** đăng nhập → chọn kênh → sảnh → tạo phòng → phòng chờ → bắt đầu trận → **vào trận (stage 13): vòng mô phỏng chạy, nhân vật
   đi được, đặt bom, client gửi C→S 111 (bản ghi đặt bom)**. Chuỗi server tối thiểu: 501 → 189 mode 1 → 190 → 189 mode 0 → **191** (mục 3.3,
-  `POST_PLAY_START`; lý do: `oc_e-game.md` §5a-5). Bom **chưa nổ** (nghi phải có gói server phát lại — đang tìm).
+  `POST_PLAY_START`; lý do: `oc_e-game.md` §5a-5). **Bom nổ được** khi server trả 152 (gán id) rồi 151 (nổ) — `oc_e-game.md` §5a-5b, `docs/battle_bomb_explode.png`.
 - **Khối VM Themida:** `tools/devirt.py` có **15 khối** (viết lại hoặc skip có căn cứ) — bảng trạng thái từng khối ở
   [docs/devirt.md](devirt.md#bảng-trạng-thái-khối-vm-nguồn-sự-thật-duy-nhất). Khối đặt bom `0x6EFD4A` và handler gói 552 đã viết lại bằng
   **emulate trên snapshot cũ** (không cần đưa client gốc vào trận). Còn dở: `0x736C27` (nạp map, đang skip), vùng anti-cheat A1xxxx (skip khi chạm).
@@ -31,7 +31,7 @@ Game chia thành các "stage" (màn). Client ghi stage hiện tại vào `wine/B
 | 10 | Đăng nhập + chọn kênh (`CSelectServerStage`) | ✅ kênh tự hiện, click vào kênh được | `docs/channel_autoshow.png` |
 | 11 | Sảnh quảng trường (`CLobbySquareStage`) | ✅ load xong, nút TẠO PHÒNG chạy | `docs/lobby_loaded.png`, `docs/create_room_dialog.png` |
 | 12 | Phòng chờ (`CPrepareStage`) | ✅ có người chơi (trưởng phòng), map Village01, nút BẮT ĐẦU bật | `docs/waiting_room_start.png`, `docs/map_dialog_village.png` |
-| 13 | Trận đấu (`CGameStage`) | 🟡 mô phỏng chạy (cần 191 sau 189 mode 0), nhân vật **đi được**, đặt bom → C→S 111; HUD GIỚI HẠN đếm; **bom chưa nổ**, chưa nhiều người | `logs/xvfb/walk2/step_*.png` | `docs/battle_phase3.png`, `docs/battle_turn_LRUD.png` |
+| 13 | Trận đấu (`CGameStage`) | 🟡 mô phỏng chạy (cần 191 sau 189 mode 0), nhân vật **đi được**, đặt bom → 111 → server 152 → 151 → **bom nổ**, nhân vật bị nhốt/chết; chưa nhiều người, chưa kết thúc ván | `docs/battle_bomb_explode.png` | `docs/battle_phase3.png`, `docs/battle_turn_LRUD.png` |
 
 Những phần **chưa làm** ở các màn đã qua (không chặn đường vào trận):
 - Hộp thoại **chọn map** trong phòng liệt kê 0 map (báo "CantDecideMap"). Server đang tự gán map cho phòng.
@@ -71,6 +71,7 @@ Biến môi trường (đặt trước lệnh):
 | `PLAY_START` | 0 | > 0: gửi 189 **mode 0** N giây sau 190 → phase 3, đồng hồ chạy (oc_e-game §5a-3) |
 | `BEGIN_START` / `BEGIN_OP` | 0 / 191 | > 0: gửi opcode `BEGIN_OP` (191 round begin, 146 kết quả, **552** gói của `sub_71580C`) N giây sau 190 |
 | `POST_PLAY_START` | 0 | > 0: gửi **191** N giây sau 189 mode 0 — start đồng hồ context 0 ⇒ **vòng mô phỏng chạy** (bắt buộc để đi/đặt bom thật) |
+| `BOMB_PLACE` / `BOMB_ECHO` | 0 / 0 | (fakeserver) `BOMB_PLACE=1`: trả **152** cho mỗi C→S 111 (gán id); `BOMB_ECHO=N`: N giây sau gửi **151** nổ (id 0..`BOMB_IDS`-1). Server Rust: `BOMB_FUSE` (mặc định 2.5) làm cả hai |
 | `SERVER_IP` | 127.0.0.1 | (**chỉ server Rust**) địa chỉ client được dặn kết nối ở gói 7 và 15; client trong WinBoat cần `172.18.0.50` |
 
 Chuỗi vào trận chơi được: `AUTO_START=5 TURN_START=10 TURN_MODE=1 GO_START=3 PLAY_START=4 POST_PLAY_START=2`.
@@ -173,11 +174,9 @@ Ghi chép trước đó về phần crash map: [docs/lobby.md](lobby.md) "Cập 
 
 ## 6. Việc tiếp theo (theo thứ tự ưu tiên)
 
-1. ~~Gói C→S 111~~ ✅ (2026-10-18 đêm): flush qua `vf159` → `MsgCache.vf3(0)` → `vf5` → `vf8`; cần đồng hồ context 0 chạy (`POST_PLAY_START`).
-   Định dạng: `oc_e-game.md` §5a-5. **Tiếp:** bom chưa nổ — tìm gói S→C mà server phải phát lại (ứng viên: hàm nhận gói trận `CGameStage::vf61`
-   0x70922B, subtype u16 + byte khoá; chưa tìm được ai gọi nó — có thể từ đường UDP `CSendPacketUDP`/cổng UDP trong gói 15).
-   Đã biết thêm (`oc_e-game.md` §5a-5b): bom mạng nằm trong pool với id -1; S→C **151** đặt/đẩy bom theo id nhưng cần id đã gán — còn thiếu gói gán id.
-2. **Dump `CGamePlayMap`** (object > 11 MB) để viết lại thật khối `0x736C27` (hiện plain skip; emulate trên object trống chỉ thấy 1 lời gọi `sub_414543`).
+1. ~~Gói C→S 111~~ ✅, ~~bom nổ~~ ✅ (2026-10-18 đêm): 111 → **152** (gán id) → **151** (nổ) — `oc_e-game.md` §5a-5/5a-5b. Tiếp trong trận:
+   nhân vật bị nhốt/chết → gói hồi sinh/kết thúc ván (146?), vật phẩm rơi từ gạch, nhiều người chơi (relay 111/152/151 cho mọi client), thời gian nổ thật.
+2. ~~Dump `CGamePlayMap`~~ ✅: emulate với object thật — khối `0x736C27` là vòng lặp 0 lần với Village01/phòng 19 (skip tương đương); thử thêm map/loại phòng 20/33 nếu cần.
 3. **Vùng anti-cheat A1xxxx** (43 site, skip khi chạm) và các khối còn lại: `0x966FEC` (mồ côi).
 4. **Mở đủ map**: thay 3 map tự soạn bằng danh sách 1019 map (server Rust đã có `ALL_MAPS=1`); làm hộp thoại chọn map liệt kê được; xem map có khoá theo cấp không.
 5. **Audit tài liệu của agent OpenCode** trước khi dùng (mục 7); kiểm lại `sub_9682DE`/các suy luận cũ nếu cần.

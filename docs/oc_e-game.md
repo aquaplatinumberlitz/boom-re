@@ -357,18 +357,28 @@ if (cờ & 3): u8 rec+0x20, u8 rec+0x24, u8 rec+0x28, u16 rec+0x2C        (chỉ
 ```
 Ví dụ thật (slot 0, ô cột 14 hàng 1; server gửi khoá 10000 trong 189): `khoá=10000, 0, 0, 0, 1, 14, 1, 0, 0, 0, 1, 1, 0`. Ý nghĩa từng field ngoài hàng/cột: CHƯA KIỂM.
 
-#### 5a-5b. Bom chưa nổ — điều tra (2026-10-18 đêm, CHƯA XONG)
-- `CGOCAHeroGameBomber__vf6_2` (Space): nếu `bomber vf35` = box `bomber+0x6AC` ≠ 0 → tạo bom **cục bộ** `sub_5B0053` (gán id `sub_591209`, đặt `sub_7324C0`);
-  nếu = 0 → chỉ lấy bom trong pool (`vf18(1)`, `CGOGameBomb`, id box +168 = **-1**, số thứ tự box +280 = giá trị gửi trong 111) và gửi **111**.
-  Box +0x6AC chỉ được đặt (`sub_599C68`) bởi các chế độ đặc biệt (SnowBear/SnowBall/IamBoss) ⇒ người chơi thường luôn đi đường mạng: **server phải trả lời**.
-- **S→C 151** (`CGameStage__On_151`): `u8 n`, n × {`u16 id`, `u8 kind`, nếu kind==0: `u32`} → `ctx sub_6E9994(id, kind, u32)`: tìm bom có id (box +168) == id
-  (`sub_6E4341`, `sub_6E7EF8`); kind 0 → `sub_7324C0(bom, u32)` (đặt bom lên map → `sub_72D669` → `CGOGameBomb vf37`), kind 1 → đẩy bom tới ô khác.
-  Thí nghiệm `BOMB_ECHO=2` (fakeserver gửi 151 id 0..31 sau 111): client nhận, `sub_6E9994` chạy nhưng **không tìm thấy bom** (id vẫn -1, `sub_591209` không được gọi)
-  — `tools/gdb/bomb151.gdb`, `logs/xvfb/bomb151`.
-- ⇒ Còn thiếu một gói S→C **gán id** cho bom vừa đặt (hoặc tạo bom từ bản ghi 111 phát lại). Đã loại: bảng factory gói `dword_EA78E8`/`dword_E64B20`
-  (lúc chạy chỉ có opcode 70), `CNetSyncMan` (đồng bộ NPC), `CGameStage::vf61` 0x70922B (gói trận u16 subtype + byte khoá, có kiểm độ dài — có thể là kênh
-  UDP; chưa tìm được nơi gọi), `CSessionStage__On_143` (16 × 2 byte trạng thái ô). Hướng tiếp: tìm mọi chỗ ghi box +168 của `CGOGameBomb`
-  (`sub_577EED`/`sub_413F32` trên `this+42`) và đi ngược lên handler gói; hoặc so với client KR/bản khác nếu có log mạng thật.
+#### 5a-5b. Vòng đời bom: C→S 111 → S→C 152 (gán id + đặt) → S→C 151 (nổ) ✅ runtime (2026-10-18 đêm)
+- `CGOCAHeroGameBomber__vf6_2` (Space): nếu `bomber vf35` = box `bomber+0x6AC` ≠ 0 → bom **cục bộ** (`sub_5B0053`); người chơi thường = 0 (box chỉ đặt bởi
+  chế độ SnowBear/SnowBall/IamBoss, `sub_599C68`) → lấy bom trong pool (`CGOGameBomb`, id box +168 = -1, số thứ tự box +280) và chỉ gửi **111**. **Server quyết định.**
+- **S→C 152** (`CGameStage__On_152` 0x7064AC) → ctx `sub_6E9AF9` → `CBombOwner vf20(desc)` (0x578BA3): tìm bom trong pool có số thứ tự == `desc+0` và id == -1,
+  `sub_591209(bom, desc+12)` gán **id**, rồi `CGOGameBomb vf37(desc)` khởi tạo. Thứ tự trường (từ disassembly; desc = biến cục bộ `ebp-0xE4`):
+  ```
+  u8  ctx (phải == chỉ số context, = rec+0x00 của 111)   u8 slot   u16 a3 (-> desc+176)
+  u32 desc+0  số thứ tự bom (= rec+0x0C của 111)         u32 a4, u32 a5 (owner vf23 — rỗng với bomber thường)
+  u8  desc+24 (bom +428 = rec y)   u8 desc+36 (bom +440 = rec x)   u8 desc+48 (bom +180)   u32 desc+60 (bom +192 = rec r1c)
+  u8  desc+72 cờ — nếu (cờ & 3): u8, u8, u8 (tham số vf33 của bom)
+  u16 desc+12 = ID BOM MỚI        u16 desc+96        u8 desc+156 (sức nổ, = rec+0x30)        u64 desc+168
+  u8  desc+108 loại (bom +328 = rec+0x34)   u8 desc+120 (bom +340 = rec+0x38)   [u8 desc+132 nếu loại 1 hoặc (4 & desc+120==4); u8 desc+144 nếu loại 2]
+  ```
+  Giá trị desc+48/+96/+168 hiện đoán (0 / r18); cần đối chiếu nếu có log server thật.
+- **S→C 151** (`CGameStage__On_151` 0x70205B): `u8 n`, n × {`u16 id`, `u8 kind`, kind == 0: `u32 arg`} → ctx `sub_6E9994(id, kind, arg)`: tìm bom theo id (box +168);
+  kind 0 → `sub_7324C0` (**nổ**), kind 1 → đẩy bom sang ô khác. Ý nghĩa `arg` CHƯA KIỂM (thử 2).
+- **Kiểm chứng** (`logs/xvfb/boom2`, `docs/battle_bomb_explode.png`, gdb `tools/gdb/bomb152.gdb`): Space → 111 → server 152 (id 1) → `OWNER_VF20`, `SETID id=1`
+  → 2.5 s sau server 151 {1, 0, 2} → `sub_7324C0` → **bom nổ, nhân vật bị nhốt trong bong bóng ("HELP!") rồi chết**.
+  fakeserver: `BOMB_PLACE=1` (+ `BOMB_ECHO=2.5 BOMB_IDS=2`); server Rust: `BOMB_FUSE` (mặc định 2.5 s; gửi 152 rồi 151 cho đúng id, test `server/tests/bomb.rs`).
+  Thời gian nổ thật của game gốc và cách server tính vùng nổ/hạ gục: CHƯA BIẾT (client tự vẽ vụ nổ khi nhận 151).
+- Đã loại trên đường tìm: bảng factory gói (`dword_EA78E8`/`dword_E64B20`, lúc chạy chỉ opcode 70), `CNetSyncMan` (đồng bộ NPC), `CGameStage::vf61` 0x70922B
+  (gói trận u16 subtype + byte khoá, có kiểm độ dài — nghi kênh UDP), `CSessionStage__On_143` (16 × 2 byte trạng thái ô).
 
 ### 5b. C→S các gói client tự gửi khi chơi
 | op | hàm gửi (địa chỉ) | nội dung Encode (thứ tự Encode chính xác) |

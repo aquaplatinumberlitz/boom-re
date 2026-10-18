@@ -285,3 +285,88 @@ pub fn round_result(game_time: u32, key: u32, t: (u32, u32), flag: u8, rank: (u3
     }
     p.build()
 }
+
+/// C->S 111: bomb record of the CGameMsgCache ring (flushed by vf8 0x6F06ED; docs/oc_e-game.md section 5a-5).
+#[derive(Clone, Debug, Default)]
+pub struct BombRecord {
+    pub key: u32,
+    pub ctx: u8,
+    pub slot: u8,
+    pub serial: u32,
+    pub y: u8,
+    pub x: u8,
+    pub power: u8,
+    pub r34: u8,
+    pub r38: u8,
+    pub r3c: u8,
+    pub r18: u8,
+    pub r1c: u32,
+    pub flag: u8,
+    pub extra: Option<(u8, u8, u8, u16)>,
+}
+
+/// Parse a C->S 111 body (opcode included).
+pub fn parse_bomb_record(body: &[u8]) -> Option<BombRecord> {
+    let mut o = 2usize;
+    let mut take = |n: usize| -> Option<u64> {
+        let v = body.get(o..o + n).map(|b| crate::proto::get_int(b, n, true));
+        o += n;
+        v
+    };
+    let mut r = BombRecord {
+        key: take(4)? as u32,
+        ctx: take(1)? as u8,
+        slot: take(1)? as u8,
+        serial: take(4)? as u32,
+        y: take(1)? as u8,
+        x: take(1)? as u8,
+        power: take(1)? as u8,
+        r34: take(1)? as u8,
+        r38: take(1)? as u8,
+        r3c: take(1)? as u8,
+        r18: take(1)? as u8,
+        r1c: take(4)? as u32,
+        flag: take(1)? as u8,
+        extra: None,
+    };
+    if r.flag & 3 != 0 {
+        r.extra = Some((take(1)? as u8, take(1)? as u8, take(1)? as u8, take(2)? as u16));
+    }
+    Some(r)
+}
+
+/// S->C 152 (CGameStage__On_152 0x7064AC): bomb confirmed -> bomb owner vf20 gives the pooled bomb (serial == desc+0, id -1)
+/// the id `bomb_id` and places it. Field order from the disassembly; desc+48/+96/+168 values are guesses (see fakeserver.py).
+pub fn bomb_placed(r: &BombRecord, bomb_id: u16) -> Vec<u8> {
+    let mut p = Packet::new(152)
+        .u8(r.ctx)
+        .u8(r.slot)
+        .u16(r.slot as u16)
+        .u32(r.serial)
+        .u32(0)
+        .u32(0)
+        .u8(r.y)
+        .u8(r.x)
+        .u8(r.r18)
+        .u32(r.r1c)
+        .u8(r.flag);
+    if r.flag & 3 != 0 {
+        let (a, b, c, _) = r.extra.unwrap_or_default();
+        p = p.u8(a).u8(b).u8(c);
+    }
+    p = p.u16(bomb_id).u16(0).u8(r.power).u64(0).u8(r.r34).u8(r.r38);
+    if r.r34 == 1 || r.r34 == 2 || (r.r34 == 4 && r.r38 == 4) {
+        p = p.u8(0);
+    }
+    p.build()
+}
+
+/// S->C 151 (CGameStage__On_151 0x70205B): u8 n, n x (u16 bomb id, u8 kind, kind == 0: u32) -> ctx sub_6E9994; kind 0 = explode
+/// (sub_7324C0). Verified 2026-10-18: after 152 gave the bomb id 1, 151 {1, 0, 2} makes it explode (water blast, player trapped).
+pub fn bomb_explode(ids: &[u16], arg: u32) -> Vec<u8> {
+    let mut p = Packet::new(151).u8(ids.len() as u8);
+    for &id in ids {
+        p = p.u16(id).u8(0).u32(arg);
+    }
+    p.build()
+}

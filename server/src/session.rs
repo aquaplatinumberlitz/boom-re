@@ -25,6 +25,8 @@ pub struct Config {
     pub play_start: f64,
     /// >0: send 191 (round begin) N s after 189 mode 0 — starts the clock of context 0, the one the match tick reads.
     pub post_play_start: f64,
+    /// >0: answer C->S 111 (bomb) with 152 (id) and explode it with 151 after this many seconds; 0 = ignore bombs.
+    pub bomb_fuse: f64,
     /// Address handed to the client in opcodes 7/15 (must be reachable from the client; 127.0.0.1 for Wine).
     pub server_ip: [u8; 4],
     pub maps: Vec<BattleMap>,
@@ -46,6 +48,7 @@ impl Config {
             begin_op: env("BEGIN_OP", 191),
             play_start: env("PLAY_START", 0.0),
             post_play_start: env("POST_PLAY_START", 0.0),
+            bomb_fuse: env("BOMB_FUSE", 2.5),
             server_ip: env::<std::net::Ipv4Addr>("SERVER_IP", std::net::Ipv4Addr::LOCALHOST).octets(),
             maps,
         }
@@ -80,6 +83,7 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log) {
 
     let mut st = SeqState { header_type: HEADER_TYPE, ..Default::default() };
     let mut buf = Vec::new();
+    let mut next_bomb_id: u16 = 0;
     let mut chunk = vec![0u8; 65536];
     loop {
         let n = match tokio::time::timeout(Duration::from_secs(120), rd.read(&mut chunk)).await {
@@ -105,6 +109,19 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log) {
             log(format!("[{port}] C->S opcode {op} body {}", hex(&body)));
             for r in replies(op, port, &cfg) {
                 let _ = tx.send(r);
+            }
+            if op == 111 && cfg.bomb_fuse > 0.0 {
+                if let Some(rec) = pk::parse_bomb_record(&body) {
+                    next_bomb_id = next_bomb_id.wrapping_add(1).max(1);
+                    let id = next_bomb_id;
+                    log(format!("[{port}] bomb {rec:?} -> 152 id {id}, 151 in {}s", cfg.bomb_fuse));
+                    let _ = tx.send(pk::bomb_placed(&rec, id));
+                    let (tx2, fuse) = (tx.clone(), cfg.bomb_fuse);
+                    tokio::spawn(async move {
+                        tokio::time::sleep(Duration::from_secs_f64(fuse)).await;
+                        let _ = tx2.send(pk::bomb_explode(&[id], 2));
+                    });
+                }
             }
             if op == 337 && cfg.auto_start > 0.0 {
                 tokio::spawn(match_flow(tx.clone(), cfg.clone(), log.clone(), port));
