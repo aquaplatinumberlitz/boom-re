@@ -1,7 +1,7 @@
 # Danh sách tính năng client VN — checklist 100%
 
 Mục đích: một danh sách **đầy đủ** để theo dõi tiến độ, thay vì mỗi lần lại hỏi "còn gì nữa".
-Mỗi dòng có **bằng chứng** (class/opcode/tài liệu), không có dòng nào là phỏng đoán.
+Mỗi dòng có **bằng chứng** (class/opcode/tài liệu). Dòng nào còn suy luận thì ghi rõ "suy luận"/"CHƯA KIỂM" trong cột bằng chứng.
 
 Cập nhật số liệu tự động: `python3 tools/feature_stats.py` (đọc `decomp/opcode_dispatch.json`,
 `decomp/ida_names.json`, `server/src/*.rs`, `tools/fakeserver.py`).
@@ -25,8 +25,8 @@ Cập nhật số liệu tự động: `python3 tools/feature_stats.py` (đọc 
 | handler có tên từ RTTI | 812 / 1113 |
 | class C++ có tên | **2305** |
 | hàm/vtable đã đặt tên | 20.682 / 3699 vtable |
-| opcode server giả đã xử lý | **84 / 520 (16,2%)** |
-| khối VM Themida | 73 (14 trong `devirt.py`) |
+| opcode server giả đã xử lý | **87 / 520 (16,7%)** (2026-10-18 tối, `feature_stats.py`) |
+| khối VM Themida | **64 điểm vào** (`push key; jmp 0x11EE128`): 15 trong code game (**14 xử lý**, còn `0x966FEC` mồ côi) + 49 vùng anti-cheat A1xxxx (0 xử lý, chưa chạm). `devirt.py` có 15 `BLOCKS` = 14 site game + `0x5788C9` (jmp bị chiếm, không phải VM). 73 = số marker SDK, không phải số khối |
 | stage đã chơi được | 1 → 13, **trọn 1 ván** (kết thúc → phòng chờ → ván mới) |
 
 Phân bố opcode theo nhóm:
@@ -48,7 +48,7 @@ Phân bố opcode theo nhóm:
 |---|---|---|---|---|
 | A1 | unpack Themida + tìm OEP | `unpacked_ca.exe`, OEP `0x9E5EFE` | ✅ | `runtime.md` |
 | A2 | sửa IAT bản dump | `ca_fixed_patched.exe`, `tools/fix_iat.py` | ✅ | `runtime.md` |
-| A3 | tắt anti-cheat bằng công tắc game | `Feature_IsDisabled(212)` → 1, 22 chỗ | ✅ | `runtime.md` |
+| A3 | tắt anti-cheat bằng công tắc game | `Feature_IsDisabled(212)` → 1, 22 chỗ (bản dump); client gốc chỉ chịu được 13 chỗ lúc đăng nhập (`runtime.md` cuối) | ✅ | `runtime.md` |
 | A4 | phục hồi RTTI → tên class/hàm | 3699 vtable, 20.7k tên | ✅ | `decomp/ida_names.json` |
 | A5 | bảng dispatch opcode tĩnh | 59 dispatcher / 520 opcode | ✅ | `opcode_dispatch.json` |
 | A6 | render D3D9 | chạy trong Wine, `CxUni*.fft` | ✅ | `runtime.md` |
@@ -59,7 +59,7 @@ Phân bố opcode theo nhóm:
 | A11 | font bitmap `.fft` | `CxUni.fft`, `CxUniBold.fft` | 🟡 | `assets.md` |
 | A12 | pack `.idx/.idd` | `CharTE.idd` 368 MB, `EmoTE.idd` 275 MB | ✅ | `assets.md` |
 | A13 | sprite → PNG | `docs/*.png` sinh từ pack | ✅ | `assets.md` |
-| A14 | devirt khối VM | 73 khối, 14 xong, 58 anti-cheat | 🟡 | `devirt.md` |
+| A14 | devirt khối VM | 15 site game: 14 xử lý (viết lại/skip có căn cứ), `0x966FEC` chưa; 49 site anti-cheat A1xxxx chưa chạm (chưa gây crash) | 🟡 | `devirt.md` (bảng trạng thái) |
 | A15 | chạy client trên host có GPU | Wine + Mesa llvmpipe / WinBoat | ✅ | `runtime.md` |
 | A16 | điều khiển guest WinBoat từ host | `tools/qmp_guest.py` | ✅ | `vmdevirt.md` §20 |
 
@@ -76,6 +76,10 @@ Phân bố opcode theo nhóm:
 | B7 | keep-alive opcode 15 | mỗi 5 s | ✅ | `protocol.md` |
 | B8 | endpoint multisvr / launcher | 6×u32 trong opcode 0 **chưa rõ nghĩa** | 🟡 | `protocol.md` |
 | B9 | byte thứ 2 của header khi A=2 | `0xF4`, client không kiểm tra | 🟡 | `protocol.md` |
+| B10 | gói nhóm C→S (`sub_88851B`: 111, 112, 120, 145…) | 111/120 giải mã được, mỗi bản ghi một gói | 🟡 | `oc_e-game.md` §5a-5 |
+| B11 | khoá phiên trận (u32 của 189 → `this[4887]`, byte đầu gói trận) | IDA + runtime (bản ghi 111 mang khoá) | 🟡 | `oc_e-game.md` §5a-4 |
+| B12 | kênh UDP P2P giữa các client | `CUDPPeer`, `CUDPPeerMan`, `CSendPacketUDP`, `CNMP2P*`; cổng UDP trong gói 15 đang gửi 0 | ⬜ (cần cho F9) | — |
+| B13 | báo cáo ngẫu nhiên kiểu anti-cheat C→S 141/142 | `sub_71B521` (tick), không phải di chuyển | 🟡 (server bỏ qua được) | `oc_e-game.md` §5b |
 
 ## C. Account / auth / session
 
@@ -112,7 +116,8 @@ Phân bố opcode theo nhóm:
 | E5 | danh sách phòng / vào phòng | một phần | 🟡 |
 | E6 | phòng chờ `CPrepareStage` (36) | người chơi, trưởng phòng, nút BẮT ĐẦU | ✅ |
 | E7 | chọn map trong phòng | hiện `Village01`; hộp thoại từng trống | 🟡 |
-| E8 | sẵn sàng / bắt đầu | 501 → 189 → 190 → 191 | ✅ |
+| E8 | bắt đầu trận | 501 → 189 mode 1 → 190 → 189 mode 0 → **191** (191 phải sau 189 mode 0) | ✅ |
+| E12 | sẵn sàng / đội / chọn nhân vật trong phòng | mới 1 người, chưa làm | ⬜ |
 | E9 | kick / đổi chủ phòng / option phòng | trong E6 dispatcher | ⬜ |
 | E10 | `CHiddenCatchPrepareStage` (33) | mode riêng, dispatcher | ⬜ |
 | E11 | vào kênh (enter channel) | stage 10 → 11 | ✅ |
@@ -122,17 +127,20 @@ Phân bố opcode theo nhóm:
 | ID | Tính năng | Bằng chứng | Trạng thái |
 |---|---|---|---|
 | F1 | `CGameStage` core (95 opcode) | dispatcher | 🟡 |
-| F2 | bắt đầu trận / đồng hồ | 189 mode 1, 190, 189 mode 0, 191 | ✅ |
+| F2 | bắt đầu trận / đồng hồ | 189 mode 1, 190, 189 mode 0, 191 (đồng hồ context 0, `oc_e-game.md` §5a-5) | ✅ |
 | F3 | di chuyển nhân vật | ←↑→↓ đi được | ✅ |
 | F4 | đặt bom | Space → C→S 111 | ✅ |
-| F5 | bom nổ | S→C 152 (gán id) → 151 (nổ) | ✅ |
-| F6 | chết / hồi sinh | bom nổ → C→S 120 subtype 13 → 146 → lượt mới, hồi sinh, đồng hồ đặt lại (`5aee4e4`) | ✅ |
-| F7 | kết thúc lượt / điểm | 146 round result, chạy được (`5aee4e4`) | ✅ |
-| F8 | kết thúc ván → về phòng chờ | S→C 173 → về phòng chờ → **trận mới** (`b1fc290`); server Rust xử lý C→S 120 | ✅ |
+| F5 | bom nổ | S→C 152 (gán id) → 151 (nổ); thời điểm nổ do server quyết (đang 2.5 s, **giá trị gốc chưa biết**); vài trường 152 đang đoán | ✅ |
+| F6 | bị nhốt / chết / lượt mới | bom nổ → C→S 120 subtype 11 (bị nhốt) → ~6 s → 120 subtype 13 (chết) → server 146 → lượt mới, hồi sinh (`5aee4e4`) | ✅ |
+| F6b | cứu đồng đội đang bị nhốt / kim (`ItemNiddle`) | chưa | ⬜ |
+| F7 | kết thúc lượt / điểm | 146 chạy được (`5aee4e4`); **bảng điểm 18 slot gửi giá trị giả, ý nghĩa chưa kiểm** | 🟡 |
+| F8 | kết thúc ván → về phòng chờ | S→C 173 `{0,0}` → về phòng chờ → **trận mới** (`b1fc290`); server Rust xử lý C→S 120; danh sách kết quả trong 173 chưa kiểm | ✅ |
 | F9 | nhiều người chơi trong trận | mới 1 người | ⬜ |
-| F10 | item / power-up rơi | chưa | ⬜ |
-| F11 | map load trong trận | `0x736C27` đang **skip** | 🟡 |
-| F12 | va chạm / vật lý | mô phỏng chạy | 🟡 |
+| F10 | item / power-up rơi | gạch vỡ client tự tính, báo C→S 135; vật phẩm trong gạch do server gửi trước 501 bằng S→C **553** (`oc_e-game.md` §5a-5d); chưa hiện được vật phẩm (mã `kind` chưa biết) | 🟡 |
+| F10b | nhặt / dùng vật phẩm | `CGameStage__On_158` (u16 itemId) — chưa kiểm | ⬜ |
+| F11 | map load trong trận | `0x736C27` skip; emulate với object map thật = vòng lặp 0 lần (Village01, phòng 19) → tương đương; map/loại phòng khác chưa kiểm | 🟡 |
+| F12 | va chạm / vật lý | mô phỏng chạy; gạch vỡ, tia nước, nhốt nhân vật đều client tự tính | 🟡 |
+| F23 | gói 552 (`sub_71580C`) | khối VM đã viết lại, chạy không crash; ý nghĩa gói chưa rõ | 🟡 |
 | F13 | mode HiddenCatch | `CHiddenCatchGameStage` (76) + 5 component | ⬜ |
 | F14 | mode SnowBear | `CGOSnowBearBomber` (94) | ⬜ |
 | F15 | mode SnowBall | `CGOSnowBallBomber` (82) | ⬜ |
@@ -176,11 +184,11 @@ Phân bố opcode theo nhóm:
 Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 
 1. ~~F8 kết thúc ván~~ **xong** (`b1fc290`); ~~F6/F7 chết/lượt~~ **xong** (`5aee4e4`).
-2. **F9** nhiều người trong trận (mới 1 người) — chặn việc test mode nhiều người.
-3. **F10** vật phẩm rơi (chưa có).
+2. **F9** nhiều người trong trận (mới 1 người) — cần B12 (UDP P2P) + server phát 111/152/151/120 cho mọi client.
+3. **F10** vật phẩm rơi — đang làm (553 + 135 đã tìm, còn mã `kind`).
 4. **E5/E7** danh sách phòng + chọn map (để chơi map khác Village01).
 5. **D1** chat (38 opcode, chưa làm gì).
-6. **F11** `0x736C27` viết lại thật (đang skip — rủi ro trạng thái map).
+6. **F11** `0x736C27`: kiểm thêm map/loại phòng khác (20/33) — với Village01/phòng 19 skip đã chứng minh tương đương.
 7. Các mode F13–F20: chỉ làm khi map/mode tương ứng được mở.
 
 ## Cách cập nhật checklist này
