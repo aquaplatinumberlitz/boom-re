@@ -6,7 +6,7 @@ Mở bằng Chromium hoặc Firefox:
 
 `/home/admin/boom-re-l10n/l10n/.cache/image-review/index.html`
 
-Có thể mở trực tiếp file HTML, không cần server hay kết nối mạng:
+Có thể mở trực tiếp file HTML, không cần server hay kết nối mạng. Mở terminal và chạy:
 
 ```sh
 xdg-open /home/admin/boom-re-l10n/l10n/.cache/image-review/index.html

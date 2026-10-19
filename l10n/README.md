@@ -115,6 +115,12 @@ phóng lớn, ghi chú và xác nhận đã có tiếng Việt/cần dịch/khô
 trình duyệt; bấm **Xuất kết quả CSV** để giữ và nhập vào dự án. Hướng dẫn đầy đủ:
 [Duyệt ảnh KR–VN](../docs/l10n-image-review.md).
 
+Mở terminal và chạy:
+
+```sh
+xdg-open /home/admin/boom-re-l10n/l10n/.cache/image-review/index.html
+```
+
 Sau kiểm tra cấu trúc, đã loại 4 dữ liệu bản đồ bị nhận nhầm thành ảnh. Danh sách còn
 **3.038 ứng viên**: 681 khác bản VN, 1.113 giống bản VN, 1.244 không có bản VN cùng tên.
 Đã xuất **8.750 ảnh con**, không lỗi giải mã. Chưa có xác nhận ảnh đã dịch từ người duyệt;
