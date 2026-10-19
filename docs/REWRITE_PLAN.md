@@ -279,3 +279,15 @@ Tổng cộng khoảng **1,5–2 năm**.
 - 520/520 opcode đã có quyết định PORT, REDESIGN hoặc DROP; mọi PORT có test.
 - Mọi dialog/màn hình PORT có golden ảnh so với client gốc.
 - Mọi số liệu kinh tế có tag nguồn; mọi số [DESIGN] được designer duyệt và đã qua playtest.
+
+## 10. Bản KR: content profile `kr` trên cùng engine
+
+Bản KR (patch Nexon `00967`) là cùng dòng engine, mở rộng nội dung: 13 pack, 51.467 entry, so với 4 pack của VN.
+Engine **không fork**:
+- `boom-assets` đọc pack bằng khoá tự thân (4 byte đầu `.idx`) cho cả hai bản;
+- một bảng *content profile* (`vn`, `kr`) chọn pack, map và chế độ.
+
+Client KR không vào được gameplay (bị chặn ở `ProcessPatch`), nên **Feel Oracle cho KR là client VN**.
+Các chế độ HiddenCatch, AIBattle, Airplane, SuperStar, Monster đều có code trong client VN.
+Chỉ Alchemist và Baseball không có, nên dùng [ARCHIVE] + [DESIGN].
+Chi tiết và việc cần làm (KR-R0-1..4, KR-W3-1/2, KR-UI): `boomkr-re/docs/rust-rewrite.md`.
