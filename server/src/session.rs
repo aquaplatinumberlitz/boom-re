@@ -131,6 +131,8 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
     // (sub_8C0D23 -> sub_8BC5ED, u32 of dword_E60814) and must not put the user in the room
     let mut room_pending = false;
     let mut in_lobby = false;
+    // the first C->S 88 after entering a room is automatic (the client's own list position), not a choice
+    let mut map_synced = false;
     // shop wallet of this connection (not persisted): cash = XU (221), gold = lucci / VANG (20)
     let mut cash = pk::SHOP_CASH;
     let mut gold = pk::SHOP_GOLD;
@@ -203,8 +205,10 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 let code = proto::get_int(&body[2..], 2, true) as u16;
                 let index = proto::get_int(&body[4..], 4, true) as u32;
                 let ok = (index as usize) < cfg.maps.len();
-                log(format!("[{port}] map choice from user {user_id}: index {index} code {code}{}", if ok { "" } else { " (unknown, ignored)" }));
-                if ok {
+                let auto = !map_synced;
+                map_synced = true;
+                log(format!("[{port}] map choice from user {user_id}: index {index} code {code}{}", if auto { " (automatic on entry: room map kept)" } else if ok { "" } else { " (unknown, ignored)" }));
+                if ok && !auto {
                     hub.room.lock().unwrap().map = Some((index, code));
                     hub.broadcast(&pk::room_map(index, code));
                 } else {
@@ -343,6 +347,7 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 in_room = true;
                 hub.lobby.lock().unwrap().retain(|t| !t.same_channel(&tx));
                 enter_room(&hub, &cfg, &log, port, user_id, &tx);
+                map_synced = false;
                 hub.push_room_list(cfg.room_type);
             } else {
                 if op == 77 {
