@@ -267,6 +267,20 @@ pub fn room_player(slot: u8, user_id: u32, name: &str, chief: bool, character: u
     p.u32(0).u32(0).u8(0).u32(0).u16(0).str("").build()
 }
 
+/// Opcode 69 (CStage__On_69 on CUserMap dword_E61018): lobby user list page (left panel, AllTab), answer to C->S 64 {u16 page}.
+/// u16 page, u8 n (<= 11), n x blob UserSimpleInfo (UserSimpleInfoPacket__vf2, same layout as the 103 profile): str name, u8,
+/// u8, u32, u8, u32, u16, u32, u32, u32, u32, u8, u32, str, 4 x u16, u32, u32, 4 x u32. 67 is the same for GuildTab.
+pub fn user_list(page: u16, names: &[String]) -> Vec<u8> {
+    let mut p = Packet::new(69).u16(page).u8(names.len().min(11) as u8);
+    for name in names.iter().take(11) {
+        let mut b = Le(vec![0]);
+        b.str(name).u8(0).u8(0).u32(0).u8(0).u32(0).u16(0).u32(0).u32(0).u32(0).u32(0).u8(0).u32(0).str("");
+        b.u16(0).u16(0).u16(0).u16(0).u32(0).u32(0).u32(0).u32(0).u32(0).u32(0);
+        p = p.blob(&b.0);
+    }
+    p.build()
+}
+
 /// CPrepareStage__On_106 0x6C6BC9: slot state (enables the room buttons for our own slot). Flags byte: bit 0 = slot closed,
 /// bit 1 = room master, bits 2-4 = player state (1 = ready; sub_6C31ED / CPrepareStage__vf153), then 6-bit character, 5-bit team.
 pub fn room_slot_state(slot: u8, chief: bool, ready: bool, character: u8, team: u8) -> Vec<u8> {

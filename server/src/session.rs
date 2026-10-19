@@ -124,6 +124,7 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
     // 83 sent (create/join): the next 337 is the waiting room asking for its players. 337 also comes from the lobby after 23
     // (sub_8C0D23 -> sub_8BC5ED, u32 of dword_E60814) and must not put the user in the room
     let mut room_pending = false;
+    let mut in_lobby = false;
     // shop wallet of this connection (not persisted): cash = XU (221), gold = lucci / VANG (20)
     let mut cash = pk::SHOP_CASH;
     let mut gold = pk::SHOP_GOLD;
@@ -165,6 +166,14 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
             } else if op == 395 {
                 // lobby entry: same replies as before but with the real room list
                 hub.lobby.lock().unwrap().push(tx.clone());
+                {
+                    let mut users = hub.lobby_users.lock().unwrap();
+                    if !users.contains(&user_id) {
+                        users.push(user_id);
+                    }
+                }
+                in_lobby = true;
+                hub.push_user_list();
                 let _ = tx.send(pk::account_info(&hub::player_name(user_id)));
                 let _ = tx.send(pk::item_catalog());
                 for r in replies(op, port, &cfg) {
@@ -267,6 +276,11 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 };
                 log(format!("[{port}] buy {stock} -> 223 {code} (cash {cash}, gold {gold})"));
                 let _ = tx.send(pk::buy_result(code));
+            } else if op == 64 && body.len() >= 4 {
+                // lobby user list page (sub_679EF4): u16 page -> 69 (11 per page)
+                let page = proto::get_int(&body[2..], 2, true) as u16;
+                log(format!("[{port}] user list page {page} -> 69"));
+                let _ = tx.send(hub.user_list_page(page));
             } else if op == 276 || op == 278 || op == 256 {
                 // shop list requests after 20 when the cached .ini version differs: FxStock -> 64, StringTable -> 225, PackageMap -> 65
                 let pkt = match op { 276 => pk::shop_stock(), 278 => pk::shop_strings(), _ => pk::shop_packages() };
@@ -392,6 +406,10 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
     }
     if in_room && hub.leave_room(user_id, false).is_some() {
         hub.push_room_list(cfg.room_type);
+    }
+    if in_lobby {
+        hub.lobby_users.lock().unwrap().retain(|&u| u != user_id);
+        hub.push_user_list();
     }
     log(format!("[{port}] close {peer}"));
 }

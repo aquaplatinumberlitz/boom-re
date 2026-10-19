@@ -42,11 +42,13 @@ pub struct Hub {
     pub room: Mutex<Room>,
     /// Connections currently in the lobby (sent 395): they get the room list again when the room changes.
     pub lobby: Mutex<Vec<UnboundedSender<Vec<u8>>>>,
+    /// Users whose lobby connection is open (395 seen, not closed yet): the lobby user list (S->C 69).
+    pub lobby_users: Mutex<Vec<u32>>,
 }
 
 impl Default for Hub {
     fn default() -> Self {
-        Hub { next_user: AtomicU32::new(1000), room: Mutex::new(Room::default()), lobby: Mutex::new(Vec::new()) }
+        Hub { next_user: AtomicU32::new(1000), room: Mutex::new(Room::default()), lobby: Mutex::new(Vec::new()), lobby_users: Mutex::new(Vec::new()) }
     }
 }
 
@@ -118,6 +120,23 @@ impl Hub {
     /// Send the room list again to everybody in the lobby (drops closed connections).
     pub fn push_room_list(&self, room_type: u8) {
         let pkt = self.room_list(room_type);
+        let mut lobby = self.lobby.lock().unwrap();
+        lobby.retain(|t| !t.is_closed());
+        for t in lobby.iter() {
+            let _ = t.send(pkt.clone());
+        }
+    }
+
+    /// First page of the lobby user list (S->C 69).
+    pub fn user_list_page(&self, page: u16) -> Vec<u8> {
+        let users = self.lobby_users.lock().unwrap().clone();
+        let names: Vec<String> = users.iter().skip(page as usize * 11).map(|&u| player_name(u)).collect();
+        crate::packets::user_list(page, &names)
+    }
+
+    /// Send the user list again to everyone in the lobby (someone entered or left).
+    pub fn push_user_list(&self) {
+        let pkt = self.user_list_page(0);
         let mut lobby = self.lobby.lock().unwrap();
         lobby.retain(|t| !t.is_closed());
         for t in lobby.iter() {

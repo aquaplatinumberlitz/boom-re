@@ -678,4 +678,10 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
   (0xCC huyền, 0xEC sắc, 0xD2 hỏi, 0xDE ngã, 0xF2 nặng). `proto::cp1258` trước đó dùng `encoding_rs` → ra "&#7845;"; nay tách dấu theo bảng
   `VI_DECOMP` (sinh bằng Python unicodedata). Client hiển thị đúng (`docs/lobby_strings_vi.png`, `docs/shop_strings_vi.png`).
 - Thanh trên trái giờ hiện "Kenh 1-Quảng trường 1" (khoá `LobbySquare_AreaName01`, xem oc_c-square.md) — không còn "aName01".
-- Còn trống ở sảnh: danh sách người chơi bên trái (thẻ Tất cả/Hội) và 2 ô phía trên nó — CHƯA KIỂM nguồn.
+- Danh sách người chơi bên trái: xem dưới.
+- **Danh sách người chơi bên trái (thẻ Tất cả)** ✅ runtime 2 client: widget `UserListWnd` (`sub_5144DC`, trong `CLobbySquareLeftSideUI` +0x68C)
+  vẽ từ **CUserMap** (`dword_E61018`, ctor `sub_67A1CC`: 11 bản ghi `UserSimpleInfo` 456 byte cho Tất cả, 11 cho Hội, 3 + 2 khác).
+  Client gửi **C→S 64** `{u16 trang}` (`sub_679EF4`, khi vào sảnh, 2 lần) → server trả **S→C 69** (`CStage__On_69`): `u16 trang, u8 n (≤ 11)`,
+  n × blob `UserSimpleInfo` (`UserSimpleInfoPacket__vf2` — cùng bố cục blob hồ sơ của 103). **S→C 67** = như vậy cho thẻ Hội.
+  Server Rust: `Hub.lobby_users` (kết nối sảnh đang mở), 69 trả cho 64 và đẩy lại cho cả sảnh khi có người vào/ra (`docs/lobby_user_list.png`).
+- Còn trống: 2 ô phía trên thẻ (widget nạp `Lobby/LbImg`, `Etc/ExpImg` — có thể là cấp/kinh nghiệm của mình) — CHƯA KIỂM.
