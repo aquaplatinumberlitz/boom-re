@@ -2,7 +2,5 @@
 
 @AGENTS.md
 
-Read and follow the root `AGENTS.md` before any task or delegation. It is the sole
-project-wide rule source. Start at `docs/README.md`; do not treat archived plans as current scope.
-
+Dự án viết lại Rust: đọc `/home/admin/boom-rs/AGENTS.md` (nguồn quy tắc duy nhất) trước mọi task.
 Import convention: [Claude Code memory documentation](https://code.claude.com/docs/en/memory).

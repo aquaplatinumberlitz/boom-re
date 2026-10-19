@@ -18,7 +18,7 @@ LIVE = ROOT / "logs" / "live"
 IAT_VA, IAT_SIZE = 0xC0F000, 0x800
 
 # Slots Themida fully inlined (wrapper runs a copy of the API body), identified by how the game uses them.
-# See docs/research/findings/VN_RUNTIME_REFERENCE.md "IAT: các ô xác định thủ công".
+# See /home/admin/boom-rs/docs/research/findings/VN_RUNTIME_REFERENCE.md "IAT: các ô xác định thủ công".
 OVERRIDES = {
     0xC0F008: ("advapi32.dll", "RegQueryValueA"),        # sub_A232B0: (HKCR, subkey, buf, &cb)
     0xC0F1D4: ("kernel32.dll", "InterlockedExchange"),   # sub_9A6296: spinlock (p, 1) == 0
@@ -60,7 +60,7 @@ STUBS = {
 }
 # unlicense's fake IAT got three Themida-internal "multi API" emulators wrong (named after unrelated exports with
 # identical bytes). Each call site through them is redirected to the right ORIGINAL IAT slot (filled by the loader).
-# Classified by CRT source / how the result is used (see docs/research/findings/VN_RUNTIME_REFERENCE.md).
+# Classified by CRT source / how the result is used (see /home/admin/boom-rs/docs/research/findings/VN_RUNTIME_REFERENCE.md).
 _INC, _DEC, _XCHG, _XADD, _CAS = 0xC0F3F0, 0xC0F3EC, 0xC0F1D4, 0xC0F40C, 0xC0F3E8
 FAKE_BAD = {0x16AD3C8: "D3DXGetVertexShaderProfile", 0x16AD2CC: "D3DXGetShaderConstantTable", 0x16AD4CC: "VarUI4FromI8"}
 CALL_FIXES = {
