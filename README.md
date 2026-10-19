@@ -11,7 +11,7 @@ Chưa có workspace engine Rust mới; `server/` là công cụ tham chiếu gia
 
 1. Agent bắt buộc đọc [AGENTS.md](AGENTS.md).
 2. Mở [docs/README.md](docs/README.md) để tới nguồn chuẩn đúng task.
-3. Theo [ROADMAP](docs/planning/ROADMAP.md), [SCOPE V1](docs/planning/SCOPE_V1.md),
+3. Theo [REWRITE_PLAN](docs/planning/REWRITE_PLAN.md), [SCOPE V1](docs/planning/SCOPE_V1.md),
    [QUESTIONS](docs/research/QUESTIONS.md) và [ARCHITECTURE](docs/planning/ARCHITECTURE.md).
 
 V1 đã chốt scope: Battle cá nhân 2–4 người, Village00, C00/C01, Bomb/Fire/Roller;

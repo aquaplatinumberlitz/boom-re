@@ -2,7 +2,7 @@
 
 Cập nhật: 2026-10-19. Baseline **KR-00967-V1-scope-1**; tất cả câu hỏi dưới đây **open**.
 Nguồn chuẩn về backlog nghiên cứu, không phải danh sách implementation đã xong.
-Đọc [AGENTS](../../AGENTS.md), [ROADMAP](../planning/ROADMAP.md),
+Đọc [AGENTS](../../AGENTS.md), [REWRITE_PLAN](../planning/REWRITE_PLAN.md),
 [SCOPE V1](../planning/SCOPE_V1.md), [ARCHITECTURE](../planning/ARCHITECTURE.md).
 
 Owner/reviewer là vai trò; integrator gán người/agent và phạm vi file khi mở task.
@@ -28,7 +28,7 @@ Nguồn bên dưới là tài liệu đã có, chưa được đo/web lại tron
 | Q-011 / P2: identity/persistence | backend / integrator+QA | V1 chỉ identity/options; room không phục hồi; một active session/account | Account credentials/session lifecycle, storage schema, migrations/logging, giới hạn lưu? | Thiết kế data ownership/threat cases tối thiểu; ADR + acceptance duplicate login/restart; done khi chọn giải pháp phù hợp V1 | Backend/storage adapter, secrets/config; Q-008 |
 | Q-012 / P2: UI/Việt hóa G5 | client/l10n / QA | Catalog text có 23 review; gallery ảnh là dữ liệu review, không chứng minh đã duyệt | Chuỗi/ảnh nào thực dùng V1, fallback/font/license/wrap/scale/focus/audio nào cần? | Lập UI/content subset và quyết định review; golden profile Việt hóa + glyph/placeholder/focus cases; done khi subset và unknown có owner, export review là input build | Content bundle/UI/text/audio interface; Q-003, Q-009 |
 | Q-013 / P1: baseline/migration | integrator / reviewer | Main server mới hơn l10n; tools legacy dùng server/; [audit A09](../archive/reports/REWRITE_PLAN_AUDIT_2026-10-19.md) | Baseline commit tích hợp, layout mới, lệnh oracle/fixture sau chuyển? | ADR workspace/migration map; done khi chọn commit và checklist giữ legacy build/launch/fixture, không copy snapshot cũ vào server mới | Workspace boundaries, tool paths; độc lập Q-002–012 |
-| Q-014 / P2: readiness/build matrix | integrator/QA / architecture | V1 ba OS, chưa có cam kết thời gian; [audit A10](../archive/reports/REWRITE_PLAN_AUDIT_2026-10-19.md) | Dependency/toolchain/CI hỗ trợ, artifact nào dùng chung, task đầu đủ độc lập? | Review ADR/contract theo ROADMAP P3; task có owner/reviewer/acceptance; done khi blocking assumptions hiện rõ và từng task có đầu vào đã chốt | Toàn bộ architecture, Q-008/Q-010/Q-013; không cần mọi gate release xanh |
+| Q-014 / P2: readiness/build matrix | integrator/QA / architecture | V1 ba OS, chưa có cam kết thời gian; [audit A10](../archive/reports/REWRITE_PLAN_AUDIT_2026-10-19.md) | Dependency/toolchain/CI hỗ trợ, artifact nào dùng chung, task đầu đủ độc lập? | Review ADR/contract theo REWRITE_PLAN P3; task có owner/reviewer/acceptance; done khi blocking assumptions hiện rõ và từng task có đầu vào đã chốt | Toàn bộ architecture, Q-008/Q-010/Q-013; không cần mọi gate release xanh |
 
 ## Cách nhận task và đóng câu hỏi
 

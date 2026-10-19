@@ -1,4 +1,7 @@
 > **Tài liệu lịch sử, không phải kế hoạch điều hành hiện tại.** Đọc [docs/README.md](../../README.md) và nguồn chuẩn được dẫn ở đó.
+>
+> **Bản kế hoạch tổng thay thế trực tiếp:** [docs/planning/REWRITE_PLAN.md](../../planning/REWRITE_PLAN.md).
+> Bản mới giữ lộ trình từ planning tới V1/full feature, cập nhật sau audit; cuối bản mới có bảng đối chiếu §0–10.
 
 # Boom Online — Master Plan viết lại engine bằng Rust (giữ ~100% cảm giác chơi)
 

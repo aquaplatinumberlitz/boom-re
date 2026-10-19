@@ -2,6 +2,7 @@
 
 Offline only: no HTTP requests or gameplay verification. Fragment anchors and
 bare paths inside prose/code blocks are outside this check's coverage.
+Ignored research caches are skipped; mandatory/migrated documents must remain versionable.
 """
 import json
 import re
@@ -13,7 +14,7 @@ from urllib.parse import unquote
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "AGENTS.md", "CLAUDE.md", "docs/README.md",
-    "docs/planning/ROADMAP.md", "docs/planning/SCOPE_V1.md",
+    "docs/planning/REWRITE_PLAN.md", "docs/planning/SCOPE_V1.md",
     "docs/planning/ARCHITECTURE.md", "docs/research/QUESTIONS.md",
     "docs/specification/features.json",
 ]
@@ -35,6 +36,13 @@ def main():
     files = [ROOT / "README.md", ROOT / "AGENTS.md", ROOT / "CLAUDE.md"]
     files += sorted((ROOT / "docs").rglob("*.md"))
     files += sorted((ROOT / "l10n").glob("*.md"))
+    cache_check = subprocess.run(["git", "check-ignore", "--stdin", "-z"], cwd=ROOT,
+                                 input="\0".join(str(p.relative_to(ROOT)) for p in files) + "\0",
+                                 text=True, capture_output=True)
+    if cache_check.returncode not in (0, 1):
+        raise RuntimeError(f"git ignore check failed: {cache_check.stderr.strip()}")
+    ignored_cache = set(filter(None, cache_check.stdout.split("\0")))
+    files = [p for p in files if str(p.relative_to(ROOT)) not in ignored_cache]
     for path in files:
         # Fenced examples are not navigable links; ignore them.
         text = re.sub(r"(?ms)^```[^\n]*\n.*?^```[ \t]*$", "", path.read_text())

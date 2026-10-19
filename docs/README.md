@@ -7,7 +7,7 @@ Quy tắc bắt buộc cho mọi agent: [AGENTS.md](../AGENTS.md).
 
 | Đọc | Mục đích |
 |---|---|
-| [ROADMAP](planning/ROADMAP.md) | Mốc, dependency, trạng thái và việc tiếp theo |
+| [REWRITE_PLAN — kế hoạch tổng](planning/REWRITE_PLAN.md) | Toàn lộ trình planning→V1→full feature, dependency, trạng thái và việc tiếp theo; thay trực tiếp plan đã archive |
 | [SCOPE V1](planning/SCOPE_V1.md) | Bản đầu làm gì, để sau gì và điều kiện nghiệm thu |
 | [QUESTIONS](research/QUESTIONS.md) | Thiếu thông tin gì, tìm ở đâu, ai phụ trách |
 | [ARCHITECTURE](planning/ARCHITECTURE.md) | Cấu trúc dự kiến và interface cần chốt trước khi viết engine |
@@ -39,4 +39,4 @@ Thay đổi scope sửa JSON nguồn, SCOPE_V1 và sinh lại CSV. Đổi đư�
 
 Các file cũ đã được chuyển, không xóa nội dung: [bản đồ migration](evidence/DOCS_MIGRATION.json).
 Thay đổi hiện ở worktree `boom-re-l10n`; các worktree khác chưa được tích hợp, xem
-[trạng thái baseline](planning/ROADMAP.md#baseline-và-worktree).
+[trạng thái baseline](planning/REWRITE_PLAN.md#baseline-và-worktree).

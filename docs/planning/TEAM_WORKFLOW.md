@@ -1,7 +1,7 @@
 # Workflow viết lại Rust với nhiều người/agent
 
 Ngày: 2026-10-19. Workflow phân công hiện hành; [AGENTS.md](../../AGENTS.md) giữ quy tắc bắt buộc.
-Pha và việc tiếp theo theo [ROADMAP](ROADMAP.md), không theo plan cũ trong archive.
+Pha và việc tiếp theo theo [REWRITE_PLAN](REWRITE_PLAN.md), không theo plan cũ trong archive.
 
 Mục tiêu: phát triển engine KR từ client còn lại; VN hỗ trợ đo; phần server thất lạc được
 khôi phục theo bằng chứng hoặc thiết kế lại có ghi nhận. Không cần RE xong toàn game mới viết code.

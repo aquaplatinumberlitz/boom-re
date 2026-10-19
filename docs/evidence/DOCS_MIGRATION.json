@@ -60,7 +60,9 @@
     "docs/inventory/kr_feature_inventory.json": "docs/evidence/inventory/kr_feature_inventory.json",
     "docs/inventory/kr_scope_groups.csv": "docs/evidence/inventory/kr_scope_groups.csv",
     "docs/inventory/kr_v1_content.json": "docs/evidence/inventory/kr_v1_content.json",
-    "README.md": "docs/archive/re/README_VN_HISTORY.md"
+    "README.md": "docs/archive/re/README_VN_HISTORY.md",
+    "docs/planning/ROADMAP.md": "docs/planning/REWRITE_PLAN.md"
   },
-  "note": "README.md cũ được lưu lịch sử; README.md mới là trang vào hiện hành. Nội dung cũ giữ lại, link được điều chỉnh."
+  "note": "README cũ và plan đã archive được giữ lịch sử. ROADMAP hiện hành đã đổi tên và mở rộng thành planning/REWRITE_PLAN.md làm kế hoạch tổng; các tài liệu chi tiết giữ nguồn chuẩn riêng.",
+  "canonical_rewrite_plan": "docs/planning/REWRITE_PLAN.md"
 }

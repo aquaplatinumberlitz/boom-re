@@ -1,6 +1,6 @@
 # Archive — lịch sử, không điều hành dự án hiện tại
 
-Nguồn hiện hành: [docs/README](../README.md), [ROADMAP](../planning/ROADMAP.md),
+Nguồn hiện hành: [docs/README](../README.md), [REWRITE_PLAN](../planning/REWRITE_PLAN.md),
 [SCOPE_V1](../planning/SCOPE_V1.md), [QUESTIONS](../research/QUESTIONS.md),
 [ARCHITECTURE](../planning/ARCHITECTURE.md).
 

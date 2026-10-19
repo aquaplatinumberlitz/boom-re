@@ -158,7 +158,7 @@ reviewer khác owner khi có thể; integrator giữ interface và branch tích 
 
 Integrator giữ baseline và tạo skeleton workspace tối thiểu sau khi chọn baseline commit tích hợp.
 Trong pha planning hiện tại, START-A chỉ khảo sát dữ liệu/fixture và dùng viewer sẵn có nếu cần;
-chưa dựng renderer Rust mới. Prototype mới mở sau readiness trong ROADMAP.
+chưa dựng renderer Rust mới. Prototype mới mở sau readiness trong REWRITE_PLAN.
 START-B/C là task làm spec/fixture, chưa bị chặn bởi dependency triển khai trong registry;
 chỉ mở coding task phụ thuộc sau khi hợp đồng tương ứng được chốt.
 Đổi chính sách hoặc content của V1 phải sửa registry và docs trước khi giao tiếp task.

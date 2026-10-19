@@ -10,7 +10,8 @@ Mỗi phiên và mỗi worker **bắt buộc đọc**:
 
 1. `AGENTS.md` — file này.
 2. `docs/README.md` — bản đồ tài liệu và nguồn chuẩn.
-3. `docs/planning/ROADMAP.md` — pha hiện tại, dependency và việc tiếp theo.
+3. `docs/planning/REWRITE_PLAN.md` — kế hoạch tổng hiện hành, pha, dependency và việc tiếp theo;
+   đây là bản thay thế trực tiếp cho REWRITE_PLAN_2026-10-19 đã archive.
 4. `docs/planning/SCOPE_V1.md` — phạm vi được chốt.
 
 Task kiến trúc đọc thêm `docs/planning/ARCHITECTURE.md` và các ADR liên quan.
@@ -38,7 +39,7 @@ Không đợi hiểu hết mọi mode mới lập kiến trúc, nhưng không bi
 | Nội dung | Nguồn sửa chính |
 |---|---|
 | Điều hướng | `docs/README.md` |
-| Pha, mốc, việc tiếp theo | `docs/planning/ROADMAP.md` |
+| Kế hoạch tổng, pha, mốc, việc tiếp theo | `docs/planning/REWRITE_PLAN.md` |
 | Scope V1, policy và nghiệm thu | `docs/planning/SCOPE_V1.md` |
 | Cấu trúc dự án và interface | `docs/planning/ARCHITECTURE.md` |
 | Câu hỏi, owner, hướng tìm | `docs/research/QUESTIONS.md` |

@@ -9,7 +9,7 @@ lên plan, tìm thêm thông tin và thiết kế cấu trúc trước khi viế
 - Giữ scope `KR-00967-V1-scope-1` ở SCOPE_V1 và registry: 37 V1, 75 later, 2 drop legacy.
 - Giai đoạn hiện tại planning/research/architecture; chưa tự dựng engine production trong task docs.
 - Một nguồn quy tắc là root AGENTS.md; adapter chỉ dẫn tới đó. Một trang bắt đầu là docs/README.md.
-- ROADMAP, SCOPE_V1, QUESTIONS, ARCHITECTURE điều hành hiện tại; kế hoạch cũ và nhật ký vào archive.
+- REWRITE_PLAN, SCOPE_V1, QUESTIONS, ARCHITECTURE điều hành hiện tại; kế hoạch cũ và nhật ký vào archive.
 - Catalog JSON là nguồn sửa; CSV và bảng scope là export. Dữ liệu quét nằm trong evidence.
 
 ## Phương án cân nhắc

@@ -1,7 +1,7 @@
 # Kiến trúc dự án Rust — đang thiết kế
 
 Trạng thái **draft `architecture-r0`**, 2026-10-19; chưa tạo Cargo workspace hoặc chọn dependency.
-Baseline sản phẩm: **`KR-00967-V1-scope-1`**. Đọc [ROADMAP](ROADMAP.md),
+Baseline sản phẩm: **`KR-00967-V1-scope-1`**. Đọc [REWRITE_PLAN](REWRITE_PLAN.md),
 [SCOPE_V1](SCOPE_V1.md), [AGENTS.md](../../AGENTS.md). Đây là nguồn chuẩn về cấu trúc/interface;
 scope và policy người chơi thuộc SCOPE_V1, không sao chép thành bộ quy tắc khác ở đây.
 
@@ -158,7 +158,7 @@ chi tiết deployment thuộc ADR/task backend, không đưa cấu hình cá nh�
 1. Integrator chọn baseline tích hợp và cách giữ legacy command; assets/RE bàn giao closure/unknown.
 2. Core+net+QA review `contracts-r0`, timing/rules profile và kịch bản boundary; ghi revision được chấp nhận.
 3. Chọn các phương án cần prototype có giới hạn, acceptance và owner/reviewer; ADR ghi quyết định khi có bằng chứng.
-4. Kiểm readiness trong ROADMAP rồi mới mở task skeleton nhỏ. Workspace mới không tự đồng nghĩa gameplay đã đúng.
+4. Kiểm readiness trong REWRITE_PLAN rồi mới mở task skeleton nhỏ. Workspace mới không tự đồng nghĩa gameplay đã đúng.
 
 Không cần giải các mode later hoặc quyết DB production toàn game để bắt đầu lát cắt V1. Những điểm
 chưa biết ảnh hưởng interface phải có owner, cách giải hoặc DESIGN rõ trong QUESTIONS trước khi giao task phụ thuộc.
