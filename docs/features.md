@@ -28,9 +28,9 @@ Cột **Rust** = server Rust `server/` đã làm phần server của dòng đó 
 | handler có tên từ RTTI | 812 / 1113 |
 | class C++ có tên | **2305** |
 | hàm/vtable đã đặt tên | 20.682 / 3699 vtable |
-| opcode server giả đã xử lý | **87 / 520 (16,7%)** (2026-10-18 tối, `feature_stats.py`) |
+| opcode server đã xử lý (fakeserver + Rust) | **117 / 520 (22,5%)** (2026-10-19, `feature_stats.py`) |
 | khối VM Themida | **64 điểm vào** (`push key; jmp 0x11EE128`): 15 trong code game (**14 xử lý**, còn `0x966FEC` mồ côi) + 49 vùng anti-cheat A1xxxx (0 xử lý, chưa chạm). `devirt.py` có 15 `BLOCKS` = 14 site game + `0x5788C9` (jmp bị chiếm, không phải VM). 73 = số marker SDK, không phải số khối |
-| stage đã chơi được | 1 → 13, **trọn 1 ván** (kết thúc → phòng chờ → ván mới) |
+| stage đã chơi được | 1 → 14: đăng nhập → kênh → sảnh → phòng → trận 2 người → kết quả → phòng chờ → ván mới; siêu thị (stage 14) |
 
 Phân bố opcode theo nhóm:
 
@@ -114,7 +114,7 @@ Phân bố opcode theo nhóm:
 |---|---|---|---|---|
 | E1 | `CLobbyStage` (23 opcode) | dispatcher | 🟡 | ⬜ |
 | E2 | sảnh quảng trường `CLobbySquareStage` (49) | load xong, nút TẠO PHÒNG | ✅ | ✅ |
-| E3 | `CSquareStage` (41) | 395/466/467 trả lời được | 🟡 | 🟡 |
+| E3 | `CSquareStage` (41) | 395/466/467 trả lời được; **danh sách người chơi bên trái**: C→S 64 → S→C 69 (`UserSimpleInfo`), 2 client thấy nhau (lobby.md Cập nhật 21); thẻ Hội (67), 2 ô thông tin của mình, người trên bản đồ sảnh (467) chưa | 🟡 | 🟡 |
 | E4 | tạo phòng | dialog tạo phòng, map Village01 | ✅ | ✅ |
 | E5 | danh sách phòng / vào phòng | S→C 88 (định dạng phòng), C→S 78 (vào phòng) → 83; 2 client: B thấy phòng của A và vào được (`lobby.md` cập nhật 13) | ✅ | ✅ |
 | E6 | phòng chờ `CPrepareStage` (36) | người chơi, trưởng phòng, nút BẮT ĐẦU | ✅ | ✅ |
@@ -124,6 +124,7 @@ Phân bố opcode theo nhóm:
 | E9 | kick / đổi chủ phòng / option phòng | đóng/mở ô 94 → 106 ✅; đuổi: C→S 95 → S→C 104 (BannedByLeader) ✅; rời phòng → 104; chủ phòng chuyển khi rời (lobby.md Cập nhật 18); đổi tên/mật khẩu phòng (85) chưa | 🟡 | 🟡 |
 | E10 | `CHiddenCatchPrepareStage` (33) | mode riêng, dispatcher | ⬜ | ⬜ |
 | E11 | vào kênh (enter channel) | stage 10 → 11 | ✅ | ✅ |
+| E13 | chữ giao diện tiếng Việt | khoá UI (AllTab, BuyItem…) chỉ có trong FxClientString do server gửi (S→C 2); server Rust gửi bảng tự dịch `server/src/strings.rs` (202 khoá thu runtime, phần lớn đã dịch); cp1258 viết dấu thanh bằng byte kết hợp (lobby.md Cập nhật 21) | ✅ | 🟡 |
 
 ## F. Trận đấu
 
@@ -192,6 +193,7 @@ Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 4. ~~**E5/E7/E9/E12** phòng~~ **xong phần chính**: danh sách phòng, chọn map, sẵn sàng/đội/nhân vật, BẮT ĐẦU, đóng ô, đuổi, chủ phòng. Còn: sửa tên/mật khẩu phòng (85).
 5. ~~**D1** chat~~ **xong** (phòng/sảnh/trận); còn thì thầm (D2).
 6. **G1** shop: vào, xem hàng, mua bằng VÀNG/XU chạy được; còn danh mục thật, túi đồ/lưu ví trên server (lobby.md Cập nhật 20).
+6b. **E3/E13** giao diện sảnh: chữ tiếng Việt và danh sách người chơi xong; còn 2 ô thông tin của mình, thẻ Hội, người trên bản đồ sảnh (467).
 7. **F11** `0x736C27`: Forest01 (phòng 0) chạy được; map/loại phòng khác chưa kiểm hết.
 8. Các mode F13–F20, G2–G9 (túi đồ, exp, quest…): chưa bắt đầu.
 
