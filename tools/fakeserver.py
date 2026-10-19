@@ -122,7 +122,7 @@ def channel_enter_ok(now=None):
     return obf_body(17, *f)
 
 
-def square_info(area=1, map_name="LobbySquare01.map", theme="Square"):
+def square_info(area=1, map_name="LobbySquare01", theme="Square"):  # pack entry Map/LobbySquare01 (no .map)
     """Reply to opcode 395 (empty, sent by CLobbySquareStage__vf44 via sub_4D5C25). Opcode 466
     (CLobbySquareStage__On_466 0x4E52B5): u32 area id (stage+5541; -1 = use the channel name only, else title
     "LobbySquare_AreaName%02d"), blob {u8 tag 0, u32 n, n x {u32 m, m x 5 x u32}} (square objects, sub_4E4EFD/sub_4E134C),

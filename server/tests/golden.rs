@@ -26,7 +26,7 @@ fn builders_match_fakeserver() {
         ("channel_status".into(), pk::channel_status(&[10, 20, 30, 40])),
         ("channel_join_ok".into(), pk::channel_join_ok([127, 0, 0, 1], 4848, 10, 0)),
         ("channel_enter_ok".into(), pk::channel_enter_ok([2026, 10, 18, 10, 20, 30])),
-        ("square_info".into(), pk::square_info(1, "LobbySquare01.map", "Square")),
+        ("square_info".into(), pk::square_info(1, "LobbySquare01", "Square")),
         ("square_users".into(), pk::square_users()),
         ("room_list".into(), pk::room_list()),
         ("map_checksums".into(), pk::map_checksums(&maps)),

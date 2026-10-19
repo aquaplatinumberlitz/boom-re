@@ -176,8 +176,15 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 hub.push_user_list();
                 let _ = tx.send(pk::account_info(&hub::player_name(user_id)));
                 let _ = tx.send(pk::item_catalog());
+                // everyone in the lobby on the square map (slot = order of arrival), ourselves included
+                let users: Vec<(u16, u32, String, u16, u16)> = hub.lobby_users.lock().unwrap().iter().enumerate()
+                    .map(|(i, &u)| (i as u16, u, hub::player_name(u), SQUARE_X + 40 * i as u16, SQUARE_Y)).collect();
                 for r in replies(op, port, &cfg) {
-                    let _ = tx.send(if proto::get_int(&r, 2, true) == 88 { hub.room_list(cfg.room_type) } else { r });
+                    let _ = tx.send(match proto::get_int(&r, 2, true) {
+                        88 => hub.room_list(cfg.room_type),
+                        467 => pk::square_user_list(&users),
+                        _ => r,
+                    });
                 }
             } else if op == 78 {
                 // join a room from the lobby list (sub_4CB829: u16 session, u32 room id, str password, ...) -> same answer as create
@@ -414,6 +421,10 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
     log(format!("[{port}] close {peer}"));
 }
 
+/// Spawn point on the square map (pixels).
+const SQUARE_X: u16 = 600;
+const SQUARE_Y: u16 = 400;
+
 fn replies(op: u16, port: u16, cfg: &Config) -> Vec<Vec<u8>> {
     match op {
         0 => pk::login_replies(),
@@ -428,7 +439,7 @@ fn replies(op: u16, port: u16, cfg: &Config) -> Vec<Vec<u8>> {
             pk::room_map(cfg.map_index, 0),
         ],
         395 => vec![
-            pk::square_info(1, "LobbySquare01.map", "Square"),
+            pk::square_info(1, "LobbySquare01", "Square"), // "Map/%s" = pack entry, no ".map" (else grey square)
             pk::square_users(),
             pk::room_list(),
             pk::map_checksums(&cfg.maps),

@@ -685,3 +685,14 @@ Mỗi thao tác trong phòng chờ gửi một gói, đặt state `this[4777]` �
   n × blob `UserSimpleInfo` (`UserSimpleInfoPacket__vf2` — cùng bố cục blob hồ sơ của 103). **S→C 67** = như vậy cho thẻ Hội.
   Server Rust: `Hub.lobby_users` (kết nối sảnh đang mở), 69 trả cho 64 và đẩy lại cho cả sảnh khi có người vào/ra (`docs/lobby_user_list.png`).
 - Còn trống: 2 ô phía trên thẻ (widget nạp `Lobby/LbImg`, `Etc/ExpImg` — có thể là cấp/kinh nghiệm của mình) — CHƯA KIỂM.
+- **Nền xám ở sảnh = bản đồ quảng trường không được nạp** ✅ đã sửa. S→C 466 gửi tên map `"LobbySquare01.map"` → client nạp `Map/%s` =
+  `Map/LobbySquare01.map`, không có trong pack (mục thật: **`Map/LobbySquare01`**, không đuôi; bắt bằng `tools/gdb/packload.gdb` —
+  breakpoint Python ở `CData__LoadFromPack` 0xA37880). Map không nạp → chiều rộng 0: chỉ minimap hiện, nền xám (`docs/lobby_loaded_grey_old.png`);
+  nếu thêm nhân vật mình vào 467 thì chia cho 0 ở `sub_4D9B5B` 0x4D9C3F. Sửa tên thành `"LobbySquare01"` (fakeserver + Rust + golden) →
+  bản đồ, nhân vật, minimap hiện (`docs/lobby_loaded.png` lần đầu vào sảnh, có lớp hướng dẫn GuideDlg; `docs/lobby_square_map.png` sau khi
+  đóng hướng dẫn và ẩn bảng phòng).
+- **S→C 467 có người** (`square_user_list`): bản ghi `sub_4E2D7E` = `u16 slot, u32 id, blob hồ sơ (như 103), u8 nhân vật, u8 đội, u16 x,
+  u16 y (pixel, ô = /40), u8`, khối phụ kiện `CSlotAccessoryPacket` (`sub_572A05`: `u16, u8 n, n×(u8,u16), u8 m, m×3×u32, u8 (≤22 hoặc
+  255), u8, 3×u32, u8 k, k×3×u32, [41] 2×u32, [76] bool, u32, u16, str`), `blob (u8 đầu 0 = bỏ qua)`, `bool [blob]`, `[74] bool [blob]`,
+  `u32 m, m × blob`. Client nhận ra mình bằng tên (`sub_4D8156`). Server Rust gửi mọi người đang ở sảnh (slot theo thứ tự vào, x = 600 + 40·slot,
+  y = 400). Chưa làm: 469 (người mới xuất hiện) cho người đã ở sảnh, di chuyển trên quảng trường (471), 2 ô thông tin của mình.

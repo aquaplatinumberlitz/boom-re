@@ -27,7 +27,7 @@ Game chia thành các "stage" (màn). Client ghi stage hiện tại vào `wine/B
 |---|---|---|---|
 | 1 | Khởi động, intro | ✅ | — |
 | 10 | Đăng nhập + chọn kênh (`CSelectServerStage`) | ✅ | `docs/channel_autoshow.png` |
-| 11 | Sảnh quảng trường (`CLobbySquareStage`) | ✅ phòng, người chơi, chat, chữ tiếng Việt | `docs/lobby_strings_vi.png`, `docs/lobby_user_list.png` |
+| 11 | Sảnh quảng trường (`CLobbySquareStage`) | ✅ bản đồ quảng trường, phòng, người chơi, chat, chữ tiếng Việt | `docs/lobby_loaded.png`, `docs/lobby_square_map.png`, `docs/lobby_user_list.png` |
 | 12 | Phòng chờ (`CPrepareStage`) | ✅ 2 người, map, đội, nhân vật, sẵn sàng, đuổi | `docs/room_names.png`, `docs/map_select_dialog.png` |
 | 13 | Trận đấu (`CGameStage`) | ✅ 2 người, bom, chết, kết quả, hết giờ | `docs/duo_spawn_A.png`, `docs/duo_result_B.png`, `docs/battle_timeup.png` |
 | 14 | Siêu thị (`CShopStageNew`) | ✅ xem hàng, mua VÀNG/XU (danh mục thử) | `docs/shop_items.png`, `docs/shop_cash_ok.png` |

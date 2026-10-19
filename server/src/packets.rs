@@ -200,6 +200,30 @@ pub fn square_users() -> Vec<u8> {
     Packet::new(467).u16(0).build()
 }
 
+/// One person on the square map (467 record, sub_4E2D7E; also 469 = one person appears): u16 slot, u32 id, blob profile
+/// (sub_679434, same as 103), u8 character (6 bits), u8 team (5 bits), u16 x, u16 y (pixels, tile = /40), u8,
+/// CSlotAccessoryPacket (sub_572A05: u16, u8 n, u8 m, u8 255, u8, 3 x u32, u8 k, [41] 2 x u32, [76] bool, u32, u16, str),
+/// blob (first u8 0 = nothing), bool 0, [74] bool 0, u32 0. The client finds its own bomber by name (sub_4D8156).
+fn square_user_record(p: Packet, slot: u16, user_id: u32, name: &str, x: u16, y: u16) -> Packet {
+    let mut profile = Le::default();
+    profile.u8(0).str(name).bytes(&[0; 256]);
+    let mut extra = Le(vec![0]);
+    extra.u8(0);
+    let p = p.u16(slot).u32(user_id).blob(&profile.0).u8(0).u8(0).u16(x).u16(y).u8(0);
+    let p = p.u16(0).u8(0).u8(0).u8(255).u8(0).u32(0).u32(0).u32(0).u8(0).u32(0).u32(0).u8(0).u32(0).u16(0).str("");
+    p.blob(&extra.0).u8(0).u8(0).u32(0)
+}
+
+/// CLobbySquareStage__On_467 0x4E4100 with people: u16 n, n records (square_user_record). Without our own record the
+/// square map is not drawn (grey background, only the minimap) - the camera follows our bomber.
+pub fn square_user_list(users: &[(u16, u32, String, u16, u16)]) -> Vec<u8> {
+    let mut p = Packet::new(467).u16(users.len() as u16);
+    for (slot, id, name, x, y) in users {
+        p = square_user_record(p, *slot, *id, name, *x, *y);
+    }
+    p.build()
+}
+
 /// Opcode 88 -> sub_4D0F56: empty room list (required for the create-room button).
 pub fn room_list() -> Vec<u8> {
     Packet::new(88).u16(0).build()

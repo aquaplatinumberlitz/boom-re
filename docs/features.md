@@ -114,7 +114,7 @@ Phân bố opcode theo nhóm:
 |---|---|---|---|---|
 | E1 | `CLobbyStage` (23 opcode) | dispatcher | 🟡 | ⬜ |
 | E2 | sảnh quảng trường `CLobbySquareStage` (49) | load xong, nút TẠO PHÒNG | ✅ | ✅ |
-| E3 | `CSquareStage` (41) | 395/466/467 trả lời được; **danh sách người chơi bên trái**: C→S 64 → S→C 69 (`UserSimpleInfo`), 2 client thấy nhau (lobby.md Cập nhật 21); thẻ Hội (67), 2 ô thông tin của mình, người trên bản đồ sảnh (467) chưa | 🟡 | 🟡 |
+| E3 | `CSquareStage` (41) | 395/466/467 trả lời được; **danh sách người chơi bên trái**: C→S 64 → S→C 69 (`UserSimpleInfo`), 2 client thấy nhau (lobby.md Cập nhật 21); **bản đồ quảng trường hiện** (466 tên map không đuôi `.map`) + nhân vật mình (467); thẻ Hội (67), 2 ô thông tin của mình, người mới xuất hiện (469)/di chuyển (471) chưa | 🟡 | 🟡 |
 | E4 | tạo phòng | dialog tạo phòng, map Village01 | ✅ | ✅ |
 | E5 | danh sách phòng / vào phòng | S→C 88 (định dạng phòng), C→S 78 (vào phòng) → 83; 2 client: B thấy phòng của A và vào được (`lobby.md` cập nhật 13) | ✅ | ✅ |
 | E6 | phòng chờ `CPrepareStage` (36) | người chơi, trưởng phòng, nút BẮT ĐẦU | ✅ | ✅ |
@@ -193,7 +193,7 @@ Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 4. ~~**E5/E7/E9/E12** phòng~~ **xong phần chính**: danh sách phòng, chọn map, sẵn sàng/đội/nhân vật, BẮT ĐẦU, đóng ô, đuổi, chủ phòng. Còn: sửa tên/mật khẩu phòng (85).
 5. ~~**D1** chat~~ **xong** (phòng/sảnh/trận); còn thì thầm (D2).
 6. **G1** shop: vào, xem hàng, mua bằng VÀNG/XU chạy được; còn danh mục thật, túi đồ/lưu ví trên server (lobby.md Cập nhật 20).
-6b. **E3/E13** giao diện sảnh: chữ tiếng Việt và danh sách người chơi xong; còn 2 ô thông tin của mình, thẻ Hội, người trên bản đồ sảnh (467).
+6b. **E3/E13** giao diện sảnh: chữ tiếng Việt, danh sách người chơi, bản đồ quảng trường + nhân vật mình xong; còn 2 ô thông tin của mình, thẻ Hội, 469/471 (người khác xuất hiện/di chuyển).
 7. **F11** `0x736C27`: Forest01 (phòng 0) chạy được; map/loại phòng khác chưa kiểm hết.
 8. Các mode F13–F20, G2–G9 (túi đồ, exp, quest…): chưa bắt đầu.
 
