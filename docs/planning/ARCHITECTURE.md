@@ -162,3 +162,5 @@ chi tiết deployment thuộc ADR/task backend, không đưa cấu hình cá nh�
 
 Không cần giải các mode later hoặc quyết DB production toàn game để bắt đầu lát cắt V1. Những điểm
 chưa biết ảnh hưởng interface phải có owner, cách giải hoặc DESIGN rõ trong QUESTIONS trước khi giao task phụ thuộc.
+
+Chính sách nguồn hiện hành: [VN/KR trusted ngang nhau](../decisions/0002-vn-kr-trusted-sources.md). Dùng trực tiếp bằng chứng VN cho luật chung; giữ provenance và xử lý khác biệt cụ thể.

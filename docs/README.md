@@ -35,7 +35,7 @@ done/V1 và done/toàn catalog, các mục blocked/review, phase và gate phát 
 
 Baseline scope: **`KR-00967-V1-scope-1`** — 114 mục, 37 V1, 75 later, 2 drop legacy.
 Đây là quyết định phạm vi dự án; **không phải xác nhận runtime hoặc RE hoàn chỉnh client KR**.
-VN hỗ trợ tham chiếu; protocol/server cũ không phải engine Rust mới.
+VN là trusted source ngang KR; protocol/server cũ không phải engine Rust mới.
 
 ## Cập nhật tài liệu
 
@@ -48,3 +48,5 @@ Không sửa phần trăm bằng tay; `--check` kiểm báo cáo và exports có
 Các file cũ đã được chuyển, không xóa nội dung: [bản đồ migration](evidence/DOCS_MIGRATION.json).
 Thay đổi hiện ở worktree `boom-re-l10n`; các worktree khác chưa được tích hợp, xem
 [trạng thái baseline](planning/REWRITE_PLAN.md#baseline-và-worktree).
+
+Chính sách nguồn hiện hành: [VN/KR trusted ngang nhau](decisions/0002-vn-kr-trusted-sources.md). Dùng trực tiếp bằng chứng VN cho luật chung; giữ provenance và xử lý khác biệt cụ thể.

@@ -5,6 +5,7 @@ Chỉ tạo ADR cho quyết định có tác động lâu dài; không biến m�
 
 | ID | Chủ đề | Trạng thái |
 |---|---|---|
+| [0002](0002-vn-kr-trusted-sources.md) | VN/KR là trusted source ngang nhau; dùng trực tiếp luật chung | Accepted — chỉ đạo người dùng 2026-10-19 |
 | [0001](0001-project-baseline.md) | Target, scope V1, pha và nguồn chuẩn docs | Accepted — quyết định dự án theo chỉ đạo người dùng |
 
 Các lựa chọn chưa quyết định (time model/số học, render stack, transport, storage) nằm trong

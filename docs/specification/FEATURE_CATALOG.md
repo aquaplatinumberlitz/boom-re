@@ -152,3 +152,5 @@ mới. Header map Village00 đọc tọa độ tại offset80; không lấy offs
 định nghĩa map KR đã chốt. `docs/research/findings/VN_FEATURES_REFERENCE.md` vẫn là checklist VN độc lập.
 
 Workflow nhóm: [TEAM_WORKFLOW](../planning/TEAM_WORKFLOW.md).
+
+Chính sách nguồn hiện hành: [VN/KR trusted ngang nhau](../decisions/0002-vn-kr-trusted-sources.md). Dùng trực tiếp bằng chứng VN cho luật chung; giữ provenance và xử lý khác biệt cụ thể.

@@ -111,3 +111,42 @@ củng cố mapping field 2-7 trong `docs/kr-data.md` §23. Chỗ lệch duy nh�
 - Số "official archive" dẫn từ **百度百科**, không phải tài liệu Nexon.
 - Không có Magic Market, không có mode KR mới (Alchemist/Baseball).
 - Không chứng minh wire protocol của client gốc; chỉ dùng làm **tham chiếu số học**.
+
+## 7. Truy tìm repo có **chỉ số chuẩn từ game gốc** (khảo sát 2026-10-19)
+
+Câu hỏi: có repo nào lấy chỉ số trực tiếp từ Crazy Arcade / Boom / BnB (không tự cân bằng) không?
+
+Đã tìm: GitHub repo search (`crazy arcade`, `泡泡堂`, `크레이지 아케이드`, `물풍선`, `bnbidx`, `crazy arcade assets`,
+`popstage`), web search (KR/CN), và đọc README từng ứng viên.
+
+| Repo | Có chỉ số gốc? | Bằng chứng |
+|---|---|---|
+| `tpoisonooo/BnB` | **Gần nhất** | Dẫn "官方存档值（百度百科角色词条）" cho 宝宝 & 小海盗; **nhưng tác giả nói rõ đã cân bằng lại** cho 2 người đấu (xem §4) |
+| `Ark-Point/crazy-arcade` | Không | JS web game + AI agent; item chỉ ghi "+1", không bảng chỉ số |
+| `Lor3walker/popo-arcade` | Không | "from-scratch remake", chỉ số tự thiết kế (power-up tiers riêng) |
+| `gunheehan/CrazyBoom`, `ljcduo/CrazyArcade`, `developeSHG/GAME-CrazyAcade`, `weishi-lab/SCNU-426`, `SCNU-A225/CrazyArcade`, `dengzx7/BNB_Crazy_Arcade`, `h3llowoori/CrazyArcade` | Không | đều là đồ án/demo; README không nêu nguồn số |
+
+Không tìm thấy repo nào chứa **dữ liệu client gốc** (`.idx/.idd`, `Attr/BomberAttr`, `ItemAttr`) hoặc
+server emulator có bảng chỉ số gốc. Các bài "service端 emulator / 抓包" trên CSDN đều bị chặn đọc (2 KB challenge).
+
+### ⇒ Kết luận về nguồn chỉ số
+
+1. **Nguồn chuẩn nhất hiện có của dự án**: pack KR — `data/kr/bomber_attr.json` (67 nhân vật, 3 chỉ số min–max),
+   `ItemAttr` (trọng số item), `MonInfo` (drop + physics). Đây là dữ liệu client thật, không phải wiki.
+2. **Đối chiếu độc lập**: ja.wikipedia bảng nhân vật (khớp 8/8) và BnB dẫn 百度百科 (khớp 5/6, lệch Bazzi speed max).
+3. **Còn thiếu để "chuẩn 100%"**: trang nhân vật chính thức Nexon và 百度百科 gốc — tool bị chặn DNS,
+   **cần mở tay**:
+   - https://ca.nexon.com/Info/Character/1
+   - https://baike.baidu.com/item/泡泡堂 (mục 角色)
+4. Không nên dùng repo remake làm oracle cho **giá trị tuyệt đối**; chỉ dùng cho **cơ chế/hằng số thời gian**
+   (fuse 2.5 s, trap 4 s, tick 30 Hz, tile 40, hộp va chạm 26 px) — những thứ này độc lập với cân bằng.
+
+### Repo bổ sung đã kiểm (không dùng được)
+
+| Repo | Ngôn ngữ | Lý do loại |
+|---|---|---|
+| [Ark-Point/crazy-arcade](https://github.com/Ark-Point/crazy-arcade) | JS | web game + AI agent, không có bảng chỉ số |
+| [Lor3walker/popo-arcade](https://github.com/Lor3walker/popo-arcade) | JS | remake tự thiết kế, không dẫn nguồn gốc |
+| [SCNU-A225/CrazyArcade](https://github.com/SCNU-A225/CrazyArcade) | Java | đồ án, config tự đặt |
+| [dengzx7/BNB_Crazy_Arcade](https://github.com/dengzx7/BNB_Crazy_Arcade) | Python | đồ án pygame, không nêu nguồn số |
+| [h3llowoori/CrazyArcade](https://github.com/h3llowoori/CrazyArcade) | C++ | mô phỏng 2 tuần, không có bảng số |

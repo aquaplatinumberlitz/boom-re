@@ -204,7 +204,7 @@ Bảng này để agent từ file archive biết phải tới đâu; không dùn
 | §7 Rủi ro | Bảng rủi ro ở đây và QUESTIONS có owner/method/done criterion |
 | §8 Việc làm ngay | Bảng ưu tiên/owner ở đây, QUESTIONS và task template trong TEAM_WORKFLOW |
 | §9 Full feature/backend | P9/W1–W4 và playbook ở đây; registry là nguồn feature IDs, không dùng 520 opcode VN |
-| §10 KR profile | SCOPE_V1 + evidence + ARCHITECTURE: rules/content identity, VN chỉ là tham chiếu |
+| §10 KR profile | SCOPE_V1 + evidence + ARCHITECTURE: rules/content identity, VN/KR là trusted source ngang nhau |
 
 Audit lịch sử vẫn ở [REWRITE_PLAN_AUDIT](../archive/reports/REWRITE_PLAN_AUDIT_2026-10-19.md).
 Việc điều chỉnh kế hoạch sau audit không đồng nghĩa đã giải xong các unknown kỹ thuật hoặc triển khai feature.
@@ -214,7 +214,7 @@ Việc điều chỉnh kế hoạch sau audit không đồng nghĩa đã giải 
 - Mục tiêu: KR `00967`, scope `KR-00967-V1-scope-1`.
 - Docs/catalog đang làm ở `/home/admin/boom-re-l10n`, nhánh `claude/l10n-kr-vi`;
   nền trước các thay đổi planning là `231ac01`; xem `git log -1`/`git status` để biết revision hiện hành.
-- Main `/home/admin/boom-re` tại `0e71e8a` có server tham chiếu mới hơn snapshot l10n.
+- Main `/home/admin/boom-re` tại `4ccc890` có server tham chiếu mới hơn snapshot l10n.
   Không tạo workspace từ bản server cũ trong worktree chỉ vì docs hiện nằm ở đó.
 - `/home/admin/boomkr-re` giữ nghiên cứu/binary/metadata KR; không sao chép engine code sang repo này.
 - Bản đồ đổi đường dẫn ở [DOCS_MIGRATION](../evidence/DOCS_MIGRATION.json). Không coi đường dẫn mới
@@ -228,3 +228,5 @@ hoặc số opcode làm phần trăm hoàn thành engine.
 Task feature cập nhật `implementation` và `tracking` trong registry; task planning/research cập nhật
 phase/gates ở execution.json cùng QUESTIONS. Chạy `python3 tools/kr_catalog.py` rồi `--check` để sinh
 PROGRESS, CSV và phase table của plan. Chỉ reviewer nghiệm thu mới cho done; chưa qua gate thì chưa release.
+
+Chính sách nguồn hiện hành: [VN/KR trusted ngang nhau](../decisions/0002-vn-kr-trusted-sources.md). Dùng trực tiếp bằng chứng VN cho luật chung; giữ provenance và xử lý khác biệt cụ thể.

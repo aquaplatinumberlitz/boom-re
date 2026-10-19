@@ -1,10 +1,11 @@
 # Findings — kết quả kỹ thuật hiện có
 
 Các tài liệu dưới chủ yếu mô tả **client VN** và hạ tầng tham chiếu. Mỗi phép áp dụng sang KR phải
-ghi đúng mức bằng chứng; không lấy trạng thái runtime VN làm trạng thái runtime KR.
+ghi provenance; VN là [trusted source ngang KR](../../decisions/0002-vn-kr-trusted-sources.md), dùng trực tiếp cho luật chung.
 
 | Tài liệu | Dùng khi |
 |---|---|
+| [VN_BATTLE_RUNTIME_REFERENCE](VN_BATTLE_RUNTIME_REFERENCE.md) | Luật cứu/chọc, đồng bộ item, chín map, room type/RPG và tác động tới task hiện hành |
 | [VN_FEATURES_REFERENCE](VN_FEATURES_REFERENCE.md) | Tra chức năng/opcode VN; không phải catalog KR |
 | [VN_RUNTIME_REFERENCE](VN_RUNTIME_REFERENCE.md) | Tra cách chạy Wine/WinBoat và giới hạn snapshot cũ |
 | [VN_DEVIRT_STATUS](VN_DEVIRT_STATUS.md) | Tra các site/patch và giới hạn RE VN |

@@ -34,7 +34,9 @@ tool kiểm kê/validation và thiết kế interface/kiến trúc. Chưa tự m
 production hoặc dựng workspace engine lớn khi task được giao chỉ là planning/research.
 Lệnh triển khai engine mới từ người dùng sẽ mở rộng phạm vi; không yêu cầu hỏi lại các quyết định đã có.
 
-Target là client KR `00967`; VN là nguồn tham chiếu, không mặc định là oracle đúng KR.
+Target là client KR `00967`. Theo quyết định người dùng ngày 2026-10-19, **VN là trusted source ngang KR**: dùng trực tiếp bằng chứng VN đã xác nhận để chốt luật chung và thiết kế/triển khai, không bắt buộc RE lại trên KR.
+Giữ provenance VN/KR để truy vết; khác biệt cụ thể về map/ID/asset/mode/thông số được xử lý theo build.
+Xem [quyết định nguồn](docs/decisions/0002-vn-kr-trusted-sources.md).
 Giữ baseline `KR-00967-V1-scope-1` trừ khi nhiệm vụ được giao yêu cầu thay đổi scope.
 Không đợi hiểu hết mọi mode mới lập kiến trúc, nhưng không biến unknown thành hằng số gốc.
 

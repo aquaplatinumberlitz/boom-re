@@ -31,6 +31,9 @@ Chất lượng official và mức phù hợp build là hai trục riêng. Khôn
 | WEB-GH-004 / GitHub | [developeSHG/GAME-CrazyAcade](https://github.com/developeSHG/GAME-CrazyAcade) | Access 2026-10-19; C++ WinAPI | Map tile tool + collision, không có số. |
 | WEB-GH-005 / GitHub | [weishi-lab/SCNU-426](https://github.com/weishi-lab/SCNU-426) | Access 2026-10-19; Java, 2020 | Bản một phần; ít giá trị. |
 
+| WEB-GH-006 / GitHub | [Ark-Point/crazy-arcade](https://github.com/Ark-Point/crazy-arcade) | Access 2026-10-19; JS | Web game + AI agent; **không có bảng chỉ số gốc**. Chỉ tham khảo kiến trúc agent/benchmark. |
+| WEB-GH-007 / GitHub | [Lor3walker/popo-arcade](https://github.com/Lor3walker/popo-arcade) | Access 2026-10-19; JS | Remake "from-scratch"; chỉ số tự thiết kế, không dẫn nguồn gốc. Không dùng làm oracle. |
+
 ## Khi bổ sung nguồn hoặc dùng một claim
 
 - Ghi source ID, URL, title/locator, access date, publication date nếu biết, region/build/event,
