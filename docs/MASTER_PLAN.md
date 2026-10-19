@@ -1,5 +1,8 @@
 # Boom Online — Master Plan: RE, Cross-Platform Port & Remaster
 
+> **Superseded (2026-10-19).** The current rewrite plan, rules and scope live in `/home/admin/boom-rs`
+> (`AGENTS.md`, `docs/planning/REWRITE_PLAN.md`). This file is kept as history only.
+
 > Status: **APPROVED FOR TRACKING (2026-10-18).** Planning document; producing it modified no
 > binaries, ran no game executables, and made no connections to game services.
 > Evidence is cited by relative path. Each claim is tagged **[VERIFIED]** (observed in-repo

@@ -1,5 +1,8 @@
 # Kế hoạch RE client KR (`boom_kr_lastest00967/PatchData/`)
 
+> **Hết hiệu lực (2026-10-19).** Kế hoạch, quy tắc và scope hiện hành ở `/home/admin/boom-rs`
+> (`AGENTS.md`, `docs/planning/REWRITE_PLAN.md`). File này chỉ còn là lịch sử.
+
 > Trạng thái: **kế hoạch**, chưa thực thi. Tài liệu này để quyết định có làm hay không, và nếu làm thì
 > theo thứ tự nào. Mọi số liệu dưới đây đã đo trên file thật, không phải giả định.
 
