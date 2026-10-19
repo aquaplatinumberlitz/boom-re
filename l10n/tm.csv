@@ -902,7 +902,7 @@ Bạn có muốn trang bị vật phẩm %s trong túi đồ không?",translated
 Mình tặng bạn vật phẩm khác nha~★",translated,
 "%s 아이템을 장착했습니다.
 마이페이지 아이템탭에서 확인 가능합니다.","Đã trang bị vật phẩm %s.
-Xem được ở tab vật phẩm trang cá nhân.",translated,
+Coi được ở tab Vật phẩm trong Trang cá nhân.",translated,
 %s 아이템을 퀘스트에서 사용하시겠습니까?,Dùng vật phẩm %s trong nhiệm vụ không?,translated,
 %s 아이템을 획득했어요~! 퀘스트를 확인해주세요~★,Đã nhận vật phẩm %s~! Coi nhiệm vụ nha~★,translated,
 "%s 열매를 수확했네요~?
@@ -1347,7 +1347,7 @@ Màn gồm 9 bản đồ!",translated,
 (연.퀘) 협공배틀(상시),(Nhiệm vụ lặp) Đấu hợp sức (thường trực),translated,
 (일반모드 %d/3게임 달성),(Chế độ thường %d/đạt 3 ván),translated,
 (지존권 전용) 각종 물풍선을 만드는 공장입니다. 하수구를 통해 갑자기 튀어나오는 물줄기를 조심하세요.,(Chỉ dành cho Chí Tôn quyền) Nhà máy chế tạo đủ loại bom nước. Coi chừng tia nước bất ngờ phun ra từ cống thoát nước nha.,translated,
-"(지존권 전용) 공동묘지에서 놀던 아이들이 찾아낸 던전입니다. 으스스한 분위기 조심, 유령도 조심.","(Chỉ dành cho Chí Tôn quyền) Hầm mộ mà bọn nhỏ hay chơi ở nghĩa địa tìm ra. Không khí rùng rợn, coi chừng ma nha.",translated,
+"(지존권 전용) 공동묘지에서 놀던 아이들이 찾아낸 던전입니다. 으스스한 분위기 조심, 유령도 조심.","(Chỉ dành cho vé Chí tôn) Hầm mộ mà tụi nhỏ hay chơi ở nghĩa địa tìm ra. Không khí rùng rợn, coi chừng ma nha.",translated,
 (지존권 전용) 버블힐마을 서쪽에 있는 울창한 숲 입니다. 아기자기한 꽃과 나무들이 정말 예뻐요.,(Chỉ dành cho Chí Tôn quyền) Khu rừng rậm rạp ở phía tây làng Bubble Hill. Hoa cỏ xinh xắn lắm luôn.,translated,
 (지존권 전용) 붐힐마을 서쪽에 있는 울창한 숲 입니다. 아기자기한 꽃과 나무들이 정말 예뻐요.,(Chỉ dành cho Chí Tôn quyền) Khu rừng rậm rạp ở phía tây làng Boom Hill. Hoa cỏ xinh xắn lắm luôn.,translated,
 (지존권 전용) 어느쪽이 더 많은 보물상자를 여느냐로 승부를 가리는 땅따먹기 게임 불라입니다. 우리팀 색깔로 보물상자를 둘러싸 보세요.,"(Chỉ cho vé Chí tôn) Bula là trò chiếm đất, bên nào mở được nhiều rương báu hơn thì thắng. Hãy bao vây rương báu bằng màu đội mình nha.",translated,
@@ -3395,7 +3395,7 @@ x5+크아CDx5,x5+CD Boom x5,translated,
 {ComponentType|8}[클로버TIP] 점수가 같거나 낮은 유저를 잡으면 클로버를 뱉어내지 않습니다.,{ComponentType|8}[MẸO CỎ BA LÁ] Bắt người chơi có điểm bằng hoặc thấp hơn thì bạn không bị nhả cỏ ba lá.,translated,
 {ComponentType|8}[클로버TIP] 클로버를 많이 모을 수록 럭키루찌를 획득할 확률이 올라갑니다.,{ComponentType|8}[MẸO CỎ BA LÁ] Gom càng nhiều cỏ ba lá thì tỉ lệ nhận VÀNG may mắn càng cao.,translated,
 "{ComponentType|8}[클로버TIP] 클로버를 모으다 보면 럭키슈퍼맨, 럭키센서 능력이 생깁니다.","{ComponentType|8}[MẸO CỎ BA LÁ] Gom cỏ ba lá sẽ có thêm năng lực Siêu nhân may mắn, Cảm biến may mắn.",translated,
-{ShopFreeStock|1600004}매일매일 주어지는 즐거운선물~ <font color=yellow>무료바늘</font> 받고 즐거운 게임하세요~,{ShopFreeStock|1600004}Món quà vui mỗi ngày~ Nhận <font color=yellow>Kim miễn phí</font> và chơi game vui vẻ nhé~,translated,
+{ShopFreeStock|1600004}매일매일 주어지는 즐거운선물~ <font color=yellow>무료바늘</font> 받고 즐거운 게임하세요~,{ShopFreeStock|1600004}Quà vui mỗi ngày nè~ Nhận <font color=yellow>Kim miễn phí</font> rồi chơi game vui vẻ nha~,translated,
 ~(◎ㅁ◎)~ (데헷~),~(◎ㅁ◎)~ (Hehe~),translated,
 … 너무.. 배고파요..,… Đói quá.. ạ..,translated,
 ….왕… 깨갱… (우울한듯),….Gâu… Kkaeng… (Có vẻ buồn),translated,
@@ -3908,7 +3908,7 @@ Vẫn muốn thoát hông?",translated,
 때 사용하면 바로 탈출","Dùng khi bị nhốt trong bom nước 
 trong trận để thoát ngay",translated,
 게임 중 물풍선에 갇혔을때 사용하면 바로 탈출,Dùng trong game khi bị nhốt trong bom nước sẽ thoát ngay,translated,
-게임 중 비행기 드롭 이벤트 아이템 획득,Nhặt vật phẩm sự kiện máy bay thả trong trận,translated,
+게임 중 비행기 드롭 이벤트 아이템 획득,Lượm vật phẩm sự kiện máy bay thả xuống trong trận,translated,
 "게임 중 비행기에서 떨어지는 황금 깃발을 모으세요~
 황금 깃발 3개를 모으면 아이템을 획득할 수 있는 기회!","Trong game gom Cờ Vàng rơi từ máy bay nha~
 Gom 3 Cờ Vàng là có cơ hội nhận vật phẩm!",translated,
@@ -3930,7 +3930,7 @@ nổ trong trận",translated,
 게임 플레이 (%s/2),Chơi game (%s/2),translated,
 게임 플레이 중 물풍선에 갇힌 친구 구출,Cứu bạn bị nhốt trong bom nước khi chơi,translated,
 게임 플레이 중 바늘 사용하기,Dùng Kim trong trận,translated,
-게임 플레이 중 비행기 드롭 아이템 획득하기,Nhặt vật phẩm máy bay thả trong lúc chơi,translated,
+게임 플레이 중 비행기 드롭 아이템 획득하기,Lượm vật phẩm máy bay thả xuống trong lúc chơi,translated,
 "게임 플레이를 완료하셔서 ""루돌프의 특별한 선물""을 드릴게요.","Hoàn thành chơi game sẽ nhận ""Quà đặc biệt của Rudolph"" nha.",translated,
 게임(BNB 또는 히든캐치) 플레이 남음!!!++,Còn ván chơi (BnB hoặc Hidden Catch)!!!++,translated,
 "게임2판플레이
@@ -4418,7 +4418,7 @@ Nhấn nút Mua ngay bên trái nhấn nhấn!
 공동묘지 08,Nghĩa địa 08,translated,
 공동묘지 랜덤,Nghĩa địa ngẫu nhiên,translated,
 공동묘지맵 중 한가지가 랜덤하게 선택됩니다.,Một trong các bản đồ nghĩa địa sẽ được chọn ngẫu nhiên.,translated,
-"공동묘지에서 놀던 아이들이 찾아낸 던전입니다. 으스스한 분위기 조심, 유령도 조심.","Hầm ngục do bọn nhỏ chơi ở nghĩa địa tìm ra. Coi chừng không khí rùng rợn, ma cũng coi chừng nha.",translated,
+"공동묘지에서 놀던 아이들이 찾아낸 던전입니다. 으스스한 분위기 조심, 유령도 조심.","Hầm ngục do tụi nhỏ chơi ở nghĩa địa tìm ra. Coi chừng không khí rùng rợn, coi chừng cả ma nữa nha.",translated,
 "공동묘지의 으스스한 유령과 패트릿의 해적선이 섞여서 만들어진 연금술사 01 맵입니다.
 해적과 유령을 피해서 달아나! 옥스!!","Bản đồ Giả kim thuật sư 01, trộn từ hồn ma rùng rợn của Nghĩa địa và thuyền cướp biển của Patrit.
 Né cướp biển với hồn ma mà chạy đi! Ox!!",translated,
@@ -5440,7 +5440,7 @@ Phao cá mập xanh có thể nhận khi câu cá, còn Cuộn dây cá mập xa
 난이도1. 회전 공격 구사,Độ khó 1. Tấn công xoay vòng,translated,
 난이도2. 근처 8x8 범위에서만 이동. 속도3,Độ khó 2. Chỉ đi trong phạm vi 8x8 quanh nó. Tốc độ 3,translated,
 난이도2. 돌덩이 던지고 아이돌 소환,"Độ khó 2. Ném đá tảng, triệu hồi Idol",translated,
-난이도3 시야2 추격이동 속도3 친구죽으면화남,"Độ khó 3, tầm nhìn 2, đuổi theo, tốc độ 3, nổi giận khi đồng bọn chết",translated,
+난이도3 시야2 추격이동 속도3 친구죽으면화남,"Độ khó 3, tầm nhìn 2, đuổi theo, tốc độ 3, nổi giận khi đồng đội chết",translated,
 "난이도3. 빠른 속도, 범위 공격, 물풍선 발사","Độ khó 3. Tốc độ nhanh, tấn công diện rộng, bắn bom nước",translated,
 난이도3. 시야1 추격이동. 속도2,"Độ khó 3. Tầm nhìn 1, đuổi theo. Tốc độ 2",translated,
 난이도4 시야3 추격이동 속도4 얼음탈출시화남,"Độ khó 4, tầm nhìn 3, đuổi theo, tốc độ 4, nổi giận khi thoát băng",translated,
@@ -6126,7 +6126,7 @@ Bấm vô bảng sự kiện của Binevi nha.",translated,
 다른 1장의 하트를 마저 뒤집어 보세요.,Lật nốt 1 trái tim còn lại đi nha.,translated,
 다른 사람은 모르는 나만의 신체비밀은?,Bí mật cơ thể chỉ mình bạn biết là gì?,translated,
 다른 요청을 처리 중 입니다.,"Đang xử lý yêu cầu khác, vui lòng chờ nha.",translated,
-다른 유저가 이미 먹은 아이템입니다.,Người chơi khác đã nhặt vật phẩm này rồi.,translated,
+다른 유저가 이미 먹은 아이템입니다.,Vật phẩm này người chơi khác lượm mất rồi.,translated,
 다른 유저와 광장 1:1대결 %s/5회 플레이 완료.,Đã chơi đấu 1:1 quảng trường với người khác %s/5 lần.,translated,
 다른 유저와 아이템을 교환하는 채널입니다.,Kênh trao đổi vật phẩm với người chơi khác.,translated,
 다른 유저와 자유롭게 대화를 나눌 수 있는 채널입니다.,Kênh để trò chuyện tự do với người chơi khác.,translated,
@@ -6491,7 +6491,7 @@ Khi thoát nguy cấp có tỉ lệ kích hoạt Siêu nhân, nhận bonus kinh 
 "대왕문어 사냥완료! [바다물풍선]에 대왕문어를
 봉인하고 물풍선을 업그레이드하자!","Săn xong Vua bạch tuộc! Phong ấn Vua bạch tuộc vào [Bom nước biển]
 và nâng cấp bom nước nào!",translated,
-대왕문어가 갑자기 마을을 습격해 왔어요! 어서가서 꼬마 해적들과 대왕문어를 물리치세요!,Bạch tuộc khổng lồ đột ngột tấn công làng! Mau tới đánh bại bạch tuộc khổng lồ cùng bọn hải tặc nhí nha!,translated,
+대왕문어가 갑자기 마을을 습격해 왔어요! 어서가서 꼬마 해적들과 대왕문어를 물리치세요!,Vua bạch tuộc đột ngột tấn công làng! Mau tới đánh bại Vua bạch tuộc cùng tụi hải tặc nhí nha!,translated,
 대왕문어가 강해졌다면 다른 몬스터들도 강해졌겠지? 황제펭귄은 어떻게 지내나 한 번 갔다 오게,"Bạch tuộc khổng lồ đã mạnh lên, vậy các quái khác chắc cũng mạnh lên ha? Chim cánh cụt hoàng đế sống sao rồi, bạn qua coi thử một chuyến giùm tui nha.",translated,
 대왕문어가 더 강해졌다는 소리를 듣고 뛰어 왔네!! 이상하네…더 이상 힘을 얻을 곳도 없는데 강해지기까지 하다니… 놈들의 힘의 근원인 보석을 모아 와 주게,Nghe đại bạch tuộc mạnh hơn nên mình chạy tới liền!! Lạ quá… không còn chỗ lấy sức mạnh nữa mà còn mạnh lên… Bạn gom đá là nguồn sức mạnh của chúng về giúp mình nha.,translated,
 대왕문어님의보물을모으자,Gom báu vật của Đại Vương Bạch Tuộc đi,review,"""대왕문어"" dịch là Đại Vương Bạch Tuộc; nếu cần tên riêng thì chốt lại"
@@ -7568,8 +7568,8 @@ Phụ kiện Lấp lánh Pha lê (30 ngày)",translated,
 Tem hồi quy thưởng +2",translated,
 루찌 보내기를 성공했습니다.,Gửi VÀNG thành công.,translated,
 루찌 보내기에 실패했습니다.,Gửi VÀNG thất bại.,translated,
-루찌 수집 범위가 %s칸으로 업그레이드 되었어요!,Phạm vi nhặt Vàng đã nâng cấp lên %s ô nha!,translated,
-루찌 수집 범위가 최대 %d칸까지 증가합니다.,Phạm vi nhặt Vàng sẽ tăng tối đa %d ô nha.,translated,
+루찌 수집 범위가 %s칸으로 업그레이드 되었어요!,Tầm lượm VÀNG đã nâng lên %s ô rồi nha!,translated,
+루찌 수집 범위가 최대 %d칸까지 증가합니다.,Tầm lượm VÀNG tăng tối đa tới %d ô.,translated,
 루찌2배,VÀNG x2,translated,
 루찌3배,Vàng x3,translated,
 루찌: %d,VÀNG: %d,translated,
@@ -9086,9 +9086,9 @@ Nhân dịp này tui tặng %d Đậu may mắn Ngôi sao lấp lánh nha~★",t
 방울,bong bóng,translated,
 방울방울 미션,Nhiệm vụ Bubble Bubble,translated,
 방울방울 미션은 매일 0시 초기화 됩니다.,Nhiệm vụ Bubble Bubble được làm mới mỗi ngày lúc 0 giờ.,translated,
-방울방울 상점,Cửa hàng Bubble Bubble,translated,
+방울방울 상점,Tiệm Giọt nước,translated,
 방울방울 상점 !!,Siêu thị Bong bóng !!,translated,
-방울방울 상점 내 아이템은 방울로만 구매가 가능합니다.,Vật phẩm trong cửa hàng Bubble Bubble chỉ mua được bằng bong bóng.,translated,
+방울방울 상점 내 아이템은 방울로만 구매가 가능합니다.,Vật phẩm trong Tiệm Giọt nước chỉ mua được bằng giọt nước.,translated,
 방울방울 상점 내 아이템은 보유 중인 방울을 사용해서 구매가 가능합니다.,Vật phẩm trong Tiệm Giọt nước mua bằng giọt nước bạn đang có.,review,"방울 = điểm ""giọt nước"", chưa chốt tên"
 "방울방울 이벤트 당첨!!
 경험치 %d배!!","Trúng sự kiện Giọt Nước!!
@@ -9225,7 +9225,7 @@ rồi trao đổi lấy vật phẩm đặc biệt nha~★",translated,
 버블힐마을 북쪽에 위치한 설원에서 설곰이 나타났다~! 목격담으로는 화가 나면 반전의 매력이 있다는데?!,"Tuyết trắng ở phía bắc làng Bubble Hill, Seol-gom xuất hiện~! Nghe nói khi nổi giận lộ ra sức hút bất ngờ đó?!",translated,
 버블힐마을 서쪽에 있는 울창한 숲 입니다. 아기자기한 꽃과 나무들이 정말 예뻐요.,Khu rừng rậm rạp ở phía tây làng Bubble Hill. Hoa cỏ xinh xắn lắm luôn.,translated,
 "버블힐마을 해변에 정박해있는, 겉으로 보기엔 평범한 모습의 함선입니다. 하지만 이 함선은 대왕문어 해적단에게 점령된 상태입니다.",Con tàu trông bình thường đang neo ở bờ biển Làng Bubble Hill. Nhưng con tàu này đã bị Băng hải tặc Bạch tuộc Đại vương chiếm giữ.,translated,
-버블힐마을에 맛있는 쿠키상점이 생겼습니다. 정말 맛있어 보이는 쿠키들이 한가득!!! 알록달록 아기자기한 쿠키들과 함께 게임을 즐겨보세요.,"Làng Bubble có cửa hàng bánh quy mới. Bánh ngon nhiều lắm!! Chơi game cùng những chiếc bánh xinh xắn, đủ màu sắc nha.",translated,
+버블힐마을에 맛있는 쿠키상점이 생겼습니다. 정말 맛있어 보이는 쿠키들이 한가득!!! 알록달록 아기자기한 쿠키들과 함께 게임을 즐겨보세요.,"Làng Bubble Hill mới mở tiệm bánh quy ngon lắm. Bánh nhìn thèm ơi là thèm, cả đống luôn!!! Chơi game cùng mấy cái bánh xinh xắn đủ màu nha.",translated,
 버블힐마을에서 켄터키 치킨 축제를 합니다. 우주선 대신 치킨통을 타 보세요.,"Làng Bubble Hill tổ chức lễ hội gà rán Kentucky. Thay vì tàu vũ trụ, hãy thử cưỡi thùng gà rán nha.",translated,
 "버블힐마을의 모든 사람들이 함께 뛰놀던 놀이터였지만, 습격을 당해 지금은 위험한 구역이 되어버렸습니다. ","Sân chơi mà mọi người Làng Bubble Hill từng cùng chơi đùa, nhưng sau khi bị tấn công giờ đã thành khu vực nguy hiểm.",translated,
 "버블힐에 흩어진 여의주를 모아보자!
@@ -9727,7 +9727,7 @@ Tem hồi quy thưởng +2",translated,
 붐힐 남쪽에 있는 평원입니다. 예전에는 아름다운 평원이었으나 지금은 황제물개 군단이 점령하고 있습니다.,Đồng bằng nằm phía nam Bubble Hill. Trước kia là đồng cỏ đẹp nhưng giờ bị Hải cẩu hoàng đế chiếm đóng.,translated,
 "붐힐 마을에 다양한 건물이 생기면서 방문 이벤트를 하나봐~ 쥬얼리샵, 펫샵, 아바타샵, 카페 1회씩 방문을 하면 달콤사탕이?!","Làng Boom Hill có nhiều tòa nhà mới nên có sự kiện ghé thăm đó~ Ghé mỗi nơi 1 lần: Siêu thị trang sức, Siêu thị thú cưng, Siêu thị avatar, quán cà phê thì được kẹo ngọt?!",translated,
 붐힐마을 서쪽에 있는 울창한 숲 입니다. 아기자기한 꽃과 나무들이 정말 예뻐요.,Khu rừng rậm rạp ở phía tây làng Boom Hill. Hoa cỏ xinh xắn lắm luôn.,translated,
-붐힐마을에 맛있는 쿠키상점이 생겼습니다. 정말 맛있어 보이는 쿠키들이 한가득!!! 알록달록 아기자기한 쿠키들과 함께 게임을 즐겨보세요.,"Làng Boom có cửa hàng bánh quy mới. Bánh ngon nhiều lắm!! Chơi game cùng những chiếc bánh xinh xắn, đủ màu sắc nha.",translated,
+붐힐마을에 맛있는 쿠키상점이 생겼습니다. 정말 맛있어 보이는 쿠키들이 한가득!!! 알록달록 아기자기한 쿠키들과 함께 게임을 즐겨보세요.,"Làng Boom Hill mới mở tiệm bánh quy ngon lắm. Bánh nhìn thèm ơi là thèm, cả đống luôn!!! Chơi game cùng mấy cái bánh xinh xắn đủ màu nha.",translated,
 붐힐마을에서 켄터키 치킨 축제를 합니다. 우주선 대신 치킨통을 타 보세요.,"Làng Boom Hill tổ chức lễ hội gà rán Kentucky. Thay vì tàu vũ trụ, hãy thử cưỡi thùng gà rán nha.",translated,
 "붐힐마을은 어른들이 한 명도 없어. 
 왜냐고? 로두마니라는 못된 해적이 
@@ -9864,9 +9864,9 @@ Vui lòng bỏ khoảng trắng rồi nhập lại giùm bạn",translated,
 Tìm Bazzi đã ăn bánh để nhận thưởng!!",translated,
 "비행기에서 달토끼떡 상자를 줍고
 떡먹은 배찌를 찾으면 떡을 획득!
-떡 10개를 모으면 보상 획득~★","Nhặt Hộp bánh Thỏ Ngọc trên máy bay
-Tìm Bazzi ăn bánh để nhận bánh!
-Gom 10 cái bánh là nhận phần thưởng~★",translated,
+떡 10개를 모으면 보상 획득~★","Lượm Hộp bánh Thỏ mặt trăng rớt từ máy bay
+rồi tìm Bazzi đang ăn bánh là có bánh!
+Gom đủ 10 cái bánh là có thưởng~★",translated,
 빈지노,Beenzino,translated,
 빌리지,Làng,translated,
 빌리지 00,Làng 00,translated,
@@ -12241,9 +12241,9 @@ Quà đăng ký là 3 Kim nha.",translated,
 아이템을 획득할 수 있음","Có thể nhận vật phẩm đặc biệt 
 của Đập trứng bí ẩn",translated,
 알쏭달쏭 쾅쾅을 나가시면 깨고있던 알은 모두 버려집니다.,Rời Đập trứng bí ẩn thì mọi trứng đang đập sẽ bị bỏ hết.,translated,
-"알쏭달쏭 쿠폰샵 오픈!!  2009년 03월 11일~2010년 3월 23일까지 쿠폰샵을 이용하실 수 있습니다.  단, 이 기간 중에 사용하지 않은 쿠폰은 자동 소멸됩니다.",Mở cửa hàng phiếu Alssongssong!! Từ 11/03/2009 đến 23/03/2010 có thể dùng cửa hàng phiếu. Lưu ý: phiếu không dùng trong thời gian này sẽ tự mất nha.,translated,
-"알쏭달쏭 쿠폰샵 오픈!!  2009년 12월 22일~2010년 2월 28일까지 쿠폰샵을 이용하실 수 있습니다.  단, 이 기간 중에 사용하지 않은 쿠폰은 자동 소멸됩니다.",Mở cửa hàng phiếu Alssongssong!! Từ 22/12/2009 đến 28/02/2010 có thể dùng cửa hàng phiếu. Lưu ý: phiếu không dùng trong thời gian này sẽ tự mất nha.,translated,
-알쏭달쏭 쿠폰샵이 종료되었습니다.,Cửa hàng phiếu Alssongssong đã kết thúc.,translated,
+"알쏭달쏭 쿠폰샵 오픈!!  2009년 03월 11일~2010년 3월 23일까지 쿠폰샵을 이용하실 수 있습니다.  단, 이 기간 중에 사용하지 않은 쿠폰은 자동 소멸됩니다.",Tiệm phiếu Bí ẩn mở cửa!!  Xài được từ 11/03/2009 tới 23/03/2010.  Mà phiếu nào không xài trong thời gian này sẽ tự mất nha.,translated,
+"알쏭달쏭 쿠폰샵 오픈!!  2009년 12월 22일~2010년 2월 28일까지 쿠폰샵을 이용하실 수 있습니다.  단, 이 기간 중에 사용하지 않은 쿠폰은 자동 소멸됩니다.",Tiệm phiếu Bí ẩn mở cửa!!  Xài được từ 22/12/2009 tới 28/02/2010.  Mà phiếu nào không xài trong thời gian này sẽ tự mất nha.,translated,
+알쏭달쏭 쿠폰샵이 종료되었습니다.,Tiệm phiếu Bí ẩn đã đóng cửa.,translated,
 "알쏭달쏭/가샤폰에서 얻은 아이템이 일반모드 마이페이지로 이동되었습니다. 일반모드 마이페이지를 여시겠습니까?
 취소를 누르시면 히어로모드 마이페이지가 열립니다.","Vật phẩm nhận từ Alppong/Gachapon đã chuyển vào Trang cá nhân chế độ thường. Mở Trang cá nhân chế độ thường không?
 Bấm Hủy sẽ mở Trang cá nhân chế độ Hero.",translated,
@@ -12637,7 +12637,7 @@ Vật phẩm trang trí miễn phí! <Vật phẩm miễn phí tiệm net>
 엇! 누가 이미 소나기를 사용했네요!,Ủa! Có người xài Mưa rào rồi!,translated,
 엇! 배찌의 오곡밥 곡식이 다 어디갔지?,Ủa! Ngũ cốc trong cơm ngũ cốc của Bazzi biến đâu mất tiêu rồi?,translated,
 엇! 이번엔 못찾은거야? 마늘을,Ớ! Lần này không tìm được hả? Lấy tỏi,translated,
-엇!침입자놈들이!!!,Ế! Bọn xâm nhập!!!,translated,
+엇!침입자놈들이!!!,Ế! Tụi xâm nhập!!!,translated,
 "엇?! 한 번 더 간식을 먹으면
 기가 막힌 음이 떠오를 것 같아★","Ủa?! Ăn thêm một lần nữa
 chắc sẽ nghĩ ra giai điệu tuyệt vời ★",translated,
@@ -13340,8 +13340,8 @@ Mỗi ngày 0 giờ, số rương báu sẽ được đặt lại nha!",translat
 "요일별로 보상이 달라져요!
 일일 10회까지 보상을 받을 수 있어요!","Phần thưởng khác nhau theo thứ trong tuần!
 Mỗi ngày nhận được phần thưởng tối đa 10 lần!",translated,
-요즘 <font style=bold color=9631236>럭셔리 케피</font>와 그 일당들이  말썽을 부리고 다닌다고 하더군.  범인에 대한 힌트를 알고 싶으면  ,Dạo này <font style=bold color=9631236>Luxury Kephi</font> cùng đồng bọn của hắn làm loạn khắp nơi đó.  Muốn biết gợi ý về thủ phạm thì,translated,
-요즘 꼬마몬스터들이 마법 보석 조각을 주으러 다니는 것 같던데…그 귀한 보석을 그놈들이 주워 갈 수 없게 혼내 주게나,Dạo này quái nhỏ hình như đi nhặt mảnh đá ma thuật... Dạy tụi nó một bài để tụi nó không lấy được viên đá quý đó nha.,translated,
+요즘 <font style=bold color=9631236>럭셔리 케피</font>와 그 일당들이  말썽을 부리고 다닌다고 하더군.  범인에 대한 힌트를 알고 싶으면  ,Dạo này <font style=bold color=9631236>Kephi sang chảnh</font> cùng đám tay chân của hắn làm loạn khắp nơi đó.  Muốn biết gợi ý về thủ phạm thì,translated,
+요즘 꼬마몬스터들이 마법 보석 조각을 주으러 다니는 것 같던데…그 귀한 보석을 그놈들이 주워 갈 수 없게 혼내 주게나,Dạo này mấy con quái nhỏ hình như đi lượm mảnh đá ma thuật…Dạy tụi nó một bài cho tụi nó hổng lượm được viên đá quý đó nha,translated,
 요즘 몬스터들 상대하기 힘들지? 마법보석을 연구하면서 새로운 스킬들을 찾는 재미에 푹 빠졌다네. 자네가 깨진녹색원석 10개만 모아온다면 내 특별히 새로운 스킬을 하나 주도록 하겠네.,"Dạo này đối đầu quái vật khó khăn hả? Tui đang mê nghiên cứu đá ma thuật để tìm kỹ năng mới. Nếu bạn mang về 10 đá xanh lục vỡ, tui sẽ đặc biệt cho bạn một kỹ năng mới.",translated,
 요즘 비밀의 정원에 괴상한 몬스터들때문에 애들이 마을에서 뛰어놀지를 못한다는군.. 어떤 몬스터인지는 모르겠지만 아마도 별 대단치 않은 녀석일거야 가서 해치우고 오게나?,"Dạo này mấy con quái kỳ quái ở Khu vườn bí mật làm tụi nhỏ trong làng không dám chơi ngoài nữa... Không biết là quái gì, nhưng chắc không mạnh lắm đâu. Đi đánh bại tụi nó rồi về nha?",translated,
 요즘 온난화 때문에 살기 힘들어 ,Dạo này nóng lên toàn cầu nên sống khó quá,translated,
@@ -14354,9 +14354,9 @@ Tặng bạn 5 Kim làm phần thưởng nha!",translated,
 이런...봐줘도 못이기네... ,Trời ơi... nhường rồi mà vẫn thua...,translated,
 이런?! 도둑원숭이가 비밀상자를 가져갔어요~! 퀘스트를 확인해보세요~!,Ôi?! Khỉ trộm đã lấy mất hộp bí mật~! Hãy coi nhiệm vụ nha~!,translated,
 이런?! 바나나가 유기농이 아니잖아~!!! 비밀상자는 사라지고 10000 경험치를 얻었어요…,Ôi?! Chuối đâu phải hữu cơ~!!! Hộp bí mật biến mất và bạn nhận được 10000 kinh nghiệm…,translated,
-이런?! 바나나가 유기농이 아니잖아~!!! 비밀상자는 사라지고 10000 루찌를 주웠어요…,Ôi?! Chuối đâu phải hữu cơ~!!! Hộp bí mật biến mất và bạn nhặt được 10000 VÀNG…,translated,
+이런?! 바나나가 유기농이 아니잖아~!!! 비밀상자는 사라지고 10000 루찌를 주웠어요…,"Trời?! Chuối này đâu phải hữu cơ~!!! Hộp bí mật biến mất, bạn lượm được 10000 VÀNG…",translated,
 이런?! 바나나가 유기농이 아니잖아~!!! 비밀상자는 사라지고 5000 경험치를 얻었어요…,Ôi?! Chuối đâu phải hữu cơ~!!! Hộp bí mật biến mất và bạn nhận được 5000 kinh nghiệm…,translated,
-이런?! 바나나가 유기농이 아니잖아~!!! 비밀상자는 사라지고 5000 루찌를 주웠어요…,Ôi?! Chuối đâu phải hữu cơ~!!! Hộp bí mật biến mất và bạn nhặt được 5000 VÀNG…,translated,
+이런?! 바나나가 유기농이 아니잖아~!!! 비밀상자는 사라지고 5000 루찌를 주웠어요…,"Trời?! Chuối này đâu phải hữu cơ~!!! Hộp bí mật biến mất, bạn lượm được 5000 VÀNG…",translated,
 이런~ 졌구나!! 괜찮아~ 괜찮아~*[START] 버튼을 눌러서 다시 도전하라구~ 파이팅!!,Ời~ Thua rồi hả!! Hông sao hông sao~*Nhấn nút [START] để thử lại nha~ Cố lên!!,translated,
 이런…,Ôi trời…,translated,
 이런… 아직 날개가 덜 자라 날지 못해요.ㅠ_ㅠ,Ôi… Cánh chưa đủ dài nên chưa bay được. ㅠ_ㅠ,translated,
@@ -17541,9 +17541,9 @@ Vui lòng đăng nhập lại bằng mật khẩu đã đổi.",translated,
 커플링 문구가 너무 짧습니다.,Nội dung nhẫn đôi quá ngắn.,translated,
 "커플링 문구가 설정되었습니다.
 
-설정된 문구는 마이페이지>크앤메뉴에서 확인하세요.","Nhẫn đôi đã đặt lời nhắn.
+설정된 문구는 마이페이지>크앤메뉴에서 확인하세요.","Đã đặt lời nhắn cho nhẫn đôi.
 
-Xem lời nhắn trong Trang cá nhân>Menu đôi nha.",translated,
+Coi lời nhắn trong Trang cá nhân > mục Đôi nha.",translated,
 커플링 문구를 입력해 주세요.,Nhập nội dung cho nhẫn đôi giùm nha.,translated,
 "커플링 아이템은 중복구매 할 수 없습니다.
 ","Nhẫn đôi không mua trùng được.
@@ -18568,8 +18568,8 @@ Số người chơi phải là số chẵn nha.",translated,
 파라오맵은 4인까지만 참여가능합니다.,Bản đồ Pharaoh chỉ tham gia tối đa 4 người nha.,translated,
 파라오의 보물,Kho báu Pharaoh,translated,
 "파라오의 보물 맵 발견!
-대기실 맵 리스트 확인!","Đã tìm thấy bản đồ Kho báu Pharaoh!
-Xem danh sách bản đồ phòng chờ!",translated,
+대기실 맵 리스트 확인!","Đã tìm ra bản đồ Kho báu Pharaoh!
+Coi danh sách bản đồ phòng chờ!",translated,
 "파라오의 보물 맵 발견!
 맵 선택버튼 클릭하여 입장!","Đã tìm thấy bản đồ Kho báu Pharaoh!
 Nhấn nút chọn bản đồ để vô!",translated,
@@ -18577,11 +18577,11 @@ Nhấn nút chọn bản đồ để vô!",translated,
 방장이 되면 맵 리스트 확인!","Đã tìm ra bản đồ Kho báu Pharaoh!
 Làm chủ phòng là coi được danh sách bản đồ!",translated,
 "파라오의 보물 맵 발견!
-일반 채널 맵 리스트 확인!","Đã tìm thấy bản đồ Kho báu Pharaoh!
-Xem danh sách bản đồ kênh thường!",translated,
+일반 채널 맵 리스트 확인!","Đã tìm ra bản đồ Kho báu Pharaoh!
+Coi danh sách bản đồ kênh thường!",translated,
 "파라오의 보물 맵 발견!
-일반/협공 맵 리스트 확인","Đã tìm thấy bản đồ Kho báu Pharaoh!
-Xem danh sách bản đồ Thường/Hợp sức!",translated,
+일반/협공 맵 리스트 확인","Đã tìm ra bản đồ Kho báu Pharaoh!
+Coi danh sách bản đồ Thường/Hợp sức",translated,
 파란보석획득!  퀘스트창에서폭죽물풍선을받으세요!,Nhận đá xanh dương!  Nhận bom nước pháo hoa ở cửa sổ nhiệm vụ nha!,translated,
 파란하늘의무지개,Cầu vồng trên trời xanh,translated,
 파랑 다이아 획득!  톡톡 물풍선 퀘스트를 시작하세요.,Đã nhận kim cương xanh dương!  Bắt đầu nhiệm vụ bom nước Tok Tok nha.,translated,
@@ -19580,7 +19580,7 @@ nha~★ Kyaaaa~=ㅁㅠ",translated,
 "혼내 주겠삼
 ","Cho một trận nha
 ",translated,
-혼내 줬나? 그럼 내가 보석을 주으러 한 번 가볼까? (요걸로 팔팔할매에게 고백을…^^;) 음? 들었는가? 농담일세!! 연구목적 보석이야. 하..하하하…,Dạy tụi nó xong chưa? Vậy mình thử đi nhặt đá một lần nha? (Cái này để tỏ tình với bà Pal Pal~^^;) Hửm? Nghe được hả? Đùa đó!! Đá này dùng cho nghiên cứu. Hắc... hahaha…,translated,
+혼내 줬나? 그럼 내가 보석을 주으러 한 번 가볼까? (요걸로 팔팔할매에게 고백을…^^;) 음? 들었는가? 농담일세!! 연구목적 보석이야. 하..하하하…,Dạy tụi nó xong chưa? Vậy để tui đi lượm đá thử coi? (Lấy cái này tỏ tình với bà Palpal…^^;) Hửm? Nghe thấy hả? Giỡn thôi!! Đá để nghiên cứu mà. Hà..ha ha ha…,translated,
 혼내줄거야!! ,Tui cho mi biết tay!!,translated,
 혼내줄꺼야~ ,"Chờ đó, ta trị tụi bây~ ",translated,
 혼란,Hỗn loạn,translated,

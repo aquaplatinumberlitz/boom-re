@@ -11,6 +11,7 @@ Bản dịch dùng cho engine Rust viết lại (UTF-8, font vector), **không**
 | `catalog.csv` | mỗi chuỗi một dòng: `id, source, ko, vi_base, vi, status, notes` (UTF-8, CSV chuẩn, xuống dòng giữ nguyên trong ô có ngoặc kép) |
 | `tm.csv` | bộ nhớ dịch `ko → vi` (một chuỗi Hàn dịch một lần, dùng cho mọi id trùng chuỗi) |
 | `tm_id.csv` | ghi đè theo `id` (khoá trùng bản VN nhưng nghĩa KR khác…) |
+| `reused_review.csv` | các dòng lấy từ VN cần rà riêng: lệch placeholder/ngắt dòng hoặc nghi khác nghĩa KR; kèm câu Hàn, bản VN gốc và câu sau chỉnh giọng |
 | `glossary_seed.csv` | thuật ngữ chốt tay (lấy từ bản VN: XU, VÀNG, BẠC, Siêu thị, Túi đồ, chế độ chơi…) |
 | `glossary.csv` | seed + cặp ngắn rút từ catalog |
 | `images_todo.csv` | ảnh có thể chứa chữ: `pack, entry, kind, size, dims, vn_same_name, reason` |
@@ -111,4 +112,39 @@ Không dùng `.fft` bitmap cũ (`CxUni*.fft`, `CxDefault.fft`). Đề xuất (OF
 
 ## 5. Thống kê
 
-(cập nhật ở cuối)
+Cập nhật 2026-10-19, sau H000–H041 và R000–R014:
+
+| Trạng thái | Số dòng |
+|---|---:|
+| Tổng | 25.257 |
+| `translated` | 20.414 |
+| `reused` | 3.813 |
+| `review` | 1.030 |
+| `untranslated` | 0 |
+
+Đã xử lý đủ 4.356 ID trong 15 đợt chuyển giọng R000–R014, gồm cả các dòng bị loại ở lần nhập trước.
+1.035 câu có ghi đè `nam_bo_rewrite` trong `tm_id.csv`; câu đã phù hợp giữ nguyên.
+`vi_base` và câu Hàn giữ nguyên theo cache nguồn, kể cả ký tự CR/LF.
+Các câu được đọc và viết lại riêng; code chỉ ghép kết quả theo ID và kiểm tra, không thay từ tự động.
+
+Số `review` tăng từ 487 lên 1.030 vì đánh dấu thêm 543 dòng lấy từ bản VN:
+313 dòng lệch placeholder/ngắt dòng so với KR và 230 dòng cần đối chiếu nghĩa
+(đặc biệt các nhóm NPpen22–NPpen27). Đây là vấn đề có sẵn trong bản VN; phần chuyển giọng
+giữ ý bản VN, chưa dịch lại các nhóm này. Danh sách cụ thể nằm trong `reused_review.csv`.
+Một số kết quả R000–R005 đã sửa nghĩa trước khi tiếp quản (ví dụ “Ta sẽ đối đầu”)
+được giữ lại; thống kê này không khẳng định mọi câu đã được duyệt nghĩa.
+
+Ba tên AI đã chốt vẫn dùng đúng: **Chiến binh huyền thoại**, **White Angel**, **Mister Fortune**;
+các tên này đã có trong prompt H. Tên cá đã dịch ở H032 giữ nguyên.
+
+Kiểm tra lại từ gốc repo:
+
+```sh
+python3 tools/l10n_extract.py catalog
+python3 tools/l10n_validate.py
+```
+
+Bộ kiểm tra đối chiếu ID, câu Hàn và `vi_base` với cache nguồn; kiểm tra ghi đè,
+placeholder/thứ tự printf/ngắt dòng của các câu chuyển giọng so với `vi_base`,
+ba tên AI và từ cấm trên toàn catalog. Kết quả cuối: **0 lỗi kiểm tra, 0 từ cấm**.
+Các khác biệt KR/VN được đánh dấu `review` vẫn cần rà nội dung riêng.

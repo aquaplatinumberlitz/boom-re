@@ -112,3 +112,1476 @@ nghỉ hè!",review,strings.rs khác nghĩa KR; đề xuất bản dịch theo K
 SureToBan, Mời '%s' ra khỏi phòng?,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 WithUseCAPointMsg,* BẠC (CP) đã dùng không thể huỷ đăng ký mua.,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 AllTab,Chung,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+GoToShop,Vô siêu thị,reused,nam_bo_rewrite
+mongolem02default04,Mới đây hông?,reused,nam_bo_rewrite
+mongolem02default09,Không phải hông?,reused,nam_bo_rewrite
+mongolem03bossanger01,Ác! Cuộc chiến ác liệt!,reused,nam_bo_rewrite
+mongolem04default02,Grrr!,reused,nam_bo_rewrite
+mongolem06bossanger10,Wow! Tụi bây dám đến đây!,reused,nam_bo_rewrite
+mongolem06default11,Đá rớt!!,reused,nam_bo_rewrite
+mongolem07default04,"Grr, trại tuần tra!!",reused,nam_bo_rewrite
+mongolem08default05,Lối ra đây hông?,reused,nam_bo_rewrite
+mongolem09bossanger10,"Nào, đi!",reused,nam_bo_rewrite
+mongolem09default09,Grr!!!,reused,nam_bo_rewrite
+mongolem09default10,Tìm ta hả?,reused,nam_bo_rewrite
+mongolem09default11,Tìm ta hông?,reused,nam_bo_rewrite
+mongolem09default14,Đá rớt!!,reused,nam_bo_rewrite
+mongolem09default19,"Tụi bây, ra đây!",reused,nam_bo_rewrite
+mongolem11default02,Grrr!,reused,nam_bo_rewrite
+mongolem11default03,Trốn kỹ vô!,reused,nam_bo_rewrite
+mongolem11default04,Thấy đầu ta rồi..,reused,nam_bo_rewrite
+mongolem12bossanger01,Í... ta cũng chơi!,reused,nam_bo_rewrite
+mongolem12default01,Tính thăm ta hả?,reused,nam_bo_rewrite
+mongolem12default04,Không chơi thì đi nha!,reused,nam_bo_rewrite
+mongolem12default13,Sao nào? Siêu đẹp hông?,reused,nam_bo_rewrite
+mongolem12default19,"Hừ, chỉ chơi với tụi bây thôi hả? Yaa!",reused,nam_bo_rewrite
+mongolem13selfdie02,Nói dối?!,reused,nam_bo_rewrite
+mongolem13selfdie03,Ực! Ta bị đánh hả!,reused,nam_bo_rewrite
+mongolem13selfdie05,Không chấp nhận được!,reused,nam_bo_rewrite
+mongolem14default03,Cắc cum! Cắc cum?!,reused,nam_bo_rewrite
+mongolem14default06,Làm được hông?,reused,nam_bo_rewrite
+mongolem14default07,Cơ hội chỉ có 1 lần!,reused,nam_bo_rewrite
+monseal10generalb2,Xông lên nha?,reused,nam_bo_rewrite
+monseal10generalb5,Chặn tụi nó lại,reused,nam_bo_rewrite
+monseal11generala1,Không biết hả?,reused,nam_bo_rewrite
+monseal11generala2,Sợ hông?,reused,nam_bo_rewrite
+monseal11generala4,"Hahaha, trốn ở đâu rồi ta?",reused,nam_bo_rewrite
+monseal11generala7,Tìm bằng cách nào vậy?,reused,nam_bo_rewrite
+monseal11generalb1,Tui sẽ phục thù!!!,reused,nam_bo_rewrite
+monseal12boss02,Đừng làm ta nổi nóng nha!,reused,nam_bo_rewrite
+monseal12boss07,Sao lại làm ta buồn vậy~,reused,nam_bo_rewrite
+monseal12generala1,"Hải cẩu chúa, có tui đây.",reused,nam_bo_rewrite
+monseal12generala4,Tui phải bảo vệ mới được,reused,nam_bo_rewrite
+monseal13generala3,Kẻ thù lại đến hả??,reused,nam_bo_rewrite
+monseal14generala1,Mấy đứa này làm gì vậy??,reused,nam_bo_rewrite
+monseal15boss03,Dẫm chân vầy thoải mái quá,reused,nam_bo_rewrite
+monseal15boss04,Còn cái này thì sao!!,reused,nam_bo_rewrite
+monseal15boss16,Đón tiếp tụi tù nhân nào~,reused,nam_bo_rewrite
+monseal16Default26,Cùng nhau bảo vệ nha!,reused,nam_bo_rewrite
+monseal16Default30,Tụi tui sẽ bảo vệ!,reused,nam_bo_rewrite
+monseal16Die34,Tui sẽ bảo vệ cho!,reused,nam_bo_rewrite
+monseal16Die6,Phải bảo vệ hải cẩu chúa!!,reused,nam_bo_rewrite
+monseal16SelfDie8,Ta bực rồi đây..,reused,nam_bo_rewrite
+monseal16SelfLocked5,Hải cẩu chúa~~,reused,nam_bo_rewrite
+monseal16SelfReleased40,Phù ~ may quá!,reused,nam_bo_rewrite
+monseal17Default14,Đã triệu tập!!!,reused,nam_bo_rewrite
+monseal17Default15,Bị triệu tập rồi!!,reused,nam_bo_rewrite
+monseal17Default16,Nếu cho biết thì phải khen ta nha!,reused,nam_bo_rewrite
+monseal17Default5,Phải bảo vệ hải cẩu chúa!!,reused,nam_bo_rewrite
+monseal17SelfDie30,Hải cẩu chúa ơi ~!!,reused,nam_bo_rewrite
+monseal18bossdefaulta21,Ta chỉ hết bí quyết rồi nha,reused,nam_bo_rewrite
+monseal18bossdefaulta28,Tụi tui sẽ bảo vệ hải cẩu chúa !,reused,nam_bo_rewrite
+monseal18bossdefaulta29,Tụi tui sẽ bảo vệ hải cẩu chúa !!,reused,nam_bo_rewrite
+monseal18bossdefaulta30,Hãy tin tụi tui đi mà!!,reused,nam_bo_rewrite
+monseal18bossdefaulta31,Hãy giao cho tụi tui đi.,reused,nam_bo_rewrite
+monseal18bossdefaulta32,Hãy giao cho tụi tui!.,reused,nam_bo_rewrite
+monseal18bossstart1,Đã dạy cho rồi mà vẫn vậy!,reused,nam_bo_rewrite
+monseal18mpsselfreleased11,Lêu lêu!!,reused,nam_bo_rewrite
+monseal18pudadakdmgd34,Chẳng chết đâu!!,reused,nam_bo_rewrite
+monseal18pudadakdmgd7,An toàn rồi!!,reused,nam_bo_rewrite
+monseal18pudadakdmgd8,Ta không chết!!,reused,nam_bo_rewrite
+monseal19mpdefault02,Mùi gì vậy,reused,nam_bo_rewrite
+monseal19mpdefault08,Dạy tụi tui với,reused,nam_bo_rewrite
+monseal19mpstart4,Không để cho đứa nào thoát!,reused,nam_bo_rewrite
+monseal19mwdefault01,Gì vậy?,reused,nam_bo_rewrite
+monseal20mpslocked2,Bật lên là được mà!,reused,nam_bo_rewrite
+monseal20mpsreleased1,Phân thân!!,reused,nam_bo_rewrite
+monseal20mwuserdie1,Đi nha~,reused,nam_bo_rewrite
+monseal20mwuserlocked1,Tui chẳng làm gì cả,reused,nam_bo_rewrite
+monseal21bossdefault21,Tui không khoan nhượng đâu!,reused,nam_bo_rewrite
+monseal21bossdefault22,Tui định sống thiệt hiền lành!,reused,nam_bo_rewrite
+monseal21bossdmgd1,Gì vậy?,reused,nam_bo_rewrite
+monseal21bossuserlocked1,Mát hông?,reused,nam_bo_rewrite
+monseal21dbstart3,Lạ ha ~,reused,nam_bo_rewrite
+monseal21dbstart4,Cây này hơi nhỏ ha?,reused,nam_bo_rewrite
+monseal22generala2,Con chó con này hơi to ha,reused,nam_bo_rewrite
+monseal22generala6,Yêu ghê,reused,nam_bo_rewrite
+monseal22generalb11,Hải cẩu chúa làm sao vậy ta,reused,nam_bo_rewrite
+monseal23generala2,Không thể cho con chó của tụi mình,reused,nam_bo_rewrite
+monseal23generalb1,Ui làm sao giờ?,reused,nam_bo_rewrite
+monseal23generalb6,Ở đâu ha?,reused,nam_bo_rewrite
+monseal24boss3,Chơi trong này được hông?,reused,nam_bo_rewrite
+monseal24boss4,Có thiệt tui là cún con hông?,reused,nam_bo_rewrite
+monseal24boss6,Tui đã phấn chấn lại rồi!,reused,nam_bo_rewrite
+monseal24bosslock15,Tui chết mất ~,reused,nam_bo_rewrite
+monseal24generala1,Đã tìm thấy hoàng đế hải cẩu chúa,reused,nam_bo_rewrite
+monseal24generalc1,Cún con à vẫy chân đi,reused,nam_bo_rewrite
+monseal24userlocka6,Đây là hình phạt vì đã bắt nạt hải cẩu chúa,reused,nam_bo_rewrite
+monseal25userlocka2,Đâu rồi ha!,reused,nam_bo_rewrite
+monseal27boss12,Chắc là sẽ có item thôi,reused,nam_bo_rewrite
+monseal27boss17,Mấy tên ma quỷ sao lại thần bí vậy ha?,reused,nam_bo_rewrite
+monseal27boss19,Chúng ăn cơm bằng gì ha?,reused,nam_bo_rewrite
+monseal27mona1,Tui đã gọi rồi chủ nhân!,reused,nam_bo_rewrite
+monseal27mona2,Tui biết rồi chủ nhân!,reused,nam_bo_rewrite
+monseal27monb1,Ta chạy nhanh hơn đó,reused,nam_bo_rewrite
+monseal27monb2,Cẩn thận với ta đó ~,reused,nam_bo_rewrite
+monseal27monuserdeada6,Bắt được rồi!!!,reused,nam_bo_rewrite
+Mseal28pddefault11,Im ắng ghê ha!,reused,nam_bo_rewrite
+Mseal28pdselflocked8,Giúp tui với!!,reused,nam_bo_rewrite
+Mseal28pdselflocked9,Làm ơn cứu tui đi mà!,reused,nam_bo_rewrite
+Mseal28pdselfreleased7,Tấn công! Tấn công!,reused,nam_bo_rewrite
+Mseal29wddefault4,Chán hông?,reused,nam_bo_rewrite
+Mseal30bossbombdie32,Hử? Bị bắt rồi hả?,reused,nam_bo_rewrite
+Mseal30bossbomblocked14,Không coi Monitor hả?,reused,nam_bo_rewrite
+Mseal30bossdefault12,Động tác nào!,reused,nam_bo_rewrite
+Mseal30bossdefault17,Sao tìm ta hoài vậy?,reused,nam_bo_rewrite
+Mseal30bossdefault5,Nhảy lên coi nào!,reused,nam_bo_rewrite
+Mseal30pddefault9,Ai gọi đó ha?,reused,nam_bo_rewrite
+NPmst01MonDeadB1,Thằng nào mà to gan ha!,reused,nam_bo_rewrite
+NPmst01UserbeLockedB1,Ha ha ha ha,reused,nam_bo_rewrite
+NPmst01UserbeLockedB3,Bắt được rồi nha!,reused,nam_bo_rewrite
+NPmst01UserbeLockedB4,Thằng ngốc!,reused,nam_bo_rewrite
+NPmst01UserDeadB2,Thử xông lên lần nữa nào~~,reused,nam_bo_rewrite
+NPmst01UserDeadB3,Tui cho nó sặc nước rồi!,reused,nam_bo_rewrite
+NPmst02MonDeadB3,Thằng nào mà to gan ha!,reused,nam_bo_rewrite
+NPmst02Start1,Hình như có ai đó ha,reused,nam_bo_rewrite
+NPmst02Start10,Tui về nha ~~,reused,nam_bo_rewrite
+NPmst02Start2,Bạn đừng nói chuyện đáng sợ vậy ~~~,reused,nam_bo_rewrite
+NPmst02Start4,Sợ quá tui sắp bị sặc nước rồi,reused,nam_bo_rewrite
+NPmst02Start5,Nghe như tiếng gì ha,reused,nam_bo_rewrite
+NPmst02Start6,"Hu, tui muốn về nhà!",reused,nam_bo_rewrite
+NPmst02UserbeLockedB3,Thằng ngốc!,reused,nam_bo_rewrite
+NPmst02UserbeLockedB4,Ha ha ha ha,reused,nam_bo_rewrite
+NPmst02UserbeLockedB5,Bắt được rồi nha!,reused,nam_bo_rewrite
+NPmst02UserDeadB2,Tui cho nó sặc nước rồi!,reused,nam_bo_rewrite
+NPmst02UserDeadB4,Thử xông lên lần nữa nào~~,reused,nam_bo_rewrite
+NPmst13GeneralA1,Mi mà ra đây coi,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst13GeneralA2,Mi mà ra đây coi,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst13GeneralA3,Muốn đi chơi quá hà,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst13GeneralA8,Đã nhốt kỹ chưa hông?,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst13UserDeadA3,Yếu vậy hả~,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst14GeneralA3,Gió mát hen ~,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst14MonDeadA1,Không liên quan tới tui nha,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst14MonDeadA2,Tui là khách mà,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst14MonDeadA3,Ai dzậy ta?,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst15BossTimeLeft1-2,Tăng tốc thêm nữa hen?,reused,nam_bo_rewrite
+NPmst15BossTimeLeft2-1,Mi bị sặc nước trước rồi nha!,reused,nam_bo_rewrite
+NPmst15Chat4,Này!!!,reused,nam_bo_rewrite
+NPmst15GeneralB1,Mi muốn bị sặc nước hả!,reused,nam_bo_rewrite
+NPmst15GeneralB3,Mi lên trời mà chơi boom đi nha!,reused,nam_bo_rewrite
+NPmst15GeneralBoss2,Đòn tấn công của ta là không có nhân từ đâu nha.,reused,nam_bo_rewrite
+NPmst16GeneralA3,Sợ quá T-T,reused,nam_bo_rewrite
+NPmst16GeneralA4,Nếu đến là bị sặc nước đó nha.,reused,nam_bo_rewrite
+NPmst16GeneralA5,Nếu đến là bị sặc nước đó nha.,reused,nam_bo_rewrite
+NPmst16GeneralA7,Về nhà hông T-T,reused,nam_bo_rewrite
+NPmst17GeneralA1,Dễ thương và,reused,nam_bo_rewrite
+NPmst17GeneralA2,Tui đang canh gác.,reused,nam_bo_rewrite
+NPmst17GeneralA9,Cái thằng kia đừng đánh nữa,reused,nam_bo_rewrite
+NPmst17UserbeLockedA1,Vậy tiếp tục nghe nha.,reused,nam_bo_rewrite
+NPmst17UserDeadA2,Tui kêu to hơn nha!,reused,nam_bo_rewrite
+NPmst18BossAngry1,Tui sẽ thôi không đặt nữa!!,reused,nam_bo_rewrite
+NPmst18BossAngry7,Hưm! Sợ hen!,reused,nam_bo_rewrite
+NPmst19MonDeadB1,Thằng nào mà to gan dữ vậy!,reused,nam_bo_rewrite
+NPmst19MonDeadB2,Cho mi sặc nước nè!!,reused,nam_bo_rewrite
+NPmst19UserbeLockedB3,Bắt được rồi nha!,reused,nam_bo_rewrite
+NPmst19UserbeLockedB4,Thằng ngốc!,reused,nam_bo_rewrite
+NPmst19UserDeadB2,Tụi mình thử xông lên 1 lần nữa nào~~,reused,nam_bo_rewrite
+NPmst19UserDeadB3,Tui cho nó sặc nước rồi!,reused,nam_bo_rewrite
+NPmst20GeneralB1,Chà cùng chơi một bàn nha!,reused,nam_bo_rewrite
+NPmst20MonDeadConfusionA2,Phục thù thôi! Phục thù thôi!,reused,nam_bo_rewrite
+NPmst20UserDeadA2,Thôi bạn dở lắm~,reused,nam_bo_rewrite
+NPmst20UserDeadA3,Bực mình ghê nha~,reused,nam_bo_rewrite
+NPmst21BossStart2,Cứu tui với~,reused,nam_bo_rewrite
+NPmst21TimePass1Boss2,Bạn đã sợ lắm hông? Kha kha,reused,nam_bo_rewrite
+NPmst21TimePass1Boss3,Xin lỗi tui đùa đó mà,reused,nam_bo_rewrite
+NPmst21TimePass1Boss4,Tui sẽ cho bạn kho báu nên bớt giận đi mà,reused,nam_bo_rewrite
+NPmst22GeneralB3,Phải thiệt cẩn thận đó nha,reused,nam_bo_rewrite
+NPmst23GeneralB1,Đừng có mà chọc tức tui,reused,nam_bo_rewrite
+NPmst23GeneralB4,Tui sẽ không tha thứ đâu,reused,nam_bo_rewrite
+NPmst23GeneralB7,Phải thiệt cẩn thận đó nha,reused,nam_bo_rewrite
+NPmst24bossA11,Mi chơi Boom dở quá,reused,nam_bo_rewrite
+NPmst24bossA14,Đừng chửi tui mà,reused,nam_bo_rewrite
+NPmst25GeneralA11,Nếu thua sẽ xấu hổ với lão cướp biển!,reused,nam_bo_rewrite
+NPmst25GeneralA14,Hi hi,reused,nam_bo_rewrite
+NPmst25GeneralA8,Một con BÉ BỎNG là đúng 100 tiền XU.,reused,nam_bo_rewrite
+NPmst25MonDeadA6,Tha lỗi cho tui với!,reused,nam_bo_rewrite
+NPmst03GeneralA1,?Nếu bắt được tui thì trò chơi kết thúc rồi!,reused,nam_bo_rewrite
+NPmst03GeneralA4,Nãy bạn có thấy bóng Uni không?,reused,nam_bo_rewrite
+NPmst03GeneralA6,Thủ lĩnh của tụi tui độc ác lắm,reused,nam_bo_rewrite
+NPmst03MonCheerA4,Tui sẽ không tha thứ đâu!,reused,nam_bo_rewrite
+NPmst04MonDeadA2,Gì vậy? Gì vậy?,reused,nam_bo_rewrite
+NPmst04MonDeadB1,Thằng nào mà to gan vậy!,reused,nam_bo_rewrite
+NPmst04UserbeLockedB1,Ha ha ha ha,reused,nam_bo_rewrite
+NPmst04UserbeLockedB3,Bắt được rồi nha!,reused,nam_bo_rewrite
+NPmst04UserDeadB3,Tui cho nó sặc nước rồi!,reused,nam_bo_rewrite
+NPmst05MonDeadA1,Gì vậy? Gì vậy?,reused,nam_bo_rewrite
+NPmst05MonDeadB3,Thằng nào mà to gan vậy!,reused,nam_bo_rewrite
+NPmst05Start5,Ôi mệt quá~,reused,nam_bo_rewrite
+NPmst05UserbeLockedA3,Ngốc quá!,reused,nam_bo_rewrite
+NPmst05UserbeLockedB3,Thằng ngốc!,reused,nam_bo_rewrite
+NPmst05UserbeLockedB4,Ha ha ha ha,reused,nam_bo_rewrite
+NPmst05UserbeLockedB5,Bắt được rồi nha!,reused,nam_bo_rewrite
+NPmst05UserDeadB2,Tui cho nó sặc nước rồi!,reused,nam_bo_rewrite
+NPmst06BossAngry2,Mi làm ta nổi cáu rồi nha!!!,reused,nam_bo_rewrite
+NPmst06BossAngryB1,Kha kha giờ thì mi hết đời nha!,reused,nam_bo_rewrite
+NPmst06BossAngryB2,Thủ lĩnh ơi! Tui cũng sẽ giúp!,reused,nam_bo_rewrite
+NPmst06MonCheerA1,Thủ lĩnh ơi cẩn thận đó!,reused,nam_bo_rewrite
+NPmst06MonCheerA3,Đừng đánh thủ lĩnh của tụi tui mà~~,reused,nam_bo_rewrite
+NPmst06MonCheerB1,Thủ lĩnh! Tui đi đây!,reused,nam_bo_rewrite
+NPmst06MonDeadA1,Gì vậy? Gì vậy?,reused,nam_bo_rewrite
+NPmst06MonDeadB3,Thằng nào mà to gan vậy!,reused,nam_bo_rewrite
+NPmst06MonDeadBoss3,Tụi bây phải phục thù đi!,reused,nam_bo_rewrite
+NPmst06MonDeadWithBossB1,Cứu tui với!!,reused,nam_bo_rewrite
+NPmst06MonDeadWithBossB2,Lần sau tui không để thua đâu!,reused,nam_bo_rewrite
+NPmst06MonDeadWithBossBoss2,Cứu tui với~!,reused,nam_bo_rewrite
+NPmst06MonWhenDieBoss1,Tui sẽ phục thù bạn!,reused,nam_bo_rewrite
+NPmst06UserbeLockedB2,Thằng ngốc!,reused,nam_bo_rewrite
+NPmst06UserbeLockedB3,Ha ha ha ha,reused,nam_bo_rewrite
+NPmst06UserbeLockedB4,Bắt được rồi nha!,reused,nam_bo_rewrite
+NPmst06UserDeadB2,Tui cho nó sặc nước rồi!,reused,nam_bo_rewrite
+NPmst07MonDeadA2,Gì vậy? Gì vậy?,reused,nam_bo_rewrite
+NPmst07MonDeadB1,Thằng nào mà to gan vậy!,reused,nam_bo_rewrite
+NPmst07UserbeLockedB1,Ha ha ha ha,reused,nam_bo_rewrite
+NPmst07UserbeLockedB3,Bắt được rồi nha!,reused,nam_bo_rewrite
+NPmst07UserbeLockedB4,Thằng ngốc!,reused,nam_bo_rewrite
+NPmst07UserDeadB3,Tui cho nó sặc nước rồi!,reused,nam_bo_rewrite
+NPmst08MonDeadA1,Tụi nhỏ của tụi tui bị sặc nước rồi!,reused,nam_bo_rewrite
+NPmst08MonDeadA2,Tụi nhỏ của tụi tui bị sặc nước rồi!!,reused,nam_bo_rewrite
+NPmst08MonDeadConfusionA2,Phục thù thôi! Phục thù thôi!,reused,nam_bo_rewrite
+NPmst08UserDeadA2,Thôi bạn dở lắm~,reused,nam_bo_rewrite
+NPmst08UserDeadA3,Bực mình ghê nha~,reused,nam_bo_rewrite
+NPmst09BossAngry1,Tui không chịu đau được đâu!!,reused,nam_bo_rewrite
+NPmst09BossAngry2,Tui ghét bị sặc nước lắm!!!,reused,nam_bo_rewrite
+NPmst09BossTimeLeft2,Chơi một tí nha?,reused,nam_bo_rewrite
+NPmst09GeneralA2,Phải giúp thủ lĩnh thôi~,reused,nam_bo_rewrite
+NPmst09MonCheerA2,Chắc đau lắm đó!,reused,nam_bo_rewrite
+NPmst09MonCheerA3,Mi đánh thủ lĩnh của tụi tui hả!,reused,nam_bo_rewrite
+NPmst09MonDeadA1,Tụi nhỏ của tụi tui bị sặc nước rồi!,reused,nam_bo_rewrite
+NPmst09MonDeadA2,Tụi nhỏ của tụi tui bị sặc nước rồi!!,reused,nam_bo_rewrite
+NPmst09MonDeadConfusionA1,Sợ quá ~ Sợ quá ~,reused,nam_bo_rewrite
+NPmst09MonDeadConfusionA2,Phục thù thôi! Phục thù thôi!,reused,nam_bo_rewrite
+NPmst09MonDeadWithBossA1,Không có thủ lĩnh tui không muốn sống trên đời này nữa!,reused,nam_bo_rewrite
+NPmst09UserDeadA2,Thôi bạn dở lắm~,reused,nam_bo_rewrite
+NPmst09UserDeadA3,Bực mình ghê nha~,reused,nam_bo_rewrite
+NPmst10MonDeadA2,Gì vậy? Gì vậy?,reused,nam_bo_rewrite
+NPmst10MonDeadB1,Thằng nào mà to gan vậy!,reused,nam_bo_rewrite
+NPmst10UserbeLockedB2,Kha kha kha,reused,nam_bo_rewrite
+NPmst10UserbeLockedB3,Bắt được rồi nha!,reused,nam_bo_rewrite
+NPmst10UserbeLockedB4,Thằng ngốc!,reused,nam_bo_rewrite
+NPmst10UserDeadB3,Tui cho nó sặc nước rồi!,reused,nam_bo_rewrite
+mongolem03default05,Thương ta nha!,reused,nam_bo_rewrite
+mongolem09default21,Tụi bây dám tới đây à?,reused,nam_bo_rewrite
+mongolem12default05,Coi lại chứ?,reused,nam_bo_rewrite
+mongolem12default07,Cho coi lại nè!,reused,nam_bo_rewrite
+mongolem12default16,Tụi này ở đâu ra vậy?,reused,nam_bo_rewrite
+mongolem15default04,Vừa né vừa bắt ta khó hông?,reused,nam_bo_rewrite
+mongolem15default08,Tụi nó vẫn chưa chết hông?,reused,nam_bo_rewrite
+mongolem17firstmondie01,Tui giỏi quá hen,reused,nam_bo_rewrite
+mongolem18default20,Tụi này ở đâu ra vậy?,reused,nam_bo_rewrite
+mongolem18default21,Hihi,reused,nam_bo_rewrite
+ShopLevel,Cấp:,reused,nam_bo_rewrite
+monseal01generala1,Vườn hoa vẫn không sao hông?,reused,nam_bo_rewrite
+monseal01generala2,Hoa mà héo là nguy đó,reused,nam_bo_rewrite
+monseal01generala7,Đụng vào là chết đó~,reused,nam_bo_rewrite
+monseal01generalb4,Tưới nước đều nha,reused,nam_bo_rewrite
+monseal01generalb5,Đừng làm hư vườn hoa nha,reused,nam_bo_rewrite
+monseal01generalc3,Cứu tui với ~,reused,nam_bo_rewrite
+monseal02generala3,Cứu tui với~,reused,nam_bo_rewrite
+monseal02generalb2,Khi tui tưới nước thì tránh ra,reused,nam_bo_rewrite
+monseal02generalb4,Tui sợ nước ở vườn hoa lắm,reused,nam_bo_rewrite
+monseal03boss03,Ta là hoàng đế hải cẩu hiền lành đây,reused,nam_bo_rewrite
+monseal03boss06,Tui xin lỗi…..,reused,nam_bo_rewrite
+monseal03boss08,Cẩn thận vẫn tốt hơn!!!,reused,nam_bo_rewrite
+monseal03boss12,Vì hiền nên mới nhịn đó~,reused,nam_bo_rewrite
+monseal03boss13,Hiền như tui cũng muốn chửi lắm đây!!!,reused,nam_bo_rewrite
+monseal03boss16,Tưới nước cho vườn hoa!!!,reused,nam_bo_rewrite
+monseal04generala1,Chơi rồi đi đi,reused,nam_bo_rewrite
+monseal04generala3,Woa~,reused,nam_bo_rewrite
+monseal04generala5,Đánh một phát thôi nha?,reused,nam_bo_rewrite
+monseal04generala6,Ai đến đó ha,reused,nam_bo_rewrite
+monseal05generala1,Ai sẽ không đến hông?,reused,nam_bo_rewrite
+monseal05generala11,Chờ hải cẩu đến đã.,reused,nam_bo_rewrite
+monseal05generala2,Ở đâu hết rồi ha…,reused,nam_bo_rewrite
+monseal05generala6,Khách đến rồi!!!!,reused,nam_bo_rewrite
+monseal05mondeada1,Vẫn không được đi,reused,nam_bo_rewrite
+monseal06generala1,Cùng dẫm chân lên sàn nhà nha?,reused,nam_bo_rewrite
+monseal06generala10,Ăn cái gì nha?,reused,nam_bo_rewrite
+monseal06generala11,Thiếu thì nói nha,reused,nam_bo_rewrite
+monseal06generala12,Có gì gọi nha!,reused,nam_bo_rewrite
+monseal06generala20,Này làm gì vậy?,reused,nam_bo_rewrite
+monseal06generala30,Tui không được chơi hả?,reused,nam_bo_rewrite
+monseal06generala4,Ngủ trưa nha?,reused,nam_bo_rewrite
+monseal06generala6,Cho thêm nha?,reused,nam_bo_rewrite
+monseal06mondamagea1,"Ngồi đi, tui sẽ đi~",reused,nam_bo_rewrite
+monseal06mondeada2,Phải cho bánh chứ…xㅠx,reused,nam_bo_rewrite
+monseal06userbelockeda1,Huhuhuhu,reused,nam_bo_rewrite
+monseal06userbelockeda2,Không về nhà cũng được.,reused,nam_bo_rewrite
+monseal06userbelockeda3,Sẽ sống luôn ở đây.,reused,nam_bo_rewrite
+monseal07generala10,Quân địch có ở đâu ha?,reused,nam_bo_rewrite
+monseal07generala16,Xin chào~~,reused,nam_bo_rewrite
+monseal07generala21,Cứu tui với~,reused,nam_bo_rewrite
+monseal07generala4,Vất vả quá ha~,reused,nam_bo_rewrite
+monseal07generala5,Vậy tui đi đây,reused,nam_bo_rewrite
+monseal08generala3,Nó ở đâu ha?,reused,nam_bo_rewrite
+monseal08generala5,Có vẻ im ắng ha,reused,nam_bo_rewrite
+monseal09boss17,Mấy thằng xấu xa này~~~~,reused,nam_bo_rewrite
+monseal09boss19,Cái quái gì vậy…,reused,nam_bo_rewrite
+monseal09boss22,Không thể im lặng được!!,reused,nam_bo_rewrite
+monseal09boss23,Im lặng!!,reused,nam_bo_rewrite
+monseal09boss25,Oái???,reused,nam_bo_rewrite
+monseal09generala2,Sao ta lại kêu cái này ha…,reused,nam_bo_rewrite
+monseal10generala5,Tui phải bảo vệ mới được,reused,nam_bo_rewrite
+monseal13generala2,Hình như có ai tới ta…,reused,nam_bo_rewrite
+monseal17Default23,Phải chăm chỉ đó!!,reused,nam_bo_rewrite
+monseal17Default28,Đừng cho nó đi lên đó,reused,nam_bo_rewrite
+monseal17Default33,Lát nữa triệu tập lại đó!,reused,nam_bo_rewrite
+monseal17Die35,Phải cẩn thận đó!,reused,nam_bo_rewrite
+monseal18bossdefaulta4,Bom đó mạnh lắm,reused,nam_bo_rewrite
+monseal19mpslocked1,Chờ thêm 5 giây nữa coi sao,reused,nam_bo_rewrite
+monseal19mpslocked2,Để coi nào!,reused,nam_bo_rewrite
+monseal20mpuserlocked1,Làm gì đó,reused,nam_bo_rewrite
+monseal21bossdefault24,Mi cũng thử coi!,reused,nam_bo_rewrite
+monseal21bossstart4,Làm gì đó,reused,nam_bo_rewrite
+monseal21bossstart6,Ta sẽ cho mi coi đây!,reused,nam_bo_rewrite
+monseal21bossstart7,Làm gì có chuyện đó!,reused,nam_bo_rewrite
+monseal23generalb4,Tụi nó sẽ tấn công chúng ta,reused,nam_bo_rewrite
+monseal24generalb1,Hoàng đế không phải là chó nha,reused,nam_bo_rewrite
+monseal24generalb3,Không được bất cẩn đó,reused,nam_bo_rewrite
+monseal27boss07,Cứ chờ đó,reused,nam_bo_rewrite
+Mseal28pddefault13,Chờ ở đây coi nào,reused,nam_bo_rewrite
+Mseal28pdselflocked20,Thử làm lần nữa coi nào!,reused,nam_bo_rewrite
+Mseal30wddefault1,Tên này nhát gan ha,reused,nam_bo_rewrite
+NPmst03BossAngry2,Giờ là thiệt đó nha!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst03MonDieA12,Cứ chờ đó,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst03MonDieA15,Đâu có lý nào mi mạnh vậy!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst03MonDieA17,Ư ạc! Cứ chờ đó….,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst03MonDieA4,"Vua bạch tuộc ơi, cứu tui với~",review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst03MonDieA8,Cứu tui với~,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst03UserbeLockedA1,Khư khư bắt được rồi nha~,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst12MonDeadA4,Cẩn thận nha!!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPmst15BossStart2,Kha kha kha….Tốt thôi ta sẽ cho coi,reused,nam_bo_rewrite
+NPmst18BossAngry5,Giờ không cho coi nữa!,reused,nam_bo_rewrite
+NPmst18GeneralA4,Đâu tránh ra coi nào!,reused,nam_bo_rewrite
+NPmst18MonCheerA1,Tấn công nha!,reused,nam_bo_rewrite
+NPmst19MonCantMoveB1,Có ai vậy ta!!!,reused,nam_bo_rewrite
+NPmst21BossStart7,Kha kha kha đâu mi thử hồi sinh một lần nữa coi nào,reused,nam_bo_rewrite
+NPmst21TimePass2Boss2,Coi mi chạy đi đâu nào~,reused,nam_bo_rewrite
+NPmst23GeneralB2,Mi dám coi thường lời cảnh cáo ha,reused,nam_bo_rewrite
+NPmst25MonDeadA7,Cẩn thận đó!,reused,nam_bo_rewrite
+NPmst25MonDeadA8,Trời mạnh ghê ha!,reused,nam_bo_rewrite
+NPmst25UserDeadA4,Mi chơi cái gì vậy?,reused,nam_bo_rewrite
+NPmst25UserDeadA8,Luyện tập đi rồi hãy tới đây,reused,nam_bo_rewrite
+NPmst26GeneralA1,Tui muốn ăn sườn nướng!,reused,nam_bo_rewrite
+NPmst26GeneralA10,Tui muốn ăn cơm gà!,reused,nam_bo_rewrite
+NPmst26GeneralA11,Tui muốn ăn bún bò Huế!,reused,nam_bo_rewrite
+NPmst26GeneralA14,Tui muốn ăn vịt quay!,reused,nam_bo_rewrite
+NPmst26GeneralA15,Bạn thành heo rồi hả?,reused,nam_bo_rewrite
+NPmst26GeneralA16,Tui muốn ăn heo quay!,reused,nam_bo_rewrite
+NPmst26GeneralA17,Tui muốn uống sữa!,reused,nam_bo_rewrite
+NPmst26GeneralA18,Tui muốn ăn bánh bao!,reused,nam_bo_rewrite
+NPmst26GeneralA19,Tui muốn ăn mì xào giòn!,reused,nam_bo_rewrite
+NPmst26GeneralA2,Tui muốn ăn khoai tây chiên!,reused,nam_bo_rewrite
+NPmst26GeneralA20,Tui muốn uống nước sâm!,reused,nam_bo_rewrite
+NPmst26GeneralA22,Tui muốn ăn chè bà ba!,reused,nam_bo_rewrite
+NPmst26GeneralA23,Tui muốn ăn chè thập cẩm!,reused,nam_bo_rewrite
+NPmst26GeneralA24,Tui muốn ăn hamburger sườn nướng !,reused,nam_bo_rewrite
+NPmst26GeneralA25,Tui muốn ăn ốc xào me!,reused,nam_bo_rewrite
+NPmst26GeneralA26,Tui muốn ăn trứng vịt lộn….,reused,nam_bo_rewrite
+NPmst26GeneralA27,Tui muốn ăn bún thịt nướng!,reused,nam_bo_rewrite
+NPmst26GeneralA28,Tui muốn ăn bánh bèo!,reused,nam_bo_rewrite
+NPmst26GeneralA3,Tui muốn ăn mấy món ếch!,reused,nam_bo_rewrite
+NPmst26GeneralA30,Tui muốn ăn mực chiên!,reused,nam_bo_rewrite
+NPmst26GeneralA31,Tui muốn ăn há cảo!,reused,nam_bo_rewrite
+NPmst26GeneralA33,Mấy cái thằng này! Ta đang nói mà!!,reused,nam_bo_rewrite
+NPmst26GeneralA34,Tui muốn ăn đùi gà….,reused,nam_bo_rewrite
+NPmst26GeneralA36,Mấy đứa này có cái chân bàn mà cũng ăn hả!,reused,nam_bo_rewrite
+NPmst26GeneralA37,Không thể thắng nổi mấy thằng chỉ biết ăn đó hả!!,reused,nam_bo_rewrite
+NPmst26GeneralA38,Tui muốn ăn kem sôcôla!,reused,nam_bo_rewrite
+NPmst26GeneralA39,Tui muốn ăn cháo vịt!,reused,nam_bo_rewrite
+NPmst26GeneralA4,Tui muốn ăn gỏi cuốn!,reused,nam_bo_rewrite
+NPmst26GeneralA40,Tui muốn ăn hamburger phô mai!,reused,nam_bo_rewrite
+NPmst26GeneralA41,Tui muốn ăn kem trái dừa!,reused,nam_bo_rewrite
+NPmst26GeneralA42,Tui muốn ăn salad táo!,reused,nam_bo_rewrite
+NPmst26GeneralA43,Tui muốn ăn cơm trộn giá!,reused,nam_bo_rewrite
+NPmst26GeneralA44,Tui muốn ăn yaourt!,reused,nam_bo_rewrite
+NPmst26GeneralA45,Tui muốn ăn chè chuối!,reused,nam_bo_rewrite
+NPmst26GeneralA5,Tui muốn ăn bột chiên!,reused,nam_bo_rewrite
+NPmst26GeneralA7,Căng thẳng cũng tốt đó.,reused,nam_bo_rewrite
+NPmst26GeneralA8,Tui muốn ăn kim chi!,reused,nam_bo_rewrite
+NPmst26GeneralA9,Tui muốn ăn bánh mì ốp la!,reused,nam_bo_rewrite
+NPmst26MonDeadA1,Tại suốt ngày chỉ nói chuyện ăn uống nên mới vậy chứ còn gì!,reused,nam_bo_rewrite
+NPmst26UserDeadA10,Tui muốn ăn salad trái cây….,reused,nam_bo_rewrite
+NPmst26UserDeadA11,Tui muốn ăn cơm chiên,reused,nam_bo_rewrite
+NPmst26UserDeadA12,Tui muốn ăn sườn nướng!,reused,nam_bo_rewrite
+NPmst26UserDeadA13,Tui muốn ăn pizza sườn nướng….,reused,nam_bo_rewrite
+NPmst26UserDeadA14,Tui muốn ăn cơm trộn….,reused,nam_bo_rewrite
+NPmst26UserDeadA15,Tui muốn ăn bắp xào....,reused,nam_bo_rewrite
+NPmst26UserDeadA16,Tui muốn ăn salad cá hồi……,reused,nam_bo_rewrite
+NPmst26UserDeadA17,Tui muốn uống nước cam…,reused,nam_bo_rewrite
+NPmst26UserDeadA18,Tui muốn uống sinh tố dâu…….,reused,nam_bo_rewrite
+NPmst26UserDeadA19,Tui muốn uống nước mía….,reused,nam_bo_rewrite
+NPmst26UserDeadA2,Tui muốn ăn cơm chiên Dương Châu….,reused,nam_bo_rewrite
+NPmst26UserDeadA20,Tui muốn ăn cá viên chiên….,reused,nam_bo_rewrite
+NPmst26UserDeadA21,Tui muốn ăn khô bò….,reused,nam_bo_rewrite
+NPmst26UserDeadA22,Tui muốn ăn kem sầu riêng…,reused,nam_bo_rewrite
+NPmst26UserDeadA23,Tui muốn uống nước ngọt….,reused,nam_bo_rewrite
+NPmst26UserDeadA24,Tui muốn ăn sâm bổ lượng!,reused,nam_bo_rewrite
+NPmst26UserDeadA25,Tui muốn ăn bánh tét….,reused,nam_bo_rewrite
+NPmst26UserDeadA26,Tui muốn ăn bánh trung thu….,reused,nam_bo_rewrite
+NPmst26UserDeadA3,Tui muốn ăn bò bía…,reused,nam_bo_rewrite
+NPmst26UserDeadA4,Tui muốn ăn phá lấu….,reused,nam_bo_rewrite
+NPmst26UserDeadA5,Tui muốn ăn hủ tiếu Nam Vang…,reused,nam_bo_rewrite
+NPmst26UserDeadA6,Tui muốn ăn gà rán….,reused,nam_bo_rewrite
+NPmst26UserDeadA7,Tui muốn ăn bánh canh cua!.,reused,nam_bo_rewrite
+NPmst26UserDeadA8,Tui muốn ăn phở gà…..,reused,nam_bo_rewrite
+NPmst26UserDeadA9,Tui muốn ăn bánh cuốn….,reused,nam_bo_rewrite
+NPmst27BossAngry1,Ta đếm tới 3 là phải tới đó!,reused,nam_bo_rewrite
+NPmst27BossAngry5,Tại anh thương nên mới đánh đó nha!,reused,nam_bo_rewrite
+NPmst27GeneralA1,Đi đi Vua bạch tuộc!!!!!!!!!!!,reused,nam_bo_rewrite
+NPmst27GeneralA10,Đẩy hết mấy thằng này vô góc coi!,reused,nam_bo_rewrite
+NPmst27GeneralA14,Thiệt ra tui là thủ lĩnh đây.,reused,nam_bo_rewrite
+NPmst27GeneralA15,"Cho mi bị sặc nước nè, lêu lêu",reused,nam_bo_rewrite
+NPmst27GeneralA19,Ư? Tui vẫn chưa mệt mà!,reused,nam_bo_rewrite
+NPmst27GeneralA20,Nếu mi không tin thì thử tấn công ta coi!,reused,nam_bo_rewrite
+NPmst27GeneralA22,Đâu có lý nào mi lại thắng được nhưng..!!^^*,reused,nam_bo_rewrite
+NPmst27GeneralA23,"Coi nào, Vua bạch tuộc! Làm tốt đó nha!",reused,nam_bo_rewrite
+NPmst27GeneralA26,Làm cho tốt đó nha!!!,reused,nam_bo_rewrite
+NPmst27GeneralA27,Mấy đứa bây cẩn thận đó!,reused,nam_bo_rewrite
+NPmst27GeneralA3,Đừng bận tâm tới tui ~,reused,nam_bo_rewrite
+NPmst27GeneralA36,"Cố lên, Vua bạch tuộc ơi.",reused,nam_bo_rewrite
+NPmst27GeneralA4,Tui biết hết rồi.,reused,nam_bo_rewrite
+NPmst27GeneralA7,Tui đã chuẩn bị cái này cho bạn đó.,reused,nam_bo_rewrite
+NPmst27GeneralA8,Những đứa như tụi bây là giam hết vô một phòng,reused,nam_bo_rewrite
+NPmst27MonCheerA2,Thằng này! Mi đang làm gì đó!,reused,nam_bo_rewrite
+NPmst27MonCheerA3,Nè! Bạn tỉnh lại đi!,reused,nam_bo_rewrite
+NPmst27UserbeLockedA1,Bây giờ hãy đi theo dõi nó đi,reused,nam_bo_rewrite
+NPmst27UserDeadA4,Ư? Tiếng côn trùng nổ ở đâu ta….,reused,nam_bo_rewrite
+NPmst27UserDeadA5,Ư? Tiếng bóng nổ ở đâu ta….,reused,nam_bo_rewrite
+NPmst28MonDeadB1,Thằng nào mà to gan vậy ta!,reused,nam_bo_rewrite
+NPmst28UserbeLockedB3,Bắt được rồi nha!,reused,nam_bo_rewrite
+NPmst29GeneralA1,Canh đừng để nó trốn thoát đó!===,reused,nam_bo_rewrite
+NPmst29GeneralB1,Lại đây cứu tui với~!,reused,nam_bo_rewrite
+NPmst29GeneralB3,Tui không nói dối đâu!!!!,reused,nam_bo_rewrite
+NPmst29GeneralB4,Cứu tui với!!,reused,nam_bo_rewrite
+NPmst29GeneralB5,Tui cùng đội với các bạn mà!!,reused,nam_bo_rewrite
+NPmst29MonDeadB1,Thằng nào mà to gan vậy ta!,reused,nam_bo_rewrite
+NPmst29UserbeLockedB3,Bắt được rồi nha!,reused,nam_bo_rewrite
+NPmst29UserDeadB3,Tui cho nó sặc nước rồi!,reused,nam_bo_rewrite
+NPmst30BossStart2,Tui đang chờ đây….,reused,nam_bo_rewrite
+NPmst30BossStart3,Ta đã chuẩn bị cho tụi bây hết rồi đó,reused,nam_bo_rewrite
+NPmst30BossTimeLeft1-1,Hư tới giờ rồi.,reused,nam_bo_rewrite
+NPmst30BossTimeLeft1-5,Mi hãy nhận lấy cái này thử một lần coi!,reused,nam_bo_rewrite
+NPmst30GeneralB1,Ai đánh thức ta vậy ta,reused,nam_bo_rewrite
+NPmst39GeneralBoss1,Hừm… đã tới tận đây hả,reused,nam_bo_rewrite
+NPmst39GeneralBoss7,Đội quân bóng tối! Ở đâu ta!,reused,nam_bo_rewrite
+NPmst39GeneralBoss8,Hưm… sao lại gọi mấy thằng này là vô địch ta,reused,nam_bo_rewrite
+NPmst39GeneralBoss9,Phải kiểm tra bằng hai mắt nha…,reused,nam_bo_rewrite
+NPmst39SelfbeAngryBoss1,Đội quân bóng tối đang làm gì vậy ta,reused,nam_bo_rewrite
+NPmst39UserbeLockedBoss3,Mi chỉ được tới vậy thôi sao,reused,nam_bo_rewrite
+NPmst39UserDeadA2,Cơm tối hôm nay sao rồi Thịt Mỡ?,reused,nam_bo_rewrite
+NPpen01GeneralB1, Lính nón xanh nếu đụng phải nước sẽ đóng băng ngay.,reused,nam_bo_rewrite
+NPpen01MonDeadA5, Tụi nó kìa! Tụi nó kìa!,reused,nam_bo_rewrite
+NPpen01MonDeadB1, Đứa nào mà gan vậy ta!,reused,nam_bo_rewrite
+NPpen01SelfbeLockedC1, Cứu tui với~,reused,nam_bo_rewrite
+NPpen01SelfReleaseC1,Ta bực mình rồi nha! Grừ gừ!,reused,nam_bo_rewrite
+NPpen01SelfReleaseC3, Nè~Ta thách mi đó~,reused,nam_bo_rewrite
+NPpen01UserbeLockedA4, Bên đó! Bên đó!,reused,nam_bo_rewrite
+NPpen02MonDeadD1, Bên đó! Bắt lấy!,reused,nam_bo_rewrite
+NPpen02MonReleaseD1," Nè, đừng có sợ",reused,nam_bo_rewrite
+NPpen02SelfbeLockedC2, Hóa đá rồi~,reused,nam_bo_rewrite
+NPpen02SelfbeLockedD1, Mi cứ chờ đó!,reused,nam_bo_rewrite
+NPpen02SelfbeLockedD3, Cứ chờ đó..,reused,nam_bo_rewrite
+NPpen02SelfDeadD2, Phục thù cho tui nha!,reused,nam_bo_rewrite
+NPpen02SelfReleaseC1,Ta bực mình rồi nha! Grừ gừ!,reused,nam_bo_rewrite
+NPpen02SelfReleaseC3, Nè~ Ta thách mi đó~,reused,nam_bo_rewrite
+NPpen02SelfReleaseD1, Hơi run ha!?!,reused,nam_bo_rewrite
+NPpen02SelfReleaseD2,Ta mà nổi giận thì đừng trách nha!,reused,nam_bo_rewrite
+NPpen02UserbeLockedD1, Cứ chờ đó,reused,nam_bo_rewrite
+NPpen02UserDeadD2, Đơn giản vậy.,reused,nam_bo_rewrite
+NPpen02UserReleaseD2, Hừm..Để coi,reused,nam_bo_rewrite
+NPpen03BossStart3, Nữ chúa mạnh hơn Vua bạch tuộc nhiều lắm,reused,nam_bo_rewrite
+NPpen03BossStart4," Vua bạch tuộc bị thương rồi, mau lại cứu nó nào..",reused,nam_bo_rewrite
+NPpen03BossStart5,Ta vừa chạm trán với những đứa như mi đó,reused,nam_bo_rewrite
+NPpen03BossStart8, Tụi bây đâu ra đây hết coi!!!,reused,nam_bo_rewrite
+NPpen03BossStart9, Coi sức mạnh của ta đây.,reused,nam_bo_rewrite
+NPpen03BossTimeLeft1, Để coi tụi mi có thể chịu đựng tới bao lâu ,reused,nam_bo_rewrite
+NPpen03BossTimeLeft3," Chà, cái này thì sao ta",reused,nam_bo_rewrite
+NPpen03MonDeadD1, Bên đó! Bắt lấy!,reused,nam_bo_rewrite
+NPpen03MonReleaseD1," Nè, đừng có sợ",reused,nam_bo_rewrite
+NPpen03SelfbeAngryBoss1, Ta nổi giận rồi nha!!!,reused,nam_bo_rewrite
+NPpen03SelfbeAngryBoss2, Thách ta coi!!!,reused,nam_bo_rewrite
+NPpen03SelfbeLockedD1, Nè! Mi hãy coi đây!,reused,nam_bo_rewrite
+NPpen03SelfbeLockedD3, Cứ chờ đó..,reused,nam_bo_rewrite
+NPpen03SelfDeadD2, Phục thù cho tui nha!,reused,nam_bo_rewrite
+NPpen03SelfReleaseC1,Ta bực mình rồi nha! Grừ gừ!,reused,nam_bo_rewrite
+NPpen03SelfReleaseC3, Nè~ Ta thách mi đó~,reused,nam_bo_rewrite
+NPpen03SelfReleaseD1, Hơi run ha?!,reused,nam_bo_rewrite
+NPpen03SelfReleaseD2,Ta mà nổi giận thì đừng trách nha!,reused,nam_bo_rewrite
+NPpen03UserbeLockedD1, Cứ chờ đó,reused,nam_bo_rewrite
+NPpen03UserDeadBoss1,Vậy mà tưởng~ Hu hu,reused,nam_bo_rewrite
+NPpen03UserDeadD2, Đơn giản vậy.,reused,nam_bo_rewrite
+NPpen03UserReleaseD2, Hừm..Để coi ,reused,nam_bo_rewrite
+NPpen04GeneralA2, Cùng vui vẻ nha~,reused,nam_bo_rewrite
+NPpen04GeneralB1, Tới rồi hả? Chơi nữa nào!,reused,nam_bo_rewrite
+NPpen04MonAngryB3, Trốn rồi hả?,reused,nam_bo_rewrite
+NPpen04MonIceB2, Mi mà đụng vô ta là xui đó!,reused,nam_bo_rewrite
+NPpen05GeneralA2, Thử bắt ta coi nào~,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen05GeneralA4, Thử bắt ta coi nào!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen05MonDeadA2, Ta sắp thua rồi hả?!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen05MonTeamDeadA1, Ưm đứa nào chết đó ta!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen05UserDeadA1," Bị bắt rồi, làm sao bây giờ?",review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen05UserLockedA1, Đường xa vậy~ :p,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen05UserLockedA3, Mi cũng khá đó ha?,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen06BossAngryA1," Tụi mi đâu, ra đây!!",reused,nam_bo_rewrite
+NPpen06BossAngryA2, Mi không sợ nguy hiểm hả?!,reused,nam_bo_rewrite
+NPpen06GeneralA11, Không được về nhà hả?,reused,nam_bo_rewrite
+NPpen06GeneralA12," Nữ chúa ơi, phải cẩn thận đó~",reused,nam_bo_rewrite
+NPpen06GeneralA13, Bệ hạ ơi~ Làm sao bây giờ?,reused,nam_bo_rewrite
+NPpen06GeneralA14, Bệ hạ ơi tới đây bắt nè.,reused,nam_bo_rewrite
+NPpen06GeneralA19, Hãy đuổi hết tụi nó đi nào!,reused,nam_bo_rewrite
+NPpen06GeneralA4, Tìm thử đâu đó coi...,reused,nam_bo_rewrite
+NPpen06GeneralA5, Mấy đứa này đâu rồi ta?,reused,nam_bo_rewrite
+NPpen06MonDamageA1, Tụi mi đâu hết cả rồi!,reused,nam_bo_rewrite
+NPpen06MonDamageA4, Để rồi coi!!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen06MonFreeA1," Nào thử lại đây coi, he he.",review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen06MonIceA11, Đừng tới đây~,reused,nam_bo_rewrite
+NPpen06MonIceA14, Đáng sợ thiệt!,reused,nam_bo_rewrite
+NPpen06MonIceA15, Chỉ 1 giây nữa thôi,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen06MonIceA17, Thiệt sai lầm!,reused,nam_bo_rewrite
+NPpen06MonIceA23, Mấy đứa tụi mi!,reused,nam_bo_rewrite
+NPpen06MonIceA4, Mi không để ý tới ta sao!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen06MonIceA7, Cứu tui với,reused,nam_bo_rewrite
+NPpen06MonTeamDeadA3, Quân ta bị bắt hết rồi hả?!,reused,nam_bo_rewrite
+NPpen06UserDeadA1, Không có hả?,reused,nam_bo_rewrite
+NPpen06UserDeadA4, Bị bắt rồi hả?,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen06UserLockedA6, Mi chơi bằng chân hả?,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen07GeneraE2, Là Phù thủy đó.,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen07GeneraE3, Tụi mi phải bảo vệ ta chứ.,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen07MonDeadC1, Giúp tui với!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen08GeneraA1, Mi thách ta nha,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen08GeneraA5, Cho ta coi khả năng của mi nào,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen08GeneraA7, Giờ thì coi đây,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen08GeneraA8, Chặn cho vững nha,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen08UserDeadB1, Mi yếu vậy hả,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen09boss6, Lần sau tới lượt mi đó.,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen09GeneraA3, Cho tui cơ hội nữa đi mà~,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen09GeneraA4, Ahaaa ~ Cứu tui với~,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen09GeneraB2, Không được về nhà hả?,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen09GeneraC1, Hãy tin tui mà,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen10MonDeadB2, Mi cũng khá đó,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen10UserDeadB2, Mi yếu ha,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen10UserDeadC2, Mi yếu hơn ta ha,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen11GeneraB1, Có cơm thiệt rồi!!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen11GeneraB2, Giờ là thiệt đó!!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen12boss1, Ở nhà hàng của ta hả?,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen12boss4, Đúng là cho thiệt rồi!!!,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen12boss6, Qua phòng khác coi,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen12boss8, Cẩn thận lối vô đó,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen12bossUserdead2, Chúng ta ăn buffet nào,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen12GeneraA1, Ta thích cơm lắm,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen12GeneraA3, Có cơm thiệt hả?,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen12GeneraA4, Thiệt hả?,review,nam_bo_rewrite;ko_vi_base_placeholder_mismatch
+NPpen13MonDeadD1, Bên đó! Bắt lấy!,reused,nam_bo_rewrite
+NPpen13MonReleaseD1," Nè, đừng có sợ",reused,nam_bo_rewrite
+NPpen13SelfbeLockedC2, Hóa đá rồi~,reused,nam_bo_rewrite
+NPpen13SelfbeLockedD1, Nè! Mi hãy coi đây!,reused,nam_bo_rewrite
+NPpen13SelfbeLockedD3, Cứ chờ đó..,reused,nam_bo_rewrite
+NPpen13SelfDeadD2, Phục thù cho tui nha!,reused,nam_bo_rewrite
+NPpen13SelfReleaseC1,Ta bực mình rồi nha! Grừ gừ!,reused,nam_bo_rewrite
+NPpen13SelfReleaseC3, Nè~ Ta thách mi đó~,reused,nam_bo_rewrite
+NPpen13SelfReleaseD1, Hơi run ha?!,reused,nam_bo_rewrite
+NPpen13SelfReleaseD2,Ta mà nổi giận thì đừng trách nha!,reused,nam_bo_rewrite
+NPpen13UserbeLockedD1, Cứ chờ đó,reused,nam_bo_rewrite
+NPpen13UserDeadC1, Đừng có mà thách ta~ Lêu lêu~,reused,nam_bo_rewrite
+NPpen13UserDeadD2, Đơn giản vậy.,reused,nam_bo_rewrite
+NPpen13UserReleaseD2, Hừm..Để coi,reused,nam_bo_rewrite
+NPpen14MonbeLockedA1, Không được~ nếu để đụng vô thì tiêu mất!!,reused,nam_bo_rewrite
+NPpen14MonDeadA5,Tụi nó tới rồi!,reused,nam_bo_rewrite
+NPpen14MonDeadB1,Đứa nào to gan vậy ta!,reused,nam_bo_rewrite
+NPpen14MonDeadD1, Bên đó! Bắt lấy!,reused,nam_bo_rewrite
+NPpen14MonReleaseD1," Nè, đừng có sợ",reused,nam_bo_rewrite
+NPpen14SelfbeLockedC2, Hóa đá rồi~,reused,nam_bo_rewrite
+NPpen14SelfbeLockedD1, Nè! Mi hãy coi đây!,reused,nam_bo_rewrite
+NPpen14SelfbeLockedD3, Cứ chờ đó..,reused,nam_bo_rewrite
+NPpen14SelfDeadD2, Phục thù cho tui nha!,reused,nam_bo_rewrite
+NPpen14SelfReleaseC1,Ta bực mình rồi nha! Grừ gừ!,reused,nam_bo_rewrite
+NPpen14SelfReleaseC3, Nè~ Ta thách mi đó~,reused,nam_bo_rewrite
+NPpen14SelfReleaseD1, Hơi run ha?!,reused,nam_bo_rewrite
+NPpen14SelfReleaseD2,Ta mà nổi giận thì đừng trách nha!,reused,nam_bo_rewrite
+NPpen14UserbeLockedA4, Bên đó! Bên đó!,reused,nam_bo_rewrite
+NPpen14UserbeLockedD1, Chờ đó,reused,nam_bo_rewrite
+NPpen14UserDeadD2, Đơn giản vậy.,reused,nam_bo_rewrite
+NPpen14UserReleaseD2, Hừm..Để coi,reused,nam_bo_rewrite
+NPpen15BossStart1, Tụi mi đuổi theo tới tận đây luôn hả!!,reused,nam_bo_rewrite
+NPpen15BossStart4, Tụi mi đâu! Đi bắt mấy đứa kia mau!,reused,nam_bo_rewrite
+NPpen15MonDeadBoss2, Mấy đứa bây đau ta cũng đau mà!,reused,nam_bo_rewrite
+NPpen15MonDeadD1, Bên đó! Bắt lấy!,reused,nam_bo_rewrite
+NPpen15MonReleaseD1," Nè, đừng có sợ",reused,nam_bo_rewrite
+NPpen15SelfbeAngryBoss1, Ta! Nổi giận rồi nha!!!,reused,nam_bo_rewrite
+NPpen15SelfbeAngryBoss2, Thách ta coi!!!,reused,nam_bo_rewrite
+NPpen15SelfbeLockedC2, Hóa đá rồi~,reused,nam_bo_rewrite
+NPpen15SelfbeLockedD1, Nè! Mi hãy coi đây!,reused,nam_bo_rewrite
+NPpen15SelfbeLockedD3, Cứ chờ đó..,reused,nam_bo_rewrite
+NPpen15SelfDeadD2, Phục thù cho tui nha!,reused,nam_bo_rewrite
+NPpen15SelfReleaseC1,Ta bực mình rồi nha! Grừ gừ!,reused,nam_bo_rewrite
+NPpen15SelfReleaseC3, Nè~ Ta thách đó~,reused,nam_bo_rewrite
+NPpen15SelfReleaseD1, Hơi run ha?!,reused,nam_bo_rewrite
+NPpen15SelfReleaseD2,Ta mà nổi giận thì đừng trách nha!,reused,nam_bo_rewrite
+NPpen15UserbeLockedD1, Cứ chờ đó,reused,nam_bo_rewrite
+NPpen15UserDeadBoss1, Vậy mà tưởng~ Hu hu,reused,nam_bo_rewrite
+NPpen15UserDeadD2, Đơn giản vậy.,reused,nam_bo_rewrite
+NPpen15UserReleaseD2, Hừm..Để coi,reused,nam_bo_rewrite
+NPpen16GeneraA3, Ta thấy tụi mi rồi~,reused,nam_bo_rewrite
+NPpen16GeneraA5,"Nè, đừng có sợ",review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen17GeneraA1, Bên đó kìa,reused,nam_bo_rewrite
+NPpen17GeneraA3, Có nhìn thấy cũng vậy à,reused,nam_bo_rewrite
+NPpen17GeneraA4, Mi có trốn ta cũng thấy à,reused,nam_bo_rewrite
+NPpen18boss13, Sợ thiệt!!!,reused,nam_bo_rewrite
+NPpen18boss2, Ta! Nổi giận rồi nha!!!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen18boss7, Bây đâu ra đây!,reused,nam_bo_rewrite
+NPpen18GeneraA1, Cứ chờ đó..,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen19GeneralA2,Ai xâm phạm vô đó..,reused,nam_bo_rewrite
+NPpen19GeneralA7,Đừng có coi thường tụi nó,reused,nam_bo_rewrite
+NPpen19GeneralA8,Đây là ngôi mộ á,reused,nam_bo_rewrite
+NPpen19MonAngryA10,Con người sao nhanh vậy,reused,nam_bo_rewrite
+NPpen19MonAngryA4,Cắn mi bây giờ~~,reused,nam_bo_rewrite
+NPpen19MonAngryA6,Đụng vô ta coi nào ,reused,nam_bo_rewrite
+NPpen19MonDeadA10,Đánh nhau thôi!,reused,nam_bo_rewrite
+NPpen19MonDeadA13,Kéo tới địa ngục nào,reused,nam_bo_rewrite
+NPpen19MonDeadA6,Đừng phá tụi ta ngủ chứ!,reused,nam_bo_rewrite
+NPpen19MonIceA3,Cố chờ tí đi…,reused,nam_bo_rewrite
+NPpen19MonIceA6,Để coi,reused,nam_bo_rewrite
+NPpen19UserbeLockedA1,Mi cũng là bạn ta nha,reused,nam_bo_rewrite
+NPpen19UserDeadA2,Đừng coi thường nó!,reused,nam_bo_rewrite
+NPpen19UserDeadA4,Không ngủ hả?,reused,nam_bo_rewrite
+NPpen20GeneralA2,Tới nơi rồi,reused,nam_bo_rewrite
+NPpen20GeneralA5,Tới địa ngục nào…,reused,nam_bo_rewrite
+NPpen20MonErrA1,Coi nào~,reused,nam_bo_rewrite
+NPpen20MonErrA5,Cẩn thận phía sau..,reused,nam_bo_rewrite
+NPpen20MonIceA12,Chờ xíu…,reused,nam_bo_rewrite
+NPpen20MonIceA2,Chờ đó…,reused,nam_bo_rewrite
+NPpen20MonIceA3,Chờ đó…,reused,nam_bo_rewrite
+NPpen20MonIceA4,Chờ nha…,reused,nam_bo_rewrite
+NPpen20UserbeLockedA2,Mi nhanh hơn cả con người ha,reused,nam_bo_rewrite
+NPpen20UserDeadA2,Ở đây im lặng ha…,reused,nam_bo_rewrite
+NPpen21BossDeadA1,"Í, mi thắng rồi hả…",reused,nam_bo_rewrite
+NPpen21GeneralA15,Chào mừng tới địa ngục!,reused,nam_bo_rewrite
+NPpen21GeneralA3,Lâu lâu ta cũng vậy,reused,nam_bo_rewrite
+NPpen21GeneralA4,Mi cũng thấy vậy hả,reused,nam_bo_rewrite
+NPpen21GeneralA6,Đi tới ,reused,nam_bo_rewrite
+NPpen21GeneralA7,Chỗ này hơn trăm năm rồi à,reused,nam_bo_rewrite
+NPpen21GeneralA8,Xa vậy!,reused,nam_bo_rewrite
+NPpen21MonAngryA2,Con người ở đâu ta?,reused,nam_bo_rewrite
+NPpen21MonDamageA1,Ta cũng có thuộc hạ đó!,reused,nam_bo_rewrite
+NPpen21MonDeadA1,Gọi mấy đứa kia nha?,reused,nam_bo_rewrite
+NPpen21MonDeadA2,Gì vậy?,reused,nam_bo_rewrite
+NPpen21MonDeadA6,"Hum, mang tới đây mau",reused,nam_bo_rewrite
+NPpen21MonErrA1,Tụi bây không chạy được đâu!,reused,nam_bo_rewrite
+NPpen21UserDeadA5,Quỳ gối rồi hả,reused,nam_bo_rewrite
+NPpen22GeneralA10," Nào thử lại đây coi, he he.",review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen22GeneralA12, Mi tới rồi hả!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen22GeneralA13, Mi mà đụng vô ta là xui đó!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen22GeneralA18, Bệ hạ ơi~ Làm sao bây giờ?,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen22GeneralA19," Nữ chúa ơi, phải cẩn thận đó~",review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen22GeneralA3, Vậy giúp ta nha!!!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen22GeneralA5, Ta cũng nhanh lắm đó,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen23GeneralA13,Ah mi tới rồi hả?,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen23GeneralA20, Ưm đứa nào chết đó ta!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen23GeneralA22," Bị bắt rồi, làm sao bây giờ?",review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen23GeneralA24,Bên đó kìa!!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen23GeneralA30, Đường xa vậy~ :p,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen23GeneralA4, Mi cũng khá đó ha?,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen23GeneralA6, Mi không sợ nguy hiểm hả?!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen23MonAngryA3, Cứ chờ đó..,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24BossAngryA1, Để rồi coi!!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24BossAngryA3,Tụi bây đâu!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24BossAngryA4,Hơi run ha?!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24BossDeadA1, Để rồi coi~,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24GeneralA11, Không được về nhà hả?,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24GeneralA12," Nữ chúa ơi, phải cẩn thận đó~",review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24GeneralA13, Bệ hạ ơi~ Làm sao bây giờ?,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24GeneralA14, Bệ hạ ơi tới đây bắt nè.,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24GeneralA19, Hãy đuổi hết tụi nó đi nào!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24GeneralA23, Hừm..Để coi,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24GeneralA4, Bên đó! Bắt lấy!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24GeneralA5, Tụi bây đâu!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24GeneralA9," Chà, cái này thì sao ta",review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24MonDamageA10, Tụi mi đâu hết cả rồi!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24MonDamageA4, Để rồi coi!!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24UserbeLockedA5, Bên đó! Bắt lấy!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24UserDeadA1," Nè, đừng có sợ",review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24UserDeadA3, Hóa đá rồi~,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24UserDeadA5, Mi cứ chờ đó!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen24UserDeadA7, Cứ chờ đó..,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen25GeneralA1,Ta mà nổi giận thì đừng trách nha!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen25GeneralB2, Cứ chờ đó,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen26GeneralA3, Đơn giản vậy.,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen26GeneralB4, Hừm..Để coi,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen26GeneralC2," Chà, cái này thì sao ta",review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen26MonliveB1,Để rồi coi,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen26MonliveC1," Nè, đừng có sợ",review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen26UserdeadA1, Ta nổi giận rồi nha!!!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+NPpen26UserdeadA2, Thách ta coi!!!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+monrobot03branger14,Nguy hiểm! Xông vô ở tình trạng nổi giận !,reused,nam_bo_rewrite
+monrobot03branger5,Mở chế độ tấn công bừa bãi,reused,nam_bo_rewrite
+monrobot03brattack20,Chú ý tới việc sử dụng thuốc của kẻ địch,reused,nam_bo_rewrite
+monrobot04general06,Không chỉ tính toán đâu mà còn có thể chơi game đó,reused,nam_bo_rewrite
+monrobot04general09,"Không tin hả? Vậy, hãy chứng minh bằng game 369 đi",reused,nam_bo_rewrite
+monrobot04general15,Tụi mi tưởng có thể đẩy lùi Block hả?,reused,nam_bo_rewrite
+monrobot04general16,Tụi nó mà giỏi quá là tiêu luôn,reused,nam_bo_rewrite
+monrobot04general17,Phải cẩn thận với cống đó,reused,nam_bo_rewrite
+monrobot04monangry02,Gruhh! Ta bực rồi đó!,reused,nam_bo_rewrite
+monrobot04monangry04,Ta sẽ làm cho khiếp sợ nha~,reused,nam_bo_rewrite
+monrobot05angry08,Ta sẽ làm cho khiếp sợ nha!,reused,nam_bo_rewrite
+monrobot05general02,Đầu óc của ta khiếp sợ thiệt...Haha,reused,nam_bo_rewrite
+monrobot05general05,Nếu bỏ giày ra có thể đếm tới 20,reused,nam_bo_rewrite
+monrobot05general06,Nếu dùng cả 2 tay có thể đếm tới 10,reused,nam_bo_rewrite
+monrobot05general07,Thiệt là giỏi quá đi,reused,nam_bo_rewrite
+monrobot05general08,Ta cho biết cái tốt nha?,reused,nam_bo_rewrite
+monrobot06boss04,Dám cả gan chọc tức thiên tài Robot hả !!!,reused,nam_bo_rewrite
+monrobot06boss09,Ganh tị với thiên tài như ta hả!!!,reused,nam_bo_rewrite
+monrobot06boss14,Gì? Là 2 hả? Đáp án là 1!!,reused,nam_bo_rewrite
+monrobot06boss15,Gì? Đáp án là 12 hả??,reused,nam_bo_rewrite
+monrobot06boss16,Gì? Mi nói không ganh tị hả???,reused,nam_bo_rewrite
+monrobot06boss19,Dù gì cái này cũng không tháo ra được nên đừng phạt tui mà!!!,reused,nam_bo_rewrite
+monrobot06boss20,Sao việc dễ vậy mà cũng sai hả!!!,reused,nam_bo_rewrite
+monrobot06boss21,Chẳng biết đội chúng ta mấy người,reused,nam_bo_rewrite
+monrobot06boss23,Hử? Bắn 12 phát rồi hả???,reused,nam_bo_rewrite
+monrobot06boss34,Haha sao rồi mấy tên nhóc kia!!!,reused,nam_bo_rewrite
+monrobot06boss35,Bực rồi đó!,reused,nam_bo_rewrite
+monrobot07angry06,Hãy truyền điện kẻ địch đang tới gần,reused,nam_bo_rewrite
+monrobot07general01,Nếu chọc tức ta sẽ nguy hiểm đó,reused,nam_bo_rewrite
+monrobot07general02,Các bạn khác ơi nguy hiểm đó,reused,nam_bo_rewrite
+monrobot07general03,Phải bảo vệ nơi này nha,reused,nam_bo_rewrite
+monrobot07general05,Đừng để nó tới chỗ này.,reused,nam_bo_rewrite
+monrobot07general07,Sẽ phải cẩn thận đó~,reused,nam_bo_rewrite
+monrobot07mondie06,Ta sẽ làm cho khiếp sợ nha~,reused,nam_bo_rewrite
+monrobot07userdie02,Thiệt là may ~,reused,nam_bo_rewrite
+monrobot08general06,Thiệt là may,reused,nam_bo_rewrite
+monrobot08general09,Vũ khí bí mật ở đây nè,reused,nam_bo_rewrite
+monrobot08general11,Nạp năng lượng!!!,reused,nam_bo_rewrite
+monrobot08general14,Gruhh! Ta bực rồi đó!,reused,nam_bo_rewrite
+monrobot08general17,Đừng để nó tới chỗ này,reused,nam_bo_rewrite
+monrobot08general19,Hãy truyền điện kẻ địch đang tới gần,reused,nam_bo_rewrite
+monrobot10srdefault14,Đạt tới điểm mục tiêu,reused,nam_bo_rewrite
+monrobot10srdefault15,Loại bỏ tất cả sinh vật trong phạm vi,reused,nam_bo_rewrite
+monrobot10srdefault33,Đội viện trợ đã tới,reused,nam_bo_rewrite
+monrobot10srsfdie22,Bỏ sót và cứ vậy tự phát nổ,reused,nam_bo_rewrite
+monrobot10srsfdie30,Bước vô quá trình tự hủy.,reused,nam_bo_rewrite
+monrobot11srdefault13,Phải đầu hàng ,reused,nam_bo_rewrite
+monrobot11srsfdie18,Là tự hủy đó!,reused,nam_bo_rewrite
+monrobot12brattack16,Có thể tránh được không ta?,reused,nam_bo_rewrite
+monrobot12brdefault11,Giờ có đầu hàng cũng trễ rồi.,reused,nam_bo_rewrite
+monrobot13normal01,Chẳng có tinh thần chiến đấu! Haha~,reused,nam_bo_rewrite
+monrobot13normal02,Cứ cho ta qua màn tiếp theo đi,reused,nam_bo_rewrite
+monrobot13normal04,Mi tới tận đây luôn hả.. Đúng là người đàn ông can đảm..,reused,nam_bo_rewrite
+monrobot14normal04,Lần này cũng thử thoát khỏi 1 lần coi sao,reused,nam_bo_rewrite
+monrobot15bossnomal04,Điên cả đầu vì tụi thuộc hạ thảm thương,reused,nam_bo_rewrite
+monrobot15bossnomal05,Dám tấn công cả ta hả,reused,nam_bo_rewrite
+monrobot15bossnomal09,Coi ai thua trước hoặc thắng nào,reused,nam_bo_rewrite
+monrobot15bossnomal17,Mi nói sẽ không dễ dàng đầu hàng hả?,reused,nam_bo_rewrite
+monrobot16normal03,Bắt làm sao mấy đứa ở chỗ đá cuội?,reused,nam_bo_rewrite
+monrobot17normal01,Mấy thằng đầu óc bã đậu này không thoát khỏi đâu!,reused,nam_bo_rewrite
+monrobot17normal03,Làm sao bắt mấy tên ở chỗ đá cuội?,reused,nam_bo_rewrite
+monrobot18bossnomal01,Mấy đứa này thông minh đó hahaha,reused,nam_bo_rewrite
+monturtle01default05,Áh! Ai đã đột kích vô đảo của chúng ta?,reused,nam_bo_rewrite
+monturtle01default10,Chúng ta mà thua là phải trốn mau đó~,reused,nam_bo_rewrite
+monturtle01default12,Mấy tên này mạnh thiệt ~,reused,nam_bo_rewrite
+monturtle01firstmondie03,Ặc ặc!! Các chiến hữu của tui…,reused,nam_bo_rewrite
+monturtle01selflocked14,Hức ~ Chúng ta mà thua là lại phải trốn mau đó.,reused,nam_bo_rewrite
+monturtle02default01,Hãy chặn để chúng không vô đảo được ~,reused,nam_bo_rewrite
+monturtle03BeforeAttack09,Thử qua bên đối phương nha?,reused,nam_bo_rewrite
+monturtle03default01,Thử coi có nhanh hơn ta không nào?,reused,nam_bo_rewrite
+monturtle03default02,Ta mà ở bên phía đối phương thì tốt ha ~,reused,nam_bo_rewrite
+monturtle03default04,Qua thử bên đối phương nha ? Kaka~,reused,nam_bo_rewrite
+monturtle04bomberLocked05,Ặc…Đừng bỏ tụi tui lại đây~,reused,nam_bo_rewrite
+monturtle04selflocked07,Làm ơn cứu tui với ~,reused,nam_bo_rewrite
+monturtle05default03,Làm sao đây ~,reused,nam_bo_rewrite
+monturtle06BossAnger09,Tại tụi mi mà sao biển đã phản bội ta!,reused,nam_bo_rewrite
+monturtle06BossAnger22,Tụi mi ~ Ta không thể tha thứ được,reused,nam_bo_rewrite
+monturtle06default04,Ta chưa từng bỏ rơi tụi mi mà ~,reused,nam_bo_rewrite
+monturtle06default08,Mi nói ta bị tội gì,reused,nam_bo_rewrite
+monturtle06default19,Các sao biển đã phản bội rồi hả?,reused,nam_bo_rewrite
+monturtle06default20,Khả năng phòng thủ thiệt kiên cố!,reused,nam_bo_rewrite
+monturtle06default23,Ta sẽ giúp đỡ tụi mi!,reused,nam_bo_rewrite
+monturtle07normal03,Áh! Đừng đá !Cứu tui với!,reused,nam_bo_rewrite
+monturtle07normal04,Tụi mi có là Đất ta cũng không quan tâm ~,reused,nam_bo_rewrite
+monturtle08mon01normal04,Đê vỡ thì nước lũ sẽ tràn vô đó,reused,nam_bo_rewrite
+monturtle08mon01normal05,Tiếp tục đào đất nữa nha ~,reused,nam_bo_rewrite
+monturtle08mon01normal06,Nước lũ tới rồi~,reused,nam_bo_rewrite
+monturtle08mon01normal09,Làm ơn cứu tui đi mà ~,reused,nam_bo_rewrite
+monturtle08mon01normal10,Chẳng được tích sự gì ~,reused,nam_bo_rewrite
+monturtle08mon01normal11,Làm ơn cứu tui với ~,reused,nam_bo_rewrite
+monturtle08mon2normal03,Làm cho chăm chỉ vô ~,reused,nam_bo_rewrite
+monturtle09boss01angry01,Gruh ~ Bực rồi đó ~,reused,nam_bo_rewrite
+monturtle09boss01die01,Ah~ Đào thêm tí nữa là kho báu đó~,reused,nam_bo_rewrite
+monturtle09boss01normal01,Lũ lụt tới rồi ~,reused,nam_bo_rewrite
+monturtle09boss01normal02,Tụi mi cũng tránh ra nào ~,reused,nam_bo_rewrite
+monturtle09boss01normal07,Thiệt ra ta đã tới khai thác trộm,reused,nam_bo_rewrite
+monturtle09boss01normal09,Đê vỡ là nguy đó,reused,nam_bo_rewrite
+monturtle09mon01normal04,Sao biển à mau bỏ trốn đi,reused,nam_bo_rewrite
+monturtle09mon01normal05,Sao biển à ở đây nguy hiểm lắm,reused,nam_bo_rewrite
+monturtle09mon2normal02,Ta sẽ không đuổi theo tụi bây đâu ~,reused,nam_bo_rewrite
+monturtle10default01,Cẩn thận đừng để bị dồn vô góc đó,reused,nam_bo_rewrite
+monturtle11default01,Nếu bị đẩy là nguy đó,reused,nam_bo_rewrite
+monturtle11default04,Cẩn thận Combo đó,reused,nam_bo_rewrite
+monturtle12BossAnger11,Gruh ~ Bực rồi đó ~,reused,nam_bo_rewrite
+monturtle12default04,Ta mà cuộn tròn thì xuất sắc đó,reused,nam_bo_rewrite
+monturtle12default07,Phải hợp sức với Rùa biển thôi,reused,nam_bo_rewrite
+monturtle12default08,Cẩn thận với cú xoay tròn của Rùa biển đó,reused,nam_bo_rewrite
+monturtle12default09,Gì? Mi nói vì ta mà mọi người chết hết rồi hả?,reused,nam_bo_rewrite
+monturtle12default18,Ta thử xoay tròn nha ??,reused,nam_bo_rewrite
+monturtle12selflocked12,Đi như vầy ~,reused,nam_bo_rewrite
+monturtle13mon02normal03,Mi mà bị bắt thì ta nguy hiểm mất,reused,nam_bo_rewrite
+monturtle14mon01normal03,Haha coi bộ không dễ gì giết tụi ta đâu,reused,nam_bo_rewrite
+monturtle14mon01normal04,Sẽ phải tiêu diệt chỉ bằng Combo thôi hả?,reused,nam_bo_rewrite
+monturtle15boss01normal01,Thử bắt ta coi nào ~,reused,nam_bo_rewrite
+monturtle15boss01normal07,Thử bắt ta coi nào,reused,nam_bo_rewrite
+monturtle15boss01normal08,Đây nè ~,reused,nam_bo_rewrite
+monunlimited01BossStart1,Buồn cười thiệt~,reused,nam_bo_rewrite
+monunlimited01BossStart2,Haha..cho coi kỹ thuật mới của ta đây,reused,nam_bo_rewrite
+monunlimited01BossStart4,Thần quyền Vua bạch tuộc ~~,reused,nam_bo_rewrite
+monunlimited01BossTimeLeft1-1,Hmm..vẫn còn sống hả,reused,nam_bo_rewrite
+monunlimited01BossTimeLeft1-2,Tăng tốc lên nha?,reused,nam_bo_rewrite
+monunlimited01Chat1,Nếu thêm người thì sao?,reused,nam_bo_rewrite
+monunlimited01Chat4,Nè!!,reused,nam_bo_rewrite
+monunlimited01GeneralA2,Ta nói xạo đó nhưng..,reused,nam_bo_rewrite
+monunlimited01GeneralA4,Thần quyền của Vua bạch tuộc,reused,nam_bo_rewrite
+monunlimited01UserDeadA4,Mắc vô mực khổng lồ thì chỉ có chết thôi!,reused,nam_bo_rewrite
+monunlimited02BossStart2,Cứu tui với~,reused,nam_bo_rewrite
+monunlimited02BossStart4,Cởi trói đi ta sẽ cho thiệt nhiều kho báu,reused,nam_bo_rewrite
+monunlimited02BossStart5,Là xạo đó! Hahaha!!!,reused,nam_bo_rewrite
+monunlimited02BossStart7,Kaka hồi sinh thử coi nào,reused,nam_bo_rewrite
+monunlimited02TimePass1Boss3,Xin lỗi tui giỡn thôi,reused,nam_bo_rewrite
+monunlimited02TimePass2Boss1,Humm.. Mi gan lì thiệt.,reused,nam_bo_rewrite
+monunlimited02TimePass2Boss2,"Đâu, tránh ra coi nào ~",reused,nam_bo_rewrite
+monunlimited02TimePass2Boss3,Ái chà…mi vẫn còn sống hả,reused,nam_bo_rewrite
+monunlimited02TimePass2Boss5,Lần này tui không nói xạo đâu.,reused,nam_bo_rewrite
+monunlimited02UserbeLocked,Hahaha coi kìa,reused,nam_bo_rewrite
+monunlimited03BossStart3,Thiệt ra mi đã mắc bẫy rồi,reused,nam_bo_rewrite
+monunlimited03BossTimeLeft2,Đừng có nghĩ tới việc bỏ trốn,reused,nam_bo_rewrite
+monunlimited03BossTimeLeft7,Đòn chí mạng!!,reused,nam_bo_rewrite
+monunlimited03MonbeLockedD1,Khi nó hóa đá phải tiêu diệt ngay đó,reused,nam_bo_rewrite
+monunlimited03MonDeadBoss2,Tụi bây đau ta cũng đau chứ!,reused,nam_bo_rewrite
+monunlimited03MonDeadC2,Nguy quá rồi..hix hix,reused,nam_bo_rewrite
+monunlimited03MonDeadD1,Bên kia! Bắt lấy!,reused,nam_bo_rewrite
+monunlimited03MonReleaseD1,"Nè, đừng có sợ đó",reused,nam_bo_rewrite
+monunlimited03SelfbeAngryBoss1,Ta điên lên rồi nha!!,reused,nam_bo_rewrite
+monunlimited03SelfbeLockedBoss2,Cứu..cứu tui với…,reused,nam_bo_rewrite
+monunlimited03SelfbeLockedC1,Cứu tui với~,reused,nam_bo_rewrite
+monunlimited03SelfbeLockedD1,Mi! Hãy coi đây!,reused,nam_bo_rewrite
+monunlimited03SelfbeLockedD2,Nè!,reused,nam_bo_rewrite
+monunlimited03SelfbeLockedD3,Coi đây…,reused,nam_bo_rewrite
+monunlimited03SelfDeadD2,Phục thù cho tui!,reused,nam_bo_rewrite
+monunlimited03SelfReleaseC1,Ta nổi quạu rồi nha!,reused,nam_bo_rewrite
+monunlimited03SelfReleaseD2,Ta mà nổi quạu thì biết tay!,reused,nam_bo_rewrite
+monunlimited03UserbeLockedBoss1,"Ưm…ở đó kìa, bên đó",reused,nam_bo_rewrite
+monunlimited03UserbeLockedC1,Ở yên đó~,reused,nam_bo_rewrite
+monunlimited03UserbeLockedD1,"Chờ đó, ta sẽ đi.",reused,nam_bo_rewrite
+monunlimited03UserDeadBoss1,Vậy mà ta tưởng~zzz,reused,nam_bo_rewrite
+monunlimited03UserDeadC1,Thử xông vô coi ~ ,reused,nam_bo_rewrite
+monunlimited03UserDeadD2,Dễ ẹc à.,reused,nam_bo_rewrite
+monunlimited03UserReleaseD2,Để coi..nó không đi xa đâu.,reused,nam_bo_rewrite
+monunlimited04BossAngryA1,Bắt hết vô đây cho ta!,reused,nam_bo_rewrite
+monunlimited04BossDeadA1,"Í, tui thắng rồi….",review,nam_bo_rewrite;ko_vi_base_meaning_review
+monunlimited04GeneralA1,Tới gần đây nào~!,reused,nam_bo_rewrite
+monunlimited04GeneralA14,Chim địa ngục cũng khóc à!,reused,nam_bo_rewrite
+monunlimited04GeneralA15,Chào mừng tới với địa ngục!,reused,nam_bo_rewrite
+monunlimited04GeneralA18,Tui sẽ phân xử!,reused,nam_bo_rewrite
+monunlimited04GeneralA19,Huhu tui đang chờ đây.,reused,nam_bo_rewrite
+monunlimited04GeneralA3,Ta cũng cai quản bằng tình yêu đó,reused,nam_bo_rewrite
+monunlimited04GeneralA4,Nếu giống như tui nói,reused,nam_bo_rewrite
+monunlimited04GeneralA6,Đi tới địa ngục nào!,reused,nam_bo_rewrite
+monunlimited04MonDeadA1,Gọi mấy đứa khác nha?,reused,nam_bo_rewrite
+monunlimited04MonDeadA6,"Ừ, dắt tới đây.",reused,nam_bo_rewrite
+monunlimited04UserDeadA5,"Ui, đã quỳ gối rồi à.",reused,nam_bo_rewrite
+monunlimited05BossAngry1,3 giây phải tới ngay!,reused,nam_bo_rewrite
+monunlimited05BossAngry2,9? 10? Không có hả!,reused,nam_bo_rewrite
+monunlimited05GeneralA1,Ôi Vua bạch tuộc!!!!,reused,nam_bo_rewrite
+monunlimited05GeneralA10,Cho tụi nó vô góc kia!,reused,nam_bo_rewrite
+monunlimited05GeneralA14,Thiệt ra ta là trùm đây.,reused,nam_bo_rewrite
+monunlimited05GeneralA16,Chẳng phải thiệt đâu.,reused,nam_bo_rewrite
+monunlimited05GeneralA2,Dù là trùm giả cũng phải ,reused,nam_bo_rewrite
+monunlimited05GeneralA21,Tui thấy sợ cái thân hình này.,reused,nam_bo_rewrite
+monunlimited05GeneralA22,Đâu có lý nào thắng được!!,reused,nam_bo_rewrite
+monunlimited05GeneralA23,"Nè, làm cho tốt vô đó!",reused,nam_bo_rewrite
+monunlimited05GeneralA26,Làm ngay đi!,reused,nam_bo_rewrite
+monunlimited05GeneralA27,Tụi mi căng thẳng ha!,reused,nam_bo_rewrite
+monunlimited05GeneralA28,Mi tưởng ta sẽ bỏ cuộc nếu thua hả!!,reused,nam_bo_rewrite
+monunlimited05GeneralA29,Đòn chí mạng đây!!!!!!!,reused,nam_bo_rewrite
+monunlimited05GeneralA3,Đừng bận tâm tới ta~,reused,nam_bo_rewrite
+monunlimited05GeneralA33,"Huhu, thằng đó nhìn y như trùm hả?",reused,nam_bo_rewrite
+monunlimited05GeneralA34,"Huhuhu, tuyệt đối không thể bị giết nha.",reused,nam_bo_rewrite
+monunlimited05GeneralA36,"Cố lên, Vua bạch tuộc à.,",reused,nam_bo_rewrite
+monunlimited05GeneralA9,Cái muỗng cho vô lửa thành cứng vậy hả?,reused,nam_bo_rewrite
+monunlimited05MonCheerA1,Trùm ơi đừng lo!!,reused,nam_bo_rewrite
+monunlimited05MonCheerA3,Nè! Tỉnh lại đi!,reused,nam_bo_rewrite
+monunlimited05MonCheerA8,"Ặc, thiệt không?!!!",reused,nam_bo_rewrite
+monunlimited05UserbeLockedA1,Giờ giẫm lên đi,reused,nam_bo_rewrite
+monunlimited05UserDeadA4,Hưm? Tiếng gián kêu ở đâu ta….,reused,nam_bo_rewrite
+monunlimited05UserDeadA5,Hưm? Tiếng bóng nổ ở đâu ta…,reused,nam_bo_rewrite
+monunlimited06boss06,Ta sẽ gọi chim cánh cụt đó,reused,nam_bo_rewrite
+monunlimited06boss07,Đâu có lý nào ta sai hả?,reused,nam_bo_rewrite
+monunlimited06boss08,Ta mà chết thì tụi bây cũng tiêu luôn!!,reused,nam_bo_rewrite
+monunlimited06boss09,Tui đã dạy cho Vua bạch tuộc đó,reused,nam_bo_rewrite
+monunlimited06boss11,Hãy bảo vệ tui với!!!,reused,nam_bo_rewrite
+monunlimited06boss14,Cho ta coi kỹ năng phân thân nào!!!,reused,nam_bo_rewrite
+monunlimited06boss16,Chim cánh cụt phân thân…,reused,nam_bo_rewrite
+monunlimited06boss20,Haha..thiệt ra…,reused,nam_bo_rewrite
+monunlimited06generala1,Ta sẽ tin mi hả?,reused,nam_bo_rewrite
+monunlimited06generala10,Hừm nhục thiệt,reused,nam_bo_rewrite
+monunlimited06generala2,Sao tui phải gọi cái đó…,reused,nam_bo_rewrite
+monunlimited06generala3,Lại gọi sai rồi ha,reused,nam_bo_rewrite
+monunlimited06generala4,Không giỏi hơn Vua bạch tuộc đâu,reused,nam_bo_rewrite
+monunlimited06generala6,Nổ quá à,reused,nam_bo_rewrite
+monunlimited07bossanger7,Giờ ta đang nổi quạu đó!,reused,nam_bo_rewrite
+monunlimited07bossbombdie20,Râu dơ quá rồi kìa,reused,nam_bo_rewrite
+monunlimited07bossbombdie32,Hử? Bị bắt rồi hả?,reused,nam_bo_rewrite
+monunlimited07bossdefault17,Sao cứ phiền vậy ta?,reused,nam_bo_rewrite
+monunlimited07bossdefault19,Tới 3 thì!,reused,nam_bo_rewrite
+monunlimited07bossdefault21,Chỉ có 2 phút thôi đó.,reused,nam_bo_rewrite
+monunlimited07bossdefault33,Tui phải đi gặp 1 người~,reused,nam_bo_rewrite
+monunlimited07bossselfdie15,Cá sấu à!,reused,nam_bo_rewrite
+monunlimited07pddefault44,Anh là vô địch,reused,nam_bo_rewrite
+monunlimited07pddefault9,Ai gọi đó ta?,reused,nam_bo_rewrite
+monunlimited08BossStart3,Có cái dành cho mấy mi đây,reused,nam_bo_rewrite
+monunlimited08BossStart6,Với tụi bây thì dễ mà,reused,nam_bo_rewrite
+monunlimited08BossTimeLeft1-1,Tới giờ rồi,reused,nam_bo_rewrite
+monunlimited08BossTimeLeft1-8,Thay đổi cách tấn công nha,reused,nam_bo_rewrite
+monunlimited08GeneralB2,Sẵn sàng!,reused,nam_bo_rewrite
+monunlimited08GeneralB3,Ta sẽ không tha thứ đâu!,reused,nam_bo_rewrite
+monunlimited09GeneralBoss12,Trời ơi nó tới rồi~,reused,nam_bo_rewrite
+monunlimited09GeneralBoss15,Lũ ma càng nhiều đánh càng mệt đó,reused,nam_bo_rewrite
+monunlimited09GeneralBoss16,Bắt được con ma đó ta sẽ cho VÀNG.,reused,nam_bo_rewrite
+monunlimited09GeneralBoss2,Kẹt đường~,reused,nam_bo_rewrite
+monunlimited09GeneralBoss4,Mi làm ta nổi nóng rồi đó!,reused,nam_bo_rewrite
+monunlimited09GeneralBoss5,Tui bị quỷ nguyền rủa rồi,reused,nam_bo_rewrite
+monunlimited09GeneralBoss7,"Không phải tui, lũ ma vừa tấn công đó",reused,nam_bo_rewrite
+monunlimited09GeneralBoss8,Ai vừa tấn công vậy ta?,reused,nam_bo_rewrite
+monunlimited09GeneralBoss9,Thiệt ra lũ ma là thuộc hạ của ta~,reused,nam_bo_rewrite
+monunlimited10boss01,Đây là mê cung đó~,reused,nam_bo_rewrite
+monunlimited10boss11,Gì? Không có vật phẩm hả?,reused,nam_bo_rewrite
+monunlimited10boss12,Sẽ xuất hiện vật phẩm ở nghĩa trang hả?,reused,nam_bo_rewrite
+monunlimited10boss17,Lũ ma này sao cứ lảo đảo vậy ta?,reused,nam_bo_rewrite
+monunlimited10mona1,Tui đã gọi rồi!,review,nam_bo_rewrite;ko_vi_base_meaning_review
+monunlimited10mona2,Tui biết rồi.,reused,nam_bo_rewrite
+monunlimited10monb1,Ta nhanh hơn đó nha,reused,nam_bo_rewrite
+monunlimited10monb2,Cẩn thận với ta đó~,reused,nam_bo_rewrite
+monunlimited10monb3,Mi bảo ta cẩn thận hả?,reused,nam_bo_rewrite
+monrobot19mon07,Tụi tui đang canh giữ nhà máy,reused,nam_bo_rewrite
+monrobot19mon11,Hãy chặn tụi nó lại,reused,nam_bo_rewrite
+monrobot21boss05,Hãy đẩy lùi những kẻ đột nhập!,reused,nam_bo_rewrite
+monrobot22mon01,Mi to gan ha!,reused,nam_bo_rewrite
+monrobot22mon04,Binh đoàn Robot chết hết rồi hả?,reused,nam_bo_rewrite
+monrobot22mon12,Tiếng gì vậy ta??,reused,nam_bo_rewrite
+monrobot22mon17,Gruhh! Ta bực rồi đó!,reused,nam_bo_rewrite
+monrobot22mon24,Ta sẽ làm cho khiếp sợ nha!,reused,nam_bo_rewrite
+monrobot23mon04,Vô đây cứu giúp với!!,reused,nam_bo_rewrite
+monrobot23mon05,Vô đây cứu giúp ta với nào!!,reused,nam_bo_rewrite
+monrobot23mon06,Binh đoàn Robot chết hết rồi hả?,reused,nam_bo_rewrite
+monrobot23mon08,Tiếng gì vậy ta??,reused,nam_bo_rewrite
+monrobot23mon10,Không được!! Làm ơn cứu tui với!!!,reused,nam_bo_rewrite
+monrobot23mon14,Gruhh! Ta bực rồi đó!,reused,nam_bo_rewrite
+monrobot24boss07,Không gởi!,reused,nam_bo_rewrite
+monrobot24boss08,Tấn công ta hả!,reused,nam_bo_rewrite
+monrobot24boss15,Không biết tên lửa tới đâu,reused,nam_bo_rewrite
+monrobot24boss19,Tụi nó tránh né giỏi lắm!,reused,nam_bo_rewrite
+monrobot24boss20,Phải chịu đựng cho tới khi tụi nó chết hết!,reused,nam_bo_rewrite
+monrobot24boss21,"Lúc này, sao bệ phóng tên lửa lại bị hư ta?",reused,nam_bo_rewrite
+monrobot24boss22,Haha nhờ vô tên lửa hả?,reused,nam_bo_rewrite
+monrobot24boss23,Hahaha nhờ vô bệ phóng tên lửa hả?,reused,nam_bo_rewrite
+monrobot24boss24,Đừng làm cho ta hối hận đó!,reused,nam_bo_rewrite
+monrobot26mon15,Robot kiểu mới tới rồi!!!,reused,nam_bo_rewrite
+monrobot26mon24,Cho giật điện kẻ địch đang tới gần,reused,nam_bo_rewrite
+monrobot26mon25,Thể lực mạnh ha,reused,nam_bo_rewrite
+monrobot27boss01,Tại xài nhiều tia laser nên vậy!,reused,nam_bo_rewrite
+monrobot27boss04,Tên tui là gMon,reused,nam_bo_rewrite
+monrobot27boss05,Tên tui là yMon,reused,nam_bo_rewrite
+monrobot27boss13,Không biết hả?,reused,nam_bo_rewrite
+monrobot27boss14,Không biết hả? Hãy kiểm tra tên lửa siêu cấp đi!!!,reused,nam_bo_rewrite
+monrobot27boss15,Không biết là cái gì hả!!!,reused,nam_bo_rewrite
+monrobot27boss17,Hãy xâm chiếm làng Boom và lấy hết tiền bạc!,reused,nam_bo_rewrite
+monrobot27boss19,Trùm Robot! Vua của các loại Robot đây!,reused,nam_bo_rewrite
+monrobot27boss25,Sao nào! Chân tay co rút lại à!,reused,nam_bo_rewrite
+monrobot27boss26,Sao nào! Sợ chứ! Hãy đầu hàng đi!!,reused,nam_bo_rewrite
+monrobot27boss27,"Không thể tha thứ, hãy coi tên lửa siêu cấp của ta đây!!!",reused,nam_bo_rewrite
+monrobot27boss28,Chúng ta mà nổi giận thì đáng sợ lắm đó grrrrr!,reused,nam_bo_rewrite
+monrobot27boss31,Phải sửa cái này làm sao đây?,reused,nam_bo_rewrite
+NPmst24bossA01,Cả gan dám đánh Vua bạch tuộc hả,reused,nam_bo_rewrite
+NPmst24bossA02,Mi dám cả gan tới tận đây hả,reused,nam_bo_rewrite
+NPmst24bossA03,Mi dám coi thường Vua bạch tuộc ta hả?,reused,nam_bo_rewrite
+NPmst24bossA05,Ta là Vua bạch tuộc đây!,reused,nam_bo_rewrite
+NPmst24bossA08,Tụi bây bị sặc nước hết đi,reused,nam_bo_rewrite
+NPmst24bossA09,Vua bạch tuộc bị sặc nước rồi,reused,nam_bo_rewrite
+monseal04mondamagea1,Bật lại coi nào~,reused,nam_bo_rewrite
+monseal07generala23,Kẻ thù đó!,reused,nam_bo_rewrite
+monseal07generala26,Đi nha~,reused,nam_bo_rewrite
+mongolem18default11,Đá rớt!,reused,nam_bo_rewrite
+monseal02generalb3,Dám đánh ta hả!!!,reused,nam_bo_rewrite
+monseal04generala2,Có khách hả?,reused,nam_bo_rewrite
+monseal05onlyonea1,Còn mình hả,reused,nam_bo_rewrite
+monseal06bossangera1,Ghét quá không biết!,reused,nam_bo_rewrite
+monseal07generala2,Nói vậy là…,reused,nam_bo_rewrite
+monseal09boss13,Ta thiệt vĩ đại!,reused,nam_bo_rewrite
+monseal09boss20,Haha..thiệt ra là..,reused,nam_bo_rewrite
+monseal09boss24,Bực thiệt!!!,reused,nam_bo_rewrite
+monseal09generala4,Ta không thể mạnh bằng Vua bạch tuộc,reused,nam_bo_rewrite
+monseal10generala1,Cứ vậy đi đi,reused,nam_bo_rewrite
+monseal11generala8,Tài thiệt,reused,nam_bo_rewrite
+monseal12boss09,Thế gian này thiệt đáng sợ~,reused,nam_bo_rewrite
+monseal12boss15,Mệt mỏi thiệt,reused,nam_bo_rewrite
+monseal12boss16,Ta vẫn buồn vầy nè~,reused,nam_bo_rewrite
+monseal16LastMonLeft2,Chỉ còn mình ta hả?,reused,nam_bo_rewrite
+monseal20mpdie1,Không thể như vậy!,reused,nam_bo_rewrite
+monseal26lockb1,Không thể chết như vầy được!,reused,nam_bo_rewrite
+monseal27monb3,Mi bảo phải cẩn thận hả?,reused,nam_bo_rewrite
+Mseal30bossbomblocked37,Mi ngốc quá!!,reused,nam_bo_rewrite
+Mseal30bossdamaged27,Gì vầy nè…,reused,nam_bo_rewrite
+NPmst06BossAngry1,Mấy mi bị sặc nước hết rồi ha!!,reused,nam_bo_rewrite
+NPmst06BossAngry4,Vua bạch tuộc biến hóa lần thứ 2!!,reused,nam_bo_rewrite
+NPmst06BossAngry8,Ta sẽ cho thấy sức mạnh thiệt sự của ta!,reused,nam_bo_rewrite
+NPmst06BossAngryB3,Giờ thì Vua bạch tuộc là vô địch!,reused,nam_bo_rewrite
+NPmst09BossAngry9,Ta sẽ cho mi thấy sức mạnh thiệt sự của ta!,reused,nam_bo_rewrite
+NPmst15BossStart1,Mi dám cả gan đánh nhau với ta hả,reused,nam_bo_rewrite
+NPmst15BossStart4,Chiến thuật quyền Vua bạch tuộc!! Vua bạch tuộc~ Vua bạch tuộc~~,reused,nam_bo_rewrite
+NPmst15BossTimeLeft1-1,Ơ…Vẫn còn sống hả.,reused,nam_bo_rewrite
+NPmst15GeneralA1,"Không phải là giả đâu, là thiệt đó",reused,nam_bo_rewrite
+NPmst15GeneralA4,Quyền Vua bạch tuộc chỉ cần một phát là thắng,reused,nam_bo_rewrite
+NPmst17UserbeLockedA4,Ngốc hả?,reused,nam_bo_rewrite
+NPmst21TimePass2Boss1,Phù…Mi vẫn ngoan cố hả?,reused,nam_bo_rewrite
+NPmst21TimePass2Boss3,Í cha… vẫn còn sống hả,reused,nam_bo_rewrite
+NPmst21UserDead,Kha kha kha mi đúng thiệt là ngốc,reused,nam_bo_rewrite
+NPmst24GeneralB1,Vua bạch tuộc ơi sợ quá,reused,nam_bo_rewrite
+NPmst24GeneralB2,Vua bạch tuộc ơi cứu tui với,reused,nam_bo_rewrite
+NPmst24GeneralB3,Vua bạch tuộc ơi hãy tha lỗi cho tui,reused,nam_bo_rewrite
+NPmst24GeneralB4,Vua bạch tuộc ơi cho tui thêm một cơ hội nữa thôi,reused,nam_bo_rewrite
+NPmst25UserDeadA7,Làm sao đây!,reused,nam_bo_rewrite
+NPmst27MonCheerA8,Thiệt không?!!!,reused,nam_bo_rewrite
+NPmst03MonDeadWithBossA1,Hức? Đứa nào lại tháo cái này ra coi!,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA1,Woaaa!,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA10,Á á!,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA11,Ong ong,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA13,Dễ quá…,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA14,Ah ah ạc~,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA16,Ư ah ạc~!,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA18,Thua rồi!,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA19,Khư ah ạc~,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA2,Woaaa~,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA3,Cứu lấy cướp biển tí hon~,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA5,Thủ lĩnh ơi~ cứu mình với,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA6,Sợ quá à~,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA7,Sợ quá thôi~,review,ko_vi_base_placeholder_mismatch
+NPmst03MonDieA9,Ah ah ah ạc!,review,ko_vi_base_placeholder_mismatch
+NPmst03UserDeadA1,Chiến thắng của ta!,review,ko_vi_base_placeholder_mismatch
+NPmst11GeneralA1,Chơi không?,review,ko_vi_base_placeholder_mismatch
+NPmst11GeneralA2,La la la la,review,ko_vi_base_placeholder_mismatch
+NPmst11GeneralA3,Phải giữ kho báu,review,ko_vi_base_placeholder_mismatch
+NPmst11GeneralA4,Cẩn thận nào.,review,ko_vi_base_placeholder_mismatch
+NPmst11GeneralA5,Ah đơn giản quá,review,ko_vi_base_placeholder_mismatch
+NPmst11GeneralA6,Không có ai hết vậy,review,ko_vi_base_placeholder_mismatch
+NPmst11GeneralA7,Buồn ngủ quá,review,ko_vi_base_placeholder_mismatch
+NPmst11GeneralA8,Ngáp~,review,ko_vi_base_placeholder_mismatch
+NPmst11MonDeadA1,Ai vậy ta!,review,ko_vi_base_placeholder_mismatch
+NPmst11UserbeLockedA1,Treo lên mất tiêu rồi!,review,ko_vi_base_placeholder_mismatch
+NPmst11UserbeLockedA2,Bạn đã ăn kho báu rồi hả?,review,ko_vi_base_placeholder_mismatch
+NPmst11UserbeLockedA3,Gọi thủ lĩnh đi!,review,ko_vi_base_placeholder_mismatch
+NPmst11UserbeLockedA4,Bắt lấy bắt lấy,review,ko_vi_base_placeholder_mismatch
+NPmst11UserbeLockedA5,Là thằng đó đó!,review,ko_vi_base_placeholder_mismatch
+NPmst11UserbeLockedA6,Kẻ xâm nhập!,review,ko_vi_base_placeholder_mismatch
+NPmst12BossAngry1,"Nguy, nguy hiểm quá à!!",review,ko_vi_base_placeholder_mismatch
+NPmst12GeneralA1,Eo ôi sợ quá!!,review,ko_vi_base_placeholder_mismatch
+NPmst12GeneralA2,Vẫn là mấy thằng tụi bay hả?,review,ko_vi_base_placeholder_mismatch
+NPmst12GeneralA3,Có sợ không?,review,ko_vi_base_placeholder_mismatch
+NPmst12GeneralA4,A ~ đơn giản quá.,review,ko_vi_base_placeholder_mismatch
+NPmst12MonCheerA1,Đau quá! Thằng này đau quá!,review,ko_vi_base_placeholder_mismatch
+NPmst12MonDeadA2,Có ai vậy?,review,ko_vi_base_placeholder_mismatch
+NPmst12MonDeadA3,uh ~ không sao chứ?,review,ko_vi_base_placeholder_mismatch
+NPmst12MonDeadWithBossA1,Thuủ lĩnh! Thuủu liiiĩnh!,review,ko_vi_base_placeholder_mismatch
+NPmst12MonDeadWithBossA2,Í~ mình quên không để ý rồi~,review,ko_vi_base_placeholder_mismatch
+NPmst12MonDieA1,Hức?!,review,ko_vi_base_placeholder_mismatch
+NPmst12UserbeLockedA1,Khư khư,review,ko_vi_base_placeholder_mismatch
+NPmst12UserDeadA1,Ái chà!,review,ko_vi_base_placeholder_mismatch
+NPmst13GeneralA10,Thằng tù có trong đó không dzậy?,review,ko_vi_base_placeholder_mismatch
+NPmst13GeneralA11,Hư hư!,review,ko_vi_base_placeholder_mismatch
+NPmst13GeneralA4,La la la la,review,ko_vi_base_placeholder_mismatch
+NPmst13GeneralA5,Ngoài kia chán quá,review,ko_vi_base_placeholder_mismatch
+NPmst13GeneralA6,Đi tuần tra một vòng nào,review,ko_vi_base_placeholder_mismatch
+NPmst13GeneralA7,Nhốt kỹ chưa đó?,review,ko_vi_base_placeholder_mismatch
+NPmst13GeneralA9,Giữ cho kỹ đó.,review,ko_vi_base_placeholder_mismatch
+NPmst13MonDeadA1,Trời ơi !,review,ko_vi_base_placeholder_mismatch
+NPmst13MonDieA1,Ư ạc!,review,ko_vi_base_placeholder_mismatch
+NPmst13MonDieA2,Ư ạc?,review,ko_vi_base_placeholder_mismatch
+NPmst13MonDieA3,Ư ạc~,review,ko_vi_base_placeholder_mismatch
+NPmst13MonDieA4,Ư ạc~!,review,ko_vi_base_placeholder_mismatch
+NPmst13UserbeLockedA1,Ở đâu ở đâu dzậy ta!,review,ko_vi_base_placeholder_mismatch
+NPmst13UserbeLockedA2,Đâu đâu?,review,ko_vi_base_placeholder_mismatch
+NPmst13UserbeLockedA3,Đã bắt được thằng bỏ trốn rồi!,review,ko_vi_base_placeholder_mismatch
+NPmst13UserDeadA2,Ái chà~,review,ko_vi_base_placeholder_mismatch
+NPmst13UserDeadA4,"Cha, mau đi vào ngục đi!",review,ko_vi_base_placeholder_mismatch
+NPmst13UserDeadA5,Được rồi!,review,ko_vi_base_placeholder_mismatch
+NPmst13UserDeadA6,Bắt được 1 thằng rồi!,review,ko_vi_base_placeholder_mismatch
+NPmst14GeneralA1,Không có ai hả?,review,ko_vi_base_placeholder_mismatch
+NPmst14GeneralA2,La la,review,ko_vi_base_placeholder_mismatch
+NPmst14GeneralA4,Nhè nhẹ nhè nhẹ,review,ko_vi_base_placeholder_mismatch
+NPmst14GeneralA5,Cẩn thận.,review,ko_vi_base_placeholder_mismatch
+NPmst14GeneralA6,Chú ý xung quanh đó.,review,ko_vi_base_placeholder_mismatch
+NPmst14GeneralA7,Tự do đi ~,review,ko_vi_base_placeholder_mismatch
+NPmst14MonDeadA4,Đáng thương đáng thương!,review,ko_vi_base_placeholder_mismatch
+NPmst14MonDeadA5,Kẻ xâm nhập!,review,ko_vi_base_placeholder_mismatch
+NPmst14MonDieA1,Trời ơi !,review,ko_vi_base_placeholder_mismatch
+NPmst14MonDieA2,Ư ạc,review,ko_vi_base_placeholder_mismatch
+NPmst14MonDieA3,Ư ạc~,review,ko_vi_base_placeholder_mismatch
+NPmst14MonDieA4,Ư ạc~!,review,ko_vi_base_placeholder_mismatch
+NPmst14MonDieA5,Ực!,review,ko_vi_base_placeholder_mismatch
+NPmst14MonDieA6,Cứu lấy tên cướp biển~,review,ko_vi_base_placeholder_mismatch
+NPmst14MonDieA7,Ạc!,review,ko_vi_base_placeholder_mismatch
+NPmst14UserbeLockedA1,Bắt được chưa?,review,ko_vi_base_placeholder_mismatch
+NPmst14UserbeLockedA2,U hù,review,ko_vi_base_placeholder_mismatch
+NPmst14UserDeadA1,OK!,review,ko_vi_base_placeholder_mismatch
+NPpen05GeneralA1, Đi nào!,review,ko_vi_base_placeholder_mismatch
+NPpen05GeneralA10, Cố lên!,review,ko_vi_base_placeholder_mismatch
+NPpen05GeneralA3, Mi dám tấn công cả ta nữa hả!,review,ko_vi_base_placeholder_mismatch
+NPpen05GeneralA5, Ngạc nhiên chưa!,review,ko_vi_base_placeholder_mismatch
+NPpen05GeneralA6, Ghê quá!,review,ko_vi_base_placeholder_mismatch
+NPpen05GeneralA7, Gì vậy!,review,ko_vi_base_placeholder_mismatch
+NPpen05GeneralA8, Ở đây cũng có!,review,ko_vi_base_placeholder_mismatch
+NPpen05GeneralA9,Tụi ta chỉ mới bắt đầu thôi.,review,ko_vi_base_placeholder_mismatch
+NPpen05MonDeadA1, Bạn ơi ra đây đi!,review,ko_vi_base_placeholder_mismatch
+NPpen05MonDeadA3, Đau quá!,review,ko_vi_base_placeholder_mismatch
+NPpen05MonErrA1, Gì vậy? Gì vậy?,review,ko_vi_base_placeholder_mismatch
+NPpen05MonErrA2, Ở đâu vậy?,review,ko_vi_base_placeholder_mismatch
+NPpen05MonErrA3, Ở đâu?,review,ko_vi_base_placeholder_mismatch
+NPpen05MonErrA4, Gừ gừ gừ,review,ko_vi_base_placeholder_mismatch
+NPpen05MonErrA5, Ủa?,review,ko_vi_base_placeholder_mismatch
+NPpen05MonErrA6, Hic hic…,review,ko_vi_base_placeholder_mismatch
+NPpen05MonFreeA1, Phải bắt cho ta chứ~!!,review,ko_vi_base_placeholder_mismatch
+NPpen05MonFreeA2, Lại đây coi!,review,ko_vi_base_placeholder_mismatch
+NPpen05MonFreeA3, Tiêu rồi!,review,ko_vi_base_placeholder_mismatch
+NPpen05MonIceA1, Thách đi!,review,ko_vi_base_placeholder_mismatch
+NPpen05MonIceA2, Phục thù nào!,review,ko_vi_base_placeholder_mismatch
+NPpen05MonIceA3, Grừ grừ!,review,ko_vi_base_placeholder_mismatch
+NPpen05MonIceA4, Ịch ịch,review,ko_vi_base_placeholder_mismatch
+NPpen05MonTeamDeadA2, Phải cẩn thận chứ,review,ko_vi_base_placeholder_mismatch
+NPpen05MonTeamDeadA3, Này bạn ơi~!,review,ko_vi_base_placeholder_mismatch
+NPpen05UserDeadA2,Tiếc chưa~? Ke ke ke,review,ko_vi_base_placeholder_mismatch
+NPpen05UserDeadA3, Sẽ đau lắm đây!,review,ko_vi_base_placeholder_mismatch
+NPpen05UserDeadA4, Chúng ta thắng rồi!,review,ko_vi_base_placeholder_mismatch
+NPpen05UserDeadA5,Thắng rồi!,review,ko_vi_base_placeholder_mismatch
+NPpen05UserDeadA6, Hi hi hi!,review,ko_vi_base_placeholder_mismatch
+NPpen05UserDeadA7, Bắt được rồi!,review,ko_vi_base_placeholder_mismatch
+NPpen05UserDeadA8, Đại thắng rồi!,review,ko_vi_base_placeholder_mismatch
+NPpen05UserLockedA2, Cuối cùng đã thắng rồi!,review,ko_vi_base_placeholder_mismatch
+NPpen05UserLockedA4, Đi bắt lấy mau!,review,ko_vi_base_placeholder_mismatch
+NPpen05UserLockedA5,Tiếp tục đi nào~,review,ko_vi_base_placeholder_mismatch
+NPpen05UserLockedA6, Hu hu hu!,review,ko_vi_base_placeholder_mismatch
+NPpen06GeneralA1, Cẩn thận đó!,review,ko_vi_base_placeholder_mismatch
+NPpen06GeneralA17, Nữ chúa ơi đừng lo!,review,ko_vi_base_placeholder_mismatch
+NPpen06GeneralA2, Bực bội quá...,review,ko_vi_base_placeholder_mismatch
+NPpen06GeneralA3, Mi lại quấy rầy ta nữa hà?,review,ko_vi_base_placeholder_mismatch
+NPpen06MonDamageA2, Ta không chơi được...,review,ko_vi_base_placeholder_mismatch
+NPpen06MonDamageA3, Đồ xấu xa...,review,ko_vi_base_placeholder_mismatch
+NPpen06MonErrA2, Gì vậy? Gì vậy?,review,ko_vi_base_placeholder_mismatch
+NPpen06MonFreeA2," Nóng quá, nóng quá",review,ko_vi_base_placeholder_mismatch
+NPpen06MonIceA1, Chờ ta 3 giây thôi,review,ko_vi_base_placeholder_mismatch
+NPpen06MonIceA16, Chỉ 3 giây nữa thôi,review,ko_vi_base_placeholder_mismatch
+NPpen06MonIceA2, Ặc ặc tiêu rùi.,review,ko_vi_base_placeholder_mismatch
+NPpen06MonIceA3, Mi phải lịch sự chứ! ,review,ko_vi_base_placeholder_mismatch
+NPpen06MonIceA5, Grừ grừ grừ!!!,review,ko_vi_base_placeholder_mismatch
+NPpen06MonIceA6, Ôi sợ quá,review,ko_vi_base_placeholder_mismatch
+NPpen06MonTeamDeadA4, Đi hết đi mấy đứa vô tích sự này!,review,ko_vi_base_placeholder_mismatch
+NPpen06UserDeadA10,Tên tiếp theo nào!,review,ko_vi_base_placeholder_mismatch
+NPpen06UserDeadA3, Dễ quá chẳng có gì vui,review,ko_vi_base_placeholder_mismatch
+NPpen06UserDeadA9, Bắt hết mấy tên còn lại mau!,review,ko_vi_base_placeholder_mismatch
+NPpen06UserLockedA1, Đuổi theo mau.,review,ko_vi_base_placeholder_mismatch
+NPpen06UserLockedA3, Có ở đó không?,review,ko_vi_base_placeholder_mismatch
+NPpen06UserLockedA4, Ta đi ngay đây,review,ko_vi_base_placeholder_mismatch
+NPpen06UserLockedA5, Ta sẽ cho nổ tung đây ha ha,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneraE1, Ta là thuộc hạ của Nữ chúa đây.,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneraE4," Giỏi, tiếp tục đánh nhau đi.",review,ko_vi_base_placeholder_mismatch
+NPpen07GeneraE5, Di chuyển nhanh!!!,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneralA1, Không thể hồi sinh rồi,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneralB1, Đừng bỏ lỡ đó,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneralB2, Phải chặn lại chứ,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneralC1,Ta biết rồi,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneralC2,Thầy phù thủy đã giúp chúng ta rồi.,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneralC3, Phải tin thầy phù thủy chứ.,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneralC4, Chúng ta thắng rồi,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneralD1, Hồi sinh rồi,review,ko_vi_base_placeholder_mismatch
+NPpen07GeneralD2, Thầy phù thủy sống lại rồi.,review,ko_vi_base_placeholder_mismatch
+NPpen07MonDeadA1, Ặc ặc,review,ko_vi_base_placeholder_mismatch
+NPpen07MonDeadA2, Cứu với~,review,ko_vi_base_placeholder_mismatch
+NPpen07MonDeadA3,Ta ghét chết lắm,review,ko_vi_base_placeholder_mismatch
+NPpen07MonDeadB1, Ặc ặc,review,ko_vi_base_placeholder_mismatch
+NPpen07MonDeadB2, Cứu với~,review,ko_vi_base_placeholder_mismatch
+NPpen07MonDeadB3,Ta ghét chết lắm,review,ko_vi_base_placeholder_mismatch
+NPpen07RebirthA1, Phục thù,review,ko_vi_base_placeholder_mismatch
+NPpen07RebirthB1, Phục thù,review,ko_vi_base_placeholder_mismatch
+NPpen07UserDeadA1,Tiêu rồi!!,review,ko_vi_base_placeholder_mismatch
+NPpen07UserDeadA2,Đã chặn rồi,review,ko_vi_base_placeholder_mismatch
+NPpen07UserDeadB1,Tiêu rồi!!,review,ko_vi_base_placeholder_mismatch
+NPpen07UserDeadB2, Giỏi lắm!,review,ko_vi_base_placeholder_mismatch
+NPpen07UserDeadC1,Tiêu rồi!!,review,ko_vi_base_placeholder_mismatch
+NPpen07UserDeadC2,Tốt quá,review,ko_vi_base_placeholder_mismatch
+NPpen08GeneraA10, Di chuyển nhanh!!!,review,ko_vi_base_placeholder_mismatch
+NPpen08GeneraA2, Sẵn sàng nào,review,ko_vi_base_placeholder_mismatch
+NPpen08GeneraA3, Cướp biển quay về mau~!,review,ko_vi_base_placeholder_mismatch
+NPpen08GeneraA4, Đi nào! Nữ chúa!,review,ko_vi_base_placeholder_mismatch
+NPpen08GeneraA6, Hơi ít hả?,review,ko_vi_base_placeholder_mismatch
+NPpen08GeneraA9, Ta quay lại rồi.,review,ko_vi_base_placeholder_mismatch
+NPpen08MonDeadB1, Không thể tha thứ được,review,ko_vi_base_placeholder_mismatch
+NPpen08MonDeadC1, Không được!,review,ko_vi_base_placeholder_mismatch
+NPpen08MonDeadD1, Không được!,review,ko_vi_base_placeholder_mismatch
+NPpen08UserDeadC1, Ủa?,review,ko_vi_base_placeholder_mismatch
+NPpen08UserDeadC2, Ặc ặc~!,review,ko_vi_base_placeholder_mismatch
+NPpen08UserDeadD1, Hi hi hi,review,ko_vi_base_placeholder_mismatch
+NPpen08UserDeadD2, Ha ha!,review,ko_vi_base_placeholder_mismatch
+NPpen09boss1, Ủa?,review,ko_vi_base_placeholder_mismatch
+NPpen09boss2,Tên phù thủy này vô dụng quá,review,ko_vi_base_placeholder_mismatch
+NPpen09boss3,Ta không nghe!Chết đi!!,review,ko_vi_base_placeholder_mismatch
+NPpen09boss4, Phù thủy đại bác!!!,review,ko_vi_base_placeholder_mismatch
+NPpen09boss5, Tên phù thủy ngốc nghếch!!,review,ko_vi_base_placeholder_mismatch
+NPpen09boss7, Không thể tha thứ,review,ko_vi_base_placeholder_mismatch
+NPpen09boss8, Sẵn sàng nào,review,ko_vi_base_placeholder_mismatch
+NPpen09boss9, Quay về mau~!,review,ko_vi_base_placeholder_mismatch
+NPpen09bossburn, Mi muốn chết hả?,review,ko_vi_base_placeholder_mismatch
+NPpen09bossdead,Ta tiêu rồi,review,ko_vi_base_placeholder_mismatch
+NPpen09bosshit, Ái chà,review,ko_vi_base_placeholder_mismatch
+NPpen09bossuserdead1, Xong rồi hả?,review,ko_vi_base_placeholder_mismatch
+NPpen09bossuserdead2, Ưm phải vậy chứ.,review,ko_vi_base_placeholder_mismatch
+NPpen09GeneraA1, Nữ chúa ơi!!!!,review,ko_vi_base_placeholder_mismatch
+NPpen09GeneraA2, Kẻ thù tới rồi!!!,review,ko_vi_base_placeholder_mismatch
+NPpen09GeneraB1, Ôi sợ quá,review,ko_vi_base_placeholder_mismatch
+NPpen09GeneraC2, Chúng ta thành công rồi,review,ko_vi_base_placeholder_mismatch
+NPpen09MonDeadB1, Không được!,review,ko_vi_base_placeholder_mismatch
+NPpen09MonDeadC1, Ahaaaa,review,ko_vi_base_placeholder_mismatch
+NPpen09UserDeadB1, Xong rồi hả?,review,ko_vi_base_placeholder_mismatch
+NPpen09UserDeadB2, May quá,review,ko_vi_base_placeholder_mismatch
+NPpen09UserDeadC1, Hi hi hi,review,ko_vi_base_placeholder_mismatch
+NPpen09UserDeadC2,Trời ơi~!,review,ko_vi_base_placeholder_mismatch
+NPpen10GeneraA1,Thắng đi rồi ta cho ăn cơm,review,ko_vi_base_placeholder_mismatch
+NPpen10GeneraB1, Đói bụng quá,review,ko_vi_base_placeholder_mismatch
+NPpen10GeneraC1, Đói bụng quá,review,ko_vi_base_placeholder_mismatch
+NPpen10GeneraC2, Hết sức rồi,review,ko_vi_base_placeholder_mismatch
+NPpen10MonDeadA1, Hic hic!,review,ko_vi_base_placeholder_mismatch
+NPpen10MonDeadA2, Ôi trời!,review,ko_vi_base_placeholder_mismatch
+NPpen10MonDeadA3, Ủa!,review,ko_vi_base_placeholder_mismatch
+NPpen10MonDeadB1, Ặc ặc,review,ko_vi_base_placeholder_mismatch
+NPpen10MonDeadB3, Chẳng dễ gì,review,ko_vi_base_placeholder_mismatch
+NPpen10MonDeadC1, Ặc ặc,review,ko_vi_base_placeholder_mismatch
+NPpen10MonDeadC2, Cứu với~,review,ko_vi_base_placeholder_mismatch
+NPpen10MonDeadC3,Ta ghét chết lắm,review,ko_vi_base_placeholder_mismatch
+NPpen10MonRebirthA1, Phục thù,review,ko_vi_base_placeholder_mismatch
+NPpen10MonRebirthB1, Phục thù,review,ko_vi_base_placeholder_mismatch
+NPpen10MonRebirthC1, Có đói cũng phải chạy đi!!,review,ko_vi_base_placeholder_mismatch
+NPpen10UserDeadA1, Buồn cười quá,review,ko_vi_base_placeholder_mismatch
+NPpen10UserDeadA2, Thắng rồi,review,ko_vi_base_placeholder_mismatch
+NPpen10UserDeadB1, Chẳng có gì để làm,review,ko_vi_base_placeholder_mismatch
+NPpen10UserDeadB3, Hưm!,review,ko_vi_base_placeholder_mismatch
+NPpen10UserDeadC1, May quá,review,ko_vi_base_placeholder_mismatch
+NPpen10UserDeadC3, Yên tâm rồi,review,ko_vi_base_placeholder_mismatch
+NPpen10UserDeadC4, Giờ ta cho cơm nè~,review,ko_vi_base_placeholder_mismatch
+NPpen11GeneraA1, Đồ nói xạo,review,ko_vi_base_placeholder_mismatch
+NPpen11GeneraA2, Cơm cũng không cho đâu,review,ko_vi_base_placeholder_mismatch
+NPpen11MonDeadA1, Ưh ặc,review,ko_vi_base_placeholder_mismatch
+NPpen11MonDeadA2, Cứu với ~,review,ko_vi_base_placeholder_mismatch
+NPpen11MonDeadA3,Ta ghét chết lắm,review,ko_vi_base_placeholder_mismatch
+NPpen11MonDeadB2, Hết người cho cơm rùi,review,ko_vi_base_placeholder_mismatch
+NPpen11MonRebirthA1, Cơm!! Cơm!! Cơm!!,review,ko_vi_base_placeholder_mismatch
+NPpen11MonRebirthB1, Cơm hộp đổ hết rồi!!,review,ko_vi_base_placeholder_mismatch
+NPpen11UserDeadA1, Đói muốn xỉu mất,review,ko_vi_base_placeholder_mismatch
+NPpen11UserDeadA2, Giờ ta cho cơm nè~,review,ko_vi_base_placeholder_mismatch
+NPpen11UserDeadB1, Buồn cười quá,review,ko_vi_base_placeholder_mismatch
+NPpen11UserDeadB2, Giờ ta sẽ cho cơm nè,review,ko_vi_base_placeholder_mismatch
+NPpen12boss10, Không có cơm rùi!!!,review,ko_vi_base_placeholder_mismatch
+NPpen12boss2, Ta sẽ cho biết tay.,review,ko_vi_base_placeholder_mismatch
+NPpen12boss3, Lại đây ta cho cơm nè!,review,ko_vi_base_placeholder_mismatch
+NPpen12boss5, Đại bác kìa,review,ko_vi_base_placeholder_mismatch
+NPpen12boss7, Mi vẫn chưa chết hả?,review,ko_vi_base_placeholder_mismatch
+NPpen12bossBurn, Mi muốn chết hả?,review,ko_vi_base_placeholder_mismatch
+NPpen12bossdead1,Ta tiêu rùi,review,ko_vi_base_placeholder_mismatch
+NPpen12bossdead2, Ui da,review,ko_vi_base_placeholder_mismatch
+NPpen12bossHit, Giật cả mình,review,ko_vi_base_placeholder_mismatch
+NPpen12bossmondead, Ngốc quá!,review,ko_vi_base_placeholder_mismatch
+NPpen12bossUserdead1, Xong rồi hả?,review,ko_vi_base_placeholder_mismatch
+NPpen12GeneraA2, Đừng có xạo,review,ko_vi_base_placeholder_mismatch
+NPpen12GeneraA5,Thiệt không?,review,ko_vi_base_placeholder_mismatch
+NPpen12GeneraA6, Giờ ta biết hết rồi,review,ko_vi_base_placeholder_mismatch
+NPpen12GeneraA7,Ta cho gạo nè,review,ko_vi_base_placeholder_mismatch
+NPpen12GeneraA8,Ta cho thịt gà nè.,review,ko_vi_base_placeholder_mismatch
+NPpen12GeneraA9,Ta ghét mì gói lắm!!!!!!,review,ko_vi_base_placeholder_mismatch
+NPpen12MonRebirthA1, Cho ta cơm nào!!,review,ko_vi_base_placeholder_mismatch
+NPpen12UserDeadA1, Hi hi hi,review,ko_vi_base_placeholder_mismatch
+NPpen12UserDeadA2, Này~!,review,ko_vi_base_placeholder_mismatch
+NPpen12UserDeadA3, Giờ mi chết với ta!!,review,ko_vi_base_placeholder_mismatch
+NPpen12UserDeadA4, Không được!,review,ko_vi_base_placeholder_mismatch
+NPpen18GeneraA4,Mi tiêu rồi!,review,ko_vi_base_meaning_review
+NPpen22GeneralA1, Gì vậy? Gì vậy?,review,ko_vi_base_meaning_review
+NPpen22GeneralA11," Nóng quá, nóng quá",review,ko_vi_base_meaning_review
+NPpen22GeneralA14, Ta mà thoát ra sẽ biết tay!,review,ko_vi_base_meaning_review
+NPpen22GeneralA15,Ở đó kìa!!,review,ko_vi_base_meaning_review
+NPpen22GeneralA16, Không được thua!,review,ko_vi_base_meaning_review
+NPpen22GeneralA17, Phải bắt cho ta chứ~!!,review,ko_vi_base_meaning_review
+NPpen22GeneralA2, Bắt lấy đi!,review,ko_vi_base_meaning_review
+NPpen22GeneralA20,Tụi ta chỉ mới bắt đầu thôi.,review,ko_vi_base_meaning_review
+NPpen22GeneralA21, Bạn ơi ra đây đi!,review,ko_vi_base_meaning_review
+NPpen22GeneralA4, Ta chờ đó,review,ko_vi_base_meaning_review
+NPpen22GeneralA6, Giúp tụi ta với!,review,ko_vi_base_meaning_review
+NPpen22GeneralA7, Ôi trời?,review,ko_vi_base_meaning_review
+NPpen22GeneralA8, Nguy hiểm quá,review,ko_vi_base_meaning_review
+NPpen22GeneralA9, Ặc ặc tiêu rùi.,review,ko_vi_base_meaning_review
+NPpen22MonDeadA1, Ặc ặc!,review,ko_vi_base_meaning_review
+NPpen22MonDeadA2, Gừ gừ! Thoát ra nào,review,ko_vi_base_meaning_review
+NPpen22MonDeadA3, Hic hic hic,review,ko_vi_base_meaning_review
+NPpen22MonErrA1, Hu hu hu,review,ko_vi_base_meaning_review
+NPpen22MonErrA2, Hu hu hu,review,ko_vi_base_meaning_review
+NPpen22MonIceA1, Ha ha ha,review,ko_vi_base_meaning_review
+NPpen22MonIceA2, Ngạc nhiên chưa!,review,ko_vi_base_meaning_review
+NPpen22MonIceA3, Ghê quá!,review,ko_vi_base_meaning_review
+NPpen22UserDeadA1, Gì vậy!,review,ko_vi_base_meaning_review
+NPpen22UserDeadA2, Ở đây cũng có!,review,ko_vi_base_meaning_review
+NPpen22UserDeadA3," Nóng quá, nóng quá",review,ko_vi_base_meaning_review
+NPpen22UserDeadA4, Không. Lại đây chứ?,review,ko_vi_base_meaning_review
+NPpen22UserDeadA5, Lại đây mau.,review,ko_vi_base_meaning_review
+NPpen22UserDeadA6, Lại đây mau,review,ko_vi_base_meaning_review
+NPpen23GeneralA1," Bệ hạ ơi, tụi nó giỏi lắm",review,ko_vi_base_meaning_review
+NPpen23GeneralA10,Không trốn được rùi !,review,ko_vi_base_meaning_review
+NPpen23GeneralA11,Cẩn thận phía sau đó,review,ko_vi_base_meaning_review
+NPpen23GeneralA12,Nguy hiểm quá,review,ko_vi_base_meaning_review
+NPpen23GeneralA14, Chờ ta 3 giây thôi,review,ko_vi_base_meaning_review
+NPpen23GeneralA15,Trời ơi mệt quá!,review,ko_vi_base_meaning_review
+NPpen23GeneralA16, Đây là đâu vậy!,review,ko_vi_base_meaning_review
+NPpen23GeneralA17, Thách đi!,review,ko_vi_base_meaning_review
+NPpen23GeneralA18, Phục thù nào!,review,ko_vi_base_meaning_review
+NPpen23GeneralA19, Grừ grừ!,review,ko_vi_base_meaning_review
+NPpen23GeneralA2, Ịch ịch,review,ko_vi_base_meaning_review
+NPpen23GeneralA21, Phải cẩn thận chứ,review,ko_vi_base_meaning_review
+NPpen23GeneralA23,Ở đó kìa!!,review,ko_vi_base_meaning_review
+NPpen23GeneralA25,Cẩn thận,review,ko_vi_base_meaning_review
+NPpen23GeneralA26, Trốn đi.,review,ko_vi_base_meaning_review
+NPpen23GeneralA27,Trốn chưa?,review,ko_vi_base_meaning_review
+NPpen23GeneralA28,Đi từ từ thôi,review,ko_vi_base_meaning_review
+NPpen23GeneralA29, Bắt được rồi!,review,ko_vi_base_meaning_review
+NPpen23GeneralA3, Đại thắng rồi!,review,ko_vi_base_meaning_review
+NPpen23GeneralA31, Cuối cùng đã thắng rồi!,review,ko_vi_base_meaning_review
+NPpen23GeneralA5, Đi bắt lấy mau!,review,ko_vi_base_meaning_review
+NPpen23GeneralA7, Ọc ọc~ Ta tiêu rùi~~!,review,ko_vi_base_meaning_review
+NPpen23GeneralA8, Cẩn thận đó!,review,ko_vi_base_meaning_review
+NPpen23GeneralA9, Đừng chạy trốn!,review,ko_vi_base_meaning_review
+NPpen23MonAngryA1, Ta nổi giận rồi đó!,review,ko_vi_base_meaning_review
+NPpen23MonAngryA2, Ahaaa!,review,ko_vi_base_meaning_review
+NPpen23MonDeadA1, Mấy thằng tồi!,review,ko_vi_base_meaning_review
+NPpen23MonDeadA2, Ahaaa!,review,ko_vi_base_meaning_review
+NPpen23MonDeadA3, Ya không được!,review,ko_vi_base_meaning_review
+NPpen23MonDeadA4, Ụych..,review,ko_vi_base_meaning_review
+NPpen23MonDeadA5, Bắt lấy bắt lấy!,review,ko_vi_base_meaning_review
+NPpen23MonDeadA6, Bắt lấy nó!,review,ko_vi_base_meaning_review
+NPpen23MonDeadA7, Sặc.....,review,ko_vi_base_meaning_review
+NPpen23MonErrA1, Mi trốn đâu rùi?,review,ko_vi_base_meaning_review
+NPpen23MonErrA2, Đâu rùi,review,ko_vi_base_meaning_review
+NPpen23MonIceA1, Ta bị đóng băng rùi,review,ko_vi_base_meaning_review
+NPpen23MonIceA2, Ghét quá đi,review,ko_vi_base_meaning_review
+NPpen23MonIceA3, Hừm hừm,review,ko_vi_base_meaning_review
+NPpen23MonIceA4,Hic hic hic,review,ko_vi_base_meaning_review
+NPpen23MonIceA5,Ah lạnh quá,review,ko_vi_base_meaning_review
+NPpen23UserbeLockedA1,Gừ gừ! Thoát ra nào,review,ko_vi_base_meaning_review
+NPpen23UserbeLockedA2,Hô hô hô,review,ko_vi_base_meaning_review
+NPpen23UserbeLockedA3, Nào bắt lấy nó~,review,ko_vi_base_meaning_review
+NPpen23UserbeLockedA4,Hi hi hi,review,ko_vi_base_meaning_review
+NPpen23UserDeadA1, Mấy đứa kia đâu rùi?,review,ko_vi_base_meaning_review
+NPpen23UserDeadA2, Đã bắt hết chưa?,review,ko_vi_base_meaning_review
+NPpen23UserDeadA3,Dễ dàng quá,review,ko_vi_base_meaning_review
+NPpen23UserDeadA4,Hi hi hi,review,ko_vi_base_meaning_review
+NPpen23UserDeadA5, Bực bội quá...,review,ko_vi_base_meaning_review
+NPpen23UserDeadA6,Hic nghỉ tí thôi,review,ko_vi_base_meaning_review
+NPpen23UserDeadA7,Hu hu hu,review,ko_vi_base_meaning_review
+NPpen24BossAngryA2, Ta sẽ không tha thứ đâu!!,review,ko_vi_base_meaning_review
+NPpen24BossDeadA2, Ta sẽ phục thù ~,review,ko_vi_base_meaning_review
+NPpen24BossDeadA3, Giờ ta phải đi đây~,review,ko_vi_base_meaning_review
+NPpen24BossDeadA4,Thêm 1 tên!,review,ko_vi_base_meaning_review
+NPpen24BossDeadA5, Chúng ta thắng rồi!,review,ko_vi_base_meaning_review
+NPpen24BossDeadA6,Ặc ặc ~,review,ko_vi_base_meaning_review
+NPpen24BossDeadA7, Dễ dàng quá! Ha ha,review,ko_vi_base_meaning_review
+NPpen24GeneralA1, Cẩn thận đó!,review,ko_vi_base_meaning_review
+NPpen24GeneralA10, Này,review,ko_vi_base_meaning_review
+NPpen24GeneralA15, Ghét quá đi,review,ko_vi_base_meaning_review
+NPpen24GeneralA16, Hừm hừm,review,ko_vi_base_meaning_review
+NPpen24GeneralA17, Nữ chúa ơi đừng lo!,review,ko_vi_base_meaning_review
+NPpen24GeneralA18, Bảo vệ Nữ chúa đi!,review,ko_vi_base_meaning_review
+NPpen24GeneralA2, Mi hãy luyện tập thêm đi,review,ko_vi_base_meaning_review
+NPpen24GeneralA20, Mi chơi xấu quá!!,review,ko_vi_base_meaning_review
+NPpen24GeneralA21, Hic tiếc quá!,review,ko_vi_base_meaning_review
+NPpen24GeneralA22, Gì vậy! Chơi kim hả!,review,ko_vi_base_meaning_review
+NPpen24GeneralA24, Ra đây mau!!,review,ko_vi_base_meaning_review
+NPpen24GeneralA25, Đừng để ý~,review,ko_vi_base_meaning_review
+NPpen24GeneralA26, Đừng có mà thách ta~ Lêu lêu~,review,ko_vi_base_meaning_review
+NPpen24GeneralA27, Ha ha ha~ Ha ha~,review,ko_vi_base_meaning_review
+NPpen24GeneralA28,Hi hi hi hi !!!,review,ko_vi_base_meaning_review
+NPpen24GeneralA29, Này mau ra giúp ta nào!,review,ko_vi_base_meaning_review
+NPpen24GeneralA3, Khi bị đóng băng phải cẩn thận đó.,review,ko_vi_base_meaning_review
+NPpen24GeneralA30, Đừng vậy mà hic hic,review,ko_vi_base_meaning_review
+NPpen24GeneralA31, Chúng ta sắp tiêu rồi..Hic..,review,ko_vi_base_meaning_review
+NPpen24GeneralA32, Nguy rồi!,review,ko_vi_base_meaning_review
+NPpen24GeneralA6, Giúp ta với,review,ko_vi_base_meaning_review
+NPpen24GeneralA7, Ai vậy?!,review,ko_vi_base_meaning_review
+NPpen24GeneralA8, Ai vậy?,review,ko_vi_base_meaning_review
+NPpen24MonDamageA1, Gruhh,review,ko_vi_base_meaning_review
+NPpen24MonDamageA11, Tức quá~,review,ko_vi_base_meaning_review
+NPpen24MonDamageA12, Hả!,review,ko_vi_base_meaning_review
+NPpen24MonDamageA2, Ta không chơi được...,review,ko_vi_base_meaning_review
+NPpen24MonDamageA3, Đồ xấu xa...,review,ko_vi_base_meaning_review
+NPpen24MonDamageA5, Ahaaaa!,review,ko_vi_base_meaning_review
+NPpen24MonDamageA6, Ha ha!,review,ko_vi_base_meaning_review
+NPpen24MonDamageA7, Ha ha~ ^:^,review,ko_vi_base_meaning_review
+NPpen24MonDamageA8, Hic!,review,ko_vi_base_meaning_review
+NPpen24MonDamageA9," Bệ hạ ơi, tụi nó giỏi lắm",review,ko_vi_base_meaning_review
+NPpen24MonDeadA1, Mi chơi xấu quá!!,review,ko_vi_base_meaning_review
+NPpen24MonDeadA2, Hic tiếc quá!,review,ko_vi_base_meaning_review
+NPpen24UserbeLockedA1, Khi bị đóng băng phải cẩn thận đó,review,ko_vi_base_meaning_review
+NPpen24UserbeLockedA2, Đừng vậy mà hic hic,review,ko_vi_base_meaning_review
+NPpen24UserbeLockedA3, Chúng ta sắp tiêu rồi..Hic..,review,ko_vi_base_meaning_review
+NPpen24UserbeLockedA4, Nguy rồi!,review,ko_vi_base_meaning_review
+NPpen24UserbeLockedA6, Ặc..,review,ko_vi_base_meaning_review
+NPpen24UserbeLockedA7, Nhanh lên~ Trốn mau ~ Hi hi,review,ko_vi_base_meaning_review
+NPpen24UserDeadA2, Cứu lấy~,review,ko_vi_base_meaning_review
+NPpen24UserDeadA4,Kha kha kha,review,ko_vi_base_meaning_review
+NPpen24UserDeadA6, Ahaa!,review,ko_vi_base_meaning_review
+NPpen25GeneralA2," Này, đứng yên đó!",review,ko_vi_base_meaning_review
+NPpen25GeneralA3, Mi hãy đứng yên đó~,review,ko_vi_base_meaning_review
+NPpen25GeneralA4, Ha ha ha~,review,ko_vi_base_meaning_review
+NPpen25GeneralB1, Phải luyện tập tí nào~,review,ko_vi_base_meaning_review
+NPpen25GeneralB3, Dễ dàng quá! Ha ha,review,ko_vi_base_meaning_review
+NPpen25MondeadA1,Ôi sợ quá,review,ko_vi_base_meaning_review
+NPpen25MondeadA2,Cứu ta với,review,ko_vi_base_meaning_review
+NPpen25MondeadA3,Đau quá ,review,ko_vi_base_meaning_review
+NPpen25MonliveB1, Sống rùi!!,review,ko_vi_base_meaning_review
+NPpen25UserdeadA1, Thua rùi,review,ko_vi_base_meaning_review
+NPpen25UserdeadA2,Hoàn thành nhiệm vụ!,review,ko_vi_base_meaning_review
+NPpen25UserdeadB1, Ha ha ha~ Ha ha~,review,ko_vi_base_meaning_review
+NPpen26GeneralA1, Bắt được rồi~ Hi hi,review,ko_vi_base_meaning_review
+NPpen26GeneralA2,Thêm 1 tên!,review,ko_vi_base_meaning_review
+NPpen26GeneralB1, Mi chơi xấu quá!!,review,ko_vi_base_meaning_review
+NPpen26GeneralB2, Hic tiếc quá!,review,ko_vi_base_meaning_review
+NPpen26GeneralB3, Gì vậy! Chơi kim hả!,review,ko_vi_base_meaning_review
+NPpen26GeneralB5, Chú ý đó,review,ko_vi_base_meaning_review
+NPpen26GeneralC1, Mau đầu hàng đi,review,ko_vi_base_meaning_review
+NPpen26GeneralC3, Ui da!,review,ko_vi_base_meaning_review
+NPpen26GeneralC4, Pằng pằng!!!,review,ko_vi_base_meaning_review
+NPpen26GeneralC5, Bịch~ Bịch~,review,ko_vi_base_meaning_review
+NPpen26MondeadB1, Cứu ta với~,review,ko_vi_base_meaning_review
+NPpen26UserdeadC1, Bụp bụp~,review,ko_vi_base_meaning_review
+NPpen27BossdeadBoss1, Ahaa đau quá! Đau quá!,review,ko_vi_base_meaning_review
+NPpen27EserdeadBoss1, Cho mi biết tay nè.,review,ko_vi_base_meaning_review
+NPpen27GeneralA1, Sử dụng 30% năng lượng,review,ko_vi_base_meaning_review
+NPpen27GeneralA2, Sử dụng 60% năng lượng,review,ko_vi_base_meaning_review
+NPpen27GeneralA3,Cứu với~,review,ko_vi_base_meaning_review
+NPpen27GeneralA4, Tấn công,review,ko_vi_base_meaning_review
+NPpen27GeneralB1, Ọc ọc~,review,ko_vi_base_meaning_review
+NPpen27GeneralB2, Aha..Cứu với..,review,ko_vi_base_meaning_review
+NPpen27GeneralB3,Nạp điện xong,review,ko_vi_base_meaning_review
+NPpen27GeneralB4,Đang nạp điện,review,ko_vi_base_meaning_review
+NPpen27GeneralB5, Trời ơi..,review,ko_vi_base_meaning_review
+NPpen27GeneralB6,Thành công rùi,review,ko_vi_base_meaning_review
+NPpen27GeneralB7, Ha ha ha~,review,ko_vi_base_meaning_review
+NPpen27GeneralBoss1, Không có kim hả?,review,ko_vi_base_meaning_review
+NPpen27GeneralBoss2, Tấn công,review,ko_vi_base_meaning_review
+NPpen27GeneralBoss3,Thèm bánh mì thịt quá,review,ko_vi_base_meaning_review
+NPpen27GeneralBoss4, Tất cả rút lui!,review,ko_vi_base_meaning_review
+NPpen27GeneralBoss5, Mi dám thách ta hả!,review,ko_vi_base_meaning_review
+NPpen27GeneralBoss6,Hic tiếc quá!,review,ko_vi_base_meaning_review
+NPpen27MondeadBoss1, Gì vậy! Chơi kim hả!,review,ko_vi_base_meaning_review
+monrobot06boss03,Vấn đề tính toán đơn giản thôi! 4 +3???,review,ko_vi_base_meaning_review
+monrobot09boss24,Đừng làm ta khiếp sợ mà!!,review,ko_vi_base_meaning_review
+monturtle06default14,Ta đã phản bội thuộc hạ rồi,review,ko_vi_base_meaning_review
+monturtle09boss01normal05,Chẳng phải tìm mua cho là được hay sao??,review,ko_vi_base_meaning_review
+monunlimited04GeneralA7,Vận may 100 năm có một!,review,ko_vi_base_meaning_review
+monunlimited04MonDeadA5,Lại gọi mấy con sư tử đi.,review,ko_vi_base_meaning_review
