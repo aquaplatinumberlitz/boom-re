@@ -646,11 +646,14 @@ def img_info(blob):
     if blob[:3] == b"\xff\xd8\xff":
         return "jpg", ""
     if len(blob) >= 16 and blob[4:8] == b"\x02\x00\x00\x00":
+        nfr = struct.unpack_from("<I", blob, 0)[0]
         nimg = struct.unpack_from("<I", blob, 8)[0]
-        if 0 < nimg < 100000 and len(blob) >= 16 + 8:
+        # Some binary maps also have 2 in the second word. Require enough
+        # bytes for the sprite's size table, frame records and image lengths.
+        minimum = 16 + 8 * nimg + 48 * nfr + 4 * nimg
+        if 0 < nimg < 100000 and len(blob) >= minimum:
             h, w = struct.unpack_from("<II", blob, 16)
             return "i16", "%dx%d×%d" % (w, h, nimg)
-        return "i16", ""
     return None, ""
 
 

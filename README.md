@@ -14,6 +14,9 @@ Tài liệu:
 |---|---|
 | [docs/protocol.md](docs/protocol.md) | Protocol TCP: frame, mã hoá, seq, hello, đăng nhập, dispatch — phần lớn **đã kiểm chứng với client thật** |
 | [docs/assets.md](docs/assets.md) | Pack `.idx/.idd`, mã hoá entry, sprite → PNG |
+| [l10n/README.md](l10n/README.md) | Việt hóa KR: catalog, thuật ngữ, câu đố dân gian ĐBSCL và 23 mục text còn review |
+| [docs/l10n-image-review.md](docs/l10n-image-review.md) | Trang duyệt 3.038 tài nguyên ảnh KR/VN: mở ảnh, xác nhận và lưu kết quả CSV |
+| [docs/ida-mcp-codex.md](docs/ida-mcp-codex.md) | Dùng chung MCP IDA đã cài với Codex, launcher, quyền và kết quả kiểm tra |
 | [docs/runtime.md](docs/runtime.md) | Chạy client: thứ tự khởi động, mã lỗi, patch bộ nhớ, mạng WinBoat, Wine, **sửa IAT bản dump** |
 | [docs/progress.md](docs/progress.md) | **Tiến độ + handoff**: đang ở đâu, chạy thử, việc tiếp theo |
 | [docs/lobby.md](docs/lobby.md) | Kênh → sảnh → phòng chờ → bắt đầu trận: nhật ký từng bước, địa chỉ hàm |

@@ -1600,10 +1600,6 @@ FxMap,Etc/OkongOfLegend03_mm,i16,46155,148x128×1,no,Ok
 FxMap,Etc/Tutorial01_mm,i16,42143,148x128×1,no,Tutorial
 FxMap,Etc/WinningStreak_Colosseum01_mm,i16,43983,148x128×1,diff_bytes,Win
 FxMap,Etc/WinningStreak_Patrit14_mm,i16,41748,148x128×1,diff_bytes,Win
-FxMap,Map/OkongOfLegend01,i16,3021,2x13×1,no,Ok
-FxMap,Map/OkongOfLegend02,i16,2919,2x13×1,no,Ok
-FxMap,Map/OkongOfLegend03,i16,3017,2x13×1,no,Ok
-FxMap,Map/WinningStreak_Colosseum01,i16,3539,4x13×2,diff_bytes,Win
 FxMap,PraticePrepare/Lev_Bt-Down,i16,1950,19x72×1,same_bytes,Bt
 FxMap,PraticePrepare/Lev_Bt-Up,i16,1950,19x72×1,same_bytes,Bt
 FxMap,PraticePrepare/Practice_Title,i16,2476,60x28×1,diff_bytes,Title

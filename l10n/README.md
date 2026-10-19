@@ -2,7 +2,8 @@
 
 Mục tiêu: toàn bộ chữ của bản KR (patch Nexon 00967, 13 pack) sang tiếng Việt, dùng lại bản dịch có sẵn của bản VN.
 Bản dịch dùng cho engine Rust viết lại (UTF-8, font vector), **không** patch vào client cũ.
-Ảnh có chữ chỉ được liệt kê (`images_todo.csv`), không dịch.
+Ảnh nghi có chữ được thống kê (`images_todo.csv`) và có trang duyệt KR/VN;
+chưa vẽ lại hoặc Việt hóa ảnh. Xem [hướng dẫn duyệt ảnh](../docs/l10n-image-review.md).
 
 ## File
 
@@ -19,6 +20,7 @@ Bản dịch dùng cho engine Rust viết lại (UTF-8, font vector), **không**
 | `glossary_seed.csv` | thuật ngữ chốt tay (lấy từ bản VN: XU, VÀNG, BẠC, Siêu thị, Túi đồ, chế độ chơi…) |
 | `glossary.csv` | seed + cặp ngắn rút từ catalog |
 | `images_todo.csv` | ảnh có thể chứa chữ: `pack, entry, kind, size, dims, vn_same_name, reason` |
+| `../docs/l10n-image-review.md` | cách mở trang ảnh KR/VN, duyệt, xuất/nhập kết quả và tạo lại trang |
 | `../tools/l10n_extract.py` | trích, ghép, xuất CSV; đọc pack bằng `tools/idf.py` (import, không copy) |
 
 Quy trình:
@@ -107,6 +109,23 @@ thường có chữ). `dims` = `rộng x cao × số ảnh` của ảnh đầu. 
 `same_bytes` (VN dùng y hệt ảnh KR ⇒ không có bản Việt), `diff_bytes` (VN có ảnh khác ⇒ **có thể dùng ảnh VN**).
 OCR: máy có `tesseract` nhưng chỉ có `eng`/`osd`, **không có `kor`** ⇒ không có cột `ocr_ko`.
 
+Đã có trang duyệt trực quan tại **`l10n/.cache/image-review/index.html`**: mở trực tiếp
+bằng trình duyệt, không cần server. Trang đặt KR/VN cạnh nhau, có lọc, xem đủ ảnh con,
+phóng lớn, ghi chú và xác nhận đã có tiếng Việt/cần dịch/không có chữ. Kết quả lưu tại
+trình duyệt; bấm **Xuất kết quả CSV** để giữ và nhập vào dự án. Hướng dẫn đầy đủ:
+[Duyệt ảnh KR–VN](../docs/l10n-image-review.md).
+
+Sau kiểm tra cấu trúc, đã loại 4 dữ liệu bản đồ bị nhận nhầm thành ảnh. Danh sách còn
+**3.038 ứng viên**: 681 khác bản VN, 1.113 giống bản VN, 1.244 không có bản VN cùng tên.
+Đã xuất **8.750 ảnh con**, không lỗi giải mã. Chưa có xác nhận ảnh đã dịch từ người duyệt;
+không tự suy ra trạng thái dịch từ khác biệt byte.
+
+```sh
+python3 tools/l10n_images_review.py
+# Mở l10n/.cache/image-review/index.html bằng trình duyệt.
+python3 tools/l10n_images_review.py --import-csv /duong/dan/images_review.csv
+```
+
 ## 4. Font
 
 Không dùng `.fft` bitmap cũ (`CxUni*.fft`, `CxDefault.fft`). Đề xuất (OFL 1.1, chưa đưa vào repo):
@@ -172,7 +191,7 @@ vô nghĩa, 1 dòng lẫn khoá tài nguyên vào lời thoại, 2 chuỗi exe n
 Không chốt các dòng này chỉ để đưa số review về 0.
 
 Ba tên AI vẫn dùng đúng: **Chiến binh huyền thoại**, **White Angel**, **Mister Fortune**.
-Tên cá ở H032 giữ nguyên. Phần ảnh vẫn chỉ được liệt kê, chưa Việt hóa.
+Tên cá ở H032 giữ nguyên. Phần ảnh đã có trang duyệt KR/VN; chưa vẽ lại hay Việt hóa ảnh.
 
 Kiểm tra từ gốc repo:
 
