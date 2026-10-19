@@ -1,0 +1,852 @@
+ko,vi,status,notes
+      (방장만 가능),      (chỉ chủ phòng),translated,
+      mute를 해제합니다.,      người dùng đã chỉ định.,translated,
+      같은 편에게만 대화,      Chỉ nói với đồng đội,translated,
+      게임 준비화면에서 게임을 시작,      Bắt đầu game ở màn hình chuẩn bị,translated,
+      게임 준비화면에서 레디 ,      Chuyển trạng thái sẵn sàng ,translated,
+      게임 준비화면에서 방 제목을 ,      Đổi tên phòng ở màn hình ,translated,
+      게임방으로 초대,      vào phòng game của mình,translated,
+      게임에서 추방하기,      khỏi game,translated,
+      또는 /to off 로 귓말 해제,      hoặc /to off để tắt thì thầm,translated,
+      모든 귀속말을 무시합니다.,      Bỏ qua mọi tin nhắn thì thầm.,translated,
+      변경,      chuẩn bị,translated,
+      보이지 않도록 합니다.,      đã chỉ định.,translated,
+      상태 전환,      ở màn hình chuẩn bị,translated,
+      입력된 방번호의 게임 방에 ,      Vào phòng game có số phòng ,translated,
+      입력된 방번호의 게임 방에 대한,      Xem thông tin phòng game có,translated,
+      입력된 아이디로 귓속말,      Thì thầm với ID đã nhập,translated,
+      입력된 아이디의 유저가 접속한 ,      Xem kênh mà người dùng có ID ,translated,
+      입력된 아이디의 유저를 ,      Đuổi người dùng có ID đã nhập ,translated,
+      입력된 아이디의 유저를 자기 ,      Mời người dùng có ID đã nhập ,translated,
+      입력된 아이디의 정보 보기,      Xem thông tin của ID đã nhập,translated,
+      자기 정보 보기,      Xem thông tin của mình,translated,
+      자동 레디가 꺼진다.,      tắt tự động sẵn sàng.,translated,
+      자동레디,      Tự động sẵn sàng,translated,
+      전체 귓속말 무시를 해제합니다.,      Tắt chế độ bỏ qua thì thầm.,translated,
+      정보 보여주기,      số phòng đã nhập,translated,
+      지정한 사용자에게 설정한,      Bỏ chặn (mute) đã đặt cho,translated,
+      지정한 사용자의 메세지를 ,      Ẩn tin nhắn của người dùng ,translated,
+      참가하기,      đã nhập,translated,
+      채널 확인,      đã nhập đang vào,translated,
+      켜지고 다시 한 번 입력하면 ,"      sẵn sàng, nhập lần nữa thì ",translated,
+      한 번 입력하면 자동 레디가 ,      Nhập một lần thì bật tự động ,translated,
+     저장),     cài đặt game),translated,
+  /M 아이디,  /M ID,translated,
+  /U 아이디,  /U ID,translated,
+  /ban 아이디,  /ban ID,translated,
+  /go 방번호,  /go số phòng,translated,
+  /in 아이디,  /in ID,translated,
+  /join 방번호,  /join số phòng,translated,
+  /rt 방제목,  /rt tên phòng,translated,
+  /st 방번호,  /st số phòng,translated,
+  /to 아이디(or off),  /to ID(hoặc off),translated,
+  /userinfo 아이디,  /userinfo ID,translated,
+  /w 아이디(or off),  /w ID(hoặc off),translated,
+  /where 아이디,  /where ID,translated,
+  /whisper off 또는 /w off,  /whisper off hoặc /w off,translated,
+  /whisper 아이디,  /whisper ID,translated,
+  /who 아이디,  /who ID,translated,
+  /누구 아이디 ,  /ai ID ,translated,
+  /어디 아이디,  /odau ID,translated,
+  /초대 아이디,  /moi ID,translated,
+  /퇴장 아이디,  /duoi ID,translated,
+  1             1번 아이템 사용,  1             Dùng vật phẩm số 1,translated,
+  1p일 때,  Khi là 1P,translated,
+  2             2번 아이템 사용,  2             Dùng vật phẩm số 2,translated,
+  2p일 때,  Khi là 2P,translated,
+  3             3번 아이템 사용,  3             Dùng vật phẩm số 3,translated,
+  4             4번 아이템 사용,  4             Dùng vật phẩm số 4,translated,
+  5             5번 아이템 사용,  5             Dùng vật phẩm số 5,translated,
+  6             6번 아이템 사용,  6             Dùng vật phẩm số 6,translated,
+  F1 도움말 보기,  F1 Xem trợ giúp,translated,
+  F10 게임옵션 설정,  F10 Tùy chọn game,translated,
+  F2 게임 중 아이디 보여주기 On/Off,  F2 Hiện ID trong trận On/Off,translated,
+  F3 게임 중 자기 캐릭터 표시 On/Off,  F3 Đánh dấu nhân vật của mình trong trận On/Off,translated,
+  F4 스크린 샷 찍기 (게임 설치 폴더에,  F4 Chụp màn hình (lưu trong thư mục,translated,
+  F5 레디/스타트,  F5 Sẵn sàng/Bắt đầu,translated,
+  F6 말풍선 On/Off,  F6 Bong bóng chat On/Off,translated,
+  F7 효과음 On/Off,  F7 Hiệu ứng âm thanh On/Off,translated,
+  F8 배경음 On/Off,  F8 Nhạc nền On/Off,translated,
+  F9 매크로 설정,  F9 Cài đặt macro,translated,
+  delete        4번 아이템 사용,  delete        Dùng vật phẩm số 4,translated,
+  end           5번 아이템 사용,  end           Dùng vật phẩm số 5,translated,
+  home          2번 아이템 사용,  home          Dùng vật phẩm số 2,translated,
+  insert        1번 아이템 사용,  insert        Dùng vật phẩm số 1,translated,
+  pagedown      6번 아이템 사용,  pagedown      Dùng vật phẩm số 6,translated,
+  pageup        3번 아이템 사용,  pageup        Dùng vật phẩm số 3,translated,
+" 10000 루찌 이상을 입력해야 교환이 가능합니다.
+"," Phải nhập từ 10000 VÀNG trở lên mới trao đổi được.
+",translated,
+!                                           CA 팀,!                                           Nhóm CA,translated,
+!                                    로컬라이제이션 팀,!                                    Nhóm bản địa hoá,translated,
+!                                    캐주얼게임운영 팀,!                                    Nhóm vận hành game casual,translated,
+!                                   2001년 가을 ~ 현재,!                                   Thu 2001 ~ nay,translated,
+%04d년 %02d월 %02d일 자정까지,%04d년 %02d월 %02d일 자정까지,review,"thứ tự năm/tháng/ngày: cần định dạng ngày theo locale, gợi ý 'Đến nửa đêm %02d/%02d/%04d' (đổi thứ tự tham số)"
+%d시간이 경과했습니다.,Đã chơi được %d giờ.,translated,
+%d시간이 경과했습니다. 잠시 쉬었다 하시기 바랍니다.,Đã chơi được %d giờ. Hãy nghỉ ngơi một chút rồi chơi tiếp.,translated,
+(SHOP의 오른쪽 MY ITEM에서 조정할 수 있습니다.),(Có thể chỉnh trong MY ITEM bên phải SIÊU THỊ.),translated,
+(해외)국경절 스티커 확성기,Loa sticker Quốc khánh (quốc tế),translated,
+* 단축키,* Phím tắt,translated,
+* 아이템단축키,* Phím tắt vật phẩm,translated,
+* 채팅 중 특수 명령,* Lệnh đặc biệt khi chat,translated,
+/사용자,/nguoidung,translated,
+/사용자정보,/thongtin,translated,
+/자동레디,/tusansang,translated,
+14주년전체확성기1,Loa toàn kênh kỷ niệm 14 năm 1,translated,
+14주년확성기2,Loa kỷ niệm 14 năm 2,translated,
+15주년 확성기,Loa kỷ niệm 15 năm,translated,
+1x1 물줄기. 맞으면 물풍선에 가둬짐,Tia nước 1x1. Trúng sẽ bị nhốt vào bom nước,translated,
+2001년 10월 16일부터 서비스를 시작한 서버로 Crazy Arcade의|첫 서버입니다.,"Máy chủ bắt đầu hoạt động từ ngày 16/10/2001,|máy chủ đầu tiên của Crazy Arcade.",translated,
+4x1 아래쪽 물줄기. 맞으면 물풍선에 가둬짐,Tia nước 4x1 hướng xuống. Trúng sẽ bị nhốt vào bom nước,translated,
+4x1 오른쪽 물줄기. 맞으면 물풍선에 가둬짐,Tia nước 4x1 hướng phải. Trúng sẽ bị nhốt vào bom nước,translated,
+4x1 왼쪽 물줄기. 맞으면 물풍선에 가둬짐,Tia nước 4x1 hướng trái. Trúng sẽ bị nhốt vào bom nước,translated,
+4x1 위쪽 물줄기. 맞으면 물풍선에 가둬짐,Tia nước 4x1 hướng lên. Trúng sẽ bị nhốt vào bom nước,translated,
+"ActionList ID ""%s"" 는 존재하지 않습니다","ActionList ID ""%s"" không tồn tại",translated,
+"ActionList=""%s""의 다음 진행을 못함","ActionList=""%s"" không thể chạy bước tiếp theo",translated,
+BnB 초보자지침서,Cẩm nang tân thủ Boom,translated,
+CDynamicXmlReader::ReadXmlImpl(). 외부에서 xml 파일을 로딩합니다. xmlPath = %s,CDynamicXmlReader::ReadXmlImpl(). Nạp file xml từ bên ngoài. xmlPath = %s,translated,
+"Error : 명령어를 로딩하는데 실패했음
+","Error : Nạp lệnh thất bại
+",translated,
+"Error : 잘못된 루아 함수 이름입니다.(대소문자 구분합니다.)
+","Error : Tên hàm Lua không hợp lệ.(Phân biệt chữ hoa/thường.)
+",translated,
+"F1키=도움말, F4키=스크린샷, F5=레디/스타트, F10=게임옵션 설정","F1=Trợ giúp, F4=Chụp màn hình, F5=Sẵn sàng/Bắt đầu, F10=Tùy chọn game",translated,
+GM비앤비,GM비앤비,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+GM비엔비,GM비엔비,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+HAPPY SERVER - 기존서버 -,HAPPY SERVER - Máy chủ cũ -,translated,
+"JOY SERVER를 2002년 7월 30일에 DREAM SERVER로 명칭을|바꾸었습니다. 네띠앙, 다음, 벅스뮤직, 엠파스, 코리아 닷컴에서|계정을 만드신 분들은 DREAM SERVER를 이용하시기 바랍니다.","Ngày 30/7/2002, JOY SERVER đã được đổi tên thành DREAM SERVER.|Ai đã tạo tài khoản qua Netian, Daum, Bugs Music, Empas, Korea.com|vui lòng dùng DREAM SERVER.",translated,
+PC방 마케팅 :    남영욱  오석신  장원석  홍명의  손민욱,Marketing quán net :    남영욱  오석신  장원석  홍명의  손민욱,translated,credit: giữ tên người bằng chữ Hàn
+PC방 퀘스트,Nhiệm vụ quán net,translated,
+QA & Creative Services(Ideas) :    김정훈  김주용  박수인  하재승  김재범,QA & Creative Services(Ideas) :    김정훈  김주용  박수인  하재승  김재범,translated,credit: giữ tên người bằng chữ Hàn
+Special Thanks to :    김학용  최진호  김동건  문대경,Special Thanks to :    김학용  최진호  김동건  문대경,translated,credit: giữ tên người bằng chữ Hàn
+X-MAS트리 확성기,Loa cây thông Noel,translated,
+[내정보]에 넥슨아이디를 등록하지 않으면 비밀번호 분실 시 아이디를 찾을 수 없습니다.,"Nếu không đăng ký tài khoản trong [Cá nhân], bạn sẽ không tìm lại được ID khi quên mật khẩu.",translated,
+{ComponentType|17}+6 이상 강화 시도 시 축복보석을 사용하면 강화 단계 하락을 방지할 수 있습니다.,"{ComponentType|17}Khi cường hoá từ +6 trở lên, dùng Đá chúc phúc sẽ tránh bị tụt cấp cường hoá.",translated,
+{ComponentType|17}+7강화 아이템을 모두 착용하시면 [강화마스터 +7] 타이틀을 획득할 수 있습니다.,{ComponentType|17}Trang bị đủ các vật phẩm cường hoá +7 sẽ nhận danh hiệu [Bậc thầy cường hoá +7].,translated,
+{ComponentType|17}난이도가 높은 맵에 도전할 수록 더 많은 경험치를 얻을 수 있습니다.,{ComponentType|17}Thử thách bản đồ càng khó thì càng nhận được nhiều kinh nghiệm.,translated,
+{ComponentType|17}대형루찌보너스맵의 보물상자는 히어로드릴을 사용하여 얻을 수 있습니다.,{ComponentType|17}Rương báu trong bản đồ thưởng VÀNG lớn có thể lấy bằng Mũi khoan Hero.,translated,
+{ComponentType|17}최근 강화 등급이 A 이하인 아이템은 수리보석을 사용하여 더 높은 등급으로 수리할 수 있습니다.,{ComponentType|17}Vật phẩm có hạng cường hoá gần nhất từ A trở xuống có thể dùng Đá sửa chữa để sửa lên hạng cao hơn.,translated,
+{ComponentType|17}히어로 다크드래곤을 착용하면 크아히어로 모드에서 기본속도가 1 증가합니다.,{ComponentType|17}Trang bị Hero Rồng Đen thì tốc độ cơ bản trong chế độ Boom Hero tăng 1.,translated,
+{ComponentType|6}[좀비TIP] 좀비모드에서 유저를 감염시키면 루찌를 획득하실 수 있습니다.,"{ComponentType|6}[MẸO ZOMBIE] Trong chế độ Zombie, lây nhiễm người chơi khác sẽ nhận được VÀNG.",translated,
+{ComponentType|6}[좀비TIP] 좀비모드에서는 게임에 져도 패배가 쌓이지 않습니다.,"{ComponentType|6}[MẸO ZOMBIE] Trong chế độ Zombie, thua trận cũng không bị tính trận thua.",translated,
+{ComponentType|8}[클로버TIP] 점수 높은 유저를 잡으면 점수 차이만큼 클로버를 뱉어내게 합니다.,{ComponentType|8}[MẸO CỎ BA LÁ] Bắt người chơi điểm cao hơn sẽ khiến họ nhả ra số cỏ ba lá bằng mức chênh lệch điểm.,translated,
+{ComponentType|8}[클로버TIP] 점수가 같거나 낮은 유저를 잡으면 클로버를 뱉어내지 않습니다.,{ComponentType|8}[MẸO CỎ BA LÁ] Bắt người chơi có điểm bằng hoặc thấp hơn thì bạn không bị nhả cỏ ba lá.,translated,
+{ComponentType|8}[클로버TIP] 클로버를 많이 모을 수록 럭키루찌를 획득할 확률이 올라갑니다.,{ComponentType|8}[MẸO CỎ BA LÁ] Gom càng nhiều cỏ ba lá thì tỉ lệ nhận VÀNG may mắn càng cao.,translated,
+"{ComponentType|8}[클로버TIP] 클로버를 모으다 보면 럭키슈퍼맨, 럭키센서 능력이 생깁니다.","{ComponentType|8}[MẸO CỎ BA LÁ] Gom cỏ ba lá sẽ có thêm năng lực Siêu nhân may mắn, Cảm biến may mắn.",translated,
+{ShopFreeStock|1600004}매일매일 주어지는 즐거운선물~ <font color=yellow>무료바늘</font> 받고 즐거운 게임하세요~,{ShopFreeStock|1600004}Món quà vui mỗi ngày~ Nhận <font color=yellow>Kim miễn phí</font> và chơi game vui vẻ nhé~,translated,
+가로로 긴 맵입니다. 자유롭게 꾸며주세요. 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다. 필터 모양 버튼을 클릭하면 다양한 테마의 블록 사용 가능!,Bản đồ dài theo chiều ngang. Hãy tự do trang trí. Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên. Bấm nút hình phễu lọc để dùng khối của nhiều chủ đề!,translated,
+가장 인상 깊게 읽은 책 이름은?,Tên cuốn sách gây ấn tượng nhất với bạn là gì?,translated,
+가장 존경하는 인물은?,Người bạn kính trọng nhất là ai?,translated,
+가장 좋아하는 만화 캐릭터는?,Nhân vật hoạt hình bạn thích nhất là ai?,translated,
+가장 좋아하는 색깔은?,Màu sắc bạn thích nhất là gì?,translated,
+가장 좋아하는 선생님 이름은?,Tên thầy/cô giáo bạn quý nhất là gì?,translated,
+가장 좋아하는 운동은?,Môn thể thao bạn thích nhất là gì?,translated,
+가장 친한 친구의 이름은?,Tên người bạn thân nhất của bạn là gì?,translated,
+각 팀이 잘 수비할 수 있도록 진영을 꾸며주세요! 상대팀의 점령 타일을 오래 밟으면 승리! 빅맵은 방향키를 통해 모든 구역에 접근 가능!,Hãy trang trí doanh trại để mỗi đội phòng thủ tốt! Đứng lâu trên ô chiếm đóng của đội bạn là thắng! Bản đồ lớn đi tới mọi khu vực bằng phím mũi tên!,translated,
+간단한 볼륨조절기,Bộ chỉnh âm lượng đơn giản,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+강 대 현,강 대 현,translated,"credit: tên người, giữ nguyên"
+강시 확성기,Loa cương thi,translated,
+개발자,Nhà phát triển,translated,
+거래고객,거래고객,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+거래관리,거래관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+거래문의,거래문의,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+거래센터,거래센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+거래신고,거래신고,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+거래접수,거래접수,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+거래처리,거래처리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+거래확인,거래확인,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+"거북이,문어 탑승해 사용. 해적 탈것으로 변신","Dùng khi cưỡi rùa, bạch tuộc. Biến thành thú cưỡi cướp biển",translated,
+거절-교환채팅방,Từ chối - Phòng chat trao đổi,translated,
+건물 연결로 지붕이 어색할때 사용,Dùng khi mái nhà bị lệch ở chỗ nối toà nhà,translated,
+게임거래,게임거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+게임계정,게임계정,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+게임고객,게임고객,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+게임관리,게임관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+게임돌이,GameDoli,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+게임문의,게임문의,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+게임방관리,Quản lý quán net,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+게임센터,게임센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+게임시간,Thời gian chơi,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+게임신고,게임신고,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+게임운영 :    이 충 희,Vận hành game :    이 충 희,translated,credit: giữ tên người bằng chữ Hàn
+게임운영 :    조성호  이충희  임민경  유정한,Vận hành game :    조성호  이충희  임민경  유정한,translated,credit: giữ tên người bằng chữ Hàn
+게임을 계속 해 봐~,cứ chơi tiếp nhé~,translated,
+게임을 하고 있으면 ,Cứ chơi game là cứ mỗi ,translated,
+게임이 끝날때까지 기다리기가,Nếu chờ đến hết trận thấy,translated,
+게임접수,게임접수,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+게임처리,게임처리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+게임확인,게임확인,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+계 동 균,계 동 균,translated,"credit: tên người, giữ nguyên"
+계속 구르기만 하는 돌. 상하 이동,Hòn đá chỉ lăn liên tục. Di chuyển lên/xuống,translated,
+계속 구르기만 하는 돌. 좌우 이동,Hòn đá chỉ lăn liên tục. Di chuyển trái/phải,translated,
+계정거래,계정거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+계정관리,계정관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+계정문의,계정문의,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+계정센터,계정센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+계정신고,계정신고,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+계정접수,계정접수,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+계정처리,계정처리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+계정확인,계정확인,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+고객관리,고객관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+고객문의,고객문의,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+고객센터,고객센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+고객신고,고객신고,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+고객접수,고객접수,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+고객지원 :    오제민  유원지  한승현  김영애,Chăm sóc khách hàng :    오제민  유원지  한승현  김영애,translated,credit: giữ tên người bằng chữ Hàn
+고객처리,고객처리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+고객확인,고객확인,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+고은진  김능소  이미림  설은정  김영아,고은진  김능소  이미림  설은정  김영아,translated,"credit: tên người, giữ nguyên"
+고장난 우주선 탑승해 사용. 우주선 수리,Dùng khi cưỡi phi thuyền hỏng. Sửa phi thuyền,translated,
+공격 받으면 납작해지고 차기 가능. 상하 이동,"Bị đánh thì bẹp dí, đá được. Di chuyển lên/xuống",translated,
+공격 받으면 납작해지고 차기 가능. 좌우 이동,"Bị đánh thì bẹp dí, đá được. Di chuyển trái/phải",translated,
+공격 받으면 딱딱해지고 차기 가능. 상하 이동,"Bị đánh thì hoá cứng, đá được. Di chuyển lên/xuống",translated,
+공격 받으면 딱딱해지고 차기 가능. 좌우 이동,"Bị đánh thì hoá cứng, đá được. Di chuyển trái/phải",translated,
+공동묘지,Nghĩa địa,translated,
+광산,Mỏ,translated,
+광석 운반차 탑승해 사용. 평지에서도 빨라짐,Dùng khi cưỡi xe chở quặng. Đi nhanh cả trên đất bằng,translated,
+광석 운반차를 타면 빠르게 이동 가능,Cưỡi xe chở quặng để di chuyển nhanh,translated,
+교환시에는 10000 이상의 루찌가 필요합니다. 금액을 다시 입력해 주세요,Trao đổi cần từ 10000 VÀNG trở lên. Vui lòng nhập lại số tiền,translated,
+교환중에는 샵으로 이동할 수 없습니다.,Không thể vào Siêu thị khi đang trao đổi.,translated,
+교환채팅방1,Phòng chat trao đổi 1,translated,
+교환채팅방2,Phòng chat trao đổi 2,translated,
+교환채팅방3,Phòng chat trao đổi 3,translated,
+교환채팅방4,Phòng chat trao đổi 4,translated,
+구미호,Hồ ly chín đuôi,translated,
+구정모  이우주  전민후  조두용,구정모  이우주  전민후  조두용,translated,"credit: tên người, giữ nguyên"
+국경절 전체확성기,Loa toàn kênh Quốc khánh,translated,
+국경절 확성기,Loa Quốc khánh,translated,
+권 순 성,권 순 성,translated,"credit: tên người, giữ nguyên"
+권 오 직,권 오 직,translated,"credit: tên người, giữ nguyên"
+권 오 창,권 오 창,translated,"credit: tên người, giữ nguyên"
+권 현 주,권 현 주,translated,"credit: tên người, giữ nguyên"
+귀빈 전체확성기,Loa toàn kênh khách quý,translated,
+그린 확성기,Loa xanh lá,translated,
+기    획 :    박 세 희,Thiết kế game :    박 세 희,translated,credit: giữ tên người bằng chữ Hàn
+기    획 :    이 수 정,Thiết kế game :    이 수 정,translated,credit: giữ tên người bằng chữ Hàn
+기술 지원 :    문대경  박경국  김희곤  최명관,Hỗ trợ kỹ thuật :    문대경  박경국  김희곤  최명관,translated,credit: giữ tên người bằng chữ Hàn
+길 끝에 도착하면 승리하는 맵 입니다. 자유롭게 꾸며보아요! 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다.,Bản đồ đến cuối đường là thắng. Hãy tự do trang trí! Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên.,translated,
+김 경 아,김 경 아,translated,"credit: tên người, giữ nguyên"
+김 기 준,김 기 준,translated,"credit: tên người, giữ nguyên"
+김 도 겸,김 도 겸,translated,"credit: tên người, giữ nguyên"
+김 민 성,김 민 성,translated,"credit: tên người, giữ nguyên"
+김 성 배,김 성 배,translated,"credit: tên người, giữ nguyên"
+김 성 훈,김 성 훈,translated,"credit: tên người, giữ nguyên"
+김 소 희,김 소 희,translated,"credit: tên người, giữ nguyên"
+김 수 연,김 수 연,translated,"credit: tên người, giữ nguyên"
+김 이 선,김 이 선,translated,"credit: tên người, giữ nguyên"
+김 재 일,김 재 일,translated,"credit: tên người, giữ nguyên"
+김 정 도,김 정 도,translated,"credit: tên người, giữ nguyên"
+김 정 현,김 정 현,translated,"credit: tên người, giữ nguyên"
+김 종 원,김 종 원,translated,"credit: tên người, giữ nguyên"
+김 종 율,김 종 율,translated,"credit: tên người, giữ nguyên"
+김 주 남,김 주 남,translated,"credit: tên người, giữ nguyên"
+김 청 용,김 청 용,translated,"credit: tên người, giữ nguyên"
+김 현 기,김 현 기,translated,"credit: tên người, giữ nguyên"
+김경률  유승연  문전리혜,김경률  유승연  문전리혜,translated,"credit: tên người, giữ nguyên"
+김명옥  손미경  박성철  김건욱  조미나,김명옥  손미경  박성철  김건욱  조미나,translated,"credit: tên người, giữ nguyên"
+김병수,김병수,translated,"credit: tên người, giữ nguyên"
+김상범  김수현  김학용  최진호,김상범  김수현  김학용  최진호,translated,"credit: tên người, giữ nguyên"
+김성환  석종규  이채훈  김상용  오준호,김성환  석종규  이채훈  김상용  오준호,translated,"credit: tên người, giữ nguyên"
+김재범  방경민  조형렬  류아름  문선영,김재범  방경민  조형렬  류아름  문선영,translated,"credit: tên người, giữ nguyên"
+김정곤  길근우  김희정  백영수  김영신,김정곤  길근우  김희정  백영수  김영신,translated,"credit: tên người, giữ nguyên"
+김주희  이홍우  권용범  이덕호  나광진,김주희  이홍우  권용범  이덕호  나광진,translated,"credit: tên người, giữ nguyên"
+김철수  이진욱  지준숙  이정운  이정철,김철수  이진욱  지준숙  이정운  이정철,translated,"credit: tên người, giữ nguyên"
+께 하면 더욱 재미있답니다~,bè sẽ càng vui hơn đấy~,translated,
+꼇돤흙코,꼇돤흙코,review,"chuỗi rác (GBK đọc nhầm cp949?), không hiển thị"
+꼬물이,Kkomuri,translated,
+꼬물이의반격,Kkomuri phản công,translated,
+꽥,Quác,translated,
+나의 보물 제1호는?,Báu vật số 1 của bạn là gì?,translated,
+난이도1. 회전 공격 구사,Độ khó 1. Tấn công xoay vòng,translated,
+난이도2. 근처 8x8 범위에서만 이동. 속도3,Độ khó 2. Chỉ đi trong phạm vi 8x8 quanh nó. Tốc độ 3,translated,
+난이도2. 돌덩이 던지고 아이돌 소환,"Độ khó 2. Ném đá tảng, triệu hồi Idol",translated,
+난이도3 시야2 추격이동 속도3 친구죽으면화남,"Độ khó 3, tầm nhìn 2, đuổi theo, tốc độ 3, nổi giận khi đồng bọn chết",translated,
+"난이도3. 빠른 속도, 범위 공격, 물풍선 발사","Độ khó 3. Tốc độ nhanh, tấn công diện rộng, bắn bom nước",translated,
+난이도3. 시야1 추격이동. 속도2,"Độ khó 3. Tầm nhìn 1, đuổi theo. Tốc độ 2",translated,
+난이도4 시야3 추격이동 속도4 얼음탈출시화남,"Độ khó 4, tầm nhìn 3, đuổi theo, tốc độ 4, nổi giận khi thoát băng",translated,
+난이도4 시야4 추격이동 속도5 얼음탈출시화남,"Độ khó 4, tầm nhìn 4, đuổi theo, tốc độ 5, nổi giận khi thoát băng",translated,
+난이도4 회피이동 속도1. 작은 스노우몬 탄생,"Độ khó 4, di chuyển né tránh, tốc độ 1. Sinh Snowmon nhỏ",translated,
+"난이도4. 꼬마알 소환, 기습 공격, 연속 공격","Độ khó 4. Triệu hồi trứng nhỏ, đánh úp, đánh liên hoàn",translated,
+남 혜 진,남 혜 진,translated,"credit: tên người, giữ nguyên"
+남은 시간은 앞으로 ,Thời gian còn lại là ,translated,
+내 별명은?,Biệt danh của bạn là gì?,translated,
+내가 다닌 초등학교 이름은?,Tên trường tiểu học bạn từng học là gì?,translated,
+네가너무좋아!,Thích bạn quá đi!,translated,
+넥슨 캐시는 루찌로 교환이 불가능합니다. 사기에 주의하세요.,XU không thể đổi thành VÀNG. Hãy cẩn thận lừa đảo.,translated,
+넥슨아이디로 제재,Xử phạt theo tài khoản Nexon,translated,
+넥슨에서는 개인 메일로 안내 메일을 보내지 않습니다. 운영자 사칭 사고에 주의하세요.,Chúng tôi không gửi thư hướng dẫn vào email cá nhân. Hãy cẩn thận với kẻ giả mạo quản trị viên.,translated,
+넷-커맨더,Net-Commander,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+노 영 진,노 영 진,translated,"credit: tên người, giữ nguyên"
+노 재 현,노 재 현,translated,"credit: tên người, giữ nguyên"
+노 해 진,노 해 진,translated,"credit: tên người, giữ nguyên"
+노샵1,Không siêu thị 1,translated,
+눈사람 전체확성기,Loa toàn kênh người tuyết,translated,
+다른 사람은 모르는 나만의 신체비밀은?,Bí mật cơ thể chỉ mình bạn biết là gì?,translated,
+다오 스티커 확성기,Loa sticker Dao,translated,
+다크뱀파이어,Ma cà rồng bóng tối,translated,
+단단 블록 사이 설치. 지나가면 물풍선에 갇힘,Đặt giữa các khối cứng. Đi qua sẽ bị nhốt vào bom nước,translated,
+달콤 확성기,Loa ngọt ngào,translated,
+달콤16 전체확성기,Loa toàn kênh ngọt ngào 16,translated,
+대    표 :    강 신 철,Giám đốc :    강 신 철,translated,credit: giữ tên người bằng chữ Hàn
+대난투1,Đại loạn đấu 1,translated,
+대난투2,Đại loạn đấu 2,translated,
+댕댕이 전체확성기,Loa toàn kênh cún cưng,translated,
+댕댕이 확성기,Loa cún cưng,translated,
+데이터분석 :    박옥희  채수원  조명환,Phân tích dữ liệu :    박옥희  채수원  조명환,translated,credit: giữ tên người bằng chữ Hàn
+데저트,Sa mạc,translated,
+디 자 인 :    김 정 현,Đồ hoạ :    김 정 현,translated,credit: giữ tên người bằng chữ Hàn
+디자이너 :    노 혜 진,Hoạ sĩ :    노 혜 진,translated,credit: giữ tên người bằng chữ Hàn
+디자인 파트장 :    신 지 혜,Trưởng bộ phận đồ hoạ :    신 지 혜,translated,credit: giữ tên người bằng chữ Hàn
+래더자유1,Xếp hạng - Tự do 1,translated,
+래더자유2,Xếp hạng - Tự do 2,translated,
+래더자유3,Xếp hạng - Tự do 3,translated,
+래더자유4,Xếp hạng - Tự do 4,translated,
+래더짱자유1,Vua xếp hạng - Tự do 1,translated,
+래더짱자유2,Vua xếp hạng - Tự do 2,translated,
+래더짱자유3,Vua xếp hạng - Tự do 3,translated,
+래더짱자유4,Vua xếp hạng - Tự do 4,translated,
+랫서팬더 이모티전체 확성기,Loa toàn kênh biểu tượng gấu trúc đỏ,translated,
+러브 확성기,Loa tình yêu,translated,
+레드 확성기,Loa đỏ,translated,
+레이 스티커 확성기,Loa sticker Ray,translated,
+레트로버그,Bọ Retro,translated,
+레트로빌리지,Làng Retro,translated,
+레트로캠프,Trại Retro,translated,
+레트로패트릿,Patrit Retro,translated,
+레트로팩토리,Nhà máy Retro,translated,
+레트로포레스트,Rừng Retro,translated,
+로봇대공습 보스몬스터를 잡아,Hãy thử bắt trùm của Robot đại,translated,
+로컬라이제이션 :    이    인,Bản địa hoá :    이    인,translated,credit: giữ tên người bằng chữ Hàn
+루시 스티커 확성기,Loa sticker Lucy,translated,
+루아 컴파일러에서 리턴한 메세지 : ,Thông báo trả về từ trình biên dịch Lua : ,translated,
+루찌보너스맵,Bản đồ thưởng VÀNG,translated,
+마 케 팅 :    김수호  김이영,Marketing :    김수호  김이영,translated,credit: giữ tên người bằng chữ Hàn
+마 케 팅 :    우 은 미,Marketing :    우 은 미,translated,credit: giữ tên người bằng chữ Hàn
+마리 먼저 잡은 팀이 승리!!,con thỏ trước sẽ thắng!!,translated,
+맛있는 라볶이와 김밥 한마음 아줌마&아저씨,Cô chú quán Hanmaeum với món rabokki và kimbap ngon tuyệt,translated,
+"메일, 메신저 등으로 파일을 받을 경우 해킹프로그램이 설치될 위험이 있으니 주의하세요.","Nhận tệp qua email, tin nhắn… có nguy cơ bị cài chương trình hack, hãy cẩn thận.",translated,
+명석환  강건우  정정수  정의정  신경식,명석환  강건우  정정수  정의정  신경식,translated,"credit: tên người, giữ nguyên"
+몬스터 맵에서 게임을 1판하고,Chơi 1 trận ở bản đồ quái vật,translated,
+무덤,Lăng mộ,translated,
+무료고침(%d분후),Sửa miễn phí (sau %d phút),translated,
+무인도,Đảo hoang,translated,
+문 새 벽,문 새 벽,translated,"credit: tên người, giữ nguyên"
+문 성 호,문 성 호,translated,"credit: tên người, giữ nguyên"
+문 윤 주,문 윤 주,translated,"credit: tên người, giữ nguyên"
+문상철  이홍주  박영곤  우희성  정진웅,문상철  이홍주  박영곤  우희성  정진웅,translated,"credit: tên người, giữ nguyên"
+문의거래,문의거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+문의고객,문의고객,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+문의관리,문의관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+문의센터,문의센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+문의신고,문의신고,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+문의접수,문의접수,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+문의처리,문의처리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+문의확인,문의확인,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+물줄기에 닿으면 연쇄폭발,Chạm tia nước thì nổ dây chuyền,translated,
+물줄기에 파괴됨,Bị tia nước phá huỷ,translated,
+물줄기에 파괴됨. 밀기 가능,Bị tia nước phá huỷ. Đẩy được,translated,
+물줄기에 파괴됨. 체력2,Bị tia nước phá huỷ. Máu 2,translated,
+물줄기에 파괴됨. 체력2. 밀기 가능,Bị tia nước phá huỷ. Máu 2. Đẩy được,translated,
+물줄기에 파괴됨. 체력3,Bị tia nước phá huỷ. Máu 3,translated,
+물줄기에 파괴됨. 체력5,Bị tia nước phá huỷ. Máu 5,translated,
+물줄기에 파괴됨. 체력5. 밀기 가능,Bị tia nước phá huỷ. Máu 5. Đẩy được,translated,
+물풍선 폭발 시 다른 맨홀에서도 폭발,Bom nước nổ thì các nắp cống khác cũng nổ,translated,
+물풍선에 갇힐 때 사용하면 물풍선에서 탈출,Dùng khi bị nhốt trong bom nước để thoát ra,translated,
+물풍선에 갇힐 때 사용하면 터지는 시간 연장,Dùng khi bị nhốt trong bom nước để kéo dài thời gian vỡ,translated,
+물풍선이 가시에 닿으면 물풍선 즉시 폭발,Bom nước chạm gai thì nổ ngay,translated,
+"물풍선이 가시에 닿으면 물풍선 즉시 폭발, 밀기 가능","Bom nước chạm gai thì nổ ngay, đẩy được",translated,
+민성욱  최연정  김은화  백현숙  김태현,민성욱  최연정  김은화  백현숙  김태현,translated,"credit: tên người, giữ nguyên"
+바늘 10개,10 Kim,translated,
+바니팜,Bunny Farm,translated,
+바니팜 맵에서 1판 승리하고,Thắng 1 trận ở bản đồ Bunny Farm,translated,
+바니팜 맵에서 게임을 3판하고,Chơi 3 trận ở bản đồ Bunny Farm,translated,
+바다,Biển,translated,
+바닥에 까는 타일,Ô lát nền,translated,
+바닥에 까는 타일. 통과 불가,Ô lát nền. Không đi qua được,translated,
+바닥에 까는 타일. 플레이어 이동 불가,Ô lát nền. Người chơi không đi được,translated,
+바닥에 설치. 밟으면 일시적으로 이동속도 감소,Đặt dưới nền. Giẫm lên thì tạm thời bị giảm tốc,translated,
+바닥에 설치. 압정에 물풍선 닿으면 바로 터짐,Đặt dưới nền. Bom nước chạm đinh ghim thì nổ ngay,translated,
+박 광 준,박 광 준,translated,"credit: tên người, giữ nguyên"
+박 기 수,박 기 수,translated,"credit: tên người, giữ nguyên"
+박 민 욱,박 민 욱,translated,"credit: tên người, giữ nguyên"
+박 성 철,박 성 철,translated,"credit: tên người, giữ nguyên"
+박 은 희,박 은 희,translated,"credit: tên người, giữ nguyên"
+박 종 흠,박 종 흠,translated,"credit: tên người, giữ nguyên"
+박 찬 현,박 찬 현,translated,"credit: tên người, giữ nguyên"
+박웅석  권세웅  채민희,박웅석  권세웅  채민희,translated,"credit: tên người, giữ nguyên"
+박정현  장혜련  김선형  전민정  유선호,박정현  장혜련  김선형  전민정  유선호,translated,"credit: tên người, giữ nguyên"
+박정환  오혜현  강영준  김태원  김현수,박정환  오혜현  강영준  김태원  김현수,translated,"credit: tên người, giữ nguyên"
+반짝,Lấp lánh,translated,
+밟으면 미끄러지는 설치형 바나나 껍질 1개,"1 vỏ chuối đặt được, giẫm lên sẽ trượt",translated,
+밟으면 미끄러지는 설치형 바나나 껍질 2개,"2 vỏ chuối đặt được, giẫm lên sẽ trượt",translated,
+밟으면 미끄러지는 설치형 바나나 껍질 3개,"3 vỏ chuối đặt được, giẫm lên sẽ trượt",translated,
+밟으면 미끄러지는 설치형 바나나 껍질 8개,"8 vỏ chuối đặt được, giẫm lên sẽ trượt",translated,
+방 경 민,방 경 민,translated,"credit: tên người, giữ nguyên"
+방탈출 맵을 자유롭게 꾸며보아요! 모든 방을 지나 마지막 방에 도착하면 승리! 빅맵은 방향키를 통해 모든 구역에 접근 가능!,Hãy tự do trang trí bản đồ thoát khỏi phòng! Đi qua mọi phòng và tới phòng cuối là thắng! Bản đồ lớn đi tới mọi khu vực bằng phím mũi tên!,translated,
+배찌 스티커 확성기,Loa sticker Bazzi,translated,
+범버가 없다. 걍 크래쉬,Không có bomber. Crash luôn,translated,
+범위를 넘는 값은,Giá trị vượt phạm vi,translated,
+법    무 :    김상헌  노소라  윤웅기,Pháp chế :    김상헌  노소라  윤웅기,translated,credit: giữ tên người bằng chữ Hàn
+보    안 :    강병탁  김동현,Bảo mật :    강병탁  김동현,translated,credit: giữ tên người bằng chữ Hàn
+보라,Tím,translated,
+보물찾기,Truy tìm kho báu,translated,
+보세요. 혼자하기 어렵다면??,tấn công. Chơi một mình khó quá??,translated,
+보스 스티커 확성기,Loa sticker Boss,translated,
+보스몬스터를 잡으면 루찌가,Bắt được trùm quái vật sẽ rơi,translated,
+"부모님 성함, 휴대폰 번호, 전화번호 등은 다른 사람에게 알려주어서는 안됩니다.","Không được tiết lộ tên bố mẹ, số điện thoại di động, số điện thoại bàn… cho người khác.",translated,
+부정한 방법으로 타인의 주민등록번호를 이용하실 경우 불이익을 받을 수 있습니다,Dùng trái phép số định danh cá nhân của người khác có thể bị xử phạt.,translated,
+분마다 선물을 줄게!,phút mình sẽ tặng quà!,translated,
+분이 지나면 또 선물을 줄게.,phút nữa mình lại tặng quà.,translated,
+분이야.,phút nữa.,translated,
+분홍,Hồng,translated,
+불법거래,불법거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+브라운 스티커 확성기,Loa sticker Brown,translated,
+블랙 확성기,Loa đen,translated,
+블랙루시정원,Vườn Lucy đen,translated,
+비앤비GM,비앤비GM,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+비엔비GM,비엔비GM,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+빌리지,Làng,translated,
+빌링 시스템 개발 :    연보흠  김창    오상윤  조승기  안용진,Phát triển hệ thống thanh toán :    연보흠  김창    오상윤  조승기  안용진,translated,credit: giữ tên người bằng chữ Hàn
+"사용 시 마귀, 본드의 효력에서 벗어남","Khi dùng: thoát khỏi hiệu ứng của Quỷ, Keo dính",translated,
+사용 시 물풍선에 맞추면 즉시 폭발,Khi dùng: ném trúng bom nước thì nổ ngay,translated,
+사용 시 블록 안에 어떤 아이템이 있는지 감지,Khi dùng: dò xem trong khối có vật phẩm gì,translated,
+사용 시 앞에 있는 블록 파괴,Khi dùng: phá khối phía trước,translated,
+사용 시 일시적으로 물줄기 범위를 미리 감지,Khi dùng: tạm thời dò trước phạm vi tia nước,translated,
+사용 시 일시적으로 반짝이며 스피드 상승,Khi dùng: tạm thời lấp lánh và tăng tốc,translated,
+사용 시 일시적으로 보호막 생성,Khi dùng: tạm thời tạo lá chắn,translated,
+사용 시 작살 설치. 설치 위치로 빠르게 이동,Khi dùng: cắm lao móc. Lao nhanh tới vị trí đã cắm,translated,
+사용 시 점프가 가능한 블록 넘기,Khi dùng: nhảy qua khối nhảy được,translated,
+사용 시 팀 전체를 일정 시간 보호,Khi dùng: bảo vệ cả đội trong một thời gian,translated,
+사용 후 스페이스바 눌러 원하는 시간에 폭발,"Sau khi dùng, bấm Space để nổ đúng lúc muốn",translated,
+사용자화면,Màn hình người dùng,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+사용정보창,Cửa sổ thông tin sử dụng,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+상점에선 무료 바늘을 하루에 2개씩 받을 수 있습니다.,Mỗi ngày bạn nhận được 2 Kim miễn phí ở Siêu thị.,translated,
+새확성기,Loa mới,translated,
+서    민,서    민,translated,"credit: tên người, giữ nguyên"
+석 광 원,석 광 원,translated,"credit: tên người, giữ nguyên"
+선물받기 버튼을 눌러 주세요!,Hãy bấm nút Nhận quà!,translated,
+선물받아가~ ㅊㅋㅊㅋ,Nhận quà đi nè~ chúc mừng chúc mừng,translated,
+선물을 받아가세요~,rồi nhận quà nhé~,translated,
+선물을 받으세요. 친구들과 함,rồi nhận quà. Chơi cùng bạn,translated,
+선물을 받으세요~,rồi nhận quà nhé~,translated,
+선물을 받으세요~ 토끼를 30,rồi nhận quà~ Đội nào bắt đủ 30,translated,
+선물이 마음에 들면,Nếu thích quà thì,translated,
+설날,Tết,translated,
+성탄,Giáng sinh,translated,
+성탄모자 확성기,Loa mũ Giáng sinh,translated,
+세로로 긴 맵입니다. 자유롭게 꾸며주세요. 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다. 필터 모양 버튼을 클릭하면 다양한 테마의 블록 사용 가능!,Bản đồ dài theo chiều dọc. Hãy tự do trang trí. Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên. Bấm nút hình phễu lọc để dùng khối của nhiều chủ đề!,translated,
+송 기 문,송 기 문,translated,"credit: tên người, giữ nguyên"
+송 재 남,송 재 남,translated,"credit: tên người, giữ nguyên"
+송 창 규,송 창 규,translated,"credit: tên người, giữ nguyên"
+수 스티커 확성기,Loa sticker Su,translated,
+수락-교환채팅방,Đồng ý - Phòng chat trao đổi,translated,
+숨기 불가. 통과 가능. 파괴 불가,Không trốn được. Đi qua được. Không phá được,translated,
+스마트넷 (C)스마트시스템(주),Smartnet (C) Smart System Co.,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+스마트넷 Ver 1.0,Smartnet Ver 1.0,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+"스크립트 편집창입니다.
+","Đây là cửa sổ soạn script.
+",translated,
+스타 확성기,Loa ngôi sao,translated,
+스페셜! 10초에 한 번 유령 생성,Đặc biệt! Cứ 10 giây sinh 1 hồn ma,translated,
+스페셜! 120초 후 단단한 블록 생성,Đặc biệt! Sau 120 giây sinh khối cứng,translated,
+스페셜! 120초 후에 부서지는 블록,Đặc biệt! Khối tự vỡ sau 120 giây,translated,
+스페셜! 120초에 한 번 유령 생성,Đặc biệt! Cứ 120 giây sinh 1 hồn ma,translated,
+스페셜! 15초 후 단단한 블록 생성,Đặc biệt! Sau 15 giây sinh khối cứng,translated,
+스페셜! 15초 후에 부서지는 블록,Đặc biệt! Khối tự vỡ sau 15 giây,translated,
+스페셜! 15초에 한 번 유령 생성,Đặc biệt! Cứ 15 giây sinh 1 hồn ma,translated,
+스페셜! 30초 후 단단한 블록 생성,Đặc biệt! Sau 30 giây sinh khối cứng,translated,
+스페셜! 30초 후에 부서지는 블록,Đặc biệt! Khối tự vỡ sau 30 giây,translated,
+스페셜! 30초에 한 번 유령 생성,Đặc biệt! Cứ 30 giây sinh 1 hồn ma,translated,
+스페셜! 3초 후 단단한 블록 생성,Đặc biệt! Sau 3 giây sinh khối cứng,translated,
+스페셜! 3초 후에 부서지는 블록,Đặc biệt! Khối tự vỡ sau 3 giây,translated,
+스페셜! 45초 후 단단한 블록 생성,Đặc biệt! Sau 45 giây sinh khối cứng,translated,
+스페셜! 45초 후에 부서지는 블록,Đặc biệt! Khối tự vỡ sau 45 giây,translated,
+스페셜! 60초 후 단단한 블록 생성,Đặc biệt! Sau 60 giây sinh khối cứng,translated,
+스페셜! 60초 후에 부서지는 블록,Đặc biệt! Khối tự vỡ sau 60 giây,translated,
+스페셜! 60초에 한 번 유령 생성,Đặc biệt! Cứ 60 giây sinh 1 hồn ma,translated,
+스페셜! 75초 후 단단한 블록 생성,Đặc biệt! Sau 75 giây sinh khối cứng,translated,
+스페셜! 75초 후에 부서지는 블록,Đặc biệt! Khối tự vỡ sau 75 giây,translated,
+스페셜! 90초 후 단단한 블록 생성,Đặc biệt! Sau 90 giây sinh khối cứng,translated,
+스페셜! 90초 후에 부서지는 블록,Đặc biệt! Khối tự vỡ sau 90 giây,translated,
+스페셜! 90초에 한 번 유령 생성,Đặc biệt! Cứ 90 giây sinh 1 hồn ma,translated,
+스페셜! 모두 1회 부활. 블록체력1. 합산X,Đặc biệt! Mọi người hồi sinh 1 lần. Máu khối 1. Không cộng dồn,translated,
+스페셜! 모두 2회 부활. 블록체력1. 합산X,Đặc biệt! Mọi người hồi sinh 2 lần. Máu khối 1. Không cộng dồn,translated,
+스페셜! 모두 3회 부활. 블록체력1. 합산X,Đặc biệt! Mọi người hồi sinh 3 lần. Máu khối 1. Không cộng dồn,translated,
+스페셜! 바나나껍질 무한 설치,Đặc biệt! Đặt vô hạn vỏ chuối,translated,
+스페셜! 밟으면 깨짐. 깨진 상태 밟으면 사망,Đặc biệt! Giẫm lên thì vỡ. Giẫm lên khi đã vỡ sẽ chết,translated,
+스페셜! 밟은 플레이어가 사망,Đặc biệt! Người chơi giẫm lên sẽ chết,translated,
+스페셜! 밟은 플레이어가 승리,Đặc biệt! Người chơi giẫm lên sẽ thắng,translated,
+스페셜! 보라팀 무한 부활. 블록 체력 1,Đặc biệt! Đội Tím hồi sinh vô hạn. Máu khối 1,translated,
+스페셜! 보라팀 무한 부활. 블록 체력 10,Đặc biệt! Đội Tím hồi sinh vô hạn. Máu khối 10,translated,
+스페셜! 보라팀 무한 부활. 블록 체력 3,Đặc biệt! Đội Tím hồi sinh vô hạn. Máu khối 3,translated,
+스페셜! 보라팀 무한 부활. 블록 체력 5,Đặc biệt! Đội Tím hồi sinh vô hạn. Máu khối 5,translated,
+스페셜! 보라팀이 2초 간 밟으면 보라팀 승리,Đặc biệt! Đội Tím giẫm 2 giây thì đội Tím thắng,translated,
+스페셜! 부수면 좋은 아이템 혹은 악어 몬스터,Đặc biệt! Phá ra vật phẩm tốt hoặc quái cá sấu,translated,
+스페셜! 빨간팀 무한 부활. 블록 체력 1,Đặc biệt! Đội Đỏ hồi sinh vô hạn. Máu khối 1,translated,
+스페셜! 빨간팀 무한 부활. 블록 체력 10,Đặc biệt! Đội Đỏ hồi sinh vô hạn. Máu khối 10,translated,
+스페셜! 빨간팀 무한 부활. 블록 체력 3,Đặc biệt! Đội Đỏ hồi sinh vô hạn. Máu khối 3,translated,
+스페셜! 빨간팀 무한 부활. 블록 체력 5,Đặc biệt! Đội Đỏ hồi sinh vô hạn. Máu khối 5,translated,
+스페셜! 빨간팀이 2초 간 밟으면 빨간팀 승리,Đặc biệt! Đội Đỏ giẫm 2 giây thì đội Đỏ thắng,translated,
+스페셜! 설치 시 모든 플레이어 좀비 시야,"Đặc biệt! Khi đặt, mọi người chơi có tầm nhìn zombie",translated,
+스페셜! 속도가 느려지는 거미줄을 무한 설치,Đặc biệt! Đặt vô hạn mạng nhện làm chậm,translated,
+스페셜! 아래쪽으로만 이동됨. 파괴X,Đặc biệt! Chỉ đi xuống dưới. Không phá,translated,
+스페셜! 압정 1회 설치,Đặc biệt! Đặt đinh ghim 1 lần,translated,
+스페셜! 오른쪽으로만 이동됨. 파괴X,Đặc biệt! Chỉ đi sang phải. Không phá,translated,
+스페셜! 왼쪽으로만 이동됨. 파괴X,Đặc biệt! Chỉ đi sang trái. Không phá,translated,
+스페셜! 위쪽으로만 이동됨. 파괴X,Đặc biệt! Chỉ đi lên trên. Không phá,translated,
+스페셜! 초록팀 무한 부활. 블록 체력 1,Đặc biệt! Đội Xanh lá hồi sinh vô hạn. Máu khối 1,translated,
+스페셜! 초록팀 무한 부활. 블록 체력 10,Đặc biệt! Đội Xanh lá hồi sinh vô hạn. Máu khối 10,translated,
+스페셜! 초록팀 무한 부활. 블록 체력 3,Đặc biệt! Đội Xanh lá hồi sinh vô hạn. Máu khối 3,translated,
+스페셜! 초록팀 무한 부활. 블록 체력 5,Đặc biệt! Đội Xanh lá hồi sinh vô hạn. Máu khối 5,translated,
+스페셜! 초록팀이 2초 간 밟으면 초록팀 승리,Đặc biệt! Đội Xanh lá giẫm 2 giây thì đội Xanh lá thắng,translated,
+스페셜! 트랩 무한 설치,Đặc biệt! Đặt vô hạn bẫy,translated,
+스페셜! 파란팀 무한 부활. 블록 체력 1,Đặc biệt! Đội Xanh dương hồi sinh vô hạn. Máu khối 1,translated,
+스페셜! 파란팀 무한 부활. 블록 체력 10,Đặc biệt! Đội Xanh dương hồi sinh vô hạn. Máu khối 10,translated,
+스페셜! 파란팀 무한 부활. 블록 체력 3,Đặc biệt! Đội Xanh dương hồi sinh vô hạn. Máu khối 3,translated,
+스페셜! 파란팀 무한 부활. 블록 체력 5,Đặc biệt! Đội Xanh dương hồi sinh vô hạn. Máu khối 5,translated,
+스페셜! 파란팀이 2초 간 밟으면 파란팀 승리,Đặc biệt! Đội Xanh dương giẫm 2 giây thì đội Xanh dương thắng,translated,
+스프링10개,10 Lò xo,translated,
+시야2 추격이동. 속도4. 공격 받으면 겁쟁이됨,"Tầm nhìn 2, đuổi theo. Tốc độ 4. Bị đánh thì thành nhát gan",translated,
+신 지 혜,신 지 혜,translated,"credit: tên người, giữ nguyên"
+신고거래,신고거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+신고계정,신고계정,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+신고고객,신고고객,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+신고관리,신고관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+신고문의,신고문의,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+신고센터,신고센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+신고접수,신고접수,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+신고처리,신고처리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+신고확인,신고확인,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+실드 10개,10 Khiên,translated,
+쓰지 마세요!!,đừng dùng!!,translated,
+아래 이동 미사일. 맞으면 물풍선에 가둬짐,Tên lửa đi xuống. Trúng sẽ bị nhốt vào bom nước,translated,
+아래 이동 컨베이어 벨트. 속도2,Băng chuyền đi xuống. Tốc độ 2,translated,
+아래 이동 컨베이어 벨트. 속도3,Băng chuyền đi xuống. Tốc độ 3,translated,
+아래로 들어가 숨기 가능. 체력3,Chui vào trốn từ phía dưới. Máu 3,translated,
+아래로 들어가 숨기 가능. 파괴 불가,Chui vào trốn từ phía dưới. Không phá được,translated,
+아래에서 오른쪽 이동 컨베이어 벨트. 속도2,Băng chuyền từ dưới sang phải. Tốc độ 2,translated,
+아래에서 왼쪽 이동 컨베이어 벨트. 속도2,Băng chuyền từ dưới sang trái. Tốc độ 2,translated,
+아래쪽 이동 컨베이어 벨트. 속도2,Băng chuyền đi xuống. Tốc độ 2,translated,
+아래쪽에서 오른쪽 이동 컨베이어 벨트. 속도2,Băng chuyền từ dưới sang phải. Tốc độ 2,translated,
+아무 맵에서나 1판 승리해보세,Hãy thắng 1 trận ở bản đồ bất kỳ.,translated,
+아무 맵에서나 게임을 3판하고,Chơi 3 trận ở bản đồ bất kỳ,translated,
+아이디를 입력하세요.,Hãy nhập ID.,translated,
+아이스,Băng,translated,
+아주 큰 맵입니다. 자유롭게 꾸며주세요. 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다. 필터 모양 버튼을 클릭하면 다양한 테마의 블록 사용 가능!,Bản đồ rất lớn. Hãy tự do trang trí. Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên. Bấm nút hình phễu lọc để dùng khối của nhiều chủ đề!,translated,
+아쿠아,Aqua,translated,
+악,Á,translated,
+안 병 규,안 병 규,translated,"credit: tên người, giữ nguyên"
+안 현 숙,안 현 숙,translated,"credit: tên người, giữ nguyên"
+안녕! 나는 PC방의 부엉이야~,Chào! Mình là cú mèo của quán net~,translated,
+"안전한 개인정보 관리를 위하여 정기적으로 넥슨아이디, 게임아이디 비밀번호를 변경해 주세요.","Để bảo vệ thông tin cá nhân, hãy đổi mật khẩu tài khoản và mật khẩu ID game định kỳ.",translated,
+애프터눈 확성기,Loa trà chiều,translated,
+야구,Bóng chày,translated,
+업데이트,Cập nhật,translated,
+엠플레이,엠플레이,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+연두,Xanh lá nhạt,translated,
+옐로우 확성기,Loa vàng,translated,
+오 영 균,오 영 균,translated,"credit: tên người, giữ nguyên"
+오 원 석,오 원 석,translated,"credit: tên người, giữ nguyên"
+오른쪽 이동 미사일. 맞으면 물풍선에 가둬짐,Tên lửa sang phải. Trúng sẽ bị nhốt vào bom nước,translated,
+오른쪽 이동 컨베이어 벨트. 속도2,Băng chuyền sang phải. Tốc độ 2,translated,
+오른쪽 이동 컨베이어 벨트. 속도3,Băng chuyền sang phải. Tốc độ 3,translated,
+오른쪽에서 아래 이동 컨베이어 벨트. 속도2,Băng chuyền từ phải xuống dưới. Tốc độ 2,translated,
+오른쪽에서 왼쪽 이동 컨베이어 벨트. 속도2,Băng chuyền từ phải sang trái. Tốc độ 2,translated,
+오른쪽에서 위쪽 이동 컨베이어 벨트. 속도2,Băng chuyền từ phải lên trên. Tốc độ 2,translated,
+오른쪽으로 들어가 숨기 가능. 체력3,Chui vào trốn từ bên phải. Máu 3,translated,
+오른쪽으로 들어가 숨기 가능. 파괴 불가,Chui vào trốn từ bên phải. Không phá được,translated,
+완료시 선물을 드려요~,Hoàn thành sẽ được tặng quà~,translated,
+왼쪽 이동 미사일. 맞으면 물풍선에 가둬짐,Tên lửa sang trái. Trúng sẽ bị nhốt vào bom nước,translated,
+왼쪽 이동 컨베이어 벨트. 속도2,Băng chuyền sang trái. Tốc độ 2,translated,
+왼쪽 이동 컨베이어 벨트. 속도3,Băng chuyền sang trái. Tốc độ 3,translated,
+왼쪽에서 아래 이동 컨베이어 벨트. 속도2,Băng chuyền từ trái xuống dưới. Tốc độ 2,translated,
+왼쪽에서 위쪽 이동 컨베이어 벨트. 속도2,Băng chuyền từ trái lên trên. Tốc độ 2,translated,
+왼쪽으로 들어가 숨기 가능. 체력3,Chui vào trốn từ bên trái. Máu 3,translated,
+왼쪽으로 들어가 숨기 가능. 파괴 불가,Chui vào trốn từ bên trái. Không phá được,translated,
+요. 승리의 기쁨과 함께 경험,"Cùng niềm vui chiến thắng, bạn",translated,
+우 은 미,우 은 미,translated,"credit: tên người, giữ nguyên"
+우니 스티커 확성기,Loa sticker Uni,translated,
+우리집 애완동물의 이름은?,Tên thú cưng nhà bạn là gì?,translated,
+우주,Vũ trụ,translated,
+운    영 :    황 인 웅,Vận hành :    황 인 웅,translated,credit: giữ tên người bằng chữ Hàn
+"운영자 아이디는 [GM단미], [GM이든], [GM라온], [GM해나] 입니다.","ID của quản trị viên là [GM단미], [GM이든], [GM라온], [GM해나].",translated,
+"운영자는 비밀번호, 넥슨아이디, 개인정보를 묻지 않습니다. 비밀번호 관리에 주의하세요.","Quản trị viên không hỏi mật khẩu, tài khoản hay thông tin cá nhân. Hãy giữ kỹ mật khẩu.",translated,
+운영자는 절대 메신저 친구 추가를 하지 않습니다. 운영자 사칭 사고에 주의하세요.,Quản trị viên không bao giờ kết bạn qua tin nhắn. Hãy cẩn thận với kẻ giả mạo quản trị viên.,translated,
+운영자의 채팅글에는 [GM] 표시와 글자가 주황색으로 표시됩니다.,Tin nhắn chat của quản trị viên có dấu [GM] và chữ màu cam.,translated,
+운영지원 :    채 민 희,Hỗ trợ vận hành :    채 민 희,translated,credit: giữ tên người bằng chữ Hàn
+원거리 발사 물총(10발) 맞으면 물풍선에 가둬짐,"Súng nước bắn xa (10 phát), trúng sẽ bị nhốt vào bom nước",translated,
+원거리 발사 물총(1발) 맞으면 물풍선에 가둬짐,"Súng nước bắn xa (1 phát), trúng sẽ bị nhốt vào bom nước",translated,
+원거리 발사 얼음총(10발) 맞으면 잠시 느려짐,"Súng băng bắn xa (10 phát), trúng sẽ bị chậm một lúc",translated,
+원거리 발사 얼음총(1발) 맞으면 잠시 느려짐,"Súng băng bắn xa (1 phát), trúng sẽ bị chậm một lúc",translated,
+웹개발 :    박이선  김해린  조준혁  남훈    윤성문,Phát triển web :    박이선  김해린  조준혁  남훈    윤성문,translated,credit: giữ tên người bằng chữ Hàn
+위 지 혜,위 지 혜,translated,"credit: tên người, giữ nguyên"
+위로 이동 컨베이어 벨트. 속도2,Băng chuyền đi lên. Tốc độ 2,translated,
+위쪽 이동 미사일. 맞으면 물풍선에 가둬짐,Tên lửa đi lên. Trúng sẽ bị nhốt vào bom nước,translated,
+위쪽 이동 컨베이어 벨트. 속도2,Băng chuyền đi lên. Tốc độ 2,translated,
+위쪽 이동 컨베이어 벨트. 속도3,Băng chuyền đi lên. Tốc độ 3,translated,
+위쪽에서 오른쪽 이동 컨베이어 벨트. 속도2,Băng chuyền từ trên sang phải. Tốc độ 2,translated,
+위쪽에서 왼쪽 이동 컨베이어 벨트. 속도2,Băng chuyền từ trên sang trái. Tốc độ 2,translated,
+위쪽으로 들어가 숨기 가능. 체력3,Chui vào trốn từ phía trên. Máu 3,translated,
+위쪽으로 들어가 숨기 가능. 파괴 불가,Chui vào trốn từ phía trên. Không phá được,translated,
+유 창 곤,유 창 곤,translated,"credit: tên người, giữ nguyên"
+유 형 석,유 형 석,translated,"credit: tên người, giữ nguyên"
+유령 전체확성기,Loa toàn kênh hồn ma,translated,
+유령이 나오는 저택을 자유롭게 꾸며주세요! 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다.,Hãy tự do trang trí ngôi biệt thự có ma! Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên.,translated,
+윤 세 훈,윤 세 훈,translated,"credit: tên người, giữ nguyên"
+윤 영 섭,윤 영 섭,translated,"credit: tên người, giữ nguyên"
+윤 정 항,윤 정 항,translated,"credit: tên người, giữ nguyên"
+윽,Ực,translated,
+은 주 희,은 주 희,translated,"credit: tên người, giữ nguyên"
+이 경 민,이 경 민,translated,"credit: tên người, giữ nguyên"
+이 권 일,이 권 일,translated,"credit: tên người, giữ nguyên"
+이 상 근,이 상 근,translated,"credit: tên người, giữ nguyên"
+이 상 희,이 상 희,translated,"credit: tên người, giữ nguyên"
+이 수 정,이 수 정,translated,"credit: tên người, giữ nguyên"
+이 수 진,이 수 진,translated,"credit: tên người, giữ nguyên"
+이 승 찬,이 승 찬,translated,"credit: tên người, giữ nguyên"
+이 은 아,이 은 아,translated,"credit: tên người, giữ nguyên"
+이 은 혜,이 은 혜,translated,"credit: tên người, giữ nguyên"
+이 인 원,이 인 원,translated,"credit: tên người, giữ nguyên"
+이 재 준,이 재 준,translated,"credit: tên người, giữ nguyên"
+이 창 희,이 창 희,translated,"credit: tên người, giữ nguyên"
+이 현 준,이 현 준,translated,"credit: tên người, giữ nguyên"
+이동주  박지현,이동주  박지현,translated,"credit: tên người, giữ nguyên"
+이제 보스몬스터를 잡아볼까요?,Giờ thử bắt trùm quái vật nhé?,translated,
+이제 예쁜 토끼를 잡아볼까요?,Giờ thử bắt chú thỏ xinh nhé?,translated,
+이젠 몬스터를 잡아볼까요?!,Giờ thử bắt quái vật nhé?!,translated,
+이종헌  정원지  박애리,이종헌  정원지  박애리,translated,"credit: tên người, giữ nguyên"
+이현경  이인    노태형  이지연  안현숙,이현경  이인    노태형  이지연  안현숙,translated,"credit: tên người, giữ nguyên"
+인기맵 무덤12,Bản đồ hot Lăng mộ12,translated,
+인기맵 빌리지10,Bản đồ hot Làng10,translated,
+인기맵 캠프08,Bản đồ hot Trại08,translated,
+인기맵 패트릿14,Bản đồ hot Patrit14,translated,
+인기맵 팩토리07,Bản đồ hot Nhà máy07,translated,
+인기맵 포레스트07,Bản đồ hot Rừng07,translated,
+인증 시스템 개발 :    박경국  박경민,Phát triển hệ thống xác thực :    박경국  박경민,translated,credit: giữ tên người bằng chữ Hàn
+일반 확성기,Loa thường,translated,
+임 주 현,임 주 현,translated,"credit: tên người, giữ nguyên"
+임 혜 리,임 혜 리,translated,"credit: tên người, giữ nguyên"
+자유1,Tự do 1,translated,
+자유10,Tự do 10,translated,
+자유11,Tự do 11,translated,
+자유12,Tự do 12,translated,
+자유13,Tự do 13,translated,
+자유14,Tự do 14,translated,
+자유15,Tự do 15,translated,
+자유16,Tự do 16,translated,
+자유17,Tự do 17,translated,
+자유18,Tự do 18,translated,
+자유19,Tự do 19,translated,
+자유2,Tự do 2,translated,
+자유20,Tự do 20,translated,
+자유21,Tự do 21,translated,
+자유22,Tự do 22,translated,
+자유23,Tự do 23,translated,
+자유24,Tự do 24,translated,
+자유25,Tự do 25,translated,
+자유3,Tự do 3,translated,
+자유4,Tự do 4,translated,
+자유5,Tự do 5,translated,
+자유6,Tự do 6,translated,
+자유7,Tự do 7,translated,
+자유8,Tự do 8,translated,
+자유9,Tự do 9,translated,
+자유롭게 맵을 꾸며주세요,Hãy tự do trang trí bản đồ,translated,
+자유이동. 속도1. 물줄기에 맞지 않음,Đi tự do. Tốc độ 1. Không trúng tia nước,translated,
+잔~뜩~ 나온답니다!,ra cả đống VÀNG đấy!,translated,
+잘못된 Bool : %s,Bool không hợp lệ : %s,translated,
+잘못된 ObjImage : %s,ObjImage không hợp lệ : %s,translated,
+잘못된 Pos : %s,Pos không hợp lệ : %s,translated,
+잘못된 RGB : %s,RGB không hợp lệ : %s,translated,
+잘못된 objtype : %s,objtype không hợp lệ : %s,translated,
+잘못된 rect : %s,rect không hợp lệ : %s,translated,
+잘못된 루찌타입 : %s,Loại VÀNG không hợp lệ : %s,translated,
+잘못된 사이즈 값 : %s,Giá trị kích thước không hợp lệ : %s,translated,
+잘못된 접근,Truy cập không hợp lệ,translated,
+장 석 현,장 석 현,translated,"credit: tên người, giữ nguyên"
+장 소 연,장 소 연,translated,"credit: tên người, giữ nguyên"
+장 재 화,장 재 화,translated,"credit: tên người, giữ nguyên"
+잼있게 놀고왔어? ,Chơi vui không? ,translated,
+전 유 민,전 유 민,translated,"credit: tên người, giữ nguyên"
+전체 러브 확성기,Loa toàn kênh tình yêu,translated,
+전체 보라 확성기,Loa toàn kênh tím,translated,
+전체 분홍 확성기,Loa toàn kênh hồng,translated,
+전체 사이렌 확성기,Loa toàn kênh còi hú,translated,
+전체 성탄 확성기,Loa toàn kênh Giáng sinh,translated,
+전체 악마 확성기,Loa toàn kênh ác quỷ,translated,
+전체 확성기 ,Loa toàn kênh ,translated,
+점프 가능 투명 블록. 물줄기에 파괴됨,Khối trong suốt nhảy qua được. Bị tia nước phá huỷ,translated,
+점프 가능 투명 블록. 파괴 불가,Khối trong suốt nhảy qua được. Không phá được,translated,
+점프 불가 투명 블록. 파괴 불가,Khối trong suốt không nhảy qua được. Không phá được,translated,
+접수거래,접수거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+접수고객,접수고객,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+접수관리,접수관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+접수문의,접수문의,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+접수센터,접수센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+접수신고,접수신고,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+접수처리,접수처리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+접수확인,접수확인,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+정 영 석,정 영 석,translated,"credit: tên người, giữ nguyên"
+정 우 용,정 우 용,translated,"credit: tên người, giữ nguyên"
+정 은 실,정 은 실,translated,"credit: tên người, giữ nguyên"
+제    작 :    김정주  김상범  김재범  정상원,Sản xuất :    김정주  김상범  김재범  정상원,translated,credit: giữ tên người bằng chữ Hàn
+제임스 스티커 확성기,Loa sticker James,translated,
+조 재 윤,조 재 윤,translated,"credit: tên người, giữ nguyên"
+좀비,Zombie,translated,
+좀비모드에서 유저를 감염시키면 루찌를 획득하실 수 있습니다.,"Trong chế độ Zombie, lây nhiễm người chơi khác sẽ nhận được VÀNG.",translated,
+좀비모드에서는 게임에 져도 패배가 쌓이지 않습니다.,"Trong chế độ Zombie, thua trận cũng không bị tính trận thua.",translated,
+좋아요 한 맵이 표기됩니다. 좋아요는 8개까지만 할 수 있습니다. ,Hiển thị các bản đồ đã thích. Chỉ được thích tối đa 8 bản đồ. ,translated,
+주은정,주은정,translated,"credit: tên người, giữ nguyên"
+주홍,Cam,translated,
+"지금 ""퀘스트"" 버튼을 클릭해보세요. 비엔비에서 진행중인 여러가지 재미있는 퀘스트를 만나실 수 있습니다","Hãy bấm thử nút ""Nhiệm vụ"" ngay. Bạn sẽ thấy nhiều nhiệm vụ thú vị đang diễn ra trong Boom.",translated,
+지나친 게임 이용은 건강을 해칠 수도 있으니 유의해 주시기 바랍니다.,"Chơi game quá nhiều có thể ảnh hưởng đến sức khoẻ, hãy chú ý.",translated,
+지루하다면 부활대전으로 Go!,chán thì vào Đấu hồi sinh nhé!,translated,
+지앤티씨,GNTC,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+지존 전체확성기,Loa toàn kênh Chí tôn,translated,
+차기 가능한 납작한 딱쿵이,"Ddakkungi bẹp dí, đá được",translated,
+채 은 도,채 은 도,translated,"credit: tên người, giữ nguyên"
+처리거래,처리거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+처리고객,처리고객,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+처리관리,처리관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+처리문의,처리문의,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+처리센터,처리센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+처리신고,처리신고,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+처리접수,처리접수,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+처리확인,처리확인,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+체력255의 단단한 블록. 밀기 가능,Khối cứng máu 255. Đẩy được,translated,
+초보1,Tân thủ 1,translated,
+초보자퀘스트가 진행되는 동안,Trong khi làm nhiệm vụ tân thủ,translated,
+초코 스티커 확성기,Loa sticker Choco,translated,
+최    영,최    영,translated,"credit: tên người, giữ nguyên"
+최 선 미,최 선 미,translated,"credit: tên người, giữ nguyên"
+최 은 영,최 은 영,translated,"credit: tên người, giữ nguyên"
+최 재 혁,최 재 혁,translated,"credit: tên người, giữ nguyên"
+최 진 희,최 진 희,translated,"credit: tên người, giữ nguyên"
+최근 인기도(30일),Độ phổ biến gần đây (30 ngày),translated,
+최근 플레이(30일),Lượt chơi gần đây (30 ngày),translated,
+최철훈  서세욱  조민수  임광혁  이봉현,최철훈  서세욱  조민수  임광혁  이봉현,translated,"credit: tên người, giữ nguyên"
+추격이동 미사일. 맞으면 물풍선에 가둬짐,Tên lửa đuổi theo. Trúng sẽ bị nhốt vào bom nước,translated,
+축하15 전체확성기,Loa toàn kênh mừng 15,translated,
+축하큐브15 확성기,Loa khối mừng 15,translated,
+춘절전체확성기 1,Loa toàn kênh Tết 1,translated,
+춘절전체확성기 2,Loa toàn kênh Tết 2,translated,
+치를 선물로 드립니다~!!,sẽ được tặng kinh nghiệm~!!,translated,
+친구들과 함께 해보세요~,Hãy rủ bạn bè cùng chơi nhé~,translated,
+카트,Kart,translated,
+카트 탑승해 사용. 1회 대시 이동,Dùng khi cưỡi kart. Lướt 1 lần,translated,
+카트 탑승해 사용. 연료 충전,Dùng khi cưỡi kart. Nạp nhiên liệu,translated,
+카트를 타고 통과하면 연료 충전. 파괴X,Cưỡi kart đi qua sẽ được nạp nhiên liệu. Không phá,translated,
+캐릭터 사업 & 애니메이션 :    류한상  박성범  이승규,Kinh doanh nhân vật & hoạt hình :    류한상  박성범  이승규,translated,credit: giữ tên người bằng chữ Hàn
+캠프,Trại,translated,
+컫볍칵돠,컫볍칵돠,review,"chuỗi rác (GBK đọc nhầm cp949?), không hiển thị"
+켁,Khặc,translated,
+켁!,Khặc!,translated,
+코니 스티커 확성기,Loa sticker Cony,translated,
+쿠mons2fire01selfdie04,Ku mons2fire01selfdie04,review,chuỗi gốc lẫn khoá ClientString (lỗi dữ liệu KR)
+쿠키,Bánh quy,translated,
+크리스마스,Giáng sinh,translated,
+크리스마스 확성기,Loa Giáng sinh,translated,
+크아를 나가면 처음부터 다시 시작,Thoát Boom thì phải bắt đầu lại từ,translated,
+크아짱 비정상 종료가 감지되어 %d시간 %d분 이후에 크아짱 이용이 가능합니다.,"Phát hiện Vua xếp hạng thoát bất thường, có thể dùng lại Vua xếp hạng sau %d giờ %d phút.",review,"크아짱: tên dịch vụ, chưa chắc"
+크아히어로1,Boom Hero 1,translated,
+크아히어로2,Boom Hero 2,translated,
+크아히어로3,Boom Hero 3,translated,
+크아히어로4,Boom Hero 4,translated,
+큰 맵입니다. 자유롭게 꾸며주세요. 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다. 필터 모양 버튼을 클릭하면 다양한 테마의 블록 사용 가능!,Bản đồ lớn. Hãy tự do trang trí. Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên. Bấm nút hình phễu lọc để dùng khối của nhiều chủ đề!,translated,
+클라이언트,Máy khách,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+클로버,Cỏ ba lá,translated,
+토끼정원,Vườn thỏ,translated,
+통과 가능. 물줄기에 파괴됨,Đi qua được. Bị tia nước phá huỷ,translated,
+통과 가능. 파괴 불가,Đi qua được. Không phá được,translated,
+통과(물줄기 가능. 플레이어 불가). 파괴X,"Đi qua (tia nước được, người chơi không). Không phá",translated,
+"통과(물풍선 가능, 플레이어 불가). 파괴 불가","Đi qua (bom nước được, người chơi không). Không phá được",translated,
+통과(물풍선 상하 가능. 플레이어 불가) 파괴X,"Đi qua (bom nước lên/xuống được, người chơi không). Không phá",translated,
+통과(물풍선 좌우 가능. 플레이어 불가) 파괴X,"Đi qua (bom nước trái/phải được, người chơi không). Không phá",translated,
+투시경10개,10 Kính nhìn xuyên,translated,
+팀    장 :    강 신 철,Trưởng nhóm :    강 신 철,translated,credit: giữ tên người bằng chữ Hàn
+팀    장 :    남 혜 진,Trưởng nhóm :    남 혜 진,translated,credit: giữ tên người bằng chữ Hàn
+파괴 불가,Không phá được,translated,
+파괴 불가. 점프 불가,Không phá được. Không nhảy qua được,translated,
+팡랜드,Pang Land,translated,
+패트릿,Patrit,translated,
+팩토리,Nhà máy,translated,
+포레스트,Rừng,translated,
+프로그래머 :    김 정 도,Lập trình viên :    김 정 도,translated,credit: giữ tên người bằng chữ Hàn
+프로그래밍 :    박 세 희,Lập trình :    박 세 희,translated,credit: giữ tên người bằng chữ Hàn
+프로그래밍파트장 :    권 오 창,Trưởng bộ phận lập trình :    권 오 창,translated,credit: giữ tên người bằng chữ Hàn
+플랫폼 개발 :    김주남  박인규,Phát triển nền tảng :    김주남  박인규,translated,credit: giữ tên người bằng chữ Hàn
+피카에어,PikaAir,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+핑크 확성기,Loa hồng,translated,
+하트 확성기,Loa trái tim,translated,
+하트이모티 확성기,Loa biểu tượng trái tim,translated,
+한민경  박세은  우은미,한민경  박세은  우은미,translated,"credit: tên người, giữ nguyên"
+항상 퀘스트창을 확인하세요~,hãy luôn xem cửa sổ Nhiệm vụ nhé~,translated,
+해야 하니 조심해^^,"đầu đó, cẩn thận nha^^",translated,
+해외 사업 :    최승우  강진구  김진환,Kinh doanh quốc tế :    최승우  강진구  김진환,translated,credit: giữ tên người bằng chữ Hàn
+해외로컬 :    안 현 숙,Bản địa hoá quốc tế :    안 현 숙,translated,credit: giữ tên người bằng chữ Hàn
+해외로컬 파트장 :    정 은 실,Trưởng bộ phận bản địa hoá quốc tế :    정 은 실,translated,credit: giữ tên người bằng chữ Hàn
+"해킹/자료 변조 등은 법에 따라 처벌받을 수 있으며, 약관에 의거하여 제재될 수 있습니다.",Hack/sửa đổi dữ liệu có thể bị xử lý theo pháp luật và bị xử phạt theo điều khoản.,translated,
+햄스터팜,Trại hamster,translated,
+허 영 석,허 영 석,translated,"credit: tên người, giữ nguyên"
+헛,Hự,translated,
+현재 디렉토리 명을 확인할 수가 없습니다,Không xác định được tên thư mục hiện tại,translated,
+현재사용분,Số phút đã dùng,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+홈페이지 개발 :    윤호식  김민정  김민재  임걸찬,Phát triển trang chủ :    윤호식  김민정  김민재  임걸찬,translated,credit: giữ tên người bằng chữ Hàn
+홍    보 :    서명기  장근욱  서민정  박석현  이재교,Quan hệ công chúng :    서명기  장근욱  서민정  박석현  이재교,translated,credit: giữ tên người bằng chữ Hàn
+홍 수 옥,홍 수 옥,translated,"credit: tên người, giữ nguyên"
+확인거래,확인거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+확인고객,확인고객,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+확인관리,확인관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+확인문의,확인문의,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+확인센터,확인센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+확인신고,확인신고,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+확인접수,확인접수,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+확인처리,확인처리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+황 민 재,황 민 재,translated,"credit: tên người, giữ nguyên"
+황 승 희,황 승 희,translated,"credit: tên người, giữ nguyên"
+황 용 수,황 용 수,translated,"credit: tên người, giữ nguyên"
+황 인 승,황 인 승,translated,"credit: tên người, giữ nguyên"
+황 인 웅,황 인 웅,translated,"credit: tên người, giữ nguyên"
+황 재 호,황 재 호,translated,"credit: tên người, giữ nguyên"
+황금나비,Bướm vàng,translated,
+황기현  송재영,황기현  송재영,translated,"credit: tên người, giữ nguyên"
+황민재  이효진  김진의,황민재  이효진  김진의,translated,"credit: tên người, giữ nguyên"
+획득 시 거북이 탑승,Nhặt được: cưỡi rùa,translated,
+획득 시 고장난 우주선 탑승,Nhặt được: cưỡi phi thuyền hỏng,translated,
+획득 시 광석 운반차 탑승,Nhặt được: cưỡi xe chở quặng,translated,
+획득 시 드래곤 탑승,Nhặt được: cưỡi rồng,translated,
+획득 시 레트로 개구리 탑승,Nhặt được: cưỡi ếch Retro,translated,
+획득 시 레트로 달팽이 탑승,Nhặt được: cưỡi ốc sên Retro,translated,
+획득 시 레트로 닭 탑승,Nhặt được: cưỡi gà Retro,translated,
+획득 시 레트로 돼지 탑승,Nhặt được: cưỡi heo Retro,translated,
+획득 시 레트로 마우스 탑승,Nhặt được: cưỡi chuột Retro,translated,
+획득 시 레트로 오리 탑승,Nhặt được: cưỡi vịt Retro,translated,
+획득 시 루돌프 탑승,Nhặt được: cưỡi tuần lộc Rudolph,translated,
+획득 시 문어 탑승,Nhặt được: cưỡi bạch tuộc,translated,
+획득 시 물줄기 길이 1 증가,Nhặt được: tăng 1 độ dài tia nước,translated,
+획득 시 물줄기 길이 최대 증가,Nhặt được: độ dài tia nước tăng tối đa,translated,
+획득 시 물풍선 던지기 가능,Nhặt được: ném được bom nước,translated,
+획득 시 물풍선 차기 가능,Nhặt được: đá được bom nước,translated,
+획득 시 물풍선을 놓을 수 있는 개수 1 증가,Nhặt được: tăng 1 số bom nước đặt được,translated,
+획득 시 부엉이 탑승,Nhặt được: cưỡi cú mèo,translated,
+획득 시 스피드 최대 증가,Nhặt được: tốc độ tăng tối đa,translated,
+"획득 시 스피드 최대 증가, 물풍선 차기 가능","Nhặt được: tốc độ tối đa, đá được bom nước",translated,
+획득 시 우주선 탑승,Nhặt được: cưỡi phi thuyền,translated,
+획득 시 이동 속도 1 증가,Nhặt được: tăng 1 tốc độ di chuyển,translated,
+획득 시 일시적으로 뒤로 걷기,Nhặt được: tạm thời đi lùi,translated,
+획득 시 일시적으로 물풍선 자동 설치,Nhặt được: tạm thời tự động đặt bom nước,translated,
+획득 시 일시적으로 반대로 걷기,Nhặt được: tạm thời đi ngược hướng,translated,
+획득 시 일시적으로 투명해짐,Nhặt được: tạm thời tàng hình,translated,
+획득 시 치킨통 탑승,Nhặt được: cưỡi thùng gà rán,translated,
+획득 시 카트 탑승,Nhặt được: cưỡi kart,translated,
+획득 시 탱크 탑승,Nhặt được: cưỡi xe tăng,translated,
+획득 시 토끼 탑승,Nhặt được: cưỡi thỏ,translated,
+획득 시 해적 문어 탑승,Nhặt được: cưỡi bạch tuộc cướp biển,translated,
+획득 시 해적거북이 탑승,Nhặt được: cưỡi rùa cướp biển,translated,
+획득 시 획득한 아이템 중 1개를 랜덤하게 뱉기,Nhặt được: nhả ngẫu nhiên 1 vật phẩm đã nhặt,translated,
+획득 후 물풍선 설치하면 희미한 물풍선 설치,"Sau khi nhặt, đặt bom nước sẽ ra bom nước mờ",translated,
+히든캐치1,Hidden Catch 1,translated,
+히든캐치2,Hidden Catch 2,translated,
+히든캐치3,Hidden Catch 3,translated,
+힙합클럽,Hip-hop Club,translated,
