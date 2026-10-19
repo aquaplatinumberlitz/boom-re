@@ -83,14 +83,9 @@ Không phải chữ hiển thị (bỏ qua): `Attr/*` (chỉ đường dẫn res
 Bản dịch dùng **giọng và từ ngữ miền Nam** (yêu cầu của chủ dự án): nón (không phải mũ), bóp (ví), ba mẹ, tui/tụi tui,
 nha/ha/ta (nhé/nhỉ), đó/vậy cuối câu (đấy/thế), lượm (nhặt), rớt (rơi), mắc (đắt), heo, bắp, ly, chén, muỗng, gởi, lầu, mở/tắt…
 
-- Bản dịch mới viết thẳng bằng giọng Nam.
-- `nam_bo.csv` (`bac` = regex khớp trọn âm tiết, không phân biệt hoa thường; `nam`; `note`) được áp **theo thứ tự**
-  ở bước `catalog` lên **mọi** cột `vi` (kể cả dòng `reused` lấy từ bản VN gốc giọng Bắc), trừ credit. Dòng bị đổi có `notes=nam_bo`.
-  Cột `vi_base` giữ nguyên văn bản VN để đối chiếu.
-- Cụm nhiều từ đứng trước từ đơn (`chúng tớ` trước `tớ`); có mục "sửa ngược" cho trường hợp khớp nhầm
-  (`như sao` → `như thế nào`, `nổi mở` → `nổi bật`); chừa `ví dụ`, `cậu bé`, `kính trọng`, `tất cả`, `bố trí`
-  (không có luật cho `kính`, `tất`, `bố` đứng một mình).
-- Không đổi tên riêng/chế độ đã chốt (vd. `Ném tuyết`), không đổi nhãn UI kiểu `Vào`/`Xem` (giữ trang trọng).
+- Mọi bản dịch được viết tay (đọc và dịch trực tiếp), **không** đổi từ tự động bằng code.
+- Chuỗi `reused` từ bản VN gốc (giọng Bắc) được đọc lại và viết lại giọng Nam trong `tm_id.csv`
+  (`notes=nam_bo_rewrite`); cột `vi_base` giữ nguyên văn bản VN để đối chiếu.
 
 ## 3. Ảnh có chữ (`images_todo.csv`)
 

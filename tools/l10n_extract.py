@@ -491,6 +491,7 @@ def cmd_import(a):
 # ---------------------------------------------------------------- catalog
 
 PH = re.compile(r"%[-+ #0]*\d*(?:\.\d+)?(?:l|h|I64)?[sdiufxXcp%]|\{[^{}]*\}|<[^<>]+>")
+PRINTF = re.compile(r"%[-+ #0]*\d*(?:\.\d+)?(?:l|h|I64)?[sdiufxXcp]")
 PH_LINES = re.compile(r"\r?\n|\|")
 NUM = re.compile(r"\d+")
 
@@ -533,7 +534,7 @@ def nam_bo(s, lex):
 
 
 def cmd_catalog(a):
-    lex = load_nam_bo()
+    lex = ()
     rows = load_sources()
     tm = load_tm()
     tid = load_tm_id()
@@ -567,14 +568,12 @@ def cmd_catalog(a):
             if placeholders(ko, True) != placeholders(vi, True):
                 status = "review"
                 notes.append("placeholder_mismatch")
+            elif PRINTF.findall(ko) != PRINTF.findall(vi):
+                status = "review"
+                notes.append("placeholder_order")  # printf không có %1$: đổi thứ tự là sai tham số
         else:
             vi, status = "", "review"
             notes.append("untranslated")
-        if vi and r["ctx"] not in ("credit",):
-            nb = nam_bo(vi, lex)
-            if nb != vi:
-                vi = nb
-                notes.append("nam_bo")
         if vi and ko and len(vi) > 1.6 * len(ko) and status != "reused":
             notes.append("too_long?")
         out.append({"id": r["id"], "source": r["source"], "ko": ko, "vi_base": vb, "vi": vi,
