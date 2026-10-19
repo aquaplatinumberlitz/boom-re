@@ -734,3 +734,10 @@ opcode 571 (S→C):
 - Cách dựng thử (`SPAWN_SAME=1` mọi người ô xuất phát 0 = góc trên phải Village01; `TEAM_SPLIT=1` đội = slot):
   `KEYS_A="Shift_L:0.1:10 Left:0.4:1 space:0.2:2 Shift_L:0.1:3 Shift_L:0.1:10" KEYS_B="Down:0.4:7 Up:0.4:1 Left:0.5:2 Shift_L:0.1:10"`
   (B xuống 1 ô, A sang trái 1 ô đặt bom tự nhốt, B ở ô chéo an toàn rồi lên + trái chạm A).
+
+#### Vật phẩm khi 2 người (2026-10-19, `logs/duo/i1`) ✅
+`SPAWN_SAME=1 FLOOR_ITEMS="13,0,2" ITEMS="13,1,0"` (cùng đội): A sang trái nhặt giày trượt nằm trên nền (117 → **158 phát cho cả phòng**, slot 0
+index 1); A đặt bom → gạch (13,1) vỡ — **cả hai client cùng báo C→S 135** (server không cần trả lời) → quả bom ẩn trong gạch lộ ra trên cả hai
+màn hình; B sang trái nhặt (117 slot 1 index 0 → 158) → vật phẩm biến mất trên màn của A (`docs/duo_items_A_view.png`); B lên cứu A (120/12).
+Bố cục 553 đúng cho mọi client (server phát cùng gói cho cả phòng trước 117). Chưa kiểm: 2 người nhặt cùng một vật phẩm cùng lúc (server
+hiện xác nhận mọi 117, không chặn trùng).

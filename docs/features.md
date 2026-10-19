@@ -140,7 +140,7 @@ Phân bố opcode theo nhóm:
 | F7 | kết thúc lượt / điểm | 146 chạy được (`5aee4e4`); **kết quả trận S→C 168** (hạng từng slot → màn "HOÀN HẢO"/thua, `oc_e-game.md`); server Rust: còn ≤ 1 đội sống → 168 → 173. Bảng điểm 146 và khối exp/vàng của 168 chưa kiểm | 🟡 | 🟡 |
 | F8 | kết thúc ván → về phòng chờ | S→C 173 `{0,0}` → về phòng chờ → **trận mới** (`b1fc290`); server Rust xử lý C→S 120; danh sách kết quả trong 173 chưa kiểm | ✅ | ✅ |
 | F9 | nhiều người chơi trong trận | 2 client cùng phòng + cùng vào trận (`tools/duo.sh`, `hub.rs`); **di chuyển đồng bộ 2 chiều** qua UDP P2P (C→S 92 → S→C 146 bảng peer); **ô xuất phát riêng** qua S→C 117 (`oc_e-game.md` §5a-7); bom/chết/vật phẩm nhiều người chưa kiểm | 🟡 | 🟡 |
-| F10 | item / power-up rơi | gạch vỡ client tự tính, báo C→S 135; vật phẩm trong gạch do server gửi trước 501 bằng S→C **553** (`oc_e-game.md` §5a-5d); vật phẩm **hiện được** (danh sách 2 của 553, (a,b) = (x,y), kind 1 = bạch tuộc tím); gạch thường không giấu được | 🟡 | 🟡 |
+| F10 | item / power-up rơi | gạch vỡ client tự tính, báo C→S 135; vật phẩm trong gạch do server gửi trước 501 bằng S→C **553** (`oc_e-game.md` §5a-5d); vật phẩm **hiện được** (danh sách 2 của 553, (a,b) = (x,y), kind 1 = bạch tuộc tím); **2 người**: gạch vỡ/vật phẩm lộ ra/nhặt (158 phát cả phòng) đồng bộ ✅ (`logs/duo/i1`); nhặt trùng cùng lúc chưa kiểm; vật phẩm rơi ngẫu nhiên theo trọng số chưa làm | 🟡 | 🟡 |
 | F10b | nhặt / dùng vật phẩm | nhặt: C→S 117 → server 158; bị động (bom +1, tầm nổ) client tự áp dụng; dùng Ctrl (kim thoát bong bóng) → C→S 120 subtype 1/0, không cần trả lời (`oc_e-game.md` §5a-5d, `docs/items.md`) | ✅ | ✅ |
 | F11 | map load trong trận | `0x736C27` skip; emulate với object map thật = vòng lặp 0 lần (Village01, phòng 19) → tương đương; map/loại phòng khác chưa kiểm | 🟡 | — |
 | F12 | va chạm / vật lý | mô phỏng chạy; gạch vỡ, tia nước, nhốt nhân vật đều client tự tính | 🟡 | — |
@@ -188,8 +188,8 @@ Phân bố opcode theo nhóm:
 Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 
 1. ~~F8 kết thúc ván~~ **xong** (`b1fc290`); ~~F6/F7 chết/lượt~~ **xong** (`5aee4e4`); kết quả trận **168** + hết giờ **xong** (`f668ca5`, `7875200`).
-2. ~~**F9** nhiều người trong trận~~ **chạy được**: UDP P2P, ô xuất phát riêng (117), bom/nhốt/chết/kết quả, cứu đồng đội / chọc vỡ (F6b) với 2 người. Còn: vật phẩm 2 người, đếm BẮT/CỨU.
-3. **F10** vật phẩm rơi — hiện/nhặt/dùng được (1 người); chưa kiểm 2 người.
+2. ~~**F9** nhiều người trong trận~~ **chạy được**: UDP P2P, ô xuất phát riêng (117), bom/nhốt/chết/kết quả, cứu đồng đội / chọc vỡ (F6b) với 2 người. Còn: đếm BẮT/CỨU.
+3. **F10** vật phẩm — hiện/nhặt/dùng được, đồng bộ 2 người; còn vật phẩm rơi ngẫu nhiên (server chọn theo trọng số `items.md`), nhặt trùng.
 4. ~~**E5/E7/E9/E12** phòng~~ **xong phần chính**: danh sách phòng, chọn map, sẵn sàng/đội/nhân vật, BẮT ĐẦU, đóng ô, đuổi, chủ phòng. Còn: sửa tên/mật khẩu phòng (85).
 5. ~~**D1** chat~~ **xong** (phòng/sảnh/trận); còn thì thầm (D2).
 6. **G1** shop: vào, xem hàng, mua bằng VÀNG/XU chạy được; còn danh mục thật, túi đồ/lưu ví trên server (lobby.md Cập nhật 20).

@@ -50,7 +50,7 @@ chữ tiếng Việt) → tạo / vào phòng → phòng chờ 2 người (chọ
 | Đăng nhập, kênh (stage 10) | ✅ | `docs/protocol.md`, `docs/lobby.md` |
 | Sảnh (stage 11) | ✅ bản đồ quảng trường + nhân vật mình (466/467), phòng (88/78), người chơi (64 → 69), chat (18 → 28), chữ UI tiếng Việt (S→C 2); 🟡 ô thông tin của mình, thẻ Hội, người khác trên bản đồ (469/471) | `docs/lobby.md` Cập nhật 13, 17, 21 |
 | Phòng chờ (stage 12) | ✅ 2 người: map (88 → 113), sẵn sàng/đội/nhân vật (87/89/90 → 106), BẮT ĐẦU (97), đóng ô (94), đuổi (95 → 104), đổi chủ; ⬜ sửa tên/mật khẩu (85) | `docs/lobby.md` Cập nhật 15–18 |
-| Trận (stage 13) | ✅ 2 người: 117 → 189/190/189/191, bom 111 → 152 → 151, chết 120 → 146, kết quả 168 → 173, hết giờ 120 s, vật phẩm 553/158, cứu đồng đội / chọc vỡ bong bóng (client tự xử lý, 120 subtype 12/13); ⬜ vật phẩm 2 người, đếm BẮT/CỨU, các mode khác | `docs/oc_e-game.md` |
+| Trận (stage 13) | ✅ 2 người: 117 → 189/190/189/191, bom 111 → 152 → 151, chết 120 → 146, kết quả 168 → 173, hết giờ 120 s, vật phẩm 553/158, cứu đồng đội / chọc vỡ bong bóng (client tự xử lý, 120 subtype 12/13); vật phẩm đồng bộ 2 người; ⬜ vật phẩm rơi ngẫu nhiên, đếm BẮT/CỨU, các mode khác | `docs/oc_e-game.md` |
 | Siêu thị (stage 14) | ✅ vào (325 → 289 → 38 → **20**), hàng (51/64/225/65), mua 261 → 223, XU (259/260 → 221); 🟡 danh mục thử 2 món, chưa túi đồ / lưu ví | `docs/lobby.md` Cập nhật 19–20 |
 | Khối VM Themida | 🟡 15 khối trong `tools/devirt.py`; còn `0x966FEC`, 49 site anti-cheat A1xxxx (chưa chạm) | `docs/devirt.md` |
 | Devirt tổng quát | 🟡 bảng handler/ctx/opcode có; chưa emit C | `docs/vmdevirt.md` |
@@ -69,7 +69,7 @@ chữ tiếng Việt) → tạo / vào phòng → phòng chờ 2 người (chọ
 
 Thứ tự đầy đủ: [docs/features.md](docs/features.md#ưu-tiên-cho-mục-tiêu-chơi-lại-được). Tóm tắt:
 
-1. Trận: vật phẩm khi 2 người (F10), map/loại phòng khác (F11), đếm BẮT/CỨU trong 168.
+1. Trận: map/loại phòng khác (F11), vật phẩm rơi ngẫu nhiên (F10), đếm BẮT/CỨU trong 168.
 2. Sảnh/phòng: 2 ô thông tin của mình + thẻ Hội (67) + người khác xuất hiện/di chuyển trên quảng trường (469/471); sửa tên/mật khẩu phòng (85); thì thầm (D2).
 3. Siêu thị → túi đồ (G2/G3), level/exp (G7), lưu tài khoản trên server.
 4. Các mode khác (F13–F20), quest/event (G6/G9).
