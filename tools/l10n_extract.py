@@ -560,9 +560,12 @@ def cmd_catalog(a):
         elif not HANGUL.search(ko):
             vi, status = ko, "translated"
             notes.append("no_hangul")
-        elif ko in tm and tm[ko]["vi"] != "":
+        elif ko in tm and (tm[ko]["vi"] != "" or tm[ko]["status"] == "empty"):
             t = tm[ko]
             vi, status = t["vi"], t["status"] or "translated"
+            if status == "empty":  # trợ từ Hàn (을/를…) ghép sau tên: tiếng Việt cố ý để rỗng
+                status = "translated"
+                notes.append("empty_on_purpose")
             if t["notes"]:
                 notes.append(t["notes"])
             if placeholders(ko, True) != placeholders(vi, True):
