@@ -32,22 +32,26 @@ chi tiết hiện hành. Bản kế hoạch tổng giữ thứ tự, dependency,
 
 ## Pha hiện tại
 
-**P1 Research ưu tiên V1 + P2 Thiết kế kiến trúc.** Chưa mở pha triển khai engine Rust mới.
-P0 tổ chức tài liệu đã hoàn tất; link, catalog và migration đã được kiểm tra bằng tool trước bàn giao.
-Không cần giải hết client hoặc mọi mode để qua pha planning; cần biết rõ ranh giới đã hiểu và thiết kế mới.
+Trạng thái pha lấy từ [execution.json](execution.json); trạng thái từng feature lấy từ
+[features.json](../specification/features.json). Xem [PROGRESS](PROGRESS.md) để biết done/chưa done
+và tỷ lệ nghiệm thu so với FEATURE_CATALOG. Khối bên dưới được sinh tự động, không sửa tay.
 
-| Pha | Trạng thái | Đầu ra | Gate hoàn thành |
-|---|---|---|---|
-| P0 Tổ chức docs/scope | Hoàn tất | Index, quy tắc agent, registry, scope V1, archive và migration map | Nguồn chuẩn rõ, tool và link hoạt động, không mất bằng chứng |
-| P1 Tìm thông tin còn thiếu | Đang mở | QUESTIONS có owner/ưu tiên, nguồn KR/CN/TW theo build, fixture đo/source map | Mỗi câu hỏi chặn kiến trúc có câu trả lời hoặc ranh giới/DESIGN/plan đo rõ |
-| P2 Cấu trúc dự án/interface | Đang thiết kế song song P1 | ARCHITECTURE và ADR; dependency, ownership, contract core/assets/net | Phương án nhất quán, hợp đồng tối thiểu được review, không còn giả định ảnh hưởng cấu trúc bị giấu |
-| P3 Review sẵn sàng | Chưa mở | Checklist readiness, task triển khai nhỏ và baseline tích hợp | Kiểm các điều kiện bên dưới; cập nhật phase bằng chứng rõ ràng |
-| P4 Nền móng/asset/oracle | Chưa mở | Workspace nhỏ, content/rule identity, resolver asset V1 và fixture harness | Sau P3; giữ legacy command/test chạy được, resolve unknown rõ ràng |
-| P5 Core/offline | Chưa mở | Di chuyển, collision, bom/nổ/item/trapped/kết quả, input replay | P4 + rule contracts; kịch bản V1/state hash tái lập, báo sai khác với nguồn |
-| P6 Client hình/tiếng/input | Chưa mở | Scene/map/character, animation, render/audio và input V1 | Theo content/presentation contracts; G1/G2/G3/G5 tương ứng và object-level diff |
-| P7 Authority/mạng/phòng | Chưa mở | Auth/sảnh/phòng, core server, input/snapshot và reconciliation | Core tích hợp P5; G4 và kịch bản mạng/round lifecycle theo scope |
-| P8 Tích hợp/QA/phát hành V1 | Chưa mở | Luồng end-to-end, Việt hóa, 3 OS và báo cáo sai khác | Cả 37 mục V1 qua acceptance; G1–G6, không coi một build xanh là release |
-| P9 Mở rộng full feature | Backlog sau V1 | Các đợt W1–W4 bên dưới, từng feature qua playbook | Không tự mở scope; nghiên cứu và đặc tả trước mỗi tính năng |
+<!-- PHASE_STATUS:START -->
+Pha đang hoạt động: **P1 Tìm thông tin còn thiếu, P2 Cấu trúc dự án/interface**.
+
+| Pha | Trạng thái | Owner | Đầu ra | Gate hoàn thành |
+|---|---|---|---|---|
+| P0 Tổ chức docs/scope | Đã nghiệm thu | integrator | Index, rules, registry, scope và migration | Nguồn chuẩn/link/tool rõ, giữ bằng chứng |
+| P1 Tìm thông tin còn thiếu | Đang làm | research | Claim/source/fixture và backlog câu hỏi | Câu hỏi chặn kiến trúc có trả lời hoặc phương án kiểm chứng rõ |
+| P2 Cấu trúc dự án/interface | Đang làm | architecture | Architecture và contract draft/ADR | Boundary/contracts review và giả định quan trọng được ghi nhận |
+| P3 Review sẵn sàng | Chưa làm | integrator | Readiness và task prototype | Checklist readiness trong REWRITE_PLAN có kết luận |
+| P4 Nền móng/asset/oracle | Chưa làm | assets/RE | Workspace nhỏ, content resolver và oracle fixture | Legacy vẫn chạy, content unknown rõ và schema phù hợp |
+| P5 Core/offline | Chưa làm | core | Simulation/replay V1 | Rule scenarios/state hash tái lập và giới hạn nguồn rõ |
+| P6 Client hình/tiếng/input | Chưa làm | client | Scene/animation/render/audio/input | Content/presentation contract và acceptance tương ứng |
+| P7 Authority/mạng/phòng | Chưa làm | net/backend | Server/client round lifecycle | Authority/convergence, lifecycle và mạng có fixture |
+| P8 Tích hợp/QA/phát hành V1 | Chưa làm | integrator/QA | V1 end-to-end trên3OS | Tất cả37feature V1done và6gate releasepassed |
+| P9 Mở rộng full feature | Chưa làm | integrator | Các đợt W1–W4 theo registry | Toàn bộ112mục trong baseline hiện hành done; scope mới phải revision riêng |
+<!-- PHASE_STATUS:END -->
 
 Đây là trình tự và điều kiện, chưa phải cam kết thời gian. Các ước lượng cũ trong archive không còn là lịch V1.
 

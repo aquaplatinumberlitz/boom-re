@@ -25,6 +25,12 @@ Chất lượng official và mức phù hợp build là hai trục riêng. Khôn
 | WEB-KR-007 / KR community wiki (namu mirror) | [크레이지 아케이드/맵](https://namu.wiki/w/크레이지%20아케이드/맵) + [문서 chính](https://namu.wiki/w/크레이지%20아케이드) | Access 2026-10-19 | Danh sách theme/map, tên map nổi tiếng, mô tả vật thể theo map (băng trượt, ray, giếng, gai). Dùng đối chiếu `out/scripts/` (770 XML) — không thay thế dữ liệu pack. |
 | WEB-KR-008 / KR community wiki (namu mirror) | [크레이지 아케이드/펫](https://namu.wiki/w/크레이지%20아케이드/펫) | Access 2026-10-19 | Danh mục pet + hiệu ứng. Ngoài V1. |
 
+| WEB-GH-001 / GitHub third-party remake | [tpoisonooo/BnB](https://github.com/tpoisonooo/BnB) — `server/game.js`, `server/map.js`, `server/characters.js` | Cập nhật 2026-10-16; access 2026-10-19; remake CN 盛大 (không phải KR 00967) | Hằng số server: tick 30 Hz, fuse **2.5 s**, lửa **0.5 s**, bị nhốt **4 s**, round 180 s, warmup 3 s, drop rate 0.35 + bảng weight, TILE **40**, 15×13, hộp va chạm 26 px, assist 12 px, kick 360 px/s, **speed 1 cấp = 24 px/s**. Tác giả tự cân bằng lại; nguồn số "official" là 百度百科. Dùng làm candidate cho Q-004/Q-005; không thay pack/spec. |
+| WEB-GH-002 / GitHub | [gunheehan/CrazyBoom](https://github.com/gunheehan/CrazyBoom) | Access 2026-10-19; Unity C# | Danh sách tính năng (player property, item, water balloon network, game lifecycle) — **không có hằng số**. Chỉ tham khảo kiến trúc. |
+| WEB-GH-003 / GitHub | [ljcduo/CrazyArcade](https://github.com/ljcduo/CrazyArcade) | Access 2026-10-19; C++/DX11 demo | Render/input demo, không có số. |
+| WEB-GH-004 / GitHub | [developeSHG/GAME-CrazyAcade](https://github.com/developeSHG/GAME-CrazyAcade) | Access 2026-10-19; C++ WinAPI | Map tile tool + collision, không có số. |
+| WEB-GH-005 / GitHub | [weishi-lab/SCNU-426](https://github.com/weishi-lab/SCNU-426) | Access 2026-10-19; Java, 2020 | Bản một phần; ít giá trị. |
+
 ## Khi bổ sung nguồn hoặc dùng một claim
 
 - Ghi source ID, URL, title/locator, access date, publication date nếu biết, region/build/event,

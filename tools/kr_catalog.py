@@ -9,6 +9,8 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from kr_tracking import metrics, phase_table, render_progress, validate_execution, validate_features
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -50,6 +52,9 @@ def main():
 
     for fid in ids:
         visit(fid)
+    validate_features(features, registry["baseline"], docs.parent)
+    execution = json.loads((docs / "planning/execution.json").read_text())
+    validate_execution(execution, registry, docs.parent)
     scopes = []
     for group in groups:
         children = [f for f in features if f["group_id"] == group["feature_id"]]
@@ -62,7 +67,9 @@ def main():
                            feature_ids=" | ".join(f["id"] for f in children),
                            asset_matches=group["match_count"],
                            evidence_status=group["evidence_status"]))
-    exported = [{**f, "depends_on": " | ".join(f["depends_on"])} for f in features]
+    exported = [{k: " | ".join(v) if k == "depends_on" else
+                 json.dumps(v, ensure_ascii=False, sort_keys=True) if isinstance(v, (dict, list)) else v
+                 for k, v in f.items()} for f in features]
     for path, rows in [(docs / "specification/features.csv", exported),
                        (docs / "evidence/inventory/kr_scope_groups.csv", scopes)]:
         if args.check:
@@ -76,8 +83,26 @@ def main():
                 writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
                 writer.writeheader()
                 writer.writerows(rows)
+    plan_path = docs / execution["plan"].removeprefix("docs/")
+    plan = plan_path.read_text()
+    start, end = "<!-- PHASE_STATUS:START -->", "<!-- PHASE_STATUS:END -->"
+    if plan.count(start) != 1 or plan.count(end) != 1:
+        raise ValueError("canonical plan requires exactly one generated phase-status block")
+    active = ", ".join(p["id"] + " " + p["title"] for p in execution["phases"]
+                       if p["status"] in ("in_progress", "in_review", "blocked"))
+    block = f"\nPha đang hoạt động: **{active or 'không có'}**.\n\n" + phase_table(execution) + "\n"
+    before, rest = plan.split(start)
+    _, after = rest.split(end)
+    outputs = {docs / "planning/PROGRESS.md": render_progress(registry, execution),
+               plan_path: before + start + block + end + after}
+    for path, expected in outputs.items():
+        if args.check:
+            if not path.exists() or path.read_text() != expected:
+                raise ValueError(f"stale generated progress: {path.name}; run without --check")
+        else:
+            path.write_text(expected, encoding="utf-8")
     print(json.dumps(dict(baseline=registry["baseline"], groups=len(groups), features=len(features),
-                          scope=dict(Counter(f["release"] for f in features))), ensure_ascii=False))
+                          scope=dict(Counter(f["release"] for f in features)), progress=metrics(features)), ensure_ascii=False))
 
 
 if __name__ == "__main__":
