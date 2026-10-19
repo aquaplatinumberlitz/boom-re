@@ -1,24 +1,32 @@
 ko,vi,kind,source,count
 바늘,kim,item,seed,35
+실드,khiên,item,seed,17
 경험치,kinh nghiệm,stat,seed,12
 루찌,VÀNG,currency,seed,11
 우니,Uni,character,seed,9
 배찌,Bazzi,character,seed,8
 마리드,Marid,character,seed,6
+부활대전,Đấu hồi sinh,mode,seed,6
 협공배틀,Đấu hợp sức,mode,seed,6
+고슴도치,Nhím,mode,seed,5
 비밀번호,mật khẩu,ui,seed,5
+상점,Siêu thị,ui,seed,5
+시한폭탄,Bom hẹn giờ,mode,seed,5
 아이디,ID,ui,seed,5
 아이템,vật phẩm,ui,seed,5
 다오,Dao,character,seed,4
+대장잡기,Bắt đội trưởng,mode,seed,4
 랜덤,Ngẫu nhiên,mode,seed,4
 레벨,cấp,stat,seed,4
 마이페이지,Trang cá nhân,ui,seed,4
 물풍선,bom nước,item,seed,4
+퀘스트,Nhiệm vụ,ui,seed,4
 디지니,Dizni,character,seed,3
 이벤트,Sự kiện,ui,seed,3
 자유,Tự do,mode,seed,3
 캠프,Trại,theme,seed,3
 강퇴반사,Phản mời ra,item,seed,2
+길드,hội,ui,seed,2
 난이도,độ khó,stat,seed,2
 대난투,Đại loạn đấu,mode,seed,2
 도움말,Trợ giúp,ui,seed,2
@@ -30,11 +38,10 @@ ko,vi,kind,source,count
 슈퍼방장,Siêu chủ phòng,item,seed,2
 유저장터,Chợ,ui,seed,2
 일반모드,Chế độ thường,mode,seed,2
-퀘스트,Nhiệm vụ,ui,seed,2
 크앤,đôi (Couple),ui,seed,2
 확성기,loa,item,seed,2
-고슴도치,Nhím,mode,seed,1
 광산,Mỏ,theme,seed,1
+광장,quảng trường,ui,seed,1
 교환,trao đổi,ui,seed,1
 내아이템,Túi đồ,ui,seed,1
 내정보,Cá nhân,ui,seed,1
@@ -44,17 +51,19 @@ ko,vi,kind,source,count
 매너,Lịch sự,mode,seed,1
 모드,chế độ,ui,seed,1
 모스,Mos,character,seed,1
+몬스터,quái vật,mode,seed,1
 무덤,Lăng mộ,theme,seed,1
 바다,Biển,theme,seed,1
 방제목,Tên phòng,ui,seed,1
 보스,trùm,mode,seed,1
 비밀방,Phòng kín,ui,seed,1
 선물,quà,ui,seed,1
+수,Su,character,seed,1
 슈퍼파이터,Siêu chiến binh,mode,seed,1
-시한폭탄,Bom hẹn giờ,mode,seed,1
 아이스,Băng,theme,seed,1
 에띠,Ethi,character,seed,1
 옵션,Tùy chọn,ui,seed,1
+유저,người chơi,ui,seed,1
 캐시,XU,currency,seed,1
 케피,Kephi,character,seed,1
 쿠폰,phiếu,currency,seed,1
@@ -67,38 +76,29 @@ BnB,Boom,game,seed,0
 CP,BẠC,currency,seed,0
 강퇴,mời ra,ui,seed,0
 공장,Nhà máy,theme,seed,0
-광장,quảng trường,ui,seed,0
 교환채팅방,Phòng chat trao đổi,ui,seed,0
-길드,hội,ui,seed,0
 내 아이템,Túi đồ,ui,seed,0
 내가보스,Tôi là trùm,mode,seed,0
 넥슨캐시,XU,currency,seed,0
 노샵,Không siêu thị,mode,seed,0
 대기실,phòng chờ,ui,seed,0
-대장잡기,Bắt đội trưởng,mode,seed,0
 등급,hạng,stat,seed,0
 레디,Sẵn sàng,ui,seed,0
 로비,sảnh,ui,seed,0
 맵,bản đồ,ui,seed,0
-몬스터,quái vật,mode,seed,0
 물줄기,tia nước,item,seed,0
 밀기 가능,đẩy được,editor,seed,0
 바닥,nền,editor,seed,0
 방,phòng,ui,seed,0
 방장,chủ phòng,ui,seed,0
 보상,phần thưởng,ui,seed,0
-부활대전,Đấu hồi sinh,mode,seed,0
 블록,khối,editor,seed,0
 비엔비,Boom,game,seed,0
 사막,Sa mạc,theme,seed,0
-상점,Siêu thị,ui,seed,0
 샵,Siêu thị,ui,seed,0
 서버,máy chủ,ui,seed,0
-수,Su,character,seed,0
 숲,Rừng,theme,seed,0
 스타트,Bắt đầu,ui,seed,0
-실드,khiên,item,seed,0
-유저,người chơi,ui,seed,0
 일일퀘스트,Nhiệm vụ hằng ngày,ui,seed,0
 전광판,bảng điện tử,ui,seed,0
 좀비모드,Chế độ Zombie,mode,seed,0
@@ -120,35 +120,51 @@ CP,BẠC,currency,seed,0
 바닥에 까는 타일,Ô lát nền,,translated,702
 물줄기에 파괴됨,Bị tia nước phá huỷ,,translated,242
 스타럭키빈,Star Lucky Bean,,translated,24
-ㅋㅋㅋ,Kha kha kha kha,,reused,16
+ㅋㅋㅋ,Kha kha kha kha,,reused,18
 악,Á,,translated,16
 센서,Cảm biến,,translated,15
 케케케케,Khê khê khê khê,,reused,14
 파라오 징어,Mực Pharaoh,,translated,13
 파워산삼,Sâm núi công lực,,translated,13
 ㄱㄱㄱㄱ,Ha ha ha ha,,reused,12
+스프링,Lò xo,,translated,12
 ㅋㅋㅋㅋㅋㅋㅋㅋ,Kha kha kha kha kha,,reused,10
 바늘 10개,10 Kim,,translated,9
+으악,Ư ạc,,reused,9
 진행중,Đang tiến hành,,translated,9
 헛,Hự,,translated,9
-으악,Ư ạc,,reused,8
 윽,Ực,,translated,8
+일반게임팩,Gói game thường,,translated,8
 15개,x15,,translated,7
+PC방 출첵 완료,Hoàn thành điểm danh tiệm net,,translated,7
+PC방 출첵 퀘스트,Nhiệm vụ điểm danh tiệm net,,translated,7
+골드게임팩,Gói game vàng,,translated,7
 그러지마 잉잉,Đừng vậy mà hic hic,,reused,7
 모래시계,Đồng hồ cát,,translated,7
+분해티켓,Vé phân rã,,translated,7
 지존권,Phiếu Chí Tôn,,translated,7
 쿠엥,Ọc ọc,,reused,7
+크아CD,Đĩa CD Boom,,translated,7
+합성티켓,Vé tổng hợp,,translated,7
 히히,Hí hí,,translated,7
 기다려라 곧간다,Hãy đợi đấy,,reused,6
+대왕문어,Bạch tuộc đại vương,,translated,6
 쉽구만 ㅋㅋ,Dễ dàng quá! Ha ha,,reused,6
 어이없구만 ㅋㅋ,Trời ơi,,reused,6
 엔젤코인,Coin thiên thần,,translated,6
 연습더하고오시지,Mi hãy luyện tập thêm đi,,reused,6
 자동실드,Khiên tự động,,translated,6
+쾅쾅망치,Búa Bùm Bùm,,translated,6
+특별한럭키빈,Đậu may mắn đặc biệt,,translated,6
 헉,Hic,,reused,6
+헤헤,Hề hề,,translated,6
 후후후,Hú hú hú,,translated,6
+물약,Thuốc,,translated,5
 방어력,Phòng thủ,,translated,5
+보호물약,Thuốc bảo vệ,,translated,5
 복수다,Phục thù,,reused,5
+산삼,Sâm,,translated,5
+생존게임팩,Gói game sinh tồn,,translated,5
 일,ngày,,translated,5
 일반,Thường,,translated,5
 점,điểm,,translated,5
@@ -156,13 +172,17 @@ CP,BẠC,currency,seed,0
 쿠워어어,Kuwoo,,translated,5
 패트릿 14,Patrit 14,,translated,5
 푸하하하,Phù ha ha ha,,reused,5
+황제물개,Hải cẩu hoàng đế,,translated,5
+황제펭귄,Chim cánh cụt hoàng đế,,translated,5
 20개,x20,,translated,4
 고대의 숲,Rừng cổ đại,,translated,4
 골렘 동굴,Hang golem,,translated,4
 공포의 무덤,Lăng mộ kinh hoàng,,translated,4
 길  드,Hội,,reused,4
+꼬물이맵,Bản đồ Kkomuri,,translated,4
 넥슨아이디,Tài khoản Nexon,,translated,4
 눈덮인 감옥,Nhà tù phủ tuyết,,translated,4
+다행이다,May quá,,translated,4
 돋보기,Kính lúp,,translated,4
 랄라랄라라,Lalala,,translated,4
 로두마니,Rodumani,,translated,4
@@ -170,29 +190,35 @@ CP,BẠC,currency,seed,0
 무덤 22,Lăng mộ 22,,translated,4
 문어 해적선,Thuyền cướp biển bạch tuộc,,translated,4
 물개 3군단,Quân đoàn 3 hải cẩu,,translated,4
+바니팜맵,Bản đồ Bunny Farm,,translated,4
 바위 언덕,Đồi đá,,translated,4
 배고파,Đói bụng quá,,translated,4
+빨강가루,Bột đỏ,,translated,4
 사막 캠핑장,Khu cắm trại sa mạc,,translated,4
 산타,Ông già Noel,,translated,4
 선물상자,Hộp quà,,translated,4
 수상한 난파선,Xác tàu bí ẩn,,translated,4
 승    률,Tỉ lệ thắng,,translated,4
 아장아장,Lạch bạch lạch bạch,,reused,4
+어디냐,Ở đâu vậy ta,,reused,4
 어지러워,Chóng mặt quá,,translated,4
 으슥한 오두막,Túp lều hẻo lánh,,translated,4
 의상,Trang phục,,translated,4
+이겼다,Thắng rồi,,translated,4
 이름,Tên,,reused,4
 이상한 숲,Khu rừng kỳ lạ,,translated,4
 이제 진정해야지,Bây giờ phải bình tĩnh lại,,reused,4
 전    적,Thành tích,,translated,4
 전기방전 실시,Thực hiện phóng điện,,reused,4
 죽기 싫어,Ta ghét chết lắm,,reused,4
+지존권 3일,vé Chí tôn 3 ngày,,translated,4
+카트맵,Bản đồ Kart,,translated,4
 캠프 08,Trại 08,,translated,4
+통조림,Đồ hộp,,translated,4
 특수효과,Hiệu ứng đặc biệt,,translated,4
 펭귄 훈련소,Trại huấn luyện cánh cụt,,translated,4
 표정,Biểu cảm,,translated,4
 헤롱헤롱,Lảo đảo,,translated,4
-헤헤,Hehe,,translated,4
 ㅋㅋㅋㅋ,Hahahahah,,reused,3
 가뒀다,Tiêu rồi!!,,reused,3
 검색,Tìm kiếm,,translated,3
@@ -204,29 +230,37 @@ CP,BẠC,currency,seed,0
 꼬물이 02,Kkomuri 02,,translated,3
 나죽는다,Ta tiêu rồi,,reused,3
 느릿느릿광선,Tia Slowly Laser,,reused,3
+라이트닝킹,Lightning King,,translated,3
 럭셔리 케피,Kephi sang chảnh,,translated,3
+루찌 10000,Vàng 10000,,translated,3
 매직마켓,Magic Market,,translated,3
 몬스터모드 승리하기,Thắng chế độ quái vật,,translated,3
 무서워요,Sợ quá,,reused,3
 물개,Hải cẩu,,translated,3
 배경,Nền,,translated,3
+보물상자,Rương báu,,translated,3
 빌리지 10,Làng 10,,translated,3
 빵빠레,Kèn bánh,,translated,3
 뻥치시네,Mi nổ quá,,reused,3
 뽀끼뽀끼,Ppoki Ppoki,,translated,3
+산타의 선물,Quà Ông già Noel,,translated,3
 소품,Đạo cụ,,translated,3
 순    위,Thứ hạng,,translated,3
 순위,Thứ hạng,,translated,3
+스패너,Cờ lê,,translated,3
+스프링 10개,Lò xo x10,,translated,3
 승리,Thắng,,translated,3
 아이디치장,Trang trí ID,,translated,3
 안드로메다,Andromeda,,translated,3
 알쏭달쏭,Trứng bí ẩn,,translated,3
+알쏭달쏭쾅쾅,Đập trứng bí ẩn,,translated,3
 았싸,Trùi ui,,reused,3
 액세서리,Phụ kiện,,translated,3
 얼음 계곡,Thung lũng băng,,translated,3
 엉금엉금,Bò lê,,reused,3
 에잇에잇,Ọc ẹc ọc ẹc,,reused,3
 여자,Nữ,,translated,3
+용서못한다,Không thể tha thứ được,,reused,3
 우주선쟁탈전,Tranh đoạt phi thuyền,,translated,3
 우훗훗,Hix hix hix,,reused,3
 우히히히,Hí hí hí,,translated,3
@@ -234,8 +268,10 @@ CP,BẠC,currency,seed,0
 음화화화 저기있다 저기,Ha ha ở đây nè,,reused,3
 이건 실수야,Lỡ tay thôi,,translated,3
 이모션,Biểu cảm,,translated,3
+이힛,Hihi,,translated,3
 일반모드 승리하기,Thắng chế độ thường,,translated,3
 자 그리고,Chà và,,reused,3
+잡아라,Bắt lấy nó,,reused,3
 전체,Tất cả,,translated,3
 제어불능광선,Tia Laser không có khả năng control,,reused,3
 조심조심,Cẩn thận nha,,translated,3
@@ -244,11 +280,15 @@ CP,BẠC,currency,seed,0
 종합승리,Tổng thắng,,translated,3
 최고연승,Chuỗi thắng cao nhất,,translated,3
 치명타 확률,Tỉ lệ chí mạng,,translated,3
+침입자다,Xâm lược,,reused,3
 카트,Kart,,translated,3
+킁킁,Gru Gru!,,reused,3
+토너먼트,Giải đấu,,translated,3
 팡랜드,Pang Land,,translated,3
 패배,Thua,,translated,3
 핑핑도는군,Xoay vòng vòng ghê,,translated,3
 협공배틀 승리하기,Thắng Đấu hợp sức,,translated,3
+확률강화물약,Thuốc tăng xác suất,,translated,3
 효과,Hiệu ứng,,translated,3
 흐흐,Hư hư,,reused,3
 히든캐치 플레이하기,Chơi Hidden Catch,,translated,3
@@ -257,10 +297,14 @@ CP,BẠC,currency,seed,0
 2더하기 6은 3,2+6=3,,reused,2
 30개,x30,,translated,2
 5더하기 1은 7,5+1=7,,reused,2
+6개 연결 물풍선 제작,Làm Bom nước liên kết 6 cái,,translated,2
 PC방,Tiệm net,,translated,2
+UFO모자,Nón UFO,,translated,2
 가면,Mặt nạ,,translated,2
 가발,Tóc giả,,translated,2
+가위바위보,Oẳn tù tì,,translated,2
 각오해라,Sẵn sàng nào,,reused,2
+갇혔네,Bị nhốt rồi,,translated,2
 감전 주의,Chú ý điện giật,,reused,2
 강 대 현,강 대 현,,translated,2
 강제탈퇴,Buộc rời đi,,translated,2
@@ -273,6 +317,7 @@ PC방,Tiệm net,,translated,2
 계 동 균,계 동 균,,translated,2
 고객센터,고객센터,,translated,2
 곧 너를 잡을거야,Ta sẽ bắt được mi,,reused,2
+골드가루,Bột vàng,,translated,2
 골렘대침공 01-1,Golem đại xâm lược 01-1,,translated,2
 골렘대침공 01-2,Golem đại xâm lược 01-2,,translated,2
 골렘대침공 01-3,Golem đại xâm lược 01-3,,translated,2
@@ -284,9 +329,11 @@ PC방,Tiệm net,,translated,2
 권 오 직,권 오 직,,translated,2
 그냥 잡아버려,Cứ bắt lấy đi,,reused,2
 그르르,Grừ grừ,,translated,2
+그정도인가,Chỉ vậy thôi hả,,translated,2
 기간,Hạn dùng,,reused,2
 기타,Khác,,translated,2
 길드정보,Thông tin hội,,translated,2
+길을 못찾겠네,Tìm đường không ra nè,,translated,2
 김 청 용,김 청 용,,translated,2
 꼬물이 01,Kkomuri 01,,translated,2
 꼬물이 03,Kkomuri 03,,translated,2
@@ -294,10 +341,13 @@ PC방,Tiệm net,,translated,2
 꼬물이 05,Kkomuri 05,,translated,2
 꼬물이 07,Kkomuri 07,,translated,2
 꼬물이 랜덤,Kkomuri ngẫu nhiên,,translated,2
+꼴좋다,Đáng đời,,translated,2
 꽥,Quác,,translated,2
+꿀벌물풍선,Bom nước ong mật,,translated,2
 나는 대왕거북,Ta là Rùa biển đây,,reused,2
 나로 말할 것 같으면,Mi cũng thấy thế ư,,reused,2
 나의 하트를 받아라,Hãy nhận lấy trái tim của ta,,reused,2
+난폭해질거야,Tui sẽ hung hăng lên,,translated,2
 날개,Cánh,,translated,2
 남 혜 진,남 혜 진,,translated,2
 남은기간,Thời gian còn lại,,translated,2
@@ -310,25 +360,29 @@ PC방,Tiệm net,,translated,2
 내가있으면 승리할거야,Có tui thì sẽ thắng,,translated,2
 너희들은 죽은 목숨이다,Tụi bây sắp tiêu rồi,,reused,2
 누가훔쳐가면안되는데,Ai đó mà,,reused,2
+눈에 띄면 죽는다,Ai thấy là chết,,translated,2
 다행ㅋㅋㅋ,May quá hihihih,,reused,2
-다행이다,May quá,,reused,2
 단,Đẳng,,translated,2
 대기모드 변경,Đổi chế độ chờ,,translated,2
+대왕거북,Rùa khổng lồ,,translated,2
 대형 보너스 01,Thưởng lớn 01,,translated,2
 덜덜덜,Ưư ư~~~~~~,,reused,2
 덜덜덜덜,Run lập cập,,translated,2
 데미지,Sát thương,,translated,2
 도망갈생각마라 흐흐흐,"Đừng có mong mà chạy nha,ha ha.",,reused,2
 도미노,Domino,,translated,2
+두리번 두리번,Gì vậy? Gì vậy?,,reused,2
 디스크 에러,Disk error,,reused,2
 또 잘못불렀지,Ta lại gọi sai rồi,,reused,2
 랄라라라,La la la la,,reused,2
+래더채널,Kênh Xếp hạng,,translated,2
 럭셔리 마리드,Marid sang chảnh,,translated,2
 럭셔리 모스,Mos Sang Trọng,,translated,2
 레  벨,Cấp,,reused,2
 레인보우 물풍선,Bom nước cầu vồng,,translated,2
 루 찌,VÀNG,,translated,2
 루찌상품순,Theo VÀNG,,translated,2
+마리,con,,translated,2
 마법구슬,Quả cầu phép thuật,,translated,2
 마법상자,Hộp phép thuật,,translated,2
 말도 안돼,Không thể nào,,translated,2
@@ -368,6 +422,8 @@ PC방,Tiệm net,,translated,2
 복구 불능,Không thể phục hồi,,reused,2
 봐주진 않을께,Không nương tay đâu,,translated,2
 부활권,Phiếu hồi sinh,,translated,2
+부활해 보시지,Hồi sinh thử coi đi,,translated,2
+분,Phút,,translated,2
 분노 상태,Tình trạng nổi giận,,reused,2
 분류1,Phân loại1,,translated,2
 분류2,Phân loại2,,translated,2
@@ -378,8 +434,11 @@ PC방,Tiệm net,,translated,2
 빠른시작으로 플레이하기,Chơi bằng Khởi động nhanh,,translated,2
 뻔한 결과야,Kết quả biết trước rồi,,translated,2
 뻥쟁이물개,Hải cẩu siêu nổ,,reused,2
+뽀끼열쇠,Chìa khóa Ppokki,,translated,2
 삐리삐리,Bíp bíp bíp,,reused,2
+사기,Lừa đảo,,translated,2
 살랑,Nhè nhẹ nhè nhẹ,,reused,2
+살려줘요,Cứu tui với,,translated,2
 상급,Cao cấp,,translated,2
 샌드킹 화남,Sandking nổi giận,,translated,2
 샤샤샥,Sha sha shắc,,translated,2
@@ -391,10 +450,13 @@ PC방,Tiệm net,,translated,2
 송 재 남,송 재 남,,translated,2
 송 창 규,송 창 규,,translated,2
 수염이 더러워 졌잖아,Dơ quá đi thôi,,reused,2
+슈퍼도치,Siêu nhím,,translated,2
+스페이스 연결풍,Bom liên kết không gian,,translated,2
 슬롯,Ô,,translated,2
 승    점,Điểm thắng,,translated,2
 승리승리,Thắng thắng,,translated,2
 승질은있어가지구,Chẳng có tinh thần gì,,reused,2
+시작 버튼,Nút Bắt đầu,,translated,2
 신규,Mới,,translated,2
 실드 10개,10 Khiên,,translated,2
 실력을 보여줄게,Coi thực lực nè,,translated,2
@@ -406,11 +468,11 @@ PC방,Tiệm net,,translated,2
 아이쿠,Ái chà,,translated,2
 아이템명,Tên vật phẩm,,translated,2
 아직은 이상없음,Chưa có gì lạ,,reused,2
+안심이군,Yên tâm rồi,,translated,2
 안전안전,An toàn an toàn,,translated,2
 알겠습니다 주인님,Tớ biết rồi chủ nhâ,,reused,2
 앗 따가워,Ahaa nóng quá đi mất,,reused,2
 약한놈이군ㅋ,Tên này yếu quá ha ha.,,reused,2
-어디냐,Ở đâu vậy ta,,reused,2
 어머머 시시하다 얘,"Trời đất ơi, chán òm à nha",,translated,2
 어이구,Trời ơi,,reused,2
 어쿠야,Gì thế này…,,reused,2
@@ -422,6 +484,7 @@ PC방,Tiệm net,,translated,2
 역시 실력이 없군ㅎㅎ,Mấy thằng này đúng là dở ẹc …,,reused,2
 연두,Xanh lá nhạt,,translated,2
 연습 좀 하고 불러,Luyện tập thêm nữa đi,,reused,2
+오늘 하루 보지 않음,Không coi trong hôm nay,,translated,2
 우리는 강해,Chúng ta là mạnh nhất,,reused,2
 우습군,Buồn cười quá,,reused,2
 우오오 우오오,Wow  wow,,reused,2
@@ -431,11 +494,14 @@ PC방,Tiệm net,,translated,2
 운영,Vận hành,,translated,2
 운영자,Quản trị viên,,translated,2
 웰컴투 비엔비,Chào mừng BnB,,translated,2
+웰컴투 비엔비(상시),Chào mừng đến Boom (thường trực),,translated,2
 위 지 혜,위 지 혜,,translated,2
+위장도치,Nhím ngụy trang,,translated,2
 위험발생,Phát sinh nguy hiểm,,translated,2
 유 윈,You win,,translated,2
 유 창 곤,유 창 곤,,translated,2
 유령들은 막강하다,Mấy tên quỷ này mạnh ghê,,reused,2
+유저페이지,Trang người chơi,,translated,2
 으르렁으르렁,Gừ gừ gừ,,translated,2
 으아앙,Huhu,,translated,2
 으앙 t_t,Huhuhu,,reused,2
@@ -456,12 +522,12 @@ PC방,Tiệm net,,translated,2
 인기상품순,Theo độ phổ biến,,translated,2
 잉잉,Hừm hừm,,reused,2
 잘했어,Giỏi lắm!,,reused,2
-잡아라,Bắt lấy nó,,reused,2
 잡았다,Bắt được rồi,,reused,2
 재기동 완료,Hoàn tất khởi động lại,,reused,2
 저놈잡아라,Dí nó!,,reused,2
 전  체,Tất cả,,reused,2
 전 유 민,전 유 민,,translated,2
+전체 가격 :,Tổng giá:,,translated,2
 전체 랜덤,Ngẫu nhiên tất cả,,translated,2
 전체선택,Chọn tất cả,,translated,2
 접근 금지,Cấm tiếp cận,,reused,2
@@ -471,10 +537,13 @@ PC방,Tiệm net,,translated,2
 조심하는게 좋을걸,Cẩn thận là cách tốt nhất,,reused,2
 조심하도록,Cẩn thận,,reused,2
 조심하도록해,Phải thật cẩn thận đó nhe,,reused,2
+조심하랬지,Đã bảo cẩn thận rồi mà,,translated,2
 조심해,Cẩn thận,,reused,2
 주홍,Cam,,translated,2
 중급,Trung cấp,,translated,2
 즐겨찾기 랜덤,Ngẫu nhiên yêu thích,,translated,2
+지프차 탈것,Xe jeep,,translated,2
+짱포인트,Điểm Zzang,,translated,2
 찐득광선 발사,Bắn tia Glutinous Laser,,reused,2
 찐득찐득광선,Tia Glutinous Laser,,reused,2
 채 은 도,채 은 도,,translated,2
@@ -486,12 +555,22 @@ PC방,Tiệm net,,translated,2
 충전필요,Cần sạc pin,,translated,2
 치명적인 오류 발생,Phát sinh lỗi gây chết người,,reused,2
 칙칙폭폭,Xình xịch,,reused,2
-침입자다,Xâm lược,,reused,2
+친구찾기,Tìm bạn,,translated,2
+칭호,Danh hiệu,,translated,2
 캐릭터,Nhân vật,,translated,2
 캐시상품순,Theo XU,,translated,2
 케케케,Khakhakha,,reused,2
 켄터키 11,Kentucky 11,,translated,2
+코믹스 빵빠레,Kèn Comics,,translated,2
 콩콩,Kongkong,,translated,2
+쾅쾅 망치,Búa Ầm Ầm,,translated,2
+크아CD 3개,CD Boom x3,,translated,2
+크아계의 쉬레기,Rác rưởi của giới Boom,,translated,2
+크아짱,Vua Boom,,translated,2
+크아짱 깃발,Cờ Boom Jjang,,translated,2
+크아짱 배경,Nền Boom Jjang,,translated,2
+크아짱 상점,Siêu thị Boom Jjang,,translated,2
+크아짱 효과,Hiệu ứng Boom Jjang,,translated,2
 크크크,Hahaha,,reused,2
 크크크 이건 못피할걸,Kha kha kha cái này không thể tránh được đâu,,reused,2
 크하하,Khà khà khà,,translated,2
@@ -499,6 +578,7 @@ PC방,Tiệm net,,translated,2
 클리어,Clear,,translated,2
 키키키,Hihihihihi,,reused,2
 탈출,Thoát,,translated,2
+토템 가면,Mặt nạ totem,,translated,2
 투비컨티뉴,To be continued,,translated,2
 파워업,Power-up,,translated,2
 판매자,Người bán,,translated,2
@@ -507,9 +587,11 @@ PC방,Tiệm net,,translated,2
 포레스트 24,Rừng 24,,translated,2
 포로로 삼아라,Cho nó thành tù nhân đi,,reused,2
 프리미엄,Cao cấp,,translated,2
+하얀가루,Bột trắng,,translated,2
 하하,Haha,,reused,2
 하하하 저거보라지,Ha ha ha nhìn đằng đó đi kìa,,reused,2
 함정에걸렸군,Dính bẫy rồi nha,,translated,2
+해냈다,Làm được rồi,,translated,2
 헉헉헉,Hic hic hic,,reused,2
 헥헥헥,Hic hic,,reused,2
 헬프모드,Chế độ trợ giúp,,translated,2
@@ -526,6 +608,7 @@ PC방,Tiệm net,,translated,2
 후후후후,Hu hu hu,,reused,2
 흐흐 시간이 됐군,Hư đã đến giờ rồi.,,reused,2
 흐흐흐흐흐,Hư hư hư hư hư,,reused,2
+흑흑흑,Hix hix hix,,reused,2
 흠 공격법을 바꿔볼까,Hưm phải thử thay đổi cách tấn công thôi,,reused,2
 히어로,Hero,,translated,2
 힘들어 죽겠네,Mệt quá đi thôi,,reused,2
@@ -554,37 +637,90 @@ PC방,Tiệm net,,translated,2
 /광장7,/quangtruong7,,translated,1
 /광장8,/quangtruong8,,translated,1
 /광장9,/quangtruong9,,translated,1
+/국경절,/loaquockhanh,,translated,1
 /누구 아이디,/ai ID,,translated,1
+/달콤,/loangot,,translated,1
+/라바그린,/lavaxanh,,translated,1
+/라바레드,/lavado,,translated,1
+/라바블랙,/lavaden,,translated,1
+/라바옐로우,/lavavang,,translated,1
+/라바핑크,/lavahong,,translated,1
 /라인,/line,,translated,1
+/러브,/loatinhyeu,,translated,1
 /박쥐,/doi,,translated,1
+/반짝반짝,/loanhapnhay,,translated,1
+/보라,/loatim,,translated,1
 /보석사탕,/keongoc,,translated,1
+/분홍,/loahong,,translated,1
 /사용자,/nguoidung,,translated,1
 /사용자정보,/thongtin,,translated,1
+/사이렌,/loacoihu,,translated,1
+/성탄,/loanoel,,translated,1
+/성탄모자,/loanonnoel,,translated,1
+/스타,/loasao,,translated,1
+/십오,/loa15,,translated,1
 /아바타샵1,/tiemavatar1,,translated,1
 /아바타샵2,/tiemavatar2,,translated,1
+/애프터눈,/loatrachieu,,translated,1
 /어디 아이디,/odau ID,,translated,1
+/연두,/loaxanhla,,translated,1
 /자동레디,/tusansang,,translated,1
+/전체,/loatoankenh,,translated,1
+/전체14,/toankenh14,,translated,1
+/전체눈사람,/toankenhnguoituyet,,translated,1
+/전체달콤,/toankenhngot,,translated,1
+/전체러브,/toankenhtinhyeu,,translated,1
+/전체보라,/toankenhtim,,translated,1
+/전체분홍,/toankenhhong,,translated,1
+/전체사이렌,/toankenhcoihu,,translated,1
+/전체성탄,/toankenhnoel,,translated,1
+/전체십오,/toankenh15,,translated,1
+/전체악마,/toankenhquy,,translated,1
+/주황,/loacam,,translated,1
+/중국14,/loatrungquoc14,,translated,1
 /쥬얼리샵1,/tiemtrangsuc1,,translated,1
 /쥬얼리샵2,/tiemtrangsuc2,,translated,1
 /초대 아이디,/moi ID,,translated,1
+/축하큐브,/loakhoi15,,translated,1
 /카페1,/quancafe1,,translated,1
 /카페2,/quancafe2,,translated,1
 /카페3,/quancafe3,,translated,1
 /카페4,/quancafe4,,translated,1
 /카페5,/quancafe5,,translated,1
 /퇴장 아이디,/duoi ID,,translated,1
+/트리,/loacaythong,,translated,1
 /판다,/panda,,translated,1
 /펫샵1,/tiemthucung1,,translated,1
 /펫샵2,/tiemthucung2,,translated,1
 /폭죽,/pháo,,translated,1
+/하트,/loatraitim,,translated,1
+/하트이모티,/loatimbieucam,,translated,1
+/확성,/loa,,translated,1
+/확성1,/loa1,,translated,1
+/확성2,/loa2,,translated,1
+/확성3,/loa3,,translated,1
+/확성4,/loa4,,translated,1
+100레벨,Cấp 100,,translated,1
 100원샵,Siêu thị 100 won,,translated,1
+100주년,100 năm,,translated,1
+10월 16일,Ngày 16 tháng 10,,translated,1
+10주년,10 năm,,translated,1
+10주년 생일빵,Bánh sinh nhật 10 năm,,translated,1
+12월 31일,Ngày 31 tháng 12,,translated,1
 14주년전체확성기1,Loa toàn kênh kỷ niệm 14 năm 1,,translated,1
 14주년확성기2,Loa kỷ niệm 14 năm 2,,translated,1
+15레벨,Cấp 15,,translated,1
 15일,15 ngày,,translated,1
 15주년 확성기,Loa kỷ niệm 15 năm,,translated,1
 16주년대형보너스맵,Bản đồ thưởng lớn kỷ niệm 16 năm,,translated,1
+1:1 대결중,Đang đấu 1:1,,translated,1
+1:1 로 플레이,Chơi 1:1,,translated,1
 1:1 신청 거절,Từ chối đấu 1:1,,translated,1
+1:1신청,Đăng ký 1:1,,translated,1
+1P 동일맵 중복불가,1P không được trùng bản đồ,,translated,1
 1P 상위랭크 재도전,Thử lại hạng cao hơn 1P,,translated,1
+1P 선택 완료,1P chọn xong,,translated,1
+1P 열쇠 업그레이드,1P nâng cấp chìa khóa,,translated,1
 1P포인트+,Điểm 1P+,,translated,1
 1p일 때,Khi là 1P,,translated,1
 1년,1 năm,,translated,1
@@ -592,31 +728,47 @@ PC방,Tiệm net,,translated,2
 1배,1x,,translated,1
 1분 미만 남음,Còn dưới 1 phút,,translated,1
 1승 ㄳㄳ,Thắng rồi ! Cảm ơn cảm ơn,,reused,1
+1월 16일,Ngày 16 tháng 1,,translated,1
 1일,1 ngày,,translated,1
+1주년,1 năm,,translated,1
 1초만 기다려라,Chỉ 1 giãy nữa thôi,,reused,1
 1킬,1 kill,,translated,1
+2:2 로 플레이,Chơi 2:2,,translated,1
+2P 동일맵 중복불가,2P không được trùng bản đồ,,translated,1
 2P 상위랭크 재도전,Thử lại hạng cao hơn 2P,,translated,1
+2P 선택 완료,2P chọn xong,,translated,1
+2P 열쇠 업그레이드,2P nâng cấp chìa khóa,,translated,1
 2P포인트+,Điểm 2P+,,translated,1
 2p일 때,Khi là 2P,,translated,1
 2등,Hạng 2,,translated,1
 2배,2x,,translated,1
 2분안에,Trong 2 phút,,translated,1
+2인팀으로 플레이,Chơi theo đội 2 người,,translated,1
+30레벨,Cấp 30,,translated,1
 30일,30 ngày,,translated,1
 365일 이상,Từ 365 ngày trở lên,,translated,1
 3등,Hạng 3,,translated,1
 3인의,Của 3 người,,translated,1
+3인팀으로 플레이,Chơi theo đội 3 người,,translated,1
 3일,3 ngày,,translated,1
 3종류의 놀아줘 퀘스트,3 loại nhiệm vụ Chơi cùng tui,,translated,1
 3초만 기다려라,Chỉ 3 giây nữa thôi,,reused,1
 3초만 기다려조요,Chờ ta 3 giây thôi,,reused,1
+46레벨,Cấp 46,,translated,1
+4강진출 상품,Phần thưởng vào top 4,,translated,1
+4개 연결 물풍선 제작,Làm Bom nước liên kết 4 cái,,translated,1
 4인 이상 플레이하기,Chơi cùng từ 4 người,,translated,1
+4인팀으로 플레이,Chơi theo đội 4 người,,translated,1
 50 루찌 모으기,Gom 50 VÀNG,,translated,1
 500원입니다,Là 500 Won,,reused,1
 5개,x5,,translated,1
+5월 19일,Ngày 19 tháng 5,,translated,1
 7일,7 ngày,,translated,1
+8주년,8 năm,,translated,1
 BNB아이템,Vật phẩm BnB,,translated,1
 BnB 초보자지침서,Cẩm nang tân thủ Boom,,translated,1
 CP보너스01,Thưởng BẠC01,,translated,1
+DIY물풍선요리하기,Nấu bom nước DIY,,translated,1
 F1 도움말 보기,F1 Coi trợ giúp,,translated,1
 F10 게임옵션 설정,F10 Tùy chọn game,,translated,1
 F1키 = 도움말확인,F1 = Coi trợ giúp,,translated,1
@@ -625,10 +777,15 @@ F9 매크로 설정,F9 Cài đặt macro,,translated,1
 GM비앤비,GM비앤비,,translated,1
 GM비엔비,GM비엔비,,translated,1
 GM추천,GM đề xuất,,translated,1
+Get 레인보우 물풍선,Nhận bom nước cầu vồng,,translated,1
+LUCCI 2배,LUCCI x2,,translated,1
+NEW 선물이 펑펑,NEW Quà nổ tung,,translated,1
 PC방 공짜,Tiệm net miễn phí,,translated,1
 PC방 보너스 01,Thưởng tiệm net 01,,translated,1
 PC방 퀘스트,Nhiệm vụ tiệm net,,translated,1
 PC방에서 게임 플레이,Chơi ở tiệm net,,translated,1
+VIP 할인가,Giá giảm VIP,,translated,1
+VIP혜택 남은시간,Thời gian quyền lợi VIP còn lại,,translated,1
 X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 [12자 이내],[Tối đa 12 ký tự],,translated,1
 [150자 이내],[Tối đa 150 ký tự],,translated,1
@@ -641,6 +798,8 @@ x2+크아CDx5,x2+CD Boom x5,,translated,1
 x3+크아CDx5,x3+CD Boom x5,,translated,1
 x5+크아CDx5,x5+CD Boom x5,,translated,1
 …◎ㅅ◎(아놔…),…◎ㅅ◎(Trời…),,translated,1
+♥크앤샵,♥Siêu thị Đôi,,translated,1
+ㅋㅋㅋ물풍선,ㅋㅋㅋ Bom nước,,translated,1
 ㅎㅎㅎㅎ,Đần độn,,reused,1
 ㅠ_ㅠ,Hu -Hu,,reused,1
 가격,Giá,,reused,1
@@ -653,20 +812,25 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 가입날짜,Ngày gia nhập,,translated,1
 가입레벨,Cấp gia nhập,,translated,1
 가입승인관리,Quản lý duyệt gia nhập,,translated,1
+가자,Đi nào,,translated,1
 가짜 용사,Dũng sĩ giả,,translated,1
 가짜 파라오,Pharaoh giả,,translated,1
 가짜 해적왕,Vua hải tặc giả,,translated,1
+각오하삼,Chuẩn bị đi nha,,translated,1
 각오해둬,Chờ đó nha,,translated,1
 간단한 볼륨조절기,Bộ chỉnh âm lượng đơn giản,,translated,1
 간만에 손에 땀이 났어,Lâu lắm mới toát mồ hôi tay,,translated,1
 간만에 흥미 진진했어,Lâu lắm mới thấy hấp dẫn vậy,,translated,1
 간만이군 이런모습,Lâu rồi mới thấy dáng này,,translated,1
+갇혔다,Bị nhốt rồi,,translated,1
 갈색냥 처음보냐옹,Lần đầu thấy mèo nâu hả nyaong?,,translated,1
 갈색냥이는 심심하다,Mèo nâu buồn chán quá,,translated,1
 감귤,Quýt,,translated,1
 감마괴물,Quái vật Gamma,,translated,1
 감히,Dám,,translated,1
 감히 나를 건드리다니,Vì mi dám chọc tức ta,,reused,1
+감히 여기까지오다니,Dám tới tận đây sao,,translated,1
+감히문어부대에침투하다니,Dám xâm nhập đội Bạch tuộc hả,,translated,1
 갑옷,Giáp,,translated,1
 강력한 공격력을 지님,Có sức tấn công mạnh,,translated,1
 강시 확성기,Loa cương thi,,translated,1
@@ -674,6 +838,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 강아지는 아래층에 있어,Con chó con ở tầng dưới đó,,reused,1
 강아지는 지하에 있어,Nó kia kìa,,reused,1
 강아지를 지켜라,Bảo vệ chó con,,reused,1
+강해진 몬스터,Quái vật mạnh lên,,translated,1
 강화 수수료,Phí cường hóa,,translated,1
 같은 편에게만 대화,Chỉ nói với đồng đội,,translated,1
 개 사용,cái dùng,,translated,1
@@ -681,6 +846,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 개발자,Nhà phát triển,,translated,1
 개보단 냥이가 낫다냥,Mèo vẫn hơn chó nha meo,,translated,1
 개수,Số lượng,,translated,1
+개인승률,Tỉ lệ thắng cá nhân,,translated,1
 거기있었군요,Đằng đó kìa,,reused,1
 거대골렘,Gôlem khổng lồ,,translated,1
 거래고객,거래고객,,translated,1
@@ -723,6 +889,9 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 걱정마,Đừng lo,,translated,1
 걱정마세요 형님,Đừng lo lắng,,reused,1
 건드리지마,Đừng có mà chọc tức tớ,,reused,1
+건방진 황제펭귄,Hoàng đế Cánh cụt láo xược,,translated,1
+검정콩,Đậu đen,,translated,1
+겁도 없는 녀석들이군,"Chẳng biết sợ gì hết, tụi bây này.",,translated,1
 겁먹지 않아도 돼,Đừng sợ nha,,translated,1
 게임 같이하기,Chơi game chung,,translated,1
 게임 준비화면에서 레디,Chuyển trạng thái sẵn sàng,,translated,1
@@ -730,6 +899,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 게임계정,게임계정,,translated,1
 게임고객,게임고객,,translated,1
 게임관리,게임관리,,translated,1
+게임도움말,Trợ giúp game,,translated,1
 게임돌이,GameDoli,,translated,1
 게임문의,게임문의,,translated,1
 게임방관리,Quản lý tiệm net,,translated,1
@@ -739,10 +909,12 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 게임시간,Thời gian chơi,,translated,1
 게임신고,게임신고,,translated,1
 게임에서 추방하기,khỏi game,,translated,1
+게임완료:+2PT,Hoàn thành ván: +2PT,,translated,1
 게임을 하고 있으면,Cứ chơi game là cứ mỗi,,translated,1
 게임접수,게임접수,,translated,1
 게임처리,게임처리,,translated,1
 게임타입,Loại trận,,translated,1
+게임하기,Chơi game,,translated,1
 게임확인,게임확인,,translated,1
 겨우 용서받았다,Vừa được tha thứ xong,,translated,1
 겨울밤 물풍선,Bom nước đêm đông,,translated,1
@@ -758,6 +930,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 경험치보너스01,Thưởng kinh nghiệm01,,translated,1
 경험치보너스02,Thưởng kinh nghiệm02,,translated,1
 경험치보너스03,Thưởng kinh nghiệm03,,translated,1
+계급,Cấp bậc,,translated,1
 계급치장,Trang sức cấp bậc,,translated,1
 계급효과,Hiệu ứng cấp bậc,,translated,1
 계정거래,계정거래,,translated,1
@@ -797,6 +970,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 골렘 동굴-3,Hang golem-3,,translated,1
 골렘 동굴-4,Hang golem-4,,translated,1
 골렘 동굴-5,Hang golem-5,,translated,1
+골렘 퇴치,Tiêu diệt Golem,,translated,1
 골렘대침공 02-1,Golem đại xâm lược 02-1,,translated,1
 골렘대침공 02-2,Golem đại xâm lược 02-2,,translated,1
 골렘대침공 02-3,Golem đại xâm lược 02-3,,translated,1
@@ -822,6 +996,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 골렘대침공 09-2,Golem đại xâm lược 09-2,,translated,1
 골렘대침공 09-3,Golem đại xâm lược 09-3,,translated,1
 골렘대침공 랜덤,Golem đại xâm lược ngẫu nhiên,,translated,1
+골렘의 등장,Golem xuất hiện,,translated,1
 공  지,Thông báo,,reused,1
 공개,Công khai,,translated,1
 공개길드,Hội công khai,,translated,1
@@ -844,6 +1019,8 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 공포의 무덤-3,Lăng mộ kinh hoàng-3,,translated,1
 공포의 무덤-4,Lăng mộ kinh hoàng-4,,translated,1
 공포의 무덤-5,Lăng mộ kinh hoàng-5,,translated,1
+과속 안해,Không chạy quá tốc độ nha,,translated,1
+과속할거야,Tui sẽ chạy quá tốc độ,,translated,1
 관심상품등록,Đăng ký sản phẩm quan tâm,,translated,1
 관심상품해제,Bỏ quan tâm,,translated,1
 광분하게 만드는군,Làm người ta cuồng nộ ghê,,translated,1
@@ -856,12 +1033,15 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 광산 23,Mỏ 23,,translated,1
 광산 랜덤,Mỏ ngẫu nhiên,,translated,1
 광선을 많이 써서 그래,Vì xài nhiều tia laser nên thế!,,reused,1
+광장 1:1 대결,Đấu 1:1 ở Quảng trường,,translated,1
+광장 가기,Đến Quảng trường,,translated,1
 광장1,Quảng trường 1,,translated,1
 광장4,Quảng trường 4,,translated,1
 광장5,Quảng trường 5,,translated,1
 광장7,Quảng trường 7,,translated,1
 광장8,Quảng trường 8,,translated,1
 광장9,Quảng trường 9,,translated,1
+교장실,Phòng hiệu trưởng,,translated,1
 교환 무시,Bỏ qua trao đổi,,translated,1
 교환 채팅,Kênh trao đổi,,translated,1
 교환방,Phòng trao đổi,,translated,1
@@ -872,9 +1052,11 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 구르기 실력이 일품이지,Ta mà cuộn tròn thì xuất sắc đấy,,reused,1
 구미호,Hồ ly chín đuôi,,translated,1
 구슬항아리,Hũ ngọc,,translated,1
+구식,Kiểu cũ,,translated,1
 구워어어,Kuwoo,,translated,1
 국경절 전체확성기,Loa toàn kênh Quốc khánh,,translated,1
 국경절 확성기,Loa Quốc khánh,,translated,1
+굴려라 눈싸움 ID치장,"Lăn đi, ném tuyết! Trang trí ID",,translated,1
 궁극의 마법을 보여주마,Ta! Nổi giận rồi nhe!!!,,reused,1
 궁시렁 궁시렁,Lẩm bẩm lầm bầm,,translated,1
 권 오 창,권 오 창,,translated,1
@@ -883,6 +1065,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 귀빈 전체확성기,Loa toàn kênh khách quý,,translated,1
 귀엽다고 얕보면,Dễ thương và,,reused,1
 귀찮으니 그냥 자폭,"Không sao đâu, cứ tự hủy đi",,reused,1
+귓 속 말,Thì thầm,,translated,1
 귓속말 무시,Bỏ qua thì thầm,,translated,1
 귓속말/소환 무시,Bỏ qua thì thầm/triệu tập,,translated,1
 그것도못피하냐크크,Né cái đó cũng không được hả kkk,,translated,1
@@ -896,6 +1079,8 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 그럼그렇지,Ưm phải vậy chứ.,,reused,1
 그룹순위,Xếp hạng nhóm,,translated,1
 그린 확성기,Loa xanh lá,,translated,1
+그림으로 그린다,Vẽ tranh.,,translated,1
+그림조각 맞추기,Ghép mảnh tranh,,translated,1
 그상태로 움직이지 말고,Đứng yên trạng thái đó đừng động đậy,,translated,1
 근데 꽃이 금방죽어요,Nhưng hoa đó sắp chết rồi,,reused,1
 근데 아 덥다,Mà trời nóng quá,,translated,1
@@ -913,10 +1098,15 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 기다리라능,Ta chờ đó,,reused,1
 기동 완료,Hoàn tất khởi động,,reused,1
 기동중,Đang khởi động,,reused,1
+기본,Mặc định,,translated,1
+기본물줄기,Tia nước cơ bản,,translated,1
+기본물풍선수,Số bom nước cơ bản,,translated,1
+기본속도,Tốc độ cơ bản,,translated,1
 기본순,Thứ tự mặc định,,translated,1
 기본타입,Kiểu cơ bản,,translated,1
 기분이 좋다 고릴고릴,Vui quá goril goril,,translated,1
 기운이 없어…,Hết sức lực rồi…,,translated,1
+기장,Kê,,translated,1
 기타관리,Quản lý khác,,translated,1
 기한만료,Hết hạn,,translated,1
 기회를 놓쳐버렸잖아,Lỡ mất cơ hội rồi đó,,translated,1
@@ -926,17 +1116,21 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 길 드 명,Tên hội,,translated,1
 길드 심볼,Biểu tượng hội,,translated,1
 길드 프레임,Khung hội,,translated,1
+길드게시판,Bảng tin hội,,translated,1
 길드공지,Thông báo hội,,translated,1
+길드관리,Quản lý hội,,translated,1
 길드등급,Cấp hội,,translated,1
 길드레벨별,Theo cấp hội,,translated,1
 길드마스터,Hội trưởng,,translated,1
 길드소개,Giới thiệu hội,,translated,1
 길드암호,Mật khẩu hội,,translated,1
 길드원관리,Quản lý thành viên hội,,translated,1
+길드원리스트,Danh sách thành viên hội,,translated,1
 길드원수,Số thành viên hội,,translated,1
 길드원수순,Theo số thành viên hội,,translated,1
 길드원찾기,Tìm thành viên hội,,translated,1
 길드직책,Chức vụ hội,,translated,1
+길드찾기,Tìm hội,,translated,1
 길드초청 거절,Từ chối lời mời hội,,translated,1
 길드포인트,Điểm hội,,translated,1
 길드포인트순,Theo điểm hội,,translated,1
@@ -974,13 +1168,17 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 꼬리잡기 10,Bắt đuôi 10,,translated,1
 꼬리잡기 11,Bắt đuôi 11,,translated,1
 꼬리잡기 랜덤,Bắt đuôi ngẫu nhiên,,translated,1
+꼬마스쿠터,Xe scooter nhỏ,,translated,1
 꼬물까칠,Kkomuri cáu kỉnh,,translated,1
 꼬물이,Kkomuri,,translated,1
 꼬물이 06,Kkomuri 06,,translated,1
 꼬물이맵에서,Ở bản đồ Kkomuri,,translated,1
 꼬물이의반격,Kkomuri phản công,,translated,1
+꼭지킨다,Nhất định giữ,,translated,1
 꼴 좋다 ㅋㅋ,Khi bị đóng băng phải cẩn thận đó,,reused,1
 꼴까닥,Tèo rồi,,translated,1
+꼴좋구나,Đáng đời ha,,translated,1
+꼴좋으삼,Đáng đời nha,,translated,1
 꽁꽁,Lạnh cóng,,translated,1
 꽁꽁 얼었어,Đông cứng luôn rồi,,translated,1
 꽃밭 망치지마요,Đừng làm hư vườn hoa nhé,,reused,1
@@ -1000,10 +1198,13 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 끄아악,Á!!,,translated,1
 끙… (배가 고픈듯),Hừm… (có vẻ đói),,translated,1
 끝내기,Thoát,,reused,1
+나 좀 셈,Ta mập quá,,translated,1
 나 화났어,Ta bực rồi đó,,reused,1
 나가기,Thoát game,,reused,1
+나는 거북대왕,Ta là Vua Rùa,,translated,1
 나는 결코 죽지 않아,Tui không bao giờ chết đâu.,,translated,1
 나는 골드배찌야,Tui là Bazzi Vàng,,translated,1
+나는 골목대왕 문빡이다,"Ta là Munppaki, vua hẻm!",,translated,1
 나는 길을 잃은게 아냐,Tui không có lạc đường nha,,translated,1
 나는 돌아가마,Ta quay lại rồi.,,reused,1
 나는 따라갈 수 없음,Ta không thể đi theo được,,reused,1
@@ -1031,6 +1232,8 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 나쁜 사람들 ㅠㅠ,Mấy thằng tồi huhuhu,,reused,1
 나오기만 해봐라,Mày mà lại đây coi,,reused,1
 나와 비기다니,Hoà được với tui,,translated,1
+나의 래더짱 시즌 결과,Kết quả mùa Vua xếp hạng của mình,,translated,1
+나의 크아짱 시즌 결과,Kết quả mùa Boom Zzang của tui,,translated,1
 나의공격엔자비심이없지,Đòn tấn công của ta không có lòng từ bi đâu,,translated,1
 나이트메어,Nightmare,,translated,1
 낚시,Câu cá,,translated,1
@@ -1039,12 +1242,16 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 낚시성공UP,Tăng tỉ lệ câu cá,,translated,1
 낚시왕,Vua câu cá,,translated,1
 낚시터 명당 히스토리,Lịch sử điểm câu đẹp,,translated,1
+낚싯대부품,Linh kiện cần câu,,translated,1
+난 놀고 있어,Ta đang chơi thôi,,translated,1
 난 업그레이드 마법사,Ta là pháp sư nâng cấp,,translated,1
 난 입이 무겁지,Tui kín miệng lắm,,translated,1
 난 체력이 약하거덩,Tui thể lực yếu lắm đó,,translated,1
 난 팽귄대왕의 부하,Ta là thuộc hạ của Nữ chúa đây.,,reused,1
 난쎄다구,Ta là vua đây,,reused,1
+난폭하지,Hung hăng ghê,,translated,1
 남은 시간은 앞으로,Thời gian còn lại là,,translated,1
+낮은가격순,Giá thấp đến cao,,translated,1
 내  용,Nội dung,,translated,1
 내 동료 건드리지마,Đừng đánh bạn ta mà,,reused,1
 내 랭킹,Xếp hạng của tôi,,translated,1
@@ -1064,11 +1271,14 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 내길드정보,Thông tin hội của tôi,,translated,1
 내길드포인트,Điểm hội của tôi,,translated,1
 내눈을바라봐라라라,Nhìn vô mắt tui nè la la la,,translated,1
+내소개,Giới thiệu bản thân,,translated,1
 내일 다시와,Mai quay lại nha,,translated,1
+내칭호 :,Danh hiệu của bạn :,,translated,1
 냄새가 난다,Mùi gì thế,,reused,1
 냥이를 믿어보라옹,Tin mèo đi meo,,translated,1
 냥이의 실수다옹,Lỗi của mèo nyaong,,translated,1
 너 이제 큰일났다,Mi tiêu rồi,,reused,1
+너무 무섭다 ㅠㅠ,Sợ quá đi ㅠㅠ,,translated,1
 너무 쉬워서 잼없어염,Dễ quá chẳng có gì vui,,reused,1
 너무 시시했어,Chán phèo,,translated,1
 너희는 내가 지켜주마,Bọn mi phải bảo vệ ta chứ.,,reused,1
@@ -1078,6 +1288,8 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 네 가까이 있어,Gần đây nè,,reused,1
 네 뒤에 서 있어,Ở phía sau kìa,,reused,1
 네놈들을,Tụi bây,,translated,1
+넥슨,Nexon,,translated,1
+넥슨/이메일계정,Tài khoản Nexon/email,,translated,1
 넥슨id 비밀번호,Mật khẩu tài khoản Nexon,,translated,1
 넥슨아이디 :,Tài khoản Nexon:,,translated,1
 넥슨아이디로 제재,Xử phạt theo tài khoản Nexon,,translated,1
@@ -1092,6 +1304,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 놀라지마,Đừng có giật mình,,translated,1
 놀래키러 가자,Đi mau nào,,reused,1
 놀면대왕님께혼난다,Chơi là bị Đại Vương quở đó,,translated,1
+높은가격순,Giá cao đến thấp,,translated,1
 놓치지마라,Đừng bỏ lỡ đó,,reused,1
 누가 있는거 같은데,Hình như có ai đó nhỉ,,reused,1
 누적점수,Điểm tích lũy,,translated,1
@@ -1100,9 +1313,13 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 눈덮인 감옥-2,Nhà tù phủ tuyết-2,,translated,1
 눈덮인 감옥-3,Nhà tù phủ tuyết-3,,translated,1
 눈덮인 감옥-4,Nhà tù phủ tuyết-4,,translated,1
+눈뜬 장님이야,Mắt mù luôn hả,,translated,1
+눈사람 꾸미기,Trang trí người tuyết,,translated,1
 눈사람 전체확성기,Loa toàn kênh người tuyết,,translated,1
+눈포인트 달성으로,Khi đạt điểm tuyết,,translated,1
 능력-,Năng lực-,,translated,1
 니들 짜증짜증,Nguy hiểm quá,,reused,1
+니들땜에 혼났삼,Tại tụi bây mà bị la nha,,translated,1
 닉 네 임,Biệt danh,,translated,1
 닉네임,Biệt danh,,translated,1
 다들 조심해,Cẩn thận đó,,reused,1
@@ -1118,6 +1335,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 다음에는 꼭 잡아줘ㅠ,Lần sau nhất định bắt giùm nha ㅠ,,translated,1
 다음은 너희차례다,Lần sau đến lượt mi đó.,,reused,1
 다이아,Kim cương,,translated,1
+다이아커플링,Nhẫn đôi Kim cương,,translated,1
 다크 보너스 01,Thưởng bóng tối 01,,translated,1
 다크나이트,Dark Knight,,translated,1
 다크뱀파이어,Ma cà rồng bóng tối,,translated,1
@@ -1129,10 +1347,15 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 단짱배경,Nền Đơn Chủ,,translated,1
 단치장,Trang trí đơn,,translated,1
 달려라,Chạy đi!,,translated,1
+달려요,Chạy nha,,translated,1
+달리자,Chạy nào,,translated,1
 달콤 확성기,Loa ngọt ngào,,translated,1
 달콤16 전체확성기,Loa toàn kênh ngọt ngào 16,,translated,1
 달콤사탕 보너스맵,Bản đồ thưởng Kẹo ngọt,,translated,1
 달토끼,Thỏ mặt trăng,,translated,1
+답답하군,Bức bối quá,,translated,1
+답변1,Đáp án 1,,translated,1
+답변2,Đáp án 2,,translated,1
 당연한 결과지,Ha ha ha~ Ha ha~,,reused,1
 대결모드,Chế độ đấu,,translated,1
 대결투장 01-1,Đại đấu trường 01-1,,translated,1
@@ -1159,10 +1382,13 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 대난투2,Đại loạn đấu 2,,translated,1
 대단한 녀석들이군,Đúng là những đứa gan dạ,,reused,1
 대여 기간,Thời hạn thuê,,translated,1
+대왕골렘,Golem khổng lồ,,translated,1
 대왕님 물주기는 무서워,Hoàng đế sợ vòi nước lắm,,reused,1
 대왕님과 협공해야지,Phải hợp sức với Rùa biểnthôi,,reused,1
+대왕문어 사냥,Săn đại bạch tuộc,,translated,1
 대왕문어님 살려주세요,"Mưc chúa ơi, cứu tôi với~",,reused,1
 대용량전지는 참 좋아,Pin dung lượng lớn rất tốt,,reused,1
+대전상대,Đối thủ,,translated,1
 대폭발이다,Đại bác kìa,,reused,1
 대화 상대 삭제,Xóa đối thoại,,translated,1
 대화 상대 차단,Chặn người đối thoại,,translated,1
@@ -1193,28 +1419,36 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 도굴 좀 했기로서니,Đã quyết định ăn trộm một ít,,reused,1
 도둑질이 아닌 발굴이지,Không phải là trộm cắp mà là đào bới,,reused,1
 도망쳐보라구크크,Tụi bay thử chạy trốn coi kha kha kha,,reused,1
+도미노게임,Trò chơi Domino,,translated,1
 도전정신이 가상하구나,Tinh thần thử thách đáng khen đó!,,translated,1
 돌격,Xung kích,,translated,1
 돌고돌고돌고,Hãy đợi đấy..,,reused,1
 돌아다니기 무서워,Sợ đi lung tung quá,,translated,1
 동메달,Huy chương đồng,,translated,1
 동방신은 너무 평범해,Thần Đông Phương bình thường quá,,translated,1
+동상이 처리하삼,Đệ xử lý đi nha,,translated,1
 동생아 거기있으면 안돼,Đứng ở đó không được đâu,,reused,1
+동생의 원한 갚았다,Trả thù cho em rồi,,translated,1
+동일맵 중복불가,Không được trùng bản đồ,,translated,1
 되게 못하네,Không được rồi,,reused,1
 되게 못해,Không được rồi,,reused,1
+되팔기,Bán lại,,translated,1
 두고보자,Để rồi xem,,reused,1
 두고봐,Để xem,,reused,1
+두근두근보물상자,Rương báu hồi hộp,,translated,1
 두리번,Gì vậy? Gì vậy?,,reused,1
-두리번 두리번,Gì vậy? Gì vậy?,,reused,1
 두번째 뽀끼열쇠,Chìa khóa Ppoki thứ hai,,translated,1
 둘,Hai,,translated,1
 뒤로 가기,Quay lại,,reused,1
 뒤로가기,Quay lại,,reused,1
+뒤로가기 화살표 버튼,Nút mũi tên Quay lại,,translated,1
 드디어 나왔다,Cuối cùng cũng ra rồi.,,translated,1
 드디어 어둠에서 나왔다,Cuối cùng cũng ra khỏi bóng tối rồi.,,translated,1
 드랍더템,Vật phẩm rớt,,translated,1
 드림,Dream,,translated,1
+등급표,Bảng cấp bậc,,translated,1
 등록하기,Đăng ký,,translated,1
+따끈따끈냄비,Nồi nóng hổi,,translated,1
 따라가기,Đi theo,,translated,1
 따라와,Theo tui nè,,translated,1
 떄가 아니란다,Chưa tới lúc đâu con.,,translated,1
@@ -1254,14 +1488,26 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 랭크,Xếp hạng,,translated,1
 러브 퐁퐁,Love Pom Pom,,translated,1
 러브 확성기,Loa tình yêu,,translated,1
+럭다 디스코 머리,Tóc Disco Luxury Dao,,translated,1
+럭다 디스코 얼굴,Mặt Disco Luxury Dao,,translated,1
+럭다 디스코 의상,Trang phục Disco Luxury Dao,,translated,1
 럭다 럭셔리 다오,Dao sang chảnh,,translated,1
+럭마 디스코 머리,Tóc Disco Luxury Marid,,translated,1
+럭마 디스코 얼굴,Mặt Disco Luxury Marid,,translated,1
+럭마 디스코 의상,Trang phục Disco Luxury Marid,,translated,1
 럭마로 1킬 하기,Hạ 1 mạng bằng Marid sang chảnh,,translated,1
 럭마커플링,Nhẫn đôi Marid sang chảnh,,translated,1
 럭셔리 다오,Dao Sang Trọng,,translated,1
 럭셔리 다오로 플레이,Chơi bằng Dao sang trọng,,translated,1
 럭셔리 디지니,Dizni Sang Trọng,,translated,1
 럭셔리 에띠,Ethi Sang Trọng,,translated,1
+럭셔리 캐릭터 퀘스트,Nhiệm vụ nhân vật Luxury,,translated,1
+럭셔리마리드,Marid Sang trọng,,translated,1
+럭케 디스코 머리,Tóc Disco Luxury Kephi,,translated,1
+럭케 디스코 얼굴,Mặt Disco Luxury Kephi,,translated,1
+럭케 디스코 의상,Trang phục Disco Luxury Kephi,,translated,1
 럭케로 1킬 하기,Hạ 1 mạng bằng Kephi sang chảnh,,translated,1
+럭케를 찾아라,Tìm Luxury Kephi,,translated,1
 레    벨,Cấp,,translated,1
 레너드 밥 좀 줘,Leonard cho ăn chút đi,,translated,1
 레너드를 믿어봐,Tin Leonard đi nha,,translated,1
@@ -1275,6 +1521,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 레이나,Reina,,translated,1
 레이더 작동,Kích hoạt rada,,reused,1
 레인보우 깃발,Cờ cầu vồng,,translated,1
+레인보우 회오리,Lốc cầu vồng,,translated,1
 레전드 답게 우승했구나,"Đúng chất huyền thoại, vô địch rồi nha",,translated,1
 레트로버그,Bọ Retro,,translated,1
 레트로빌리지,Làng Retro,,translated,1
@@ -1283,6 +1530,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 레트로팩토리,Nhà máy Retro,,translated,1
 레트로포레스트,Rừng Retro,,translated,1
 로그인 하기,Đăng nhập,,translated,1
+로두마니의 복수,Báo thù Rodumani,,translated,1
 로봇공장을 지켜라,Hãy bảo vệ nhà máy Robot,,reused,1
 로봇군단의 대장이다,Ta là đội trưởng của binh đoàn Robot,,reused,1
 로봇대공습 01-1,Robot đại tấn công 01-1,,translated,1
@@ -1306,15 +1554,25 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 로봇대공습 랜덤,Robot đại tấn công ngẫu nhiên,,translated,1
 로비 가기,Về sảnh,,translated,1
 로즈 시크릿,Rose Secret,,translated,1
+롤러,Lăn,,translated,1
 루    찌,VÀNG,,translated,1
 루  찌,Vàng,,translated,1
 루시 스티커 확성기,Loa sticker Lucy,,translated,1
 루시퍼날개,Cánh Lucifer,,translated,1
+루찌 1000 을,Vàng 1000,,translated,1
+루찌 1500 을,Vàng 1500,,translated,1
+루찌 2000 을,Vàng 2000,,translated,1
+루찌 3000 을,Vàng 3000,,translated,1
+루찌 500 을,Vàng 500,,translated,1
 루찌3배,Vàng x3,,translated,1
 루찌가 느껴져,Cảm thấy Vàng nè,,translated,1
 루찌보너스맵,Bản đồ thưởng VÀNG,,translated,1
+룰루랄라,Lalala,,translated,1
 리부팅 완료,Hoàn tất Rebooting,,reused,1
+마감시한,Hạn chót,,translated,1
+마늘,Tỏi,,translated,1
 마늘 최대보유량 초과,Vượt số tỏi tối đa,,translated,1
+마리드영구교환권,Phiếu đổi vĩnh viễn Marid,,translated,1
 마무리로한번더날려주지,Cho thêm một phát để kết thúc luôn,,translated,1
 마법사님을 믿어라,Phải tin thầy phù thủy chứ.,,reused,1
 마법사님이 살렸다,Thầy phù thủy sống lại rồi.,,reused,1
@@ -1323,6 +1581,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 마법서,Sách phép,,translated,1
 마법서 가격,Giá sách phép,,translated,1
 마법서명,Tên sách phép,,translated,1
+마법지팡이,Gậy phép thuật,,translated,1
 마스터,Master,,translated,1
 마스터 길드,Hội Bậc thầy,,translated,1
 마스터이임,Chủ phòng nè,,translated,1
@@ -1332,6 +1591,9 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 말리는 애정이 필요해요,Marli cần tình thương nha,,translated,1
 말풍선 표시,Hiện bong bóng chat,,translated,1
 매너겜 필수,Chơi có tâm nha,,translated,1
+매일래더퀘스트,Nhiệm vụ Xếp hạng hằng ngày,,translated,1
+매진,Hết hàng,,translated,1
+매칭반복,Lặp ghép trận,,translated,1
 매크로,Macro,,translated,1
 맵로딩에 실패하였습니다,Tải bản đồ thất bại,,translated,1
 맵이름,Tên bản đồ,,translated,1
@@ -1344,6 +1606,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 메에에에… T_T,Beeeee… T_T,,translated,1
 메인,Chính,,translated,1
 메인전지 충전완료,Hoàn tất nạp pin chính,,reused,1
+명품,Hàng hiệu,,translated,1
 모두 날려버렸어,Thổi bay hết rồi!,,translated,1
 모두 불태웠어,Đốt hết rồi!,,translated,1
 모두 사용,Dùng tất cả,,translated,1
@@ -1355,6 +1618,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 목표 확인 중,Đang xác định mục tiêu,,reused,1
 몬2가이드 00,Hướng dẫn Quái vật 2 00,,translated,1
 몬스터 모드 랜덤,Chế độ quái vật ngẫu nhiên,,translated,1
+몬스터 잔당 처치,Diệt tàn quân quái,,translated,1
 몬스터대작전,Đại chiến quái vật,,translated,1
 몬스터대작전 01,Quái vật đại tác chiến 01,,translated,1
 몬스터대작전 02,Quái vật đại tác chiến 02,,translated,1
@@ -1375,6 +1639,8 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 몬스터대작전 17,Quái vật đại tác chiến 17,,translated,1
 몬스터대작전 18,Quái vật đại tác chiến 18,,translated,1
 몬스터대작전 랜덤,Quái vật đại tác chiến ngẫu nhiên,,translated,1
+몬스터의 구슬,Hạt châu quái vật,,translated,1
+몬스터의 난동,Quái vật náo loạn,,translated,1
 몰리면 큰일이야,Nếu bị đẩy là nguy đấy,,reused,1
 몸이 근질근질 하다,Người ngứa ngáy quá,,translated,1
 몸풀정도도안되는구나,Mi chỉ được đến thế thôi sao,,reused,1
@@ -1392,27 +1658,34 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 무서운 힘이래요,Sức mạnh đáng sợ đây,,reused,1
 무서운아이돌,Đá nhỏ đáng sợ,,reused,1
 무서움을,Nỗi sợ,,translated,1
+무서워,Sợ quá,,translated,1
 무서워 T-T,Sợ quá hu hu,,reused,1
 무서워 무서워,Sợ quá sợ quá,,reused,1
 무서워효,Ôi sợ quá,,reused,1
 무선 물폭탄,Bom nước không dây,,translated,1
 무선물폭탄 사용하기,Dùng bom nước vô hình,,translated,1
 무셔무셔,Sợ quá sợ quá,,reused,1
+무슨 냄새가 나,Mùi gì vậy?,,translated,1
 무슨소리가들리는데,Nghe như tiếng gì nhỉ,,reused,1
+무슨소리지,Tiếng gì vậy ta,,translated,1
 무인도,Đảo hoang,,translated,1
 무제한,Không giới hạn,,translated,1
 무조건 승리,Thắng chắc,,translated,1
 무지개,Cầu vồng,,translated,1
 무지개 물풍선,Bom nước bảy sắc,,translated,1
+무지개 색연필,Bút màu cầu vồng,,translated,1
+무지개 퀘스트,Nhiệm vụ cầu vồng,,translated,1
 무차별 공격 모드,Kiểu tấn công bừa bãi,,reused,1
 무한,Vô hạn,,translated,1
 무한도전 입장권,Vé vào Thử thách Vô hạn,,translated,1
 문 새 벽,문 새 벽,,translated,1
 문 성 호,문 성 호,,translated,1
 문 윤 주,문 윤 주,,translated,1
+문빡이 죽는다,Munppaki sắp chết!,,translated,1
 문빡이님 무서워요,Mực chúa ơi sợ quá,,reused,1
 문빡이님 살려주세요,Mực chúa ơi cứu tôi với,,reused,1
 문빡이님 용서해주세요,Mực chúa ơi hãy tha lỗi cho tôi,,reused,1
+문어,Bạch tuộc,,translated,1
 문어 해적선-1,Thuyền cướp biển bạch tuộc-1,,translated,1
 문어 해적선-2,Thuyền cướp biển bạch tuộc-2,,translated,1
 문어 해적선-3,Thuyền cướp biển bạch tuộc-3,,translated,1
@@ -1461,9 +1734,11 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 문어대습격 14-2,Bạch tuộc đại tập kích 14-2,,translated,1
 문어대습격 14-3,Bạch tuộc đại tập kích 14-3,,translated,1
 문어대습격 랜덤,Bạch tuộc đại tập kích ngẫu nhiên,,translated,1
+문어부대의화려한전술로,Bằng chiến thuật rực rỡ của đội Bạch tuộc,,translated,1
 문어의 함선-1,Chiến thuyền bạch tuộc-1,,translated,1
 문어의 함선-2,Chiến thuyền bạch tuộc-2,,translated,1
 문어의 함선-3,Chiến thuyền bạch tuộc-3,,translated,1
+문워크 효과,Hiệu ứng moonwalk,,translated,1
 문의거래,문의거래,,translated,1
 문의고객,문의고객,,translated,1
 문의관리,문의관리,,translated,1
@@ -1511,6 +1786,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 물개의분노 10-2,Cơn giận hải cẩu 10-2,,translated,1
 물개의분노 10-3,Cơn giận hải cẩu 10-3,,translated,1
 물개의분노 랜덤,Cơn giận hải cẩu ngẫu nhiên,,translated,1
+물대포 발사,Phóng pháo nước!,,translated,1
 물대포를 받아라,Hãy nhận lấy bom nước nè,,reused,1
 물도 잘주는데,Tưới nước đều nhé,,reused,1
 물론,Dĩ nhiên,,translated,1
@@ -1525,15 +1801,20 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 물폭탄,Bom nước lớn,,translated,1
 물풍선 3개 먹기,Ăn 3 bom nước,,translated,1
 물풍선+,Bom nước+,,translated,1
+물풍선데미지,Sát thương bom nước,,translated,1
 물풍선을 바닥에 놓아봐,Thử đặt bom nước xuống đất đi,,translated,1
+물풍선합성제작소,Xưởng ghép bom nước,,translated,1
 뭐야 괜히 쫄았네,Làm gì mà đã buồn ngủ rồi,,reused,1
 뭐야 나님 너무 잘함,"Gì vậy trời, tui chơi giỏi quá xá",,translated,1
 뭐한거니 ㅋㅋㅋ,Làm gì đấy,,reused,1
+미,Nhiệm,,translated,1
 미궁까지 찾아오다니,Chúng tìm đến mê cung rồi,,reused,1
 미궁의 힘은 막강하다,Sức mạnh của mê cung là vô địch,,reused,1
 미궁의힘은 우리것이다,Sức mạnh của mê cung là chúng ta,,reused,1
 미궁입구까지 오다니,Đến cổng mê cung đi,,reused,1
+미니 게임,Trò chơi nhỏ,,translated,1
 미사일 발사 준비,Chuẩn bị phóng tên lửa,,reused,1
+미션채널,Kênh nhiệm vụ,,translated,1
 미스터포츈,Mister Fortune,,translated,1
 미완료,Chưa hoàn thành,,translated,1
 믿겨지지 않아,Hổng tin nổi,,translated,1
@@ -1541,11 +1822,17 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 밀지마,Đừng đẩy,,translated,1
 바깥은 지겨워,Ngoài kia chán quá,,reused,1
 바늘 +8,Kim +8,,translated,1
+바늘 10개를,Kim x10,,translated,1
+바늘 15개를,Kim x15,,translated,1
+바늘 3개를,Kim x3,,translated,1
+바늘 5개를,Kim x5,,translated,1
 바늘 먹기,Ăn Kim,,translated,1
 바늘x5+자동실드x5,Kim x5+Khiên tự động x5,,translated,1
+바늘을,Kim,,translated,1
 바늘을 사용해봐,Thử dùng Kim đi,,translated,1
 바늘을 썼을 때,Khi dùng Kim,,translated,1
 바늘이라도 쓰고 나와바,Xài Kim rồi ra đây coi,,translated,1
+바늘커플링,Nhẫn đôi Kim,,translated,1
 바니팜,Bunny Farm,,translated,1
 바니팜 01,Bunny Farm 01,,translated,1
 바니팜 02,Bunny Farm 02,,translated,1
@@ -1595,10 +1882,12 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 방 경 민,방 경 민,,translated,1
 방깨기,Phá phòng,,translated,1
 방바닥이나 구르자,Dẫm lên sàn nhà đi,,reused,1
+방심하면 안되겠어,Không được chủ quan,,translated,1
 방어업,Tăng phòng thủ,,translated,1
 방울,bong bóng,,translated,1
 방울방울 미션,Nhiệm vụ Bubble Bubble,,translated,1
 방울방울 상점,Cửa hàng Bubble Bubble,,translated,1
+방학이란건 좋은거야,Kỳ nghỉ là điều tuyệt vời nhất,,translated,1
 방해하지 못하도록,Không cho nó đề phòng,,reused,1
 배경음,Nhạc nền,,translated,1
 배고파 쓰러져,Đói muốn xỉu mất,,reused,1
@@ -1611,6 +1900,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 배찌팀,Team Bazzi,,translated,1
 번째 곰곰 깨기,Phá Gomgom thứ,,translated,1
 벌써 배운 애들도 있어,Biết hết rồi,,reused,1
+벌을 주마,Ta sẽ trừng phạt,,translated,1
 범위를 넘는 값은,Giá trị vượt phạm vi,,translated,1
 베테랑 길드,Hội Kỳ cựu,,translated,1
 변경,chuẩn bị,,translated,1
@@ -1619,6 +1909,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 별거아니군,Chẳng có gì cả,,reused,1
 별몬들아 어서 탈출해,Sao biển àh mau bỏ trốn đi,,reused,1
 별몬들아 여긴 위험해,Sao biển àh ở đây nguy hiểm lắm,,reused,1
+별몬으로 유령을 잡아줘,Dùng Byeolmon bắt ma giùm đi,,translated,1
 별볼일 없네,Chẳng có gì để làm,,reused,1
 별의 회오리,Vòng xoáy ngôi sao,,translated,1
 병사따위는얼마든지있다,Lính quèn thì có cả đống,,translated,1
@@ -1639,12 +1930,18 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 보따리열기,Mở bọc đồ,,translated,1
 보라악마 먼저 먹기,Ăn Quỷ tím trước,,translated,1
 보물을 지켜야지,Phải giữ kho báu,,reused,1
+보물을지켜라,Giữ kho báu đi,,translated,1
 보물찾기,Truy tìm kho báu,,translated,1
 보물찾기 랜덤,Truy tìm kho báu ngẫu nhiên,,translated,1
+보물찾기 플레이,Chơi Tìm kho báu,,translated,1
+보상 경험치,Kinh nghiệm phần thưởng,,translated,1
 보상 획득 가능,Có thể nhận phần thưởng,,translated,1
 보상선택,Chọn phần thưởng,,translated,1
 보석사탕 커플링,Nhẫn kẹo đá quý,,translated,1
+보석이 수상하다,Đá quý đáng ngờ,,translated,1
+보석조각 회수,Thu hồi mảnh đá quý,,translated,1
 보스 스티커 확성기,Loa sticker Boss,,translated,1
+보스킬,Hạ trùm,,translated,1
 보여도 방법이 없네,Có nhìn thấy cũng vậy àh,,reused,1
 보유 중인 방울,Bong bóng đang có,,translated,1
 보유금액,Số dư hiện có,,translated,1
@@ -1654,13 +1951,19 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 보통,Vừa,,translated,1
 보호물약 사용 중,Đang dùng Thuốc bảo hộ,,translated,1
 복도를 지키자,Bảo vệ hành lang,,reused,1
+복수 한 번 더,Báo thù thêm lần nữa,,translated,1
+본격 사냥시작,Bắt đầu săn quái thật sự,,translated,1
+본선진출 상품,Phần thưởng vào vòng chính,,translated,1
 본좌의막강한공격으로,Xem sức mạnh của ta đây.,,reused,1
 봐준거야,Nhường cho đó,,translated,1
 부담없이 이야기 해,Nói chuyện vậy,,reused,1
 부드럽게 이겨주지,Để tui thắng nhẹ nhàng cho,,translated,1
 부들부들,Run bần bật,,translated,1
+부마스터,Phó chủ phòng,,translated,1
 부팅중,Đang Booting,,reused,1
 부하에게 배신당하다니,Ta đã phản bội thuộc hạ rồi,,reused,1
+부활권 3일권을,Phiếu hồi sinh 3 ngày,,translated,1
+부활권을,Phiếu hồi sinh,,translated,1
 부활했다,Hồi sinh rồi,,reused,1
 분  해,Phân rã,,translated,1
 분 해,Phân rã,,translated,1
@@ -1695,6 +1998,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 불의 제왕 07-2,Hoả vương 07-2,,translated,1
 불의 제왕 랜덤,Hoả vương ngẫu nhiên,,translated,1
 붉은앙마 물풍선,Bom nước quỷ đỏ,,translated,1
+붉은팥,Đậu đỏ,,translated,1
 붕어,Cá diếc,,translated,1
 붕어왕,Vua cá diếc,,translated,1
 브라운 스티커 확성기,Loa sticker Brown,,translated,1
@@ -1705,6 +2009,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 블루스타 물풍선,Bom nước sao xanh,,translated,1
 비공개,Riêng tư,,translated,1
 비공개길드,Hội riêng tư,,translated,1
+비늘,Vảy,,translated,1
 비밀번호 변경,Đổi mật khẩu,,translated,1
 비밀번호확인,Xác nhận mật khẩu,,translated,1
 비밀병기는 여기 있다,Vũ khí bí mất ở đây nè,,reused,1
@@ -1719,6 +2024,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 비어 있음,Trống,,translated,1
 비엔비 플레이하기,Chơi Boom,,translated,1
 비엔비GM,비엔비GM,,translated,1
+비엔비홈페이지,Trang web Boom,,translated,1
 빌리지 00,Làng 00,,translated,1
 빌리지 05,Làng 05,,translated,1
 빌리지 06,Làng 06,,translated,1
@@ -1753,22 +2059,31 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 사막전 사양 품절,Lại từ chối đánh ở Desert Map,,reused,1
 사용 예정 CP :,Dự kiến dùng BẠC :,,translated,1
 사용 예정 캐시 :,Dự kiến dùng XU :,,translated,1
+사용자 이름 보기 끄기,Tắt hiện tên người chơi,,translated,1
 사용자화면,Màn hình người dùng,,translated,1
 사용정보창,Cửa sổ thông tin sử dụng,,translated,1
 사용하기,Sử dụng,,translated,1
+사용하지 않음,Không dùng,,translated,1
 사원마당,Sân đền,,translated,1
 사원심부,Lòng đền,,translated,1
 사유,Lý do,,translated,1
+사자,Sư tử,,translated,1
+사파이어,Sapphire,,translated,1
 삭제하기,Xóa,,translated,1
+산삼 10개를,Sâm núi x10,,translated,1
+산삼 15개를,Sâm núi x15,,translated,1
+산삼 3개를,Sâm núi x3,,translated,1
+산삼 5개를,Sâm núi x5,,translated,1
 산삼 사용하기,Dùng Nhân sâm,,translated,1
+산삼을,Sâm núi,,translated,1
 산타가 나타났다,Ông già Noel xuất hiện rồi,,translated,1
 산타에게 선물을 받아줘,Nhận quà từ Ông già Noel đi,,translated,1
 산타포츈,Santa Fortune,,translated,1
 산타할아버지가 나타났다,Ông già Noel xuất hiện rồi,,translated,1
 살려주세여,Cứu tôi với,,reused,1
-살려줘요,Cứu ta với,,reused,1
 살짝 졸리당,Này làm gì thế?,,reused,1
 상     점,Siêu thị,,reused,1
+상급천사날개,Cánh thiên thần cấp cao,,translated,1
 상대가 안되는군,Đối thủ gì đâu,,translated,1
 상대를 해줄 수 없어,Tui hổng đấu với bạn được,,translated,1
 상대방에게 잡혔을 때,Khi bị đối thủ bắt,,translated,1
@@ -1777,9 +2092,12 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 상어왕,Vua cá mập,,translated,1
 상위랭크 재도전,Thử lại hạng cao hơn,,translated,1
 상점 가기,Siêu thị,,reused,1
+상점 이용중,Đang dùng Siêu thị,,translated,1
+상점에 팔기,Bán cho Siêu thị,,translated,1
 상태,Trạng thái,,translated,1
 상태 전환,ở màn hình chuẩn bị,,translated,1
 새내기 길드,Hội Tân binh,,translated,1
+새치기 안해요,Không chen ngang nha,,translated,1
 새친구,Bạn mới,,translated,1
 새확성기,Loa mới,,translated,1
 색칠하기 01,Tô màu 01,,translated,1
@@ -1800,9 +2118,11 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 샌드킹 05-2,Sand King 05-2,,translated,1
 샌드킹 랜덤,Sand King ngẫu nhiên,,translated,1
 생    일,Sinh nhật,,translated,1
+생년월일,Ngày sinh,,translated,1
 생성날짜,Ngày tạo,,translated,1
 생체반응 있음,Có phản ứng,,reused,1
 샤샤샥 플러스,Shasha Shak Plus,,translated,1
+샤샤샥 효과,Hiệu ứng Sha Sha Sak,,translated,1
 샤이,Shy,,translated,1
 서    민,서    민,,translated,1
 서두를 필요 없지,Không cần vội đâu,,reused,1
@@ -1812,6 +2132,8 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 선    물,Tặng quà,,translated,1
 선로가있으니편하구만,Có đường ray tiện quá ha,,translated,1
 선물이 마음에 들면,Nếu thích quà thì,,translated,1
+선택 완료,Chọn xong,,translated,1
+선택하기,Chọn,,translated,1
 설날,Tết,,translated,1
 설원의지배자 02-1,Chúa tể tuyết nguyên 02-1,,translated,1
 설원의지배자 02-2,Chúa tể tuyết nguyên 02-2,,translated,1
@@ -1844,7 +2166,10 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 세트,Bộ,,translated,1
 센서 사용하기,Dùng Cảm biến,,translated,1
 셋,Ba,,translated,1
+션,vụ,,translated,1
 소리없이 움직이자,Không di chuyển được,,reused,1
+소리의 정체,Bí ẩn tiếng động,,translated,1
+소원물풍선,Bom nước ước nguyện,,translated,1
 소환하기,Triệu hồi,,translated,1
 속도,Tốc độ,,reused,1
 속도-,Tốc độ-,,translated,1
@@ -1867,11 +2192,13 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 순 위,Thứ hạng,,translated,1
 순순히,Ngoan ngoãn,,translated,1
 순위 밖,Ngoài bảng xếp hạng,,translated,1
+순위밖,Ngoài hạng,,translated,1
 순찰경로 이탈,Tránh đường khi đang có tuần tra,,reused,1
 순찰돌자,Đi tuần tra một vòng nào,,reused,1
 순찰순찰순찰,Mi tiêu rồi!,,reused,1
 순찰을 돌자,Đi kiểm tra nào,,reused,1
 순찰해요,Tuần tra nào,,reused,1
+숨긴보석 파괴,Phá đá ẩn,,translated,1
 숨어도 보여요,Mi có trốn ta cũng thấy àh,,reused,1
 숨좀돌리자,Thở chút đi,,translated,1
 숫자 읽을줄 모름,Không biết đọc số,,reused,1
@@ -1880,9 +2207,14 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 쉽네여,Dễ dàng quá,,reused,1
 쉽지 않아,Chẳng dễ gì,,reused,1
 슈파 스킬 사용,Dùng kỹ năng Super,,translated,1
+슈퍼 럭마,Super Lucma,,translated,1
+슈퍼 배찌,Super Bazzi,,translated,1
+슈퍼 수,Super Su,,translated,1
+슈퍼우니,Super Uni,,translated,1
 스 킬,Kỹ  năng,,translated,1
 스멀스멀,Hic hic hic,,reused,1
 스캐닝 중,Đang Scaning,,reused,1
+스킬을 써보자,Thử dùng kỹ năng,,translated,1
 스타 확성기,Loa ngôi sao,,translated,1
 스타벚꽃씨앗,Hạt hoa anh đào sao,,translated,1
 스테이지,Màn chơi,,translated,1
@@ -1893,12 +2225,19 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 스페셜몬스터 06-1,Quái vật đặc biệt 06-1,,translated,1
 스페셜몬스터 06-2,Quái vật đặc biệt 06-2,,translated,1
 스페셜몬스터 06-3,Quái vật đặc biệt 06-3,,translated,1
+스페이스 물풍선 만들기,Làm bom nước không gian,,translated,1
+스페이스 물풍선+,Bom nước không gian+,,translated,1
+스페이스 연결 물풍선,Bom nước liên kết không gian,,translated,1
 스프링 사용하기,Dùng Lò xo,,translated,1
 스프링10개,10 Lò xo,,translated,1
+스프링을,Lò xo,,translated,1
+승리:+3PT,Thắng: +3PT,,translated,1
 승리시에 사용할 이모션,Biểu cảm dùng khi thắng,,translated,1
+승리했다,Thắng rồi,,translated,1
 승인관리,Quản lý duyệt,,translated,1
 시        간:,Thời  gian:,,translated,1
 시  작,Bắt đầu,,translated,1
+시간,Giờ,,translated,1
 신 지 혜,신 지 혜,,translated,1
 신고거래,신고거래,,translated,1
 신고계정,신고계정,,translated,1
@@ -1911,8 +2250,15 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 신고확인,신고확인,,translated,1
 신규맵 오픈,Mở bản đồ mới,,translated,1
 신기하군,Tài thật,,reused,1
+신나는 우주정복,Chinh phục vũ trụ,,translated,1
 신났어 그리고 즐거웠어,"Vui ghê, sướng ghê",,translated,1
+신발,Giày,,translated,1
 신상품순,Theo hàng mới,,translated,1
+신호를 지켜요,Giữ đèn tín hiệu nha,,translated,1
+실드 10개를,Khiên x10,,translated,1
+실드 15개를,Khiên x15,,translated,1
+실드 3개를,Khiên x3,,translated,1
+실드 5개를,Khiên x5,,translated,1
 실드 먹기,Ăn Khiên,,translated,1
 실드 사용하기,Dùng Khiên,,translated,1
 실드는 없는거냐고릴,Không có Khiên hả goril,,translated,1
@@ -1926,9 +2272,11 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 심심해,Buồn quá,,translated,1
 싸움엔 소질이 없어,Hừm..Để xem,,reused,1
 싸움을걸다니,Dám gây chiến,,translated,1
+싸움의 달인이지,Ta là cao thủ đánh nhau đó,,translated,1
 쌀밥줘요,Ta cho gạo nè,,reused,1
 쓸모없는 놈들 죽어라,Mấy thằng vô tích sự bị sặc nước hết đi,,reused,1
 쓸모없는 마법사녀석,Tên phù thủy này vô dụng quá,,reused,1
+쓸모없는 부하들,Đám đàn em vô dụng,,translated,1
 아 놔,Không,,reused,1
 아 다행이야,Ôi may quá,,reused,1
 아 뭐야 ㅋㅋ,"Ahaa gì vậy, kha kha kha",,reused,1
@@ -1961,6 +2309,8 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 아이스 랜덤,Băng ngẫu nhiên,,translated,1
 아이템 가방,Túi đồ,,translated,1
 아이템 이동,Chuyển vật phẩm,,translated,1
+아이템거래,Trao đổi vật phẩm,,translated,1
+아이템보기,Coi vật phẩm,,translated,1
 아이템전,Đấu có vật phẩm,,translated,1
 아잉,Hứm,,translated,1
 아직 마나가 부족한가봐,Năng lượng chưa đủ,,reused,1
@@ -1980,6 +2330,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 악당 배찌,Bazzi ác,,translated,1
 악마날개,Cánh ác quỷ,,translated,1
 악마성,Lâu đài ác quỷ,,translated,1
+악세사리,Phụ kiện,,translated,1
 악어형님 누가왔나봐요,Hình như có ai đến,,reused,1
 안 병 규,안 병 규,,translated,1
 안 현 숙,안 현 숙,,translated,1
@@ -1988,6 +2339,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 안습이에요,Trời tiếc quá!,,reused,1
 안심이네,Yên tâm rồi,,reused,1
 안움직여 ;ㅁ;,Ta bị đóng băng rùi,,reused,1
+알 수 없는 길드,Hội không rõ,,translated,1
 알겠습니다,Ta biết rồi,,reused,1
 알바구니,Giỏ trứng,,translated,1
 알수없음,Không rõ,,translated,1
@@ -2023,11 +2375,13 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 어욱 아퍼,Ui đau quá ~,,reused,1
 어이구 불쌍해라 키키킥,"Này,Đừng có sợ",,reused,1
 어이차,Trời ơi,,reused,1
+어이쿠,Ui chà,,translated,1
 어이쿠 머리야,Đau đầu quá,,reused,1
 어이쿠 혼자잖아,Còn mình ư,,reused,1
 어질어질,Choáng váng,,translated,1
 어휴 무서워,"Ui trời, sợ quá",,translated,1
 얼마안남았군,Còn chưa bao lâu nữa,,translated,1
+얼면 발로 찰 수 있음,Đứng trên băng thì đá được đó,,translated,1
 얼음 계곡-1,Thung lũng băng-1,,translated,1
 얼음 계곡-2,Thung lũng băng-2,,translated,1
 얼음 계곡-3,Thung lũng băng-3,,translated,1
@@ -2058,10 +2412,13 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 여긴 우리 무덤이지,Đây là mộ của ta,,reused,1
 여긴 위험해,Ở đây nguy hiểm lắm,,reused,1
 여긴 위험해요,Ở đây nguy hiểm đó,,reused,1
+여의주를 모아라,Gom ngọc như ý đi!,,translated,1
 역시,Quả nhiên,,translated,1
 역시 보통놈이 아니군,Quả nhiên không phải hạng thường đâu,,translated,1
+역시 예삿놈들이 아냐,Quả nhiên không phải hạng tầm thường,,translated,1
 역시 운동은 힘들어,Tập thể dục mệt lắm,,reused,1
 역시예정대로다,Quả nhiên đúng kế hoạch,,translated,1
+연 승,Chuỗi thắng,,translated,1
 연금술사 01,Giả kim thuật sư 01,,translated,1
 연금술사 02,Giả kim thuật sư 02,,translated,1
 연금술사 03,Giả kim thuật sư 03,,translated,1
@@ -2071,9 +2428,13 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 연금술사 랜덤,Giả kim thuật sư ngẫu nhiên,,translated,1
 연습이나 하고 와,Luyện tập đi rồi hãy đến đây,,reused,1
 연습하고 와,Luyện tập đi rồi hãy đến đây,,reused,1
+연습하세요,Tập đi nha,,translated,1
 연승,Chuỗi thắng,,translated,1
 연승중,Đang thắng liên tiếp,,translated,1
 연타,Liên đả,,translated,1
+열쇠 업그레이드,Nâng cấp chìa khóa,,translated,1
+열쇠 업그레이드 실패,Nâng cấp chìa khóa thất bại,,translated,1
+열쇠 업그레이드 완료,Nâng cấp chìa khóa xong,,translated,1
 열정의 승부중,Đang đấu nhiệt huyết,,translated,1
 영구,Vĩnh viễn,,translated,1
 영구제재,Cấm vĩnh viễn,,translated,1
@@ -2083,16 +2444,19 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 예쁜맵   09,Bản đồ đẹp 09,,translated,1
 예쁜맵   12,Bản đồ đẹp 12,,translated,1
 예상했어,Đoán trước rồi,,translated,1
+예선,Vòng loại,,translated,1
 옐로우 확성기,Loa vàng,,translated,1
 오 굿,Ồ ngon,,translated,1
 오 영 균,오 영 균,,translated,1
 오 원 석,오 원 석,,translated,1
+오늘 다시 보지 않기,Hôm nay không hiện lại nữa,,translated,1
 오늘 처음으로 죽었어,Hôm nay là lần đầu tui chết,,translated,1
 오늘의 맵 랜덤,Bản đồ hôm nay ngẫu nhiên,,translated,1
 오덕오덕,Hu hu hu,,reused,1
 오락실ID치장,ID trang trí Arcade,,translated,1
 오류가 발생했습니다,Đã xảy ra lỗi,,translated,1
 오면 죽음이야,Nếu đến là bị sặc nước đó nhe.,,reused,1
+오물상자,Rương bẩn,,translated,1
 오지마,Đừng tới nha,,translated,1
 오호호,Hô hô hô,,reused,1
 옹알옹알,Ú ớ ú ớ~,,translated,1
@@ -2102,15 +2466,18 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 완료순,Thứ tự hoàn thành,,translated,1
 완전 시시함 시시시시,"Chán òm luôn, chán chán chán",,translated,1
 왕왕 (기뻐하는듯),Gâu gâu (Có vẻ vui),,translated,1
+왕중왕 토너먼트,Giải đấu Vương của các Vương,,translated,1
+왕초보채널,Kênh Tân thủ,,translated,1
+외계인펫,Thú cưng người ngoài hành tinh,,translated,1
 요청날짜,Ngày yêu cầu,,translated,1
 요청에 실패했습니다,Yêu cầu thất bại,,translated,1
 용궁탐험 01,Thám hiểm Long cung 01,,translated,1
 용궁탐험 랜덤,Thám hiểm Long cung ngẫu nhiên,,translated,1
-용서못한다,Không thể tha thứ được,,reused,1
 용서못해,Không thể tha thứ được,,reused,1
 용서없다,Không thể tha thứ,,reused,1
 용서하지않는다,Tớ sẽ không tha thứ đâu,,reused,1
 우 은 미,우 은 미,,translated,1
+우가챠챠,Ugachacha,,translated,1
 우니 스티커 확성기,Loa sticker Uni,,translated,1
 우니가 이겼어 ㅎㅎ,Uni thắng rồi hihi,,translated,1
 우리,Chúng ta,,translated,1
@@ -2121,13 +2488,20 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 우리는 로봇군단,Chúng ta là binh đoàn Robot!,,reused,1
 우리도 못이기네ㅋㅋ,Thua rùi,,reused,1
 우리랑 싸우자,Đánh nhau với tụi tui đi,,translated,1
+우리를 먼저 잡아야하지,Phải bắt tụi mình trước,,translated,1
 우린 공장수비대,Chúng tôi đang canh giữ nhà máy,,reused,1
 우린 그냥 놀자능,Chúng ta chơi tiếp đi,,reused,1
 우린 늘 같이 있어,Tụi mình luôn ở cạnh nhau nha.,,translated,1
+우린 범죄자야,Tụi mình là tội phạm đó,,translated,1
 우린 부활 못해,Không thể hồi sinh rồi,,reused,1
 우린 선인장이다,Tụi tui là xương rồng nè,,translated,1
 우린 이긴다,Chúng ta thắng rồi,,reused,1
+우린 죄인이야,Tụi mình là tội nhân,,translated,1
+우린승리한다,Tụi mình sẽ thắng,,translated,1
+우릴 먼저 잡아야할거야,Phải bắt tụi này trước đi chứ,,translated,1
 우릴 버리고 가다니,Bỏ chúng ta mà đi rồi,,reused,1
+우승 상품,Phần thưởng vô địch,,translated,1
+우승자 없음,Không có người thắng,,translated,1
 우에에에에엥,U ê ê~~~~~~,,reused,1
 우우우우웁 고릴살려,"Ư ư ư ực, cứu Goril",,translated,1
 우울해졌어요…,Buồn quá rồi…,,translated,1
@@ -2153,7 +2527,10 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 움찔,Ôi trời,,reused,1
 움찔움찔,Gừ gừ gừ,,reused,1
 워터미사일,Tên lửa nước,,translated,1
+원래대로,Trở lại mặc định,,translated,1
 원수에게,Với kẻ thù,,translated,1
+원인은 보석,Nguyên nhân là đá,,translated,1
+웨딩,Đám cưới,,translated,1
 위,hạng,,translated,1
 위로 못가게 해,Đừng cho nó đi lên,,reused,1
 위장계급,Cấp bậc ngụy trang,,translated,1
@@ -2161,6 +2538,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 위험하닷,Nguy hiểm quá,,reused,1
 유 형 석,유 형 석,,translated,1
 유령 전체확성기,Loa toàn kênh hồn ma,,translated,1
+유령사냥꾼이 되어봐,Thử làm thợ săn ma đi,,translated,1
 유령은 못 막아,Không chặn được,,reused,1
 유령을 얕보지마,Đừng có xem thường tụi nó,,reused,1
 유령을 이길 수는 없지,Thua chắc rồi,,reused,1
@@ -2168,6 +2546,12 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 유령이 못 찾는건 없다,Lũ ma này ghê lắm,,reused,1
 유령한테 겁먹지마,Đừng sợ ma nha,,translated,1
 유령한테 죽은걸꺼야,Chắc chết vì ma rồi,,translated,1
+유저 정보 보기,Coi thông tin người chơi,,translated,1
+유저를 따라다님,Đi theo người chơi,,translated,1
+유저를 잘 못봐,Không thấy rõ người chơi,,translated,1
+유저마켓 오픈 예정,Chợ người chơi sắp mở,,translated,1
+유저마켓 이용중,Đang dùng Chợ người chơi,,translated,1
+유저장터 등록권,Quyền đăng bán Chợ người chơi,,translated,1
 유치하게 서방님이 뭐니,"Đặt ""Ông xã"" gì mà nghe trẻ con quá",,translated,1
 윤 세 훈,윤 세 훈,,translated,1
 윤 영 섭,윤 영 섭,,translated,1
@@ -2190,6 +2574,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 응응,Hừm,,reused,1
 의심지역 공격,Tấn công khu vực nghi ngờ,,reused,1
 이 권 일,이 권 일,,translated,1
+이 맵의,Của bản đồ này,,translated,1
 이 상 근,이 상 근,,translated,1
 이 상 희,이 상 희,,translated,1
 이 수 정,이 수 정,,translated,1
@@ -2201,10 +2586,10 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 이 창 희,이 창 희,,translated,1
 이 치욕을 잊지 않겠다,Mối nhục này ta không quên đâu,,translated,1
 이 현 준,이 현 준,,translated,1
+이건 말도 안되삼,Chuyện này vô lý quá nha,,translated,1
 이건 훼이크다 고릴고릴,Đây là đòn giả thôi goril goril,,translated,1
 이건내잘못이아닐거야,Cái này chắc không phải lỗi tui đâu,,translated,1
 이것이 로봇의 힘,Đây là sức mạnh của Robot,,reused,1
-이겼다,Thắng rồi,,reused,1
 이겼다또이겼다,Thắng rồi thắng nữa,,translated,1
 이겼을 때,Khi thắng,,translated,1
 이곳은 무덤이야,Đây là ngôi mộ áh,,reused,1
@@ -2250,7 +2635,6 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 이하 생략,Những thứ bỏ sót,,reused,1
 이해해 달라고는 안할께,Tui không bắt mi phải hiểu đâu,,translated,1
 이히힛,Hi hi hi,,reused,1
-이힛,Ihít,,translated,1
 이힛힛,Hic hic hic,,reused,1
 인간,Người,,translated,1
 인간에게 질수는 없어,Không thể thua được,,reused,1
@@ -2270,6 +2654,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 일루와여,Lại đây mau,,reused,1
 일반 확성기,Loa thường,,translated,1
 일반강화,Cường hóa thường,,translated,1
+일반난이도 도전,Thử thách độ khó thường,,translated,1
 일반모드 랜덤,Chế độ thường ngẫu nhiên,,translated,1
 일병님이 시켰어요,Mi hãy đứng yên đó~,,reused,1
 일병을 얕보지마라,Hãy đợi đấy,,reused,1
@@ -2287,10 +2672,13 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 자 이건 또 어떠냐,"Chà, cái này thì sao nhỉ",,reused,1
 자기 정보 보기,Coi thông tin của mình,,translated,1
 자기소개,Giới thiệu,,translated,1
+자기소개 보여주기,Hiện giới thiệu bản thân,,translated,1
 자기캐릭 표시,Hiện nhân vật của tôi,,translated,1
 자동,Tự động,,translated,1
 자동레디,Tự động sẵn sàng,,translated,1
 자동준비,Tự sẵn sàng,,translated,1
+자수하면 용서할꺼삼,Tự thú thì tha nha,,translated,1
+자수하삼,Tự thú đi nha,,translated,1
 자유1,Tự do 1,,translated,1
 자유10,Tự do 10,,translated,1
 자유11,Tự do 11,,translated,1
@@ -2316,12 +2704,14 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 자유7,Tự do 7,,translated,1
 자유8,Tự do 8,,translated,1
 자유9,Tự do 9,,translated,1
+자유채널,Kênh tự do,,translated,1
 자폭이나 하는 바보녀석,Thằng ngu chỉ biết tự nổ,,translated,1
 작동시작,Bắt đầu hoạt động,,reused,1
 작전 실패,Hành quân thất bại,,reused,1
 잘 막아라,Chặn cho vững nhe,,reused,1
 잘못된 접근,Truy cập không hợp lệ,,translated,1
 잘못들었겠지,Chẳng nghe gì cả,,reused,1
+잘살펴,Canh kỹ nha,,translated,1
 잠시 쉬러 갔다올께요…,Em đi nghỉ chút rồi về nha…,,translated,1
 잠시만 기다려 주세요,Vui lòng chờ chút nha,,translated,1
 잠시만 기다려주세요,Chờ chút nha,,translated,1
@@ -2333,9 +2723,12 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 장 재 화,장 재 화,,translated,1
 장군님께 못가게해,Không cho thủ lĩnh đi,,reused,1
 장군님이 알면 큰일나,Thủ lĩnh mà biết thì nguy to,,reused,1
+장난치다 혼났삼ㅠㅠ,Đùa rồi bị la nha ㅠㅠ,,translated,1
 장어,Lươn,,translated,1
 장어왕,Vua lươn,,translated,1
 장인의,Thợ thủ công,,translated,1
+장착하기,Trang bị,,translated,1
+장착해제,Tháo ra,,translated,1
 재기동,Khởi động lại,,reused,1
 재료1,Nguyên liệu 1,,translated,1
 재료2,Nguyên liệu 2,,translated,1
@@ -2343,6 +2736,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 재빠른 분노공격,Tấn công cuồng nộ nhanh nhẹn,,translated,1
 재주도 잘부려,Gọi đi nào,,reused,1
 쟤좀 말려,Cái thằng kia đừng đánh nữa,,reused,1
+저 먼저가요 흑흑,Tui đi trước nha hức hức,,translated,1
 저 선을 넘어가면,Qua đường kia,,reused,1
 저기에 있는쿠오,Kuo ở đằng kia,,translated,1
 저녀석들 숨어있군,Tụi này đang nấp đó,,translated,1
@@ -2369,7 +2763,6 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 전력을 다해 싸워주지,Tui sẽ dốc toàn lực đấu với tụi bây,,translated,1
 전설의 숲,Rừng huyền thoại,,translated,1
 전설의 파이터,Chiến binh huyền thoại,,translated,1
-전체 가격 :,Tổng giá:,,translated,1
 전체 러브 확성기,Loa toàn kênh tình yêu,,translated,1
 전체 보라 확성기,Loa toàn kênh tím,,translated,1
 전체 분홍 확성기,Loa toàn kênh hồng,,translated,1
@@ -2377,11 +2770,14 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 전체 성탄 확성기,Loa toàn kênh Giáng sinh,,translated,1
 전체 악마 확성기,Loa toàn kênh ác quỷ,,translated,1
 전체 확성기,Loa toàn kênh,,translated,1
+전체랜덤,Ngẫu nhiên toàn bộ,,translated,1
 전체랜덤으로 뽑기,Rút ngẫu nhiên toàn bộ,,translated,1
 전체무시,Bỏ qua tất cả,,translated,1
 전체화면,Toàn màn hình,,translated,1
 전투배낭,Ba lô chiến đấu,,translated,1
+점점 늘어나고 있어,Càng lúc càng nhiều rồi,,translated,1
 접속 실패,Kết nối thất bại,,translated,1
+접속10분당:+1PT,Mỗi 10 phút online: +1PT,,translated,1
 접속금지,Cấm kết nối,,translated,1
 접수거래,접수거래,,translated,1
 접수고객,접수고객,,translated,1
@@ -2400,6 +2796,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 정보이용료,Phí thông tin,,translated,1
 정신 바짝 차려야 해,Tỉnh lại đi nào,,reused,1
 정신을 차리세요,Tỉnh lại đi nào,,reused,1
+정해진 길만 다닌다,Chỉ đi đường đã định,,translated,1
 정회원,Thành viên chính thức,,translated,1
 제  작,Chế tạo,,translated,1
 제 작,Chế tạo,,translated,1
@@ -2415,12 +2812,14 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 조심하는 것이 좋아,Cẩn thận vô là hay hơn đó,,translated,1
 조심하는게좋을거야,Cẩn thận sẽ tốt hơn,,reused,1
 조심하는게좋을걸,Coi chừng thì hơn đó nha,,translated,1
+조심해야 해,Phải cẩn thận nha,,translated,1
 조심해야지,Phải cẩn thận chứ,,reused,1
 조용조용,Im lặng nào,,reused,1
 조용히 하랬잖아,Đã bảo im lặng mà,,reused,1
 조이스틱,Cần điều khiển (Joystick),,translated,1
 조이스틱 설정,Cài đặt cần điều khiển,,translated,1
 졸려,Buồn ngủ quá,,reused,1
+졸지마,Đừng ngủ gật,,translated,1
 좀 하는데,Mi cũng khá đấy,,reused,1
 좀비 01,Zombie 01,,translated,1
 좀비 02,Zombie 02,,translated,1
@@ -2430,10 +2829,13 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 좀비 06,Zombie 06,,translated,1
 좀비 랜덤,Zombie ngẫu nhiên,,translated,1
 좀비굴,Hang zombie,,translated,1
+종료연승,Kết thúc chuỗi thắng,,translated,1
 좋아,Tốt quá,,reused,1
 좋은… 승부였다…,Một trận… hay lắm…,,translated,1
 좌절금지,Không nản chí,,translated,1
+주간,Tuần,,translated,1
 주간순위,Xếp hạng tuần,,translated,1
+주겠삼,Cho đó nha,,translated,1
 주문수량이 초과했습니다,Vượt quá số lượng đặt,,translated,1
 주은정,주은정,,translated,1
 주의해서 살펴라,Chú ý đó,,reused,1
@@ -2442,7 +2844,10 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 죽여도소용없다,Dù chết cũng không ích gì,,reused,1
 죽지않지롱,Chẳng chết đâu!,,reused,1
 준,Jun,,translated,1
+준비,Chuẩn bị,,translated,1
+준우승 상품,Phần thưởng á quân,,translated,1
 중  지,Dừng,,translated,1
+중고,Đồ cũ,,translated,1
 중수 랜덤,Trung cấp ngẫu nhiên,,translated,1
 중요한임무를 맡았어요,"Này, đứng yên đó!",,reused,1
 쥬얼리샵1,Tiệm trang sức 1,,translated,1
@@ -2480,23 +2885,39 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 진짜 실력을 보여줄게,Coi thực lực thiệt nè,,translated,1
 진짜 제대로 해볼게,Để làm thiệt sự cho đàng hoàng nè,,translated,1
 진행상황,Tiến độ,,translated,1
+질문1,Câu hỏi 1,,translated,1
+질문2,Câu hỏi 2,,translated,1
+질서를 지켜요,Giữ trật tự nha,,translated,1
+질서를 지키자,Giữ trật tự nào,,translated,1
 집에 갈래 T-T,Về nhà không,,reused,1
 집이최고,Nhà là nhất,,translated,1
+집중하면 깰 수 있어,Tập trung thì phá được đó,,translated,1
 짓밟힌 바니팜,Bunny Farm bị giày xéo,,translated,1
 짓밟힌 바니팜-1,Bunny Farm bị giày xéo-1,,translated,1
 짱귀여워,Yêu nhỉ,,reused,1
+짱포인트 등급,Hạng điểm Vua,,translated,1
+짱포인트등급,Cấp Điểm Zzang,,translated,1
+짱풍선,Bong bóng Zzang,,translated,1
+짱풍선 등급,Cấp Bong bóng Zzang,,translated,1
 쪽지,Thư,,translated,1
+쪽지 보내기,Gửi thư,,translated,1
 쪽지보내기,Gửi thư,,translated,1
+쫄깃한 문어다리,Chân bạch tuộc dai giòn,,translated,1
 쫄맨의외출,Chuyến đi của Zzolman,,translated,1
 쫄지 말고 덤벼라,Đừng ngủ gật mà hãy tấn công đi,,reused,1
 찐득 찐득 광선 준비,Chuẩn bị tia Glutinous Laser,,reused,1
 찐득찐득광선 준비,Chuẩn bị tia Glutinous Laser,,reused,1
 차단리스트,Danh sách chặn,,translated,1
+차단하기,Chặn,,translated,1
+차단해제,Bỏ chặn,,translated,1
 착각하시면 안돼요,Không được bất cẩn đấy,,reused,1
 착한물개 꽃밭다지기,Chăm sóc hoa nào!!!,,reused,1
+찰수수,Cao lương nếp,,translated,1
 찰칵찰칵 찰칵찰칵,Tách tách tách tách,,translated,1
+참가기념 상품,Phần thưởng kỷ niệm tham gia,,translated,1
 참가하기,đã nhập,,translated,1
 참나,Trời đất,,translated,1
+찹쌀,Gạo nếp,,translated,1
 창모드,Chế độ cửa sổ,,translated,1
 창모드 배율,Tỉ lệ chế độ cửa sổ,,translated,1
 채널 확인,đã nhập đang vào,,translated,1
@@ -2514,10 +2935,16 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 처형이다,Trừng phạt,,reused,1
 천사날개,Cánh thiên thần,,translated,1
 천재는 외로운 법이지,Thiên tài là người rất cô đơn,,reused,1
+천천히 달려요,Chạy từ từ nha,,translated,1
+천천히 달리자,Chạy từ từ nào,,translated,1
 천하무적 고-스트,Ghost vô địch đây,,translated,1
 첫번째 뽀끼열쇠,Chìa khóa Ppoki thứ nhất,,translated,1
+청상어낚싯대,Cần câu cá mập xanh,,translated,1
+청상어릴,Cuộn dây cá mập xanh,,translated,1
+청상어찌,Phao cá mập xanh,,translated,1
 청약철회,Hủy mua,,translated,1
 체  력,Sinh  lực,,translated,1
+체력,Thể lực,,translated,1
 체력이 강하지,Thể lực mạnh nhỉ,,reused,1
 쳇쳇쳇,Hix hix hix,,reused,1
 초기화,Initialization,,reused,1
@@ -2562,7 +2989,12 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 최고레벨 보물상자,Rương kho báu cấp tối đa,,translated,1
 최근 인기도(30일),Độ phổ biến gần đây (30 ngày),,translated,1
 최근 플레이(30일),Lượt chơi gần đây (30 ngày),,translated,1
+최대데미지,Sát thương tối đa,,translated,1
+최대물줄기,Tia nước tối đa,,translated,1
+최대물풍선수,Số bom nước tối đa,,translated,1
+최대속도,Tốc độ tối đa,,translated,1
 최상급,Tối thượng,,translated,1
+최소데미지,Sát thương tối thiểu,,translated,1
 최신등록순,Mới đăng ký nhất,,translated,1
 최종접속일자,Ngày đăng nhập lần cuối,,translated,1
 최초 세이브,Lưu đầu tiên,,translated,1
@@ -2584,13 +3016,16 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 취소되었습니다,Đã hủy,,translated,1
 치명적인 에러,Lỗi nghiêm trọng,,translated,1
 치명타율,Tỉ lệ chí mạng,,translated,1
+치장 효과,Hiệu ứng trang trí,,translated,1
 치킨줘요,Ta cho thịt gà nè.,,reused,1
 친구 아이디,ID bạn bè,,translated,1
 친구기능 사용,Dùng chức năng bạn bè,,translated,1
 친구신청 거절,Từ chối kết bạn,,translated,1
 친구아이디,ID bạn bè,,translated,1
+친구추가,Thêm bạn,,translated,1
 침입자가 확실해,Kẻ xâm nhập kìa,,reused,1
 침입자를 생포했다,Thách ta xem!!!,,reused,1
+침입자를막아라,Chặn kẻ xâm nhập đi,,translated,1
 칭호달성 알림,Thông báo đạt danh hiệu,,translated,1
 카운트 3,Count 3,,reused,1
 카운트 4,Count 4,,reused,1
@@ -2654,12 +3089,18 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 쿠키 04,Bánh quy 04,,translated,1
 쿠키 05,Bánh quy 05,,translated,1
 쿠키 랜덤,Bánh quy ngẫu nhiên,,translated,1
+쿠폰샵,Siêu thị Phiếu,,translated,1
 쿠하하하,Ha ha ha,,reused,1
 쿤,Kun,,translated,1
 쿨쿨,Khò khò khò,,reused,1
+쿨쿨쿨,Khò khò khò,,translated,1
+퀘스트받는중,Đang nhận nhiệm vụ,,translated,1
+퀘스트페이지,Trang nhiệm vụ,,translated,1
 크로스붐,Crossboom,,translated,1
 크리스마스,Giáng sinh,,translated,1
 크리스마스 확성기,Loa Giáng sinh,,translated,1
+크아CD 1개,CD Boom x1,,translated,1
+크아CD 2개,CD Boom x2,,translated,1
 크아맨 모자,Nón Boom Man,,translated,1
 크아맨도 길을 모르나봐,Boom Man cũng không biết đường luôn,,translated,1
 크아맨들 너무해여,Mấy Boom Man này quá đáng quá,,translated,1
@@ -2669,6 +3110,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 크아왕1등 펫이다,Là thú cưng hạng 1 Vua Boom,,translated,1
 크아짱 표시,Hiện Boom Man,,translated,1
 크아짱 플레이하기,Chơi Boom-jjang,,translated,1
+크아컬렉션,Bộ sưu tập Boom,,translated,1
 크아히어로1,Boom Hero 1,,translated,1
 크아히어로2,Boom Hero 2,,translated,1
 크아히어로3,Boom Hero 3,,translated,1
@@ -2677,7 +3119,10 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 크케케케,Kha kha kha,,reused,1
 크크크크,Hí hí hí hí,,translated,1
 큭큭,Khư khư,,reused,1
+큰일났다 시즌5,"Nguy to rồi, Mùa 5",,translated,1
+큰일났다 시즌6,"Nguy to rồi, Mùa 6",,translated,1
 큰일이네 ㅜ_ㅜ,Chết rồi ㅜ_ㅜ,,translated,1
+큰일이다,Tiêu rồi,,translated,1
 큰코 다칠거야,Mi sẽ phải trả giá,,reused,1
 클라이언트,Máy khách,,translated,1
 클로버,Cỏ ba lá,,translated,1
@@ -2689,7 +3134,6 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 클로버 06,Cỏ ba lá 06,,translated,1
 클로버 랜덤,Cỏ ba lá ngẫu nhiên,,translated,1
 클로버맵,Bản đồ Clover,,translated,1
-킁킁,Gru Gru!,,reused,1
 킁킁킁,Hôi quá,,reused,1
 킥킥,Khíc khíc,,reused,1
 타이틀입력,Nhập tiêu đề,,translated,1
@@ -2698,10 +3142,18 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 탑가이즈,Top Guys,,translated,1
 탑걸즈,Top Girls,,translated,1
 테마명,Tên chủ đề,,translated,1
+토끼사냥꾼,Thợ săn thỏ,,translated,1
 토끼정원,Vườn thỏ,,translated,1
+토너먼트 4강 상품,Phần thưởng top 4 giải đấu,,translated,1
+토너먼트 본선진출상,Phần thưởng vào vòng chính giải đấu,,translated,1
+토너먼트 우승 상품,Phần thưởng vô địch giải đấu,,translated,1
+토너먼트 준우승 상품,Phần thưởng á quân giải đấu,,translated,1
+토너먼트 참가상,Phần thưởng tham gia giải đấu,,translated,1
+토너먼트 채널 점검 중,Kênh giải đấu đang bảo trì,,translated,1
 토닥토닥,Vỗ về vỗ về,,translated,1
 통상모드로 전환,Chuyển sang cách thức thông thường,,reused,1
 통조림 사용하기,Dùng Hộp thịt hộp,,translated,1
+통통,Mập mạp,,translated,1
 퇴근하고 빨리가야지,Tan ca rồi phải đi nhanh thôi,,translated,1
 투구,Nón,,translated,1
 투덜 투덜,Lầm bầm lầm bầm,,translated,1
@@ -2713,11 +3165,17 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 특  수  강  화,Cường  hóa  đặc  biệt,,translated,1
 특수강화,Cường hóa đặc biệt,,translated,1
 팀,Đội,,translated,1
+팀랜덤,Ngẫu nhiên đội,,translated,1
 팀전,Đội,,translated,1
 팀점유율,Tỷ lệ chiếm của team,,translated,1
 파 티  점 수:,Điểm  đội:,,translated,1
+파란하늘의무지개,Cầu vồng trên trời xanh,,translated,1
+파워다운,Hạ sức mạnh!,,translated,1
 파워업1,Tăng sức mạnh 1,,translated,1
 파워업2,Tăng sức mạnh 2,,translated,1
+판매,Bán,,translated,1
+판매루찌금액,Số VÀNG bán,,translated,1
+판매유저,Người bán,,translated,1
 팡랜드 00,Pang Land 00,,translated,1
 팡랜드 02,Pang Land 02,,translated,1
 팡랜드 03,Pang Land 03,,translated,1
@@ -2795,11 +3253,13 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 펫 가방(해님),Túi thú cưng (Mặt Trời),,translated,1
 펫샵1,Tiệm thú cưng 1,,translated,1
 펫샵2,Tiệm thú cưng 2,,translated,1
+펭귄,Chim cánh cụt,,translated,1
 펭귄 훈련소-1,Trại huấn luyện cánh cụt-1,,translated,1
 펭귄 훈련소-2,Trại huấn luyện cánh cụt-2,,translated,1
 펭귄 훈련소-3,Trại huấn luyện cánh cụt-3,,translated,1
 펭귄 훈련소-4,Trại huấn luyện cánh cụt-4,,translated,1
 펭귄 훈련소-5,Trại huấn luyện cánh cụt-5,,translated,1
+펭귄의 보석,Viên đá cánh cụt,,translated,1
 편한 말년을 보내겠군,Bụp bụp~,,reused,1
 편히 눈을 감으렴 ㅠㅠ,Hãy nhắm mắt một cách thoải mái nào!,,reused,1
 폐하 쟤네 너무 쎄여,"Bệ hạ ơi, tụi nó giỏi lắm",,reused,1
@@ -2820,12 +3280,17 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 포로로 잡아라,Bắt lấy nó!,,reused,1
 포인트 선물,Quà điểm tim,,translated,1
 포츈스타,Fortune Star,,translated,1
+폭탄 설치,Đặt bom,,translated,1
+표시방식,Kiểu hiển thị,,translated,1
 푸하,hahaha,,reused,1
 풀려나면 복수할꺼야,Thoát ra là tui trả thù đó,,translated,1
 풀려라 풀려라,Hừm hừm,,reused,1
 풉 콩콩콩,Phụt Kongkongkong,,translated,1
 프로필 보기,Coi hồ sơ,,translated,1
 프리미엄메달,Huy chương cao cấp,,translated,1
+플레이 할 맵 선택,Chọn bản đồ để chơi,,translated,1
+플레이 할 캐릭터 선택,Chọn nhân vật để chơi,,translated,1
+플레이미션,Nhiệm vụ chơi,,translated,1
 피리부는 사나이,Người thổi sáo,,translated,1
 피카에어,PikaAir,,translated,1
 피할곳이 없을거야,Hết đường rồi,,reused,1
@@ -2840,12 +3305,15 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 하나 잡았다 *_*,Bắt được một tên rồi *_*,,reused,1
 하나도 안무서워,Ta không sợ tí nào (Một chút cũng không sợ),,reused,1
 하늘 물풍선,Bom nước bầu trời,,translated,1
+하삼,Làm đi nha,,translated,1
 하수구는 위험해요,"Nguy hiểm, vũng lầy đó",,reused,1
 하수구를 조심해야해,Phải cẩn thận với cống đấy,,reused,1
 하트,Tim,,translated,1
 하트 확성기,Loa trái tim,,translated,1
 하트이모티 확성기,Loa biểu tượng trái tim,,translated,1
+하트커플링,Nhẫn đôi Tim,,translated,1
 하트포인트획득,Nhận điểm tim,,translated,1
+하하하,Hahaha,,translated,1
 한정,Giới hạn,,translated,1
 한정판매,Bán giới hạn,,translated,1
 할로윈 랜덤,Halloween ngẫu nhiên,,translated,1
@@ -2866,6 +3334,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 해야 하니 조심해^^,"đầu đó, cẩn thận nha^^",,translated,1
 해적왕,Vua hải tặc,,translated,1
 해피,Happy,,translated,1
+해피투게더,Happy Together,,translated,1
 햄스터팜,Trại hamster,,translated,1
 행쇼데이,Ngày Hạnh Phúc,,translated,1
 허 영 석,허 영 석,,translated,1
@@ -2875,12 +3344,16 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 헛둘헛둘,Một! Hai! Một! Hai!,,reused,1
 헤헤헹,Hé hé hê,,translated,1
 현관에 누가 왔어,Ai đến đấy nhỉ,,reused,1
+현금,Tiền mặt,,translated,1
 현재 길드마크,Logo hội hiện tại,,translated,1
 현재 대화에 초대하기,Mời vào cuộc trò chuyện hiện tại,,translated,1
 현재 보유 메달 :,Huy chương hiện có:,,translated,1
 현재사용분,Số phút đã dùng,,translated,1
+현재연승,Chuỗi thắng hiện tại,,translated,1
 현피 ㄱㄱ,Hừm hừm,,reused,1
+협공,Hợp sức,,translated,1
 협공 배틀 랜덤,Đấu hợp sức ngẫu nhiên,,translated,1
+협공배틀가이드,Hướng dẫn Đấu hợp sức,,translated,1
 형님들 무서워요,Các anh ơi sợ quá,,reused,1
 형님들 화나게 하지마요,Đừng làm các anh nổi giận mà,,reused,1
 형님들이 탈출해요,Các anh ơi chạy trốn đi.,,reused,1
@@ -2888,6 +3361,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 형은 못믿겠어,Anh không tin nổi,,translated,1
 호러CP보너스,Thưởng BẠC kinh dị,,translated,1
 호호,Hihi,,translated,1
+혼내 주겠삼,Cho một trận nha,,translated,1
 혼란,Hỗn loạn,,translated,1
 혼을 내주마,Đừng chửi tớ mà,,reused,1
 혼자만 살겠다고,Sẽ sống một mình,,reused,1
@@ -2897,6 +3371,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 화이트 엔젤,White Angel,,translated,1
 화이트엔젤01,White Angel01,,translated,1
 확률강화물약 사용 중,Đang dùng Thuốc tăng xác suất,,translated,1
+확성기로 외치기,Hô bằng loa,,translated,1
 확인거래,확인거래,,translated,1
 확인고객,확인고객,,translated,1
 확인관리,확인관리,,translated,1
@@ -2949,9 +3424,11 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 황제의귀환 10-3,Hoàng đế trở lại 10-3,,translated,1
 황제의귀환 랜덤,Hoàng đế trở lại ngẫu nhiên,,translated,1
 황제펭귄님의 작전이야,Kế hoạch của Hoàng đế Chim cánh cụt đó,,translated,1
+회 완료,lần hoàn thành,,translated,1
 회오리3연발공격,Lốc xoáy tấn công 3 phát liên tiếp,,translated,1
 회피,Né,,translated,1
 회피율,Tỉ lệ né,,translated,1
+회피확률,Tỉ lệ né tránh,,translated,1
 획득 시 거북이 탑승,Lượm được: cưỡi rùa,,translated,1
 획득 시 드래곤 탑승,Lượm được: cưỡi rồng,,translated,1
 획득 시 루돌프 탑승,Lượm được: cưỡi tuần lộc Rudolph,,translated,1
@@ -2965,6 +3442,7 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 획득점수,Điểm nhận được,,translated,1
 횟  수,Số lần,,translated,1
 효과음,Hiệu ứng âm thanh,,translated,1
+후우 꼬물이,Hu Kkomuri,,translated,1
 후회할거다,Sẽ hối hận,,reused,1
 후후 움직이기 힘들거야,Huhuhu sợ quá,,reused,1
 훈련부터 다시받거라,Hãy bắt đầu huấn luyện lại,,reused,1
@@ -2978,14 +3456,18 @@ x5+크아CDx5,x5+CD Boom x5,,translated,1
 휴 겨우 나왔네,Nó xuất hiện rồi,,reused,1
 휴우,Phù,,reused,1
 휴우 살았다,Hi hi sống rồi,,reused,1
+흉폭한 보스관찰,Quan sát boss hung dữ,,translated,1
+흐음,Hmm,,translated,1
 흐헐…,Hự…,,translated,1
 흐헛,Hừ hự,,translated,1
 흐흐 가만 안둘거라능,Bạn ơi ra đây đi!,,reused,1
 흑,Huhu,,reused,1
 흑…가벼렸어…,Hix..Đi mất rồi..,,reused,1
-흑흑흑,Hix hix hix,,reused,1
+흑흑 공주님 피하세요,"Hức hức, công chúa tránh đi",,translated,1
+흑흑 무서워ㅠㅠ,Huhu sợ quá ㅠㅠ,,translated,1
 흠공격법을바꿔볼까,"Hừm, thử đổi chiêu tấn công coi",,translated,1
 흠흠,Hưm hưm,,reused,1
+희망의 식수탱크,Bể nước hi vọng,,translated,1
 히든캐치 코인,Xu Hidden Catch,,translated,1
 히든캐치1,Hidden Catch 1,,translated,1
 히든캐치2,Hidden Catch 2,,translated,1
