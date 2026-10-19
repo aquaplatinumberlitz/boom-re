@@ -10,6 +10,7 @@ ghi đúng mức bằng chứng; không lấy trạng thái runtime VN làm tr�
 | [VN_DEVIRT_STATUS](VN_DEVIRT_STATUS.md) | Tra các site/patch và giới hạn RE VN |
 | [DEVIRT_METHOD](DEVIRT_METHOD.md) | Tra phương pháp điều tra khối VM |
 | [VM_METHOD](VM_METHOD.md) | Tra hạ tầng snapshot/emulation |
+| [WEB_RULES_NAMU](WEB_RULES_NAMU.md) | Luật chơi/thông số trích từ namu (item, mode, monster, EXP, map, strategy) — candidate, chưa đối chiếu build |
 
 Nghiên cứu KR chuyên sâu hiện ở `/home/admin/boomkr-re/docs/`; xem `kr.md`, `kr-content.md`,
 `kr-data.md`. Đây là repo tham chiếu ngoài worktree; không copy code hoặc coi mọi kết luận cũ đã được audit.
