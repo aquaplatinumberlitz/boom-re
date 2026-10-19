@@ -1,7 +1,7 @@
 id,vi,status,notes
 BannedByLeader, Bạn đã bị chủ phòng mời ra. Hãy tham gia phòng khác.,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 BannedBySuper, Bạn đã bị siêu chủ phòng mời ra. Hãy tham gia phòng khác.,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
-BnbNavi_BrandNewNaviTitle,Xem mục mới nhất,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+BnbNavi_BrandNewNaviTitle,Coi mục mới nhất,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 BnbNavi_DailyQuestTitle,Nhiệm vụ hằng ngày,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 BuyItem,Đã mua %s.,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 ChannelDesc0,"Ai cũng có thể vào, không giới hạn.",review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
@@ -18,7 +18,7 @@ Character06,Cảm xúc,review,strings.rs khác nghĩa KR; đề xuất bản d�
 ChatFilterGuild@ClientString,Chat hội,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 ChatFilterWhole@ClientString,Chat tất cả,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 ChiefBanned," Bạn bị mời ra do Phản mời ra.
-Có vật phẩm Siêu chủ phòng thì có thể mời ra cả người dùng có Phản mời ra. Hãy xem trong Siêu thị.",review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+Có vật phẩm Siêu chủ phòng thì có thể mời ra cả người dùng có Phản mời ra. Vô Siêu thị coi nha.",review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 ConfirmBuy,"Trước khi mua, hãy kiểm tra mô tả, thời hạn và số lượng của vật phẩm.",review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 ConfirmBuy@ClientString,Bạn có muốn mua %s?,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 ConnectingToSvr,Vui lòng chờ trong giây lát,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
@@ -45,9 +45,9 @@ CreateDlgRenewSnowBallFight,"Chỉ mở vào mùa đông!
 CreateDlgRenewSuperFighter,Đấu kỹ năng: so tài bằng chỉ số siêu cấp và dùng vật phẩm kỹ năng!,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 CreateDlgRenewZzolman,Hãy hạ gục hết đám Zzolman dễ thương đang ùa tới!,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 CreatePracticeRoomToolTip,Tự do đấu với máy,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
-ElecDisplayPreviewMsg,Xem trước bảng điện tử,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+ElecDisplayPreviewMsg,Coi trước bảng điện tử,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 ErrorBuying2, Tạm thời không dùng được một số dịch vụ của Siêu thị. Vui lòng thử lại sau.,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
-ForbiddenAuthenForOnePlayer,Nơi bạn đang chơi là quán net chưa đăng ký.,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+ForbiddenAuthenForOnePlayer,Chỗ bạn đang chơi là tiệm net chưa đăng ký.,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 GameModeFreeTooltip,Số người mỗi đội có thể khác nhau,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 GameModeMannerTooltip,Số người mỗi đội phải bằng nhau,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 GameModeRandomTooltip,Đội được chia ngẫu nhiên.,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
@@ -71,8 +71,8 @@ LowCashBalance,Không đủ XU. Hãy nạp XU trước.,review,strings.rs khác 
 LowGCoupon,Không đủ phiếu.,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 MagicBox_ButtonTooltip,Phù thuỷ sửa đồ,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 MagicBox_MarketButtonTooltip,Sàn giao dịch phép thuật,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
-MyItem,Xem túi đồ,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
-Quest,Xem nhiệm vụ,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+MyItem,Coi túi đồ,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+Quest,Coi nhiệm vụ,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 PRECOL,:,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 PREDEFAULTATTR,Chỉ số cơ bản,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 PREEA,Số lượng,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
@@ -91,8 +91,8 @@ Set01,Bộ tổng hợp,review,strings.rs khác nghĩa KR; đề xuất bản d�
 Set02,Trang trí nhân vật,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 Set03,Trang trí ô,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 Set04,Bộ hỗn hợp,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
-ShowAllRoomToolTip,Xem các phòng đã tạo,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
-ShowWaitRoomToolTip,Xem các phòng đang chờ,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+ShowAllRoomToolTip,Coi các phòng đã tạo,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+ShowWaitRoomToolTip,Coi các phòng đang chờ,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 Slot00,Nền,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 Slot01,Cờ,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 Slot02,Đạo cụ,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
@@ -104,7 +104,7 @@ Special00,Trang chính,review,strings.rs khác nghĩa KR; đề xuất bản d�
 Special01,Mới,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 Special02,Đề cử,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 Special03,Gacha,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
-Special04,Quán net,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+Special04,Tiệm net,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 Special05,Tìm kiếm,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 Special06,Sự kiện,review,strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 SpecialLoginToolTip,"Sự kiện quà ngoan

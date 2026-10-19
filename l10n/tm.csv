@@ -13,13 +13,13 @@ ko,vi,status,notes
       보이지 않도록 합니다.,      đã chỉ định.,translated,
       상태 전환,      ở màn hình chuẩn bị,translated,
       입력된 방번호의 게임 방에 ,      Vào phòng game có số phòng ,translated,
-      입력된 방번호의 게임 방에 대한,      Xem thông tin phòng game có,translated,
+      입력된 방번호의 게임 방에 대한,      Coi thông tin phòng game có,translated,
       입력된 아이디로 귓속말,      Thì thầm với ID đã nhập,translated,
-      입력된 아이디의 유저가 접속한 ,      Xem kênh mà người dùng có ID ,translated,
+      입력된 아이디의 유저가 접속한 ,      Coi kênh mà người chơi có ID ,translated,
       입력된 아이디의 유저를 ,      Đuổi người dùng có ID đã nhập ,translated,
       입력된 아이디의 유저를 자기 ,      Mời người dùng có ID đã nhập ,translated,
-      입력된 아이디의 정보 보기,      Xem thông tin của ID đã nhập,translated,
-      자기 정보 보기,      Xem thông tin của mình,translated,
+      입력된 아이디의 정보 보기,      Coi thông tin của ID đã nhập,translated,
+      자기 정보 보기,      Coi thông tin của mình,translated,
       자동 레디가 꺼진다.,      tắt tự động sẵn sàng.,translated,
       자동레디,      Tự động sẵn sàng,translated,
       전체 귓속말 무시를 해제합니다.,      Tắt chế độ bỏ qua thì thầm.,translated,
@@ -58,7 +58,7 @@ ko,vi,status,notes
   4             4번 아이템 사용,  4             Dùng vật phẩm số 4,translated,
   5             5번 아이템 사용,  5             Dùng vật phẩm số 5,translated,
   6             6번 아이템 사용,  6             Dùng vật phẩm số 6,translated,
-  F1 도움말 보기,  F1 Xem trợ giúp,translated,
+  F1 도움말 보기,  F1 Coi trợ giúp,translated,
   F10 게임옵션 설정,  F10 Tùy chọn game,translated,
   F2 게임 중 아이디 보여주기 On/Off,  F2 Hiện ID trong trận On/Off,translated,
   F3 게임 중 자기 캐릭터 표시 On/Off,  F3 Đánh dấu nhân vật của mình trong trận On/Off,translated,
@@ -98,8 +98,12 @@ ko,vi,status,notes
 " 10000 루찌 이상을 입력해야 교환이 가능합니다.
 "," Phải nhập từ 10000 VÀNG trở lên mới trao đổi được.
 ",translated,
+ 1:1 대결에서는 유저를 퇴장시킬 수 없습니다.,Không thể mời người chơi ra trong đấu 1:1.,translated,
 " 강퇴 반사에 의해 %s님을 퇴장시킵니다.
 "," Do Phản mời ra nên %s bị mời ra.
+",translated,
+" 과반수 이상이 동의하지않아 %s님을 퇴장시키지 않았습니다.
+"," Quá nửa người không đồng ý nên chưa mời %s ra.
 ",translated,
 " 과반수의 동의로 %s님을 퇴장시킵니다.
 "," Quá nửa số người đồng ý nên %s bị mời ra.
@@ -108,11 +112,20 @@ ko,vi,status,notes
 "," Đã đồng ý trao đổi nhưng đang có người khác trao đổi nên không vô phòng trao đổi chung được.
 ",translated,
  네트웍 환경이 불안정하여 게임에서 퇴장당했습니다.잠시 후에 다시 시도해 보세요., Mạng không ổn định nên bạn bị thoát khỏi game. Lát nữa thử lại nha.,translated,
+" 다른 사람이 하는 귓속말을 들을 수 있는 상태입니다.
+"," Đang ở trạng thái nghe được thì thầm của người khác.
+",translated,
 " 다른 응용 프로그램과 충돌이 발생하여, 더 이상 게임을 진행할 수 없습니다.프로그램 종료 후 다시 시도해 보세요.", Bị xung đột với chương trình khác nên không chơi tiếp được. Tắt chương trình đó rồi thử lại nha.,translated,
+" 래더 등급이 달라 새로운 방을 만들 수 없습니다. 자신의 단수와 맞는 래더 채널에서 게임을 계속해 주시기 바랍니다.
+","Khác hạng Xếp hạng nên không tạo phòng mới được. Vui lòng tiếp tục chơi ở kênh Xếp hạng đúng với đẳng cấp của bạn nha.
+",translated,
+ 맵을 정할 수 없습니다. 다른 맵을 선택하세요.,Không thể chọn map. Vui lòng chọn map khác.,translated,
 " 모든 사람이 게임 준비가 되었습니다. 방장이 시작을 누르지 않으면 %d 초 후에 자동으로 퇴장합니다.
 "," Mọi người đã sẵn sàng. Nếu chủ phòng không bấm Bắt đầu thì sau %d giây sẽ tự động bị mời ra.
 ",translated,
  모든 플레이어가 준비 상태이어야 합니다., Mọi người chơi phải ở trạng thái sẵn sàng.,translated,
+ 방에 참가 할 수 없습니다.,Không thể vào phòng.,translated,
+ 방을 만들 수 없습니다. 잠시 후 다시 시도하세요.,Không thể tạo phòng. Thử lại sau nha.,translated,
  방장이 '%s'님을 퇴장시키는 것을 건의했습니다. 동의하십니까?, Chủ phòng đề nghị mời '%s' ra. Bạn đồng ý hông?,translated,
 " 방장이 짝수 개의 슬롯을 열어놓지 않으면 %d 초 후에 자동으로 퇴장합니다.
 "," Nếu chủ phòng không mở số ô chẵn thì sau %d giây sẽ tự động bị mời ra.
@@ -120,8 +133,19 @@ ko,vi,status,notes
 " 배경음 %s
 "," Nhạc nền %s
 ",translated,
+ 비어있는 방을 찾지 못했습니다. 잠시 후 다시 시도해 보세요.,Không tìm được phòng trống. Thử lại sau nha.,translated,
+ 선택한 채널에 접속할 수 없습니다.,Không thể vào kênh đã chọn.,translated,
 " 이미 다른 사람이 하는 귓속말을 무시하고 있습니다.
 "," Bạn đang bỏ qua tin nhắn thì thầm của người khác rồi.
+",translated,
+" 자기 자신을 초대할 수는 없습니다.
+","Không thể mời chính mình.
+",translated,
+" 자기 자신을 퇴장시킬 수는 없습니다.
+","Không thể mời chính mình ra.
+",translated,
+" 자기 자신의 메시지는 무시할 수 없습니다.
+"," Không thể bỏ qua tin nhắn của chính mình.
 ",translated,
 " 장시간 게임에 참여하지 않아 자동으로 퇴장합니다.
  다른 방에서 다시 게임을 즐겨주시기 바랍니다.
@@ -138,6 +162,7 @@ ko,vi,status,notes
 "," Để số ô lẻ quá lâu nên bạn tự động bị mời ra.
  Hãy vô phòng khác chơi tiếp nha.
 ",translated,
+ 지존권 유저만이 지존맵을 선택하실 수 있습니다. 지존권 유저의 혜택을 누리실 수 있는 지존권을 지금 구매하시겠습니까?,Chỉ người có Thẻ Chí Tôn mới chọn được map Chí Tôn. Mua Thẻ Chí Tôn để hưởng đặc quyền ngay bây giờ hông?,translated,
  현재 '%s'님께 교환신청을 할 수 없는 상태입니다., Hiện không gởi lời mời trao đổi tới '%s' được.,translated,
 " 현재 '%s'님은 교환중이라 교환신청을 받을 수 없습니다.
 "," '%s' đang trao đổi nên không nhận lời mời được.
@@ -153,17 +178,30 @@ ko,vi,status,notes
 %1$s님께서 탐험대 보물상자에서 %2$s %3$d일권을 획득하셨습니다!,%1$s đã nhận %2$s (%3$d ngày) từ Rương báu đội thám hiểm!,translated,
 %1$s님께서 탐험대 보물상자에서 경험치 %2$d점을 획득하셨습니다!,%1$s đã nhận %2$d điểm kinh nghiệm từ Rương báu đội thám hiểm!,translated,
 %1s 중 %2s을(를) 이미 가지고 있습니다.,Đã có %2s trong số %1s rồi.,review,thứ tự tham số %1s/%2s: kiểm lại khi định dạng
+%d 루찌,%d VÀNG,translated,
 %d개 / %d분,%d cái / %d phút,translated,
 %d개 / %d일 %d시간,%d cái / %d ngày %d giờ,translated,
 %d개 이상은 살 수 없습니다.,Không mua được quá %d cái.,translated,
 %d개 획득,Nhận được %d cái,translated,
 %d단,Bậc %d,translated,
+%d분 남음,Còn %d phút,translated,
 %d분 후에 이벤트 채널이 종료됩니다.,Kênh sự kiện sẽ kết thúc sau %d phút.,translated,
 %d분 후에 채널이 닫히게 됩니다.,Kênh sẽ đóng sau %d phút.,translated,
+%d시간 남음,Còn %d giờ,translated,
 %d시간이 경과했습니다.,Đã chơi được %d giờ.,translated,
 %d시간이 경과했습니다. 잠시 쉬었다 하시기 바랍니다.,Đã chơi được %d giờ. Hãy nghỉ ngơi một chút rồi chơi tiếp.,translated,
+%d일 남음,Còn %d ngày,translated,
+%s %d개,%s x%d,translated,
+%s %d개 (%d일),%s x%d (%d ngày),translated,
+%s %d개 (월초초기화),%s x%d (làm mới đầu tháng),translated,
+%s %d개를 받으셨습니다.,Đã nhận %s x%d.,translated,
+%s (%d일),%s (%d ngày),translated,
 %s 님 입니다!,%s!,translated,
 %s 님께 친구등록을 요청하였습니다. %s 님께서 허용하시면 등록됩니다.,Đã gởi lời mời kết bạn tới %s. %s đồng ý thì sẽ được thêm.,translated,
+"%s 님께서 '%s'를 %s 님께 선물하셨으나 아이템 가방이 가득 차 선물을 받을 수 없습니다.
+아이템 가방을 구입하시는 즉시 선물을 받으실 수 있습니다.","%s đã tặng '%s' cho %s nhưng túi đồ đầy nên không nhận được quà.
+Mua túi đồ là nhận quà ngay nha.",translated,
+%s 님이 보스킬 보너스 %d 루찌를 얻으셨습니다.,%s đã nhận thưởng hạ trùm %d VÀNG.,translated,
 "%s 중 %s을(를) 이미 가지고 있습니다.
 그래도 구매하시겠습니까?","Trong số %s, bạn đã có %s rồi.
 Vẫn muốn mua hả?",translated,
@@ -174,6 +212,8 @@ Vẫn muốn mua hả?",translated,
 của đội %s.
 Thử thách các đội
 Đấu hợp sức khác đi.",translated,
+%s' 길드가 해체되었습니다. 현재 가입한 길드가 없습니다.,Hội %s' đã được giải tán. Hiện bạn chưa tham gia hội nào.,translated,
+%s'님은 게임을 같이 할 수 없는 장소에 있습니다.,%s đang ở nơi không thể chơi chung game.,translated,
 "%s'님은 교환에 참여하실 수 없습니다.
 ","%s' không tham gia trao đổi được.
 ",translated,
@@ -190,14 +230,22 @@ Thử thách các đội
 tự chuyển sang trạng thái bảo vệ.
 Muốn gỡ bảo vệ để chơi tiếp
 thì nhập mật khẩu tài khoản Nexon nha.",translated,
+%s님께서 보물상자에서 %d루찌를 획득하셨습니다!,%s đã nhận được %d VÀNG từ rương báu!,translated,
+%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,%s đã nhận được %s x%d từ rương báu!,translated,
+%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,%s đã nhận được thẻ %s %d ngày từ rương báu!,translated,
+%s님께서 보물상자에서 %s %일권 %s개를 획득하셨습니다!,%s đã nhận được %s %일권 x%s từ rương báu!,review,"Gốc có ""%일권"" (không phải dạng %d hợp lệ), giữ nguyên; kiểm tra lại với bản gốc"
+%s님께서 보물상자에서 경험치 %d점을 획득하셨습니다!,%s đã nhận %d kinh nghiệm từ rương báu!,translated,
 %s님께서 황금상자에서 %d루찌를 획득하셨습니다!,%s đã nhận %d VÀNG từ Hộp vàng!,translated,
 %s님께서 황금상자에서 %s %d개를 획득하셨습니다!,%s đã nhận %s x%d từ Hộp vàng!,translated,
 %s님께서 황금상자에서 %s %d일권을 획득하셨습니다!,%s đã nhận %s (%d ngày) từ Hộp vàng!,translated,
 %s님께서 황금상자에서 %s %일권 %d개를 획득하셨습니다!,%s %일권,review,chuỗi gốc lỗi ('%일권' không phải placeholder hợp lệ); gợi ý: '%s đã nhận %s (%d ngày) x%d từ Hộp vàng!'
 %s님께서 황금상자에서 경험치 %d점을 획득하셨습니다!,%s đã nhận %d điểm kinh nghiệm từ Hộp vàng!,translated,
+%s님은 현재 광장에 있습니다.,%s đang ở quảng trường.,translated,
 "%s님이 슈퍼 방장에 의해 퇴장당하셨습니다.
 ","%s đã bị Siêu chủ phòng mời ra.
 ",translated,
+%s를(을) 구매하셔서 %s 아이템에 적용되었습니다.,Đã mua %s và áp dụng cho vật phẩm %s.,translated,
+%s유저가 시간의 상점에서 %s아이템을 획득하였습니다. 남은수량:%d,Người chơi %s đã nhận %s từ Siêu thị Thời gian. Còn lại: %d,translated,
 %s팀 선택<font style=bold>%s</font>,Chọn đội %s<font style=bold>%s</font>,translated,
 '%s'님이 교환신청을 하였지만 신청을 취소합니다. 교환하기 유저를 선택하여야 방 입장 및 교환이 가능합니다.,'%s' gởi lời mời trao đổi nhưng đã huỷ. Phải chọn người trao đổi mới vô phòng và trao đổi được.,translated,
 '%s'님이 방으로 초대하였지만 초대를 취소합니다. 교환하기 유저를 선택하여야 방 입장 및 교환이 가능합니다.,'%s' mời bạn vô phòng nhưng đã huỷ. Phải chọn người trao đổi mới vô phòng và trao đổi được.,translated,
@@ -211,32 +259,67 @@ thì nhập mật khẩu tài khoản Nexon nha.",translated,
 /사용자정보,/thongtin,translated,
 /자동레디,/tusansang,translated,
 10년만에 처음으로 죽은 것같아,Mười năm nay mới thấy như chết lần đầu,translated,
+10월의 서포터즈만 사용할 수 있습니다,Chỉ người hỗ trợ tháng 10 mới dùng được.,translated,
 14주년전체확성기1,Loa toàn kênh kỷ niệm 14 năm 1,translated,
 14주년확성기2,Loa kỷ niệm 14 năm 2,translated,
+15개,x15,translated,
 15주년 확성기,Loa kỷ niệm 15 năm,translated,
 16주년대형보너스맵,Bản đồ thưởng lớn kỷ niệm 16 năm,translated,
 19세 이상 분들만 입장하실 수 있는 채널입니다.,Kênh này chỉ dành cho người từ 19 tuổi trở lên.,translated,
 1P포인트+,Điểm 1P+,translated,
 1x1 물줄기. 맞으면 물풍선에 가둬짐,Tia nước 1x1. Trúng sẽ bị nhốt vào bom nước,translated,
+1분 미만 남음,Còn dưới 1 phút,translated,
 2001년 10월 16일부터 서비스를 시작한 서버로 Crazy Arcade의|첫 서버입니다.,"Máy chủ bắt đầu hoạt động từ ngày 16/10/2001,|máy chủ đầu tiên của Crazy Arcade.",translated,
+20개,x20,translated,
 2P 유저는 무한도전 채널에 입장할 수 없습니다.,Người chơi 2P không vô được kênh Thử thách vô hạn.,translated,
 2P 플레이어는 용궁탐험 맵 입장이 불가능합니다. 1P로 다시 시도해 주시기 바랍니다.,Người chơi 2P không vô được bản đồ Thám hiểm Long cung. Bạn vui lòng thử lại bằng 1P nha.,translated,
 2P 플레이어는 전설의 숲 맵 입장이 불가능합니다. 1P로 다시 시도해 주시기 바랍니다.,Người chơi 2P không vô được bản đồ Rừng huyền thoại. Bạn vui lòng thử lại bằng 1P nha.,translated,
+2P로 접속하시면 크아짱에 참여하실 수 없습니다. 1P로 접속해주세요.,Vào bằng 2P thì không tham gia được Vua Boom. Vui lòng vào bằng 1P nha.,review,"""크아짱"" dịch là Vua Boom theo quy ước 짱=Vua; xác nhận lại thuật ngữ"
 2P포인트+,Điểm 2P+,translated,
 2p유저는 래더짱에 참가 할 수 없습니다.,Người chơi 2P không tham gia Vua xếp hạng được.,translated,
 2p유저는 토너먼트에 참가 할 수 없습니다.,Người chơi 2P không tham gia giải đấu được.,translated,
 2년만에 처음으로 물풍선에 갇혔어,2 năm nay mới bị nhốt trong bom nước lần đầu,translated,
+30개,x30,translated,
 3년만에 처음으로 물풍선에 갇혔어,3 năm nay mới bị nhốt trong bom nước lần đầu,translated,
 4x1 아래쪽 물줄기. 맞으면 물풍선에 가둬짐,Tia nước 4x1 hướng xuống. Trúng sẽ bị nhốt vào bom nước,translated,
 4x1 오른쪽 물줄기. 맞으면 물풍선에 가둬짐,Tia nước 4x1 hướng phải. Trúng sẽ bị nhốt vào bom nước,translated,
 4x1 왼쪽 물줄기. 맞으면 물풍선에 가둬짐,Tia nước 4x1 hướng trái. Trúng sẽ bị nhốt vào bom nước,translated,
 4x1 위쪽 물줄기. 맞으면 물풍선에 가둬짐,Tia nước 4x1 hướng lên. Trúng sẽ bị nhốt vào bom nước,translated,
+5개,x5,translated,
+"<font color=0x5DC2FF underline=true>[%s]</font><font style=boldshade color=0x5DC2FF outline=0x002F76>완료</font>
+<font color=0x5DC2FF>내 용:%s
+진 행:%s
+보 상:%s</font>","<font color=0x5DC2FF underline=true>[%s]</font><font style=boldshade color=0x5DC2FF outline=0x002F76>Hoàn thành</font>
+<font color=0x5DC2FF>Nội dung:%s
+Tiến độ:%s
+Phần thưởng:%s</font>",translated,
+"<font color=0x5DC2FF>[%s]</font><font style=boldshade color=0x5DC2FF outline=0x002F76>완료</font>
+<font color=0x5DC2FF>내 용:%s
+진 행:%s
+보 상:%s</font>","<font color=0x5DC2FF>[%s]</font><font style=boldshade color=0x5DC2FF outline=0x002F76>Hoàn thành</font>
+<font color=0x5DC2FF>Nội dung:%s
+Tiến độ:%s
+Phần thưởng:%s</font>",translated,
 "<font color=0x6E00F6>%02d:%02d</font>
 기록 갱신에 성공!","<font color=0x6E00F6>%02d:%02d</font>
 Phá kỷ lục thành công!",translated,
 "<font color=0x6E00F6>%02d:%02d</font>
 이내에 클리어하면 보상 지급!","Hoàn thành trong
 <font color=0x6E00F6>%02d:%02d</font> là có thưởng!",translated,
+"<font style=bold color=0xFFF600 underline=true>[%s]</font><font style=boldshade color=0xFCFF00 outline=0xF60000>진행중</font>
+<font color=white>내 용:%s
+진 행:%s
+보 상:%s</font>","<font style=bold color=0xFFF600 underline=true>[%s]</font><font style=boldshade color=0xFCFF00 outline=0xF60000>Đang làm</font>
+<font color=white>Nội dung:%s
+Tiến độ:%s
+Phần thưởng:%s</font>",translated,
+"<font style=bold color=0xFFF600>[%s]</font><font style=boldshade color=0xFCFF00 outline=0xF60000>진행중</font>
+<font color=white>내 용:%s
+진 행:%s
+보 상:%s</font>","<font style=bold color=0xFFF600>[%s]</font><font style=boldshade color=0xFCFF00 outline=0xF60000>Đang làm</font>
+<font color=white>Nội dung:%s
+Tiến độ:%s
+Phần thưởng:%s</font>",translated,
 "ActionList ID ""%s"" 는 존재하지 않습니다","ActionList ID ""%s"" không tồn tại",translated,
 "ActionList=""%s""의 다음 진행을 못함","ActionList=""%s"" không thể chạy bước tiếp theo",translated,
 BnB 초보자지침서,Cẩm nang tân thủ Boom,translated,
@@ -253,9 +336,10 @@ GM비앤비,GM비앤비,translated,"danh sách tên cấm (lọc giả mạo GM)
 GM비엔비,GM비엔비,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 HAPPY SERVER - 기존서버 -,HAPPY SERVER - Máy chủ cũ -,translated,
 "JOY SERVER를 2002년 7월 30일에 DREAM SERVER로 명칭을|바꾸었습니다. 네띠앙, 다음, 벅스뮤직, 엠파스, 코리아 닷컴에서|계정을 만드신 분들은 DREAM SERVER를 이용하시기 바랍니다.","Ngày 30/7/2002, JOY SERVER đã được đổi tên thành DREAM SERVER.|Ai đã tạo tài khoản qua Netian, Daum, Bugs Music, Empas, Korea.com|vui lòng dùng DREAM SERVER.",translated,
-PC방 마케팅 :    남영욱  오석신  장원석  홍명의  손민욱,Marketing quán net :    남영욱  오석신  장원석  홍명의  손민욱,translated,credit: giữ tên người bằng chữ Hàn
-PC방 보너스 01,Thưởng quán net 01,translated,
-PC방 퀘스트,Nhiệm vụ quán net,translated,
+PC방 마케팅 :    남영욱  오석신  장원석  홍명의  손민욱,Marketing tiệm net :    남영욱  오석신  장원석  홍명의  손민욱,translated,credit: giữ tên người bằng chữ Hàn
+PC방 보너스 01,Thưởng tiệm net 01,translated,
+PC방 퀘스트,Nhiệm vụ tiệm net,translated,
+PC방에서는 2인용 모드 접속이 불가능합니다.,Ở tiệm net hổng vô chế độ 2 người được.,translated,
 QA & Creative Services(Ideas) :    김정훈  김주용  박수인  하재승  김재범,QA & Creative Services(Ideas) :    김정훈  김주용  박수인  하재승  김재범,translated,credit: giữ tên người bằng chữ Hàn
 Special Thanks to :    김학용  최진호  김동건  문대경,Special Thanks to :    김학용  최진호  김동건  문대경,translated,credit: giữ tên người bằng chữ Hàn
 X-MAS트리 확성기,Loa cây thông Noel,translated,
@@ -304,10 +388,15 @@ Không có chuyện nhân bản tiền hay vật phẩm đâu, bạn lưu ý nha
 ……고릴?,……goril?,translated,
 …오우와와..날이긴건 니가 처음이다 뽀오츈!,…Ồ oa oa.. mi là người đầu tiên thắng tui đó Pô-fortune!,translated,
 가로로 긴 맵입니다. 자유롭게 꾸며주세요. 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다. 필터 모양 버튼을 클릭하면 다양한 테마의 블록 사용 가능!,Bản đồ dài theo chiều ngang. Hãy tự do trang trí. Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên. Bấm nút hình phễu lọc để dùng khối của nhiều chủ đề!,translated,
+가맹 PC방이 아니거나 접속 장애로 인하여 게임을 정상적으로 실행할 수 없는 상태입니다.    1:1 문의하기로 문의 부탁 드립니다.,Đây không phải tiệm net liên kết hoặc do lỗi kết nối nên game hổng chạy bình thường được.    Vui lòng gởi câu hỏi qua mục Hỏi đáp 1:1 nha.,translated,
+"가방이 꽉 차서 상자를 열 수 없습니다.
+아이템 가방을 보러 가시겠습니까?","Túi đồ đầy nên không mở được hộp.
+Đi coi túi đồ hông?",translated,
 가방이 꽉 차서 상자를 열 수 없어요.,Túi đồ đầy nên không mở hộp được.,translated,
 "가방이 부족해서 알을 깰 수 없습니다.
 먼저 아이템 가방을 구매해 주세요.","Thiếu túi đồ nên không đập trứng được.
 Mua túi đồ trước đã nha.",translated,
+가소롭다. 가라,Nực cười. Đi đi.,translated,
 가장 인상 깊게 읽은 책 이름은?,Tên cuốn sách gây ấn tượng nhất với bạn là gì?,translated,
 가장 존경하는 인물은?,Người bạn kính trọng nhất là ai?,translated,
 가장 좋아하는 만화 캐릭터는?,Nhân vật hoạt hình bạn thích nhất là ai?,translated,
@@ -341,6 +430,7 @@ Quái vật Gamma nha~",translated,
 감마괴물이다아아!!,Quái vật Gamma kìaaaa!!,translated,
 감마소리에 정신이 혼미해져…@ㅁ@!,Tiếng Gamma làm đầu óc quay cuồng…@ㅁ@!,translated,
 감히 나에게 도전하는가?,Dám thách đấu ta sao?,translated,
+감히. 어딜,Dám à. Đi đâu!,translated,
 강 대 현,강 대 현,translated,"credit: tên người, giữ nguyên"
 강시 확성기,Loa cương thi,translated,
 강제탈퇴,Buộc rời đi,translated,
@@ -395,27 +485,34 @@ Quái vật Gamma nha~",translated,
 걱정마,Đừng lo,translated,
 걱정마 2초 후에 살아날테니,"Đừng lo, 2 giây nữa tui sống lại",translated,
 건물 연결로 지붕이 어색할때 사용,Dùng khi mái nhà bị lệch ở chỗ nối toà nhà,translated,
+겁나? 나를 못이길까봐? 우헤헤 콩콩,Sợ hả? Sợ thua tui hả? Uhehe Kong Kong.,translated,
 겁먹지 마. 이 정도는 봐 준거야.,Đừng sợ. Vầy là nương tay rồi đó.,translated,
 겁먹지마 당연한 결과니까,"Đừng sợ, kết quả đương nhiên mà",translated,
 게임 인원이 성사되지 않아서 로비로 나갑니다. 다시 시도해 주세요!,Không đủ người chơi nên quay về sảnh. Thử lại nha!,translated,
 게임 종료까지 보물을 지키면 승리!,Giữ báu vật tới hết game là thắng!,translated,
 게임 중간에 힌트도 놓치지 마세요!,Đừng bỏ lỡ gợi ý giữa game nha!,translated,
+게임 중에는 퀘스트를 완료할 수 없습니다.,Không thể hoàn thành nhiệm vụ khi đang chơi game.,translated,
 게임거래,게임거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 게임계정,게임계정,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 게임고객,게임고객,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 게임관리,게임관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 게임돌이,GameDoli,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
 게임문의,게임문의,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
-게임방관리,Quản lý quán net,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+게임방관리,Quản lý tiệm net,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
 게임센터,게임센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 게임시간,Thời gian chơi,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
 게임신고,게임신고,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 게임운영 :    이 충 희,Vận hành game :    이 충 희,translated,credit: giữ tên người bằng chữ Hàn
 게임운영 :    조성호  이충희  임민경  유정한,Vận hành game :    조성호  이충희  임민경  유정한,translated,credit: giữ tên người bằng chữ Hàn
 게임을 계속 해 봐~,cứ chơi tiếp nha~,translated,
+"게임을 종료하고 나가게 될 경우, 승리했던 기록이 다 삭제되고 처음부터 다시 대결해야합니다.
+그래도 나가시겠습니까?","Nếu thoát game, toàn bộ thành tích thắng sẽ bị xóa và phải đấu lại từ đầu.
+Vẫn thoát hông?",translated,
 게임을 하고 있으면 ,Cứ chơi game là cứ mỗi ,translated,
+"게임이 끝나기 전에 윈도우로 나가면 게임에서 지게 되며, 보물열쇠 보너스맵으로 이동할 수 없습니다. 나가시겠습니까?",Nếu thoát cửa sổ trước khi game kết thúc thì sẽ bị thua và không thể qua map thưởng Chìa khóa báu. Thoát hông?,translated,
 게임이 끝날때까지 기다리기가,Nếu chờ đến hết trận thấy,translated,
 게임접수,게임접수,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+게임중에는 상점을 이용하실 수 없습니다.,Không thể dùng Siêu thị khi đang chơi game.,translated,
 게임처리,게임처리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 게임확인,게임확인,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 겨우 그 정도 실력인가?,Thực lực chỉ cỡ đó thôi sao?,translated,
@@ -424,6 +521,8 @@ Quái vật Gamma nha~",translated,
 겨우 이정도인가?,Chỉ cỡ này thôi hả?,translated,
 겨울밤 물풍선,Bom nước đêm đông,translated,
 결판을 내기에는 시간이 너무 짧군.,Thời gian quá ngắn để phân thắng bại.,translated,
+경쟁자 탈락!,Đối thủ bị loại!,translated,
+경험치 %d,Kinh nghiệm %d,translated,
 경험치보너스01,Thưởng kinh nghiệm01,translated,
 경험치보너스02,Thưởng kinh nghiệm02,translated,
 경험치보너스03,Thưởng kinh nghiệm03,translated,
@@ -431,6 +530,7 @@ Quái vật Gamma nha~",translated,
 계속 구르기만 하는 돌. 상하 이동,Hòn đá chỉ lăn liên tục. Di chuyển lên/xuống,translated,
 계속 구르기만 하는 돌. 좌우 이동,Hòn đá chỉ lăn liên tục. Di chuyển trái/phải,translated,
 계속 그러고 있을꺼야?,Định cứ vậy hoài hả?,translated,
+계속 노래 불러줄께. 나에게 올래?,Tui cứ hát mãi cho nghe nha. Qua với tui hông?,translated,
 계속해서 노력하는 인디가 될께.,Indy sẽ luôn cố gắng nha.,translated,
 계정 보호 상태가 해제되었습니다.,Đã gỡ trạng thái bảo vệ tài khoản.,translated,
 계정거래,계정거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
@@ -442,6 +542,11 @@ Quái vật Gamma nha~",translated,
 계정처리,계정처리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 계정확인,계정확인,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 고객관리,고객관리,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
+고객님 카페에 20분동안 계셨네요. 감사의 마음을 담아 [허니버터실드]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,"Bạn đã ở quán cà phê 20 phút rồi nè. Gửi chút lòng cảm ơn, tui tặng [Khiên Bơ Mật Ong] nha. Chúc bạn vui vẻ!",translated,
+고객님 카페에 2시간동안 계셨네요. 감사의 마음을 담아[스프링팥빙수]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,"Bạn đã ở quán cà phê 2 tiếng rồi nè. Gửi chút lòng cảm ơn, tui tặng [Bingsu Đậu Đỏ Mùa Xuân] nha. Chúc bạn vui vẻ!",translated,
+고객님 카페에 40분동안 계셨네요. 감사의 마음을 담아[모카산삼]을 드릴게요. 맛있게 드시고 즐거운 시간되세요,"Bạn đã ở quán cà phê 40 phút rồi nè. Gửi chút lòng cảm ơn, tui tặng [Mocha Sâm] nha. Chúc bạn vui vẻ!",translated,
+고객님 카페에 4시간동안 머물러 계셨군요! 당신을 VVIP로 모십니다. 저희 매장에 자주방문 부탁드리며 감사의 마음을 담아 [센서마끼아또]를 드립니다,"Bạn đã ở quán 4 tiếng rồi! Mời bạn lên hạng VVIP. Mong bạn ghé thường xuyên, tui tặng [Macchiato Cảm Biến] nha",translated,
+고객님 카페에 60분동안 계셨네요. 감사의 마음을 담아[바늘프라푸치노]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,"Bạn đã ở quán cà phê 60 phút rồi nè. Gửi chút lòng cảm ơn, tui tặng [Frappuccino Kim] nha. Chúc bạn vui vẻ!",translated,
 고객문의,고객문의,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 고객센터,고객센터,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 고객신고,고객신고,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
@@ -455,9 +560,13 @@ Quái vật Gamma nha~",translated,
 고대의 숲-3,Rừng cổ đại-3,translated,
 고대의 숲-4,Rừng cổ đại-4,translated,
 고릴,Goril,translated,
+고릴 100전 100승 고릴님과 겨루 고릴!,"Gorilla, 100 trận 100 thắng, đấu với Gorilla đi gorilla!",translated,
 고릴 가문의 수치다 고릴고릴..,Nỗi nhục của dòng họ Goril goril goril..,translated,
+고릴 나를 선택해 너의 첫 상대가 되어줄게 고릴,"Gorilla, chọn tui đi, tui làm đối thủ đầu tiên của mày gorilla.",translated,
 고릴고릴 내일 다시 하자 꼬릴,Goril goril mai chơi lại nha kkoril,translated,
+고릴고릴! 나와 싸우자 고릴!,Gorilla gorilla! Đánh với tui đi gorilla!,translated,
 고릴고릴..분하다 고릴.. 꼬릴?,Goril goril.. tức quá goril.. kkoril?,translated,
+고릴고릴고릴 고릴고릴고릴 나는고릴,"Gorilla gorilla gorilla, tui là gorilla.",translated,
 고릴보다 못하다니 실망이군고릴고릴,"Còn thua Goril, thất vọng ghê goril goril",translated,
 고릴은 언제나 승리할꺼다 고릴고릴,Goril lúc nào cũng sẽ thắng goril goril,translated,
 고릴은 언제나 승자다,Goril lúc nào cũng thắng,translated,
@@ -519,6 +628,7 @@ Quái vật Gamma nha~",translated,
 "공동묘지의 으스스한 유령과 패트릿의 해적선이 섞여서 만들어진 연금술사 01 맵입니다.
 해적과 유령을 피해서 달아나! 옥스!!","Bản đồ Giả kim thuật sư 01, trộn từ hồn ma rùng rợn của Nghĩa địa và thuyền cướp biển của Patrit.
 Né cướp biển với hồn ma mà chạy đi! Ox!!",translated,
+공평모드에서는 대장잡기를 할 수 없습니다.,Không thể bắt đại tướng trong chế độ Công bằng.,translated,
 공포의 무덤,Lăng mộ kinh hoàng,translated,
 공포의 무덤-1,Lăng mộ kinh hoàng-1,translated,
 공포의 무덤-2,Lăng mộ kinh hoàng-2,translated,
@@ -557,9 +667,11 @@ Né cướp biển với hồn ma mà chạy đi! Ox!!",translated,
 권 현 주,권 현 주,translated,"credit: tên người, giữ nguyên"
 귀빈 전체확성기,Loa toàn kênh khách quý,translated,
 귀여운 핑키랑 대결할 준비 됐어?,Sẵn sàng đấu với Pinky dễ thương chưa?,translated,
+귀염과 깜찍한 핑키랑 대결하실분!,"Ai muốn đấu với Pinky dễ thương, xinh xắn hông!",translated,
 귀엽게 시작해볼까~,Bắt đầu thiệt dễ thương nha~,translated,
 귀찮게 하지마~,Đừng làm phiền mà~,translated,
 그래 날 이기다니..인정한다,"Được, thắng được tui.. tui công nhận",translated,
+그래 내가 바로 크아영웅전의… 최강이야,"Ừ, tui chính là mạnh nhất Anh Hùng Chiến Boom...",translated,
 그래 오늘은 헤어지고 내일 만나,"Thôi hôm nay chia tay, mai gặp nha",translated,
 그래! 이게정답이지,Đúng rồi! Vầy mới chuẩn,translated,
 "그래, 이 정도는 되야 할 맛이 나지.","Được, phải cỡ này mới đáng chơi chớ.",translated,
@@ -572,6 +684,7 @@ Né cướp biển với hồn ma mà chạy đi! Ox!!",translated,
 기    획 :    박 세 희,Thiết kế game :    박 세 희,translated,credit: giữ tên người bằng chữ Hàn
 기    획 :    이 수 정,Thiết kế game :    이 수 정,translated,credit: giữ tên người bằng chữ Hàn
 기간이 연장되었습니다.,Đã gia hạn thời gian.,translated,
+기본순,Thứ tự mặc định,translated,
 기분이 좋다 고릴고릴,Vui quá goril goril,translated,
 기뻐하지마! 아직 콩콩님은 죽지 않았어! 콩콩콩,Đừng mừng! Kongkong chưa chết đâu! Kongkongkong,translated,
 기술 지원 :    문대경  박경국  김희곤  최명관,Hỗ trợ kỹ thuật :    문대경  박경국  김희곤  최명관,translated,credit: giữ tên người bằng chữ Hàn
@@ -582,6 +695,10 @@ Né cướp biển với hồn ma mà chạy đi! Ox!!",translated,
 "긴장한 표정, 귀엽다~",Mặt căng thẳng dễ thương ghê~,translated,
 긴장했음? 눈이 떨리는거 같음,Căng thẳng hả? Mắt run run kìa,translated,
 길 끝에 도착하면 승리하는 맵 입니다. 자유롭게 꾸며보아요! 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다.,Bản đồ đến cuối đường là thắng. Hãy tự do trang trí! Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên.,translated,
+길드 가입에 실패했습니다.,Gia nhập hội thất bại.,translated,
+길드 가입을 취소 했습니다.,Đã hủy đăng ký gia nhập hội.,translated,
+길드마스터 스스로의 권한은 변경 할 수 없습니다.,Không thể thay đổi quyền của chính hội trưởng.,translated,
+길드에 받아들일 수 있는 유저 수를 초과했습니다.,Vượt quá số người chơi hội có thể nhận.,translated,
 김 경 아,김 경 아,translated,"credit: tên người, giữ nguyên"
 김 기 준,김 기 준,translated,"credit: tên người, giữ nguyên"
 김 도 겸,김 도 겸,translated,"credit: tên người, giữ nguyên"
@@ -610,6 +727,7 @@ Né cướp biển với hồn ma mà chạy đi! Ox!!",translated,
 김철수  이진욱  지준숙  이정운  이정철,김철수  이진욱  지준숙  이정운  이정철,translated,"credit: tên người, giữ nguyên"
 깜딱이야,Hết hồn,translated,
 꺄악! 나를 이겼어? 대단한데!,Á á! Thắng được tui hả? Giỏi dữ!,translated,
+꺄악! 이번엔 너콩? ,Kyaa! Lần này là mày hả Kong?,translated,
 꺄악- 산타할아버지잖아 !! ,Á á- Ông già Noel kìa!!,translated,
 꺄악~!,Á á~!,translated,
 꺄악~! 너희들 나만 쫓아 다니는 거야?,Á á~! Tụi bây cứ rượt theo tui hoài vậy?,translated,
@@ -651,32 +769,50 @@ Né cướp biển với hồn ma mà chạy đi! Ox!!",translated,
 나 눈감고 게임을 했는데..이겼네,Tui nhắm mắt chơi game.. vậy mà thắng,translated,
 나 눈감고 했는데콩!,Tui nhắm mắt chơi đó Kong!,translated,
 나 눈감고 했음..근데 이겼음? 히시시시,Tui nhắm mắt chơi.. vậy mà thắng luôn? Hì hì hì,translated,
+나 때릴꺼야?,Định đánh tui hả?,translated,
 나 봐준건데..이겨버렸네? 호호호,Tui nương tay đó.. mà thắng luôn rồi? Hô hô hô,translated,
+나 잡아바라~,Bắt tui coi~,translated,
 나 좋아하지마.,Đừng thích tui.,translated,
 나! 화났어!!,Tui! Giận rồi đó!!,translated,
 "나, 나, 나 열심히 해볼게~","Tui, tui, tui sẽ cố hết sức nha~",translated,
 나같으면 바늘을 쓰겠고릴,Là tui thì tui xài Kim rồi goril,translated,
+나같은 미인과 대결하는게..쉬운줄알아?,Đấu với một mỹ nhân như tui.. dễ lắm hả?,translated,
 나같은 여신과 게임한다는걸 영광으로 생각하렴,Được chơi với nữ thần như tui là vinh dự lắm đó,translated,
+나는 결코 죽지 않아,Tui không bao giờ chết đâu.,translated,
 나는 너를 가뒀으니 너도 나를 가둬볼래?,"Tui nhốt mi rồi, giờ mi thử nhốt tui coi?",translated,
 나는 눈감고 게임했는데 말임 피식..,"Tui nhắm mắt chơi đó nha, khịt..",translated,
 나는 눈감고 너랑 싸웠다 고릴고릴,Tui nhắm mắt đánh với mi đó goril goril,translated,
 나는 다른 상대들과는 다름 짱 쎔,"Tui khác mấy đối thủ khác nha, mạnh cực",translated,
+나는 비행몬스터야!,Tui là quái bay nè!,translated,
 나는 쉬운상대였어! 그러니 방심하지 마! 코옹..,Tui là đối thủ dễ đó! Nên đừng có chủ quan! Ko-ong..,translated,
 나는 스토커임! 너를 몰래 훔쳐볼꺼임! 찰칵찰칵,Tui là Stalker! Tui sẽ lén nhìn trộm mi! Tách tách,translated,
+나는 영웅전의 최고야. 너는 아직나와 겨룰 수 없다.,Ta là số một Anh Hùng Chiến. Mày chưa thể đấu với ta đâu.,translated,
 나는 죽지 않아..,Tui không chết đâu..,translated,
+나는 최강이다. 니가 겨룰수 있는 상대가 아니다,Ta là mạnh nhất. Mày không phải đối thủ của ta.,translated,
 나는야 코오오오오옹콩~,Tui là Ko-o-o-o-ong Kong~,translated,
 나님의 실력이 또 늘었음 짱짱맨,"Thực lực của tui lại lên nữa rồi, đỉnh của chóp",translated,
 나도 못이기면 다음은 어쩌려고 그래 포오츄운!,Thắng tui còn không nổi thì sau này tính sao đây Pô-fortu-une!,translated,
 나랑 게임을 했다는 자체가 너에게 자랑거리가 될거다,Được chơi với tui là đủ để mi khoe rồi đó,translated,
+나랑 겨루고 싶다고..? 아직 멀었다,Muốn đấu với ta hả..? Còn lâu nha.,translated,
+나랑 겨루고 싶다면 6명을 모두 이기렴..,Muốn đấu với ta thì thắng hết 6 người đi nha..,translated,
+나랑 겨루기엔 니가 너무 약하다,Mày yếu quá để đấu với tao.,translated,
 나랑 비긴 상대는 오늘 너가 처음이콩!,Hôm nay mi là người đầu tiên hoà với tui đó Kong!,translated,
 나를 가두다니!,Dám nhốt ta luôn!,translated,
 나를 가둔건 니가 처음이다..,Mi là người đầu tiên nhốt được ta..,translated,
 나를 가둔건 니가 처음이야,Mi là người đầu tiên nhốt được tui,translated,
+나를 기다렸는가,Có chờ tui hông?,translated,
 나를 기억해줘. 네 마음속의 나를,Hãy nhớ tui. Tui trong lòng mi đó,translated,
 나를 따라오삼 내가 리드할꺼임,"Theo tui nè, tui dẫn đường cho",translated,
+나를 만나다니 행운이군,Gặp được ta là may mắn đó nha.,translated,
+나를 보고 싶으면 이리로 와.,Muốn gặp tui thì qua đây nha.,translated,
 나를 보니 반갑나 보군? 호호홍!,Gặp tui vui lắm hả? Hô hô hô!,translated,
+나를 본 자는 니가 처음이야,Mày là người đầu tiên thấy ta đó.,translated,
+나를 부른자가 너냐,Mày là kẻ gọi ta hả?,translated,
+나를 선택해! 나는 준비가 되있어콩!,Chọn tui đi! Tui sẵn sàng rồi Kong!,translated,
+나를 이겨봐! 작다고 우습게 보지마,Thử thắng tui đi! Đừng coi thường vì tui nhỏ con.,translated,
 나를 이겨야 100승리포인트를 얻을 수 있었는데.. 다시하자,Phải thắng tui mới có 100 điểm chiến thắng.. chơi lại đi,translated,
 나를 이겨야 승리포인트를 얻을 수 있는데,Phải thắng tui mới có điểm chiến thắng chớ,translated,
+나를 이겨야 승리포인트를 얻을 수있어,Phải thắng tui mới nhận được điểm thắng nha.,translated,
 나를 이겨야해! 그게 니 임무다,Phải thắng tui! Đó là nhiệm vụ của mi,translated,
 나를 이기려면 100년은 더 노력해라.,Muốn thắng ta thì cố thêm 100 năm nữa đi.,translated,
 나를 이기면 엄청난 행운이 기다리고 있지!,Thắng được tui là có may mắn cực lớn đang chờ!,translated,
@@ -684,6 +820,10 @@ Né cướp biển với hồn ma mà chạy đi! Ox!!",translated,
 나를 찾아내다니 대단해~,Tìm ra được tui là giỏi lắm đó~,translated,
 나름 흥미 진진했어..,Cũng hấp dẫn đó chớ..,translated,
 나야나~ 포츈스타~!,Là tui nè~ Fortune Star~!,translated,
+나에게 덤비는건 아직 100년 이름,Muốn thách tui thì còn 100 năm nữa.,translated,
+나와 겨루겠다고? 어리석음,Muốn đấu với tui hả? Dại quá.,translated,
+나와 겨루고 싶니?,Muốn đấu với tui hông?,translated,
+나와 대결할 친구가 너구나,Vậy mày là người đấu với ta à.,translated,
 나와 비기다니,Hoà được với tui,translated,
 나와 비기다니 정말 실력이 굉장하다,Hoà được với tui là thực lực ghê gớm thiệt,translated,
 나와 비길정도면 너도 대단하구만 고릴고릴,Hoà được với tui là mi cũng ghê đó goril goril,translated,
@@ -692,6 +832,7 @@ Né cướp biển với hồn ma mà chạy đi! Ox!!",translated,
 나의 보물 제1호는?,Báu vật số 1 của bạn là gì?,translated,
 나이트메어,Nightmare,translated,
 나한테 자격이 없다는 걸 알아도…,Dù biết tui không xứng đáng…,translated,
+난 그냥 지나치는게 좋을거다,Tốt nhất mày cứ đi ngang qua đi.,translated,
 난 도망갈래! 스토커 좀 잡아줘~,Tui chạy đây! Bắt Stalker giùm với~,translated,
 난 비기는거 질색인데..,Tui ghét hoà lắm..,translated,
 난 비기는걸 싫어한다구..,Tui ghét hoà lắm đó..,translated,
@@ -722,8 +863,11 @@ Hãy mở nhân vật kế tiếp.",translated,
 남이 가진 보물은 뺏을 수도 있어요!,Báu vật của người khác cũng cướp được đó!,translated,
 내    용,Nội  dung,translated,
 내 날개가 구겨지다니..,Cánh của tui nhăn nhúm hết rồi..,translated,
+내 날개가 탐나니?,Thèm đôi cánh tui hông?,translated,
 내 별명은?,Biệt danh của bạn là gì?,translated,
+내 빛나는 날게 보이니,Thấy đôi cánh tỏa sáng của tui hông?,translated,
 내 사랑~ 도망가지마앙~,Người yêu ơi~ đừng chạy mà~,translated,
+내 스피드를 보는 순간 너는 놀라넘어지겠지,Thấy tốc độ của tui là mày sẽ giật mình té luôn đó.,translated,
 내 스피드를 보여주지콩!,Cho coi tốc độ của tui nè Kong!,translated,
 내 스피드봤어?,Thấy tốc độ của tui chưa?,translated,
 내 실력 봤니?,Thấy tài tui chưa?,translated,
@@ -733,12 +877,18 @@ Hãy mở nhân vật kế tiếp.",translated,
 내 진짜 실력을 보여주마!,Cho coi thực lực thiệt của tui nè!,translated,
 내가 깜찍하다고 실력도 깜찍한것 같애?,Thấy tui dễ thương là tưởng thực lực cũng dễ thương hả?,translated,
 내가 너에게..,Tui mà lại thua mi..,translated,
+내가 느릴것 같아고릴? 아니야 고릴,Tui chậm lắm hả gorilla? Đâu có gorilla.,translated,
+내가 니 상대라고 생각하느냐 웃기지마라,Mày tưởng mày là đối thủ của tao hả? Buồn cười quá.,translated,
 내가 다닌 초등학교 이름은?,Tên trường tiểu học bạn từng học là gì?,translated,
 내가 물풍선에..,Tui mà bị nhốt trong bom nước..,translated,
+내가 바로 최강이다,Tui chính là mạnh nhất đó.,translated,
 내가 봐준거야 !! 그거 잊으면 안됨,Tui nương tay đó!! Đừng có quên nha,translated,
 내가 봐준거야 알고있음?,"Tui nương tay đó, biết hông?",translated,
+내가 쉬운 상대라고 생각하진 마콩!,Đừng nghĩ tui là đối thủ dễ nha Kong!,translated,
+내가 얼마나 고고한지 아니?,Mày có biết tui cao quý cỡ nào hông?,translated,
 내가 얼마나 대단한지 보여줄게,Để tui cho mi thấy tui ghê cỡ nào,translated,
 내가 얼마나 빠른지알아?,Biết tui nhanh cỡ nào hông?,translated,
+내가 왔다.,Tui tới rồi.,translated,
 내가 이 곳까지 찾아온 보람이 없잖아?,Ta tới tận đây mà chẳng bõ công chút nào?,translated,
 내가 이 맵만 13년을 했어,Tui chơi riêng bản đồ này 13 năm rồi,translated,
 내가 이긴거야 벌써 콩?,"Tui thắng rồi hả, nhanh vậy Kong?",translated,
@@ -746,9 +896,11 @@ Hãy mở nhân vật kế tiếp.",translated,
 내가 이쁘다고 긴장하지마,Đừng hồi hộp vì tui đẹp nha,translated,
 내가 인정한다 너,Tui công nhận mi đó,translated,
 내가 죽은건 크아 역사상 처음이야..,Tui chết là lần đầu tiên trong lịch sử Boom đó..,translated,
+내가 크아 서열 1위 스토커님임,Tui là Stalker số 1 của Boom nè.,translated,
 내가 크아만 10년을 했지,Tui chơi Boom 10 năm rồi đó,translated,
 내가..내가.. 꼬릴,Tui.. tui.. kkoril,translated,
 내가오늘은 봐준거야!,Hôm nay tui nương tay đó!,translated,
+내용 : %s,Nội dung: %s,translated,
 내일 다시 나를 선택해!  너를 기다릴꺼야! 코옹..,Mai chọn tui nữa nha! Tui chờ mi đó! Ko-ong..,translated,
 내일 다시 하자 !! 오늘 밤새 연습할꺼임,Mai chơi lại!! Tối nay tui tập suốt đêm luôn,translated,
 내일 다시 할래? 오늘 다시 할까콩?,Mai chơi lại hông? Hay chơi lại bây giờ luôn Kong?,translated,
@@ -758,30 +910,44 @@ Hãy mở nhân vật kế tiếp.",translated,
 내일 또올꺼니?,Mai tới nữa hông?,translated,
 내일 보자! 내일 안오기만해봐! 코옹..,Mai gặp nha! Mai mà hổng tới là biết tay! Ko-ong..,translated,
 내일또 이겨줄게 고릴고릴,Mai tui thắng tiếp cho coi goril goril,translated,
+내일와라 오늘은 너랑 상대하고 싶지않아,"Mai quay lại đi, hôm nay tui hông muốn đấu với mày.",translated,
 내일은 제대로 해주겠다 고릴고릴,Mai tui chơi thiệt cho coi goril goril,translated,
 너 너무 쉽잖아.. 시시해,Mi dễ quá à.. chán ghê,translated,
 너 대단하다. 어디 길드원이냐?,Mi giỏi thiệt. Ở hội nào vậy?,translated,
 너 래더 자주하냐?..나와 비기다니,Mi hay chơi Xếp hạng hả?.. hoà được với tui luôn,translated,
 너 랭킹이 어떻게 되냐?,Mi xếp hạng bao nhiêu vậy?,translated,
+너 어제 왔던 그 애 아니니?,Mày là đứa hôm qua tới đúng hông?,translated,
+너 정도는 내가 그냥고릴 이겨주지 고릴,Mày thì tui thắng dễ dàng gorilla.,translated,
+너? 어제도 왔던애 아니냐? 포츈포츈,Mày? Hôm qua cũng tới đúng hông? Fortune fortune.,translated,
 너나 조용하삼!,Mi im giùm đi!,translated,
 너는 날 이기지 못 할 거같은데?,Tui thấy mi hổng thắng tui nổi đâu?,translated,
 너는 마음이 돌아오는대로 나에게 오길 바래.,Khi nào lòng mi quay lại thì tới với tui nha.,translated,
 너는 상상하지도 못할 내 실력..,Thực lực của tui mi tưởng tượng cũng không ra..,translated,
 너는 전설을 이긴거다.,Mi đã thắng một huyền thoại.,translated,
+너랑 싸울 생각을 하니 어제부터 잠이 안오더콩! ,Nghĩ tới đánh với mày mà từ hôm qua tui mất ngủ luôn Kong!,translated,
 너무 겁먹지 말아라. 살살 해줄 테니.,Đừng sợ quá. Ta đánh nhẹ thôi.,translated,
+너무 많은 선물상자 치장아이템을 가지고 있어서 더 이상 상자를 열 수 없습니다.,Đang có quá nhiều vật phẩm trang trí hộp quà nên không mở thêm hộp được.,translated,
+"너무 많은 아이템을 소지하고 있습니다.
+[예]를 누르면 해당 아이템을 받지 않고 미션을 완료할 수 있습니다.
+[아니오]를 누르면 이전 화면으로 돌아갑니다.","Đang có quá nhiều vật phẩm.
+Bấm [Có] để hoàn thành nhiệm vụ mà không nhận vật phẩm đó.
+Bấm [Không] để quay lại màn hình trước.",translated,
 너무 쉽다! 너무콩!,Dễ quá! Dễ quá trời Kong!,translated,
 너무 시시했어,Chán phèo,translated,
 너무 약해서 웃음이 날 지경이다.,Yếu tới mức muốn bật cười.,translated,
 너무해! 나를 이렇게 가두다니!,Quá đáng! Nhốt tui như vầy!,translated,
+너와의 좋은 승부를 기대하겠음,Tui mong trận đấu hay với bạn.,translated,
 너희가 크아맨? 아직 부족해 보이는군.,Tụi bây là Boom Man hả? Coi bộ còn non lắm.,translated,
 너희들의 실력이 궁금하구나.,Ta tò mò thực lực của tụi bây đó.,translated,
 넌 날 물풍선에 가둔거야?,Mi nhốt tui trong bom nước hả?,translated,
 넌 모를거야. 내가 얼마나 힘든지,Mi đâu biết. Tui cực khổ cỡ nào,translated,
+넌 아직 안돼..,Mày chưa được đâu..,translated,
 넌 안죽어. 내가 지켜 줄께,Mi không chết đâu. Tui sẽ bảo vệ mi,translated,
 넌 진짜.. 최고다,Mi đúng là.. đỉnh nhất,translated,
 "널 잡으러 뛰어다녔더니, 날개가 아파..",Chạy theo bắt mi muốn rã cánh luôn..,translated,
 네가너무좋아!,Thích bạn quá đi!,translated,
 네트웍 오류로 인해 게임을 진행할 수 없습니다. 잠시 후 다시 시도해 보세요.,Lỗi mạng nên không chơi tiếp được. Lát nữa thử lại nha.,translated,
+넥슨 보안 모듈과의 통신에 실패하여 게임을 종료합니다.(errorcode=1),Kết nối với module bảo mật Nexon thất bại nên game sẽ thoát.(errorcode=1),translated,
 넥슨 캐시는 루찌로 교환이 불가능합니다. 사기에 주의하세요.,XU không thể đổi thành VÀNG. Hãy cẩn thận lừa đảo.,translated,
 넥슨id 비밀번호,Mật khẩu tài khoản Nexon,translated,
 넥슨아이디 비밀번호가 맞지 않습니다.,Mật khẩu tài khoản Nexon không đúng.,translated,
@@ -797,6 +963,7 @@ Hãy mở nhân vật kế tiếp.",translated,
 놀라지마,Đừng có giật mình,translated,
 놀랍군!,Bất ngờ đó!,translated,
 누가 보물을 가졌는지 찾아보세요!,Tìm coi ai đang giữ báu vật!,translated,
+누구 마음대로 안와. 어서 내게로 와,Ai cho không qua. Mau qua với tui đi.,translated,
 누구냐!,Ai đó!,translated,
 누군가 보물을 뺏었습니다!,Có người cướp báu vật rồi!,translated,
 누군가 보물을 획득했습니다!,Có người lấy được báu vật rồi!,translated,
@@ -812,13 +979,16 @@ Hãy mở nhân vật kế tiếp.",translated,
 니 소원이 뭔데? 나와 함께 춤출래?,Ước nguyện của mi là gì? Nhảy với tui hông?,translated,
 니 아이디 내가 기억한다,Tui nhớ ID của mi rồi đó,translated,
 니가 크아 랭킹 1위는..아니냐?,Mi là hạng 1 Boom.. phải hông?,translated,
+니가..내 상대가..될것 같아?,Mày nghĩ mày làm đối thủ của ta được hông?,translated,
 니나 니나뇨~♪ 꿍떡쿵~♪,Ni na ni nô~♪ Thình thịch~♪,translated,
+님께서 2인용 접속이므로 좀비맵을 시작할 수 없습니다,Vì bạn đang vào chế độ 2 người nên không bắt đầu map Zombie được.,review,"Dòng gốc thiếu chủ ngữ/placeholder trước ""님께서""; kiểm tra lại"
 님을 메신저에 추가하시겠습니까?,Thêm người này vô danh sách bạn bè hông?,translated,
 다 너 때문에… 너 때문이야.,Tại mi hết… tại mi đó.,translated,
 다른 사람은 모르는 나만의 신체비밀은?,Bí mật cơ thể chỉ mình bạn biết là gì?,translated,
 다른 참가자를 기다리고 있습니다.,Đang chờ người chơi khác.,translated,
 다시 겨루자 이번엔 안봐줄꺼야,"Đấu lại đi, lần này hổng nương tay đâu",translated,
 다시 겨루자..이번엔 봐주지 않을래..,Đấu lại đi.. lần này hổng nương tay đâu..,translated,
+다시 생각해봐. 핑키는 너보다 한수위야,Nghĩ lại đi. Pinky cao hơn mày một bậc đó.,translated,
 다시 승부다!,Đấu lại nào!,translated,
 다시 제대로 붙자. 다시하자!,Đấu lại cho đàng hoàng. Chơi lại đi!,translated,
 다시 하자 내일. 핑키를 또 찾아와,Mai chơi lại nha. Tới tìm Pinky nữa đó,translated,
@@ -849,6 +1019,7 @@ nha ㅠㅠ",translated,
 단단 블록 사이 설치. 지나가면 물풍선에 갇힘,Đặt giữa các khối cứng. Đi qua sẽ bị nhốt vào bom nước,translated,
 단단히 마음먹으렴. 울면서 분해하지말고,Chuẩn bị tinh thần đi nha. Đừng có khóc vì tức đó,translated,
 "단지, 컨디션이 약간 안좋았던 것 뿐이야.",Chỉ là hơi mệt chút thôi.,translated,
+달아날 준비를 해야지!,Phải chuẩn bị chạy thôi!,translated,
 달의 요정이고픈 달토끼 등장~★,Thỏ mặt trăng muốn làm tiên mặt trăng xuất hiện~★,translated,
 달의 주민 달토끼이다요~★,"Thỏ mặt trăng, cư dân mặt trăng nè~★",translated,
 달콤 확성기,Loa ngọt ngào,translated,
@@ -891,7 +1062,11 @@ nha ㅠㅠ",translated,
 대난투2,Đại loạn đấu 2,translated,
 대단하구나..,Giỏi dữ ha..,translated,
 대단하다..정말 대단하단 말밖에..,Giỏi lắm.. thiệt chỉ biết nói là giỏi..,translated,
+대박 보너스다!,Thưởng lớn quá trời!,translated,
 대형 보너스 01,Thưởng lớn 01,translated,
+대화 상대 차단,Chặn người đối thoại,translated,
+"대화금지 제재 중이므로, 방 제목을 변경하실 수 없습니다.",Đang bị cấm trò chuyện nên không đổi tên phòng được.,translated,
+대회기간 중 최고연승 20승을 달성하여 대회초보채널에 입장할 수 없습니다. 연승대회자유 채널에서 진행해주시길 바랍니다,"Trong thời gian giải, bạn đã đạt chuỗi thắng cao nhất 20 trận nên không vào được kênh Giải Tân Binh. Vui lòng chơi ở kênh Giải Chuỗi Thắng Tự Do nha.",translated,
 댄싱스테이지깃발 %d%% 완성!,Cờ sân khấu nhảy hoàn thành %d%%!,translated,
 댄싱스테이지명찰 %d%% 완성!,Bảng tên sân khấu nhảy hoàn thành %d%%!,translated,
 댄싱스테이지배경 %d%% 완성!,Phông nền sân khấu nhảy hoàn thành %d%%!,translated,
@@ -900,6 +1075,8 @@ nha ㅠㅠ",translated,
 댕댕이 확성기,Loa cún cưng,translated,
 더 강한 상대가 필요해.,Ta cần đối thủ mạnh hơn.,translated,
 더 반항해 봐라.,Chống cự thêm coi.,translated,
+더 실력을 쌓고 와라,Rèn thêm kỹ năng rồi quay lại.,translated,
+더 싸우고 실력을 키워와라. 애송아,Đánh thêm rồi nâng kỹ năng lên đi. Nhóc à.,translated,
 더 열심히 하는 인디가 될테니 너도 힘내,"Indy sẽ cố gắng hơn nữa, mi cũng cố lên nha",translated,
 더욱 수련 하도록...,Ráng tu luyện thêm đi...,translated,
 더욱 수련에 정진하고 와라.,Về tu luyện thêm đi rồi tới.,translated,
@@ -915,10 +1092,13 @@ nha ㅠㅠ",translated,
 데저트 랜덤,Sa mạc ngẫu nhiên,translated,
 도전 시작!~,Bắt đầu thử thách!~,translated,
 도전하는 것만으로도 칭찬해 주지.,Dám thách đấu thôi cũng đáng khen rồi.,translated,
+드디어 나왔다,Cuối cùng cũng ra rồi.,translated,
+드디어 어둠에서 나왔다,Cuối cùng cũng ra khỏi bóng tối rồi.,translated,
 들켰다!,Bị phát hiện rồi!,translated,
 디 자 인 :    김 정 현,Đồ hoạ :    김 정 현,translated,credit: giữ tên người bằng chữ Hàn
 디자이너 :    노 혜 진,Hoạ sĩ :    노 혜 진,translated,credit: giữ tên người bằng chữ Hàn
 디자인 파트장 :    신 지 혜,Trưởng bộ phận đồ hoạ :    신 지 혜,translated,credit: giữ tên người bằng chữ Hàn
+떄가 아니란다,Chưa tới lúc đâu con.,translated,
 라이벌이 생겼군.,Có đối thủ rồi đây.,translated,
 라인프렌즈 랜덤,LINE FRIENDS ngẫu nhiên,translated,
 라인프렌즈01,LINE FRIENDS01,translated,
@@ -934,6 +1114,7 @@ nha ㅠㅠ",translated,
 래더자유2,Xếp hạng - Tự do 2,translated,
 래더자유3,Xếp hạng - Tự do 3,translated,
 래더자유4,Xếp hạng - Tự do 4,translated,
+래더짱 승점이 높아서 방을 만들 수 없습니다. 래더짱 자유 채널에서 게임을 계속해 주십시오.,Điểm Vua xếp hạng cao nên không tạo phòng được. Vui lòng tiếp tục chơi ở kênh Vua xếp hạng tự do nha.,translated,
 래더짱자유1,Vua xếp hạng - Tự do 1,translated,
 래더짱자유2,Vua xếp hạng - Tự do 2,translated,
 래더짱자유3,Vua xếp hạng - Tự do 3,translated,
@@ -957,6 +1138,7 @@ nha ㅠㅠ",translated,
 레트로패트릿,Patrit Retro,translated,
 레트로팩토리,Nhà máy Retro,translated,
 레트로포레스트,Rừng Retro,translated,
+로두마니,Rodumani,translated,
 로두마니님을 이기겠다니..훗,Đòi thắng Rodumani hả.. hừ,translated,
 로두마니와 비긴건 ..니가첨이야,Hoà được với Rodumani... mi là người đầu tiên đó,translated,
 로봇대공습 01-1,Robot đại tấn công 01-1,translated,
@@ -990,6 +1172,7 @@ nha ㅠㅠ",translated,
 마늘 최대 보유랑을 초과하여 더 이상 누적되지 않습니다. 퀘스트 창을 확인하세요.,Đã vượt số tỏi tối đa nên không cộng thêm được nữa. Hãy coi cửa sổ Nhiệm vụ.,translated,
 마늘 최대보유량 초과,Vượt số tỏi tối đa,translated,
 마리 먼저 잡은 팀이 승리!!,con thỏ trước sẽ thắng!!,translated,
+마이페이지에서 확인하실 수 있습니다.*지금 바로 종료 하시겠습니까?,Có thể kiểm tra trong Trang cá nhân.*Thoát ngay bây giờ hông?,translated,
 말도안돼..말도.. 꼬릴,Vô lý.. vô lý.. kkoril,translated,
 맛있는 라볶이와 김밥 한마음 아줌마&아저씨,Cô chú quán Hanmaeum với món rabokki và kimbap ngon tuyệt,translated,
 "매너모드에서는 컴퓨터 수와 사람 수가 같아야 합니다.
@@ -1001,6 +1184,7 @@ Muốn đổi thì bấm nút Đổi thông tin phòng ở trên để chuyển 
 "메일, 메신저 등으로 파일을 받을 경우 해킹프로그램이 설치될 위험이 있으니 주의하세요.","Nhận tệp qua email, tin nhắn… có nguy cơ bị cài chương trình hack, hãy cẩn thận.",translated,
 명석환  강건우  정정수  정의정  신경식,명석환  강건우  정정수  정의정  신경식,translated,"credit: tên người, giữ nguyên"
 모두 조심해!,Mọi người cẩn thận!,translated,
+모두 축하해주세요! %s님이 선물상자에서 %s아이템을 획득하셨습니다!!,Chúc mừng mọi người! %s đã nhận được %s từ hộp quà!!,translated,
 모두 축하해주세요~! %s님이 알쏭달쏭 쾅쾅에서 %s아이템을 얻으셨습니다!,Mọi người chúc mừng đi~! %s đã nhận vật phẩm %s từ Đập trứng bí ẩn!,translated,
 모든 레어 아이템을 보유하여 더 이상 아이템 획득이 불가합니다. 아이템을 삭제하신 후 다시 시도해주세요.,Đã có đủ mọi vật phẩm hiếm nên không nhận thêm được. Xoá bớt vật phẩm rồi thử lại nha.,translated,
 모든 맵이 랜덤하게 선택됩니다.,Mọi bản đồ được chọn ngẫu nhiên.,translated,
@@ -1042,6 +1226,7 @@ Giờ thử thách <font color=0x6E00F6>kỷ lục hạng 1</font> đi!",transla
 무덤 13,Lăng mộ 13,translated,
 무덤 22,Lăng mộ 22,translated,
 무덤 랜덤,Lăng mộ ngẫu nhiên,translated,
+무료 아이템 사용의 기회를 놓치지 마세요~!,Đừng bỏ lỡ cơ hội dùng vật phẩm miễn phí nha~!,translated,
 무료고침(%d분후),Sửa miễn phí (sau %d phút),translated,
 무료바늘,Kim miễn phí,translated,
 무료바늘 10개,10 Kim miễn phí,translated,
@@ -1183,6 +1368,7 @@ Giờ thử thách <font color=0x6E00F6>kỷ lục hạng 1</font> đi!",transla
 뭐야 너 이정도였어?,"Gì vậy, mi chỉ cỡ đó thôi hả?",translated,
 뭐야 왜 자꾸 피하는거야?,"Gì vậy, sao cứ né hoài?",translated,
 뭐야!,Gì vậy!,translated,
+뭐야? 어딜 와.,Gì vậy? Qua đây làm chi.,translated,
 뭐지?,Gì vậy?,translated,
 미션 성공!,Nhiệm vụ thành công!,translated,
 미스터포츈,Mister Fortune,translated,
@@ -1208,6 +1394,7 @@ Giờ thử thách <font color=0x6E00F6>kỷ lục hạng 1</font> đi!",transla
 바니팜 랜덤,Bunny Farm ngẫu nhiên,translated,
 바니팜 맵에서 1판 승리하고,Thắng 1 trận ở bản đồ Bunny Farm,translated,
 바니팜 맵에서 게임을 3판하고,Chơi 3 trận ở bản đồ Bunny Farm,translated,
+바니팜맵 중 한가지가 랜덤하게 선택됩니다.,Một trong các map Bunny Farm sẽ được chọn ngẫu nhiên.,translated,
 "바니팜에서 토끼을 잡아서 토끼꼬리를 모으면 집에 갈수 있는 실마리가?!
 바니팜과 팡랜드가 섞여버린 매우 위험한 연금술사 06 맵입니다. 토끼를잡아라 옥스!!","Bắt thỏ ở Bunny Farm gom đuôi thỏ là có manh mối để về nhà?!
 Bản đồ Giả kim thuật sư 06 cực nguy hiểm, Bunny Farm trộn với Pang Land. Bắt thỏ đi Ox!!",translated,
@@ -1228,6 +1415,7 @@ Ráng sống sót trên hòn đảo đang có chiến tranh nha Ox!!",translated
 바닥에 까는 타일. 플레이어 이동 불가,Ô lát nền. Người chơi không đi được,translated,
 바닥에 설치. 밟으면 일시적으로 이동속도 감소,Đặt dưới nền. Giẫm lên thì tạm thời bị giảm tốc,translated,
 바닥에 설치. 압정에 물풍선 닿으면 바로 터짐,Đặt dưới nền. Bom nước chạm đinh ghim thì nổ ngay,translated,
+바로 구매,Mua ngay,translated,
 바위 언덕,Đồi đá,translated,
 바위 언덕-1,Đồi đá-1,translated,
 바위 언덕-2,Đồi đá-2,translated,
@@ -1248,6 +1436,8 @@ Ráng sống sót trên hòn đảo đang có chiến tranh nha Ox!!",translated
 반짝반짝! 보물 가진 플레이어가 반짝입니다!,Lấp lánh lấp lánh! Người giữ báu vật đang phát sáng!,translated,
 "반짝이, 소나기, 넝쿨이를 써보세요!","Xài thử Lấp lánh, Mưa rào, Dây leo đi!",translated,
 반항하지 마라. 고통은 잠깐이니까.,Đừng chống cự. Đau chút xíu thôi mà.,translated,
+받는 사람의 레벨이 높아 아이템을 선물할 수 없습니다.,Cấp của người nhận quá cao nên không tặng được vật phẩm.,translated,
+받는 사람이 가지고 있는 %s의 유효기간이 %d일을 넘어 선물할 수 없습니다.,Người nhận đang có %s với hạn sử dụng quá %d ngày nên không thể tặng.,translated,
 발 시려~,Lạnh chân quá~,translated,
 발버둥치지마,Đừng giãy giụa nữa,translated,
 밟으면 미끄러지는 설치형 바나나 껍질 1개,"1 vỏ chuối đặt được, giẫm lên sẽ trượt",translated,
@@ -1261,8 +1451,18 @@ Ráng sống sót trên hòn đảo đang có chiến tranh nha Ox!!",translated
 방아 찧을때는 리드미컬하게~♪,Giã bánh thì phải có nhịp nha~♪,translated,
 방어!,Phòng thủ!,translated,
 방에서 퇴장 당하셨습니다.,Bạn đã bị mời ra khỏi phòng.,translated,
+"방울방울 이벤트 당첨!!
+경험치 %d배!!","Trúng sự kiện Giọt Nước!!
+Kinh nghiệm x%d!!",translated,
+"방울방울 이벤트 당첨!!
+경험치 %d배/루찌 %d배!!","Trúng sự kiện Giọt Nước!!
+Kinh nghiệm x%d/VÀNG x%d!!",translated,
+"방울방울 이벤트 당첨!!
+루찌 %d배!!","Trúng sự kiện Giọt Nước!!
+VÀNG x%d!!",translated,
 방장이 필요인원수 이상의 슬롯을 열어놓지 않으면 %d 초 후에 자동으로 퇴장합니다.,Nếu chủ phòng không mở đủ số ô cần thiết thì sau %d giây sẽ tự động bị mời ra.,translated,
 방탈출 맵을 자유롭게 꾸며보아요! 모든 방을 지나 마지막 방에 도착하면 승리! 빅맵은 방향키를 통해 모든 구역에 접근 가능!,Hãy tự do trang trí bản đồ thoát khỏi phòng! Đi qua mọi phòng và tới phòng cuối là thắng! Bản đồ lớn đi tới mọi khu vực bằng phím mũi tên!,translated,
+배고파 지금은 싸우고싶지 않아!,"Đói quá, giờ tui hông muốn đánh nhau!",translated,
 배찌,Bazzi,translated,
 배찌 꽃머리핀,Kẹp tóc hoa Bazzi,translated,
 배찌 스티커 확성기,Loa sticker Bazzi,translated,
@@ -1273,12 +1473,14 @@ Ráng sống sót trên hòn đảo đang có chiến tranh nha Ox!!",translated
 범위를 넘는 값은,Giá trị vượt phạm vi,translated,
 법    무 :    김상헌  노소라  윤웅기,Pháp chế :    김상헌  노소라  윤웅기,translated,credit: giữ tên người bằng chữ Hàn
 베시시.. 얼굴에..실력까지..빠지는게 없네,Hì hì.. đẹp người.. giỏi nghề.. không thiếu thứ gì,translated,
+변경할 비밀번호가 이전 비밀번호와 동일합니다. 다시 입력해 주세요.,Mật khẩu mới trùng với mật khẩu cũ. Vui lòng nhập lại nha.,translated,
 별의 회오리,Vòng xoáy ngôi sao,translated,
 보    안 :    강병탁  김동현,Bảo mật :    강병탁  김동현,translated,credit: giữ tên người bằng chữ Hàn
 보기보다 꽤 하는 군...,Coi vậy mà cũng khá ghê...,translated,
 보기보다 꽤 하는 군…,Coi vậy mà cũng khá ghê…,translated,
 보기보다 꽤 하는구만 고릴고릴,Coi vậy mà cũng khá ghê goril goril,translated,
 보기보다는 강한상대인가? 그렇지만 인정하기싫어! ,Coi vậy mà là đối thủ mạnh hả? Mà tui hổng muốn công nhận đâu!,translated,
+보나마나 내가 이길텐데..! 꺄 코옹!,Hiển nhiên tui thắng rồi..! Kyaa Kong!,translated,
 보너스 01,Thưởng 01,translated,
 보너스 02,Thưởng 02,translated,
 보너스 03,Thưởng 03,translated,
@@ -1297,13 +1499,22 @@ Ráng sống sót trên hòn đảo đang có chiến tranh nha Ox!!",translated
 보물상자에서 경험치 %d점을 획득하셨습니다!,Nhận được %d điểm kinh nghiệm từ Rương báu!,translated,
 보물상자에서 마늘을 획득하였습니다. 퀘스트 창을 확인하세요.,Đã lấy được tỏi từ Rương báu. Hãy coi cửa sổ Nhiệm vụ.,translated,
 보물상자에서 아이템 %s %d개를 획득하셨습니다!,Nhận được vật phẩm %s x%d từ Rương báu!,translated,
+보물열쇠 수집완료!!,Đã thu thập đủ Chìa khóa báu!!,translated,
+보물은 줄 수 없다!,Không đưa kho báu được đâu!,translated,
 보물을 가진 자는 %s 님입니다!,Người giữ báu vật là %s!,translated,
 보물을 찾아서 끝까지 지키세요!,Tìm báu vật rồi giữ tới cùng nha!,translated,
 보물찾기,Truy tìm kho báu,translated,
 보물찾기 랜덤,Truy tìm kho báu ngẫu nhiên,translated,
+"보상아이템 지급에 오류가 발생했습니다.
+크아 홈페이지로 문의 바랍니다. (F)","Có lỗi khi phát vật phẩm thưởng.
+Vui lòng liên hệ trang web Boom. (F)",translated,
+"보상아이템 지급에 오류가 발생했습니다.
+크아 홈페이지로 문의 바랍니다. (N)","Có lỗi khi phát vật phẩm thưởng.
+Vui lòng liên hệ trang web Boom. (N)",translated,
 보세요. 혼자하기 어렵다면??,tấn công. Chơi một mình khó quá??,translated,
 보스 스티커 확성기,Loa sticker Boss,translated,
 보스몬스터를 잡으면 루찌가,Bắt được trùm quái vật là rớt,translated,
+보안 모듈에서 해킹툴이 감지되어 게임을 종료합니다.(errorcode=2),Module bảo mật phát hiện công cụ hack nên game sẽ thoát.(errorcode=2),translated,
 보유하고 있음,Đang có,translated,
 봐주진 않겠어콩!,Hổng nương tay đâu Kong!,translated,
 봐주진 않을께,Không nương tay đâu,translated,
@@ -1325,6 +1536,7 @@ Ráng sống sót trên hòn đảo đang có chiến tranh nha Ox!!",translated
 불라 16,Bula 16,translated,
 불라 23,Bula 23,translated,
 불라 랜덤,Bula ngẫu nhiên,translated,
+불라맵 중 한가지가 랜덤하게 선택됩니다.,Một trong các map Bula sẽ được chọn ngẫu nhiên.,translated,
 불법거래,불법거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 불의 제왕 01-1,Hoả vương 01-1,translated,
 불의 제왕 01-2,Hoả vương 01-2,translated,
@@ -1346,6 +1558,15 @@ Ráng sống sót trên hòn đảo đang có chiến tranh nha Ox!!",translated
 블랙 확성기,Loa đen,translated,
 블랙루시정원,Vườn Lucy đen,translated,
 블록 안에 있는 보물을 찾으세요!,Tìm báu vật trong các khối đi!,translated,
+블루몽 경보! 오늘은 %s 맵에서 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map %s. Coi chừng khi săn nha~,translated,
+블루몽 경보! 오늘은 거북대격돌맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Đại Chiến Rùa. Coi chừng khi săn nha~,translated,
+블루몽 경보! 오늘은 골렘대침공맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Golem Đại Xâm Lăng. Coi chừng khi săn nha~,translated,
+블루몽 경보! 오늘은 로봇대공습맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Robot Đại Tập Kích. Coi chừng khi săn nha~,translated,
+블루몽 경보! 오늘은 몬스터맵에서 블루몽이 출몰한다고 합니다. 사냥에 주의하세요~,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon sẽ xuất hiện ở map Quái vật. Coi chừng khi săn nha~,translated,
+블루몽 경보! 오늘은 문어대습격맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Bạch Tuộc Đại Tấn Công. Coi chừng khi săn nha~,translated,
+블루몽 경보! 오늘은 전설의숲맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Rừng Huyền Thoại. Coi chừng khi săn nha~,translated,
+블루몽 경보! 오늘은 황제의귀환맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Hoàng Đế Trở Về. Coi chừng khi săn nha~,translated,
+블루몽 등장!,Bluemon xuất hiện!,translated,
 블루스타 물풍선,Bom nước sao xanh,translated,
 비겨서 좋을건 없음!!,Hoà thì có gì vui đâu!!,translated,
 비기는 것은 지는 것과 같다.,Hoà cũng như thua thôi.,translated,
@@ -1371,30 +1592,37 @@ Ráng sống sót trên hòn đảo đang có chiến tranh nha Ox!!",translated
 Đại đua giữa phố! Tận hưởng tốc độ nha Ox!!",translated,
 빌링 시스템 개발 :    연보흠  김창    오상윤  조승기  안용진,Phát triển hệ thống thanh toán :    연보흠  김창    오상윤  조승기  안용진,translated,credit: giữ tên người bằng chữ Hàn
 빙글빙글~,Xoay xoay~,translated,
+빛보다 밝은 내 모습을 좀 봐,Nhìn tui sáng hơn cả ánh sáng nè.,translated,
 빛보다 빠른 나는 콩콩님!,Nhanh hơn ánh sáng chính là Kongkong!,translated,
 빛보다 빠른 내 발놀림을 보라구 포츈!,Coi bước chân nhanh hơn ánh sáng của tui nè fortune!,translated,
 빛보다 빠른 내가 바로 포츈스타,Nhanh hơn ánh sáng chính là Fortune Star,translated,
+"빠른시작 퀘스트 진행 중입니다.
+게임 종료 시 포인트가 소멸됩니다. 종료하시겠습니까?","Đang làm nhiệm vụ Khởi đầu nhanh.
+Khi kết thúc game, điểm sẽ mất. Thoát hông?",translated,
 뻔하다,Biết trước rồi,translated,
 뻔한 결과야,Kết quả biết trước rồi,translated,
 뽀얀 내 얼굴에 눈물이 흐르고있어..,Nước mắt chảy dài trên gương mặt trắng hồng của tui..,translated,
+뽀오~~오추운! 그래 나야 내가 포춘스타,"Brrr~~ lạnh quá! Ừ, tui đây, Fortune Star nè.",translated,
 삘리~ 삘리~ 감마감마~♪,Tí te~ tí te~ gamma gamma~♪,translated,
 삘리~ 삘리~ 삐릴리리~♪,Tí te~ tí te~ tí tí te~♪,translated,
 삘릴리~~♪ 내가 왔다~♪,Tí te~~♪ Tui tới rồi~♪,translated,
 삘릴리리리~#,Tí te tí te~#,translated,
 삘릴리리리~♬,Tí te tí te~♬,translated,
 삘릴리리리리리~♭,Tí te tí te te~♭,translated,
+사람 수가 맞지 않아 게임을 진행할 수 없었습니다. 방에 있는 사람의 WP와 승패는 원래대로 유지됩니다.,Không đủ số người nên không tiến hành game được. WP và thắng/thua của người trong phòng sẽ giữ nguyên như cũ.,translated,
 사막 캠핑장,Khu cắm trại sa mạc,translated,
 사막 캠핑장-1,Khu cắm trại sa mạc-1,translated,
 사막 캠핑장-2,Khu cắm trại sa mạc-2,translated,
 사막 캠핑장-3,Khu cắm trại sa mạc-3,translated,
 사막 캠핑장-4,Khu cắm trại sa mạc-4,translated,
 사실 나는 발로 했음!,Thiệt ra tui chơi bằng chân đó!,translated,
+사실나는 다크히어로고릴 쎄다 고릴,"Thật ra tui là Dark Hero gorilla, mạnh lắm gorilla.",translated,
 사실은 핑키가 봐준거라구!,Thiệt ra là Pinky nương tay đó nha!,translated,
 사실은 핑키가 쪼금 봐준거야,Thiệt ra Pinky nương tay xíu xiu đó,translated,
 사심은 없다. 단지 결투를 원할 뿐.,Không có tư thù. Chỉ muốn quyết đấu thôi.,translated,
 "사용 시 마귀, 본드의 효력에서 벗어남","Khi dùng: thoát khỏi hiệu ứng của Quỷ, Keo dính",translated,
 사용 시 물풍선에 맞추면 즉시 폭발,Khi dùng: ném trúng bom nước thì nổ ngay,translated,
-사용 시 블록 안에 어떤 아이템이 있는지 감지,Khi dùng: dò xem trong khối có vật phẩm gì,translated,
+사용 시 블록 안에 어떤 아이템이 있는지 감지,Khi dùng: dò coi trong khối có vật phẩm gì,translated,
 사용 시 앞에 있는 블록 파괴,Khi dùng: phá khối phía trước,translated,
 사용 시 일시적으로 물줄기 범위를 미리 감지,Khi dùng: tạm thời dò trước phạm vi tia nước,translated,
 사용 시 일시적으로 반짝이며 스피드 상승,Khi dùng: tạm thời lấp lánh và tăng tốc,translated,
@@ -1443,6 +1671,27 @@ của Ông già Noel
 산타할아버지를 잡으면 선물을 줘요,Bắt được Ông già Noel là có quà đó,translated,
 산타할아버지를 잡으면 선물이 나와,Bắt được Ông già Noel là quà rớt ra,translated,
 살려줘 핑키!,Cứu Pinky với!,translated,
+상대를 해줄 수 없어,Không đấu với mày được.,translated,
+상대방과 같은 아이템을 상점에서 바로 구매할 수 있습니다.,Có thể mua ngay vật phẩm giống đối phương tại Siêu thị.,translated,
+상대방에게 이메일아이디가 없어서 길드마스터 권한을 이전할 수 없습니다.,Đối phương chưa có tài khoản email nên không thể chuyển quyền hội trưởng.,translated,
+"상대방에게 이미 크앤이 있습니다.
+","Đối phương đã có đôi rồi.
+",translated,
+"상대방이 크앤 신청중 이십니다. 잠시 후에 다시 해주세요.
+","Đối phương đang gửi yêu cầu Đôi. Vui lòng thử lại sau nha.
+",translated,
+상대방이 현재 광장에 있어서 커플 신청을 할 수 없습니다.,Đối phương đang ở quảng trường nên không gửi được yêu cầu đôi.,translated,
+"상자를 여는 도중 오류가 발생했습니다. 
+잠시 후 다시 시도해 주세요","Có lỗi khi mở hộp. 
+Vui lòng thử lại sau ít phút nha",translated,
+"상자를 열어보세요!
+선물이 가득가득!!","Mở hộp thử coi!
+Quà đầy ắp luôn!!",translated,
+"상자에서 선물이 나오고 있어요!
+완전 기대 중!","Quà đang ra khỏi hộp kìa!
+Hồi hộp ghê!",translated,
+상점 서버에 접속할 수 없습니다. 잠시 후에 다시 시도해 주세요.,Không kết nối được máy chủ Siêu thị. Vui lòng thử lại sau nha.,translated,
+상점에서는 퀘스트를 완료할 수 없습니다.,Không thể hoàn thành nhiệm vụ trong Siêu thị.,translated,
 상점에선 무료 바늘을 하루에 2개씩 받을 수 있습니다.,Mỗi ngày bạn nhận được 2 Kim miễn phí ở Siêu thị.,translated,
 새 알을 꺼내게 되면 깨고 있던 알은 모두 버리게 됩니다.,Lấy trứng mới ra thì mọi trứng đang đập sẽ bị bỏ hết.,translated,
 새로운 친구를 잡아줘~,Bắt bạn mới giùm với~,translated,
@@ -1478,10 +1727,16 @@ của Ông già Noel
 샤이,Shy,translated,
 서    민,서    민,translated,"credit: tên người, giữ nguyên"
 석 광 원,석 광 원,translated,"credit: tên người, giữ nguyên"
+선물,Quà,translated,
+선물 : %s,Quà: %s,translated,
 선물받기 버튼을 눌러 주세요!,Hãy bấm nút Nhận quà!,translated,
 선물받아가~ ㅊㅋㅊㅋ,Nhận quà đi nè~ chúc mừng chúc mừng,translated,
 선물상자,Hộp quà,translated,
+"선물상자가 없어요!
+왼쪽의 바로구매 버튼을 클릭!","Hết hộp quà rồi!
+Bấm nút Mua ngay bên trái nha!",translated,
 "선물은 다음 기회에, 호호호!","Quà để dịp sau nha, hô hô hô!",translated,
+선물을 달라구?,Đòi quà hả?,translated,
 선물을 받아가세요~,rồi lấy quà nha~,translated,
 선물을 받으세요. 친구들과 함,rồi nhận quà. Chơi cùng bạn,translated,
 선물을 받으세요~,rồi nhận quà nha~,translated,
@@ -1538,6 +1793,7 @@ của Ông già Noel
 수상한 난파선-2,Xác tàu bí ẩn-2,translated,
 수상한 난파선-3,Xác tàu bí ẩn-3,translated,
 수상한 난파선-4,Xác tàu bí ẩn-4,translated,
+수영도 못해?,Bơi cũng hông biết hả?,translated,
 숨기 불가. 통과 가능. 파괴 불가,Không trốn được. Đi qua được. Không phá được,translated,
 쉽다. 우헤헷 콩콩..!,Dễ ợt. Ú hê hê Kongkong..!,translated,
 쉿! 조용!,Suỵt! Im lặng!,translated,
@@ -1627,13 +1883,19 @@ của Ông già Noel
 스페셜몬스터 06-2,Quái vật đặc biệt 06-2,translated,
 스페셜몬스터 06-3,Quái vật đặc biệt 06-3,translated,
 스프링10개,10 Lò xo,translated,
+승률이 높아 더 이상 특훈에 참여하실 수 없습니다.,Tỷ lệ thắng cao nên không thể tham gia Đặc huấn nữa.,translated,
+승리포인트 획득! 확인하세요!,Nhận điểm thắng! Kiểm tra nha!,translated,
 승리포인트를 줄게.. 내가 패배를 인정한다,Tặng mi điểm chiến thắng.. tui chịu thua,translated,
 승부는 다음으로 미뤄야겠다.,Để lần sau phân thắng bại.,translated,
+"시간 지연 / 미션 만료가 되었습니다.
+크아미션을 다시 열어주시길 바랍니다.","Quá thời gian / nhiệm vụ đã hết hạn.
+Vui lòng mở lại Boom Mission nha.",translated,
 시간을 끌지마..,Đừng câu giờ nữa..,translated,
 시간이 조금만 더 있었더라도 나의 승리다.,Chỉ cần thêm chút thời gian nữa là ta thắng rồi.,translated,
 시시하당..,Chán ghê à..,translated,
 시시한데?,Chán phèo vậy?,translated,
 시야2 추격이동. 속도4. 공격 받으면 겁쟁이됨,"Tầm nhìn 2, đuổi theo. Tốc độ 4. Bị đánh thì thành nhát gan",translated,
+시원하냐?,Mát hông?,translated,
 시한 폭탄!,Bom hẹn giờ!,translated,
 신 지 혜,신 지 혜,translated,"credit: tên người, giữ nguyên"
 신고거래,신고거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
@@ -1668,13 +1930,17 @@ của Ông già Noel
 싱겁구나.,Nhạt nhẽo ghê.,translated,
 싱겁군.,Nhạt nhẽo.,translated,
 쓰지 마세요!!,đừng dùng!!,translated,
+씁! 가라,Xì! Đi đi.,translated,
 아 뭐지?,Ủa gì vậy?,translated,
 아 싫어! 나 도망갈래!,Á hổng chịu! Tui chạy đây!,translated,
 아 정신 없어,"Á, rối quá trời",translated,
+"아, 안돼!!","Ay, không được!!",translated,
 아.. 바늘을 쓰려고했는데.,A.. định xài Kim mà.,translated,
 아..내가 죽다니..,A.. tui chết rồi sao..,translated,
 아..아깝다..,A.. tiếc quá..,translated,
+아기자기한 바니팜에 토끼가 습격해 왔어요. 굴에서 튀어나오는 토끼 앞에 물풍선을 놓아 보세요. 20점을 먼저 채우는 팀이 승리!,Thỏ tấn công Bunny Farm xinh xắn rồi! Thử đặt bom nước trước những con thỏ chui ra từ hang nha. Đội nào đạt 20 điểm trước sẽ thắng!,translated,
 아놔,Trời ơi,translated,
+아니 니 옆에 나 있어,"Ơ, tui đang ở ngay bên cạnh mày nè.",translated,
 아님 아님 죽은거 아님!!!!!,"Hông phải hông phải, chưa chết đâu nha!!!!!",translated,
 아래 이동 미사일. 맞으면 물풍선에 가둬짐,Tên lửa đi xuống. Trúng sẽ bị nhốt vào bom nước,translated,
 아래 이동 컨베이어 벨트. 속도2,Băng chuyền đi xuống. Tốc độ 2,translated,
@@ -1696,6 +1962,11 @@ của Ông già Noel
 아쉽군 날 또 보지 못할텐데,"Tiếc ghê, mi sẽ hổng gặp lại tui nữa đâu",translated,
 아싸~,Hay quá~,translated,
 아앙! 살려줘!,Á á! Cứu tui!,translated,
+아얏!,Ái!,translated,
+아이고 아퍼!,Ui da đau quá!,translated,
+"아이디가 존재하지 않기 때문에 짱으로 변경할 수 없습니다.
+","Vì không có ID nên không đổi thành Vua được.
+",translated,
 아이디를 입력하세요.,Hãy nhập ID.,translated,
 아이스,Băng,translated,
 아이스 00,Băng 00,translated,
@@ -1716,9 +1987,12 @@ của Ông già Noel
 아주 큰 맵입니다. 자유롭게 꾸며주세요. 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다. 필터 모양 버튼을 클릭하면 다양한 테마의 블록 사용 가능!,Bản đồ rất lớn. Hãy tự do trang trí. Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên. Bấm nút hình phễu lọc để dùng khối của nhiều chủ đề!,translated,
 아직 끝난 것이 아니다!,Chưa xong đâu!,translated,
 아직 끝이아니라고릴고릴!,Chưa hết đâu goril goril!,translated,
+아직 나와 겨룰 수 없다.,Chưa thể đấu với ta đâu.,translated,
 아직 넌 나한테 안돼콩!,Mi còn chưa đủ trình với tui đâu Kong!,translated,
 아직 몸도 안풀렸다.,Ta còn chưa khởi động xong nữa.,translated,
 아직 수련이 부족한 것인가?,Ta tu luyện vẫn chưa đủ sao?,translated,
+아직은 때가 아니야..,Chưa tới lúc đâu..,translated,
+아코! 내보물!,Ako! Kho báu của tui!,translated,
 아쿠아,Aqua,translated,
 아쿠아 01,Aqua 01,translated,
 아쿠아 02,Aqua 02,translated,
@@ -1739,9 +2013,10 @@ của Ông già Noel
 악당 배찌,Bazzi ác,translated,
 악마날개,Cánh ác quỷ,translated,
 악마성,Lâu đài ác quỷ,translated,
+안 갈거지? 안 갈거지?,Hông đi đâu hen? Hông đi đâu hen?,translated,
 안 병 규,안 병 규,translated,"credit: tên người, giữ nguyên"
 안 현 숙,안 현 숙,translated,"credit: tên người, giữ nguyên"
-안녕! 나는 PC방의 부엉이야~,Chào! Mình là cú mèo của quán net~,translated,
+안녕! 나는 PC방의 부엉이야~,Chào! Tui là cú mèo của tiệm net nè~,translated,
 안녕~ 시작해볼까~,Chào nha~ Bắt đầu nè~,translated,
 안녕~ 친구들 내가 바로 포츈~스타!,Chào mấy bạn~ Tui chính là Fortune~ Star!,translated,
 안녕~~~~ 잘가…,Bái bai~~~~ Đi mạnh giỏi nha…,translated,
@@ -1767,14 +2042,23 @@ của Ông già Noel
 앗! 보물찾기 중간에 나오셨어요! %d번 더 중간에 나오면 10분간 보물찾기를 이용하실 수 없어요~,Ui! Bạn đã thoát giữa chừng Truy tìm kho báu! Thoát giữa chừng thêm %d lần nữa là bị cấm chơi Truy tìm kho báu 10 phút đó~,translated,
 앗! 엄청난 실력이군!! 선물을 줄게~,Ui! Thực lực ghê thiệt!! Tặng quà cho nè~,translated,
 앞머리 가발,Tóc giả mái,translated,
+"앞으로 30초 동안은 채팅을 하실 수 없습니다.
+","Trong 30 giây tới, bạn không thể chat.
+",translated,
 "앞으로 조금만 더 하면 <font style=bold>포인트, 경험치, 루찌가 보너스!</font>","Ráng thêm chút nữa là được <font style=bold>thưởng điểm, kinh nghiệm, VÀNG!</font>",translated,
 앞으로도 열심히 수련해라.,Từ giờ cứ chăm tu luyện nha.,translated,
+애송이군. 아직은 겨룰 수 없다,Nhóc con. Chưa đấu được đâu.,translated,
+애송이로군. 가라,Nhóc con. Đi đi.,translated,
 애프터눈 확성기,Loa trà chiều,translated,
 야구,Bóng chày,translated,
+약하구나..,Yếu quá nha..,translated,
 약하군.,Yếu quá.,translated,
 약한 여자를 이기니까 좋아?,Ăn hiếp con gái yếu đuối vui lắm hả?,translated,
+약한 자군. 아직은 때가 아니다,Kẻ yếu kìa. Chưa tới lúc đâu.,translated,
 약한 핑키를 이기니까 마음이 좋아?,Thắng Pinky yếu đuối vậy vui lắm hả?,translated,
+약한상대로군. 너는 아직 아니다,Đối thủ yếu quá. Ngươi chưa phải.,translated,
 얍~♪ 얍~♪ 얍~♪,Dô~♪ Dô~♪ Dô~♪,translated,
+어느쪽이 더 많은 보물상자를 여느냐로 승부를 가리는 땅따먹기 게임 불라입니다. 우리팀 색깔로 보물상자를 둘러싸 보세요.,"Bula là game giành đất, đội nào mở được nhiều rương báu hơn sẽ thắng. Thử bao quanh rương báu bằng màu đội mình nha.",translated,
 어디 잘 하는지 볼 까?,Để coi mi giỏi cỡ nào?,translated,
 어디가서 자랑해라 그럴만한 일이니까,"Đi khoe đi, đáng khoe lắm đó",translated,
 어디서 공격하는 거야?,Đánh từ đâu vậy trời?,translated,
@@ -1788,6 +2072,7 @@ của Ông già Noel
 어려운맵 14,Bản đồ khó 14,translated,
 어머 너무 쉽네,"Trời, dễ quá vậy",translated,
 어머.,Ủa trời.,translated,
+어머.. 니가 나를이길것 같니?,Ủa.. mày nghĩ mày thắng được tui hả?,translated,
 어머나,Trời đất,translated,
 어머나!,Trời đất ơi!,translated,
 어머머,Trời đất ơi,translated,
@@ -1818,6 +2103,7 @@ của Ông già Noel
 에잇 시시한데?,"Xì, chán phèo vậy?",translated,
 에잇 실수야,"Xì, lỡ tay thôi",translated,
 에잇 핑키 재미없어,"Xì, Pinky chán quá à",translated,
+에잇! 선물이다!,Ê! Quà nè!,translated,
 엠플레이,엠플레이,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 여기가 어디라고!,Biết đây là đâu hông mà dám tới!,translated,
 여기까지 오느라 힘들었지?,Tới được đây cực lắm hả?,translated,
@@ -1839,6 +2125,12 @@ của Ông già Noel
 연금술사 랜덤,Giả kim thuật sư ngẫu nhiên,translated,
 연두,Xanh lá nhạt,translated,
 열쇠가 안 보이게 가려!,Che chìa khoá lại cho đừng thấy!,translated,
+"영구아이템을 보유하고 있어 보상을 획득할 수 없어요. 
+마이페이지를 확인해주세요.","Đang có vật phẩm vĩnh viễn nên không nhận được phần thưởng. 
+Vui lòng kiểm tra Trang cá nhân nha.",translated,
+"영웅들과 대결하느라 고생이 많았다.
+답례로 승리포인트를 지급하니 선물상자를 열어 확인해보거라.","Đấu với các anh hùng vất vả quá rồi.
+Đáp lễ, ta phát điểm thắng, mở hộp quà coi thử nha.",translated,
 예쁜맵   03,Bản đồ đẹp 03,translated,
 예쁜맵   06,Bản đồ đẹp 06,translated,
 예쁜맵   09,Bản đồ đẹp 09,translated,
@@ -1856,6 +2148,7 @@ của Ông già Noel
 오…오지 마!,Đừng… đừng lại đây!,translated,
 오…오지마!,Đừng… đừng lại đây!,translated,
 오늘 처음으로 죽었어,Hôm nay là lần đầu tui chết,translated,
+오늘 하루종일 너만고릴 기다렸어 고릴,Hôm nay cả ngày chỉ đợi mỗi mày thôi gorilla.,translated,
 오늘도 빛나는 완승!,Hôm nay cũng thắng rực rỡ!,translated,
 오늘은 내가 천천히 한거다 고릴고릴,Hôm nay tui chơi từ từ thôi đó goril goril,translated,
 오늘은 내가 컨디션이 안좋을 뿐이야..,Hôm nay tui chỉ hơi mệt thôi..,translated,
@@ -1882,9 +2175,11 @@ Cá mập xuất hiện ở bản đồ Trại rồi. Nguy hiểm đó Ox!!",tra
 올해 나는 착한 일은 안했는데 산타를 만나다니,Năm nay tui đâu có làm việc tốt mà cũng gặp Ông già Noel,translated,
 와.,Oa.,translated,
 와우! 이럴줄 알았어콩!,Oa! Biết ngay mà Kong!,translated,
+완료순,Thứ tự hoàn thành,translated,
 완료시 선물을 드려요~,Hoàn thành sẽ được tặng quà~,translated,
 완전 시시함 시시시시,"Chán òm luôn, chán chán chán",translated,
 왕눈폭탄 공격!,Tấn công bom tuyết khổng lồ!,translated,
+왜 때려!,Sao đánh tui!,translated,
 왜이렇게 도망가기만하는거야?,Sao cứ chạy trốn hoài vậy?,translated,
 왜자꾸 피하는거야?,Sao cứ né hoài vậy?,translated,
 왜자꾸 피하는거임?,Sao cứ né hoài vậy?,translated,
@@ -1905,6 +2200,7 @@ Cá mập xuất hiện ở bản đồ Trại rồi. Nguy hiểm đó Ox!!",tra
 우르릉! 보물 가진 플레이어가 소나기를 맞습니다!,Ầm ầm! Người giữ báu vật bị dính mưa rào!,translated,
 우리집 애완동물의 이름은?,Tên thú cưng nhà bạn là gì?,translated,
 우린 늘 같이 있다고 생각했지?,"Mình lúc nào cũng ở bên nhau mà, đúng hông?",translated,
+우린 늘 같이 있어,Tụi mình luôn ở cạnh nhau nha.,translated,
 우왕 내가 이긴건가 고릴고릴,"Oa, tui thắng rồi hả goril goril",translated,
 우우우우웁 고릴살려,"Ư ư ư ực, cứu Goril",translated,
 우웁..고릴이 지다니 믿고싶지 않아.. 꼬릴,Ực.. Goril thua mà hổng muốn tin.. kkoril,translated,
@@ -1922,6 +2218,7 @@ Cá mập xuất hiện ở bản đồ Trại rồi. Nguy hiểm đó Ox!!",tra
 우주맵 TW10,Vũ trụ TW10,translated,
 우주맵 랜덤,Vũ trụ ngẫu nhiên,translated,
 우주선쟁탈전,Tranh đoạt phi thuyền,translated,
+우키키 이제 보물은 내 것!,"Ukiki, giờ kho báu là của tui!",translated,
 우헤헤 콩콩,Ú hê hê Kongkong,translated,
 우히히히 알라븅~♡,"Hí hí hí, à la viu~♡",translated,
 운    영 :    황 인 웅,Vận hành :    황 인 웅,translated,credit: giữ tên người bằng chữ Hàn
@@ -1938,6 +2235,7 @@ Cá mập xuất hiện ở bản đồ Trại rồi. Nguy hiểm đó Ox!!",tra
 웹개발 :    박이선  김해린  조준혁  남훈    윤성문,Phát triển web :    박이선  김해린  조준혁  남훈    윤성문,translated,credit: giữ tên người bằng chữ Hàn
 위 지 혜,위 지 혜,translated,"credit: tên người, giữ nguyên"
 "위 캐릭터와 플레이하면 최대 50%의 <font style=bold>포인트, 경험치,루찌</font>가 보너스!","Chơi với nhân vật trên được thưởng thêm tối đa 50% <font style=bold>điểm, kinh nghiệm, VÀNG</font>!",translated,
+"위, 위험해",Ng-nguy hiểm quá!,translated,
 위대한 나랑 또 싸우고 싶음?,Muốn đấu với người vĩ đại như tui nữa hả?,translated,
 위로 이동 컨베이어 벨트. 속도2,Băng chuyền đi lên. Tốc độ 2,translated,
 위쪽 이동 미사일. 맞으면 물풍선에 가둬짐,Tên lửa đi lên. Trúng sẽ bị nhốt vào bom nước,translated,
@@ -1953,6 +2251,8 @@ Cá mập xuất hiện ở bản đồ Trại rồi. Nguy hiểm đó Ox!!",tra
 유령의공동묘지 %d%% 완성!,Nghĩa địa ma hoàn thành %d%%!,translated,
 유령의집 %d%% 완성!,Nhà ma hoàn thành %d%%!,translated,
 유령이 나오는 저택을 자유롭게 꾸며주세요! 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다.,Hãy tự do trang trí ngôi biệt thự có ma! Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên.,translated,
+유저 레벨이 낮아 지금 선택하신 맵에 참여할 수 없는 유저(%s)가 있습니다.,Có người chơi (%s) cấp thấp nên không tham gia được map đã chọn.,translated,
+유저 레벨이 낮아 지금 선택하신 맵에 참여할 수 없는 유저(%s)가 있어 게임을 시작할 수 없습니다.,Có người chơi (%s) cấp thấp nên không bắt đầu game được.,translated,
 유저가 퇴장하여 방을 나갑니다.,Có người chơi rời đi nên bạn ra khỏi phòng.,translated,
 윤 세 훈,윤 세 훈,translated,"credit: tên người, giữ nguyên"
 윤 영 섭,윤 영 섭,translated,"credit: tên người, giữ nguyên"
@@ -1981,6 +2281,9 @@ Cá mập xuất hiện ở bản đồ Trại rồi. Nguy hiểm đó Ox!!",tra
 이 수 정,이 수 정,translated,"credit: tên người, giữ nguyên"
 이 수 진,이 수 진,translated,"credit: tên người, giữ nguyên"
 이 승 찬,이 승 찬,translated,"credit: tên người, giữ nguyên"
+이 아이템은 PC방 무료 아이템이거나 더 이상 판매하지 않는 아이템입니다.,Vật phẩm này là đồ miễn phí của tiệm net hoặc đã ngừng bán.,translated,
+이 아이템을 가진 것과 선물 받은 것이 %d개가 넘어서 구입할 수 없습니다.,Số lượng đang có và đã nhận quà của vật phẩm này vượt %d cái nên không mua được.,translated,
+이 아이템을 구매하면 보유할 수 있는 수량이 초과되어 구입할 수 없습니다.,Mua vật phẩm này sẽ vượt số lượng có thể sở hữu nên không mua được.,translated,
 이 알들을 모두 버리겠습니다. 다음 알을 기대해주세요~!,Bỏ hết mấy trứng này nha. Chờ trứng tiếp theo nha~!,translated,
 이 은 아,이 은 아,translated,"credit: tên người, giữ nguyên"
 이 은 혜,이 은 혜,translated,"credit: tên người, giữ nguyên"
@@ -2010,6 +2313,7 @@ Cá mập xuất hiện ở bản đồ Trại rồi. Nguy hiểm đó Ox!!",tra
 이대로 끝낼순 없어!,Không thể kết thúc vầy được!,translated,
 이대로 핑키가 이기는거야?,Vậy là Pinky thắng luôn hả?,translated,
 이동주  박지현,이동주  박지현,translated,"credit: tên người, giữ nguyên"
+이따가 다시오렴..,Lát nữa quay lại nha..,translated,
 이런 경우는 없었는데..,Chưa có vụ này bao giờ..,translated,
 이런 실력으론 나를 이길 순 없지!,Thực lực vầy thì thắng ta sao nổi!,translated,
 이런 애송이에게 당하다니...,Thua một thằng nhóc như vầy...,translated,
@@ -2023,6 +2327,10 @@ Cá mập xuất hiện ở bản đồ Trại rồi. Nguy hiểm đó Ox!!",tra
 이럴수는... 없다.,Không thể nào... như vậy được.,translated,
 이럴줄 알았음 알았음,"Biết ngay mà, biết ngay mà",translated,
 이렇게 이쁜 내가 죽다니..,Người đẹp như tui mà lại chết..,translated,
+이메일아이디가 등록되어 있지 않은 경우 방제목을 수정할 수 없습니다. 이메일아이디를 등록해주세요.,Chưa đăng ký tài khoản email thì không thể sửa tên phòng. Vui lòng đăng ký tài khoản email nha.,translated,
+이메일아이디가 등록되어 있지 않은 경우 전체대화에 참여할 수 없습니다.,Chưa đăng ký tài khoản email thì không thể tham gia trò chuyện chung.,translated,
+이메일아이디가 등록되어 있지 않은 경우 쪽지를 보낼 수 없습니다.,Chưa đăng ký email thì không gửi được tin nhắn.,translated,
+이메일아이디는 마이페이지->내정보의 [이메일아이디등록] 버튼을 통해 등록할 수 있습니다.,Có thể đăng ký tài khoản email qua nút [Đăng ký tài khoản email] trong Trang cá nhân -> Thông tin cá nhân.,translated,
 "이미 %s님과 크앤입니다.
 ","Bạn đã là đôi với %s rồi.
 ",translated,
@@ -2035,11 +2343,20 @@ Cá mập xuất hiện ở bản đồ Trại rồi. Nguy hiểm đó Ox!!",tra
 더 이상 구입 할 수 없습니다.","Bạn đã có vật phẩm vĩnh viễn này rồi.
 Không mua thêm được nữa.",translated,
 이미 길드에 가입되어 있는 상태입니다. 다른 길드에 가입하려면 기존 길드를 탈퇴해야 합니다.,Bạn đã vô hội rồi. Muốn vô hội khác thì phải rời hội hiện tại.,translated,
+"이미 너무 아이템을 가지고 있어 받을 수 없습니다.
+아이템 사용 후, 다시 시도해주시길 바랍니다.","Đang có quá nhiều vật phẩm nên không nhận được.
+Vui lòng dùng bớt vật phẩm rồi thử lại nha.",translated,
 이미 다른 길드에 가입신청 대기중인 상태입니다.,Bạn đang chờ duyệt đơn vô một hội khác.,translated,
+"이미 동일한 아이템을 소지하고 있어 아이템을 획득할 수 없습니다.
+해당 아이템 이동 후, 다시 시도해주시길 바랍니다.","Đã có vật phẩm giống nên không nhận được.
+Chuyển vật phẩm đó đi rồi thử lại nha.",translated,
 이미 무시하고 있는 사용자입니다.,Người này đã bị bỏ qua rồi.,translated,
 이미 슬롯에 등록되어 있습니다.,Đã đăng ký vô ô rồi.,translated,
 이미 연승풀슬롯 아이템을 구매하였습니다.,Bạn đã mua vật phẩm Đầy ô chuỗi thắng rồi.,translated,
+이미 이 아이템 보유수량을 초과하여 구입할 수 없습니다.,Đã vượt số lượng sở hữu vật phẩm này nên không mua được.,translated,
+이미 이 아이템을 %d개 이상 보유하고 있어 선물을 줄 수 없습니다.,Đã sở hữu vật phẩm này từ %d cái trở lên nên không thể tặng.,translated,
 이번엔 남극이다! 탐험대와 함께 시원한 남극으로 모험을 떠나자! 달려라 달려~,"Lần này là Nam Cực! Cùng đội thám hiểm phiêu lưu tới Nam Cực mát rượi! Chạy, chạy đi~",translated,
+"이벤트 진행 시간이 아닙니다. 이벤트 진행 기간은 6월16일 ~ 30일이오니 , 해당 시간에 다시 참여해 주세요","Chưa tới giờ diễn ra sự kiện. Sự kiện diễn ra từ ngày 16 đến 30 tháng 6, vui lòng tham gia lại trong thời gian đó nha.",translated,
 이상,Trở lên,translated,
 이상한 숲,Khu rừng kỳ lạ,translated,
 이상한 숲-1,Khu rừng kỳ lạ-1,translated,
@@ -2052,6 +2369,8 @@ Không mua thêm được nữa.",translated,
 이상한맵 10,Bản đồ kỳ lạ 10,translated,
 이상한맵 13,Bản đồ kỳ lạ 13,translated,
 이순간을 즐기고 잊지 마,Tận hưởng giây phút này và đừng quên nha,translated,
+"이어하기 버튼을 눌러 게임을 이어해보거라. 코인이 없다면 새로하기를 눌러라. 단, 새로하기 버튼을 누르면 지금까진 이긴NPC와 처음부터 대결해야한다 좋은점은 새로하기 때문에 코인이 들지 않는단다.",Bấm nút Tiếp tục để chơi tiếp nha. Hổng có coin thì bấm Chơi mới. Mà bấm Chơi mới là phải đấu lại từ đầu với mấy NPC đã thắng tới giờ đó. Cái hay là Chơi mới thì hổng tốn coin nha.,translated,
+이전 작업이 완료되지 않아 채널을 입장할 수 없습니다. 다시 시도해 주세요.,Tác vụ trước chưa xong nên không vào được kênh. Vui lòng thử lại.,translated,
 이정도면 긴장감 있었어,Vầy cũng hồi hộp đó,translated,
 이정도면 너도 최고다,Vầy là mi cũng đỉnh rồi,translated,
 이정도콩?,Chỉ vầy thôi Kong?,translated,
@@ -2082,6 +2401,11 @@ Không mua thêm được nữa.",translated,
 인증 시스템 개발 :    박경국  박경민,Phát triển hệ thống xác thực :    박경국  박경민,translated,credit: giữ tên người bằng chữ Hàn
 일반 확성기,Loa thường,translated,
 일반모드 랜덤,Chế độ thường ngẫu nhiên,translated,
+"일시적으로 길드정보 오류가 발생했습니다.
+재로그인 후, 다시 시도해 주시기 바랍니다.","Tạm thời có lỗi thông tin hội.
+Vui lòng đăng nhập lại rồi thử lại nha.",translated,
+일일,Hằng ngày,translated,
+일일 미션은 매일 00:00에 초기화돼요~★,Nhiệm vụ hằng ngày sẽ làm mới lúc 00:00 mỗi ngày nha~★,translated,
 잃어버린 사원,Ngôi đền thất lạc,translated,
 임 주 현,임 주 현,translated,"credit: tên người, giữ nguyên"
 임 혜 리,임 혜 리,translated,"credit: tên người, giữ nguyên"
@@ -2095,6 +2419,7 @@ Không mua thêm được nữa.",translated,
 * 설정취소할 경우 커플링 구매는 취소됩니다.","Đặt câu này luôn hông? Đặt rồi thì không đổi được nữa đâu.
 
 * Nếu huỷ đặt thì việc mua nhẫn đôi cũng bị huỷ.",translated,
+입장가능한 채널이 존재하지 않아 접속하실 수 없습니다.,Không có kênh nào vào được nên không kết nối được.,translated,
 잉?,Hả?,translated,
 자 긴장해라,"Nè, căng thẳng đi",translated,
 자 날 이겨봐,"Nè, thắng tui coi",translated,
@@ -2102,11 +2427,16 @@ Không mua thêm được nữa.",translated,
 자 실력좀 볼까?,Coi thực lực chút nha?,translated,
 자 이제 영롱한 빛을 뿌려볼까?,"Rồi, giờ rải ánh sáng lung linh nha?",translated,
 자! 어떻게 라도 해봐,Nè! Làm gì đó coi,translated,
+"자, 잠깐만!","Khoan, đợi chút!",translated,
 자. 이게 내실력이야,Đó. Thực lực của tui đó,translated,
 자. 이제 시작이다.,Rồi. Giờ bắt đầu.,translated,
 자꾸 피하니까 시간이 모자라잖아..,Mi né hoài nên hết giờ luôn rồi nè..,translated,
 자비는 기대하지 마라.,Đừng mong ta thương xót.,translated,
 자비는 없다!,Không khoan nhượng!,translated,
+자신에게는 메시지를 보낼 수 없습니다.,Không thể gửi tin nhắn cho chính mình.,translated,
+"자신에게는 크앤을 신청할 수 없습니다.
+","Không thể gửi yêu cầu Đôi cho chính mình.
+",translated,
 자유1,Tự do 1,translated,
 자유10,Tự do 10,translated,
 자유11,Tự do 11,translated,
@@ -2135,8 +2465,11 @@ Không mua thêm được nữa.",translated,
 자유롭게 맵을 꾸며주세요,Hãy tự do trang trí bản đồ,translated,
 자유이동. 속도1. 물줄기에 맞지 않음,Đi tự do. Tốc độ 1. Không trúng tia nước,translated,
 자자. 이게 현실이라구,Thấy chưa. Thực tế là vậy đó,translated,
+작은 고추가 맵다는 말을 보여주지,Để tui cho thấy ớt nhỏ mà cay nha.,translated,
+작은고추가 맵다는 말 아냐?,Ớt nhỏ mà cay chứ hả?,translated,
 잔~뜩~ 나온답니다!,ra cả đống VÀNG luôn đó!,translated,
 잘가라.,Đi mạnh giỏi.,translated,
+잘가라구~,Bye nha~,translated,
 잘못된 Bool : %s,Bool không hợp lệ : %s,translated,
 잘못된 ObjImage : %s,ObjImage không hợp lệ : %s,translated,
 잘못된 Pos : %s,Pos không hợp lệ : %s,translated,
@@ -2197,6 +2530,7 @@ Không mua thêm được nữa.",translated,
 제발 잡혀줘 ㅠㅠ,Làm ơn để bị bắt đi mà ㅠㅠ,translated,
 제법인데?,Cũng được đó chớ?,translated,
 제임스 스티커 확성기,Loa sticker James,translated,
+제재 중이므로 대화에 참여하실 수 없습니다.,Đang bị hạn chế nên không tham gia trò chuyện được.,translated,
 조 재 윤,조 재 윤,translated,"credit: tên người, giữ nguyên"
 좀깡,Zomkkang,translated,
 좀깡보다 고릴 내가 더 잘하지 고릴,Goril chơi giỏi hơn Zomkkang đó goril,translated,
@@ -2208,7 +2542,13 @@ Không mua thêm được nữa.",translated,
 좀비 05,Zombie 05,translated,
 좀비 06,Zombie 06,translated,
 좀비 랜덤,Zombie ngẫu nhiên,translated,
+"좀비 미션맵은 1P 유저만 참여할 수 있습니다.
+좀비 미션맵을 즐기기 위해서는 1P로 접속하여 주십시요","Map nhiệm vụ Zombie chỉ dành cho người chơi 1P.
+Để chơi map nhiệm vụ Zombie, vui lòng vào bằng 1P nha.",translated,
 좀비굴,Hang zombie,translated,
+"좀비맵은 1P 유저만 참여할 수 있습니다.
+","Map Zombie chỉ dành cho người chơi 1P.
+",translated,
 좀비모드에서 유저를 감염시키면 루찌를 획득하실 수 있습니다.,"Trong chế độ Zombie, lây nhiễm người chơi khác sẽ nhận được VÀNG.",translated,
 좀비모드에서는 게임에 져도 패배가 쌓이지 않습니다.,"Trong chế độ Zombie, thua trận cũng không bị tính trận thua.",translated,
 좁은 풍선에 날 가두다니..,Nhốt tui trong trái bóng chật chội vầy..,translated,
@@ -2216,16 +2556,22 @@ Không mua thêm được nữa.",translated,
 좋아하지 마라! 우연일 뿐이니까!,Đừng mừng! Ăn may thôi!,translated,
 좋은... 승부였다...,Một trận... hay lắm...,translated,
 좋은… 승부였다…,Một trận… hay lắm…,translated,
+주민번호 인증을 할 수 없습니다.,Không thể xác thực số định danh cá nhân.,review,"""주민번호"" là số định danh (CCCD) kiểm tra lại cách gọi"
 주은정,주은정,translated,"credit: tên người, giữ nguyên"
 주홍,Cam,translated,
 죽고나도 이리로 와야 해.,Có chết cũng phải tới đây nha.,translated,
 죽는 줄 알았어…,Tưởng chết rồi chớ…,translated,
 죽은 연기하는거임!! 난 죽지 않았음!!!,Đang giả chết thôi!! Tui chưa chết!!!,translated,
 준,Jun,translated,
+준비됐콩?  나와 싸울 준비? 덤뵤! 아뵤콩!,Sẵn sàng chưa Kong? Chuẩn bị đấu với tui hả? Tới đi! Ayo Kong!,translated,
 중수 랜덤,Trung cấp ngẫu nhiên,translated,
+즐겨찾기,Yêu thích,translated,
+"즐겨찾기 등록은 일반모드, 몬스터모드, 협공배틀 포함해 50개까지 등록 가능합니다. 등록된 맵을 즐겨찾기 해제 후 사용해 주시길 바랍니다.","Có thể đăng ký tối đa 50 map yêu thích, bao gồm chế độ thường, chế độ quái vật và Đấu hợp sức. Vui lòng bỏ yêu thích map đã đăng ký rồi mới dùng nha.",translated,
 즐겨찾기 랜덤,Ngẫu nhiên yêu thích,translated,
+즐겨찾기로 등록된 맵이 랜덤하게 선택됩니다.,Map đã đăng ký yêu thích sẽ được chọn ngẫu nhiên.,translated,
 "지금 ""퀘스트"" 버튼을 클릭해보세요. 비엔비에서 진행중인 여러가지 재미있는 퀘스트를 만나실 수 있습니다","Hãy bấm thử nút ""Nhiệm vụ"" ngay. Bạn sẽ thấy nhiều nhiệm vụ thú vị đang diễn ra trong Boom.",translated,
-지금 이 자리에서 누가 강한지 겨뤄봐야겠군.,Ngay tại đây phải phân xem ai mạnh hơn.,translated,
+지금 나가시면 보물열쇠 보너스맵으로 이동할 수 없습니다. 나가시겠습니까?,Nếu thoát bây giờ sẽ không thể qua map thưởng Chìa khóa báu. Thoát hông?,translated,
+지금 이 자리에서 누가 강한지 겨뤄봐야겠군.,Ngay tại đây phải so coi ai mạnh hơn.,translated,
 지금 최선을 다하고 있는 거냐?,Mi đang cố hết sức đó hả?,translated,
 지금부터 보물을 가진 자가 계속 반짝입니다!,Từ giờ người giữ báu vật sẽ lấp lánh liên tục!,translated,
 지나친 게임 이용은 건강을 해칠 수도 있으니 유의해 주시기 바랍니다.,"Chơi game quá nhiều có thể ảnh hưởng đến sức khoẻ, hãy chú ý.",translated,
@@ -2233,6 +2579,9 @@ Không mua thêm được nữa.",translated,
 지앤티씨,GNTC,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
 지존 랜덤,Chí tôn ngẫu nhiên,translated,
 지존 전체확성기,Loa toàn kênh Chí tôn,translated,
+"지존권 혜택으로 %s 님께서 '%s'를 선물받으셨으나 아이템 가방이 가득 차 선물을 받을 수 없습니다.
+아이템 가방을 구입하시는 즉시 선물을 받으실 수 있습니다.","Nhờ đặc quyền Chí Tôn, %s đã được tặng '%s' nhưng túi đồ đầy nên không nhận được quà.
+Mua túi đồ là nhận quà ngay nha.",translated,
 지존무덤 01,Chí tôn Lăng mộ 01,translated,
 지존무덤 02,Chí tôn Lăng mộ 02,translated,
 지존불라 01,Chí tôn Bula 01,translated,
@@ -2255,8 +2604,11 @@ Không mua thêm được nữa.",translated,
 차라리 바늘을 써라.,Thà xài Kim đi còn hơn.,translated,
 착한어린이가 어디있지?,Bé ngoan ở đâu rồi ta?,translated,
 찰칵! 찰칵!,Tách! Tách!,translated,
+찰칵찰칵 너님의 실력을 스캔함,"Tách tách, đang quét thực lực của bạn.",translated,
+찰칵찰칵 찰칵찰칵,Tách tách tách tách,translated,
 참가인원 %d/%d 명,Người tham gia %d/%d,translated,
 참나,Trời đất,translated,
+찾을 수 없는 히어로 입니다.,Không tìm thấy hero này.,translated,
 채 은 도,채 은 도,translated,"credit: tên người, giữ nguyên"
 처리거래,처리거래,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 처리고객,처리고객,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
@@ -2309,15 +2661,23 @@ Không mua thêm được nữa.",translated,
 최강 여신 엔젤님과 겨룰준비 됬니?,Sẵn sàng đấu với nữ thần mạnh nhất Angel chưa?,translated,
 최근 인기도(30일),Độ phổ biến gần đây (30 ngày),translated,
 최근 플레이(30일),Lượt chơi gần đây (30 ngày),translated,
+최근승률이 %d%% 가 안되서 채널에 입장할 수 없습니다.,Tỷ lệ thắng gần đây chưa đạt %d%% nên không vào được kênh.,translated,
+최근승률이 %d%% 를 넘어 채널에 입장할 수 없습니다.,Tỷ lệ thắng gần đây vượt %d%% nên không vào được kênh.,translated,
+최근승률이 %d%% 를 초과하여 게임에 참여할 수 없습니다.,Tỷ lệ thắng gần đây vượt %d%% nên không tham gia game được.,translated,
 최근에 토너먼트에서 우승해서 토너먼트에 참여할 수 없습니다.,Bạn mới vô địch giải đấu gần đây nên không tham gia được.,translated,
 최선을 다해도 나를 이길 순 없다.,Có cố hết sức cũng không thắng nổi ta đâu.,translated,
 최선을 다해라.,Cố hết sức đi.,translated,
+최소레벨:%dLv,Cấp tối thiểu: %dLv,translated,
+"최소레벨이 되지 않아 크아컬렉션 보상을 받을 수 없어요.
+게임 플레이로 최소레벨까지 올려주세요.","Chưa đủ cấp tối thiểu nên không nhận được phần thưởng Boom Collection.
+Chơi game để lên tới cấp tối thiểu nha.",translated,
 최악의 날이다 고릴..꼬릴,Ngày tệ nhất đời goril.. kkoril,translated,
 최철훈  서세욱  조민수  임광혁  이봉현,최철훈  서세욱  조민수  임광혁  이봉현,translated,"credit: tên người, giữ nguyên"
 최후의 승자는,Người thắng cuối cùng là,translated,
 추격이동 미사일. 맞으면 물풍선에 가둬짐,Tên lửa đuổi theo. Trúng sẽ bị nhốt vào bom nước,translated,
 축하15 전체확성기,Loa toàn kênh mừng 15,translated,
 축하큐브15 확성기,Loa khối mừng 15,translated,
+축하합니다! %s 님! 이벤트에 당첨 되셨습니다!,Chúc mừng %s! Bạn đã trúng sự kiện!,translated,
 춘절전체확성기 1,Loa toàn kênh Tết 1,translated,
 춘절전체확성기 2,Loa toàn kênh Tết 2,translated,
 치를 선물로 드립니다~!!,sẽ được tặng kinh nghiệm~!!,translated,
@@ -2353,6 +2713,7 @@ có quà khủng",translated,
 캠프 16,Trại 16,translated,
 캠프 17,Trại 17,translated,
 캠프 랜덤,Trại ngẫu nhiên,translated,
+캠프맵 중 한가지가 랜덤하게 선택됩니다.,Một trong các map Camp sẽ được chọn ngẫu nhiên.,translated,
 컫볍칵돠,컫볍칵돠,review,"chuỗi rác (GBK đọc nhầm cp949?), không hiển thị"
 켁,Khặc,translated,
 켁!,Khặc!,translated,
@@ -2364,9 +2725,12 @@ có quà khủng",translated,
 켄터키 11,Kentucky 11,translated,
 켄터키 랜덤,Kentucky ngẫu nhiên,translated,
 코니 스티커 확성기,Loa sticker Cony,translated,
+코인이 부족해서 다시할 수 없어요!,Thiếu coin nên hổng chơi lại được nha!,translated,
+코인이 부족해서 이어할 수 없어요!,Thiếu coin nên hổng chơi tiếp được nha!,translated,
 콜로세움,Đấu trường Colosseum,translated,
 콩콩,Kongkong,translated,
 콩콩님과 비겼다니. 어디가서 자랑해! 콩콩,Hoà được với Kongkong đó. Đi khoe đi! Kongkong,translated,
+콩콩님이 너를 한번에 이겨주지콩!,Kong Kong sẽ thắng mày một phát luôn Kong!,translated,
 콩콩님이 이렇게 쉽게 죽을리 없잖아! 콩콩콩,Kongkong đâu có dễ chết vậy! Kongkongkong,translated,
 콩콩콩 뛰어도 너보다 빠를걸콩?,Kongkongkong nhảy cũng nhanh hơn mi đó Kong?,translated,
 콩콩풍선 %d%% 완성!,Bóng bay Kongkong hoàn thành %d%%!,translated,
@@ -2386,18 +2750,24 @@ có quà khủng",translated,
 쿵쿵. 에잇! 콩,Thình thịch. Xì! Kong,translated,
 쿵쿵.말도안돼! 너랑 비기다니! 콩,Thình thịch. Vô lý! Hoà với mi luôn! Kong,translated,
 쿵쿵.비기다니..  내가 봐준거알고 있지? 쿵쿵.,Thình thịch. Hoà luôn hả.. biết là tui nương tay hông? Thình thịch.,translated,
+퀘스트 아이템을 삭제할 수 없습니다.,Không thể xóa vật phẩm nhiệm vụ.,translated,
 퀘스트를 시작해주세요.,Hãy bắt đầu nhiệm vụ.,translated,
 퀘스트를 완료하였습니다.,Đã hoàn thành nhiệm vụ.,translated,
 크리스마스,Giáng sinh,translated,
 크리스마스 확성기,Loa Giáng sinh,translated,
+크아 최강여신 화이트엔젤이다,"Tui là Thiên Thần Trắng, nữ thần mạnh nhất Boom nè.",translated,
 크아 최강여신인 나를 이기다니..,Thắng được nữ thần mạnh nhất Boom như tui luôn..,translated,
 크아를 나가면 처음부터 다시 시작,Thoát Boom thì phải bắt đầu lại từ,translated,
 크아맨 모자,Nón Boom Man,translated,
+크아영웅전의 최고는 나다,Số một Anh Hùng Chiến Boom là tui.,translated,
 크아짱 비정상 종료가 감지되어 %d시간 %d분 이후에 크아짱 이용이 가능합니다.,"Phát hiện Vua xếp hạng thoát bất thường, có thể dùng lại Vua xếp hạng sau %d giờ %d phút.",review,"크아짱: tên dịch vụ, chưa chắc"
 크아히어로1,Boom Hero 1,translated,
 크아히어로2,Boom Hero 2,translated,
 크아히어로3,Boom Hero 3,translated,
 크아히어로4,Boom Hero 4,translated,
+"크앤 신청을 할 수 없습니다.
+","Không thể gửi yêu cầu Đôi.
+",translated,
 큰 맵입니다. 자유롭게 꾸며주세요. 빅맵은 방향키를 통해 모든 구역에 접근할 수 있습니다. 필터 모양 버튼을 클릭하면 다양한 테마의 블록 사용 가능!,Bản đồ lớn. Hãy tự do trang trí. Bản đồ lớn có thể đi tới mọi khu vực bằng phím mũi tên. Bấm nút hình phễu lọc để dùng khối của nhiều chủ đề!,translated,
 클라이언트,Máy khách,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
 클로버,Cỏ ba lá,translated,
@@ -2410,7 +2780,9 @@ có quà khủng",translated,
 클로버 랜덤,Cỏ ba lá ngẫu nhiên,translated,
 탑가이즈,Top Guys,translated,
 탑걸즈,Top Girls,translated,
+탱크를 타면 물풍선을 펑펑펑 쏠 수 있는 캠프입니다. 닿기만 하면 물풍선이 터지는 뾰족한 핀을 조심하세요.,"Camp này cho bạn ngồi xe tăng bắn bom nước liên tục. Coi chừng những cây kim nhọn, chạm vô là bom nước nổ nha.",translated,
 토끼정원,Vườn thỏ,translated,
+토너먼트 게임 대기중이므로 샵에 입장이 불가능합니다.,Đang chờ trận Tournament nên không vào Siêu thị được.,translated,
 토너먼트에서 패배해서 로비로 이동합니다.,Thua ở giải đấu nên chuyển về sảnh.,translated,
 통과 가능. 물줄기에 파괴됨,Đi qua được. Bị tia nước phá huỷ,translated,
 통과 가능. 파괴 불가,Đi qua được. Không phá được,translated,
@@ -2423,6 +2795,12 @@ có quà khủng",translated,
 튜토,Tuto,translated,
 팀    장 :    강 신 철,Trưởng nhóm :    강 신 철,translated,credit: giữ tên người bằng chữ Hàn
 팀    장 :    남 혜 진,Trưởng nhóm :    남 혜 진,translated,credit: giữ tên người bằng chữ Hàn
+"팀 자동정렬을 할 수 없습니다.
+커플이나 2인용 모드 접속 유저는 팀이 나뉘지 않습니다.","Không thể tự sắp xếp đội.
+Người chơi đôi hoặc vào chế độ 2 người sẽ không được chia đội nha.",translated,
+"팀 자동정렬을 할 수 없습니다.
+플레이어 수가 짝수가 되어야합니다.","Không thể tự sắp xếp đội.
+Số người chơi phải là số chẵn nha.",translated,
 파괴 불가,Không phá được,translated,
 파괴 불가. 점프 불가,Không phá được. Không nhảy qua được,translated,
 파라오 징어,Mực Pharaoh,translated,
@@ -2513,8 +2891,12 @@ thổi sáo nha~",translated,
 핑키가 널 용서하지 않겠어!,Pinky không tha cho mi đâu!,translated,
 핑키가 지다닝..,Pinky thua luôn hả..,translated,
 핑키가 한번 구해줄까?,Để Pinky cứu mi một lần nha?,translated,
+핑키랑 싸울려고? 준비는 된거야?,Muốn đánh với Pinky hả? Chuẩn bị xong chưa?,translated,
 핑키를 이긴건 너가 처음이야!,Mi là người đầu tiên thắng Pinky đó!,translated,
+핑키의 향수? 언제나 장미향인데~,Nước hoa của Pinky hả? Lúc nào cũng hương hoa hồng nha~,translated,
+"핑키하면 귀요미, 귀요미하면 핑키!","Nhắc Pinky là nghĩ tới dễ thương, nhắc dễ thương là nghĩ tới Pinky!",translated,
 하..정말 힘들었다,Hà.. mệt thiệt chớ,translated,
+하기 싫어. 그만 둘래,Hông thích. Thôi nghỉ đi.,translated,
 하늘 물풍선,Bom nước bầu trời,translated,
 하트 확성기,Loa trái tim,translated,
 하트이모티 확성기,Loa biểu tượng trái tim,translated,
@@ -2524,6 +2906,8 @@ thổi sáo nha~",translated,
 한번 더 보고 싶었다.,Muốn gặp lại thêm một lần.,translated,
 한번 봐준것 뿐! 고릴,Nương tay một lần thôi đó! goril,translated,
 한번은 봐준거야 콩콩님이 봐준거라구! 콩콩콩,"Nương tay một lần đó, Kongkong nương tay đó! Kongkongkong",translated,
+한정,Giới hạn,translated,
+한정 미션은 표시된 시간까지 진행할 수 있어요~★,Nhiệm vụ giới hạn làm được tới thời gian hiển thị nha~★,translated,
 할 말이 너무 많이 남았는데…,Còn nhiều chuyện muốn nói lắm mà…,translated,
 할로윈 랜덤,Halloween ngẫu nhiên,translated,
 할로윈빌리지,Làng Halloween,translated,
@@ -2536,6 +2920,10 @@ thổi sáo nha~",translated,
 핫..그래. 정해진 결과지,Ha.. đúng rồi. Kết quả có sẵn rồi,translated,
 항복하는거 고릴고릴?,Đầu hàng hả goril goril?,translated,
 항상 퀘스트창을 확인하세요~,nhớ coi cửa sổ Nhiệm vụ hoài nha~,translated,
+해당 길드의 레벨 제한때문에 가입에 실패하였습니다.,Gia nhập thất bại do giới hạn cấp của hội.,translated,
+해당 길드의 인원이 너무 많아 가입에 실패했습니다.,Gia nhập thất bại vì hội quá đông người.,translated,
+해당 맵은 즐겨찾기에 추가할 수 없습니다.,Map này không thể thêm vào Yêu thích.,translated,
+해당 쿠폰은 선물하기가 불가합니다.,Phiếu này không thể tặng.,translated,
 해야 하니 조심해^^,"đầu đó, cẩn thận nha^^",translated,
 해외 사업 :    최승우  강진구  김진환,Kinh doanh quốc tế :    최승우  강진구  김진환,translated,credit: giữ tên người bằng chữ Hàn
 해외로컬 :    안 현 숙,Bản địa hoá quốc tế :    안 현 숙,translated,credit: giữ tên người bằng chữ Hàn
@@ -2552,6 +2940,7 @@ thổi sáo nha~",translated,
 헐! 콩콩콩,Hả! Kongkongkong,translated,
 헛,Hự,translated,
 헛!,Hự!,translated,
+현재 길드원이 있으므로 길드를 해체할 수 없습니다. 길드를 해체하려면 길드마스터를 제외한 길드원이 한명도 없어야 합니다.,Hiện còn thành viên nên không thể giải tán hội. Muốn giải tán thì ngoài hội trưởng ra không được còn thành viên nào.,translated,
 "현재 동일한 커플링으로 커플을 맺고 계시기 때문에 커플링 변경이 불가능합니다.
 다른 유저와 새로운 커플을 맺고 싶은 경우, 마이페이지>내정보>크앤에서 헤어지기를 누른 다음 커플링을 구입하세요.
 ","Bạn đang là đôi bằng chính nhẫn đôi này nên không đổi nhẫn được.
@@ -2559,11 +2948,23 @@ Muốn làm đôi mới với người khác thì vô Trang cá nhân > Cá nhâ
 ",translated,
 현재 디렉토리 명을 확인할 수가 없습니다,Không xác định được tên thư mục hiện tại,translated,
 현재 선택하신 %s맵은 %d명 까지만 참여가능한 맵입니다.,Bản đồ %s đang chọn chỉ cho tối đa %d người.,translated,
+현재 제재 기간 중이므로 교환을 진행할 수 없습니다.,Đang trong thời gian bị xử phạt nên hổng trao đổi được.,translated,
+"현재 제재 기간 중이므로 해당 채널에 접속하실 수 없습니다.
+","Đang trong thời gian bị hạn chế nên không vào được kênh này.
+",translated,
 현재 총 %d개 보유!,Hiện có tổng cộng %d cái!,translated,
+현재 크아미션을 사용할 수 없습니다. (%d),Hiện không dùng được Boom Mission. (%d),translated,
+"현재 크아미션을 진행할 수 없습니다.
+잠시 후, 다시 열어주시길 바랍니다.","Hiện không thể làm Boom Mission.
+Vui lòng mở lại sau ít phút nha.",translated,
+"현재 크아컬렉션 시스템을 사용하실 수 없습니다. 
+이용에 불편을 드려서 죄송합니다.","Hiện không dùng được hệ thống Boom Collection. 
+Xin lỗi vì sự bất tiện này.",translated,
 "현재는 선물상자 판매기간이 아닙니다.
 이벤트 기간에 선물상자를 구매하여 초레어 아이템을 획득하세요!","Hiện không phải thời gian bán Hộp quà.
 Mua Hộp quà trong thời gian sự kiện để nhận vật phẩm siêu hiếm nha!",translated,
 현재사용분,Số phút đã dùng,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình)
+현재와 동일한 채널은 이동할 수 없습니다.,Không thể chuyển sang kênh đang ở.,translated,
 협공 배틀 랜덤,Đấu hợp sức ngẫu nhiên,translated,
 협공배틀 보너스로 %d 루찌와 경험치 %d%% 를 추가로 받았습니다.,Thưởng Đấu hợp sức: nhận thêm %d VÀNG và %d%% kinh nghiệm.,translated,
 협공배틀 보너스로 %s 님께서 %d 루찌와 경험치 %d%% 를 추가로 받았습니다.,Thưởng Đấu hợp sức: %s nhận thêm %d VÀNG và %d%% kinh nghiệm.,translated,
@@ -2571,6 +2972,7 @@ Mua Hộp quà trong thời gian sự kiện để nhận vật phẩm siêu hi�
 협공배틀에서는 반드시 컴퓨터 캐릭터의 수가 사람보다 같거나 많아야 합니다.,"Trong Đấu hợp sức, số nhân vật máy phải bằng hoặc nhiều hơn số người.",translated,
 호러CP보너스,Thưởng BẠC kinh dị,translated,
 혼신을 다하는 승부가 하고 싶을 뿐이다.,Ta chỉ muốn một trận đấu dốc hết toàn lực.,translated,
+혼자놀기에서는 루찌보너스맵에서 루찌를 획득할 수 없습니다.,Khi chơi một mình không nhận được VÀNG ở map thưởng VÀNG.,translated,
 홈페이지 개발 :    윤호식  김민정  김민재  임걸찬,Phát triển trang chủ :    윤호식  김민정  김민재  임걸찬,translated,credit: giữ tên người bằng chữ Hàn
 홍    보 :    서명기  장근욱  서민정  박석현  이재교,Quan hệ công chúng :    서명기  장근욱  서민정  박석현  이재교,translated,credit: giữ tên người bằng chữ Hàn
 홍 수 옥,홍 수 옥,translated,"credit: tên người, giữ nguyên"
@@ -2659,6 +3061,7 @@ Mua Hộp quà trong thời gian sự kiện để nhận vật phẩm siêu hi�
 획득 시 획득한 아이템 중 1개를 랜덤하게 뱉기,Lượm được: nhả ngẫu nhiên 1 vật phẩm đã lượm,translated,
 획득 후 물풍선 설치하면 희미한 물풍선 설치,"Sau khi lượm, đặt bom nước sẽ ra bom nước mờ",translated,
 훗,Hừ,translated,
+훗 가소롭다,"Hừ, nực cười.",translated,
 훗 고릴과 이기다니 대단하군 고릴,"Hừ, thắng được Goril thì giỏi đó goril",translated,
 훗 기분~조오타~,"Hừ, khoái~ quá~ đi~",translated,
 훗 나는 쉽게 죽지 않는다 고릴고릴,"Hừ, tui đâu có dễ chết goril goril",translated,
@@ -2675,6 +3078,7 @@ Mua Hộp quà trong thời gian sự kiện để nhận vật phẩm siêu hi�
 훗 재미있는 구경음 히시시시,"Hừ, coi vui ghê, hì hì hì",translated,
 훗 콩콩,Hừ Kongkong,translated,
 훗 핑키가 봐준거야 알고있지?,"Hừ, Pinky nương tay đó, biết hông?",translated,
+훗. 넌 아직 안돼..,Hừ. Mày chưa được đâu..,translated,
 휘리릭! 보물 가진 플레이어의 속도가 느려져요!,Vù vù! Người giữ báu vật bị chậm lại!,translated,
 흐응! 이대로 끝낼꺼야?,Hứm! Định kết thúc vầy luôn hả?,translated,
 흥미진진한 게임이 펼쳐질 것같당! 고릴,Chắc sẽ có trận đấu hấp dẫn lắm đây! goril,translated,
@@ -2683,8 +3087,12 @@ Mua Hộp quà trong thời gian sự kiện để nhận vật phẩm siêu hi�
 히든캐치3,Hidden Catch 3,translated,
 히든캐치랜덤,Hidden Catch ngẫu nhiên,translated,
 히든캐치테스트00,Hidden Catch thử nghiệm00,translated,
+히시시 간만에 몸좀 풀어봄?,"Hihi, lâu rồi hông giãn gân cốt chút hả?",translated,
+히시시시시  너님이 날 이길거 같음?,"Hihi, bạn nghĩ bạn thắng được tui hông?",translated,
 히어로모드는 2P 를 지원하지 않습니다.,Chế độ Hero không hỗ trợ 2P.,translated,
 히히,Hí hí,translated,
+히히 나라구 나 핑키~!,"Hihi, tui đó, Pinky nè~!",translated,
+히히 핑키는  이쁘고 실력도 좋아. 빠지는게 없지,"Hihi, Pinky xinh mà giỏi nữa. Hông thiếu gì luôn.",translated,
 히히 핑키랑 대결해서 이긴사람은 없었어,"Hí hí, chưa ai đấu với Pinky mà thắng hết",translated,
 힙합클럽,Hip-hop Club,translated,
 힝 핑키 살려주세요,"Hức, cứu Pinky giùm đi",translated,

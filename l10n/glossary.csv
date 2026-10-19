@@ -23,6 +23,7 @@ ko,vi,kind,source,count
 방제목,Tên phòng,ui,seed,1
 비밀방,Phòng kín,ui,seed,1
 비밀번호,mật khẩu,ui,seed,1
+선물,quà,ui,seed,1
 시한폭탄,Bom hẹn giờ,mode,seed,1
 아이스,Băng,theme,seed,1
 옵션,Tùy chọn,ui,seed,1
@@ -79,7 +80,6 @@ CP,BẠC,currency,seed,0
 상점,Siêu thị,ui,seed,0
 샵,Siêu thị,ui,seed,0
 서버,máy chủ,ui,seed,0
-선물,quà,ui,seed,0
 수,Su,character,seed,0
 숲,Rừng,theme,seed,0
 슈퍼파이터,Siêu chiến binh,mode,seed,0
@@ -128,6 +128,7 @@ CP,BẠC,currency,seed,0
 바늘 10개,10 Kim,,translated,9
 헛,Hự,,translated,9
 윽,Ực,,translated,8
+15개,x15,,translated,7
 그러지마 잉잉,Đừng vậy mà hic hic,,reused,7
 으악,Ư ạc,,reused,7
 쿠엥,Ọc ọc,,reused,7
@@ -140,10 +141,12 @@ CP,BẠC,currency,seed,0
 복수다,Phục thù,,reused,5
 패트릿 14,Patrit 14,,translated,5
 후후후,Huhuhu,,reused,5
+20개,x20,,translated,4
 고대의 숲,Rừng cổ đại,,translated,4
 골렘 동굴,Hang golem,,translated,4
 공포의 무덤,Lăng mộ kinh hoàng,,translated,4
 눈덮인 감옥,Nhà tù phủ tuyết,,translated,4
+로두마니,Rodumani,,translated,4
 무덤 22,Lăng mộ 22,,translated,4
 문어 해적선,Thuyền cướp biển bạch tuộc,,translated,4
 물개 3군단,Quân đoàn 3 hải cẩu,,translated,4
@@ -193,6 +196,7 @@ CP,BẠC,currency,seed,0
 (방장만 가능),(chỉ chủ phòng),,translated,2
 1더하기 3은 5,1+3=5,,reused,2
 2더하기 6은 3,2+6=3,,reused,2
+30개,x30,,translated,2
 5더하기 1은 7,5+1=7,,reused,2
 각오해라,Sẵn sàng nào,,reused,2
 감전 주의,Chú ý điện giật,,reused,2
@@ -280,6 +284,7 @@ CP,BẠC,currency,seed,0
 실드 10개,10 Khiên,,translated,2
 심심하네,Chán quá đi,,reused,2
 아놔,Trời ơi,,translated,2
+아니 니 옆에 나 있어,"Ơ, tui đang ở ngay bên cạnh mày nè.",,translated,2
 아야,Ahaaaa,,reused,2
 아직은 이상없음,Chưa có gì lạ,,reused,2
 알겠습니다 주인님,Tớ biết rồi chủ nhâ,,reused,2
@@ -398,6 +403,7 @@ CP,BẠC,currency,seed,0
 16주년대형보너스맵,Bản đồ thưởng lớn kỷ niệm 16 năm,,translated,1
 1P포인트+,Điểm 1P+,,translated,1
 1p일 때,Khi là 1P,,translated,1
+1분 미만 남음,Còn dưới 1 phút,,translated,1
 1승 ㄳㄳ,Thắng rồi ! Cảm ơn cảm ơn,,reused,1
 1초만 기다려라,Chỉ 1 giãy nữa thôi,,reused,1
 2P포인트+,Điểm 2P+,,translated,1
@@ -405,16 +411,17 @@ CP,BẠC,currency,seed,0
 3초만 기다려라,Chỉ 3 giây nữa thôi,,reused,1
 3초만 기다려조요,Chờ ta 3 giây thôi,,reused,1
 500원입니다,Là 500 Won,,reused,1
+5개,x5,,translated,1
 BnB 초보자지침서,Cẩm nang tân thủ Boom,,translated,1
 CP보너스01,Thưởng BẠC01,,translated,1
-F1 도움말 보기,F1 Xem trợ giúp,,translated,1
+F1 도움말 보기,F1 Coi trợ giúp,,translated,1
 F10 게임옵션 설정,F10 Tùy chọn game,,translated,1
 F5 레디/스타트,F5 Sẵn sàng/Bắt đầu,,translated,1
 F9 매크로 설정,F9 Cài đặt macro,,translated,1
 GM비앤비,GM비앤비,,translated,1
 GM비엔비,GM비엔비,,translated,1
-PC방 보너스 01,Thưởng quán net 01,,translated,1
-PC방 퀘스트,Nhiệm vụ quán net,,translated,1
+PC방 보너스 01,Thưởng tiệm net 01,,translated,1
+PC방 퀘스트,Nhiệm vụ tiệm net,,translated,1
 X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 [12자 이내],[Tối đa 12 ký tự],,translated,1
 [150자 이내],[Tối đa 150 ký tự],,translated,1
@@ -485,7 +492,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 게임관리,게임관리,,translated,1
 게임돌이,GameDoli,,translated,1
 게임문의,게임문의,,translated,1
-게임방관리,Quản lý quán net,,translated,1
+게임방관리,Quản lý tiệm net,,translated,1
 게임방으로 초대,vào phòng game của mình,,translated,1
 게임센터,게임센터,,translated,1
 게임시간,Thời gian chơi,,translated,1
@@ -618,6 +625,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 기다리라능,Ta chờ đó,,reused,1
 기동 완료,Hoàn tất khởi động,,reused,1
 기동중,Đang khởi động,,reused,1
+기본순,Thứ tự mặc định,,translated,1
 기분이 좋다 고릴고릴,Vui quá goril goril,,translated,1
 긴장감 있음 두근두근,"Hồi hộp dễ sợ, thình thịch thình thịch",,translated,1
 긴장하는게 좋을꺼임,Căng thẳng là vừa đó,,translated,1
@@ -673,11 +681,15 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 끝내기,Thoát,,reused,1
 나 화났어,Ta bực rồi đó,,reused,1
 나가기,Thoát game,,reused,1
+나는 결코 죽지 않아,Tui không bao giờ chết đâu.,,translated,1
 나는 돌아가마,Ta quay lại rồi.,,reused,1
 나는 따라갈 수 없음,Ta không thể đi theo được,,reused,1
 나는 착한 물개대왕이야,Ta là hoàng đế hải cậu hiền lành đây,,reused,1
 나도 빨라진다능,Ta cũng nhanh lắm đấy,,reused,1
 나도 어엿한 군인이예요,Ta mà nổi giận thì đừng trách nhe!,,reused,1
+나를 기다렸는가,Có chờ tui hông?,,translated,1
+나를 만나다니 행운이군,Gặp được ta là may mắn đó nha.,,translated,1
+나를 부른자가 너냐,Mày là kẻ gọi ta hả?,,translated,1
 나보다 약해,Mi yếu hơn ta nhỉ,,reused,1
 나쁜 사람들 ㅠㅠ,Mấy thằng tồi huhuhu,,reused,1
 나오기만 해봐라,Mày mà lại đây coi,,reused,1
@@ -687,10 +699,12 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 난쎄다구,Ta là vua đây,,reused,1
 남은 시간은 앞으로,Thời gian còn lại là,,translated,1
 내 동료 건드리지마,Đừng đánh bạn ta mà,,reused,1
+내 빛나는 날게 보이니,Thấy đôi cánh tỏa sáng của tui hông?,,translated,1
 내 실력을 봐라,Coi thực lực của tui nè,,translated,1
 내 이름은 g몬,Tên tôi là gMon,,reused,1
 내 이름은 y몬,Tên tôi là yMon,,reused,1
 내 주맵이야,Bản đồ ruột của tui đó,,translated,1
+내가 바로 최강이다,Tui chính là mạnh nhất đó.,,translated,1
 내가 이길줄알았어,Biết ngay là tui thắng mà,,translated,1
 내가 인정한다 너,Tui công nhận mi đó,,translated,1
 내가 터뜨려줄게욤 ㅋㅋ,Ta sẽ cho nổ tung đây ha ha,,reused,1
@@ -772,8 +786,10 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 대왕문어님 살려주세요,"Mưc chúa ơi, cứu tôi với~",,reused,1
 대용량전지는 참 좋아,Pin dung lượng lớn rất tốt,,reused,1
 대폭발이다,Đại bác kìa,,reused,1
+대화 상대 차단,Chặn người đối thoại,,translated,1
 댕댕이 전체확성기,Loa toàn kênh cún cưng,,translated,1
 댕댕이 확성기,Loa cún cưng,,translated,1
+더 실력을 쌓고 와라,Rèn thêm kỹ năng rồi quay lại.,,translated,1
 더이상은 못간다,Không thể đi thêm nữa,,reused,1
 덜덜덜덜덜덜,Ưư ư~~~~~~,,reused,1
 덤벼보시지,Tấn công đi chứ,,reused,1
@@ -800,6 +816,9 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 두리번 두리번,Gì vậy? Gì vậy?,,reused,1
 뒤로 가기,Quay lại,,reused,1
 뒤로가기,Quay lại,,reused,1
+드디어 나왔다,Cuối cùng cũng ra rồi.,,translated,1
+드디어 어둠에서 나왔다,Cuối cùng cũng ra khỏi bóng tối rồi.,,translated,1
+떄가 아니란다,Chưa tới lúc đâu con.,,translated,1
 또 찾아,Tìm nữa đi!,,reused,1
 또죽기 싫어,Ta ghét bị chết lắm,,reused,1
 똑같은 말 밖에 못해,Chỉ toàn nói giống nhau,,reused,1
@@ -1063,6 +1082,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 바다 08,Biển 08,,translated,1
 바다 26,Biển 26,,translated,1
 바다 랜덤,Biển ngẫu nhiên,,translated,1
+바로 구매,Mua ngay,,translated,1
 바보같은 대왕문어야,Mi chơi xấu quá!!,,reused,1
 바위 언덕-1,Đồi đá-1,,translated,1
 바위 언덕-2,Đồi đá-2,,translated,1
@@ -1194,6 +1214,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 살려줘요,Cứu ta với,,reused,1
 살짝 졸리당,Này làm gì thế?,,reused,1
 상     점,Siêu thị,,reused,1
+상대를 해줄 수 없어,Không đấu với mày được.,,translated,1
 상점 가기,Siêu thị,,reused,1
 상태 전환,ở màn hình chuẩn bị,,translated,1
 새친구,Bạn mới,,translated,1
@@ -1427,6 +1448,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 오면 죽음이야,Nếu đến là bị sặc nước đó nhe.,,reused,1
 오호호,Hô hô hô,,reused,1
 와아,Woa,,reused,1
+완료순,Thứ tự hoàn thành,,translated,1
 완전 시시함 시시시시,"Chán òm luôn, chán chán chán",,translated,1
 용궁탐험 01,Thám hiểm Long cung 01,,translated,1
 용궁탐험 랜덤,Thám hiểm Long cung ngẫu nhiên,,translated,1
@@ -1444,6 +1466,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 우리도 못이기네ㅋㅋ,Thua rùi,,reused,1
 우린 공장수비대,Chúng tôi đang canh giữ nhà máy,,reused,1
 우린 그냥 놀자능,Chúng ta chơi tiếp đi,,reused,1
+우린 늘 같이 있어,Tụi mình luôn ở cạnh nhau nha.,,translated,1
 우린 부활 못해,Không thể hồi sinh rồi,,reused,1
 우린 이긴다,Chúng ta thắng rồi,,reused,1
 우릴 버리고 가다니,Bỏ chúng ta mà đi rồi,,reused,1
@@ -1557,6 +1580,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 일반모드 랜덤,Chế độ thường ngẫu nhiên,,translated,1
 일병님이 시켰어요,Mi hãy đứng yên đó~,,reused,1
 일병을 얕보지마라,Hãy đợi đấy,,reused,1
+일일,Hằng ngày,,translated,1
 잃어버린 사원,Ngôi đền thất lạc,,translated,1
 임 주 현,임 주 현,,translated,1
 임 혜 리,임 혜 리,,translated,1
@@ -1567,7 +1591,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 자 긴장해라,"Nè, căng thẳng đi",,translated,1
 자 날 이겨봐,"Nè, thắng tui coi",,translated,1
 자 이건 또 어떠냐,"Chà, cái này thì sao nhỉ",,reused,1
-자기 정보 보기,Xem thông tin của mình,,translated,1
+자기 정보 보기,Coi thông tin của mình,,translated,1
 자동레디,Tự động sẵn sàng,,translated,1
 자유1,Tự do 1,,translated,1
 자유10,Tự do 10,,translated,1
@@ -1681,6 +1705,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 준,Jun,,translated,1
 중수 랜덤,Trung cấp ngẫu nhiên,,translated,1
 중요한임무를 맡았어요,"Này, đứng yên đó!",,reused,1
+즐겨찾기,Yêu thích,,translated,1
 지앤티씨,GNTC,,translated,1
 지옥으로 끌고가야지,Kéo đến địa ngục nào,,reused,1
 지원부대 도착,Đội viện trợ đã đến,,reused,1
@@ -1713,6 +1738,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 찐득찐득광선 준비,Chuẩn bị tia Glutinous Laser,,reused,1
 착각하시면 안돼요,Không được bất cẩn đấy,,reused,1
 착한물개 꽃밭다지기,Chăm sóc hoa nào!!!,,reused,1
+찰칵찰칵 찰칵찰칵,Tách tách tách tách,,translated,1
 참가하기,đã nhập,,translated,1
 참나,Trời đất,,translated,1
 채널 확인,đã nhập đang vào,,translated,1
@@ -1929,6 +1955,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 하수구를 조심해야해,Phải cẩn thận với cống đấy,,reused,1
 하트 확성기,Loa trái tim,,translated,1
 하트이모티 확성기,Loa biểu tượng trái tim,,translated,1
+한정,Giới hạn,,translated,1
 할로윈 랜덤,Halloween ngẫu nhiên,,translated,1
 할로윈빌리지,Làng Halloween,,translated,1
 할로윈패트릿,Patrit Halloween,,translated,1
@@ -2024,6 +2051,7 @@ X-MAS트리 확성기,Loa cây thông Noel,,translated,1
 후후 움직이기 힘들거야,Huhuhu sợ quá,,reused,1
 훈련부터 다시받거라,Hãy bắt đầu huấn luyện lại,,reused,1
 훗,Hừ,,translated,1
+훗 가소롭다,"Hừ, nực cười.",,translated,1
 훗 방심하지마 고릴고릴,"Hừ, đừng có chủ quan goril goril",,translated,1
 훗 쉽구낭 고릴고릴,"Hừ, dễ ẹc goril goril",,translated,1
 훗 시시하다,"Hừ, chán phèo",,translated,1

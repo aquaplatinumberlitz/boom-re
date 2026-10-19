@@ -829,7 +829,7 @@ AIBattleSay_Starting_6_0,csysstr.ssd,너희가 크아맨? 아직 부족해 보�
 AIBattleSay_Starting_6_1,csysstr.ssd,강한자를 찾아 오랜 시간을 방황했다.,,Ta lang thang lâu lắm để tìm kẻ mạnh.,translated,too_long?
 AIBattleSay_Starting_6_2,csysstr.ssd,......,,......,translated,no_hangul
 AIBattleSay_Starting_6_3,csysstr.ssd,너무 겁먹지 말아라. 살살 해줄 테니.,,Đừng sợ quá. Ta đánh nhẹ thôi.,translated,
-AIBattleSay_Starting_6_4,csysstr.ssd,지금 이 자리에서 누가 강한지 겨뤄봐야겠군.,,Ngay tại đây phải phân xem ai mạnh hơn.,translated,too_long?
+AIBattleSay_Starting_6_4,csysstr.ssd,지금 이 자리에서 누가 강한지 겨뤄봐야겠군.,,Ngay tại đây phải so coi ai mạnh hơn.,translated,
 AIBattleSay_Starting_6_5,csysstr.ssd,스스로 강하다고 생각하는가? 그렇다면 입증해라.,,Tự cho mình mạnh hả? Vậy chứng minh đi.,translated,
 AIBattleSay_Starting_6_6,csysstr.ssd,사심은 없다. 단지 결투를 원할 뿐.,,Không có tư thù. Chỉ muốn quyết đấu thôi.,translated,too_long?
 AIBattleSay_Starting_6_7,csysstr.ssd,오해하지 마라. 개인적인 감정은 없으니까.,,Đừng hiểu lầm. Không có thù riêng gì đâu.,translated,too_long?
@@ -1330,396 +1330,451 @@ BigLuckBox_CantBuyGachapon,csysstr.ssd,"현재는 선물상자 판매기간이 �
 이벤트 기간에 선물상자를 구매하여 초레어 아이템을 획득하세요!",,"Hiện không phải thời gian bán Hộp quà.
 Mua Hộp quà trong thời gian sự kiện để nhận vật phẩm siêu hiếm nha!",translated,too_long?
 BigLuckBox_DoYouNeedBag,csysstr.ssd,"가방이 꽉 차서 상자를 열 수 없습니다.
-아이템 가방을 보러 가시겠습니까?",,,review,untranslated
-BigLuckBox_ItemPrize01,csysstr.ssd,모두 축하해주세요! %s님이 선물상자에서 %s아이템을 획득하셨습니다!!,,,review,untranslated
+아이템 가방을 보러 가시겠습니까?",,"Túi đồ đầy nên không mở được hộp.
+Đi coi túi đồ hông?",translated,
+BigLuckBox_ItemPrize01,csysstr.ssd,모두 축하해주세요! %s님이 선물상자에서 %s아이템을 획득하셨습니다!!,,Chúc mừng mọi người! %s đã nhận được %s từ hộp quà!!,translated,
 BigLuckBox_MsgViewDefault,csysstr.ssd,"상자를 열어보세요!
-선물이 가득가득!!",,,review,untranslated
+선물이 가득가득!!",,"Mở hộp thử coi!
+Quà đầy ắp luôn!!",translated,
 BigLuckBox_MsgViewErrDefault,csysstr.ssd,"상자를 여는 도중 오류가 발생했습니다. 
-잠시 후 다시 시도해 주세요",,,review,untranslated
+잠시 후 다시 시도해 주세요",,"Có lỗi khi mở hộp. 
+Vui lòng thử lại sau ít phút nha",translated,
 BigLuckBox_MsgViewNoHaveBigLuckBox,csysstr.ssd,"선물상자가 없어요!
-왼쪽의 바로구매 버튼을 클릭!",,,review,untranslated
+왼쪽의 바로구매 버튼을 클릭!",,"Hết hộp quà rồi!
+Bấm nút Mua ngay bên trái nha!",translated,too_long?
 BigLuckBox_MsgViewWaiting,csysstr.ssd,"상자에서 선물이 나오고 있어요!
-완전 기대 중!",,,review,untranslated
+완전 기대 중!",,"Quà đang ra khỏi hộp kìa!
+Hồi hộp ghê!",translated,
 BigLuckBoxDlgToolTip,csysstr.ssd,선물상자,,Hộp quà,translated,too_long?
-BigLuckBoxDlgTooManyHaveItem,csysstr.ssd,너무 많은 선물상자 치장아이템을 가지고 있어서 더 이상 상자를 열 수 없습니다.,,,review,untranslated
-BigMonsterChannelChecking,csysstr.ssd,"이벤트 진행 시간이 아닙니다. 이벤트 진행 기간은 6월16일 ~ 30일이오니 , 해당 시간에 다시 참여해 주세요",,,review,untranslated
-BigMonsterEventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,,review,untranslated
-BigMonsterEventNpcRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %일권 %s개를 획득하셨습니다!,,,review,untranslated
-BigMonsterEventNpcRewardExp,csysstr.ssd,%s님께서 보물상자에서 경험치 %d점을 획득하셨습니다!,,,review,untranslated
-BigMonsterEventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,,review,untranslated
-BigMonsterEventNpcRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d루찌를 획득하셨습니다!,,,review,untranslated
-BlackCipher2_Error01,csysstr.ssd,넥슨 보안 모듈과의 통신에 실패하여 게임을 종료합니다.(errorcode=1),,,review,untranslated
-BlackCipher2_Error02,csysstr.ssd,보안 모듈에서 해킹툴이 감지되어 게임을 종료합니다.(errorcode=2),,,review,untranslated
-BlackRabbit,csysstr.ssd,아기자기한 바니팜에 토끼가 습격해 왔어요. 굴에서 튀어나오는 토끼 앞에 물풍선을 놓아 보세요. 20점을 먼저 채우는 팀이 승리!,,,review,untranslated
-BlackRabbitRandom,csysstr.ssd,바니팜맵 중 한가지가 랜덤하게 선택됩니다.,,,review,untranslated
-BlockChatUser,csysstr.ssd+FxDesktop/ClientData/ClientString,대화 상대 차단,,,review,untranslated
-BlueMonMapNotify,csysstr.ssd,블루몽 경보! 오늘은 %s 맵에서 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,,review,untranslated
-BlueMonSay_event0_01,csysstr.ssd,아이고 아퍼!,,,review,untranslated
-BlueMonSay_event0_02,csysstr.ssd,왜 때려!,,,review,untranslated
-BlueMonSay_event1_01,csysstr.ssd,수영도 못해?,,,review,untranslated
-BlueMonSay_event2_02,csysstr.ssd,시원하냐?,,,review,untranslated
-BlueMonSay_event3_01,csysstr.ssd,"위, 위험해",,,review,untranslated
-BlueMonSay_event4_01,csysstr.ssd,경쟁자 탈락!,,,review,untranslated
-BlueMonSay_event4_02,csysstr.ssd,잘가라구~,,,review,untranslated
-BlueMonSay_event5_01,csysstr.ssd,아코! 내보물!,,,review,untranslated
-BlueMonSay_step0_01,csysstr.ssd,블루몽 등장!,,,review,untranslated
-BlueMonSay_step1_01,csysstr.ssd,달아날 준비를 해야지!,,,review,untranslated
-BlueMonSay_step1_02,csysstr.ssd,보물은 줄 수 없다!,,,review,untranslated
-BlueMonSay_step2_01,csysstr.ssd,나는 비행몬스터야!,,,review,untranslated
-BlueMonSay_step3_01,csysstr.ssd,우키키 이제 보물은 내 것!,,,review,untranslated
-BlueMonSay_step4_01,csysstr.ssd,나 잡아바라~,,,review,untranslated
-BlueMonThemeNotify108,csysstr.ssd,블루몽 경보! 오늘은 골렘대침공맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,,review,untranslated
-BlueMonThemeNotify247,csysstr.ssd,블루몽 경보! 오늘은 전설의숲맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,,review,untranslated
-BlueMonThemeNotify248,csysstr.ssd,블루몽 경보! 오늘은 몬스터맵에서 블루몽이 출몰한다고 합니다. 사냥에 주의하세요~,,,review,untranslated
-BlueMonThemeNotify251,csysstr.ssd,블루몽 경보! 오늘은 거북대격돌맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,,review,untranslated
-BlueMonThemeNotify252,csysstr.ssd,블루몽 경보! 오늘은 황제의귀환맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,,review,untranslated
-BlueMonThemeNotify253,csysstr.ssd,블루몽 경보! 오늘은 로봇대공습맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,,review,untranslated
-BlueMonThemeNotify254,csysstr.ssd,블루몽 경보! 오늘은 문어대습격맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,,review,untranslated
+BigLuckBoxDlgTooManyHaveItem,csysstr.ssd,너무 많은 선물상자 치장아이템을 가지고 있어서 더 이상 상자를 열 수 없습니다.,,Đang có quá nhiều vật phẩm trang trí hộp quà nên không mở thêm hộp được.,translated,too_long?
+BigMonsterChannelChecking,csysstr.ssd,"이벤트 진행 시간이 아닙니다. 이벤트 진행 기간은 6월16일 ~ 30일이오니 , 해당 시간에 다시 참여해 주세요",,"Chưa tới giờ diễn ra sự kiện. Sự kiện diễn ra từ ngày 16 đến 30 tháng 6, vui lòng tham gia lại trong thời gian đó nha.",translated,too_long?
+BigMonsterEventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,%s đã nhận được %s x%d từ rương báu!,translated,
+BigMonsterEventNpcRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %일권 %s개를 획득하셨습니다!,,%s đã nhận được %s %일권 x%s từ rương báu!,review,"Gốc có ""%일권"" (không phải dạng %d hợp lệ), giữ nguyên; kiểm tra lại với bản gốc"
+BigMonsterEventNpcRewardExp,csysstr.ssd,%s님께서 보물상자에서 경험치 %d점을 획득하셨습니다!,,%s đã nhận %d kinh nghiệm từ rương báu!,translated,
+BigMonsterEventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận được thẻ %s %d ngày từ rương báu!,translated,
+BigMonsterEventNpcRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d루찌를 획득하셨습니다!,,%s đã nhận được %d VÀNG từ rương báu!,translated,
+BlackCipher2_Error01,csysstr.ssd,넥슨 보안 모듈과의 통신에 실패하여 게임을 종료합니다.(errorcode=1),,Kết nối với module bảo mật Nexon thất bại nên game sẽ thoát.(errorcode=1),translated,too_long?
+BlackCipher2_Error02,csysstr.ssd,보안 모듈에서 해킹툴이 감지되어 게임을 종료합니다.(errorcode=2),,Module bảo mật phát hiện công cụ hack nên game sẽ thoát.(errorcode=2),translated,too_long?
+BlackRabbit,csysstr.ssd,아기자기한 바니팜에 토끼가 습격해 왔어요. 굴에서 튀어나오는 토끼 앞에 물풍선을 놓아 보세요. 20점을 먼저 채우는 팀이 승리!,,Thỏ tấn công Bunny Farm xinh xắn rồi! Thử đặt bom nước trước những con thỏ chui ra từ hang nha. Đội nào đạt 20 điểm trước sẽ thắng!,translated,too_long?
+BlackRabbitRandom,csysstr.ssd,바니팜맵 중 한가지가 랜덤하게 선택됩니다.,,Một trong các map Bunny Farm sẽ được chọn ngẫu nhiên.,translated,too_long?
+BlockChatUser,csysstr.ssd+FxDesktop/ClientData/ClientString,대화 상대 차단,,Chặn người đối thoại,translated,too_long?
+BlueMonMapNotify,csysstr.ssd,블루몽 경보! 오늘은 %s 맵에서 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map %s. Coi chừng khi săn nha~,translated,too_long?
+BlueMonSay_event0_01,csysstr.ssd,아이고 아퍼!,,Ui da đau quá!,translated,too_long?
+BlueMonSay_event0_02,csysstr.ssd,왜 때려!,,Sao đánh tui!,translated,too_long?
+BlueMonSay_event1_01,csysstr.ssd,수영도 못해?,,Bơi cũng hông biết hả?,translated,too_long?
+BlueMonSay_event2_02,csysstr.ssd,시원하냐?,,Mát hông?,translated,too_long?
+BlueMonSay_event3_01,csysstr.ssd,"위, 위험해",,Ng-nguy hiểm quá!,translated,too_long?
+BlueMonSay_event4_01,csysstr.ssd,경쟁자 탈락!,,Đối thủ bị loại!,translated,too_long?
+BlueMonSay_event4_02,csysstr.ssd,잘가라구~,,Bye nha~,translated,
+BlueMonSay_event5_01,csysstr.ssd,아코! 내보물!,,Ako! Kho báu của tui!,translated,too_long?
+BlueMonSay_step0_01,csysstr.ssd,블루몽 등장!,,Bluemon xuất hiện!,translated,too_long?
+BlueMonSay_step1_01,csysstr.ssd,달아날 준비를 해야지!,,Phải chuẩn bị chạy thôi!,translated,too_long?
+BlueMonSay_step1_02,csysstr.ssd,보물은 줄 수 없다!,,Không đưa kho báu được đâu!,translated,too_long?
+BlueMonSay_step2_01,csysstr.ssd,나는 비행몬스터야!,,Tui là quái bay nè!,translated,too_long?
+BlueMonSay_step3_01,csysstr.ssd,우키키 이제 보물은 내 것!,,"Ukiki, giờ kho báu là của tui!",translated,too_long?
+BlueMonSay_step4_01,csysstr.ssd,나 잡아바라~,,Bắt tui coi~,translated,too_long?
+BlueMonThemeNotify108,csysstr.ssd,블루몽 경보! 오늘은 골렘대침공맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Golem Đại Xâm Lăng. Coi chừng khi săn nha~,translated,too_long?
+BlueMonThemeNotify247,csysstr.ssd,블루몽 경보! 오늘은 전설의숲맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Rừng Huyền Thoại. Coi chừng khi săn nha~,translated,too_long?
+BlueMonThemeNotify248,csysstr.ssd,블루몽 경보! 오늘은 몬스터맵에서 블루몽이 출몰한다고 합니다. 사냥에 주의하세요~,,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon sẽ xuất hiện ở map Quái vật. Coi chừng khi săn nha~,translated,too_long?
+BlueMonThemeNotify251,csysstr.ssd,블루몽 경보! 오늘은 거북대격돌맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Đại Chiến Rùa. Coi chừng khi săn nha~,translated,too_long?
+BlueMonThemeNotify252,csysstr.ssd,블루몽 경보! 오늘은 황제의귀환맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Hoàng Đế Trở Về. Coi chừng khi săn nha~,translated,too_long?
+BlueMonThemeNotify253,csysstr.ssd,블루몽 경보! 오늘은 로봇대공습맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Robot Đại Tập Kích. Coi chừng khi săn nha~,translated,too_long?
+BlueMonThemeNotify254,csysstr.ssd,블루몽 경보! 오늘은 문어대습격맵에 블루몽이 자주 출몰한다고 합니다. 사냥에 주의하세요~,,Cảnh báo Bluemon! Hôm nay nghe nói Bluemon hay xuất hiện ở map Bạch Tuộc Đại Tấn Công. Coi chừng khi săn nha~,translated,too_long?
 BnBMobileURL,csysstr.ssd,http://event.nexonmobile.com/Contents/Event/Site/Web/2011022801/,,http://event.nexonmobile.com/Contents/Event/Site/Web/2011022801/,translated,no_hangul
-BnbNavi_BrandNewNaviTitle,csysstr.ssd,최신 모아보기,Hướng dẫn,Xem mục mới nhất,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
+BnbNavi_BrandNewNaviTitle,csysstr.ssd,최신 모아보기,Hướng dẫn,Coi mục mới nhất,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
 BnbNavi_DailyQuestTitle,csysstr.ssd,일일퀘스트,Nhiệm vụ ngày,Nhiệm vụ hằng ngày,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
 BnbNavi_EventNaviTitle,csysstr.ssd,이벤트,Sự kiện,Sự kiện,reused,vi_base=boom-re:server/src/strings.rs
 BnbNavi_NaviTemplate_End,csysstr.ssd,"<font color=0x5DC2FF>[%s]</font><font style=boldshade color=0x5DC2FF outline=0x002F76>완료</font>
 <font color=0x5DC2FF>내 용:%s
 진 행:%s
-보 상:%s</font>",,,review,untranslated
+보 상:%s</font>",,"<font color=0x5DC2FF>[%s]</font><font style=boldshade color=0x5DC2FF outline=0x002F76>Hoàn thành</font>
+<font color=0x5DC2FF>Nội dung:%s
+Tiến độ:%s
+Phần thưởng:%s</font>",translated,
 BnbNavi_NaviTemplate_End_Over,csysstr.ssd,"<font color=0x5DC2FF underline=true>[%s]</font><font style=boldshade color=0x5DC2FF outline=0x002F76>완료</font>
 <font color=0x5DC2FF>내 용:%s
 진 행:%s
-보 상:%s</font>",,,review,untranslated
+보 상:%s</font>",,"<font color=0x5DC2FF underline=true>[%s]</font><font style=boldshade color=0x5DC2FF outline=0x002F76>Hoàn thành</font>
+<font color=0x5DC2FF>Nội dung:%s
+Tiến độ:%s
+Phần thưởng:%s</font>",translated,
 BnbNavi_NaviTemplate_Ing,csysstr.ssd,"<font style=bold color=0xFFF600>[%s]</font><font style=boldshade color=0xFCFF00 outline=0xF60000>진행중</font>
 <font color=white>내 용:%s
 진 행:%s
-보 상:%s</font>",,,review,untranslated
+보 상:%s</font>",,"<font style=bold color=0xFFF600>[%s]</font><font style=boldshade color=0xFCFF00 outline=0xF60000>Đang làm</font>
+<font color=white>Nội dung:%s
+Tiến độ:%s
+Phần thưởng:%s</font>",translated,
 BnbNavi_NaviTemplate_Ing_Over,csysstr.ssd,"<font style=bold color=0xFFF600 underline=true>[%s]</font><font style=boldshade color=0xFCFF00 outline=0xF60000>진행중</font>
 <font color=white>내 용:%s
 진 행:%s
-보 상:%s</font>",,,review,untranslated
+보 상:%s</font>",,"<font style=bold color=0xFFF600 underline=true>[%s]</font><font style=boldshade color=0xFCFF00 outline=0xF60000>Đang làm</font>
+<font color=white>Nội dung:%s
+Tiến độ:%s
+Phần thưởng:%s</font>",translated,
 BnbNavi_NormalQuestNaviTitle,csysstr.ssd,퀘스트,Nhiệm vụ,Nhiệm vụ,reused,vi_base=boom-re:server/src/strings.rs
-BNBSupporters_SupportersOnlyItem,csysstr.ssd,10월의 서포터즈만 사용할 수 있습니다,,,review,untranslated
-BomberDecoInvalidStockItem,csysstr.ssd+FxDesktop/ClientData/ClientString,이 아이템은 PC방 무료 아이템이거나 더 이상 판매하지 않는 아이템입니다.,,,review,untranslated
-BomberDecoText,csysstr.ssd+FxDesktop/ClientData/ClientString,상대방과 같은 아이템을 상점에서 바로 구매할 수 있습니다.,,,review,untranslated
-BonusLargeGourd01Default01,csysstr.ssd,대박 보너스다!,,,review,untranslated
-BonusLargeGourd01Default02,csysstr.ssd,나 때릴꺼야?,,,review,untranslated
-BonusLargeGourd01Default03,csysstr.ssd,"자, 잠깐만!",,,review,untranslated
-BonusLargeGourd01Default04,csysstr.ssd,선물을 달라구?,,,review,untranslated
-BonusLargeGourd01Default05,csysstr.ssd,"아, 안돼!!",,,review,untranslated
-BonusLargeGourd01SelfDamaged01,csysstr.ssd,아얏!,,,review,untranslated
-BonusLargeGourd01SelfDie01,csysstr.ssd,에잇! 선물이다!,,,review,untranslated
-BonusMapKeyEatEventItem,csysstr.ssd+FxDesktop/ClientData/ClientString,보물열쇠 수집완료!!,,,review,untranslated
-BonusMapKeyQuitMsg00,csysstr.ssd+FxDesktop/ClientData/ClientString,지금 나가시면 보물열쇠 보너스맵으로 이동할 수 없습니다. 나가시겠습니까?,,,review,untranslated
-BonusMapKeyQuitMsg01,csysstr.ssd+FxDesktop/ClientData/ClientString,"게임이 끝나기 전에 윈도우로 나가면 게임에서 지게 되며, 보물열쇠 보너스맵으로 이동할 수 없습니다. 나가시겠습니까?",,,review,untranslated
-BookMark,csysstr.ssd,즐겨찾기,,,review,untranslated
-BookMarkCannotRegisterMap,csysstr.ssd,해당 맵은 즐겨찾기에 추가할 수 없습니다.,,,review,untranslated
-BookMarkMaximumCount,csysstr.ssd,"즐겨찾기 등록은 일반모드, 몬스터모드, 협공배틀 포함해 50개까지 등록 가능합니다. 등록된 맵을 즐겨찾기 해제 후 사용해 주시길 바랍니다.",,,review,untranslated
-BookMarkRandom,csysstr.ssd,즐겨찾기로 등록된 맵이 랜덤하게 선택됩니다.,,,review,untranslated
-BossKillLucciBonus,csysstr.ssd+FxDesktop/ClientData/ClientString,%s 님이 보스킬 보너스 %d 루찌를 얻으셨습니다.,,,review,untranslated
-BreakGuildFail,csysstr.ssd+FxDesktop/ClientData/ClientString,현재 길드원이 있으므로 길드를 해체할 수 없습니다. 길드를 해체하려면 길드마스터를 제외한 길드원이 한명도 없어야 합니다.,,,review,untranslated
-BreakGuildSuccess,csysstr.ssd,%s' 길드가 해체되었습니다. 현재 가입한 길드가 없습니다.,,,review,untranslated
+BNBSupporters_SupportersOnlyItem,csysstr.ssd,10월의 서포터즈만 사용할 수 있습니다,,Chỉ người hỗ trợ tháng 10 mới dùng được.,translated,too_long?
+BomberDecoInvalidStockItem,csysstr.ssd+FxDesktop/ClientData/ClientString,이 아이템은 PC방 무료 아이템이거나 더 이상 판매하지 않는 아이템입니다.,,Vật phẩm này là đồ miễn phí của tiệm net hoặc đã ngừng bán.,translated,
+BomberDecoText,csysstr.ssd+FxDesktop/ClientData/ClientString,상대방과 같은 아이템을 상점에서 바로 구매할 수 있습니다.,,Có thể mua ngay vật phẩm giống đối phương tại Siêu thị.,translated,too_long?
+BonusLargeGourd01Default01,csysstr.ssd,대박 보너스다!,,Thưởng lớn quá trời!,translated,too_long?
+BonusLargeGourd01Default02,csysstr.ssd,나 때릴꺼야?,,Định đánh tui hả?,translated,too_long?
+BonusLargeGourd01Default03,csysstr.ssd,"자, 잠깐만!",,"Khoan, đợi chút!",translated,too_long?
+BonusLargeGourd01Default04,csysstr.ssd,선물을 달라구?,,Đòi quà hả?,translated,
+BonusLargeGourd01Default05,csysstr.ssd,"아, 안돼!!",,"Ay, không được!!",translated,too_long?
+BonusLargeGourd01SelfDamaged01,csysstr.ssd,아얏!,,Ái!,translated,
+BonusLargeGourd01SelfDie01,csysstr.ssd,에잇! 선물이다!,,Ê! Quà nè!,translated,
+BonusMapKeyEatEventItem,csysstr.ssd+FxDesktop/ClientData/ClientString,보물열쇠 수집완료!!,,Đã thu thập đủ Chìa khóa báu!!,translated,too_long?
+BonusMapKeyQuitMsg00,csysstr.ssd+FxDesktop/ClientData/ClientString,지금 나가시면 보물열쇠 보너스맵으로 이동할 수 없습니다. 나가시겠습니까?,,Nếu thoát bây giờ sẽ không thể qua map thưởng Chìa khóa báu. Thoát hông?,translated,too_long?
+BonusMapKeyQuitMsg01,csysstr.ssd+FxDesktop/ClientData/ClientString,"게임이 끝나기 전에 윈도우로 나가면 게임에서 지게 되며, 보물열쇠 보너스맵으로 이동할 수 없습니다. 나가시겠습니까?",,Nếu thoát cửa sổ trước khi game kết thúc thì sẽ bị thua và không thể qua map thưởng Chìa khóa báu. Thoát hông?,translated,too_long?
+BookMark,csysstr.ssd,즐겨찾기,,Yêu thích,translated,too_long?
+BookMarkCannotRegisterMap,csysstr.ssd,해당 맵은 즐겨찾기에 추가할 수 없습니다.,,Map này không thể thêm vào Yêu thích.,translated,too_long?
+BookMarkMaximumCount,csysstr.ssd,"즐겨찾기 등록은 일반모드, 몬스터모드, 협공배틀 포함해 50개까지 등록 가능합니다. 등록된 맵을 즐겨찾기 해제 후 사용해 주시길 바랍니다.",,"Có thể đăng ký tối đa 50 map yêu thích, bao gồm chế độ thường, chế độ quái vật và Đấu hợp sức. Vui lòng bỏ yêu thích map đã đăng ký rồi mới dùng nha.",translated,too_long?
+BookMarkRandom,csysstr.ssd,즐겨찾기로 등록된 맵이 랜덤하게 선택됩니다.,,Map đã đăng ký yêu thích sẽ được chọn ngẫu nhiên.,translated,too_long?
+BossKillLucciBonus,csysstr.ssd+FxDesktop/ClientData/ClientString,%s 님이 보스킬 보너스 %d 루찌를 얻으셨습니다.,,%s đã nhận thưởng hạ trùm %d VÀNG.,translated,
+BreakGuildFail,csysstr.ssd+FxDesktop/ClientData/ClientString,현재 길드원이 있으므로 길드를 해체할 수 없습니다. 길드를 해체하려면 길드마스터를 제외한 길드원이 한명도 없어야 합니다.,,Hiện còn thành viên nên không thể giải tán hội. Muốn giải tán thì ngoài hội trưởng ra không được còn thành viên nào.,translated,too_long?
+BreakGuildSuccess,csysstr.ssd,%s' 길드가 해체되었습니다. 현재 가입한 길드가 없습니다.,,Hội %s' đã được giải tán. Hiện bạn chưa tham gia hội nào.,translated,too_long?
 BreakGuildSuccess@ClientString,FxDesktop/ClientData/ClientString,'%s' 길드가 해체되었습니다. 현재 가입한 길드가 없습니다.,,,review,dup_key_diff;untranslated
 BubbleBubbleEvent_BonusExp,csysstr.ssd,"방울방울 이벤트 당첨!!
-경험치 %d배!!",,,review,untranslated
+경험치 %d배!!",,"Trúng sự kiện Giọt Nước!!
+Kinh nghiệm x%d!!",translated,too_long?
 BubbleBubbleEvent_BonusLucci,csysstr.ssd,"방울방울 이벤트 당첨!!
-루찌 %d배!!",,,review,untranslated
+루찌 %d배!!",,"Trúng sự kiện Giọt Nước!!
+VÀNG x%d!!",translated,too_long?
 BubbleBubbleEvent_BonusLucciExp,csysstr.ssd,"방울방울 이벤트 당첨!!
-경험치 %d배/루찌 %d배!!",,,review,untranslated
-Bula,csysstr.ssd+FxDesktop/ClientData/ClientString,어느쪽이 더 많은 보물상자를 여느냐로 승부를 가리는 땅따먹기 게임 불라입니다. 우리팀 색깔로 보물상자를 둘러싸 보세요.,,,review,untranslated
-BulaRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,불라맵 중 한가지가 랜덤하게 선택됩니다.,,,review,untranslated
+경험치 %d배/루찌 %d배!!",,"Trúng sự kiện Giọt Nước!!
+Kinh nghiệm x%d/VÀNG x%d!!",translated,too_long?
+Bula,csysstr.ssd+FxDesktop/ClientData/ClientString,어느쪽이 더 많은 보물상자를 여느냐로 승부를 가리는 땅따먹기 게임 불라입니다. 우리팀 색깔로 보물상자를 둘러싸 보세요.,,"Bula là game giành đất, đội nào mở được nhiều rương báu hơn sẽ thắng. Thử bao quanh rương báu bằng màu đội mình nha.",translated,too_long?
+BulaRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,불라맵 중 한가지가 랜덤하게 선택됩니다.,,Một trong các map Bula sẽ được chọn ngẫu nhiên.,translated,too_long?
 Burngauge_ExitMsg,csysstr.ssd,"빠른시작 퀘스트 진행 중입니다.
-게임 종료 시 포인트가 소멸됩니다. 종료하시겠습니까?",,,review,untranslated
-Buy now,csysstr.ssd+FxDesktop/ClientData/ClientString,바로 구매,,,review,untranslated
+게임 종료 시 포인트가 소멸됩니다. 종료하시겠습니까?",,"Đang làm nhiệm vụ Khởi đầu nhanh.
+Khi kết thúc game, điểm sẽ mất. Thoát hông?",translated,too_long?
+Buy now,csysstr.ssd+FxDesktop/ClientData/ClientString,바로 구매,,Mua ngay,translated,
 BuyItem,csysstr.ssd+FxDesktop/ClientData/ClientString,%s를(을) 구매하였습니다.,Mua vật phẩm thành công.,Đã mua %s.,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 BuyItemBagForImperialPresent,csysstr.ssd+FxDesktop/ClientData/ClientString,"지존권 혜택으로 %s 님께서 '%s'를 선물받으셨으나 아이템 가방이 가득 차 선물을 받을 수 없습니다.
-아이템 가방을 구입하시는 즉시 선물을 받으실 수 있습니다.",,,review,untranslated
+아이템 가방을 구입하시는 즉시 선물을 받으실 수 있습니다.",,"Nhờ đặc quyền Chí Tôn, %s đã được tặng '%s' nhưng túi đồ đầy nên không nhận được quà.
+Mua túi đồ là nhận quà ngay nha.",translated,
 BuyItemBagForPresent,csysstr.ssd+FxDesktop/ClientData/ClientString,"%s 님께서 '%s'를 %s 님께 선물하셨으나 아이템 가방이 가득 차 선물을 받을 수 없습니다.
-아이템 가방을 구입하시는 즉시 선물을 받으실 수 있습니다.",,,review,untranslated
-BuyItemPeriodChanger,csysstr.ssd+FxDesktop/ClientData/ClientString,%s를(을) 구매하셔서 %s 아이템에 적용되었습니다.,,,review,untranslated
-BuyTLLimitItemMsg,csysstr.ssd,%s유저가 시간의 상점에서 %s아이템을 획득하였습니다. 남은수량:%d,,,review,untranslated
-CafeTimeEventMsg01,csysstr.ssd,고객님 카페에 20분동안 계셨네요. 감사의 마음을 담아 [허니버터실드]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,,,review,untranslated
-CafeTimeEventMsg02,csysstr.ssd,고객님 카페에 40분동안 계셨네요. 감사의 마음을 담아[모카산삼]을 드릴게요. 맛있게 드시고 즐거운 시간되세요,,,review,untranslated
-CafeTimeEventMsg03,csysstr.ssd,고객님 카페에 60분동안 계셨네요. 감사의 마음을 담아[바늘프라푸치노]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,,,review,untranslated
-CafeTimeEventMsg04,csysstr.ssd,고객님 카페에 2시간동안 계셨네요. 감사의 마음을 담아[스프링팥빙수]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,,,review,untranslated
-CafeTimeEventMsg05,csysstr.ssd,고객님 카페에 4시간동안 머물러 계셨군요! 당신을 VVIP로 모십니다. 저희 매장에 자주방문 부탁드리며 감사의 마음을 담아 [센서마끼아또]를 드립니다,,,review,untranslated
-CAHero_Continue,csysstr.ssd,"이어하기 버튼을 눌러 게임을 이어해보거라. 코인이 없다면 새로하기를 눌러라. 단, 새로하기 버튼을 누르면 지금까진 이긴NPC와 처음부터 대결해야한다 좋은점은 새로하기 때문에 코인이 들지 않는단다.",,,review,untranslated
-CAHero_ContinueNeedCoin,csysstr.ssd,코인이 부족해서 이어할 수 없어요!,,,review,untranslated
-CAHero_DisableStateMsg_DarkHero_01,csysstr.ssd,약한 자군. 아직은 때가 아니다,,,review,untranslated
-CAHero_DisableStateMsg_DarkHero_02,csysstr.ssd,아직 나와 겨룰 수 없다.,,,review,untranslated
-CAHero_DisableStateMsg_DarkHero_03,csysstr.ssd,약한상대로군. 너는 아직 아니다,,,review,untranslated
-CAHero_DisableStateMsg_DarkHero_04,csysstr.ssd,애송이군. 아직은 겨룰 수 없다,,,review,untranslated
-CAHero_DisableStateMsg_DarkHero_05,csysstr.ssd,나랑 겨루기엔 니가 너무 약하다,,,review,untranslated
-CAHero_DisableStateMsg_DarkHero_06,csysstr.ssd,감히. 어딜,,,review,untranslated
-CAHero_DisableStateMsg_DarkHero_07,csysstr.ssd,내가 니 상대라고 생각하느냐 웃기지마라,,,review,untranslated
-CAHero_DisableStateMsg_DarkHero_08,csysstr.ssd,더 실력을 쌓고 와라,,,review,untranslated
-CAHero_DisableStateMsg_Lodumani_01,csysstr.ssd,나는 최강이다. 니가 겨룰수 있는 상대가 아니다,,,review,untranslated
-CAHero_DisableStateMsg_Lodumani_02,csysstr.ssd,나랑 겨루고 싶다고..? 아직 멀었다,,,review,untranslated
-CAHero_DisableStateMsg_Lodumani_03,csysstr.ssd,나는 영웅전의 최고야. 너는 아직나와 겨룰 수 없다.,,,review,untranslated
-CAHero_DisableStateMsg_Lodumani_04,csysstr.ssd,더 싸우고 실력을 키워와라. 애송아,,,review,untranslated
-CAHero_DisableStateMsg_Lodumani_05,csysstr.ssd,작은고추가 맵다는 말 아냐?,,,review,untranslated
-CAHero_DisableStateMsg_Lodumani_06,csysstr.ssd,애송이로군. 가라,,,review,untranslated
-CAHero_DisableStateMsg_Lodumani_07,csysstr.ssd,씁! 가라,,,review,untranslated
-CAHero_DisableStateMsg_Lodumani_08,csysstr.ssd,가소롭다. 가라,,,review,untranslated
-CAHero_DisableStateMsg_WhiteAngel_01,csysstr.ssd,아직은 때가 아니야..,,,review,untranslated
-CAHero_DisableStateMsg_WhiteAngel_02,csysstr.ssd,나랑 겨루고 싶다면 6명을 모두 이기렴..,,,review,untranslated
-CAHero_DisableStateMsg_WhiteAngel_03,csysstr.ssd,넌 아직 안돼..,,,review,untranslated
-CAHero_DisableStateMsg_WhiteAngel_04,csysstr.ssd,상대를 해줄 수 없어,,,review,untranslated
-CAHero_DisableStateMsg_WhiteAngel_05,csysstr.ssd,약하구나..,,,review,untranslated
-CAHero_DisableStateMsg_WhiteAngel_06,csysstr.ssd,이따가 다시오렴..,,,review,untranslated
-CAHero_DisableStateMsg_WhiteAngel_07,csysstr.ssd,떄가 아니란다,,,review,untranslated
-CAHero_DisableStateMsg_WhiteAngel_08,csysstr.ssd,훗. 넌 아직 안돼..,,,review,untranslated
-CAHero_EnableStateMsg_BadBoy3_01,csysstr.ssd,계속 노래 불러줄께. 나에게 올래?,,,review,untranslated
-CAHero_EnableStateMsg_BadBoy3_02,csysstr.ssd,누구 마음대로 안와. 어서 내게로 와,,,review,untranslated
-CAHero_EnableStateMsg_BadBoy3_03,csysstr.ssd,나를 보고 싶으면 이리로 와.,,,review,untranslated
-CAHero_EnableStateMsg_BadBoy3_04,csysstr.ssd,안 갈거지? 안 갈거지?,,,review,untranslated
-CAHero_EnableStateMsg_BadBoy3_05,csysstr.ssd,하기 싫어. 그만 둘래,,,review,untranslated
-CAHero_EnableStateMsg_BadBoy3_06,csysstr.ssd,우린 늘 같이 있어,,,review,untranslated
-CAHero_EnableStateMsg_BadBoy3_07,csysstr.ssd,아니 니 옆에 나 있어,,,review,untranslated
-CAHero_EnableStateMsg_BadBoy3_08,csysstr.ssd,아니 니 옆에 나 있어,,,review,untranslated
+아이템 가방을 구입하시는 즉시 선물을 받으실 수 있습니다.",,"%s đã tặng '%s' cho %s nhưng túi đồ đầy nên không nhận được quà.
+Mua túi đồ là nhận quà ngay nha.",translated,
+BuyItemPeriodChanger,csysstr.ssd+FxDesktop/ClientData/ClientString,%s를(을) 구매하셔서 %s 아이템에 적용되었습니다.,,Đã mua %s và áp dụng cho vật phẩm %s.,translated,
+BuyTLLimitItemMsg,csysstr.ssd,%s유저가 시간의 상점에서 %s아이템을 획득하였습니다. 남은수량:%d,,Người chơi %s đã nhận %s từ Siêu thị Thời gian. Còn lại: %d,translated,
+CafeTimeEventMsg01,csysstr.ssd,고객님 카페에 20분동안 계셨네요. 감사의 마음을 담아 [허니버터실드]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,,"Bạn đã ở quán cà phê 20 phút rồi nè. Gửi chút lòng cảm ơn, tui tặng [Khiên Bơ Mật Ong] nha. Chúc bạn vui vẻ!",translated,too_long?
+CafeTimeEventMsg02,csysstr.ssd,고객님 카페에 40분동안 계셨네요. 감사의 마음을 담아[모카산삼]을 드릴게요. 맛있게 드시고 즐거운 시간되세요,,"Bạn đã ở quán cà phê 40 phút rồi nè. Gửi chút lòng cảm ơn, tui tặng [Mocha Sâm] nha. Chúc bạn vui vẻ!",translated,too_long?
+CafeTimeEventMsg03,csysstr.ssd,고객님 카페에 60분동안 계셨네요. 감사의 마음을 담아[바늘프라푸치노]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,,"Bạn đã ở quán cà phê 60 phút rồi nè. Gửi chút lòng cảm ơn, tui tặng [Frappuccino Kim] nha. Chúc bạn vui vẻ!",translated,too_long?
+CafeTimeEventMsg04,csysstr.ssd,고객님 카페에 2시간동안 계셨네요. 감사의 마음을 담아[스프링팥빙수]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,,"Bạn đã ở quán cà phê 2 tiếng rồi nè. Gửi chút lòng cảm ơn, tui tặng [Bingsu Đậu Đỏ Mùa Xuân] nha. Chúc bạn vui vẻ!",translated,too_long?
+CafeTimeEventMsg05,csysstr.ssd,고객님 카페에 4시간동안 머물러 계셨군요! 당신을 VVIP로 모십니다. 저희 매장에 자주방문 부탁드리며 감사의 마음을 담아 [센서마끼아또]를 드립니다,,"Bạn đã ở quán 4 tiếng rồi! Mời bạn lên hạng VVIP. Mong bạn ghé thường xuyên, tui tặng [Macchiato Cảm Biến] nha",translated,
+CAHero_Continue,csysstr.ssd,"이어하기 버튼을 눌러 게임을 이어해보거라. 코인이 없다면 새로하기를 눌러라. 단, 새로하기 버튼을 누르면 지금까진 이긴NPC와 처음부터 대결해야한다 좋은점은 새로하기 때문에 코인이 들지 않는단다.",,Bấm nút Tiếp tục để chơi tiếp nha. Hổng có coin thì bấm Chơi mới. Mà bấm Chơi mới là phải đấu lại từ đầu với mấy NPC đã thắng tới giờ đó. Cái hay là Chơi mới thì hổng tốn coin nha.,translated,too_long?
+CAHero_ContinueNeedCoin,csysstr.ssd,코인이 부족해서 이어할 수 없어요!,,Thiếu coin nên hổng chơi tiếp được nha!,translated,too_long?
+CAHero_DisableStateMsg_DarkHero_01,csysstr.ssd,약한 자군. 아직은 때가 아니다,,Kẻ yếu kìa. Chưa tới lúc đâu.,translated,too_long?
+CAHero_DisableStateMsg_DarkHero_02,csysstr.ssd,아직 나와 겨룰 수 없다.,,Chưa thể đấu với ta đâu.,translated,too_long?
+CAHero_DisableStateMsg_DarkHero_03,csysstr.ssd,약한상대로군. 너는 아직 아니다,,Đối thủ yếu quá. Ngươi chưa phải.,translated,too_long?
+CAHero_DisableStateMsg_DarkHero_04,csysstr.ssd,애송이군. 아직은 겨룰 수 없다,,Nhóc con. Chưa đấu được đâu.,translated,too_long?
+CAHero_DisableStateMsg_DarkHero_05,csysstr.ssd,나랑 겨루기엔 니가 너무 약하다,,Mày yếu quá để đấu với tao.,translated,
+CAHero_DisableStateMsg_DarkHero_06,csysstr.ssd,감히. 어딜,,Dám à. Đi đâu!,translated,too_long?
+CAHero_DisableStateMsg_DarkHero_07,csysstr.ssd,내가 니 상대라고 생각하느냐 웃기지마라,,Mày tưởng mày là đối thủ của tao hả? Buồn cười quá.,translated,too_long?
+CAHero_DisableStateMsg_DarkHero_08,csysstr.ssd,더 실력을 쌓고 와라,,Rèn thêm kỹ năng rồi quay lại.,translated,too_long?
+CAHero_DisableStateMsg_Lodumani_01,csysstr.ssd,나는 최강이다. 니가 겨룰수 있는 상대가 아니다,,Ta là mạnh nhất. Mày không phải đối thủ của ta.,translated,too_long?
+CAHero_DisableStateMsg_Lodumani_02,csysstr.ssd,나랑 겨루고 싶다고..? 아직 멀었다,,Muốn đấu với ta hả..? Còn lâu nha.,translated,too_long?
+CAHero_DisableStateMsg_Lodumani_03,csysstr.ssd,나는 영웅전의 최고야. 너는 아직나와 겨룰 수 없다.,,Ta là số một Anh Hùng Chiến. Mày chưa thể đấu với ta đâu.,translated,too_long?
+CAHero_DisableStateMsg_Lodumani_04,csysstr.ssd,더 싸우고 실력을 키워와라. 애송아,,Đánh thêm rồi nâng kỹ năng lên đi. Nhóc à.,translated,too_long?
+CAHero_DisableStateMsg_Lodumani_05,csysstr.ssd,작은고추가 맵다는 말 아냐?,,Ớt nhỏ mà cay chứ hả?,translated,
+CAHero_DisableStateMsg_Lodumani_06,csysstr.ssd,애송이로군. 가라,,Nhóc con. Đi đi.,translated,too_long?
+CAHero_DisableStateMsg_Lodumani_07,csysstr.ssd,씁! 가라,,Xì! Đi đi.,translated,too_long?
+CAHero_DisableStateMsg_Lodumani_08,csysstr.ssd,가소롭다. 가라,,Nực cười. Đi đi.,translated,too_long?
+CAHero_DisableStateMsg_WhiteAngel_01,csysstr.ssd,아직은 때가 아니야..,,Chưa tới lúc đâu..,translated,
+CAHero_DisableStateMsg_WhiteAngel_02,csysstr.ssd,나랑 겨루고 싶다면 6명을 모두 이기렴..,,Muốn đấu với ta thì thắng hết 6 người đi nha..,translated,too_long?
+CAHero_DisableStateMsg_WhiteAngel_03,csysstr.ssd,넌 아직 안돼..,,Mày chưa được đâu..,translated,too_long?
+CAHero_DisableStateMsg_WhiteAngel_04,csysstr.ssd,상대를 해줄 수 없어,,Không đấu với mày được.,translated,too_long?
+CAHero_DisableStateMsg_WhiteAngel_05,csysstr.ssd,약하구나..,,Yếu quá nha..,translated,too_long?
+CAHero_DisableStateMsg_WhiteAngel_06,csysstr.ssd,이따가 다시오렴..,,Lát nữa quay lại nha..,translated,too_long?
+CAHero_DisableStateMsg_WhiteAngel_07,csysstr.ssd,떄가 아니란다,,Chưa tới lúc đâu con.,translated,too_long?
+CAHero_DisableStateMsg_WhiteAngel_08,csysstr.ssd,훗. 넌 아직 안돼..,,Hừ. Mày chưa được đâu..,translated,too_long?
+CAHero_EnableStateMsg_BadBoy3_01,csysstr.ssd,계속 노래 불러줄께. 나에게 올래?,,Tui cứ hát mãi cho nghe nha. Qua với tui hông?,translated,too_long?
+CAHero_EnableStateMsg_BadBoy3_02,csysstr.ssd,누구 마음대로 안와. 어서 내게로 와,,Ai cho không qua. Mau qua với tui đi.,translated,too_long?
+CAHero_EnableStateMsg_BadBoy3_03,csysstr.ssd,나를 보고 싶으면 이리로 와.,,Muốn gặp tui thì qua đây nha.,translated,too_long?
+CAHero_EnableStateMsg_BadBoy3_04,csysstr.ssd,안 갈거지? 안 갈거지?,,Hông đi đâu hen? Hông đi đâu hen?,translated,too_long?
+CAHero_EnableStateMsg_BadBoy3_05,csysstr.ssd,하기 싫어. 그만 둘래,,Hông thích. Thôi nghỉ đi.,translated,too_long?
+CAHero_EnableStateMsg_BadBoy3_06,csysstr.ssd,우린 늘 같이 있어,,Tụi mình luôn ở cạnh nhau nha.,translated,too_long?
+CAHero_EnableStateMsg_BadBoy3_07,csysstr.ssd,아니 니 옆에 나 있어,,"Ơ, tui đang ở ngay bên cạnh mày nè.",translated,too_long?
+CAHero_EnableStateMsg_BadBoy3_08,csysstr.ssd,아니 니 옆에 나 있어,,"Ơ, tui đang ở ngay bên cạnh mày nè.",translated,too_long?
 CAHero_EnableStateMsg_DarkHero_01,csysstr.ssd,너희가 크아맨? 아직 부족해 보이는군.,,Tụi bây là Boom Man hả? Coi bộ còn non lắm.,translated,too_long?
 CAHero_EnableStateMsg_DarkHero_02,csysstr.ssd,강한자를 찾아 오랜 시간을 방황했다.,,Ta lang thang lâu lắm để tìm kẻ mạnh.,translated,too_long?
 CAHero_EnableStateMsg_DarkHero_03,csysstr.ssd,……,,……,translated,no_hangul
 CAHero_EnableStateMsg_DarkHero_04,csysstr.ssd,너무 겁먹지 말아라. 살살 해줄 테니.,,Đừng sợ quá. Ta đánh nhẹ thôi.,translated,
-CAHero_EnableStateMsg_DarkHero_05,csysstr.ssd,지금 이 자리에서 누가 강한지 겨뤄봐야겠군.,,Ngay tại đây phải phân xem ai mạnh hơn.,translated,too_long?
+CAHero_EnableStateMsg_DarkHero_05,csysstr.ssd,지금 이 자리에서 누가 강한지 겨뤄봐야겠군.,,Ngay tại đây phải so coi ai mạnh hơn.,translated,
 CAHero_EnableStateMsg_DarkHero_06,csysstr.ssd,스스로 강하다고 생각하는가? 그렇다면 입증해라.,,Tự cho mình mạnh hả? Vậy chứng minh đi.,translated,
 CAHero_EnableStateMsg_DarkHero_07,csysstr.ssd,사심은 없다. 단지 결투를 원할 뿐.,,Không có tư thù. Chỉ muốn quyết đấu thôi.,translated,too_long?
 CAHero_EnableStateMsg_DarkHero_08,csysstr.ssd,오해하지 마라. 개인적인 감정은 없으니까.,,Đừng hiểu lầm. Không có thù riêng gì đâu.,translated,too_long?
-CAHero_EnableStateMsg_FatStalker_01,csysstr.ssd,히시시시시  너님이 날 이길거 같음?,,,review,untranslated
-CAHero_EnableStateMsg_FatStalker_02,csysstr.ssd,찰칵찰칵 너님의 실력을 스캔함,,,review,untranslated
-CAHero_EnableStateMsg_FatStalker_03,csysstr.ssd,히시시 간만에 몸좀 풀어봄?,,,review,untranslated
-CAHero_EnableStateMsg_FatStalker_04,csysstr.ssd,내가 크아 서열 1위 스토커님임,,,review,untranslated
-CAHero_EnableStateMsg_FatStalker_05,csysstr.ssd,나에게 덤비는건 아직 100년 이름,,,review,untranslated
-CAHero_EnableStateMsg_FatStalker_06,csysstr.ssd,너와의 좋은 승부를 기대하겠음,,,review,untranslated
-CAHero_EnableStateMsg_FatStalker_07,csysstr.ssd,찰칵찰칵 찰칵찰칵,,,review,untranslated
-CAHero_EnableStateMsg_FatStalker_08,csysstr.ssd,나와 겨루겠다고? 어리석음,,,review,untranslated
-CAHero_EnableStateMsg_FighterOfLegend_01,csysstr.ssd,내가 왔다.,,,review,untranslated
-CAHero_EnableStateMsg_FighterOfLegend_02,csysstr.ssd,나를 기다렸는가,,,review,untranslated
-CAHero_EnableStateMsg_FighterOfLegend_03,csysstr.ssd,나를 만나다니 행운이군,,,review,untranslated
-CAHero_EnableStateMsg_FighterOfLegend_04,csysstr.ssd,나를 본 자는 니가 처음이야,,,review,untranslated
-CAHero_EnableStateMsg_FighterOfLegend_05,csysstr.ssd,드디어 나왔다,,,review,untranslated
-CAHero_EnableStateMsg_FighterOfLegend_06,csysstr.ssd,드디어 어둠에서 나왔다,,,review,untranslated
-CAHero_EnableStateMsg_FighterOfLegend_07,csysstr.ssd,나와 대결할 친구가 너구나,,,review,untranslated
-CAHero_EnableStateMsg_FighterOfLegend_08,csysstr.ssd,나를 부른자가 너냐,,,review,untranslated
-CAHero_EnableStateMsg_FortuneStar_01,csysstr.ssd,뽀오~~오추운! 그래 나야 내가 포춘스타,,,review,untranslated
-CAHero_EnableStateMsg_FortuneStar_02,csysstr.ssd,니가..내 상대가..될것 같아?,,,review,untranslated
-CAHero_EnableStateMsg_FortuneStar_03,csysstr.ssd,뭐야? 어딜 와.,,,review,untranslated
-CAHero_EnableStateMsg_FortuneStar_04,csysstr.ssd,난 그냥 지나치는게 좋을거다,,,review,untranslated
-CAHero_EnableStateMsg_FortuneStar_05,csysstr.ssd,내일와라 오늘은 너랑 상대하고 싶지않아,,,review,untranslated
-CAHero_EnableStateMsg_FortuneStar_06,csysstr.ssd,훗 가소롭다,,,review,untranslated
-CAHero_EnableStateMsg_FortuneStar_07,csysstr.ssd,너? 어제도 왔던애 아니냐? 포츈포츈,,,review,untranslated
-CAHero_EnableStateMsg_FortuneStar_08,csysstr.ssd,배고파 지금은 싸우고싶지 않아!,,,review,untranslated
-CAHero_EnableStateMsg_Gorill_01,csysstr.ssd,고릴고릴! 나와 싸우자 고릴!,,,review,untranslated
-CAHero_EnableStateMsg_Gorill_02,csysstr.ssd,고릴고릴고릴 고릴고릴고릴 나는고릴,,,review,untranslated
-CAHero_EnableStateMsg_Gorill_03,csysstr.ssd,사실나는 다크히어로고릴 쎄다 고릴,,,review,untranslated
-CAHero_EnableStateMsg_Gorill_04,csysstr.ssd,오늘 하루종일 너만고릴 기다렸어 고릴,,,review,untranslated
-CAHero_EnableStateMsg_Gorill_05,csysstr.ssd,내가 느릴것 같아고릴? 아니야 고릴,,,review,untranslated
-CAHero_EnableStateMsg_Gorill_06,csysstr.ssd,너 정도는 내가 그냥고릴 이겨주지 고릴,,,review,untranslated
-CAHero_EnableStateMsg_Gorill_07,csysstr.ssd,고릴 나를 선택해 너의 첫 상대가 되어줄게 고릴,,,review,untranslated
-CAHero_EnableStateMsg_Gorill_08,csysstr.ssd,고릴 100전 100승 고릴님과 겨루 고릴!,,,review,untranslated
-CAHero_EnableStateMsg_KongKong_01,csysstr.ssd,꺄악! 이번엔 너콩? ,,,review,untranslated
-CAHero_EnableStateMsg_KongKong_02,csysstr.ssd,준비됐콩?  나와 싸울 준비? 덤뵤! 아뵤콩!,,,review,untranslated
-CAHero_EnableStateMsg_KongKong_03,csysstr.ssd,보나마나 내가 이길텐데..! 꺄 코옹!,,,review,untranslated
-CAHero_EnableStateMsg_KongKong_04,csysstr.ssd,너랑 싸울 생각을 하니 어제부터 잠이 안오더콩! ,,,review,untranslated
-CAHero_EnableStateMsg_KongKong_05,csysstr.ssd,내가 쉬운 상대라고 생각하진 마콩!,,,review,untranslated
-CAHero_EnableStateMsg_KongKong_06,csysstr.ssd,콩콩님이 너를 한번에 이겨주지콩!,,,review,untranslated
-CAHero_EnableStateMsg_KongKong_07,csysstr.ssd,나를 선택해! 나는 준비가 되있어콩!,,,review,untranslated
-CAHero_EnableStateMsg_KongKong_08,csysstr.ssd,겁나? 나를 못이길까봐? 우헤헤 콩콩,,,review,untranslated
-CAHero_EnableStateMsg_Lodumani_01,csysstr.ssd,그래 내가 바로 크아영웅전의… 최강이야,,,review,untranslated
-CAHero_EnableStateMsg_Lodumani_02,csysstr.ssd,내가 바로 최강이다,,,review,untranslated
-CAHero_EnableStateMsg_Lodumani_03,csysstr.ssd,나를 이겨야 승리포인트를 얻을 수있어,,,review,untranslated
-CAHero_EnableStateMsg_Lodumani_04,csysstr.ssd,크아영웅전의 최고는 나다,,,review,untranslated
-CAHero_EnableStateMsg_Lodumani_05,csysstr.ssd,작은 고추가 맵다는 말을 보여주지,,,review,untranslated
-CAHero_EnableStateMsg_Lodumani_06,csysstr.ssd,나는 결코 죽지 않아,,,review,untranslated
-CAHero_EnableStateMsg_Lodumani_07,csysstr.ssd,내 스피드를 보는 순간 너는 놀라넘어지겠지,,,review,untranslated
-CAHero_EnableStateMsg_Lodumani_08,csysstr.ssd,나를 이겨봐! 작다고 우습게 보지마,,,review,untranslated
-CAHero_EnableStateMsg_SexyGirl2_01,csysstr.ssd,히히 나라구 나 핑키~!,,,review,untranslated
-CAHero_EnableStateMsg_SexyGirl2_02,csysstr.ssd,핑키랑 싸울려고? 준비는 된거야?,,,review,untranslated
-CAHero_EnableStateMsg_SexyGirl2_03,csysstr.ssd,다시 생각해봐. 핑키는 너보다 한수위야,,,review,untranslated
-CAHero_EnableStateMsg_SexyGirl2_04,csysstr.ssd,히히 핑키는  이쁘고 실력도 좋아. 빠지는게 없지,,,review,untranslated
-CAHero_EnableStateMsg_SexyGirl2_05,csysstr.ssd,나같은 미인과 대결하는게..쉬운줄알아?,,,review,untranslated
-CAHero_EnableStateMsg_SexyGirl2_06,csysstr.ssd,"핑키하면 귀요미, 귀요미하면 핑키!",,,review,untranslated
-CAHero_EnableStateMsg_SexyGirl2_07,csysstr.ssd,귀염과 깜찍한 핑키랑 대결하실분!,,,review,untranslated
-CAHero_EnableStateMsg_SexyGirl2_08,csysstr.ssd,핑키의 향수? 언제나 장미향인데~,,,review,untranslated
-CAHero_EnableStateMsg_WhiteAngel_01,csysstr.ssd,크아 최강여신 화이트엔젤이다,,,review,untranslated
-CAHero_EnableStateMsg_WhiteAngel_02,csysstr.ssd,내 빛나는 날게 보이니,,,review,untranslated
-CAHero_EnableStateMsg_WhiteAngel_03,csysstr.ssd,나와 겨루고 싶니?,,,review,untranslated
-CAHero_EnableStateMsg_WhiteAngel_04,csysstr.ssd,내가 얼마나 고고한지 아니?,,,review,untranslated
-CAHero_EnableStateMsg_WhiteAngel_05,csysstr.ssd,빛보다 밝은 내 모습을 좀 봐,,,review,untranslated
-CAHero_EnableStateMsg_WhiteAngel_06,csysstr.ssd,내 날개가 탐나니?,,,review,untranslated
-CAHero_EnableStateMsg_WhiteAngel_07,csysstr.ssd,너 어제 왔던 그 애 아니니?,,,review,untranslated
-CAHero_EnableStateMsg_WhiteAngel_08,csysstr.ssd,어머.. 니가 나를이길것 같니?,,,review,untranslated
+CAHero_EnableStateMsg_FatStalker_01,csysstr.ssd,히시시시시  너님이 날 이길거 같음?,,"Hihi, bạn nghĩ bạn thắng được tui hông?",translated,too_long?
+CAHero_EnableStateMsg_FatStalker_02,csysstr.ssd,찰칵찰칵 너님의 실력을 스캔함,,"Tách tách, đang quét thực lực của bạn.",translated,too_long?
+CAHero_EnableStateMsg_FatStalker_03,csysstr.ssd,히시시 간만에 몸좀 풀어봄?,,"Hihi, lâu rồi hông giãn gân cốt chút hả?",translated,too_long?
+CAHero_EnableStateMsg_FatStalker_04,csysstr.ssd,내가 크아 서열 1위 스토커님임,,Tui là Stalker số 1 của Boom nè.,translated,too_long?
+CAHero_EnableStateMsg_FatStalker_05,csysstr.ssd,나에게 덤비는건 아직 100년 이름,,Muốn thách tui thì còn 100 năm nữa.,translated,too_long?
+CAHero_EnableStateMsg_FatStalker_06,csysstr.ssd,너와의 좋은 승부를 기대하겠음,,Tui mong trận đấu hay với bạn.,translated,too_long?
+CAHero_EnableStateMsg_FatStalker_07,csysstr.ssd,찰칵찰칵 찰칵찰칵,,Tách tách tách tách,translated,too_long?
+CAHero_EnableStateMsg_FatStalker_08,csysstr.ssd,나와 겨루겠다고? 어리석음,,Muốn đấu với tui hả? Dại quá.,translated,too_long?
+CAHero_EnableStateMsg_FighterOfLegend_01,csysstr.ssd,내가 왔다.,,Tui tới rồi.,translated,too_long?
+CAHero_EnableStateMsg_FighterOfLegend_02,csysstr.ssd,나를 기다렸는가,,Có chờ tui hông?,translated,too_long?
+CAHero_EnableStateMsg_FighterOfLegend_03,csysstr.ssd,나를 만나다니 행운이군,,Gặp được ta là may mắn đó nha.,translated,too_long?
+CAHero_EnableStateMsg_FighterOfLegend_04,csysstr.ssd,나를 본 자는 니가 처음이야,,Mày là người đầu tiên thấy ta đó.,translated,too_long?
+CAHero_EnableStateMsg_FighterOfLegend_05,csysstr.ssd,드디어 나왔다,,Cuối cùng cũng ra rồi.,translated,too_long?
+CAHero_EnableStateMsg_FighterOfLegend_06,csysstr.ssd,드디어 어둠에서 나왔다,,Cuối cùng cũng ra khỏi bóng tối rồi.,translated,too_long?
+CAHero_EnableStateMsg_FighterOfLegend_07,csysstr.ssd,나와 대결할 친구가 너구나,,Vậy mày là người đấu với ta à.,translated,too_long?
+CAHero_EnableStateMsg_FighterOfLegend_08,csysstr.ssd,나를 부른자가 너냐,,Mày là kẻ gọi ta hả?,translated,too_long?
+CAHero_EnableStateMsg_FortuneStar_01,csysstr.ssd,뽀오~~오추운! 그래 나야 내가 포춘스타,,"Brrr~~ lạnh quá! Ừ, tui đây, Fortune Star nè.",translated,too_long?
+CAHero_EnableStateMsg_FortuneStar_02,csysstr.ssd,니가..내 상대가..될것 같아?,,Mày nghĩ mày làm đối thủ của ta được hông?,translated,too_long?
+CAHero_EnableStateMsg_FortuneStar_03,csysstr.ssd,뭐야? 어딜 와.,,Gì vậy? Qua đây làm chi.,translated,too_long?
+CAHero_EnableStateMsg_FortuneStar_04,csysstr.ssd,난 그냥 지나치는게 좋을거다,,Tốt nhất mày cứ đi ngang qua đi.,translated,too_long?
+CAHero_EnableStateMsg_FortuneStar_05,csysstr.ssd,내일와라 오늘은 너랑 상대하고 싶지않아,,"Mai quay lại đi, hôm nay tui hông muốn đấu với mày.",translated,too_long?
+CAHero_EnableStateMsg_FortuneStar_06,csysstr.ssd,훗 가소롭다,,"Hừ, nực cười.",translated,too_long?
+CAHero_EnableStateMsg_FortuneStar_07,csysstr.ssd,너? 어제도 왔던애 아니냐? 포츈포츈,,Mày? Hôm qua cũng tới đúng hông? Fortune fortune.,translated,too_long?
+CAHero_EnableStateMsg_FortuneStar_08,csysstr.ssd,배고파 지금은 싸우고싶지 않아!,,"Đói quá, giờ tui hông muốn đánh nhau!",translated,too_long?
+CAHero_EnableStateMsg_Gorill_01,csysstr.ssd,고릴고릴! 나와 싸우자 고릴!,,Gorilla gorilla! Đánh với tui đi gorilla!,translated,too_long?
+CAHero_EnableStateMsg_Gorill_02,csysstr.ssd,고릴고릴고릴 고릴고릴고릴 나는고릴,,"Gorilla gorilla gorilla, tui là gorilla.",translated,too_long?
+CAHero_EnableStateMsg_Gorill_03,csysstr.ssd,사실나는 다크히어로고릴 쎄다 고릴,,"Thật ra tui là Dark Hero gorilla, mạnh lắm gorilla.",translated,too_long?
+CAHero_EnableStateMsg_Gorill_04,csysstr.ssd,오늘 하루종일 너만고릴 기다렸어 고릴,,Hôm nay cả ngày chỉ đợi mỗi mày thôi gorilla.,translated,too_long?
+CAHero_EnableStateMsg_Gorill_05,csysstr.ssd,내가 느릴것 같아고릴? 아니야 고릴,,Tui chậm lắm hả gorilla? Đâu có gorilla.,translated,too_long?
+CAHero_EnableStateMsg_Gorill_06,csysstr.ssd,너 정도는 내가 그냥고릴 이겨주지 고릴,,Mày thì tui thắng dễ dàng gorilla.,translated,too_long?
+CAHero_EnableStateMsg_Gorill_07,csysstr.ssd,고릴 나를 선택해 너의 첫 상대가 되어줄게 고릴,,"Gorilla, chọn tui đi, tui làm đối thủ đầu tiên của mày gorilla.",translated,too_long?
+CAHero_EnableStateMsg_Gorill_08,csysstr.ssd,고릴 100전 100승 고릴님과 겨루 고릴!,,"Gorilla, 100 trận 100 thắng, đấu với Gorilla đi gorilla!",translated,too_long?
+CAHero_EnableStateMsg_KongKong_01,csysstr.ssd,꺄악! 이번엔 너콩? ,,Kyaa! Lần này là mày hả Kong?,translated,too_long?
+CAHero_EnableStateMsg_KongKong_02,csysstr.ssd,준비됐콩?  나와 싸울 준비? 덤뵤! 아뵤콩!,,Sẵn sàng chưa Kong? Chuẩn bị đấu với tui hả? Tới đi! Ayo Kong!,translated,too_long?
+CAHero_EnableStateMsg_KongKong_03,csysstr.ssd,보나마나 내가 이길텐데..! 꺄 코옹!,,Hiển nhiên tui thắng rồi..! Kyaa Kong!,translated,too_long?
+CAHero_EnableStateMsg_KongKong_04,csysstr.ssd,너랑 싸울 생각을 하니 어제부터 잠이 안오더콩! ,,Nghĩ tới đánh với mày mà từ hôm qua tui mất ngủ luôn Kong!,translated,too_long?
+CAHero_EnableStateMsg_KongKong_05,csysstr.ssd,내가 쉬운 상대라고 생각하진 마콩!,,Đừng nghĩ tui là đối thủ dễ nha Kong!,translated,too_long?
+CAHero_EnableStateMsg_KongKong_06,csysstr.ssd,콩콩님이 너를 한번에 이겨주지콩!,,Kong Kong sẽ thắng mày một phát luôn Kong!,translated,too_long?
+CAHero_EnableStateMsg_KongKong_07,csysstr.ssd,나를 선택해! 나는 준비가 되있어콩!,,Chọn tui đi! Tui sẵn sàng rồi Kong!,translated,too_long?
+CAHero_EnableStateMsg_KongKong_08,csysstr.ssd,겁나? 나를 못이길까봐? 우헤헤 콩콩,,Sợ hả? Sợ thua tui hả? Uhehe Kong Kong.,translated,too_long?
+CAHero_EnableStateMsg_Lodumani_01,csysstr.ssd,그래 내가 바로 크아영웅전의… 최강이야,,"Ừ, tui chính là mạnh nhất Anh Hùng Chiến Boom...",translated,too_long?
+CAHero_EnableStateMsg_Lodumani_02,csysstr.ssd,내가 바로 최강이다,,Tui chính là mạnh nhất đó.,translated,too_long?
+CAHero_EnableStateMsg_Lodumani_03,csysstr.ssd,나를 이겨야 승리포인트를 얻을 수있어,,Phải thắng tui mới nhận được điểm thắng nha.,translated,too_long?
+CAHero_EnableStateMsg_Lodumani_04,csysstr.ssd,크아영웅전의 최고는 나다,,Số một Anh Hùng Chiến Boom là tui.,translated,too_long?
+CAHero_EnableStateMsg_Lodumani_05,csysstr.ssd,작은 고추가 맵다는 말을 보여주지,,Để tui cho thấy ớt nhỏ mà cay nha.,translated,too_long?
+CAHero_EnableStateMsg_Lodumani_06,csysstr.ssd,나는 결코 죽지 않아,,Tui không bao giờ chết đâu.,translated,too_long?
+CAHero_EnableStateMsg_Lodumani_07,csysstr.ssd,내 스피드를 보는 순간 너는 놀라넘어지겠지,,Thấy tốc độ của tui là mày sẽ giật mình té luôn đó.,translated,too_long?
+CAHero_EnableStateMsg_Lodumani_08,csysstr.ssd,나를 이겨봐! 작다고 우습게 보지마,,Thử thắng tui đi! Đừng coi thường vì tui nhỏ con.,translated,too_long?
+CAHero_EnableStateMsg_SexyGirl2_01,csysstr.ssd,히히 나라구 나 핑키~!,,"Hihi, tui đó, Pinky nè~!",translated,too_long?
+CAHero_EnableStateMsg_SexyGirl2_02,csysstr.ssd,핑키랑 싸울려고? 준비는 된거야?,,Muốn đánh với Pinky hả? Chuẩn bị xong chưa?,translated,too_long?
+CAHero_EnableStateMsg_SexyGirl2_03,csysstr.ssd,다시 생각해봐. 핑키는 너보다 한수위야,,Nghĩ lại đi. Pinky cao hơn mày một bậc đó.,translated,too_long?
+CAHero_EnableStateMsg_SexyGirl2_04,csysstr.ssd,히히 핑키는  이쁘고 실력도 좋아. 빠지는게 없지,,"Hihi, Pinky xinh mà giỏi nữa. Hông thiếu gì luôn.",translated,too_long?
+CAHero_EnableStateMsg_SexyGirl2_05,csysstr.ssd,나같은 미인과 대결하는게..쉬운줄알아?,,Đấu với một mỹ nhân như tui.. dễ lắm hả?,translated,too_long?
+CAHero_EnableStateMsg_SexyGirl2_06,csysstr.ssd,"핑키하면 귀요미, 귀요미하면 핑키!",,"Nhắc Pinky là nghĩ tới dễ thương, nhắc dễ thương là nghĩ tới Pinky!",translated,too_long?
+CAHero_EnableStateMsg_SexyGirl2_07,csysstr.ssd,귀염과 깜찍한 핑키랑 대결하실분!,,"Ai muốn đấu với Pinky dễ thương, xinh xắn hông!",translated,too_long?
+CAHero_EnableStateMsg_SexyGirl2_08,csysstr.ssd,핑키의 향수? 언제나 장미향인데~,,Nước hoa của Pinky hả? Lúc nào cũng hương hoa hồng nha~,translated,too_long?
+CAHero_EnableStateMsg_WhiteAngel_01,csysstr.ssd,크아 최강여신 화이트엔젤이다,,"Tui là Thiên Thần Trắng, nữ thần mạnh nhất Boom nè.",translated,too_long?
+CAHero_EnableStateMsg_WhiteAngel_02,csysstr.ssd,내 빛나는 날게 보이니,,Thấy đôi cánh tỏa sáng của tui hông?,translated,too_long?
+CAHero_EnableStateMsg_WhiteAngel_03,csysstr.ssd,나와 겨루고 싶니?,,Muốn đấu với tui hông?,translated,too_long?
+CAHero_EnableStateMsg_WhiteAngel_04,csysstr.ssd,내가 얼마나 고고한지 아니?,,Mày có biết tui cao quý cỡ nào hông?,translated,too_long?
+CAHero_EnableStateMsg_WhiteAngel_05,csysstr.ssd,빛보다 밝은 내 모습을 좀 봐,,Nhìn tui sáng hơn cả ánh sáng nè.,translated,too_long?
+CAHero_EnableStateMsg_WhiteAngel_06,csysstr.ssd,내 날개가 탐나니?,,Thèm đôi cánh tui hông?,translated,too_long?
+CAHero_EnableStateMsg_WhiteAngel_07,csysstr.ssd,너 어제 왔던 그 애 아니니?,,Mày là đứa hôm qua tới đúng hông?,translated,too_long?
+CAHero_EnableStateMsg_WhiteAngel_08,csysstr.ssd,어머.. 니가 나를이길것 같니?,,Ủa.. mày nghĩ mày thắng được tui hả?,translated,too_long?
 CAHero_GameQuitMsg,csysstr.ssd,"게임을 종료하고 나가게 될 경우, 승리했던 기록이 다 삭제되고 처음부터 다시 대결해야합니다.
-그래도 나가시겠습니까?",,,review,untranslated
-CAHero_GetWinPoint,csysstr.ssd,승리포인트 획득! 확인하세요!,,,review,untranslated
-CAHero_NpcName_Lodumani,csysstr.ssd,로두마니,,,review,untranslated
+그래도 나가시겠습니까?",,"Nếu thoát game, toàn bộ thành tích thắng sẽ bị xóa và phải đấu lại từ đầu.
+Vẫn thoát hông?",translated,
+CAHero_GetWinPoint,csysstr.ssd,승리포인트 획득! 확인하세요!,,Nhận điểm thắng! Kiểm tra nha!,translated,too_long?
+CAHero_NpcName_Lodumani,csysstr.ssd,로두마니,,Rodumani,translated,too_long?
 CAHero_Restart,csysstr.ssd,"영웅들과 대결하느라 고생이 많았다.
-답례로 승리포인트를 지급하니 선물상자를 열어 확인해보거라.",,,review,untranslated
-CAHero_RestartNeedCoin,csysstr.ssd,코인이 부족해서 다시할 수 없어요!,,,review,untranslated
+답례로 승리포인트를 지급하니 선물상자를 열어 확인해보거라.",,"Đấu với các anh hùng vất vả quá rồi.
+Đáp lễ, ta phát điểm thắng, mở hộp quà coi thử nha.",translated,too_long?
+CAHero_RestartNeedCoin,csysstr.ssd,코인이 부족해서 다시할 수 없어요!,,Thiếu coin nên hổng chơi lại được nha!,translated,too_long?
 CAItemCollection_EventTabMissionName,csysstr.ssd,%s (%d/%d),,%s (%d/%d),translated,no_hangul
 CAItemCollection_MenuDisable,csysstr.ssd,"현재 크아컬렉션 시스템을 사용하실 수 없습니다. 
-이용에 불편을 드려서 죄송합니다.",,,review,untranslated
+이용에 불편을 드려서 죄송합니다.",,"Hiện không dùng được hệ thống Boom Collection. 
+Xin lỗi vì sự bất tiện này.",translated,too_long?
 CAItemCollection_MissionRewardFailed,csysstr.ssd,"영구아이템을 보유하고 있어 보상을 획득할 수 없어요. 
-마이페이지를 확인해주세요.",,,review,untranslated
+마이페이지를 확인해주세요.",,"Đang có vật phẩm vĩnh viễn nên không nhận được phần thưởng. 
+Vui lòng kiểm tra Trang cá nhân nha.",translated,too_long?
 CAItemCollection_MissionRewardLevel,csysstr.ssd,"최소레벨이 되지 않아 크아컬렉션 보상을 받을 수 없어요.
-게임 플레이로 최소레벨까지 올려주세요.",,,review,untranslated
-CAItemCollection_MissionRewardLimitLevel,csysstr.ssd,최소레벨:%dLv,,,review,untranslated
-CAItemCollection_NormalSortBasic,csysstr.ssd,기본순,,,review,untranslated
-CAItemCollection_NormalSortInventory,csysstr.ssd,완료순,,,review,untranslated
+게임 플레이로 최소레벨까지 올려주세요.",,"Chưa đủ cấp tối thiểu nên không nhận được phần thưởng Boom Collection.
+Chơi game để lên tới cấp tối thiểu nha.",translated,too_long?
+CAItemCollection_MissionRewardLimitLevel,csysstr.ssd,최소레벨:%dLv,,Cấp tối thiểu: %dLv,translated,too_long?
+CAItemCollection_NormalSortBasic,csysstr.ssd,기본순,,Thứ tự mặc định,translated,too_long?
+CAItemCollection_NormalSortInventory,csysstr.ssd,완료순,,Thứ tự hoàn thành,translated,too_long?
 CAItemCollection_NormalTabName,csysstr.ssd,(%03d/%03d),,(%03d/%03d),translated,no_hangul
-CAJJang_OpenWindowError_2P,csysstr.ssd,2P로 접속하시면 크아짱에 참여하실 수 없습니다. 1P로 접속해주세요.,,,review,untranslated
-CAMarble_NeedSlot1Reward,csysstr.ssd,15개,,,review,untranslated
-CAMarble_NeedSlot2Reward,csysstr.ssd,15개,,,review,untranslated
-CAMarble_NeedSlot3Reward,csysstr.ssd,15개,,,review,untranslated
-CAMarble2_NeedSlot1Reward,csysstr.ssd,15개,,,review,untranslated
-CAMarble2_NeedSlot2Reward,csysstr.ssd,5개,,,review,untranslated
-CAMarbleK1305_NeedSlot1Reward,csysstr.ssd,20개,,,review,untranslated
-CAMarbleK1305_NeedSlot2Reward,csysstr.ssd,20개,,,review,untranslated
-CAMarbleK1305_NeedSlot3Reward,csysstr.ssd,30개,,,review,untranslated
-CAMarbleK1309_NeedSlot1Reward,csysstr.ssd,30개,,,review,untranslated
-CAMarbleK1309_NeedSlot2Reward,csysstr.ssd,20개,,,review,untranslated
-CAMarbleK1309_NeedSlot3Reward,csysstr.ssd,20개,,,review,untranslated
-CAMission_Dlg_MissionDaily,csysstr.ssd,일일,,,review,untranslated
-CAMission_Dlg_MissionInfo,csysstr.ssd,내용 : %s,,,review,untranslated
-CAMission_Dlg_MissionInfoDaily,csysstr.ssd,일일 미션은 매일 00:00에 초기화돼요~★,,,review,untranslated
-CAMission_Dlg_MissionInfoNormal,csysstr.ssd,한정 미션은 표시된 시간까지 진행할 수 있어요~★,,,review,untranslated
-CAMission_Dlg_MissionNormal,csysstr.ssd,한정,,,review,untranslated
-CAMission_Dlg_RewardInfo,csysstr.ssd,선물 : %s,,,review,untranslated
-CAMission_Dlg_RewardLabel,csysstr.ssd,선물,,,review,untranslated
-CAMission_Dlg_TimeRemainFmt_1min,csysstr.ssd,1분 미만 남음,,,review,untranslated
-CAMission_Dlg_TimeRemainFmt_day,csysstr.ssd,%d일 남음,,,review,untranslated
-CAMission_Dlg_TimeRemainFmt_hour,csysstr.ssd,%d시간 남음,,,review,untranslated
-CAMission_Dlg_TimeRemainFmt_min,csysstr.ssd,%d분 남음,,,review,untranslated
+CAJJang_OpenWindowError_2P,csysstr.ssd,2P로 접속하시면 크아짱에 참여하실 수 없습니다. 1P로 접속해주세요.,,Vào bằng 2P thì không tham gia được Vua Boom. Vui lòng vào bằng 1P nha.,review,"""크아짱"" dịch là Vua Boom theo quy ước 짱=Vua; xác nhận lại thuật ngữ;too_long?"
+CAMarble_NeedSlot1Reward,csysstr.ssd,15개,,x15,translated,
+CAMarble_NeedSlot2Reward,csysstr.ssd,15개,,x15,translated,
+CAMarble_NeedSlot3Reward,csysstr.ssd,15개,,x15,translated,
+CAMarble2_NeedSlot1Reward,csysstr.ssd,15개,,x15,translated,
+CAMarble2_NeedSlot2Reward,csysstr.ssd,5개,,x5,translated,
+CAMarbleK1305_NeedSlot1Reward,csysstr.ssd,20개,,x20,translated,
+CAMarbleK1305_NeedSlot2Reward,csysstr.ssd,20개,,x20,translated,
+CAMarbleK1305_NeedSlot3Reward,csysstr.ssd,30개,,x30,translated,
+CAMarbleK1309_NeedSlot1Reward,csysstr.ssd,30개,,x30,translated,
+CAMarbleK1309_NeedSlot2Reward,csysstr.ssd,20개,,x20,translated,
+CAMarbleK1309_NeedSlot3Reward,csysstr.ssd,20개,,x20,translated,
+CAMission_Dlg_MissionDaily,csysstr.ssd,일일,,Hằng ngày,translated,too_long?
+CAMission_Dlg_MissionInfo,csysstr.ssd,내용 : %s,,Nội dung: %s,translated,too_long?
+CAMission_Dlg_MissionInfoDaily,csysstr.ssd,일일 미션은 매일 00:00에 초기화돼요~★,,Nhiệm vụ hằng ngày sẽ làm mới lúc 00:00 mỗi ngày nha~★,translated,too_long?
+CAMission_Dlg_MissionInfoNormal,csysstr.ssd,한정 미션은 표시된 시간까지 진행할 수 있어요~★,,Nhiệm vụ giới hạn làm được tới thời gian hiển thị nha~★,translated,too_long?
+CAMission_Dlg_MissionNormal,csysstr.ssd,한정,,Giới hạn,translated,too_long?
+CAMission_Dlg_RewardInfo,csysstr.ssd,선물 : %s,,Quà: %s,translated,
+CAMission_Dlg_RewardLabel,csysstr.ssd,선물,,Quà,translated,
+CAMission_Dlg_TimeRemainFmt_1min,csysstr.ssd,1분 미만 남음,,Còn dưới 1 phút,translated,too_long?
+CAMission_Dlg_TimeRemainFmt_day,csysstr.ssd,%d일 남음,,Còn %d ngày,translated,too_long?
+CAMission_Dlg_TimeRemainFmt_hour,csysstr.ssd,%d시간 남음,,Còn %d giờ,translated,
+CAMission_Dlg_TimeRemainFmt_min,csysstr.ssd,%d분 남음,,Còn %d phút,translated,too_long?
 CAMission_OpenDlg_Event,csysstr.ssd,"현재 크아미션을 진행할 수 없습니다.
-잠시 후, 다시 열어주시길 바랍니다.",,,review,untranslated
-CAMission_OpenDlg_Fail,csysstr.ssd,현재 크아미션을 사용할 수 없습니다. (%d),,,review,untranslated
+잠시 후, 다시 열어주시길 바랍니다.",,"Hiện không thể làm Boom Mission.
+Vui lòng mở lại sau ít phút nha.",translated,
+CAMission_OpenDlg_Fail,csysstr.ssd,현재 크아미션을 사용할 수 없습니다. (%d),,Hiện không dùng được Boom Mission. (%d),translated,
 CAMission_RewardFormat_CAPoint,csysstr.ssd,%d CP,,%d CP,translated,no_hangul
-CAMission_RewardFormat_Count,csysstr.ssd,%s %d개,,,review,untranslated
-CAMission_RewardFormat_Exp,csysstr.ssd,경험치 %d,,,review,untranslated
-CAMission_RewardFormat_ExpireItem,csysstr.ssd,%s %d개 (월초초기화),,,review,untranslated
-CAMission_RewardFormat_Lucci,csysstr.ssd,%d 루찌,,,review,untranslated
-CAMission_RewardFormat_Period,csysstr.ssd,%s (%d일),,,review,untranslated
-CAMission_RewardFormat_PeriodWithCount,csysstr.ssd,%s %d개 (%d일),,,review,untranslated
+CAMission_RewardFormat_Count,csysstr.ssd,%s %d개,,%s x%d,translated,
+CAMission_RewardFormat_Exp,csysstr.ssd,경험치 %d,,Kinh nghiệm %d,translated,too_long?
+CAMission_RewardFormat_ExpireItem,csysstr.ssd,%s %d개 (월초초기화),,%s x%d (làm mới đầu tháng),translated,too_long?
+CAMission_RewardFormat_Lucci,csysstr.ssd,%d 루찌,,%d VÀNG,translated,
+CAMission_RewardFormat_Period,csysstr.ssd,%s (%d일),,%s (%d ngày),translated,
+CAMission_RewardFormat_PeriodWithCount,csysstr.ssd,%s %d개 (%d일),,%s x%d (%d ngày),translated,
 CAMission_RewardRet_ExceedItemCnt,csysstr.ssd,"이미 너무 아이템을 가지고 있어 받을 수 없습니다.
-아이템 사용 후, 다시 시도해주시길 바랍니다.",,,review,untranslated
+아이템 사용 후, 다시 시도해주시길 바랍니다.",,"Đang có quá nhiều vật phẩm nên không nhận được.
+Vui lòng dùng bớt vật phẩm rồi thử lại nha.",translated,too_long?
 CAMission_RewardRet_Fail,csysstr.ssd,"보상아이템 지급에 오류가 발생했습니다.
-크아 홈페이지로 문의 바랍니다. (F)",,,review,untranslated
+크아 홈페이지로 문의 바랍니다. (F)",,"Có lỗi khi phát vật phẩm thưởng.
+Vui lòng liên hệ trang web Boom. (F)",translated,
 CAMission_RewardRet_HasPerment,csysstr.ssd,"이미 동일한 아이템을 소지하고 있어 아이템을 획득할 수 없습니다.
-해당 아이템 이동 후, 다시 시도해주시길 바랍니다.",,,review,untranslated
+해당 아이템 이동 후, 다시 시도해주시길 바랍니다.",,"Đã có vật phẩm giống nên không nhận được.
+Chuyển vật phẩm đó đi rồi thử lại nha.",translated,
 CAMission_RewardRet_NotExist,csysstr.ssd,"보상아이템 지급에 오류가 발생했습니다.
-크아 홈페이지로 문의 바랍니다. (N)",,,review,untranslated
+크아 홈페이지로 문의 바랍니다. (N)",,"Có lỗi khi phát vật phẩm thưởng.
+Vui lòng liên hệ trang web Boom. (N)",translated,
 CAMission_RewardRet_NotSynced,csysstr.ssd,"시간 지연 / 미션 만료가 되었습니다.
-크아미션을 다시 열어주시길 바랍니다.",,,review,untranslated
+크아미션을 다시 열어주시길 바랍니다.",,"Quá thời gian / nhiệm vụ đã hết hạn.
+Vui lòng mở lại Boom Mission nha.",translated,too_long?
 CAMission_RewardRet_OverItemConfirm,csysstr.ssd,"너무 많은 아이템을 소지하고 있습니다.
 [예]를 누르면 해당 아이템을 받지 않고 미션을 완료할 수 있습니다.
-[아니오]를 누르면 이전 화면으로 돌아갑니다.",,,review,untranslated
-Camp,csysstr.ssd+FxDesktop/ClientData/ClientString,탱크를 타면 물풍선을 펑펑펑 쏠 수 있는 캠프입니다. 닿기만 하면 물풍선이 터지는 뾰족한 핀을 조심하세요.,,,review,untranslated
-CampRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,캠프맵 중 한가지가 랜덤하게 선택됩니다.,,,review,untranslated
+[아니오]를 누르면 이전 화면으로 돌아갑니다.",,"Đang có quá nhiều vật phẩm.
+Bấm [Có] để hoàn thành nhiệm vụ mà không nhận vật phẩm đó.
+Bấm [Không] để quay lại màn hình trước.",translated,
+Camp,csysstr.ssd+FxDesktop/ClientData/ClientString,탱크를 타면 물풍선을 펑펑펑 쏠 수 있는 캠프입니다. 닿기만 하면 물풍선이 터지는 뾰족한 핀을 조심하세요.,,"Camp này cho bạn ngồi xe tăng bắn bom nước liên tục. Coi chừng những cây kim nhọn, chạm vô là bom nước nổ nha.",translated,too_long?
+CampRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,캠프맵 중 한가지가 랜덤하게 선택됩니다.,,Một trong các map Camp sẽ được chọn ngẫu nhiên.,translated,too_long?
 CanBeIgnored,csysstr.ssd+FxDesktop/ClientData/ClientString," 자기 자신의 메시지는 무시할 수 없습니다.
-",,,review,untranslated
-CancelGuildJoinWait,csysstr.ssd+FxDesktop/ClientData/ClientString,길드 가입을 취소 했습니다.,,,review,untranslated
-CandyExitNotice1,csysstr.ssd+FxDesktop/ClientData/ClientString,%s %d개를 받으셨습니다.,,,review,untranslated
-CandyExitNotice2,csysstr.ssd+FxDesktop/ClientData/ClientString,마이페이지에서 확인하실 수 있습니다.*지금 바로 종료 하시겠습니까?,,,review,untranslated
-CandyExitNotice3,csysstr.ssd+FxDesktop/ClientData/ClientString,무료 아이템 사용의 기회를 놓치지 마세요~!,,,review,untranslated
-CandyMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,축하합니다! %s 님! 이벤트에 당첨 되셨습니다!,,,review,untranslated
+",," Không thể bỏ qua tin nhắn của chính mình.
+",translated,too_long?
+CancelGuildJoinWait,csysstr.ssd+FxDesktop/ClientData/ClientString,길드 가입을 취소 했습니다.,,Đã hủy đăng ký gia nhập hội.,translated,too_long?
+CandyExitNotice1,csysstr.ssd+FxDesktop/ClientData/ClientString,%s %d개를 받으셨습니다.,,Đã nhận %s x%d.,translated,
+CandyExitNotice2,csysstr.ssd+FxDesktop/ClientData/ClientString,마이페이지에서 확인하실 수 있습니다.*지금 바로 종료 하시겠습니까?,,Có thể kiểm tra trong Trang cá nhân.*Thoát ngay bây giờ hông?,translated,too_long?
+CandyExitNotice3,csysstr.ssd+FxDesktop/ClientData/ClientString,무료 아이템 사용의 기회를 놓치지 마세요~!,,Đừng bỏ lỡ cơ hội dùng vật phẩm miễn phí nha~!,translated,too_long?
+CandyMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,축하합니다! %s 님! 이벤트에 당첨 되셨습니다!,,Chúc mừng %s! Bạn đã trúng sự kiện!,translated,
 CanHearWhisper,csysstr.ssd+FxDesktop/ClientData/ClientString," 다른 사람이 하는 귓속말을 들을 수 있는 상태입니다.
-",,,review,untranslated
-CannotAcceptUserOverFlow,csysstr.ssd+FxDesktop/ClientData/ClientString,길드에 받아들일 수 있는 유저 수를 초과했습니다.,,,review,untranslated
+",," Đang ở trạng thái nghe được thì thầm của người khác.
+",translated,too_long?
+CannotAcceptUserOverFlow,csysstr.ssd+FxDesktop/ClientData/ClientString,길드에 받아들일 수 있는 유저 수를 초과했습니다.,,Vượt quá số người chơi hội có thể nhận.,translated,
 CannotAutoArrange1,csysstr.ssd+FxDesktop/ClientData/ClientString,"팀 자동정렬을 할 수 없습니다.
-플레이어 수가 짝수가 되어야합니다.",,,review,untranslated
+플레이어 수가 짝수가 되어야합니다.",,"Không thể tự sắp xếp đội.
+Số người chơi phải là số chẵn nha.",translated,too_long?
 CannotAutoArrange2,csysstr.ssd+FxDesktop/ClientData/ClientString,"팀 자동정렬을 할 수 없습니다.
-커플이나 2인용 모드 접속 유저는 팀이 나뉘지 않습니다.",,,review,untranslated
+커플이나 2인용 모드 접속 유저는 팀이 나뉘지 않습니다.",,"Không thể tự sắp xếp đội.
+Người chơi đôi hoặc vào chế độ 2 người sẽ không được chia đội nha.",translated,too_long?
 CannotBan,csysstr.ssd+FxDesktop/ClientData/ClientString," 과반수 이상이 동의하지않아 %s님을 퇴장시키지 않았습니다.
-",,,review,untranslated
-CannotBanInPlayWith,csysstr.ssd+FxDesktop/ClientData/ClientString, 1:1 대결에서는 유저를 퇴장시킬 수 없습니다.,,,review,untranslated
-CannotChangeGMSelfPermission,csysstr.ssd+FxDesktop/ClientData/ClientString,길드마스터 스스로의 권한은 변경 할 수 없습니다.,,,review,untranslated
-CannotChangeGuildMasterWithoutNecl,csysstr.ssd,상대방에게 이메일아이디가 없어서 길드마스터 권한을 이전할 수 없습니다.,,,review,untranslated
+",," Quá nửa người không đồng ý nên chưa mời %s ra.
+",translated,
+CannotBanInPlayWith,csysstr.ssd+FxDesktop/ClientData/ClientString, 1:1 대결에서는 유저를 퇴장시킬 수 없습니다.,,Không thể mời người chơi ra trong đấu 1:1.,translated,
+CannotChangeGMSelfPermission,csysstr.ssd+FxDesktop/ClientData/ClientString,길드마스터 스스로의 권한은 변경 할 수 없습니다.,,Không thể thay đổi quyền của chính hội trưởng.,translated,too_long?
+CannotChangeGuildMasterWithoutNecl,csysstr.ssd,상대방에게 이메일아이디가 없어서 길드마스터 권한을 이전할 수 없습니다.,,Đối phương chưa có tài khoản email nên không thể chuyển quyền hội trưởng.,translated,too_long?
 CannotChangeGuildMasterWithoutNecl@ClientString,FxDesktop/ClientData/ClientString,상대방에게 넥슨아이디가 없어서 길드마스터 권한을 이전할 수 없습니다.,,,review,dup_key_diff;untranslated
-CannotChangeTitleByNoNexonId,csysstr.ssd,이메일아이디가 등록되어 있지 않은 경우 방제목을 수정할 수 없습니다. 이메일아이디를 등록해주세요.,,,review,untranslated
-CannotChatByNoNexonId01,csysstr.ssd,이메일아이디가 등록되어 있지 않은 경우 전체대화에 참여할 수 없습니다.,,,review,untranslated
-CannotChatByNoNexonId02,csysstr.ssd,이메일아이디는 마이페이지->내정보의 [이메일아이디등록] 버튼을 통해 등록할 수 있습니다.,,,review,untranslated
-CannotConnectToShopServer,csysstr.ssd+FxDesktop/ClientData/ClientString,상점 서버에 접속할 수 없습니다. 잠시 후에 다시 시도해 주세요.,,,review,untranslated
+CannotChangeTitleByNoNexonId,csysstr.ssd,이메일아이디가 등록되어 있지 않은 경우 방제목을 수정할 수 없습니다. 이메일아이디를 등록해주세요.,,Chưa đăng ký tài khoản email thì không thể sửa tên phòng. Vui lòng đăng ký tài khoản email nha.,translated,too_long?
+CannotChatByNoNexonId01,csysstr.ssd,이메일아이디가 등록되어 있지 않은 경우 전체대화에 참여할 수 없습니다.,,Chưa đăng ký tài khoản email thì không thể tham gia trò chuyện chung.,translated,too_long?
+CannotChatByNoNexonId02,csysstr.ssd,이메일아이디는 마이페이지->내정보의 [이메일아이디등록] 버튼을 통해 등록할 수 있습니다.,,Có thể đăng ký tài khoản email qua nút [Đăng ký tài khoản email] trong Trang cá nhân -> Thông tin cá nhân.,translated,too_long?
+CannotConnectToShopServer,csysstr.ssd+FxDesktop/ClientData/ClientString,상점 서버에 접속할 수 없습니다. 잠시 후에 다시 시도해 주세요.,,Không kết nối được máy chủ Siêu thị. Vui lòng thử lại sau nha.,translated,too_long?
 CanNotCoupleCouple,csysstr.ssd+FxDesktop/ClientData/ClientString,"상대방에게 이미 크앤이 있습니다.
-",,,review,untranslated
-CannotDeleteQuestTrigger,csysstr.ssd+FxDesktop/ClientData/ClientString,퀘스트 아이템을 삭제할 수 없습니다.,,,review,untranslated
-CannotEnterChannelWinningMax,csysstr.ssd,대회기간 중 최고연승 20승을 달성하여 대회초보채널에 입장할 수 없습니다. 연승대회자유 채널에서 진행해주시길 바랍니다,,,review,untranslated
-CannotEnterChannelWinRateHigh,csysstr.ssd,최근승률이 %d%% 를 넘어 채널에 입장할 수 없습니다.,,,review,untranslated
-CannotEnterChannelWinRateLow,csysstr.ssd,최근승률이 %d%% 가 안되서 채널에 입장할 수 없습니다.,,,review,untranslated
-CannotFindThisRPGUser,csysstr.ssd,찾을 수 없는 히어로 입니다.,,,review,untranslated
+",,"Đối phương đã có đôi rồi.
+",translated,
+CannotDeleteQuestTrigger,csysstr.ssd+FxDesktop/ClientData/ClientString,퀘스트 아이템을 삭제할 수 없습니다.,,Không thể xóa vật phẩm nhiệm vụ.,translated,
+CannotEnterChannelWinningMax,csysstr.ssd,대회기간 중 최고연승 20승을 달성하여 대회초보채널에 입장할 수 없습니다. 연승대회자유 채널에서 진행해주시길 바랍니다,,"Trong thời gian giải, bạn đã đạt chuỗi thắng cao nhất 20 trận nên không vào được kênh Giải Tân Binh. Vui lòng chơi ở kênh Giải Chuỗi Thắng Tự Do nha.",translated,too_long?
+CannotEnterChannelWinRateHigh,csysstr.ssd,최근승률이 %d%% 를 넘어 채널에 입장할 수 없습니다.,,Tỷ lệ thắng gần đây vượt %d%% nên không vào được kênh.,translated,too_long?
+CannotEnterChannelWinRateLow,csysstr.ssd,최근승률이 %d%% 가 안되서 채널에 입장할 수 없습니다.,,Tỷ lệ thắng gần đây chưa đạt %d%% nên không vào được kênh.,translated,too_long?
+CannotFindThisRPGUser,csysstr.ssd,찾을 수 없는 히어로 입니다.,,Không tìm thấy hero này.,translated,
 CannotJoinAccountExist,csysstr.ssd,"일시적으로 길드정보 오류가 발생했습니다.
-재로그인 후, 다시 시도해 주시기 바랍니다.",,,review,untranslated
-CannotJoinDBModify,csysstr.ssd,이전 작업이 완료되지 않아 채널을 입장할 수 없습니다. 다시 시도해 주세요.,,,review,untranslated
-CannotJoinEmptyChannel,csysstr.ssd,입장가능한 채널이 존재하지 않아 접속하실 수 없습니다.,,,review,untranslated
-CannotJoinGuild,csysstr.ssd+FxDesktop/ClientData/ClientString,길드 가입에 실패했습니다.,,,review,untranslated
-CannotJoinLevellimit,csysstr.ssd+FxDesktop/ClientData/ClientString,해당 길드의 레벨 제한때문에 가입에 실패하였습니다.,,,review,untranslated
-CannotJoinOverflow,csysstr.ssd+FxDesktop/ClientData/ClientString,해당 길드의 인원이 너무 많아 가입에 실패했습니다.,,,review,untranslated
+재로그인 후, 다시 시도해 주시기 바랍니다.",,"Tạm thời có lỗi thông tin hội.
+Vui lòng đăng nhập lại rồi thử lại nha.",translated,
+CannotJoinDBModify,csysstr.ssd,이전 작업이 완료되지 않아 채널을 입장할 수 없습니다. 다시 시도해 주세요.,,Tác vụ trước chưa xong nên không vào được kênh. Vui lòng thử lại.,translated,
+CannotJoinEmptyChannel,csysstr.ssd,입장가능한 채널이 존재하지 않아 접속하실 수 없습니다.,,Không có kênh nào vào được nên không kết nối được.,translated,too_long?
+CannotJoinGuild,csysstr.ssd+FxDesktop/ClientData/ClientString,길드 가입에 실패했습니다.,,Gia nhập hội thất bại.,translated,
+CannotJoinLevellimit,csysstr.ssd+FxDesktop/ClientData/ClientString,해당 길드의 레벨 제한때문에 가입에 실패하였습니다.,,Gia nhập thất bại do giới hạn cấp của hội.,translated,
+CannotJoinOverflow,csysstr.ssd+FxDesktop/ClientData/ClientString,해당 길드의 인원이 너무 많아 가입에 실패했습니다.,,Gia nhập thất bại vì hội quá đông người.,translated,
 CannotJoinPreAccountExist,csysstr.ssd,"일시적으로 길드정보 오류가 발생했습니다.
-재로그인 후, 다시 시도해 주시기 바랍니다.",,,review,untranslated
-CannotJoinSameChannel,csysstr.ssd,현재와 동일한 채널은 이동할 수 없습니다.,,,review,untranslated
-CannotPlayGameWinRateHigh,csysstr.ssd,최근승률이 %d%% 를 초과하여 게임에 참여할 수 없습니다.,,,review,untranslated
-CannotPlayGameWinRateTooHigh,csysstr.ssd,승률이 높아 더 이상 특훈에 참여하실 수 없습니다.,,,review,untranslated
-CannotPlayTogetherLocation,csysstr.ssd,%s'님은 게임을 같이 할 수 없는 장소에 있습니다.,,,review,untranslated
+재로그인 후, 다시 시도해 주시기 바랍니다.",,"Tạm thời có lỗi thông tin hội.
+Vui lòng đăng nhập lại rồi thử lại nha.",translated,
+CannotJoinSameChannel,csysstr.ssd,현재와 동일한 채널은 이동할 수 없습니다.,,Không thể chuyển sang kênh đang ở.,translated,
+CannotPlayGameWinRateHigh,csysstr.ssd,최근승률이 %d%% 를 초과하여 게임에 참여할 수 없습니다.,,Tỷ lệ thắng gần đây vượt %d%% nên không tham gia game được.,translated,too_long?
+CannotPlayGameWinRateTooHigh,csysstr.ssd,승률이 높아 더 이상 특훈에 참여하실 수 없습니다.,,Tỷ lệ thắng cao nên không thể tham gia Đặc huấn nữa.,translated,too_long?
+CannotPlayTogetherLocation,csysstr.ssd,%s'님은 게임을 같이 할 수 없는 장소에 있습니다.,,%s đang ở nơi không thể chơi chung game.,translated,
 CannotPlayTogetherLocation@ClientString,FxDesktop/ClientData/ClientString,'%s'님은 게임을 같이 할 수 없는 장소에 있습니다.,,,review,dup_key_diff;untranslated
-CannotPresentCoupon,csysstr.ssd,해당 쿠폰은 선물하기가 불가합니다.,,,review,untranslated
-CannotPresentFor,csysstr.ssd+FxDesktop/ClientData/ClientString,받는 사람이 가지고 있는 %s의 유효기간이 %d일을 넘어 선물할 수 없습니다.,,,review,untranslated
-CannotPresentForLevel,csysstr.ssd+FxDesktop/ClientData/ClientString,받는 사람의 레벨이 높아 아이템을 선물할 수 없습니다.,,,review,untranslated
+CannotPresentCoupon,csysstr.ssd,해당 쿠폰은 선물하기가 불가합니다.,,Phiếu này không thể tặng.,translated,
+CannotPresentFor,csysstr.ssd+FxDesktop/ClientData/ClientString,받는 사람이 가지고 있는 %s의 유효기간이 %d일을 넘어 선물할 수 없습니다.,,Người nhận đang có %s với hạn sử dụng quá %d ngày nên không thể tặng.,translated,too_long?
+CannotPresentForLevel,csysstr.ssd+FxDesktop/ClientData/ClientString,받는 사람의 레벨이 높아 아이템을 선물할 수 없습니다.,,Cấp của người nhận quá cao nên không tặng được vật phẩm.,translated,too_long?
 CanNotPropose,csysstr.ssd+FxDesktop/ClientData/ClientString,"크앤 신청을 할 수 없습니다.
-",,,review,untranslated
+",,"Không thể gửi yêu cầu Đôi.
+",translated,
 CanNotProposeCouple,csysstr.ssd+FxDesktop/ClientData/ClientString,"상대방이 크앤 신청중 이십니다. 잠시 후에 다시 해주세요.
-",,,review,untranslated
+",,"Đối phương đang gửi yêu cầu Đôi. Vui lòng thử lại sau nha.
+",translated,too_long?
 CanNotProposeSelf,csysstr.ssd+FxDesktop/ClientData/ClientString,"자신에게는 크앤을 신청할 수 없습니다.
-",,,review,untranslated
-CannotProposeToSquareUser,csysstr.ssd+FxDesktop/ClientData/ClientString,상대방이 현재 광장에 있어서 커플 신청을 할 수 없습니다.,,,review,untranslated
-CannotQuestInRPGGameStage,csysstr.ssd,게임 중에는 퀘스트를 완료할 수 없습니다.,,,review,untranslated
-CannotQuestInShop,csysstr.ssd+FxDesktop/ClientData/ClientString,상점에서는 퀘스트를 완료할 수 없습니다.,,,review,untranslated
-CannotSelectFairMode,csysstr.ssd+FxDesktop/ClientData/ClientString,공평모드에서는 대장잡기를 할 수 없습니다.,,,review,untranslated
-CannotSelectMapRPGUserLevelNoSuit,csysstr.ssd,유저 레벨이 낮아 지금 선택하신 맵에 참여할 수 없는 유저(%s)가 있습니다.,,,review,untranslated
-CannotSendMsgMySelf,csysstr.ssd+FxDesktop/ClientData/ClientString,자신에게는 메시지를 보낼 수 없습니다.,,,review,untranslated
-CannotSendSmsByNoNexonId,csysstr.ssd,이메일아이디가 등록되어 있지 않은 경우 쪽지를 보낼 수 없습니다.,,,review,untranslated
-CannotStartRpgUserLevelNoSuit,csysstr.ssd,유저 레벨이 낮아 지금 선택하신 맵에 참여할 수 없는 유저(%s)가 있어 게임을 시작할 수 없습니다.,,,review,untranslated
+",,"Không thể gửi yêu cầu Đôi cho chính mình.
+",translated,too_long?
+CannotProposeToSquareUser,csysstr.ssd+FxDesktop/ClientData/ClientString,상대방이 현재 광장에 있어서 커플 신청을 할 수 없습니다.,,Đối phương đang ở quảng trường nên không gửi được yêu cầu đôi.,translated,too_long?
+CannotQuestInRPGGameStage,csysstr.ssd,게임 중에는 퀘스트를 완료할 수 없습니다.,,Không thể hoàn thành nhiệm vụ khi đang chơi game.,translated,too_long?
+CannotQuestInShop,csysstr.ssd+FxDesktop/ClientData/ClientString,상점에서는 퀘스트를 완료할 수 없습니다.,,Không thể hoàn thành nhiệm vụ trong Siêu thị.,translated,too_long?
+CannotSelectFairMode,csysstr.ssd+FxDesktop/ClientData/ClientString,공평모드에서는 대장잡기를 할 수 없습니다.,,Không thể bắt đại tướng trong chế độ Công bằng.,translated,too_long?
+CannotSelectMapRPGUserLevelNoSuit,csysstr.ssd,유저 레벨이 낮아 지금 선택하신 맵에 참여할 수 없는 유저(%s)가 있습니다.,,Có người chơi (%s) cấp thấp nên không tham gia được map đã chọn.,translated,
+CannotSendMsgMySelf,csysstr.ssd+FxDesktop/ClientData/ClientString,자신에게는 메시지를 보낼 수 없습니다.,,Không thể gửi tin nhắn cho chính mình.,translated,too_long?
+CannotSendSmsByNoNexonId,csysstr.ssd,이메일아이디가 등록되어 있지 않은 경우 쪽지를 보낼 수 없습니다.,,Chưa đăng ký email thì không gửi được tin nhắn.,translated,
+CannotStartRpgUserLevelNoSuit,csysstr.ssd,유저 레벨이 낮아 지금 선택하신 맵에 참여할 수 없는 유저(%s)가 있어 게임을 시작할 수 없습니다.,,Có người chơi (%s) cấp thấp nên không bắt đầu game được.,translated,
 CannotStartZombie2P,csysstr.ssd,"좀비 미션맵은 1P 유저만 참여할 수 있습니다.
-좀비 미션맵을 즐기기 위해서는 1P로 접속하여 주십시요",,,review,untranslated
+좀비 미션맵을 즐기기 위해서는 1P로 접속하여 주십시요",,"Map nhiệm vụ Zombie chỉ dành cho người chơi 1P.
+Để chơi map nhiệm vụ Zombie, vui lòng vào bằng 1P nha.",translated,too_long?
 CannotStartZombie2PChief_First,csysstr.ssd,"좀비맵은 1P 유저만 참여할 수 있습니다.
-",,,review,untranslated
+",,"Map Zombie chỉ dành cho người chơi 1P.
+",translated,
 CannotStartZombie2PChief_Second,csysstr.ssd,"[%s, %s]
 ",,"[%s, %s]
 ",translated,no_hangul
-CannotStartZombie2PChief_Third,csysstr.ssd,님께서 2인용 접속이므로 좀비맵을 시작할 수 없습니다,,,review,untranslated
-CannotUseShopDuringGame,csysstr.ssd+FxDesktop/ClientData/ClientString,게임중에는 상점을 이용하실 수 없습니다.,,,review,untranslated
-CannotUseTournamentShop,csysstr.ssd+FxDesktop/ClientData/ClientString,토너먼트 게임 대기중이므로 샵에 입장이 불가능합니다.,,,review,untranslated
-CannotWithSquareUser,csysstr.ssd+FxDesktop/ClientData/ClientString,%s님은 현재 광장에 있습니다.,,,review,untranslated
-CanPlayNotMatchUserNum,csysstr.ssd+FxDesktop/ClientData/ClientString,사람 수가 맞지 않아 게임을 진행할 수 없었습니다. 방에 있는 사람의 WP와 승패는 원래대로 유지됩니다.,,,review,untranslated
-CanSelectWithoutPremiumGoToBuy,csysstr.ssd+FxDesktop/ClientData/ClientString, 지존권 유저만이 지존맵을 선택하실 수 있습니다. 지존권 유저의 혜택을 누리실 수 있는 지존권을 지금 구매하시겠습니까?,,,review,untranslated
-CantAuthenSSN,csysstr.ssd+FxDesktop/ClientData/ClientString,주민번호 인증을 할 수 없습니다.,,,review,untranslated
+CannotStartZombie2PChief_Third,csysstr.ssd,님께서 2인용 접속이므로 좀비맵을 시작할 수 없습니다,,Vì bạn đang vào chế độ 2 người nên không bắt đầu map Zombie được.,review,"Dòng gốc thiếu chủ ngữ/placeholder trước ""님께서""; kiểm tra lại;too_long?"
+CannotUseShopDuringGame,csysstr.ssd+FxDesktop/ClientData/ClientString,게임중에는 상점을 이용하실 수 없습니다.,,Không thể dùng Siêu thị khi đang chơi game.,translated,too_long?
+CannotUseTournamentShop,csysstr.ssd+FxDesktop/ClientData/ClientString,토너먼트 게임 대기중이므로 샵에 입장이 불가능합니다.,,Đang chờ trận Tournament nên không vào Siêu thị được.,translated,too_long?
+CannotWithSquareUser,csysstr.ssd+FxDesktop/ClientData/ClientString,%s님은 현재 광장에 있습니다.,,%s đang ở quảng trường.,translated,
+CanPlayNotMatchUserNum,csysstr.ssd+FxDesktop/ClientData/ClientString,사람 수가 맞지 않아 게임을 진행할 수 없었습니다. 방에 있는 사람의 WP와 승패는 원래대로 유지됩니다.,,Không đủ số người nên không tiến hành game được. WP và thắng/thua của người trong phòng sẽ giữ nguyên như cũ.,translated,too_long?
+CanSelectWithoutPremiumGoToBuy,csysstr.ssd+FxDesktop/ClientData/ClientString, 지존권 유저만이 지존맵을 선택하실 수 있습니다. 지존권 유저의 혜택을 누리실 수 있는 지존권을 지금 구매하시겠습니까?,,Chỉ người có Thẻ Chí Tôn mới chọn được map Chí Tôn. Mua Thẻ Chí Tôn để hưởng đặc quyền ngay bây giờ hông?,translated,
+CantAuthenSSN,csysstr.ssd+FxDesktop/ClientData/ClientString,주민번호 인증을 할 수 없습니다.,,Không thể xác thực số định danh cá nhân.,review,"""주민번호"" là số định danh (CCCD) kiểm tra lại cách gọi;too_long?"
 CantBanSelf,csysstr.ssd+FxDesktop/ClientData/ClientString," 자기 자신을 퇴장시킬 수는 없습니다.
-",,,review,untranslated
-CantBuyExceed,csysstr.ssd+FxDesktop/ClientData/ClientString,이미 이 아이템 보유수량을 초과하여 구입할 수 없습니다.,,,review,untranslated
-CantBuyExceed2,csysstr.ssd+FxDesktop/ClientData/ClientString,이 아이템을 가진 것과 선물 받은 것이 %d개가 넘어서 구입할 수 없습니다.,,,review,untranslated
-CantBuyExceedOverMaxCount,csysstr.ssd,이 아이템을 구매하면 보유할 수 있는 수량이 초과되어 구입할 수 없습니다.,,,review,untranslated
-CantChangePasswordBySamePassword,csysstr.ssd,변경할 비밀번호가 이전 비밀번호와 동일합니다. 다시 입력해 주세요.,,,review,untranslated
-CantChangeTitleByTalkRestriction,csysstr.ssd,"대화금지 제재 중이므로, 방 제목을 변경하실 수 없습니다.",,,review,untranslated
+",,"Không thể mời chính mình ra.
+",translated,
+CantBuyExceed,csysstr.ssd+FxDesktop/ClientData/ClientString,이미 이 아이템 보유수량을 초과하여 구입할 수 없습니다.,,Đã vượt số lượng sở hữu vật phẩm này nên không mua được.,translated,too_long?
+CantBuyExceed2,csysstr.ssd+FxDesktop/ClientData/ClientString,이 아이템을 가진 것과 선물 받은 것이 %d개가 넘어서 구입할 수 없습니다.,,Số lượng đang có và đã nhận quà của vật phẩm này vượt %d cái nên không mua được.,translated,too_long?
+CantBuyExceedOverMaxCount,csysstr.ssd,이 아이템을 구매하면 보유할 수 있는 수량이 초과되어 구입할 수 없습니다.,,Mua vật phẩm này sẽ vượt số lượng có thể sở hữu nên không mua được.,translated,too_long?
+CantChangePasswordBySamePassword,csysstr.ssd,변경할 비밀번호가 이전 비밀번호와 동일합니다. 다시 입력해 주세요.,,Mật khẩu mới trùng với mật khẩu cũ. Vui lòng nhập lại nha.,translated,
+CantChangeTitleByTalkRestriction,csysstr.ssd,"대화금지 제재 중이므로, 방 제목을 변경하실 수 없습니다.",,Đang bị cấm trò chuyện nên không đổi tên phòng được.,translated,too_long?
 CantChangeZzangId,csysstr.ssd+FxDesktop/ClientData/ClientString,"아이디가 존재하지 않기 때문에 짱으로 변경할 수 없습니다.
-",,,review,untranslated
+",,"Vì không có ID nên không đổi thành Vua được.
+",translated,
 CantChat30Sec,csysstr.ssd+FxDesktop/ClientData/ClientString,"앞으로 30초 동안은 채팅을 하실 수 없습니다.
-",,,review,untranslated
-CantChatting,csysstr.ssd+FxDesktop/ClientData/ClientString,제재 중이므로 대화에 참여하실 수 없습니다.,,,review,untranslated
-CantConnectChannel,csysstr.ssd+FxDesktop/ClientData/ClientString, 선택한 채널에 접속할 수 없습니다.,,,review,untranslated
-CantCreateRoom,csysstr.ssd+FxDesktop/ClientData/ClientString, 방을 만들 수 없습니다. 잠시 후 다시 시도하세요.,,,review,untranslated
-CantDecideMap,csysstr.ssd+FxDesktop/ClientData/ClientString, 맵을 정할 수 없습니다. 다른 맵을 선택하세요.,,,review,untranslated
+",,"Trong 30 giây tới, bạn không thể chat.
+",translated,
+CantChatting,csysstr.ssd+FxDesktop/ClientData/ClientString,제재 중이므로 대화에 참여하실 수 없습니다.,,Đang bị hạn chế nên không tham gia trò chuyện được.,translated,too_long?
+CantConnectChannel,csysstr.ssd+FxDesktop/ClientData/ClientString, 선택한 채널에 접속할 수 없습니다.,,Không thể vào kênh đã chọn.,translated,
+CantCreateRoom,csysstr.ssd+FxDesktop/ClientData/ClientString, 방을 만들 수 없습니다. 잠시 후 다시 시도하세요.,,Không thể tạo phòng. Thử lại sau nha.,translated,
+CantDecideMap,csysstr.ssd+FxDesktop/ClientData/ClientString, 맵을 정할 수 없습니다. 다른 맵을 선택하세요.,,Không thể chọn map. Vui lòng chọn map khác.,translated,
 CantExchangeID,csysstr.ssd+FxDesktop/ClientData/ClientString,"현재 제재 기간 중이므로 해당 채널에 접속하실 수 없습니다.
-",,,review,untranslated
-CantExchangePermission,csysstr.ssd,현재 제재 기간 중이므로 교환을 진행할 수 없습니다.,,,review,untranslated
-CantFindEmptyRoom,csysstr.ssd+FxDesktop/ClientData/ClientString, 비어있는 방을 찾지 못했습니다. 잠시 후 다시 시도해 보세요.,,,review,untranslated
-CantGetLucciInPractice,csysstr.ssd+FxDesktop/ClientData/ClientString,혼자놀기에서는 루찌보너스맵에서 루찌를 획득할 수 없습니다.,,,review,untranslated
+",,"Đang trong thời gian bị hạn chế nên không vào được kênh này.
+",translated,too_long?
+CantExchangePermission,csysstr.ssd,현재 제재 기간 중이므로 교환을 진행할 수 없습니다.,,Đang trong thời gian bị xử phạt nên hổng trao đổi được.,translated,too_long?
+CantFindEmptyRoom,csysstr.ssd+FxDesktop/ClientData/ClientString, 비어있는 방을 찾지 못했습니다. 잠시 후 다시 시도해 보세요.,,Không tìm được phòng trống. Thử lại sau nha.,translated,
+CantGetLucciInPractice,csysstr.ssd+FxDesktop/ClientData/ClientString,혼자놀기에서는 루찌보너스맵에서 루찌를 획득할 수 없습니다.,,Khi chơi một mình không nhận được VÀNG ở map thưởng VÀNG.,translated,too_long?
 CantInviteSelf,csysstr.ssd+FxDesktop/ClientData/ClientString," 자기 자신을 초대할 수는 없습니다.
-",,,review,untranslated
-CantJoinRoom,csysstr.ssd+FxDesktop/ClientData/ClientString, 방에 참가 할 수 없습니다.,,,review,untranslated
-CantLogin2PInPCRoom,csysstr.ssd+FxDesktop/ClientData/ClientString,PC방에서는 2인용 모드 접속이 불가능합니다.,,,review,untranslated
-CantLoginUnknown,csysstr.ssd,가맹 PC방이 아니거나 접속 장애로 인하여 게임을 정상적으로 실행할 수 없는 상태입니다.    1:1 문의하기로 문의 부탁 드립니다.,,,review,untranslated
+",,"Không thể mời chính mình.
+",translated,
+CantJoinRoom,csysstr.ssd+FxDesktop/ClientData/ClientString, 방에 참가 할 수 없습니다.,,Không thể vào phòng.,translated,
+CantLogin2PInPCRoom,csysstr.ssd+FxDesktop/ClientData/ClientString,PC방에서는 2인용 모드 접속이 불가능합니다.,,Ở tiệm net hổng vô chế độ 2 người được.,translated,
+CantLoginUnknown,csysstr.ssd,가맹 PC방이 아니거나 접속 장애로 인하여 게임을 정상적으로 실행할 수 없는 상태입니다.    1:1 문의하기로 문의 부탁 드립니다.,,Đây không phải tiệm net liên kết hoặc do lỗi kết nối nên game hổng chạy bình thường được.    Vui lòng gởi câu hỏi qua mục Hỏi đáp 1:1 nha.,translated,too_long?
 CantLoginUnknown@ClientString,FxDesktop/ClientData/ClientString,"가맹 PC방이 아니거나 접속 장애로 인하여 게임을 정상적으로 실행할 수 없는 상태입니다.
 
 [넥슨 고객센터]1588-7701 로 문의 바랍니다.",,,review,dup_key_diff;untranslated
 CantMakeLadderRoom,csysstr.ssd+FxDesktop/ClientData/ClientString," 래더 등급이 달라 새로운 방을 만들 수 없습니다. 자신의 단수와 맞는 래더 채널에서 게임을 계속해 주시기 바랍니다.
-",,,review,untranslated
-CantMakeLadderSeasonRoom,csysstr.ssd,래더짱 승점이 높아서 방을 만들 수 없습니다. 래더짱 자유 채널에서 게임을 계속해 주십시오.,,,review,untranslated
-CantPresentExceed,csysstr.ssd+FxDesktop/ClientData/ClientString,이미 이 아이템을 %d개 이상 보유하고 있어 선물을 줄 수 없습니다.,,,review,untranslated
+",,"Khác hạng Xếp hạng nên không tạo phòng mới được. Vui lòng tiếp tục chơi ở kênh Xếp hạng đúng với đẳng cấp của bạn nha.
+",translated,too_long?
+CantMakeLadderSeasonRoom,csysstr.ssd,래더짱 승점이 높아서 방을 만들 수 없습니다. 래더짱 자유 채널에서 게임을 계속해 주십시오.,,Điểm Vua xếp hạng cao nên không tạo phòng được. Vui lòng tiếp tục chơi ở kênh Vua xếp hạng tự do nha.,translated,too_long?
+CantPresentExceed,csysstr.ssd+FxDesktop/ClientData/ClientString,이미 이 아이템을 %d개 이상 보유하고 있어 선물을 줄 수 없습니다.,,Đã sở hữu vật phẩm này từ %d cái trở lên nên không thể tặng.,translated,
 CantPresentItemByCAPoint,csysstr.ssd,크아포인트로 아이템을 선물하실 수 없습니다.,,,review,untranslated
 CantPresentLucci,csysstr.ssd+FxDesktop/ClientData/ClientString,루찌로는 선물할 수 없습니다.,,,review,untranslated
 CantPresentPCRoom,csysstr.ssd+FxDesktop/ClientData/ClientString,PC방 공짜 아이템은 선물할 수 없습니다.,,,review,untranslated
@@ -1896,7 +1951,7 @@ CheckUDPChecking,csysstr.ssd+FxDesktop/ClientData/ClientString,네트워크 설�
 CheckUDPError,csysstr.ssd+FxDesktop/ClientData/ClientString,네트워크 설정에 실패하여 방으로 이동 할 수 없습니다.,,,review,untranslated
 ChiefBanned,csysstr.ssd+FxDesktop/ClientData/ClientString," 강퇴반사에 의해 퇴장 당하셨습니다.
 슈퍼방장 아이템이 있으면 강퇴반사를 가지고 있는 유저도 강퇴시킬 수 있습니다. 상점에서 확인해보세요.",Bạn đã bị mời ra khỏi phòng.," Bạn bị mời ra do Phản mời ra.
-Có vật phẩm Siêu chủ phòng thì có thể mời ra cả người dùng có Phản mời ra. Hãy xem trong Siêu thị.",review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
+Có vật phẩm Siêu chủ phòng thì có thể mời ra cả người dùng có Phản mời ra. Vô Siêu thị coi nha.",review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
 ChoiceGachaponCard,csysstr.ssd+FxDesktop/ClientData/ClientString,캐릭터판 하나를 골라 클릭해주세요! 뒤집을 때마다 쿠폰이 하나씩 소모됩니다.,,,review,untranslated
 ChoosePeriod,csysstr.ssd+FxDesktop/ClientData/ClientString,기간을 설정해주셔용~!,,,review,untranslated
 ChoosePermission,csysstr.ssd+FxDesktop/ClientData/ClientString,제재권한을 설정해주셔용~!,,,review,untranslated
@@ -2379,11 +2434,11 @@ DailyQuest_Progress,csysstr.ssd,진행상황,,,review,untranslated
 DailyQuest_ScrpitPostfix,csysstr.ssd,[SPACE],,[SPACE],translated,no_hangul
 Dao,csysstr.ssd+FxDesktop/ClientData/ClientString,다오,,,review,untranslated
 DaoPharaoh,csysstr.ssd,파라오 징어,,Mực Pharaoh,translated,too_long?
-DarkHeroEventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,,review,untranslated
+DarkHeroEventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,%s đã nhận được %s x%d từ rương báu!,translated,
 DarkHeroEventNpcRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %d일권 %d개를 획득하셨습니다!,,,review,untranslated
-DarkHeroEventNpcRewardExp,csysstr.ssd,%s님께서 보물상자에서 경험치 %d점을 획득하셨습니다!,,,review,untranslated
-DarkHeroEventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,,review,untranslated
-DarkHeroEventNpcRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d루찌를 획득하셨습니다!,,,review,untranslated
+DarkHeroEventNpcRewardExp,csysstr.ssd,%s님께서 보물상자에서 경험치 %d점을 획득하셨습니다!,,%s đã nhận %d kinh nghiệm từ rương báu!,translated,
+DarkHeroEventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận được thẻ %s %d ngày từ rương báu!,translated,
+DarkHeroEventNpcRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d루찌를 획득하셨습니다!,,%s đã nhận được %d VÀNG từ rương báu!,translated,
 darkknight,csysstr.ssd+FxDesktop/ClientData/ClientString,다크나이트,,,review,untranslated
 Day,csysstr.ssd+FxDesktop/ClientData/ClientString,일,,,review,untranslated
 DbErrOrNotExistId,csysstr.ssd+FxDesktop/ClientData/ClientString,"%s님은 존재하지 않거나, 데이터베이스 오류입니다.
@@ -2538,7 +2593,7 @@ EffectSound,csysstr.ssd+FxDesktop/ClientData/ClientString," 효과음 %s
 ",,,review,untranslated
 ElecDisplayEditBoxMsg,csysstr.ssd,"전광판 메시지를 입력해주세요.
 입력한 메시지는 변경 가능합니다.(최대23자)",,,review,untranslated
-ElecDisplayPreviewMsg,csysstr.ssd,전광판 미리보기,Xem trước,Xem trước bảng điện tử,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
+ElecDisplayPreviewMsg,csysstr.ssd,전광판 미리보기,Xem trước,Coi trước bảng điện tử,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
 Empty,csysstr.ssd+FxDesktop/ClientData/ClientString,비어 있음,,,review,untranslated
 EnablePharaoh,csysstr.ssd,"파라오의 보물 맵 발견!
 방장이 되면 맵 리스트 확인!",,,review,untranslated
@@ -2832,10 +2887,10 @@ eventNiceLucciUp,csysstr.ssd+FxDesktop/ClientData/ClientString,"상점 아이템
 eventNiceWinUp,csysstr.ssd+FxDesktop/ClientData/ClientString,"상점 아이템을 쓰는 유저를 죽였으므로 승리하실 경우 전적에 2승을 추가해 드립니다.
 ",,,review,untranslated
 EventNotice_QuestDone,csysstr.ssd,퀘스트를 이미 완료하셨습니다.,,,review,untranslated
-EventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,,review,untranslated
-EventNpcRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,,review,untranslated
-EventNpcRewardExp,csysstr.ssd,%s님께서 보물상자에서 경험치 %d점을 획득하셨습니다!,,,review,untranslated
-EventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,,review,untranslated
+EventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,%s đã nhận được %s x%d từ rương báu!,translated,
+EventNpcRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận được thẻ %s %d ngày từ rương báu!,translated,
+EventNpcRewardExp,csysstr.ssd,%s님께서 보물상자에서 경험치 %d점을 획득하셨습니다!,,%s đã nhận %d kinh nghiệm từ rương báu!,translated,
+EventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận được thẻ %s %d ngày từ rương báu!,translated,
 EventNpcRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d 루찌를 획득하셨습니다!,,,review,untranslated
 EventNpcSantaReward,csysstr.ssd,%s님께서 선물상자에서 %s %d개를 획득하셨습니다!,,,review,untranslated
 EventNpcSantaRewardDateCount,csysstr.ssd,%s님께서 선물상자에서 %s %d일권을 획득하셨습니다!,,,review,untranslated
@@ -2998,8 +3053,8 @@ Fm_BigBattleRandom,csysstr.ssd,빠른시작 보물찾기,,,review,untranslated
 Fm_MonModeRandom,csysstr.ssd,빠른시작 몬스터모드 랜덤,,,review,untranslated
 Fm_Random,csysstr.ssd,빠른시작 일반모드 랜덤,,,review,untranslated
 Fm_WriggleRandom,csysstr.ssd,빠른시작 꼬물이 랜덤,,,review,untranslated
-ForbiddenAuthenForOnePlayer,csysstr.ssd,현재 게임을 하고 계시는 곳은 미가입 PC방입니다.,Không thể đăng nhập.,Nơi bạn đang chơi là quán net chưa đăng ký.,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
-ForbiddenAuthenForTwoPlayers,csysstr.ssd,PC방에서는 2인용 모드 접속이 불가능합니다.,,,review,untranslated
+ForbiddenAuthenForOnePlayer,csysstr.ssd,현재 게임을 하고 계시는 곳은 미가입 PC방입니다.,Không thể đăng nhập.,Chỗ bạn đang chơi là tiệm net chưa đăng ký.,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+ForbiddenAuthenForTwoPlayers,csysstr.ssd,PC방에서는 2인용 모드 접속이 불가능합니다.,,Ở tiệm net hổng vô chế độ 2 người được.,translated,
 ForceDeleteItem_Msg_0001,csysstr.ssd,%s님의 %s 아이템이 스페이스 물풍선 만들기 퀘스트 종료로 인하여 삭제되었습니다.,,,review,untranslated
 ForceDeleteItem_Msg_0002,csysstr.ssd,%s님의 %s 아이템이 스주사위 물풍선 만들기 퀘스트 종료로 인하여 삭제되었습니다.,,,review,untranslated
 ForceDeleteItem_Msg_0003,csysstr.ssd,%s님의 %s 아이템이 슈파 스킬대전 이벤트가 종료되어 슈파 스킬을 삭제합니다. 참여 감사 드립니다.,,,review,untranslated
@@ -3008,10 +3063,10 @@ ForceQuit,csysstr.ssd+FxDesktop/ClientData/ClientString,강제탈퇴,,Buộc r�
 Forest,csysstr.ssd,버블힐마을 서쪽에 있는 울창한 숲 입니다. 아기자기한 꽃과 나무들이 정말 예뻐요.,,,review,untranslated
 Forest@ClientString,FxDesktop/ClientData/ClientString,붐힐마을 서쪽에 있는 울창한 숲 입니다. 아기자기한 꽃과 나무들이 정말 예뻐요.,,,review,dup_key_diff;untranslated
 ForestRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,포레스트맵 중  한가지가 랜덤하게 선택됩니다.,,,review,untranslated
-FortuneStarEventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,,review,untranslated
+FortuneStarEventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,%s đã nhận được %s x%d từ rương báu!,translated,
 FortuneStarEventNpcRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %d일권 %d개를 획득하셨습니다!,,,review,untranslated
-FortuneStarEventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,,review,untranslated
-FortuneStarEventNpcRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d루찌를 획득하셨습니다!,,,review,untranslated
+FortuneStarEventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận được thẻ %s %d ngày từ rương báu!,translated,
+FortuneStarEventNpcRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d루찌를 획득하셨습니다!,,%s đã nhận được %d VÀNG từ rương báu!,translated,
 FriendSearchDlgHelpMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,"입력창에 ID를 입력하면 친구를 찾을 수 있습니다.
 (대화창에 /누구 ID를 입력해도 찾을 수 있습니다.)",,,review,untranslated
 FriendSearchDlgId,csysstr.ssd+FxDesktop/ClientData/ClientString,아이디 입력,,,review,untranslated
@@ -3813,7 +3868,7 @@ LobbySquare_InviteUserArea,csysstr.ssd, '%s'님께서 %s구역으로 소환하�
 LobbySquare_LocationForm,csysstr.ssd,%s - %s,,%s - %s,translated,no_hangul
 LobbySquare_QuestNpcActiveMsg,csysstr.ssd,오늘의 일일퀘스트가 궁금하니? [SPACE]  ,,,review,untranslated
 LobbySquare_ToggleUIBtn_Tooltip,csysstr.ssd,모두 열기/닫기,Ẩn/hiện bảng,Mở/đóng tất cả,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
-Lodumani,csysstr.ssd,로두마니,,,review,untranslated
+Lodumani,csysstr.ssd,로두마니,,Rodumani,translated,too_long?
 LodumaniPharaoh,csysstr.ssd,가짜 파라오,,,review,untranslated
 LodumaniSeaChamp,csysstr.ssd,해적왕,,,review,untranslated
 LodumaniSnowyChamp,csysstr.ssd,가짜 용사,,,review,untranslated
@@ -4177,10 +4232,10 @@ Messenger,csysstr.ssd+FxDesktop/ClientData/ClientString,메신저,Bạn bè,Bạ
 MessengerFriendID,csysstr.ssd+FxDesktop/ClientData/ClientString,친구아이디,,,review,untranslated
 Mine,csysstr.ssd+FxDesktop/ClientData/ClientString,보석을 캐는 동쪽의 산입니다. 광산차를 타면 레일 위를 씽씽 달릴 수 있어요.,,,review,untranslated
 MineRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,광산맵 중 한가지가 랜덤하게 선택됩니다.,,,review,untranslated
-MissFortuneEventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,,review,untranslated
+MissFortuneEventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,%s đã nhận được %s x%d từ rương báu!,translated,
 MissFortuneEventNpcRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %d일권 %d개를 획득하셨습니다!,,,review,untranslated
-MissFortuneEventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,,review,untranslated
-MissFortuneEventNpcRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d루찌를 획득하셨습니다!,,,review,untranslated
+MissFortuneEventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận được thẻ %s %d ngày từ rương báu!,translated,
+MissFortuneEventNpcRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d루찌를 획득하셨습니다!,,%s đã nhận được %d VÀNG từ rương báu!,translated,
 MissionBulaMsg,csysstr.ssd,미라와 박쥐를 피해 상자 주위의 Bula를 모두 내 색깔로 칠해서 보물을 얻어라!  더많은 보물을 얻는 팀이 승리!,,,review,untranslated
 MissionBulaMsg@ClientString,FxDesktop/ClientData/ClientString,"미라와 박쥐를 피해 상자 주위의 Bula를 모두 내 색깔로 칠해서 보물을 얻어라!
 더많은 보물을 얻는 팀이 승리!",,,review,dup_key_diff;untranslated
@@ -4244,7 +4299,7 @@ MonAction_Sancho_01approach04,csysstr.ssd,가시왕 산쵸!,,,review,untranslate
 MonAction_Sancho_01approach05,csysstr.ssd,하하!,,,review,untranslated
 MonAction_Sancho_01approach06,csysstr.ssd,내 공격을 받아랏!,,,review,untranslated
 MonAction_Sancho_01SelfDamaged01,csysstr.ssd,윽!,,,review,untranslated
-MonAction_Sancho_01SelfDamaged02,csysstr.ssd,아얏!,,,review,untranslated
+MonAction_Sancho_01SelfDamaged02,csysstr.ssd,아얏!,,Ái!,translated,
 MonAction_Sancho_01SelfDie01,csysstr.ssd,안녕!,,,review,untranslated
 MonAction_Sancho_01SelfDie02,csysstr.ssd,으악!,,,review,untranslated
 MonAction_Sancho_01Selflocked01,csysstr.ssd,곧 터짐!,,,review,untranslated
@@ -4293,7 +4348,7 @@ MonBig10SelfDie01,csysstr.ssd,꽥!,,Quác!,translated,too_long?
 MonBig10Selflocked01,csysstr.ssd,"어이쿠, 골렘죽네!",,,review,untranslated
 MonBig10Selflocked02,csysstr.ssd,오!,,,review,untranslated
 MonBigRandom,csysstr.ssd,몬스터대격돌맵 중에서 랜덤하게 선택됩니다.,,,review,untranslated
-MonBookMarkRandom,csysstr.ssd,즐겨찾기로 등록된 맵이 랜덤하게 선택됩니다.,,,review,untranslated
+MonBookMarkRandom,csysstr.ssd,즐겨찾기로 등록된 맵이 랜덤하게 선택됩니다.,,Map đã đăng ký yêu thích sẽ được chọn ngẫu nhiên.,translated,too_long?
 MonEasyRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,"쉬운 맵만 골라골라! 쉽게 클리어할 수 있는 몬스터 맵들이 랜덤으로 선택됩니다.
 ",,,review,untranslated
 MonGolem,csysstr.ssd,땅속에서 조용히 살던 골렘들이  갑자기 땅 위로 올라와 행패를 부리는군요! 아무거나 다 부수고 있는 거대골렘과 꼬마골렘들을 어서 제압하세요!,,,review,untranslated
@@ -4639,10 +4694,10 @@ MonRobot@ClientString,FxDesktop/ClientData/ClientString,"거대로봇의 대공�
 ",,,review,dup_key_diff;untranslated
 MonRobotRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,"로봇대공습 맵 중 한 가지가 랜덤하게 선택됩니다.
 ",,,review,untranslated
-MonS2BossReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,,review,untranslated
-MonS2BossRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,,review,untranslated
-MonS2BossRewardExp,csysstr.ssd,%s님께서 보물상자에서 경험치 %d점을 획득하셨습니다!,,,review,untranslated
-MonS2BossRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,,review,untranslated
+MonS2BossReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,%s đã nhận được %s x%d từ rương báu!,translated,
+MonS2BossRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận được thẻ %s %d ngày từ rương báu!,translated,
+MonS2BossRewardExp,csysstr.ssd,%s님께서 보물상자에서 경험치 %d점을 획득하셨습니다!,,%s đã nhận %d kinh nghiệm từ rương báu!,translated,
+MonS2BossRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận được thẻ %s %d ngày từ rương báu!,translated,
 MonS2BossRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d 루찌를 획득하셨습니다!,,,review,untranslated
 MonS2Fire,csysstr.ssd,화염산 원정대의 이상한 숲 탐험기!! 몬스터 쿠오들의 방해가 만만치 않습니다. 과연 화염산의 비밀을 밝혀낼 수 있을까요?,,,review,untranslated
 mons2fire01approach01,csysstr.ssd,공격 준비!!,,,review,untranslated
@@ -4709,7 +4764,7 @@ mons2fire01default30,csysstr.ssd,거의 최고의 실력이 되었구나!,,,revi
 mons2fire01default31,csysstr.ssd,마지막 관문이야~,,,review,untranslated
 mons2fire01default32,csysstr.ssd,이제 나를 이겨 봐!,,,review,untranslated
 mons2fire01selfdamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
-mons2fire01selfdamaged02,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire01selfdamaged02,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire01selfdamaged03,csysstr.ssd,아프구너!,,,review,untranslated
 mons2fire01selfdamaged04,csysstr.ssd,아프다고!,,,review,untranslated
 mons2fire01selfdie01,csysstr.ssd,깽!,,,review,untranslated
@@ -4747,7 +4802,7 @@ mons2fire02approach23,csysstr.ssd,헥헥!,,,review,untranslated
 mons2fire02approach24,csysstr.ssd,휴~,,,review,untranslated
 mons2fire02selfdamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
 mons2fire02selfdamaged02,csysstr.ssd,아악!,,,review,untranslated
-mons2fire02selfdamaged03,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire02selfdamaged03,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire02selfdamaged04,csysstr.ssd,아프구너!,,,review,untranslated
 mons2fire02selfdamaged05,csysstr.ssd,아프다고!,,,review,untranslated
 mons2fire02selfdie01,csysstr.ssd,깽!,,,review,untranslated
@@ -4811,7 +4866,7 @@ mons2fire03monhpchanged04,csysstr.ssd,이동공격!,,,review,untranslated
 mons2fire03monhpchanged05,csysstr.ssd,이쪽이다!,,,review,untranslated
 mons2fire03selfdamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
 mons2fire03selfdamaged02,csysstr.ssd,아악!,,,review,untranslated
-mons2fire03selfdamaged03,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire03selfdamaged03,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire03selfdamaged04,csysstr.ssd,아프구너!,,,review,untranslated
 mons2fire03selfdamaged05,csysstr.ssd,아프다고!,,,review,untranslated
 mons2fire03selfdamaged06,csysstr.ssd,악!,,Á!,translated,
@@ -4853,7 +4908,7 @@ mons2fire04approach23,csysstr.ssd,헥헥!,,,review,untranslated
 mons2fire04approach24,csysstr.ssd,휴~,,,review,untranslated
 mons2fire04selfdamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
 mons2fire04selfdamaged02,csysstr.ssd,아악!,,,review,untranslated
-mons2fire04selfdamaged03,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire04selfdamaged03,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire04selfdamaged04,csysstr.ssd,아프구나!,,,review,untranslated
 mons2fire04selfdamaged05,csysstr.ssd,아프구너!,,,review,untranslated
 mons2fire04selfdamaged06,csysstr.ssd,아프다고!,,,review,untranslated
@@ -4923,7 +4978,7 @@ mons2fire05monhpchanged03,csysstr.ssd,초강력 화염불꽃!!!,,,review,untrans
 mons2fire05selfdamaged01,csysstr.ssd,깽!,,,review,untranslated
 mons2fire05selfdamaged02,csysstr.ssd,꾸옷!,,,review,untranslated
 mons2fire05selfdamaged03,csysstr.ssd,악!,,Á!,translated,
-mons2fire05selfdamaged04,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire05selfdamaged04,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire05selfdamaged05,csysstr.ssd,아프구너!,,,review,untranslated
 mons2fire05selfdamaged06,csysstr.ssd,아프다고!,,,review,untranslated
 mons2fire05selfdie01,csysstr.ssd,꾸륵!,,,review,untranslated
@@ -4978,7 +5033,7 @@ MonS2Fire06SelfDamaged03,csysstr.ssd,낄낄!,,,review,untranslated
 MonS2Fire06SelfDamaged04,csysstr.ssd,내 품격이 말이 아니군..!,,,review,untranslated
 MonS2Fire06SelfDamaged05,csysstr.ssd,마이아프다!,,,review,untranslated
 MonS2Fire06SelfDamaged06,csysstr.ssd,아!,,,review,untranslated
-MonS2Fire06SelfDamaged07,csysstr.ssd,아얏!,,,review,untranslated
+MonS2Fire06SelfDamaged07,csysstr.ssd,아얏!,,Ái!,translated,
 MonS2Fire06SelfDamaged08,csysstr.ssd,아이쿠오!,,,review,untranslated
 MonS2Fire06SelfDamaged09,csysstr.ssd,아파!,,,review,untranslated
 MonS2Fire06SelfDamaged10,csysstr.ssd,아포!,,,review,untranslated
@@ -5064,7 +5119,7 @@ MonS2Fire07monhpchanged01,csysstr.ssd,위헙하다! 잠시 대피!,,,review,untr
 MonS2Fire07monhpchanged02,csysstr.ssd,이쪽이다!,,,review,untranslated
 MonS2Fire07monhpchanged03,csysstr.ssd,파이어볼 한번더!,,,review,untranslated
 MonS2Fire07monhpchanged04,csysstr.ssd,파이어볼~!,,,review,untranslated
-MonS2Fire07SelfDamaged01,csysstr.ssd,아얏!,,,review,untranslated
+MonS2Fire07SelfDamaged01,csysstr.ssd,아얏!,,Ái!,translated,
 MonS2Fire07SelfDamaged02,csysstr.ssd,아얏!!,,,review,untranslated
 MonS2Fire07SelfDamaged03,csysstr.ssd,아프다고 했지!!,,,review,untranslated
 MonS2Fire07SelfDamaged04,csysstr.ssd,아프다고!!,,,review,untranslated
@@ -5096,7 +5151,7 @@ MonS2Fire08Approach16,csysstr.ssd,퉤~,,,review,untranslated
 MonS2Fire08Approach17,csysstr.ssd,헥헥!,,,review,untranslated
 MonS2Fire08Approach18,csysstr.ssd,휴!,,,review,untranslated
 MonS2Fire08SelfDamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
-MonS2Fire08SelfDamaged02,csysstr.ssd,아얏!,,,review,untranslated
+MonS2Fire08SelfDamaged02,csysstr.ssd,아얏!,,Ái!,translated,
 MonS2Fire08SelfDamaged03,csysstr.ssd,아프구나!,,,review,untranslated
 MonS2Fire08SelfDie01,csysstr.ssd,꾸륵!,,,review,untranslated
 MonS2Fire08SelfDie02,csysstr.ssd,으악!,,,review,untranslated
@@ -5145,7 +5200,7 @@ MonS2Fire09monhpchanged03,csysstr.ssd,슈슈슉~!,,,review,untranslated
 MonS2Fire09monhpchanged04,csysstr.ssd,스르륵!,,,review,untranslated
 MonS2Fire09monhpchanged05,csysstr.ssd,이쪽이다!,,,review,untranslated
 MonS2Fire09SelfDamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
-MonS2Fire09SelfDamaged02,csysstr.ssd,아얏!,,,review,untranslated
+MonS2Fire09SelfDamaged02,csysstr.ssd,아얏!,,Ái!,translated,
 MonS2Fire09SelfDamaged03,csysstr.ssd,아프구나!,,,review,untranslated
 MonS2Fire09SelfDie01,csysstr.ssd,꾸륵!,,,review,untranslated
 MonS2Fire09SelfDie02,csysstr.ssd,으아악!,,,review,untranslated
@@ -5170,7 +5225,7 @@ mons2fire10approach15,csysstr.ssd,헥헥!,,,review,untranslated
 mons2fire10approach16,csysstr.ssd,휴!,,,review,untranslated
 mons2fire10default01,csysstr.ssd,공격 준비!!,,,review,untranslated
 mons2fire10selfdamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
-mons2fire10selfdamaged02,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire10selfdamaged02,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire10selfdamaged03,csysstr.ssd,아프구나!,,,review,untranslated
 mons2fire10selfdie01,csysstr.ssd,꾸륵!,,,review,untranslated
 mons2fire10selfdie02,csysstr.ssd,으악!,,,review,untranslated
@@ -5214,7 +5269,7 @@ mons2fire11monhpchanged03,csysstr.ssd,슈슈슉~!,,,review,untranslated
 mons2fire11monhpchanged04,csysstr.ssd,스르륵!,,,review,untranslated
 mons2fire11monhpchanged05,csysstr.ssd,이쪽이다!,,,review,untranslated
 mons2fire11selfdamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
-mons2fire11selfdamaged02,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire11selfdamaged02,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire11selfdamaged03,csysstr.ssd,아프구나!,,,review,untranslated
 mons2fire11selfdie01,csysstr.ssd,꾸륵!,,,review,untranslated
 mons2fire11selfdie02,csysstr.ssd,으악!,,,review,untranslated
@@ -5260,7 +5315,7 @@ mons2fire12selfdamaged01,csysstr.ssd,꺅! 아포!,,,review,untranslated
 mons2fire12selfdamaged02,csysstr.ssd,꾸옷!,,,review,untranslated
 mons2fire12selfdamaged03,csysstr.ssd,낄낄!,,,review,untranslated
 mons2fire12selfdamaged04,csysstr.ssd,아악!,,,review,untranslated
-mons2fire12selfdamaged05,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire12selfdamaged05,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire12selfdamaged06,csysstr.ssd,아포!,,,review,untranslated
 mons2fire12selfdamaged07,csysstr.ssd,아포오~!,,,review,untranslated
 mons2fire12selfdamaged08,csysstr.ssd,아프구너!,,,review,untranslated
@@ -5335,7 +5390,7 @@ mons2fire13monhpchanged05,csysstr.ssd,이쪽이다!,,,review,untranslated
 mons2fire13SelfDamaged01,csysstr.ssd,꺅! 아포!,,,review,untranslated
 mons2fire13SelfDamaged02,csysstr.ssd,꾸옷!,,,review,untranslated
 mons2fire13SelfDamaged03,csysstr.ssd,아악!,,,review,untranslated
-mons2fire13SelfDamaged04,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire13SelfDamaged04,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire13SelfDamaged05,csysstr.ssd,아프구너!,,,review,untranslated
 mons2fire13SelfDamaged06,csysstr.ssd,아프다고!,,,review,untranslated
 mons2fire13SelfDie01,csysstr.ssd,깽!,,,review,untranslated
@@ -5380,7 +5435,7 @@ mons2fire14default04,csysstr.ssd,룰루 랄라~,,,review,untranslated
 mons2fire14default05,csysstr.ssd,모두 도망쳐!,,,review,untranslated
 mons2fire14default06,csysstr.ssd,이동해!,,,review,untranslated
 mons2fire14selfdamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
-mons2fire14selfdamaged02,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire14selfdamaged02,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire14selfdamaged03,csysstr.ssd,아프구나!,,,review,untranslated
 mons2fire14selfdie01,csysstr.ssd,꾸륵!,,,review,untranslated
 mons2fire14selfdie02,csysstr.ssd,으악!,,,review,untranslated
@@ -5428,7 +5483,7 @@ mons2fire15default09,csysstr.ssd,으하하하하,,,review,untranslated
 mons2fire15default10,csysstr.ssd,퐈이야~,,,review,untranslated
 mons2fire15default11,csysstr.ssd,하나!,,,review,untranslated
 mons2fire15selfdamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
-mons2fire15selfdamaged02,csysstr.ssd,아얏!,,,review,untranslated
+mons2fire15selfdamaged02,csysstr.ssd,아얏!,,Ái!,translated,
 mons2fire15selfdamaged03,csysstr.ssd,아프구나!,,,review,untranslated
 mons2fire15selfdie01,csysstr.ssd,꾸륵!,,,review,untranslated
 mons2fire15selfdie02,csysstr.ssd,으악!,,,review,untranslated
@@ -5688,7 +5743,7 @@ MonS2Sand05default10,csysstr.ssd,우린 선인장이다,,,review,untranslated
 MonS2Sand05default11,csysstr.ssd,전진!!,,,review,untranslated
 MonS2Sand05default12,csysstr.ssd,쿠오 돌격!,,,review,untranslated
 MonS2Sand05SelfDamaged01,csysstr.ssd,꾸옷!,,,review,untranslated
-MonS2Sand05SelfDamaged02,csysstr.ssd,아얏!,,,review,untranslated
+MonS2Sand05SelfDamaged02,csysstr.ssd,아얏!,,Ái!,translated,
 MonS2Sand05SelfDamaged03,csysstr.ssd,앜!,,,review,untranslated
 MonS2Sand05SelfDamaged04,csysstr.ssd,우끼!,,,review,untranslated
 MonS2Sand05SelfDamaged05,csysstr.ssd,윽!,,,review,untranslated
@@ -5812,7 +5867,7 @@ MonSnowBear06SelfDie01,csysstr.ssd,이대로끝날수없다!,,,review,untranslat
 MonSnowBear06SelfDie02,csysstr.ssd,다음엔 꼭..,,,review,untranslated
 MonSnowBear06SelfDie03,csysstr.ssd,강하구나!,,,review,untranslated
 MonSnowBear06SelfDie04,csysstr.ssd,다시돌아오겠다!!,,,review,untranslated
-MonSnowBear06SelfDie05,csysstr.ssd,아얏!,,,review,untranslated
+MonSnowBear06SelfDie05,csysstr.ssd,아얏!,,Ái!,translated,
 MonSnowBear06SelfDie06,csysstr.ssd,으악!,,,review,untranslated
 MonSnowBear06SelfDie07,csysstr.ssd,내가 지다일...,,,review,untranslated
 MonSnowBear07default01,csysstr.ssd,겨울이다!,,,review,untranslated
@@ -5902,7 +5957,7 @@ MonSnowBear09default29,csysstr.ssd,힘들어!,,,review,untranslated
 MonSnowBear09locked01,csysstr.ssd,꽁꽁!,,,review,untranslated
 MonSnowBear09locked02,csysstr.ssd,얼었다!,,,review,untranslated
 MonSnowBear09locked03,csysstr.ssd,얼음!,,,review,untranslated
-MonSnowBear09SelfDamaged01,csysstr.ssd,아얏!,,,review,untranslated
+MonSnowBear09SelfDamaged01,csysstr.ssd,아얏!,,Ái!,translated,
 MonSnowBear09SelfDamaged02,csysstr.ssd,잠깐잠깐!,,,review,untranslated
 MonSnowBear09SelfDamaged03,csysstr.ssd,차가워!,,,review,untranslated
 MonSnowBear09SelfDamaged04,csysstr.ssd,쿠오옹!,,,review,untranslated
@@ -6057,7 +6112,7 @@ MonSnowBear15default10,csysstr.ssd,잇힝!,,,review,untranslated
 MonSnowBear15default11,csysstr.ssd,준비끝!,,,review,untranslated
 MonSnowBear15default12,csysstr.ssd,폭군등장! 둠칫~!,,,review,untranslated
 MonSnowBear15default13,csysstr.ssd,후후후!,,,review,untranslated
-MonSnowBear15SelfDamaged01,csysstr.ssd,아얏!,,,review,untranslated
+MonSnowBear15SelfDamaged01,csysstr.ssd,아얏!,,Ái!,translated,
 MonSnowBear15SelfDamaged02,csysstr.ssd,잠깐잠깐!,,,review,untranslated
 MonSnowBear15SelfDamaged03,csysstr.ssd,차가워!,,,review,untranslated
 MonSnowBear15SelfDamaged04,csysstr.ssd,쿠오옹!,,,review,untranslated
@@ -6142,7 +6197,7 @@ MonSnowBear18locked01,csysstr.ssd,꽁꽁!,,,review,untranslated
 MonSnowBear18locked02,csysstr.ssd,얼음!,,,review,untranslated
 MonSnowBear18locked03,csysstr.ssd,차가워!,,,review,untranslated
 MonSnowBear18SelfDamaged01,csysstr.ssd,그만!,,,review,untranslated
-MonSnowBear18SelfDamaged02,csysstr.ssd,아얏!,,,review,untranslated
+MonSnowBear18SelfDamaged02,csysstr.ssd,아얏!,,Ái!,translated,
 MonSnowBear18SelfDamaged03,csysstr.ssd,아프다!,,,review,untranslated
 MonSnowBear18SelfDamaged04,csysstr.ssd,윽!,,,review,untranslated
 MonSnowBear18SelfDie01,csysstr.ssd,강하구나!,,,review,untranslated
@@ -6232,7 +6287,7 @@ MonSnowBear21locked04,csysstr.ssd,차가워!,,,review,untranslated
 MonSnowBear21SelfDamaged01,csysstr.ssd,아프다능!,,,review,untranslated
 MonSnowBear21SelfDamaged02,csysstr.ssd,어지럽다능!,,,review,untranslated
 MonSnowBear21SelfDie01,csysstr.ssd,복수한다능!,,,review,untranslated
-MonSnowBear21SelfDie02,csysstr.ssd,아얏!,,,review,untranslated
+MonSnowBear21SelfDie02,csysstr.ssd,아얏!,,Ái!,translated,
 MonSnowBear21SelfDie03,csysstr.ssd,안돼!!,,,review,untranslated
 MonSnowBear21SelfDie04,csysstr.ssd,안된다능!,,,review,untranslated
 MonSnowBear21SelfDie05,csysstr.ssd,으악!,,,review,untranslated
@@ -6450,7 +6505,7 @@ MustMatchCommunity,csysstr.ssd+FxDesktop/ClientData/ClientString, 자신과 같�
 MyGuildInfo,csysstr.ssd+FxDesktop/ClientData/ClientString,내길드정보,,,review,untranslated
 MyGuildPoint,csysstr.ssd+FxDesktop/ClientData/ClientString,내길드포인트,,,review,untranslated
 MyInfo,csysstr.ssd+FxDesktop/ClientData/ClientString,내 정보 보기,,,review,untranslated
-MyItem,csysstr.ssd+FxDesktop/ClientData/ClientString,내 아이템 보기,Túi đồ,Xem túi đồ,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+MyItem,csysstr.ssd+FxDesktop/ClientData/ClientString,내 아이템 보기,Túi đồ,Coi túi đồ,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 NameCoupleRing_AfterInputRingName,csysstr.ssd,"입력한 문구로 설정하시겠습니까? 한 번 설정된 문구는 변경하실 수 없습니다.
 
 * 설정취소할 경우 크앤 신청은 취소되며 신청이 거절될 경우 문구는 다시 입력 할수 있습니다.",,,review,untranslated
@@ -6564,7 +6619,7 @@ NewShop_CategorySpEffect,csysstr.ssd,특수효과,,,review,untranslated
 NewShop_CategoryVIP,csysstr.ssd,VIP,,VIP,translated,no_hangul
 NewShop_DelWishChecked,csysstr.ssd,선택한 아이템을 관심상품 등록 해제 하시겠습니까?,,,review,untranslated
 NewShop_DelWishTooltip,csysstr.ssd,관심상품해제,,,review,untranslated
-NewShop_LimitDate,csysstr.ssd,%d일 남음,,,review,untranslated
+NewShop_LimitDate,csysstr.ssd,%d일 남음,,Còn %d ngày,translated,too_long?
 NewShop_LimitDateTooltip,csysstr.ssd,*판매종료까지 : %d일 남음,,,review,untranslated
 NewShop_LimitTime,csysstr.ssd,%02d:%02d 남음,,,review,untranslated
 NewShop_LimitTimeTooltip,csysstr.ssd,*판매종료까지 : %02d:%02d 남음,,,review,untranslated
@@ -6951,7 +7006,7 @@ PatritRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,패트릿맵 중 한�
 PCRoom_AuthenTerminate,csysstr.ssd,"PC방 정량제 시간 만료로 게임이 종료 됩니다.
 
 자세한 사항은 PC방 사장님께 문의 하시기 바랍니다.",,,review,untranslated
-PCRoom_Restrict2P,csysstr.ssd,PC방에서는 2인용 모드 접속이 불가능합니다.,,,review,untranslated
+PCRoom_Restrict2P,csysstr.ssd,PC방에서는 2인용 모드 접속이 불가능합니다.,,Ở tiệm net hổng vô chế độ 2 người được.,translated,
 PCRoom_RestrictPCRoom,csysstr.ssd,현재 게임을 하고 계시는 곳은 미가입 PC방입니다.,,,review,untranslated
 PcRoomDlgStr1,csysstr.ssd+FxDesktop/ClientData/ClientString,"언제나 이벤트 중! <경험치+30%> , <루찌 2배>
 25분마다 선물 팍팍! <보물상자 퀘스트>
@@ -8315,7 +8370,7 @@ BnB 세계에 오신것을 환영합니다!
 가입선물로 바늘 3개를 드립니다.",,,review,untranslated
 PresentJoinSender,csysstr.ssd,운영자,,,review,untranslated
 PresentLucci,csysstr.ssd+FxDesktop/ClientData/ClientString,루찌 %d,,,review,untranslated
-PresentName,csysstr.ssd+FxDesktop/ClientData/ClientString,%s %d개,,,review,untranslated
+PresentName,csysstr.ssd+FxDesktop/ClientData/ClientString,%s %d개,,%s x%d,translated,
 PresentTermCountName,csysstr.ssd,%s %d일 %d개,,,review,untranslated
 PresentTermCountName@ClientString,FxDesktop/ClientData/ClientString,%s %d일권 %d개,,,review,dup_key_diff;untranslated
 PresentTermName,csysstr.ssd+FxDesktop/ClientData/ClientString,%s %d일,,,review,untranslated
@@ -8359,7 +8414,7 @@ QMarkSysMsgGetLucci,csysstr.ssd+FxDesktop/ClientData/ClientString,"아이템 쿠
 물음표아이템으로 %d루찌를 획득하셨습니다!",,,review,untranslated
 QMarkSysMsgIsFull,csysstr.ssd+FxDesktop/ClientData/ClientString,할인쿠폰을 8개 가지고 있어 더 이상 물음표 아이템 쿠폰을 가질 수 없습니다.,,,review,untranslated
 QMarkSysMsgResIdentifyQMarkError,csysstr.ssd+FxDesktop/ClientData/ClientString,물음표 아이템 쿠폰을 할인쿠폰으로 변경하던 중 오류가 발생하였습니다.,,,review,untranslated
-Quest,csysstr.ssd,퀘스트 보기,Nhiệm vụ,Xem nhiệm vụ,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
+Quest,csysstr.ssd,퀘스트 보기,Nhiệm vụ,Coi nhiệm vụ,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
 QuestAskGiveup,csysstr.ssd+FxDesktop/ClientData/ClientString,중지를 선택하시면 현재진행중인 단계의 미션이 초기화 됩니다. 중지하시겠습니까?,,,review,untranslated
 QuestCreateRoomImpossibleChannelType,csysstr.ssd,이 채널에서는 바로가기 기능을 사용할 수 없습니다. 다른 채널로 이동하여 주십시요.,,,review,untranslated
 QuestCreateRoomImpossibleStage,csysstr.ssd,방만들기 기능은 로비에서 사용해야합니다.  광장 및 대기방 등 에서는 사용할 수 없습니다.,,,review,untranslated
@@ -8377,11 +8432,11 @@ QuestRewardTitle,csysstr.ssd+FxDesktop/ClientData/ClientString,%s 님 퀘스트 
 QuestStart,csysstr.ssd+FxDesktop/ClientData/ClientString,시  작,,,review,untranslated
 QuestStop,csysstr.ssd+FxDesktop/ClientData/ClientString,중  지,,,review,untranslated
 Quit,csysstr.ssd+FxDesktop/ClientData/ClientString,끝내기,Thoát,Thoát,reused,vi_base=boom-re:server/src/strings.rs
-Rabbit,csysstr.ssd,아기자기한 바니팜에 토끼가 습격해 왔어요. 굴에서 튀어나오는 토끼 앞에 물풍선을 놓아 보세요. 20점을 먼저 채우는 팀이 승리!,,,review,untranslated
+Rabbit,csysstr.ssd,아기자기한 바니팜에 토끼가 습격해 왔어요. 굴에서 튀어나오는 토끼 앞에 물풍선을 놓아 보세요. 20점을 먼저 채우는 팀이 승리!,,Thỏ tấn công Bunny Farm xinh xắn rồi! Thử đặt bom nước trước những con thỏ chui ra từ hang nha. Đội nào đạt 20 điểm trước sẽ thắng!,translated,too_long?
 Rabbit@ClientString,FxDesktop/ClientData/ClientString,"아기자기한 바니팜에 토끼가 습격해 왔어요. 굴에서 튀어나오는 토끼 앞에 물풍선을 놓아 보세요. 30점을 먼저 채우는 팀이 승리!
 ",,,review,dup_key_diff;untranslated
 RabbitHunterLucciBonus,csysstr.ssd+FxDesktop/ClientData/ClientString,%s님께서 토끼를 가장 많이 잡아 %d루찌를 획득하셨습니다.,,,review,untranslated
-RabbitRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,바니팜맵 중 한가지가 랜덤하게 선택됩니다.,,,review,untranslated
+RabbitRandom,csysstr.ssd+FxDesktop/ClientData/ClientString,바니팜맵 중 한가지가 랜덤하게 선택됩니다.,,Một trong các map Bunny Farm sẽ được chọn ngẫu nhiên.,translated,too_long?
 Rainbow,csysstr.ssd,무지개,,,review,untranslated
 Random,csysstr.ssd+FxDesktop/ClientData/ClientString,모든 맵이 랜덤하게 선택됩니다.,,Mọi bản đồ được chọn ngẫu nhiên.,translated,too_long?
 RandomCharacter,csysstr.ssd,랜덤,,,review,untranslated
@@ -9050,9 +9105,9 @@ ShopVIP_VIPString3,csysstr.ssd,VIP Ⅲ,,VIP Ⅲ,translated,no_hangul
 ShopVIP_VIPString4,csysstr.ssd,VIP Ⅳ,,VIP Ⅳ,translated,no_hangul
 ShopVIP_VIPTabString,csysstr.ssd,NewShop_CategoryChar,,NewShop_CategoryChar,translated,no_hangul
 ShoutToolTip,csysstr.ssd+FxDesktop/ClientData/ClientString,확성기로 외치기,,,review,untranslated
-ShowAllRoomToolTip,csysstr.ssd+FxDesktop/ClientData/ClientString,현재 만들어진 게임방 보기,Xem mọi phòng,Xem các phòng đã tạo,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+ShowAllRoomToolTip,csysstr.ssd+FxDesktop/ClientData/ClientString,현재 만들어진 게임방 보기,Xem mọi phòng,Coi các phòng đã tạo,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 ShowMyProfile,csysstr.ssd+FxDesktop/ClientData/ClientString,자기소개 보여주기,,,review,untranslated
-ShowWaitRoomToolTip,csysstr.ssd+FxDesktop/ClientData/ClientString,현재 대기중인 게임방 보기,Chỉ xem phòng đang chờ,Xem các phòng đang chờ,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
+ShowWaitRoomToolTip,csysstr.ssd+FxDesktop/ClientData/ClientString,현재 대기중인 게임방 보기,Chỉ xem phòng đang chờ,Coi các phòng đang chờ,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 ShuffleGachapon,csysstr.ssd+FxDesktop/ClientData/ClientString,스페셜>럭키빙빙에서 럭키빙빙 안에 들어있는 희귀템을 미리 볼 수 있습니다.,,,review,untranslated
 Shutdown_10Notice1,csysstr.ssd,안녕하세요 크레이지 아케이드 운영자 [GM]해나입니다.,,,review,untranslated
 Shutdown_10Notice2,csysstr.ssd,%s님께서는 셧다운제 대상자로 10분 후 게임 이용이 제한 됩니다.,,,review,untranslated
@@ -9182,7 +9237,7 @@ Special00,csysstr.ssd+FxDesktop/ClientData/ClientString,메인,Mới,Trang chín
 Special01,csysstr.ssd+FxDesktop/ClientData/ClientString,신규,Bán chạy,Mới,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR
 Special02,csysstr.ssd+FxDesktop/ClientData/ClientString,강추,Khuyến mãi,Đề cử,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
 Special03,csysstr.ssd+FxDesktop/ClientData/ClientString,가샤폰,Sự kiện,Gacha,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
-Special04,csysstr.ssd+FxDesktop/ClientData/ClientString,피씨방,Gói,Quán net,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
+Special04,csysstr.ssd+FxDesktop/ClientData/ClientString,피씨방,Gói,Tiệm net,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
 Special05,csysstr.ssd+FxDesktop/ClientData/ClientString,검색,Quà,Tìm kiếm,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
 Special06,csysstr.ssd+FxDesktop/ClientData/ClientString,이벤트,Khác,Sự kiện,review,vi_base=boom-re:server/src/strings.rs;strings.rs khác nghĩa KR; đề xuất bản dịch theo KR;too_long?
 Special07,csysstr.ssd+FxDesktop/ClientData/ClientString,알쏭달쏭,,Trứng bí ẩn,translated,too_long?
@@ -9347,7 +9402,7 @@ TeamBonusEatEventItemRemain,csysstr.ssd+FxDesktop/ClientData/ClientString,"보�
 TeamBonusEventEndMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,%s님이 방을 나가서 [뭉쳐야산다]가 종료됩니다.,,,review,untranslated
 TeamBonusEventInfoDlgMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,"%s님,
 보물상자를 선택해주세요.",,,review,untranslated
-TeamBonusEventItemFull,csysstr.ssd+FxDesktop/ClientData/ClientString,보물열쇠 수집완료!!,,,review,untranslated
+TeamBonusEventItemFull,csysstr.ssd+FxDesktop/ClientData/ClientString,보물열쇠 수집완료!!,,Đã thu thập đủ Chìa khóa báu!!,translated,too_long?
 TeamBonusEventQuitMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,"지금 나가시면 획득하신 보물열쇠 %d개가 
 사라지며 이벤트가 종료됩니다.
 나가시겠습니까?",,,review,untranslated
@@ -9357,7 +9412,7 @@ TeamBonusEventRewardDlgMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,"축하
 뭉쳐야산다 보물상자에서
 %s %d개 얻었습니다",,,review,untranslated
 TeamBonusEventRewardMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,%s님이 보물상자에서 %s %d개를 획득하셨습니다.,,,review,untranslated
-TeambonusEventRewardStress,csysstr.ssd+FxDesktop/ClientData/ClientString,%s %d개,,,review,untranslated
+TeambonusEventRewardStress,csysstr.ssd+FxDesktop/ClientData/ClientString,%s %d개,,%s x%d,translated,
 TeamBonusEventStartMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,[뭉쳐야산다]가 시작됩니다. 4명 미만이 되면 종료됩니다.,,,review,untranslated
 TeamBonusRewardLucciEventMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,"보물열쇠 보너스 %d 루찌 획득!
 앞으로 %d개 더 모으면 보물상자 획득!",,,review,untranslated
@@ -9657,7 +9712,7 @@ UXMatching_CAJJang_OpenSec,csysstr.ssd,오픈%d%d초전,,,review,untranslated
 UXMatching_CAJJang_PlacementDoneMsg,csysstr.ssd,보상을 모두 받고 랭킹에 도전하세요!,,,review,untranslated
 UXMatching_CAJJang_PlacementMsg,csysstr.ssd,크아짱 배치고사 %d/%d단계 진행중…,,,review,untranslated
 UXMatching_CAJJang_ReaminDate,csysstr.ssd,크아짱오픈준비!,,,review,untranslated
-UXMatching_CAJJang_ReaminDay,csysstr.ssd,%d일 남음,,,review,untranslated
+UXMatching_CAJJang_ReaminDay,csysstr.ssd,%d일 남음,,Còn %d ngày,translated,too_long?
 UXMatching_CAJJang_ReaminHour,csysstr.ssd,%d%d시%d%d분 남음,,,review,untranslated
 UXMatching_CAJJang_ReaminMin,csysstr.ssd,%d%d분 남음,,,review,untranslated
 UXMatching_CAJJang_ReaminSec,csysstr.ssd,%d%d초 남음,,,review,untranslated
@@ -15540,7 +15595,7 @@ golemrun01selfdie01,FxDesktop/ClientData/ClientString,펑!!,,,review,untranslate
 golemrun01selfdie02,FxDesktop/ClientData/ClientString,헉! 농담인데 ㅠㅠ,,,review,untranslated
 golemrun01selflocked01,FxDesktop/ClientData/ClientString,딱쿵~,,,review,untranslated
 golemrun01selflocked02,FxDesktop/ClientData/ClientString,뻥~ 차!,,,review,untranslated
-golemrun01selflocked03,FxDesktop/ClientData/ClientString,아얏!,,,review,untranslated
+golemrun01selflocked03,FxDesktop/ClientData/ClientString,아얏!,,Ái!,translated,
 golemrun01selflocked04,FxDesktop/ClientData/ClientString,악악!,,,review,untranslated
 golemrun01selflocked05,FxDesktop/ClientData/ClientString,오잉?,,,review,untranslated
 golemrun01selflocked06,FxDesktop/ClientData/ClientString,이거 큰일이네!,,,review,untranslated
@@ -21180,7 +21235,7 @@ q:BnbQuiz_Answer_1_4_3,csysqstr.ssd,마리드,,,review,untranslated
 q:BnbQuiz_Answer_1_4_4,csysqstr.ssd,배찌,,Bazzi,translated,too_long?
 q:BnbQuiz_Answer_1_5_1,csysqstr.ssd,우니,,,review,untranslated
 q:BnbQuiz_Answer_1_5_2,csysqstr.ssd,배찌,,Bazzi,translated,too_long?
-q:BnbQuiz_Answer_1_5_3,csysqstr.ssd,로두마니,,,review,untranslated
+q:BnbQuiz_Answer_1_5_3,csysqstr.ssd,로두마니,,Rodumani,translated,too_long?
 q:BnbQuiz_Answer_1_5_4,csysqstr.ssd,마리드,,,review,untranslated
 q:BnbQuiz_Answer_1_6_1,csysqstr.ssd,5명,,,review,untranslated
 q:BnbQuiz_Answer_1_6_2,csysqstr.ssd,10명,,,review,untranslated
@@ -21235,7 +21290,7 @@ q:BnbQuiz_Answer_11_6_2,csysqstr.ssd,부엉이,,,review,untranslated
 q:BnbQuiz_Answer_11_6_3,csysqstr.ssd,거북이,,,review,untranslated
 q:BnbQuiz_Answer_11_6_4,csysqstr.ssd,우주선,,,review,untranslated
 q:BnbQuiz_Answer_2_1_1,csysqstr.ssd,호두마니,,,review,untranslated
-q:BnbQuiz_Answer_2_1_2,csysqstr.ssd,로두마니,,,review,untranslated
+q:BnbQuiz_Answer_2_1_2,csysqstr.ssd,로두마니,,Rodumani,translated,too_long?
 q:BnbQuiz_Answer_2_1_3,csysqstr.ssd,로두마리,,,review,untranslated
 q:BnbQuiz_Answer_2_1_4,csysqstr.ssd,오도카니,,,review,untranslated
 q:BnbQuiz_Answer_2_2_1,csysqstr.ssd,다오,,,review,untranslated
@@ -24268,9 +24323,9 @@ q:CAMarble3_LucciRewardMsg01,csysqstr.ssd,야호! 500루찌 획득!,,,review,unt
 q:CAMarble3_LucciRewardMsg02,csysqstr.ssd,야호! 1000루찌 획득!,,,review,untranslated
 q:CAMarble3_LucciRewardTitle01,csysqstr.ssd,루찌 500,,,review,untranslated
 q:CAMarble3_LucciRewardTitle02,csysqstr.ssd,루찌 1000,,,review,untranslated
-q:CAMarble3_NeedSlot1Reward,csysqstr.ssd,15개,,,review,untranslated
-q:CAMarble3_NeedSlot2Reward,csysqstr.ssd,15개,,,review,untranslated
-q:CAMarble3_NeedSlot3Reward,csysqstr.ssd,15개,,,review,untranslated
+q:CAMarble3_NeedSlot1Reward,csysqstr.ssd,15개,,x15,translated,
+q:CAMarble3_NeedSlot2Reward,csysqstr.ssd,15개,,x15,translated,
+q:CAMarble3_NeedSlot3Reward,csysqstr.ssd,15개,,x15,translated,
 q:CAMarble3_PresentRewardMsg01,csysqstr.ssd,보물섬에서 찾아낸 특별한 선물! 자동실드 획득!,,,review,untranslated
 q:CAMarble3_PresentRewardMsg02,csysqstr.ssd,보물섬에서 찾아낸 특별한 선물! 바늘 획득!,,,review,untranslated
 q:CAMarble3_PresentRewardMsg03,csysqstr.ssd,보물섬에서 찾아낸 특별한 선물! 파워산삼 획득!,,,review,untranslated
@@ -25332,7 +25387,7 @@ map:Bonus05,fxdynmapinfo.ssd,보너스 05,,Thưởng 05,translated,theme=Bonus f
 map:Bonus06,fxdynmapinfo.ssd,보너스 06,,Thưởng 06,translated,theme=Bonus file=Bonus
 map:Bonus07,fxdynmapinfo.ssd,보너스 07,,Thưởng 07,translated,theme=Bonus file=Bonus
 map:Bonus08,fxdynmapinfo.ssd,보너스 08,,Thưởng 08,translated,theme=Bonus file=Bonus
-map:BonusPCRoom01,fxdynmapinfo.ssd,PC방 보너스 01,,Thưởng quán net 01,translated,theme=Bonus file=Bonus;too_long?
+map:BonusPCRoom01,fxdynmapinfo.ssd,PC방 보너스 01,,Thưởng tiệm net 01,translated,theme=Bonus file=Bonus;too_long?
 map:EventRandom,fxdynmapinfo.ssd,전체 랜덤,,Ngẫu nhiên tất cả,translated,theme=Random file=none;too_long?
 map:BonusBig01,fxdynmapinfo.ssd,대형 보너스 01,,Thưởng lớn 01,translated,theme=Bonus file=Bonus
 map:Bonus09,fxdynmapinfo.ssd,보너스 09,,Thưởng 09,translated,theme=Bonus file=Bonus
@@ -25662,7 +25717,7 @@ fx:ObjectTable/SpeakerTable:60,fx/ObjectTable/SpeakerTable,레이 스티커 확�
 fx:ObjectTable/SpeakerTable:61,fx/ObjectTable/SpeakerTable,루시 스티커 확성기,,Loa sticker Lucy,translated,Name
 fx:ObjectTable/SpeakerTable:62,fx/ObjectTable/SpeakerTable,수 스티커 확성기,,Loa sticker Su,translated,Name
 FxDesktop:Help/Help:0,FxDesktop/Help/Help,* 단축키,,* Phím tắt,translated,too_long?
-FxDesktop:Help/Help:2,FxDesktop/Help/Help,  F1 도움말 보기,,  F1 Xem trợ giúp,translated,
+FxDesktop:Help/Help:2,FxDesktop/Help/Help,  F1 도움말 보기,,  F1 Coi trợ giúp,translated,
 FxDesktop:Help/Help:3,FxDesktop/Help/Help,  F2 게임 중 아이디 보여주기 On/Off,,  F2 Hiện ID trong trận On/Off,translated,
 FxDesktop:Help/Help:4,FxDesktop/Help/Help,  F3 게임 중 자기 캐릭터 표시 On/Off,,  F3 Đánh dấu nhân vật của mình trong trận On/Off,translated,too_long?
 FxDesktop:Help/Help:5,FxDesktop/Help/Help,  F4 스크린 샷 찍기 (게임 설치 폴더에,,  F4 Chụp màn hình (lưu trong thư mục,translated,
@@ -25695,12 +25750,12 @@ FxDesktop:Help/Help:36,FxDesktop/Help/Help,  /go 방번호,,  /go số phòng,tr
 FxDesktop:Help/Help:37,FxDesktop/Help/Help,      입력된 방번호의 게임 방에 ,,      Vào phòng game có số phòng ,translated,
 FxDesktop:Help/Help:38,FxDesktop/Help/Help,      참가하기,,      đã nhập,translated,
 FxDesktop:Help/Help:39,FxDesktop/Help/Help,  /st 방번호,,  /st số phòng,translated,
-FxDesktop:Help/Help:40,FxDesktop/Help/Help,      입력된 방번호의 게임 방에 대한,,      Xem thông tin phòng game có,translated,
+FxDesktop:Help/Help:40,FxDesktop/Help/Help,      입력된 방번호의 게임 방에 대한,,      Coi thông tin phòng game có,translated,
 FxDesktop:Help/Help:41,FxDesktop/Help/Help,      정보 보여주기,,      số phòng đã nhập,translated,too_long?
 FxDesktop:Help/Help:43,FxDesktop/Help/Help,  /userinfo 아이디,,  /userinfo ID,translated,
 FxDesktop:Help/Help:44,FxDesktop/Help/Help,  /누구 아이디 ,,  /ai ID ,translated,
 FxDesktop:Help/Help:45,FxDesktop/Help/Help,  /who 아이디,,  /who ID,translated,
-FxDesktop:Help/Help:46,FxDesktop/Help/Help,      입력된 아이디의 정보 보기,,      Xem thông tin của ID đã nhập,translated,too_long?
+FxDesktop:Help/Help:46,FxDesktop/Help/Help,      입력된 아이디의 정보 보기,,      Coi thông tin của ID đã nhập,translated,too_long?
 FxDesktop:Help/Help:48,FxDesktop/Help/Help,  /M 아이디,,  /M ID,translated,
 FxDesktop:Help/Help:49,FxDesktop/Help/Help,      지정한 사용자의 메세지를 ,,      Ẩn tin nhắn của người dùng ,translated,too_long?
 FxDesktop:Help/Help:50,FxDesktop/Help/Help,      보이지 않도록 합니다.,,      đã chỉ định.,translated,
@@ -25709,10 +25764,10 @@ FxDesktop:Help/Help:52,FxDesktop/Help/Help,      지정한 사용자에게 설�
 FxDesktop:Help/Help:53,FxDesktop/Help/Help,      mute를 해제합니다.,,      người dùng đã chỉ định.,translated,too_long?
 FxDesktop:Help/Help:56,FxDesktop/Help/Help,      모든 귀속말을 무시합니다.,,      Bỏ qua mọi tin nhắn thì thầm.,translated,too_long?
 FxDesktop:Help/Help:58,FxDesktop/Help/Help,      전체 귓속말 무시를 해제합니다.,,      Tắt chế độ bỏ qua thì thầm.,translated,
-FxDesktop:Help/Help:61,FxDesktop/Help/Help,      자기 정보 보기,,      Xem thông tin của mình,translated,too_long?
+FxDesktop:Help/Help:61,FxDesktop/Help/Help,      자기 정보 보기,,      Coi thông tin của mình,translated,too_long?
 FxDesktop:Help/Help:63,FxDesktop/Help/Help,  /where 아이디,,  /where ID,translated,
 FxDesktop:Help/Help:64,FxDesktop/Help/Help,  /어디 아이디,,  /odau ID,translated,
-FxDesktop:Help/Help:65,FxDesktop/Help/Help,      입력된 아이디의 유저가 접속한 ,,      Xem kênh mà người dùng có ID ,translated,
+FxDesktop:Help/Help:65,FxDesktop/Help/Help,      입력된 아이디의 유저가 접속한 ,,      Coi kênh mà người chơi có ID ,translated,
 FxDesktop:Help/Help:66,FxDesktop/Help/Help,      채널 확인,,      đã nhập đang vào,translated,too_long?
 FxDesktop:Help/Help:68,FxDesktop/Help/Help,  /whisper 아이디,,  /whisper ID,translated,
 FxDesktop:Help/Help:69,FxDesktop/Help/Help,  /w 아이디(or off),,  /w ID(hoặc off),translated,
@@ -25769,7 +25824,7 @@ FxDesktop:Quest/cNovice:481,FxDesktop/Quest/cNovice,잔~뜩~ 나온답니다!,,r
 FxDesktop:Quest/cNovice:504,FxDesktop/Quest/cNovice,로봇대공습 보스몬스터를 잡아,,Hãy thử bắt trùm của Robot đại,translated,lua;too_long?
 FxDesktop:Quest/cNovice:505,FxDesktop/Quest/cNovice,보세요. 혼자하기 어렵다면??,,tấn công. Chơi một mình khó quá??,translated,lua;too_long?
 FxDesktop:Quest/cNovice:506,FxDesktop/Quest/cNovice,친구들과 함께 해보세요~,,Rủ bạn bè chơi chung nha~,translated,lua;too_long?
-FxDesktop:Quest/cPCRoomGift:28,FxDesktop/Quest/cPCRoomGift,PC방 퀘스트,,Nhiệm vụ quán net,translated,lua;too_long?
+FxDesktop:Quest/cPCRoomGift:28,FxDesktop/Quest/cPCRoomGift,PC방 퀘스트,,Nhiệm vụ tiệm net,translated,lua;too_long?
 FxDesktop:Quest/cPCRoomGift:119,FxDesktop/Quest/cPCRoomGift,바늘 10개,,10 Kim,translated,lua
 FxDesktop:Quest/cPCRoomGift:122,FxDesktop/Quest/cPCRoomGift,바늘 10개,,10 Kim,translated,lua
 FxDesktop:Quest/cPCRoomGift:125,FxDesktop/Quest/cPCRoomGift,실드 10개,,10 Khiên,translated,lua
@@ -25783,7 +25838,7 @@ FxDesktop:Quest/cPCRoomGift:203,FxDesktop/Quest/cPCRoomGift,남은 시간은 앞
 FxDesktop:Quest/cPCRoomGift:203,FxDesktop/Quest/cPCRoomGift,분이야.,,phút nữa.,translated,lua;too_long?
 FxDesktop:Quest/cPCRoomGift:204,FxDesktop/Quest/cPCRoomGift,크아를 나가면 처음부터 다시 시작,,Thoát Boom thì phải bắt đầu lại từ,translated,lua;too_long?
 FxDesktop:Quest/cPCRoomGift:205,FxDesktop/Quest/cPCRoomGift,해야 하니 조심해^^,,"đầu đó, cẩn thận nha^^",translated,lua;too_long?
-FxDesktop:Quest/cPCRoomGift:219,FxDesktop/Quest/cPCRoomGift,안녕! 나는 PC방의 부엉이야~,,Chào! Mình là cú mèo của quán net~,translated,lua;too_long?
+FxDesktop:Quest/cPCRoomGift:219,FxDesktop/Quest/cPCRoomGift,안녕! 나는 PC방의 부엉이야~,,Chào! Tui là cú mèo của tiệm net nè~,translated,lua;too_long?
 FxDesktop:Quest/cPCRoomGift:220,FxDesktop/Quest/cPCRoomGift,게임을 하고 있으면 ,,Cứ chơi game là cứ mỗi ,translated,lua;too_long?
 FxDesktop:Quest/cPCRoomGift:221,FxDesktop/Quest/cPCRoomGift,분마다 선물을 줄게!,,phút mình sẽ tặng quà!,translated,lua;too_long?
 FxDesktop:Quest/cPCRoomGift:223,FxDesktop/Quest/cPCRoomGift,선물이 마음에 들면,,Nếu thích quà thì,translated,lua;too_long?
@@ -27759,7 +27814,7 @@ fx:CustomMap/CustomTileList:Desc#3933,fx/CustomMap/CustomTileList,획득 시 획
 fx:CustomMap/CustomTileList:Desc#3935,fx/CustomMap/CustomTileList,사용 시 물풍선에 맞추면 즉시 폭발,,Khi dùng: ném trúng bom nước thì nổ ngay,translated,Desc;too_long?
 fx:CustomMap/CustomTileList:Desc#3937,fx/CustomMap/CustomTileList,물풍선에 갇힐 때 사용하면 터지는 시간 연장,,Dùng khi bị nhốt trong bom nước để kéo dài thời gian vỡ,translated,Desc;too_long?
 fx:CustomMap/CustomTileList:Desc#3939,fx/CustomMap/CustomTileList,물풍선에 갇힐 때 사용하면 물풍선에서 탈출,,Dùng khi bị nhốt trong bom nước để thoát ra,translated,Desc;too_long?
-fx:CustomMap/CustomTileList:Desc#3941,fx/CustomMap/CustomTileList,사용 시 블록 안에 어떤 아이템이 있는지 감지,,Khi dùng: dò xem trong khối có vật phẩm gì,translated,Desc;too_long?
+fx:CustomMap/CustomTileList:Desc#3941,fx/CustomMap/CustomTileList,사용 시 블록 안에 어떤 아이템이 있는지 감지,,Khi dùng: dò coi trong khối có vật phẩm gì,translated,Desc;too_long?
 fx:CustomMap/CustomTileList:Desc#3943,fx/CustomMap/CustomTileList,"사용 시 마귀, 본드의 효력에서 벗어남",,"Khi dùng: thoát khỏi hiệu ứng của Quỷ, Keo dính",translated,Desc;too_long?
 fx:CustomMap/CustomTileList:Desc#3945,fx/CustomMap/CustomTileList,사용 시 점프가 가능한 블록 넘기,,Khi dùng: nhảy qua khối nhảy được,translated,Desc;too_long?
 fx:CustomMap/CustomTileList:Desc#3947,fx/CustomMap/CustomTileList,사용 시 앞에 있는 블록 파괴,,Khi dùng: phá khối phía trước,translated,Desc;too_long?
@@ -28500,7 +28555,7 @@ FxStage:StageCredit/Credit:165,FxStage/StageCredit/Credit,운영지원 :    채 
 FxStage:StageCredit/Credit:167,FxStage/StageCredit/Credit,마 케 팅 :    김수호  김이영,,Marketing :    김수호  김이영,translated,credit;credit: giữ tên người bằng chữ Hàn
 FxStage:StageCredit/Credit:168,FxStage/StageCredit/Credit,김재범  방경민  조형렬  류아름  문선영,,김재범  방경민  조형렬  류아름  문선영,translated,"credit;credit: tên người, giữ nguyên"
 FxStage:StageCredit/Credit:169,FxStage/StageCredit/Credit,한민경  박세은  우은미,,한민경  박세은  우은미,translated,"credit;credit: tên người, giữ nguyên"
-FxStage:StageCredit/Credit:171,FxStage/StageCredit/Credit,PC방 마케팅 :    남영욱  오석신  장원석  홍명의  손민욱,,Marketing quán net :    남영욱  오석신  장원석  홍명의  손민욱,translated,credit;credit: giữ tên người bằng chữ Hàn
+FxStage:StageCredit/Credit:171,FxStage/StageCredit/Credit,PC방 마케팅 :    남영욱  오석신  장원석  홍명의  손민욱,,Marketing tiệm net :    남영욱  오석신  장원석  홍명의  손민욱,translated,credit;credit: giữ tên người bằng chữ Hàn
 FxStage:StageCredit/Credit:172,FxStage/StageCredit/Credit,김병수,,김병수,translated,"credit;credit: tên người, giữ nguyên"
 FxStage:StageCredit/Credit:174,FxStage/StageCredit/Credit,해외 사업 :    최승우  강진구  김진환,,Kinh doanh quốc tế :    최승우  강진구  김진환,translated,credit;credit: giữ tên người bằng chữ Hàn
 FxStage:StageCredit/Credit:175,FxStage/StageCredit/Credit,김철수  이진욱  지준숙  이정운  이정철,,김철수  이진욱  지준숙  이정운  이정철,translated,"credit;credit: tên người, giữ nguyên"
@@ -28675,7 +28730,7 @@ exe:kr-full.exe:0x15f0f90,exe:kr-full.exe,스마트넷 Ver 1.0,,Smartnet Ver 1.0
 exe:kr-full.exe:0x15f1004,exe:kr-full.exe,사용정보창,,Cửa sổ thông tin sử dụng,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình);too_long?
 exe:kr-full.exe:0x15f1018,exe:kr-full.exe,스마트넷 (C)스마트시스템(주),,Smartnet (C) Smart System Co.,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình);too_long?
 exe:kr-full.exe:0x15f1090,exe:kr-full.exe,피카에어,,PikaAir,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình);too_long?
-exe:kr-full.exe:0x15f1144,exe:kr-full.exe,게임방관리,,Quản lý quán net,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình);too_long?
+exe:kr-full.exe:0x15f1144,exe:kr-full.exe,게임방관리,,Quản lý tiệm net,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình);too_long?
 exe:kr-full.exe:0x15f1298,exe:kr-full.exe,넷-커맨더,,Net-Commander,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình);too_long?
 exe:kr-full.exe:0x15f1388,exe:kr-full.exe,사용자화면,,Màn hình người dùng,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình);too_long?
 exe:kr-full.exe:0x15f13e0,exe:kr-full.exe,클라이언트,,Máy khách,translated,tên/cửa sổ phần mềm quản lý quán net (dò tiến trình);too_long?
