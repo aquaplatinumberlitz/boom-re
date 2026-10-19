@@ -321,7 +321,7 @@ pub fn round_result(game_time: u32, key: u32, t: (u32, u32), flag: u8, rank: (u3
     p.build()
 }
 
-/// C->S 111: bomb record of the CGameMsgCache ring (flushed by vf8 0x6F06ED; docs/oc_e-game.md section 5a-5).
+/// C->S 111: bomb record of the CGameMsgCache ring (flushed by vf8 0x6F06ED; docs/archive/re/OC_E-GAME.md section 5a-5).
 #[derive(Clone, Debug, Default)]
 pub struct BombRecord {
     pub key: u32,

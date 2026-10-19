@@ -6,7 +6,7 @@ usage: python3 tools/devirt.py ca_fixed.exe ca_devirt.exe
 Each block in BLOCKS: the VM site's `jmp 0x13xxxxx` is redirected to new code in a `.devirt` section;
 the new code does what the VM block did and jumps to the continuation. Static results (tables, constants)
 are written straight into the image. Evidence for every block: tools/vmtrace.py on the original client,
-see docs/devirt.md.
+see docs/research/findings/VN_DEVIRT_STATUS.md.
 """
 import struct, sys
 
@@ -227,7 +227,7 @@ BLOCKS = [
         # frame (12 args, this = CGameMsgCache, vectors this+0x34 / this+0x44, this+0xF4): the VM calls sub_421AB9(this+0x44,
         # slot) [count vector operator[]], sub_6EEED9(this+0x34, ...) [record vector operator[]], sub_6EFBCA() [session key = stage this[4887]], writes a
         # 0x44-byte record, ++count[slot], and calls sub_6EFC07(slot) unless (arg_2C & 4). Field mapping verified with distinct
-        # arg values (docs/vm_6EFD4A_inputs.md section 8). Same record/ring as the native 16-arg sibling sub_6EFEE3 (flush
+        # arg values (docs/archive/re/VM_6EFD4A_INPUTS.md section 8). Same record/ring as the native 16-arg sibling sub_6EFEE3 (flush
         # vf8 -> C->S 111), minus its four fields +0x20..+0x2C. Return value = leftover eax (6EFC07's pointer, or arg_2C).
         # Context at the site: this at [ebp-0x24], arg_k at [ebp+8+k]; ebx/esi/edi are saved by the prolog.
         asm=f"""
@@ -280,7 +280,7 @@ BLOCKS = [
         site=0x5a6e89, cont=0x5a6f64, func="CGOBomber__vf21 random check (skip)",
         # guard: [esi+0x2718] counter, rand()%1001 < ebx -> VM (anti-cheat style sampling).
         # The native code in front takes `jge cont` for ~99% of the calls (rand() % N >= threshold), so the original game runs
-        # without this VM chunk almost always; a plain jmp is the common path. (docs/vmtriage.md, class S.)
+        # without this VM chunk almost always; a plain jmp is the common path. (docs/archive/re/VM_TRIAGE_HISTORY.md, class S.)
         asm=f"""
             jmp {0x5a6f64:#x}
         """,
@@ -289,7 +289,7 @@ BLOCKS = [
         site=0x6f287e, cont=0x6f2923, func="sub_6F27EE random tail (skip)",
         # guard: rand()%999 >= 10 -> cont; the struct setter work before the site is native.
         # The native code in front takes `jge cont` for ~99% of the calls (rand() % N >= threshold), so the original game runs
-        # without this VM chunk almost always; a plain jmp is the common path. (docs/vmtriage.md, class S.)
+        # without this VM chunk almost always; a plain jmp is the common path. (docs/archive/re/VM_TRIAGE_HISTORY.md, class S.)
         asm=f"""
             jmp {0x6f2923:#x}
         """,
@@ -298,7 +298,7 @@ BLOCKS = [
         site=0x754c82, cont=0x754d20, func="CMapScriptStageClear__vf7 random check in NPC loop (skip)",
         # guard: rand()%995 >= 10 -> cont (loop over NPC objects).
         # The native code in front takes `jge cont` for ~99% of the calls (rand() % N >= threshold), so the original game runs
-        # without this VM chunk almost always; a plain jmp is the common path. (docs/vmtriage.md, class S.)
+        # without this VM chunk almost always; a plain jmp is the common path. (docs/archive/re/VM_TRIAGE_HISTORY.md, class S.)
         asm=f"""
             jmp {0x754d20:#x}
         """,

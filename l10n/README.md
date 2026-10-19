@@ -3,7 +3,7 @@
 Mục tiêu: toàn bộ chữ của bản KR (patch Nexon 00967, 13 pack) sang tiếng Việt, dùng lại bản dịch có sẵn của bản VN.
 Bản dịch dùng cho engine Rust viết lại (UTF-8, font vector), **không** patch vào client cũ.
 Ảnh nghi có chữ được thống kê (`images_todo.csv`) và có trang duyệt KR/VN;
-chưa vẽ lại hoặc Việt hóa ảnh. Xem [hướng dẫn duyệt ảnh](../docs/l10n-image-review.md).
+chưa vẽ lại hoặc Việt hóa ảnh. Xem [hướng dẫn duyệt ảnh](../docs/specification/localization/IMAGE_REVIEW.md).
 
 ## File
 
@@ -20,7 +20,7 @@ chưa vẽ lại hoặc Việt hóa ảnh. Xem [hướng dẫn duyệt ảnh](..
 | `glossary_seed.csv` | thuật ngữ chốt tay (lấy từ bản VN: XU, VÀNG, BẠC, Siêu thị, Túi đồ, chế độ chơi…) |
 | `glossary.csv` | seed + cặp ngắn rút từ catalog |
 | `images_todo.csv` | ảnh có thể chứa chữ: `pack, entry, kind, size, dims, vn_same_name, reason` |
-| `../docs/l10n-image-review.md` | cách mở trang ảnh KR/VN, duyệt, xuất/nhập kết quả và tạo lại trang |
+| `../docs/specification/localization/IMAGE_REVIEW.md` | cách mở trang ảnh KR/VN, duyệt, xuất/nhập kết quả và tạo lại trang |
 | `../tools/l10n_extract.py` | trích, ghép, xuất CSV; đọc pack bằng `tools/idf.py` (import, không copy) |
 
 Quy trình:
@@ -113,7 +113,7 @@ OCR: máy có `tesseract` nhưng chỉ có `eng`/`osd`, **không có `kor`** ⇒
 bằng trình duyệt, không cần server. Trang đặt KR/VN cạnh nhau, có lọc, xem đủ ảnh con,
 phóng lớn, ghi chú và xác nhận đã có tiếng Việt/cần dịch/không có chữ. Kết quả lưu tại
 trình duyệt; bấm **Xuất kết quả CSV** để giữ và nhập vào dự án. Hướng dẫn đầy đủ:
-[Duyệt ảnh KR–VN](../docs/l10n-image-review.md).
+[Duyệt ảnh KR–VN](../docs/specification/localization/IMAGE_REVIEW.md).
 
 Mở terminal và chạy:
 

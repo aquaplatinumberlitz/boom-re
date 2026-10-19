@@ -1,7 +1,7 @@
 """Boom Online (VBNB_116) TCP packet codec, reimplemented from ca.exe.
 
 Addresses refer to unpacked_ca.exe (IDA db unpacked_ca.exe.i64).
-Unverified against live traffic -- see docs/protocol.md "Open questions".
+Unverified against live traffic -- see docs/specification/networking/LEGACY_VN_PROTOCOL.md "Open questions".
 """
 import struct
 from pathlib import Path

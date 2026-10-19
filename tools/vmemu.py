@@ -3,7 +3,7 @@
 Two ways to get the memory the VM needs:
   --snap logs/snap/<SITE>/pre.snap   full memory of the ORIGINAL client taken at the VM site (tools/launcher/snap.c,
                                      win/snap.bat): registers, TEB, stacks, Themida runtime data — the VM runs correctly.
-  (default) the dump unpacked_ca.exe only — the VM lacks its runtime state and goes astray (see docs/devirt.md).
+  (default) the dump unpacked_ca.exe only — the VM lacks its runtime state and goes astray (see docs/research/findings/VN_DEVIRT_STATUS.md).
 
 Native code reached from the VM:
   - control enters ca.exe .text with [esp] pointing back into the Themida section -> a native CALL made by the VM:

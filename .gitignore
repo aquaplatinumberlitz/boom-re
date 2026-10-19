@@ -8,6 +8,9 @@ unpacked_ca.exe.*
 *.nam
 *.til
 assets/
+# Keep asset format documentation; game payload directories remain ignored.
+!docs/specification/assets/
+!docs/specification/assets/*.md
 boomKR/
 tools/unlicense.exe
 

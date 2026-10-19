@@ -1,5 +1,5 @@
 //! State shared by every connection: account ids and the (single) waiting room, so two clients can play together.
-//! Minimal model for multiplayer tests (docs/progress.md section 6): every client that creates or enters a room
+//! Minimal model for multiplayer tests (docs/archive/re/VN_PROGRESS_LOG.md section 6): every client that creates or enters a room
 //! lands in the same room, slots are given in arrival order, the match starts when `PLAYERS` clients are in.
 
 use std::sync::atomic::{AtomicU32, Ordering};

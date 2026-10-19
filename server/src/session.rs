@@ -252,7 +252,7 @@ fn replies(op: u16, port: u16, cfg: &Config) -> Vec<Vec<u8>> {
     }
 }
 
-/// Server-driven match: 501 -> 189 (TURN_MODE) -> 190 -> 191/146 -> 189 mode 0 (docs/oc_e-game.md §5a-3).
+/// Server-driven match: 501 -> 189 (TURN_MODE) -> 190 -> 191/146 -> 189 mode 0 (docs/archive/re/OC_E-GAME.md §5a-3).
 async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16) {
     let wait = |s: f64| tokio::time::sleep(Duration::from_secs_f64(s));
     let map = &cfg.maps[0];
