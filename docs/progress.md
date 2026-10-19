@@ -75,7 +75,8 @@ Biến môi trường (đặt trước lệnh; phần lớn cũng có ở `tools
 
 Chuỗi vào trận chơi được: `AUTO_START=5 TURN_START=10 TURN_MODE=1 GO_START=3 PLAY_START=4 POST_PLAY_START=2`.
 
-Log server (mọi gói vào/ra, đã giải mã) ở file `--log`. Hai client cùng lúc: `RUST=1 CLICKS_A=… CLICKS_B=… tools/duo.sh <outdir> <giây>`
+Log server (mọi gói vào/ra, đã giải mã) ở file `--log`. Chạy loạt nhiều map / loại phòng: `tools/map_loop.sh idx:Tên …`, `tools/roomtype_loop.sh 14 16 …`
+(kết quả `logs/maps|roomtypes/summary.txt` — "crash=1" kèm "No stack" chỉ là tiến trình thoát, xem bom 151 trong log server). Hai client cùng lúc: `RUST=1 CLICKS_A=… CLICKS_B=… tools/duo.sh <outdir> <giây>`
 (ảnh `A_*.png`/`B_*.png` + `server.log` trong outdir). Công thức click: `975,38,6` đóng hướng dẫn; `975,38,6 385,50,8 437,612,20` tạo phòng;
 B vào phòng: `975,38,6 470,160,20`; siêu thị: `975,38,6 226,748,25`.
 

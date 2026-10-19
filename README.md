@@ -69,7 +69,7 @@ chữ tiếng Việt) → tạo / vào phòng → phòng chờ 2 người (chọ
 
 Thứ tự đầy đủ: [docs/features.md](docs/features.md#ưu-tiên-cho-mục-tiêu-chơi-lại-được). Tóm tắt:
 
-1. Trận: map/loại phòng khác (F11), vật phẩm rơi ngẫu nhiên (F10), đếm BẮT/CỨU trong 168.
+1. Trận: vật phẩm rơi ngẫu nhiên (F10), đếm BẮT/CỨU trong 168, chế độ RPG (loại phòng 17, F18) và các chế độ khác.
 2. Sảnh/phòng: 2 ô thông tin của mình + thẻ Hội (67) + người khác xuất hiện/di chuyển trên quảng trường (469/471); sửa tên/mật khẩu phòng (85); thì thầm (D2).
 3. Siêu thị → túi đồ (G2/G3), level/exp (G7), lưu tài khoản trên server.
 4. Các mode khác (F13–F20), quest/event (G6/G9).

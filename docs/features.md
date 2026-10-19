@@ -142,7 +142,7 @@ Phân bố opcode theo nhóm:
 | F9 | nhiều người chơi trong trận | 2 client cùng phòng + cùng vào trận (`tools/duo.sh`, `hub.rs`); **di chuyển đồng bộ 2 chiều** qua UDP P2P (C→S 92 → S→C 146 bảng peer); **ô xuất phát riêng** qua S→C 117 (`oc_e-game.md` §5a-7); bom/chết/vật phẩm nhiều người chưa kiểm | 🟡 | 🟡 |
 | F10 | item / power-up rơi | gạch vỡ client tự tính, báo C→S 135; vật phẩm trong gạch do server gửi trước 501 bằng S→C **553** (`oc_e-game.md` §5a-5d); vật phẩm **hiện được** (danh sách 2 của 553, (a,b) = (x,y), kind 1 = bạch tuộc tím); **2 người**: gạch vỡ/vật phẩm lộ ra/nhặt (158 phát cả phòng) đồng bộ ✅ (`logs/duo/i1`); nhặt trùng cùng lúc chưa kiểm; vật phẩm rơi ngẫu nhiên theo trọng số chưa làm | 🟡 | 🟡 |
 | F10b | nhặt / dùng vật phẩm | nhặt: C→S 117 → server 158; bị động (bom +1, tầm nổ) client tự áp dụng; dùng Ctrl (kim thoát bong bóng) → C→S 120 subtype 1/0, không cần trả lời (`oc_e-game.md` §5a-5d, `docs/items.md`) | ✅ | ✅ |
-| F11 | map load trong trận | `0x736C27` skip; emulate với object map thật = vòng lặp 0 lần (Village01, phòng 19) → tương đương; map/loại phòng khác chưa kiểm | 🟡 | — |
+| F11 | map load trong trận | `0x736C27` skip; **9 map khác theme chơi được** (Village/Ice/Desert/Tomb/Factory/Patrit/Mine/Ocean/Pharaoh, `oc_e-game.md` nhiều map); loại phòng 14/16/22/32/33 = trận thường ✅, 17 = RPG (giao diện riêng); 1000+ map còn lại chưa chạy hết | ✅ | ✅ |
 | F12 | va chạm / vật lý | mô phỏng chạy; gạch vỡ, tia nước, nhốt nhân vật đều client tự tính | 🟡 | — |
 | F23 | gói 552 (`sub_71580C`) | khối VM đã viết lại, chạy không crash; ý nghĩa gói chưa rõ | 🟡 | 🟡 |
 | F13 | mode HiddenCatch | `CHiddenCatchGameStage` (76) + 5 component | ⬜ | ⬜ |
@@ -150,7 +150,7 @@ Phân bố opcode theo nhóm:
 | F15 | mode SnowBall | `CGOSnowBallBomber` (82) | ⬜ | ⬜ |
 | F16 | mode MonSeason2 | `CGOMonSeason2Bomber` (72) | ⬜ | ⬜ |
 | F17 | mode IamBoss | `CGOIamBossBomber` (63) | ⬜ | ⬜ |
-| F18 | mode RPG | `CGORPGBomber` (58) | ⬜ | ⬜ |
+| F18 | mode RPG | `CGORPGBomber` (58); loại phòng 17 → `CRPGGameStrategy`: vào trận được, giao diện máu/LV/EXP, trúng bom → 120 subtype 21; phía server chưa làm | 🟡 | ⬜ |
 | F19 | Fighter of Legend | `CFighterOfLegendComponent` (13 opcode) | ⬜ | ⬜ |
 | F20 | Zombie | `CZombieComponent` (10 opcode) | ⬜ | ⬜ |
 | F21 | NPC/monster AI | `CGOAINpcBasicMon` (100), `CGONpcSnowMon` (53) | ⬜ | ⬜ |
@@ -194,7 +194,7 @@ Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 5. ~~**D1** chat~~ **xong** (phòng/sảnh/trận); còn thì thầm (D2).
 6. **G1** shop: vào, xem hàng, mua bằng VÀNG/XU chạy được; còn danh mục thật, túi đồ/lưu ví trên server (lobby.md Cập nhật 20).
 6b. **E3/E13** giao diện sảnh: chữ tiếng Việt, danh sách người chơi, bản đồ quảng trường + nhân vật mình xong; còn 2 ô thông tin của mình, thẻ Hội, 469/471 (người khác xuất hiện/di chuyển).
-7. **F11** `0x736C27`: Forest01 (phòng 0) chạy được; map/loại phòng khác chưa kiểm hết.
+7. ~~**F11**~~ 9 map khác theme + loại phòng 14/16/22/32/33 chạy được; 17 = RPG (F18).
 8. Các mode F13–F20, G2–G9 (túi đồ, exp, quest…): chưa bắt đầu.
 
 ## Cách cập nhật checklist này

@@ -741,3 +741,18 @@ index 1); A đặt bom → gạch (13,1) vỡ — **cả hai client cùng báo C
 màn hình; B sang trái nhặt (117 slot 1 index 0 → 158) → vật phẩm biến mất trên màn của A (`docs/duo_items_A_view.png`); B lên cứu A (120/12).
 Bố cục 553 đúng cho mọi client (server phát cùng gói cho cả phòng trước 117). Chưa kiểm: 2 người nhặt cùng một vật phẩm cùng lúc (server
 hiện xác nhận mọi 117, không chặn trùng).
+
+#### Nhiều map và loại phòng (2026-10-19, `logs/maps/`, `logs/roomtypes/`, `tools/map_loop.sh`, `tools/roomtype_loop.sh`) ✅
+- **9 map ở các theme khác nhau chơi được** (1 người, `ALL_MAPS=1 MAP_INDEX=n ROOM_TYPE=19`; vào trận, đặt bom → 152 → 151, bị nhốt):
+  Village01 (0), Ice01 (289), Desert01 (161), Tomb01 (911), Factory01 (195), Patrit01 (721), Mine01 (363), Ocean01 (673), Pharaoh01 (740)
+  — `docs/map_*.png`. Khối `0x736C27` (skip) không gây lỗi trên các map này.
+- **Lỗi server đã sửa:** vào phòng, client **tự gửi C→S 88** với map đầu danh sách của nó (Village01, index 0); server coi là lựa chọn → ghi đè
+  `MAP_INDEX` và cả map chủ phòng đã chọn khi người thứ 2 vào. Nay 88 đầu tiên sau khi vào phòng chỉ được trả 113 = map hiện tại của phòng.
+- **Loại phòng** (u8 thứ 4 của 83, 117): trong trận chỉ chọn **strategy** (`CGameStage__vf146`): **17 → `CRPGGameStrategy`**; map MonSeason2
+  (`sub_988CCC`) → `CMonSeason2GameStrategy`; map 114 → `CConfusedFightGameStrategy`; còn lại (gồm 18/21/25) → `CNormalGameStrategy`.
+  Chạy 1 người trên Village01: **14, 16, 22, 32, 33 = trận thường** chơi được (`docs/roomtype32.png`; 32 có icon bom khác); **17 = giao diện RPG**
+  (thanh máu, LV, EXP, ô kỹ năng — `docs/roomtype17_rpg.png`), trúng bom → **C→S 120 subtype 21** (mất máu?) thay vì bị nhốt; chế độ RPG
+  (F18) chưa làm phía server.
+- Bẫy khi chạy loạt: `timeout` giết script nhưng **`boom-server` con còn sống giữ cổng** → server lần sau báo `AddrInUse`, client nói chuyện
+  với server cũ (sai map). Script loạt dọn bằng `pkill -f "[b]oom-server --log …/logs/(maps|roomtypes)/"` (không đụng server khác), giết client/Xvfb
+  sót, rồi `wineserver -k` — thiếu bước này client hay chết lúc khởi động (`0x06D40A36` / "No stack").
