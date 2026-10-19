@@ -14,6 +14,10 @@ Mỗi phiên và mỗi worker **bắt buộc đọc**:
    đây là bản thay thế trực tiếp cho REWRITE_PLAN_2026-10-19 đã archive.
 4. `docs/planning/SCOPE_V1.md` — phạm vi được chốt.
 
+Sau đó đọc `docs/planning/PROGRESS.md` để biết phase/feature đã nghiệm thu, đang làm, blocked và
+chưa làm; đây là báo cáo sinh từ dữ liệu, không phải một kế hoạch thứ hai.
+Task feature phải tra ID trong `docs/specification/FEATURE_CATALOG.md` và registry trước khi nhận việc.
+
 Task kiến trúc đọc thêm `docs/planning/ARCHITECTURE.md` và các ADR liên quan.
 Task tìm nguồn/RE đọc `docs/research/QUESTIONS.md` và spec/bằng chứng liên quan.
 Task sửa catalog đọc `docs/specification/features.json`; CSV là export, không phải nguồn sửa tay.
@@ -44,6 +48,9 @@ Không đợi hiểu hết mọi mode mới lập kiến trúc, nhưng không bi
 | Cấu trúc dự án và interface | `docs/planning/ARCHITECTURE.md` |
 | Câu hỏi, owner, hướng tìm | `docs/research/QUESTIONS.md` |
 | Catalog và scope từng mục | `docs/specification/features.json` |
+| Trạng thái implementation, assignee, proof/review của feature | `docs/specification/features.json` |
+| Trạng thái phase và release gates | `docs/planning/execution.json` |
+| Báo cáo %/danh sách trạng thái | `docs/planning/PROGRESS.md` — generated, không sửa tay |
 | Quyết định có lý do | `docs/decisions/` |
 | Kết quả khảo sát kỹ thuật | `docs/research/findings/` hoặc spec đúng chủ đề |
 | Manifest/metadata | `docs/evidence/` |
@@ -81,6 +88,27 @@ Task hẹp có thể chạy song song; dependency và thay đổi interface ph�
 Worker trả bằng chứng, diff, kiểm chứng và unknown; reviewer kiểm độc lập khi có thể.
 Không lấy số agent đồng ý hoặc số dòng code làm thước đo đúng/hoàn thành.
 Không tự merge/push/deploy vượt yêu cầu task; commit và tích hợp phải giữ nguyên thay đổi của người khác.
+Chỉ stage file thuộc task được giao và kiểm `git diff --cached` trước commit; không gom cả repo
+bằng `git add .`/`git add -A` khi có worker khác đang làm trong workspace chung.
+
+### Cập nhật tiến độ bắt buộc
+
+- Nhận task triển khai bằng feature ID, ghi assignee cụ thể và baseline/spec revision đã chấp nhận.
+  Integrator/owner registry áp dụng cập nhật trước/sau task; worker bàn giao status/proof theo ID,
+  không cho nhiều worker ghi đồng thời vào JSON chung. execution.json cũng có một owner ghi.
+- Trạng thái hợp lệ: `not_started → in_progress → in_review → done`; dùng `blocked` kèm lý do/bước tiếp.
+  Khi sửa lại sau review hoặc đổi dependency, đưa mục liên quan về trạng thái cần review thay vì giữ done.
+- `done` phải có integration commit đã nằm trong HEAD của checkout tích hợp, acceptance verification passed (command/result),
+  evidence files/commit, reviewer độc lập approved, không còn blocker và tất cả dependency done.
+  Validator kiểm record/ref, reviewer kiểm sự thật của bằng chứng. Không tự nhận done vì có code/spec/asset.
+  Kiểm và cập nhật registry ở checkout tích hợp; commit chỉ có trên nhánh worker chưa merge không đủ.
+- Planning/research cập nhật phase/gate trong execution.json và QUESTIONS; không tăng % feature vì viết docs.
+- Chạy `python3 tools/kr_catalog.py` để sinh CSV, PROGRESS và trạng thái phase trong kế hoạch tổng;
+  chạy lại với `--check` trước bàn giao để phát hiện export/report stale.
+- % là tỷ lệ số mục nghiệm thu: V1 `done/37`, catalog `done/112` ở baseline hiện hành; loại riêng2drop.
+  Không cộng điểm tùy ý cho in_progress/in_review/blocked và không gọi đó là % thời gian/công sức/fidelity.
+- Đổi scope cần baseline revision và giải thích mẫu số; không bỏ mục khó để tự tăng %. Review lại các mục
+  bị ảnh hưởng khi spec/rules/dependency thay đổi. Không báo plan/release hoàn tất khi gate còn mở.
 
 ## 6. Gate chất lượng và tài liệu
 

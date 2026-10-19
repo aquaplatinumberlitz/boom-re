@@ -20,10 +20,11 @@ V1 là lát cắt chơi được; mục tiêu dài hạn vẫn là mở rộng c
 
 | Cần biết | Nguồn chuẩn | Hiện trạng |
 |---|---|---|
-| V1 làm gì và policy | [SCOPE_V1](SCOPE_V1.md) | Scope chốt; các gate sản phẩm G1–G6 còn mở |
-| Chức năng và dependency | [Catalog](../specification/FEATURE_CATALOG.md), [registry](../specification/features.json) | 114 mục: 37 V1, 75 later, 2 drop legacy; chưa implementation |
-| Biết/chưa biết, nguồn luật | [QUESTIONS](../research/QUESTIONS.md), [sources](../research/sources/README.md) | 14 câu hỏi mở có ưu tiên/owner; web khác region/build chưa xác nhận KR |
-| Crate/module và contracts | [ARCHITECTURE](ARCHITECTURE.md) | Draft architecture-r0/contracts-r0; chưa chọn dependency hoặc tạo workspace |
+| V1 làm gì và policy | [SCOPE_V1](SCOPE_V1.md) | Spec định nghĩa scope/policy; trạng thái G1–G6 xem PROGRESS |
+| Chức năng và dependency | [Catalog](../specification/FEATURE_CATALOG.md), [registry](../specification/features.json) | 114 mục:37V1,75later,2drop; trạng thái/proof theo PROGRESS |
+| Tiến độ thực tế so với catalog | [PROGRESS](PROGRESS.md), [execution.json](execution.json) | Báo cáo generated: done/tổng V1 và catalog, trạng thái từng mục, phase và release gates |
+| Biết/chưa biết, nguồn luật | [QUESTIONS](../research/QUESTIONS.md), [sources](../research/sources/README.md) | Câu hỏi có ưu tiên/owner/status; web khác region/build không tự xác nhận KR |
+| Crate/module và contracts | [ARCHITECTURE](ARCHITECTURE.md) | Revision và trạng thái quyết định nằm trong architecture/ADR; không suy từ % feature |
 | Định danh client/asset | [Evidence](../evidence/README.md) | 13 pack/51.467 entry; 103 tài nguyên V1 fingerprint; dependency closure còn thiếu |
 | Giao task và review | [TEAM_WORKFLOW](TEAM_WORKFLOW.md), [AGENTS](../../AGENTS.md) | Một owner mỗi task, contract revision và reviewer; không sinh plan riêng theo agent |
 
@@ -224,3 +225,6 @@ Việc điều chỉnh kế hoạch sau audit không đồng nghĩa đã giải 
 Cập nhật trạng thái đúng ở đây hoặc QUESTIONS/ADR tương ứng, giữ việc tiếp theo rõ ràng.
 Không tạo một plan mới, không chuyển implementation thành done vì đã viết docs, không lấy số agent
 hoặc số opcode làm phần trăm hoàn thành engine.
+Task feature cập nhật `implementation` và `tracking` trong registry; task planning/research cập nhật
+phase/gates ở execution.json cùng QUESTIONS. Chạy `python3 tools/kr_catalog.py` rồi `--check` để sinh
+PROGRESS, CSV và phase table của plan. Chỉ reviewer nghiệm thu mới cho done; chưa qua gate thì chưa release.

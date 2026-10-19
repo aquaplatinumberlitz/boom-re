@@ -8,7 +8,7 @@ khôi phục theo bằng chứng hoặc thiết kế lại có ghi nhận. Khôn
 
 Scope baseline đã chốt: [catalog KR](../specification/FEATURE_CATALOG.md) và [Release 1](SCOPE_V1.md).
 46 nhóm bằng chứng được tách thành 114 mục: 37 V1, 75 later, 2 drop legacy. Scope khác với mức xác nhận
-runtime; cả 37 mục V1 còn chưa triển khai và còn gate nguồn luật/content phải giải quyết.
+runtime; trạng thái 37 mục V1 và gate lấy từ [PROGRESS](PROGRESS.md), không duy trì con số done thủ công ở workflow.
 
 ## 1. Tổ chức nhóm
 
@@ -126,6 +126,16 @@ sau khi spec xác định damage nào bị chặn, thời điểm hết hạn, x
 Test cấu hình tạm phải ghi là test thiết kế tạm, không gắn nhãn tương đương nguyên bản.
 
 ## 8. Gate merge và theo dõi tiến độ
+
+Theo [PROGRESS](PROGRESS.md), so trực tiếp với [FEATURE_CATALOG](../specification/FEATURE_CATALOG.md).
+Registry `features.json` giữ implementation/tracking; execution.json giữ phase và release gates.
+Integrator là writer của hai nguồn chung: ghi ID/assignee/revision khi nhận task, nhập proof/review
+khi worker bàn giao, rồi chạy `python3 tools/kr_catalog.py` và `--check`.
+Worker không tự sửa report % hoặc đồng thời ghi registry với worker khác.
+
+Done chỉ sau verification+review+integration và dependency done theo AGENTS. In progress/review/blocked
+không có credit phần trăm; planning/research không cộng vào % feature. % là tỷ lệ số mục nghiệm thu,
+không phải thời gian/công sức/fidelity. Hết một task không đồng nghĩa hết phase hoặc hết V1.
 
 - Worker bàn giao thay đổi nhỏ có demo/fixture; integrator merge theo dependency và giữ main chạy được.
 - Dùng test phù hợp: parser với dữ liệu thật/truncated; core với replay và edge case;

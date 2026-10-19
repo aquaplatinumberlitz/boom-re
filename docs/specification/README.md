@@ -2,6 +2,8 @@
 
 Catalog: [FEATURE_CATALOG](FEATURE_CATALOG.md), [features.json](features.json) nguồn sửa tay,
 [features.csv](features.csv) export. Scope hiện hành: [SCOPE_V1](../planning/SCOPE_V1.md).
+Trạng thái done/chưa done và tỷ lệ so với catalog: [PROGRESS](../planning/PROGRESS.md), generated từ
+implementation/tracking trong JSON nguồn. `done/37` cho V1, `done/112` cho baseline catalog; hai drop loại riêng.
 
 | Chủ đề | Tài liệu | Mức sử dụng |
 |---|---|---|

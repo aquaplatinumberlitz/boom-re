@@ -1,6 +1,7 @@
 # KR Rust — phạm vi Release 1 (V1)
 
-Baseline **`KR-00967-V1-scope-1`**, ngày 2026-10-19. **Scope đã chốt; chưa triển khai.**
+Baseline **`KR-00967-V1-scope-1`**, ngày 2026-10-19. **Scope đã chốt**;
+trạng thái thực hiện/đã nghiệm thu theo [PROGRESS](PROGRESS.md), không sửa trạng thái tại spec này.
 `V1` là bản phát hành, khác `R1` là pha đo Oracle trong roadmap cũ.
 Tài liệu này cùng [registry](../specification/features.json) thay thế các mô tả phạm vi V1 rộng hơn hoặc
 mâu thuẫn trong [kế hoạch cũ](../archive/plans/REWRITE_PLAN_2026-10-19.md). Không tự thay đổi toàn bộ mục tiêu full feature dài hạn.
@@ -114,7 +115,8 @@ Danh sách chi tiết, dependency và acceptance từng mục nằm trong [CSV](
 | G5 UX/localization | client + QA | Chốt UI/SFX/font/ảnh cho luồng V1; glyph/wrap/focus/golden đúng profile Việt hóa |
 | G6 release | QA + integrator | Tất cả37 mục qua acceptance; 3 OS; các sai khác được ghi nhận và chấp nhận |
 
-Scope đã quyết không có nghĩa gate đã xanh. Hiện G1–G6 đều **open**; code sản phẩm chưa bắt đầu trong thay đổi này.
+Scope đã quyết không có nghĩa gate đã xanh. Trạng thái G1–G6 lấy từ [execution.json](execution.json)
+và hiện ở [PROGRESS](PROGRESS.md); spec này định nghĩa gate, không giữ một bảng trạng thái thủ công khác.
 G1 còn phải kiểm spawn không bị block và có đường thoát; tọa độ trong header chưa chứng minh điều đó.
 G3 bao gồm match duration/clock start và toàn bộ drop profile (xác suất có drop, trọng số, thời điểm
 hiện, flame-item, cap và pickup lúc đã cap). Clock bắt đầu khi loading barrier hoàn tất.

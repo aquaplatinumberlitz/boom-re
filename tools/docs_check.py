@@ -17,6 +17,8 @@ REQUIRED = [
     "docs/planning/REWRITE_PLAN.md", "docs/planning/SCOPE_V1.md",
     "docs/planning/ARCHITECTURE.md", "docs/research/QUESTIONS.md",
     "docs/specification/features.json",
+    "docs/specification/FEATURE_CATALOG.md", "docs/planning/PROGRESS.md",
+    "docs/planning/execution.json",
 ]
 
 

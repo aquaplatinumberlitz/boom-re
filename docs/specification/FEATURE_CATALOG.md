@@ -10,7 +10,7 @@ không phải danh sách do Nexon phát hành, cũng không phải tuyên bố �
 
 - [Registry JSON](features.json) là nguồn chuẩn được review bằng tay: **114 mục**,
   gồm **37 V1**, **75 later**, **2 drop_legacy**. Mọi mục đều đã có quyết định scope;
-  trạng thái implementation hiện là `not_started`.
+  trạng thái implementation/proof/review được cập nhật tại registry, xem [PROGRESS](../planning/PROGRESS.md).
 - [CSV chức năng](features.csv) xuất từ registry: mỗi mục có ID, owner theo luồng,
   server responsibility, acceptance, open questions và dependency.
 - [Đặc tả Release 1](../planning/SCOPE_V1.md) chốt tập nội dung, hành vi và gate phát hành.
@@ -30,14 +30,36 @@ asset tồn tại không chứng minh đang được bật, reachable hoặc cò
 
 ## Phân biệt scope, bằng chứng và tiến độ
 
+Catalog được nối trực tiếp với tài liệu điều hành:
+
+```text
+REWRITE_PLAN → SCOPE_V1 → FEATURE_CATALOG / features.json
+                                   ↓ implementation + proof/review
+                PROGRESS ← tools/kr_catalog.py ← execution.json (phase/gates)
+```
+
+[REWRITE_PLAN](../planning/REWRITE_PLAN.md) là kế hoạch thực hiện;
+[PROGRESS](../planning/PROGRESS.md) cho biết thực tế đã nghiệm thu bao nhiêu so với catalog.
+Không tính % từ số dòng mô tả, số asset hoặc số claim RE. Baseline hiện tại:
+**V1 = done/37**, **toàn catalog = done/112**;2drop legacy hiển thị riêng, không tính hoàn thành.
+Đây là tỷ lệ số mục; chưa có ước lượng effort thì không đổi thành % công sức/thời gian hoặc % giống KR.
+Scope mới phải version hóa; membership/scope signature ngăn đổi mẫu số âm thầm trong báo cáo.
+
 Ba trục độc lập:
 
 - `release`: `V1`, `later`, `drop_legacy` là quyết định sản phẩm.
 - `evidence_status`: `asset_signal` chỉ xác nhận tài nguyên phù hợp tên; `design_requirement`
   là yêu cầu engine/backend mới. Chưa nâng mục nào lên `runtime_confirmed_kr`.
-- `implementation`: `not_started`; không chuyển sang done chỉ vì có asset hoặc spec.
+- `implementation`: `not_started`, `in_progress`, `blocked`, `in_review`, `done`; không chuyển sang done
+  chỉ vì có asset hoặc spec. Báo cáo đếm riêng các trạng thái, chỉ done mới có credit.
 
-37 mục V1 được tách đủ để chia việc. Các mục later là backlog nghiên cứu có tên, nguồn và câu hỏi;
+37 mục V1 được tách đủ để chia việc. Mỗi mục có `tracking`: assignee/reviewer, accepted baseline/spec,
+integration commit, evidence, verification, review, blocker và next_action.
+Done cần độc lập review approved, verification passed có command/result, commit đã nằm trong HEAD checkout tích hợp, evidence tồn tại,
+không blocker và dependency done; validator kiểm tính nhất quán, không tự chứng minh acceptance đúng.
+Phase và gate đọc riêng từ [execution.json](../planning/execution.json); hoàn thành plan/spec không tự hoàn thành feature.
+
+Các mục later là backlog nghiên cứu có tên, nguồn và câu hỏi;
 acceptance chi tiết của chúng phải được viết trước khi mở triển khai. Không coi suy luận về tên
 SandBox/DIYBomb/Partners… là hành vi đã xác nhận. Hai mục bỏ tích hợp legacy là auth Nexon/NGM
 và GreenPC legacy; auth/session/validation của dự án vẫn bắt buộc V1.
@@ -120,8 +142,10 @@ python3 tools/kr_catalog.py --check
 
 Inventory tool chỉ ghi dữ liệu quét; không sửa `docs/specification/features.json` hoặc tự đổi scope.
 CSV chức năng và quyết định nhóm là export; sửa JSON rồi xuất lại.
-Validator kiểm unique ID, đầy đủ disposition cho 46 nhóm, dependency tồn tại/không cycle,
-V1 không phụ thuộc later, và export không stale. Nó không xác nhận luật KR hay gameplay parity.
+Validator kiểm unique ID, đầy đủ disposition cho46nhóm, dependency tồn tại/không cycle,
+V1 không phụ thuộc later, proof/review/status nhất quán, baseline mẫu số và export/progress không stale.
+Tool cũng sinh trạng thái phase trong REWRITE_PLAN từ execution.json. Không sửa khối GENERATED/PHASE_STATUS tay.
+Nó không xác nhận luật KR, nội dung proof hoặc gameplay parity.
 
 Khảo sát lần này dùng parser/file trực tiếp và đối chiếu docs; không chạy client hoặc decompile
 mới. Header map Village00 đọc tọa độ tại offset80; không lấy offset76 trong docs/specification/assets/MAPS.md làm

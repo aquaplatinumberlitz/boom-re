@@ -17,6 +17,7 @@ Chưa có workspace engine Rust mới; `server/` là công cụ tham chiếu gia
 V1 đã chốt scope: Battle cá nhân 2–4 người, Village00, C00/C01, Bomb/Fire/Roller;
 auth dự án → sảnh/phòng → trận → kết quả → vòng tiếp. [Catalog](docs/specification/FEATURE_CATALOG.md)
 có 114 mục: 37 V1, 75 later, 2 drop legacy. Scope khác với mức xác nhận runtime KR.
+Tiến độ nghiệm thu từng feature/phase: [PROGRESS](docs/planning/PROGRESS.md), sinh tự động từ registry và execution.
 
 ## Tra cứu
 
@@ -38,6 +39,7 @@ Thay đổi hiện ở worktree `boom-re-l10n`; main có server tham chiếu m�
 ```bash
 python3 tools/kr_catalog.py --check
 python3 tools/docs_check.py
+python3 tools/test_kr_tracking.py
 git diff --check
 ```
 

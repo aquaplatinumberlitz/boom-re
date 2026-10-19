@@ -28,6 +28,14 @@ def check_commit(root, commit):
         raise ValueError(f"commit does not exist in this checkout: {commit}")
 
 
+def check_integration(root, commit):
+    check_commit(str(root), commit)
+    result = subprocess.run(["git", "merge-base", "--is-ancestor", commit, "HEAD"],
+                            cwd=root, capture_output=True, text=True)
+    if result.returncode:
+        raise ValueError(f"integration commit is not integrated into this checkout HEAD: {commit}")
+
+
 def check_evidence(root, refs):
     if not isinstance(refs, list) or not refs:
         raise ValueError("completion requires evidence references")
@@ -84,7 +92,7 @@ def validate_features(features, baseline, root):
                 raise ValueError(f"{f['id']}: completion must bind accepted scope/spec revisions")
             if t["blocker"].strip():
                 raise ValueError(f"{f['id']}: completion cannot retain an acceptance blocker")
-            check_commit(str(root), t["integration_commit"])
+            check_integration(root, t["integration_commit"])
             if any(by_id[dep]["implementation"] != "done" for dep in f["depends_on"]):
                 raise ValueError(f"{f['id']}: dependency is not done; review dependent work again")
 
@@ -112,7 +120,7 @@ def validate_execution(execution, registry, root):
             if any(phases[d]["status"] != "done" for d in p["depends_on"]):
                 raise ValueError(f"phase {p['id']}: predecessor not done")
             check_evidence(root, p["evidence"])
-            check_commit(str(root), p["integration_commit"])
+            check_integration(root, p["integration_commit"])
             if not p["reviewer"].strip() or not p["verification"].strip():
                 raise ValueError(f"phase {p['id']}: completion requires review/verification")
     seen, active = set(), set()
@@ -140,7 +148,7 @@ def validate_execution(execution, registry, root):
             raise ValueError(f"gate {gate['id']}: missing blocker")
         if gate["status"] == "passed":
             check_evidence(root, gate["evidence"])
-            check_commit(str(root), gate["integration_commit"])
+            check_integration(root, gate["integration_commit"])
             if not gate["reviewer"].strip() or not gate["verification"].strip():
                 raise ValueError(f"gate {gate['id']}: missing review/verification")
     v1 = [f for f in registry["features"] if f["release"] == "V1"]
@@ -172,6 +180,16 @@ def metrics(features):
 
 def cell(value):
     return str(value or "—").replace("|", "\\|").replace("\n", " ")
+
+
+def evidence_links(refs):
+    result = []
+    for ref in refs:
+        if ref.startswith("git:"):
+            result.append("`" + ref[4:16] + "`")
+        else:
+            result.append(f"[{Path(ref.split('#', 1)[0]).name}](<../../{ref}>)")
+    return "; ".join(result) or "—"
 
 
 def phase_table(execution):
@@ -209,19 +227,29 @@ def render_progress(registry, execution):
               "Chỉ release khi feature V1 đã nghiệm thu, tất cả gate passed và P8 done.", "", phase_table(execution), "",
               "| Gate | Trạng thái | Owner | Bằng chứng |", "|---|---|---|---|"]
     for gate in execution["release_gates"]:
-        lines.append("| " + " | ".join(map(cell, [gate["id"] + " " + gate["title"], gate["status"], gate["owner"], "; ".join(gate["evidence"])])) + " |")
+        lines.append("| " + " | ".join(map(cell, [gate["id"] + " " + gate["title"], gate["status"], gate["owner"], evidence_links(gate["evidence"])])) + " |")
     lines += ["", "## Từng feature V1", "", "Owner là luồng; assignee/reviewer là người hoặc agent nhận task cụ thể.",
               "Chi tiết mọi mục, proof/review/dependency nằm trong [CSV](../specification/features.csv) và JSON nguồn.",
-              "", "| ID | Feature | Trạng thái | Owner / assignee | Reviewer | Bước tiếp / blocker |", "|---|---|---|---|---|---|"]
+              "", "| ID | Feature | Trạng thái | Owner / assignee | Reviewer | Bước tiếp / blocker | Bằng chứng |", "|---|---|---|---|---|---|---|"]
     for f in registry["features"]:
         if f["release"] != "V1":
             continue
         t = f["tracking"]
         lines.append("| " + " | ".join(map(cell, [f["id"], f["title"], LABELS[f["implementation"]],
-                     f["owner"] + " / " + (t["assignee"] or "chưa giao"), t["reviewer"], t["blocker"] or t["next_action"]])) + " |")
+                     f["owner"] + " / " + (t["assignee"] or "chưa giao"), t["reviewer"], t["blocker"] or t["next_action"], evidence_links(t["evidence"])])) + " |")
+    lines += ["", "## Các mục catalog ngoài V1", "", "Các mục này vẫn tính vào mẫu số toàn catalog; chưa tự mở scope triển khai.",
+              "", "| ID | Feature | Trạng thái | Assignee | Bằng chứng |", "|---|---|---|---|---|"]
+    for f in registry["features"]:
+        if f["release"] != "later":
+            continue
+        t = f["tracking"]
+        lines.append("| " + " | ".join(map(cell, [f["id"], f["title"], LABELS[f["implementation"]],
+                                                  t["assignee"], evidence_links(t["evidence"])])) + " |")
+    lines += ["", "## Không triển khai legacy — không tính done", ""]
+    lines.extend(f"- `{f['id']}`: {f['title']}" for f in registry["features"] if f["release"] == "drop_legacy")
     lines += ["", "## Agent phải cập nhật gì", "",
               "Nhận task theo plan, ghi ID và assignee; sửa trạng thái/proof/review trong JSON nguồn rồi sinh lại report.",
-              "Done cần commit tích hợp tồn tại, baseline/spec được chấp nhận, verification passed, reviewer độc lập approved,",
+              "Done cần commit đã tích hợp vào HEAD của checkout tích hợp, baseline/spec được chấp nhận, verification passed, reviewer độc lập approved,",
               "bằng chứng tồn tại và dependency done. Validator chỉ kiểm tính nhất quán/tham chiếu; không tự xác minh sự thật của proof.",
               "Planning/research cập nhật execution.json và QUESTIONS tương ứng; không đánh dấu feature done vì đã viết spec hoặc tìm thấy asset.", ""]
     return "\n".join(lines)
