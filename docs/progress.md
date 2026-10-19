@@ -70,6 +70,7 @@ Biến môi trường (đặt trước lệnh; phần lớn cũng có ở `tools
 | `MATCH_END` | 0 (Rust: 3) | > 0: N giây sau C→S 120/13 (chết) gửi **173** → về phòng chờ (ưu tiên hơn `DEATH_END`) |
 | `DEATH_END` | 0 | (fakeserver) > 0: N giây sau C→S 120 subtype 13 (chết) gửi **146** → lượt mới |
 | `BOMB_PLACE` / `BOMB_ECHO` | 0 / 0 | (fakeserver) `BOMB_PLACE=1`: trả **152** cho mỗi C→S 111 (gán id); `BOMB_ECHO=N`: N giây sau gửi **151** nổ (id 0..`BOMB_IDS`-1). Server Rust: `BOMB_FUSE` (mặc định 2.5) làm cả hai |
+| `SPAWN_SAME` / `TEAM_SPLIT` | 0 / 0 | (Rust, thử nghiệm) mọi người xuất phát ô 0 / đội = slot lúc bắt đầu trận — dựng cảnh cứu/chọc bong bóng |
 | `SERVER_IP` | 127.0.0.1 | (**chỉ server Rust**) địa chỉ client được dặn kết nối ở gói 7 và 15; client trong WinBoat cần `172.18.0.50` |
 
 Chuỗi vào trận chơi được: `AUTO_START=5 TURN_START=10 TURN_MODE=1 GO_START=3 PLAY_START=4 POST_PLAY_START=2`.

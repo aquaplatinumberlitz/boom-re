@@ -722,3 +722,15 @@ opcode 571 (S→C):
 
 - (a) **ĐÃ GIẢI**: không có handler 141/142 S→C (và cả 188/197 chỉ qua strategy, xem §5f); Nếu làm server nhiều người thật, nên bắt log kiểm xem server có gửi 176 (định vị lại player theo slot)
   giữa trận không.
+
+#### Cứu đồng đội / chọc vỡ bong bóng (2026-10-19, runtime 2 client, `logs/duo/r4`, `logs/duo/r5`) ✅
+- **Client tự xử lý**, server không cần trả lời: client của người **bị nhốt** thấy người khác chạm vào mình (vị trí qua UDP P2P) và tự quyết:
+  - **cùng đội** → thoát bong bóng, gửi **C→S 120 subtype 12** (`docs/rescue_trapped.png` → `docs/rescue_freed.png`);
+  - **khác đội** → bong bóng vỡ ngay, gửi **120 subtype 13** (chết) ~2,5 s sau khi bị nhốt thay vì ~6 s (`docs/rescue_enemy_pop.png`: B thắng).
+- Mỗi client chỉ báo 120 cho bomber của chính mình (byte "cờ" = slot).
+- Server Rust: trận kết thúc khi còn ≤ 1 đội sống; **nếu cả phòng cùng một đội** thì chỉ khi tất cả đã chết (trước đó 1 người chết là
+  kết thúc ngay — lỗi đã sửa). Cột BẮT/CỨU của 168 vẫn 0: chưa biết trường nào trong khối slot của 168, và 120 subtype 12/13 chưa rõ có
+  mang slot người cứu/chọc (blob đuôi) — CHƯA KIỂM.
+- Cách dựng thử (`SPAWN_SAME=1` mọi người ô xuất phát 0 = góc trên phải Village01; `TEAM_SPLIT=1` đội = slot):
+  `KEYS_A="Shift_L:0.1:10 Left:0.4:1 space:0.2:2 Shift_L:0.1:3 Shift_L:0.1:10" KEYS_B="Down:0.4:7 Up:0.4:1 Left:0.5:2 Shift_L:0.1:10"`
+  (B xuống 1 ô, A sang trái 1 ô đặt bom tự nhốt, B ở ô chéo an toàn rồi lên + trái chạm A).

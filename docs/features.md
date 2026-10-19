@@ -136,7 +136,7 @@ Phân bố opcode theo nhóm:
 | F4 | đặt bom | Space → C→S 111 | ✅ | ✅ |
 | F5 | bom nổ | S→C 152 (gán id) → 151 (nổ); thời điểm nổ do server quyết (đang 2.5 s, **giá trị gốc chưa biết**); vài trường 152 đang đoán | ✅ | ✅ |
 | F6 | bị nhốt / chết / lượt mới | bom nổ → C→S 120 subtype 11 (bị nhốt) → ~6 s → 120 subtype 13 (chết) → server 146 → lượt mới, hồi sinh (`5aee4e4`) | ✅ | ✅ |
-| F6b | cứu đồng đội đang bị nhốt / kim (`ItemNiddle`) | chưa | ⬜ | ⬜ |
+| F6b | cứu đồng đội đang bị nhốt / chọc vỡ | client tự xử lý: cùng đội chạm → thoát, C→S 120 subtype 12; khác đội chạm → chết ngay (120/13); kim (Ctrl) → 120 subtype 1 (`oc_e-game.md` cứu đồng đội); đếm BẮT/CỨU trong 168 chưa | ✅ | ✅ |
 | F7 | kết thúc lượt / điểm | 146 chạy được (`5aee4e4`); **kết quả trận S→C 168** (hạng từng slot → màn "HOÀN HẢO"/thua, `oc_e-game.md`); server Rust: còn ≤ 1 đội sống → 168 → 173. Bảng điểm 146 và khối exp/vàng của 168 chưa kiểm | 🟡 | 🟡 |
 | F8 | kết thúc ván → về phòng chờ | S→C 173 `{0,0}` → về phòng chờ → **trận mới** (`b1fc290`); server Rust xử lý C→S 120; danh sách kết quả trong 173 chưa kiểm | ✅ | ✅ |
 | F9 | nhiều người chơi trong trận | 2 client cùng phòng + cùng vào trận (`tools/duo.sh`, `hub.rs`); **di chuyển đồng bộ 2 chiều** qua UDP P2P (C→S 92 → S→C 146 bảng peer); **ô xuất phát riêng** qua S→C 117 (`oc_e-game.md` §5a-7); bom/chết/vật phẩm nhiều người chưa kiểm | 🟡 | 🟡 |
@@ -188,7 +188,7 @@ Phân bố opcode theo nhóm:
 Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 
 1. ~~F8 kết thúc ván~~ **xong** (`b1fc290`); ~~F6/F7 chết/lượt~~ **xong** (`5aee4e4`); kết quả trận **168** + hết giờ **xong** (`f668ca5`, `7875200`).
-2. ~~**F9** nhiều người trong trận~~ **chạy được**: UDP P2P, ô xuất phát riêng (117), bom/nhốt/chết/kết quả với 2 người. Còn: cứu đồng đội (F6b), vật phẩm 2 người.
+2. ~~**F9** nhiều người trong trận~~ **chạy được**: UDP P2P, ô xuất phát riêng (117), bom/nhốt/chết/kết quả, cứu đồng đội / chọc vỡ (F6b) với 2 người. Còn: vật phẩm 2 người, đếm BẮT/CỨU.
 3. **F10** vật phẩm rơi — hiện/nhặt/dùng được (1 người); chưa kiểm 2 người.
 4. ~~**E5/E7/E9/E12** phòng~~ **xong phần chính**: danh sách phòng, chọn map, sẵn sàng/đội/nhân vật, BẮT ĐẦU, đóng ô, đuổi, chủ phòng. Còn: sửa tên/mật khẩu phòng (85).
 5. ~~**D1** chat~~ **xong** (phòng/sảnh/trận); còn thì thầm (D2).

@@ -22,6 +22,10 @@ pub struct Config {
     /// Round time in s, counted from 191/146: the HUD clock is 120 s for normal maps (ctx+490518 default; 190/191/146 times do not
     /// change it). When it runs out the server ends the match (0 = never).
     pub round_time: f64,
+    /// SPAWN_SAME=1: every slot on start point 0 (experiments: players next to each other)
+    pub spawn_same: bool,
+    /// TEAM_SPLIT=1: team = slot for everybody at match start (experiments: enemies without clicking the team colour)
+    pub team_split: bool,
     pub auto_start: f64,
     pub turn_start: f64,
     pub turn_mode: u8,
@@ -60,6 +64,8 @@ impl Config {
             map_index: env("MAP_INDEX", 0),
             start_op: env("START_OP", 117),
             round_time: env("ROUND_TIME", 120.0),
+            spawn_same: env("SPAWN_SAME", 0.0) > 0.0,
+            team_split: env("TEAM_SPLIT", 0.0) > 0.0,
             auto_start: env("AUTO_START", 0.0),
             turn_start: env("TURN_START", 0.0),
             turn_mode: env("TURN_MODE", 4),
@@ -378,7 +384,7 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                 // bomber event: u8 subtype (11 trapped, 13 died; oc_e-game.md section 5a-5c)
                 let sub = proto::get_int(&body[2..], 1, true) as u8;
                 log(format!("[{port}] bomber event 120 subtype {sub}"));
-                // several players: the match ends when at most one team is left -> 168 (result: survivors rank 1) then 173
+                // several players: the match ends when at most one team is left (one team only: all dead) -> 168 (survivors rank 1), 173
                 let survivors = {
                     let mut r = hub.room.lock().unwrap();
                     if let Some(m) = r.members.iter_mut().find(|m| m.user_id == user_id) {
@@ -388,7 +394,10 @@ pub async fn handle(sock: TcpStream, port: u16, cfg: Arc<Config>, log: Log, hub:
                     }
                     let alive: Vec<&Member> = r.members.iter().filter(|m| !m.dead).collect();
                     let teams: std::collections::HashSet<u8> = alive.iter().map(|m| m.team).collect();
-                    (sub == 13 && r.members.len() > 1 && teams.len() <= 1)
+                    let all_teams: std::collections::HashSet<u8> = r.members.iter().map(|m| m.team).collect();
+                    // everybody on one team (co-op): over only when all are dead
+                    let over = if all_teams.len() > 1 { teams.len() <= 1 } else { alive.is_empty() };
+                    (sub == 13 && r.members.len() > 1 && over)
                         .then(|| r.members.iter().map(|m| (m.slot, if m.dead { 2 } else { 1 })).collect::<Vec<_>>())
                 };
                 if let Some(ranks) = survivors {
@@ -460,6 +469,9 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16, delay:
         let mut r = hub.room.lock().unwrap();
         for m in r.members.iter_mut() {
             m.dead = false;
+            if cfg.team_split {
+                m.team = m.slot;
+            }
         }
         r.match_no += 1;
         r.match_no
@@ -476,7 +488,7 @@ async fn match_flow(hub: Arc<Hub>, cfg: Arc<Config>, log: Log, port: u16, delay:
         // start point i for slot i (501 puts everybody on start point 0). u8 +84 must stay 0: the character there made the
         // other player vanish from the match (logs/duo/t13)
         let full: Vec<(u8, u8, u8, u8, u8)> =
-            hub.room.lock().unwrap().members.iter().map(|m| (m.slot, 0, m.slot, m.slot, m.team)).collect();
+            hub.room.lock().unwrap().members.iter().map(|m| (m.slot, 0, if cfg.spawn_same { 0 } else { m.slot }, m.slot, m.team)).collect();
         // time byte 0: it only applies when the map record enables a custom time (sub_8E7E3F, set from sub_6DD49B(map))
         hub.broadcast(&pk::match_start_full(map, map_index, cfg.room_type, 12345, &full, 0));
     } else {
