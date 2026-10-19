@@ -510,7 +510,30 @@ def load_tm_id():
         return {r["id"]: r for r in csv.DictReader(f)}
 
 
+NAM_BO = L10N / "nam_bo.csv"   # từ Bắc → Nam (giọng miền Nam), áp lên mọi bản dịch ở bước catalog
+
+
+def load_nam_bo():
+    """[(regex, nam)]: mỗi mục khớp trọn âm tiết, không phân biệt hoa thường; giữ hoa chữ đầu / viết hoa toàn bộ."""
+    if not NAM_BO.exists():
+        return []
+    with open(NAM_BO, newline="", encoding="utf-8") as f:
+        return [(re.compile(r"(?<!\w)(?:%s)(?!\w)" % r["bac"], re.I), r["nam"]) for r in csv.DictReader(f)]
+
+
+def nam_bo(s, lex):
+    def keep_case(m, nam):
+        w = m.group(0)
+        if w.isupper() and len(w) > 1:
+            return nam.upper()
+        return nam[:1].upper() + nam[1:] if w[:1].isupper() else nam
+    for rx, nam in lex:
+        s = rx.sub(lambda m: keep_case(m, nam), s)
+    return s
+
+
 def cmd_catalog(a):
+    lex = load_nam_bo()
     rows = load_sources()
     tm = load_tm()
     tid = load_tm_id()
@@ -547,6 +570,11 @@ def cmd_catalog(a):
         else:
             vi, status = "", "review"
             notes.append("untranslated")
+        if vi and r["ctx"] not in ("credit",):
+            nb = nam_bo(vi, lex)
+            if nb != vi:
+                vi = nb
+                notes.append("nam_bo")
         if vi and ko and len(vi) > 1.6 * len(ko) and status != "reused":
             notes.append("too_long?")
         out.append({"id": r["id"], "source": r["source"], "ko": ko, "vi_base": vb, "vi": vi,
@@ -555,21 +583,21 @@ def cmd_catalog(a):
         w = csv.DictWriter(f, ["id", "source", "ko", "vi_base", "vi", "status", "notes"], lineterminator="\n")
         w.writeheader()
         w.writerows(out)
-    write_glossary(out)
+    write_glossary(out, lex)
     print_stats(out)
 
 
 GLOSS_FIELDS = ["ko", "vi", "kind", "source", "count"]
 
 
-def write_glossary(cat):
+def write_glossary(cat, lex=()):
     """Thuật ngữ: cặp ngắn (≤ 12 ký tự Hàn, không dấu câu) đã có bản Việt; cộng l10n/glossary_seed.csv (biên soạn tay)."""
     terms = {}
     seed = L10N / "glossary_seed.csv"
     if seed.exists():
         with open(seed, newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f):
-                terms[r["ko"]] = {"ko": r["ko"], "vi": r["vi"], "kind": r.get("kind", ""), "source": "seed", "count": 0}
+                terms[r["ko"]] = {"ko": r["ko"], "vi": nam_bo(r["vi"], lex), "kind": r.get("kind", ""), "source": "seed", "count": 0}
     for r in cat:
         ko, vi = r["ko"].strip(), r["vi"].strip()
         if not ko or not vi or r["status"] == "review" or not HANGUL.search(ko):

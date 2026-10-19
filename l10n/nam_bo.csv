@@ -1,0 +1,60 @@
+bac,nam,note
+bị ốm,bị bệnh,ốm (bệnh) — chạy trước 'gầy→ốm'
+ốm yếu,bệnh yếu,
+gầy,ốm,
+béo,mập,
+mũ,nón,Mũ → Nón (모자); không đụng 'mũi'
+ví(?! dụ| như| von),bóp,"ví tiền; chừa 'ví dụ', 'ví như'"
+bố mẹ,ba mẹ,
+bố ơi,ba ơi,
+mồm,miệng,
+vâng,dạ,
+nhé,nha,
+nhá,nha,
+nhỉ(?=\s*\?),ta,câu hỏi: 'ở đâu nhỉ?' → 'ở đâu ta?'
+nhỉ,ha,
+"đấy(?=\s*(?:nha|ha)?\s*[!?.~…,^]|\s*(?:nha|ha)?\s*$)",đó,tiểu từ cuối câu
+"ấy(?=\s*(?:nha|ha)?\s*[!?.~…,^]|\s*(?:nha|ha)?\s*$)",đó,tiểu từ cuối câu ('gì ấy?' → 'gì đó?')
+thế nào,sao,'như thế nào' → 'như sao' tránh bằng mục sau
+như sao,như thế nào,sửa lại 'như thế nào'
+như thế,như vậy,
+thế thì,vậy thì,
+thế à,vậy hả,
+"thế(?=\s*(?:nha|ha)?\s*[!?.~…,]|\s*(?:nha|ha)?\s*$)",vậy,tiểu từ cuối câu: 'sao thế?' → 'sao vậy?'
+chúng tớ,tụi tui,
+bọn tớ,tụi tui,
+chúng mình,tụi mình,
+bọn mình,tụi mình,
+tớ,tui,
+cậu(?! bé| ấy| ta),bạn,ngôi thứ hai (đi với tớ→tui); chừa 'cậu bé'
+bọn,tụi,
+giời ơi,trời ơi,
+quả bom,trái bom,
+quả bóng,trái banh,
+hoa quả,trái cây,
+quả dứa,trái thơm,
+dứa,thơm,
+ngô,bắp,
+vừng,mè,
+lợn,heo,
+cốc,ly,
+bát,chén,
+thìa,muỗng,
+ô tô,xe hơi,
+áo phông,áo thun,
+kính nhìn,kiếng nhìn,
+kính râm,kiếng mát,
+chiếc ô,cây dù,
+cái ô,cây dù,
+đắt,mắc,
+vứt,quăng,
+chăn,mền,
+ngã,té,
+đánh rơi,làm rớt,
+rơi,rớt,
+nhặt,lượm,
+gửi,gởi,
+tầng,lầu,
+đỗ,đậu,
+bật(?! mí),mở,bật/tắt → mở/tắt; chừa 'nổi bật' bằng mục sau
+nổi mở,nổi bật,sửa lại 'nổi bật'
