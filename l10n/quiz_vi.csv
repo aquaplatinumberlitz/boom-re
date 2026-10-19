@@ -1,16 +1,32 @@
-question_id,ko_question,correct_option,ko_correct_answer,vi_question,vi_option_1,vi_option_2,vi_option_3,vi_option_4
-q:CAQuiz_Q5_1,숙제를 여기저기에서 (    )했다.,1,짜깁기,Cá gì không sống dưới nước mà ai cũng có?,Cá nhân,Cá rô,Cá chép,Cá trê
-q:CAQuiz_Q5_2,오늘이 몇 월 (    )이니?,3,며칠,Đường gì không đi bộ được mà lại có vị ngọt?,Đường làng,Đường ray,Đường cát,Đường đèo
-q:CAQuiz_Q5_3,이 사실을 (    ) 알리지 않았다.,1,굳이,Bàn gì không có chân mà vẫn phân thắng thua?,Bàn thắng,Bàn học,Bàn ăn,Bàn gỗ
-q:CAQuiz_Q5_4,로두마니는 (    ) 놀았다.,3,허구한 날,"Cầu gì không bắc qua sông, thường xuất hiện sau mưa?",Cầu tre,Cầu đá,Cầu vồng,Cầu gỗ
-q:CAQuiz_Q5_5,힘든 일에 (    ) 적응했다.,4,금세,Mực gì không biết bơi mà dùng để viết?,Mực nang,Mực ống,Mực lá,Mực bút
-q:CAQuiz_Q5_6,(    ) 날마다 놀러만 다닌다.,2,요새,Bò gì không ăn cỏ mà lại có người ăn?,Bò sữa,Bò bía,Bò rừng,Bò tót
-q:CAQuiz_Q5_7,너의 (    )는 그만할래.,3,뒤치다꺼리,"Sao gì chẳng ở trên trời, dùng để làm giấy tờ giống bản gốc?",Sao Kim,Sao Hỏa,Sao y,Sao Bắc Đẩu
-q:CAQuiz_Q5_8,쓰레기들이 지저분하게 (    ) 있었다.,1,널브러져,"Chín gì chẳng phải con số, cũng chẳng phải đồ ăn?",Chín chắn,Chín mươi,Cơm chín,Chín giờ
-q:CAQuiz_Q5_9,아랫사람은 (    )을 공경해야 한다.,3,웃어른,Lá gì không mọc trên cây mà có thể gởi đi?,Lá mít,Lá tre,Lá thư,Lá sen
-q:CAQuiz_Q5_10,오늘 배찌 의상은 대체로 (    ),1,무난하다.,Cổ gì chẳng nằm trên người mà kể chuyện ngày xưa?,Cổ tích,Cổ tay,Cổ chân,Cổ áo
-q:CAQuiz_Q5_11,걸음마를 시작한 우니는 (    ),2,개구쟁이.,"Bánh gì không ăn được, lại quay trên xe?",Bánh ít,Bánh xe,Bánh bò,Bánh tét
-q:CAQuiz_Q5_12,너가 그러다니 정말 (    ),1,어이없다.,Con gì chẳng phải loài vật mà dùng để nhìn?,Con mắt,Con mèo,Con cá,Con cua
-q:CAQuiz_Q5_13,럭마가 친절하다니 이게 (    ),3,웬일이니?,"Hoa gì không cần tưới, lóe lên khi mài sắt?",Hoa mai,Hoa sen,Hoa lửa,Hoa lan
-q:CAQuiz_Q5_14,새로운 캐릭터는 누가 좋을지 (    ) 생각해세요.,4,곰곰이,Đá gì không lấy từ núi mà thả vô ly nước cho mát?,Đá granit,Đá vôi,Đá cuội,Đá lạnh
-q:CAQuiz_Q5_15,"어제 머리가 아팠는데, 다 (    )",3,나았다.,Chân gì không đi được mà nằm dưới răng?,Chân gà,Chân vịt,Chân răng,Chân voi
+question_id,ko_question,correct_option,ko_correct_answer,vi_question,vi_option_1,vi_option_2,vi_option_3,vi_option_4,riddle_type,region,explanation,provenance,vi_correct_answer
+q:CAQuiz_Q5_1,숙제를 여기저기에서 (    )했다.,1,짜깁기,"Mình rồng, đuôi phụng le te
+Mùa Đông ấp trứng, mùa Hè nở con",Quày cau,Quày chuối,Trái dừa,Bông sen,Sản vật,Gò Công,"Theo lời giải trong tư liệu: cau ra bông vào mùa Đông, có trái vào mùa Hè.",Trích câu đố trong nội dung người dùng cung cấp.,Quày cau
+q:CAQuiz_Q5_2,오늘이 몇 월 (    )이니?,3,며칠,"Giữa lừng trời có vũng nước trong
+Cá lòng tong lội không tới.",Giọt sương,Cái lu,Trái dừa,Vũng nước,Sản vật,Bến Tre,"Nước dừa nằm trong trái ở trên cây cao, cá không thể bơi tới.",Trích câu đố trong nội dung người dùng cung cấp.,Trái dừa
+q:CAQuiz_Q5_3,이 사실을 (    ) 알리지 않았다.,1,굳이,"Con gái má đỏ hồng hồng
+Khi đi lấy chồng lại bỏ quê cha
+Đến khi tuổi tác về già
+Quê chồng lại bỏ, quê cha lại về",Cà-ràng đất nung,Cái nón lá,Chiếc xuồng,Cái giỏ tre,Sản vật,"Tứ giác Long Xuyên, An Giang","Đất nung đỏ thành cà-ràng, được đem bán; khi hư, bỏ đi rồi lại trở về với đất.",Trích câu đố trong nội dung người dùng cung cấp.,Cà-ràng đất nung
+q:CAQuiz_Q5_4,로두마니는 (    ) 놀았다.,3,허구한 날,"Suôn đuồn đuột, ngó thẳng băng
+Trong ruột có mắc, mọc giăng đồng phèn.",Cây đước,Cây dừa,Cỏ năng,Cây lục bình,Sản vật,Đồng Tháp Mười,Tư liệu đố cỏ năng: bên ngoài suôn đuồn đuột nhưng trong ruột có mắc.,"Phỏng theo câu “Suôn đuồn đuột, trong ruột có mắc” do người dùng cung cấp; thêm vế thơ để đưa vào game.",Cỏ năng
+q:CAQuiz_Q5_5,힘든 일에 (    ) 적응했다.,4,금세,"Một mình âm ỉ canh chầy
+Dĩa dầu vơi, nước mắt đầy năm canh.",Trái chôm chôm,Trái măng cụt,Trái bưởi,Trái sầu riêng,Sản vật,"Ngũ Hiệp, Tiền Giang",Cảnh một mình sầu muộn gợi tên sầu riêng.,Trích câu đố trong nội dung người dùng cung cấp.,Trái sầu riêng
+q:CAQuiz_Q5_6,(    ) 날마다 놀러만 다닌다.,2,요새,"Mình cá, đầu cá, đuôi cá
+Cấm kêu con cá, đố là món chi?",Cá đang bơi,Cá khô hoặc cá mắm,Con tôm,Con cua,Sản vật,Nam Bộ,Tư liệu chấp nhận cả cá khô và cá mắm; gộp vào một lựa chọn để không có hai đáp án đúng.,"Phỏng theo câu “Mình cá, đầu cá, đuôi cá. Cấm nói con cá!” do người dùng cung cấp; thêm vế hỏi có vần.",Cá khô hoặc cá mắm
+q:CAQuiz_Q5_7,너의 (    )는 그만할래.,3,뒤치다꺼리,"Tròn tròn như lá tía tô
+Đi biển, đi hồ đầu ướt, đuôi khô.",Cái lu,Cái nia,Cái dầm hoặc mái chèo,Cái võng,Sông nước,Đồng bằng sông Cửu Long,"Phần bản dầm/chèo nhúng xuống nước, phần cán người chèo cầm vẫn khô.",Trích câu đố trong nội dung người dùng cung cấp.,Cái dầm hoặc mái chèo
+q:CAQuiz_Q5_8,쓰레기들이 지저분하게 (    ) 있었다.,1,널브러져,"Cây khô mọc rễ trên đầu
+Sông sâu chẳng sợ, sợ cây cầu bắc ngang.",Chiếc thuyền buồm,Chiếc xuồng ba lá,Cái vó,Cái cần câu,Sông nước,Nam Bộ,Cột buồm và dây chằng gợi cây khô có rễ ở trên; cột buồm cao có thể vướng cầu.,Trích câu đố trong nội dung người dùng cung cấp.,Chiếc thuyền buồm
+q:CAQuiz_Q5_9,아랫사람은 (    )을 공경해야 한다.,3,웃어른,"Ghe bầu chìm tại biển Đông
+Cái mui nó mất, cái công nó còn.",Con cua,Con tôm,Con còng,Con ốc,Đố láy từ,Nam Bộ,"Nói láy “công còn” thành “con còng”, theo lời giải trong tư liệu.",Trích câu đố trong nội dung người dùng cung cấp.,Con còng
+q:CAQuiz_Q5_10,오늘 배찌 의상은 대체로 (    ),1,무난하다.,"Anh về Châu Đốc, Nam Vang
+Cho xin nhắn lại, em khoan lấy chồng!",Con nhái lặn,Con cá rô,Con cò,Con ếch,Đố láy từ,"Châu Đốc, Nam Vang","Nói láy “nhắn lại” thành “nhái lặn”, theo lời giải trong tư liệu.",Trích câu đố trong nội dung người dùng cung cấp.,Con nhái lặn
+q:CAQuiz_Q5_11,걸음마를 시작한 우니는 (    ),2,개구쟁이.,"Vật gì đem cúng ngày rằm
+Tụng kinh lầm thầm, búng cánh bay lên.",Bánh tét,Bánh cúng,Bánh ít,Bánh bò,Đố láy từ,Nam Bộ,Nói láy “búng cánh” thành “bánh cúng”.,Trích câu đố trong nội dung người dùng cung cấp; chuẩn hóa khoảng trắng sau dấu phẩy.,Bánh cúng
+q:CAQuiz_Q5_12,너가 그러다니 정말 (    ),1,어이없다.,"May không chút nữa thì lầm
+Cau dầy không bẻ, bẻ nhằm cau ranh.",Canh rau,Trái cau,Canh chua,Rau luộc,Đố láy từ,Nam Bộ,Nói láy “cau ranh” thành “canh rau”.,Trích câu đố trong nội dung người dùng cung cấp.,Canh rau
+q:CAQuiz_Q5_13,럭마가 친절하다니 이게 (    ),3,웬일이니?,"Bằng bắp tay, nhét ngay kẹt háng.",Trái chuối,Trái dưa leo,Trái bắp,Củ khoai,Đố tục giảng thanh,Nam Bộ,Trái bắp đính ở kẽ giữa thân cây bắp và lá; lời đố tả vị trí trên cây.,Trích câu đố trong nội dung người dùng cung cấp.,Trái bắp
+q:CAQuiz_Q5_14,새로운 캐릭터는 누가 좋을지 (    ) 생각해세요.,4,곰곰이,"Má ơi nó bẻ cẳng con rồi
+Nó lật lưng con lại, tuột quần con ra!",Bánh tét,Bánh cúng,Bánh bò,Bánh ít,Đố tục giảng thanh,Nam Bộ,"Bánh ít gói lá có hai nếp co như chân; ăn bánh thì bẻ nếp, lật bánh và bóc lá.",Trích câu đố trong nội dung người dùng cung cấp; dùng tên bánh ít cho lời giải “bánh ích”.,Bánh ít
+q:CAQuiz_Q5_15,"어제 머리가 아팠는데, 다 (    )",3,나았다.,"Trên lông, dưới lông
+Tối lại nằm chồng.",Đôi bím tóc,Mái tóc,Đôi mi mắt,Đôi bàn tay,Đố tục giảng thanh,Nam Bộ,"Mi trên và mi dưới đều có lông mi; khi ngủ, hai mi khép lại.",Trích câu đố trong nội dung người dùng cung cấp; chia câu thành hai dòng thơ.,Đôi mi mắt

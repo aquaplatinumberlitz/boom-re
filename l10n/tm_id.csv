@@ -2198,66 +2198,66 @@ q:CatchNewFriend2_BackMsg,"Tìm người bạn mới xuất hiện trong Đấu 
 Tặng bạn Đậu may mắn Ngôi sao và Vé GM
 dùng được trong sự kiện web nha~★",translated,ko_reviewed
 q:CAQuiz_A4_7_4,Quẩy lên!,translated,ko_reviewed
-q:CAQuiz_A5_1_1,Cá nhân,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_1_2,Cá rô,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_1_3,Cá chép,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_1_4,Cá trê,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_10_1,Cổ tích,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_10_2,Cổ tay,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_10_3,Cổ chân,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_10_4,Cổ áo,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_11_1,Bánh ít,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_11_2,Bánh xe,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_11_3,Bánh bò,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_11_4,Bánh tét,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_12_1,Con mắt,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_12_2,Con mèo,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_12_3,Con cá,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_12_4,Con cua,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_13_1,Hoa mai,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_13_2,Hoa sen,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_13_3,Hoa lửa,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_13_4,Hoa lan,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_14_1,Đá granit,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_14_2,Đá vôi,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_14_3,Đá cuội,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_14_4,Đá lạnh,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_15_1,Chân gà,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_15_2,Chân vịt,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_15_3,Chân răng,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_15_4,Chân voi,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_2_1,Đường làng,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_2_2,Đường ray,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_2_3,Đường cát,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_2_4,Đường đèo,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_3_1,Bàn thắng,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_3_2,Bàn học,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_3_3,Bàn ăn,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_3_4,Bàn gỗ,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_4_1,Cầu tre,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_4_2,Cầu đá,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_4_3,Cầu vồng,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_4_4,Cầu gỗ,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_5_1,Mực nang,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_5_2,Mực ống,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_5_3,Mực lá,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_5_4,Mực bút,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_6_1,Bò sữa,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_6_2,Bò bía,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_6_3,Bò rừng,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_6_4,Bò tót,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_7_1,Sao Kim,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_7_2,Sao Hỏa,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_7_3,Sao y,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_7_4,Sao Bắc Đẩu,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_8_1,Chín chắn,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_8_2,Chín mươi,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_8_3,Cơm chín,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_8_4,Chín giờ,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_9_1,Lá mít,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_9_2,Lá tre,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_9_3,Lá thư,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_A5_9_4,Lá sen,translated,ko_reviewed;quiz_vi_localized
+q:CAQuiz_A5_1_1,Quày cau,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_1_2,Quày chuối,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_1_3,Trái dừa,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_1_4,Bông sen,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_10_1,Con nhái lặn,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_10_2,Con cá rô,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_10_3,Con cò,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_10_4,Con ếch,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_11_1,Bánh tét,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_11_2,Bánh cúng,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_11_3,Bánh ít,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_11_4,Bánh bò,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_12_1,Canh rau,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_12_2,Trái cau,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_12_3,Canh chua,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_12_4,Rau luộc,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_13_1,Trái chuối,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_13_2,Trái dưa leo,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_13_3,Trái bắp,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_13_4,Củ khoai,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_14_1,Bánh tét,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_14_2,Bánh cúng,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_14_3,Bánh bò,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_14_4,Bánh ít,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_15_1,Đôi bím tóc,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_15_2,Mái tóc,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_15_3,Đôi mi mắt,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_15_4,Đôi bàn tay,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_2_1,Giọt sương,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_2_2,Cái lu,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_2_3,Trái dừa,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_2_4,Vũng nước,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_3_1,Cà-ràng đất nung,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_3_2,Cái nón lá,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_3_3,Chiếc xuồng,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_3_4,Cái giỏ tre,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_4_1,Cây đước,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_4_2,Cây dừa,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_4_3,Cỏ năng,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_4_4,Cây lục bình,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_5_1,Trái chôm chôm,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_5_2,Trái măng cụt,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_5_3,Trái bưởi,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_5_4,Trái sầu riêng,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_6_1,Cá đang bơi,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_6_2,Cá khô hoặc cá mắm,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_6_3,Con tôm,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_6_4,Con cua,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_7_1,Cái lu,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_7_2,Cái nia,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_7_3,Cái dầm hoặc mái chèo,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_7_4,Cái võng,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_8_1,Chiếc thuyền buồm,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_8_2,Chiếc xuồng ba lá,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_8_3,Cái vó,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_8_4,Cái cần câu,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_9_1,Con cua,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_9_2,Con tôm,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_9_3,Con còng,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_A5_9_4,Con ốc,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
 q:CAQuiz_A2_7_3,Yeongdal,translated,ko_reviewed
 q:CAQuiz_A2_7_4,Yeongnun,translated,ko_reviewed
 q:CAQuiz_A2_8_1,Yeongil,translated,ko_reviewed
@@ -2329,18 +2329,34 @@ exe:kr-full.exe:0x157ce58,Phát hiện Vua Boom thoát bất thường. Bạn c�
 exe:kr-full.exe:0x15c9ce8,Đến nửa đêm ngày %04d-%02d-%02d,translated,ko_reviewed
 exe:kr-full.exe:0x15e67bc,꼇돤흙코,review,ko_review_pending;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.
 exe:kr-full.exe:0x15e69b4,컫볍칵돠,review,ko_review_pending;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.
-q:CAQuiz_Q5_2,Đường gì không đi bộ được mà lại có vị ngọt?,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_3,Bàn gì không có chân mà vẫn phân thắng thua?,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_4,"Cầu gì không bắc qua sông, thường xuất hiện sau mưa?",translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_5,Mực gì không biết bơi mà dùng để viết?,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_6,Bò gì không ăn cỏ mà lại có người ăn?,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_7,"Sao gì chẳng ở trên trời, dùng để làm giấy tờ giống bản gốc?",translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_8,"Chín gì chẳng phải con số, cũng chẳng phải đồ ăn?",translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_9,Lá gì không mọc trên cây mà có thể gởi đi?,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_1,Cá gì không sống dưới nước mà ai cũng có?,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_10,Cổ gì chẳng nằm trên người mà kể chuyện ngày xưa?,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_11,"Bánh gì không ăn được, lại quay trên xe?",translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_12,Con gì chẳng phải loài vật mà dùng để nhìn?,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_13,"Hoa gì không cần tưới, lóe lên khi mài sắt?",translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_14,Đá gì không lấy từ núi mà thả vô ly nước cho mát?,translated,ko_reviewed;quiz_vi_localized
-q:CAQuiz_Q5_15,Chân gì không đi được mà nằm dưới răng?,translated,ko_reviewed;quiz_vi_localized
+q:CAQuiz_Q5_2,"Giữa lừng trời có vũng nước trong
+Cá lòng tong lội không tới.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_3,"Con gái má đỏ hồng hồng
+Khi đi lấy chồng lại bỏ quê cha
+Đến khi tuổi tác về già
+Quê chồng lại bỏ, quê cha lại về",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_4,"Suôn đuồn đuột, ngó thẳng băng
+Trong ruột có mắc, mọc giăng đồng phèn.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_5,"Một mình âm ỉ canh chầy
+Dĩa dầu vơi, nước mắt đầy năm canh.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_6,"Mình cá, đầu cá, đuôi cá
+Cấm kêu con cá, đố là món chi?",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_7,"Tròn tròn như lá tía tô
+Đi biển, đi hồ đầu ướt, đuôi khô.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_8,"Cây khô mọc rễ trên đầu
+Sông sâu chẳng sợ, sợ cây cầu bắc ngang.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_9,"Ghe bầu chìm tại biển Đông
+Cái mui nó mất, cái công nó còn.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_1,"Mình rồng, đuôi phụng le te
+Mùa Đông ấp trứng, mùa Hè nở con",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_10,"Anh về Châu Đốc, Nam Vang
+Cho xin nhắn lại, em khoan lấy chồng!",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_11,"Vật gì đem cúng ngày rằm
+Tụng kinh lầm thầm, búng cánh bay lên.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_12,"May không chút nữa thì lầm
+Cau dầy không bẻ, bẻ nhằm cau ranh.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_13,"Bằng bắp tay, nhét ngay kẹt háng.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_14,"Má ơi nó bẻ cẳng con rồi
+Nó lật lưng con lại, tuột quần con ra!",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
+q:CAQuiz_Q5_15,"Trên lông, dưới lông
+Tối lại nằm chồng.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle

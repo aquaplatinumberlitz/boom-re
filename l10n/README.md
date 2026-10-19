@@ -15,6 +15,7 @@ Bản dịch dùng cho engine Rust viết lại (UTF-8, font vector), **không**
 | `review_audit.csv` | đối chiếu trước/sau và quyết định duyệt cho toàn bộ 1.030 dòng review ban đầu, cộng 15 câu hỏi được bản địa hóa |
 | `review_pending.csv` | toàn bộ dòng hiện còn `review`, kèm lý do cụ thể |
 | `quiz_vi.csv` | 15 câu đố chơi chữ Việt, bốn lựa chọn và vị trí đáp án đúng tương ứng câu Hàn |
+| `QUIZ_VI.md` | bản đọc câu đố dân gian ĐBSCL, có lời giải, vùng miền và ghi chú câu phỏng theo |
 | `glossary_seed.csv` | thuật ngữ chốt tay (lấy từ bản VN: XU, VÀNG, BẠC, Siêu thị, Túi đồ, chế độ chơi…) |
 | `glossary.csv` | seed + cặp ngắn rút từ catalog |
 | `images_todo.csv` | ảnh có thể chứa chữ: `pack, entry, kind, size, dims, vn_same_name, reason` |
@@ -143,16 +144,26 @@ nhầm phép nhân thành phép cộng, lấy câu Việt không liên quan tron
 thiếu ngắt dòng, thiếu thẻ font và nhầm đơn vị `개` thành “Chó”. Các tên riêng khác
 không có trong bảng chốt được giữ theo quy tắc phiên âm Latin.
 
-Trong `quiz_vi.csv`, mỗi câu lưu câu Hàn gốc, đáp án Hàn đúng, vị trí từ 1–4 và bộ câu hỏi/
-lựa chọn Việt. Vị trí đúng được xác định từ chính tả chuẩn của phương án Hàn, không đảo
-thứ tự khóa trả lời. Đây là kiểm tra dữ liệu; chưa chạy thử luồng câu đố trong engine.
+Theo yêu cầu mới, bộ câu đố dùng **dân gian ĐBSCL** từ nội dung chủ dự án cung cấp:
+8 câu về sản vật/sông nước, 4 câu đố láy từ và 3 câu đố tục giảng thanh.
+Giữ cách nói như quày cau, dĩa dầu, dầm, cẳng; lời giải đều là sản vật, con vật hoặc
+đồ vật gần gũi. Hai câu về cỏ năng và khô/mắm được thêm vế thơ và ghi rõ “phỏng theo”.
+Không gán phần thêm vào cho nguyên bản dân gian. Các cặp lời giải khô/mắm và dầm/chèo
+được gộp trong cùng một lựa chọn để không có hai đáp án đúng.
+
+Trong `quiz_vi.csv`, mỗi câu lưu câu Hàn gốc, đáp án Hàn đúng, vị trí từ 1–4, bộ câu hỏi/
+lựa chọn Việt, lời giải dự kiến, loại đố, vùng miền và ghi chú nguồn. Bản đọc dễ duyệt
+nằm ở `QUIZ_VI.md`. Vị trí đúng giữ theo phương án Hàn gốc, không đảo thứ tự khóa trả lời.
+Câu thơ có ngắt dòng riêng; bộ kiểm tra cho phép thay ngắt dòng ở nhóm bản địa hóa này,
+nhưng vẫn kiểm tra placeholder, thẻ và nội dung khớp bộ câu đố đã chốt.
+Đây là kiểm tra dữ liệu; chưa chạy thử luồng câu đố và độ vừa khung chữ trong engine.
 Ví dụ:
 
 | Câu hỏi Việt | Đáp án | Vị trí |
 |---|---|---:|
-| Cá gì không sống dưới nước mà ai cũng có? | Cá nhân | 1 |
-| Bàn gì không có chân mà vẫn phân thắng thua? | Bàn thắng | 1 |
-| Bánh gì không ăn được, lại quay trên xe? | Bánh xe | 2 |
+| Giữa lừng trời có vũng nước trong / Cá lòng tong lội không tới. | Trái dừa | 3 |
+| Ghe bầu chìm tại biển Đông / Cái mui nó mất, cái công nó còn. | Con còng | 3 |
+| Vật gì đem cúng ngày rằm / Tụng kinh lầm thầm, búng cánh bay lên. | Bánh cúng | 2 |
 
 23 dòng còn lại nằm trong `review_pending.csv`: 4 dòng có token định dạng bất thường
 (`%일권`, `$s`), 8 dòng có tên/nhãn cần thêm ngữ cảnh, 6 dòng nói méo tiếng hoặc chuỗi phím

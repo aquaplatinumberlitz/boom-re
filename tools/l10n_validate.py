@@ -59,7 +59,12 @@ def main():
         if 'ko_reviewed' in row['notes'].split(';'):
             if row['status'] != 'translated':
                 errors.append(f'{i}: accepted review has wrong status')
-            if reviewed_signature(row['ko']) != reviewed_signature(row['vi']):
+            ko_sig, vi_sig = reviewed_signature(row['ko']), reviewed_signature(row['vi'])
+            # Verse localization can add line breaks; the quiz manifest below checks
+            # the exact authored verse. Keep checking format tokens and markup.
+            if 'quiz_vi_localized' in row['notes'].split(';'):
+                ko_sig, vi_sig = ko_sig[:3] + ko_sig[4:], vi_sig[:3] + vi_sig[4:]
+            if ko_sig != vi_sig:
                 errors.append(f'{i}: reviewed KO placeholders, tags or line endings changed')
         if 'ko_review_pending' in row['notes'].split(';') and row['status'] != 'review':
             errors.append(f'{i}: pending review has wrong status')
@@ -94,6 +99,10 @@ def main():
         options = [question[f'vi_option_{j}'] for j in range(1, 5)]
         if len(set(options)) != 4 or not all(options):
             errors.append(f'{qi}: blank or duplicate choices')
+        if options[correct - 1] != question['vi_correct_answer']:
+            errors.append(f'{qi}: intended Vietnamese solution is in the wrong slot')
+        if not all(question.get(k) for k in ('riddle_type', 'region', 'explanation', 'provenance')):
+            errors.append(f'{qi}: missing folk-riddle context or provenance')
         for j, value in enumerate(options, 1):
             answer = by_id[f'q:CAQuiz_A5_{n}_{j}']
             if answer['vi'] != value or answer['status'] != 'translated':
