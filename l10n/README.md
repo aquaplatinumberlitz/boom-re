@@ -11,7 +11,10 @@ Bản dịch dùng cho engine Rust viết lại (UTF-8, font vector), **không**
 | `catalog.csv` | mỗi chuỗi một dòng: `id, source, ko, vi_base, vi, status, notes` (UTF-8, CSV chuẩn, xuống dòng giữ nguyên trong ô có ngoặc kép) |
 | `tm.csv` | bộ nhớ dịch `ko → vi` (một chuỗi Hàn dịch một lần, dùng cho mọi id trùng chuỗi) |
 | `tm_id.csv` | ghi đè theo `id` (khoá trùng bản VN nhưng nghĩa KR khác…) |
-| `reused_review.csv` | các dòng lấy từ VN cần rà riêng: lệch placeholder/ngắt dòng hoặc nghi khác nghĩa KR; kèm câu Hàn, bản VN gốc và câu sau chỉnh giọng |
+| `reused_review.csv` | các dòng lấy từ VN còn cần rà sau đợt sửa nghĩa mới nhất |
+| `review_audit.csv` | đối chiếu trước/sau và quyết định duyệt cho toàn bộ 1.030 dòng review ban đầu, cộng 15 câu hỏi được bản địa hóa |
+| `review_pending.csv` | toàn bộ dòng hiện còn `review`, kèm lý do cụ thể |
+| `quiz_vi.csv` | 15 câu đố chơi chữ Việt, bốn lựa chọn và vị trí đáp án đúng tương ứng câu Hàn |
 | `glossary_seed.csv` | thuật ngữ chốt tay (lấy từ bản VN: XU, VÀNG, BẠC, Siêu thị, Túi đồ, chế độ chơi…) |
 | `glossary.csv` | seed + cặp ngắn rút từ catalog |
 | `images_todo.csv` | ảnh có thể chứa chữ: `pack, entry, kind, size, dims, vn_same_name, reason` |
@@ -87,6 +90,10 @@ nha/ha/ta (nhé/nhỉ), đó/vậy cuối câu (đấy/thế), lượm (nhặt),
 - Mọi bản dịch được viết tay (đọc và dịch trực tiếp), **không** đổi từ tự động bằng code.
 - Chuỗi `reused` từ bản VN gốc (giọng Bắc) được đọc lại và viết lại giọng Nam trong `tm_id.csv`
   (`notes=nam_bo_rewrite`); cột `vi_base` giữ nguyên văn bản VN để đối chiếu.
+- Sau khi chủ dự án xác nhận bản VN có câu sai nghĩa, đã rà theo **câu Hàn** và sửa trong
+  `tm_id.csv` (`ko_reviewed`). Các câu này có thể khác ý bản VN cũ; `vi_base` vẫn giữ nguyên.
+- Theo yêu cầu mới, câu đố chính tả/chơi chữ Hàn được thay đồng bộ bằng câu đố chơi chữ Việt,
+  giữ nguyên ID và vị trí lựa chọn đúng (`quiz_vi_localized`).
 
 ## 3. Ảnh có chữ (`images_todo.csv`)
 
@@ -112,39 +119,57 @@ Không dùng `.fft` bitmap cũ (`CxUni*.fft`, `CxDefault.fft`). Đề xuất (OF
 
 ## 5. Thống kê
 
-Cập nhật 2026-10-19, sau H000–H041 và R000–R014:
+Cập nhật 2026-10-19, sau lượt đối chiếu và sửa nghĩa theo câu Hàn:
 
 | Trạng thái | Số dòng |
 |---|---:|
 | Tổng | 25.257 |
-| `translated` | 20.414 |
+| `translated` | 21.421 |
 | `reused` | 3.813 |
-| `review` | 1.030 |
+| `review` | 23 |
 | `untranslated` | 0 |
 
-Đã xử lý đủ 4.356 ID trong 15 đợt chuyển giọng R000–R014, gồm cả các dòng bị loại ở lần nhập trước.
-1.035 câu có ghi đè `nam_bo_rewrite` trong `tm_id.csv`; câu đã phù hợp giữ nguyên.
-`vi_base` và câu Hàn giữ nguyên theo cache nguồn, kể cả ký tự CR/LF.
-Các câu được đọc và viết lại riêng; code chỉ ghép kết quả theo ID và kiểm tra, không thay từ tự động.
+Đã rà toàn bộ **1.030 dòng review** của đợt trước: 1.007 dòng đã được chốt, 23 dòng
+còn cần thêm ngữ cảnh hoặc xử lý dữ liệu nguồn. Đồng thời bản địa hóa thêm 15 câu hỏi
+để khớp với 60 phương án chính tả tiếng Hàn, thành **15 câu đố chơi chữ tiếng Việt**.
 
-Số `review` tăng từ 487 lên 1.030 vì đánh dấu thêm 543 dòng lấy từ bản VN:
-313 dòng lệch placeholder/ngắt dòng so với KR và 230 dòng cần đối chiếu nghĩa
-(đặc biệt các nhóm NPpen22–NPpen27). Đây là vấn đề có sẵn trong bản VN; phần chuyển giọng
-giữ ý bản VN, chưa dịch lại các nhóm này. Danh sách cụ thể nằm trong `reused_review.csv`.
-Một số kết quả R000–R005 đã sửa nghĩa trước khi tiếp quản (ví dụ “Ta sẽ đối đầu”)
-được giữ lại; thống kê này không khẳng định mọi câu đã được duyệt nghĩa.
+`review_audit.csv` ghi đủ 1.045 dòng được xử lý, trong đó 746 dòng đổi nội dung hoặc
+định dạng và 299 dòng giữ nguyên văn bản sau kiểm tra. Mọi câu Hàn và `vi_base` giữ nguyên
+so với nguồn, kể cả CR/LF. Không thay từ tự động bằng code; code chỉ nhập các quyết định
+viết riêng theo câu, phục hồi kiểu ngắt dòng nguồn, xuất báo cáo và kiểm tra.
 
-Ba tên AI đã chốt vẫn dùng đúng: **Chiến binh huyền thoại**, **White Angel**, **Mister Fortune**;
-các tên này đã có trong prompt H. Tên cá đã dịch ở H032 giữ nguyên.
+Các lỗi đã sửa gồm: đảo chủ thể thắng/thua, nhầm bị phản bội thành phản bội người khác,
+nhầm phép nhân thành phép cộng, lấy câu Việt không liên quan trong NPpen22–NPpen27,
+thiếu ngắt dòng, thiếu thẻ font và nhầm đơn vị `개` thành “Chó”. Các tên riêng khác
+không có trong bảng chốt được giữ theo quy tắc phiên âm Latin.
 
-Kiểm tra lại từ gốc repo:
+Trong `quiz_vi.csv`, mỗi câu lưu câu Hàn gốc, đáp án Hàn đúng, vị trí từ 1–4 và bộ câu hỏi/
+lựa chọn Việt. Vị trí đúng được xác định từ chính tả chuẩn của phương án Hàn, không đảo
+thứ tự khóa trả lời. Đây là kiểm tra dữ liệu; chưa chạy thử luồng câu đố trong engine.
+Ví dụ:
+
+| Câu hỏi Việt | Đáp án | Vị trí |
+|---|---|---:|
+| Cá gì không sống dưới nước mà ai cũng có? | Cá nhân | 1 |
+| Bàn gì không có chân mà vẫn phân thắng thua? | Bàn thắng | 1 |
+| Bánh gì không ăn được, lại quay trên xe? | Bánh xe | 2 |
+
+23 dòng còn lại nằm trong `review_pending.csv`: 4 dòng có token định dạng bất thường
+(`%일권`, `$s`), 8 dòng có tên/nhãn cần thêm ngữ cảnh, 6 dòng nói méo tiếng hoặc chuỗi phím
+vô nghĩa, 1 dòng lẫn khoá tài nguyên vào lời thoại, 2 chuỗi exe nghi giải mã sai và
+2 khối điều khoản/thông báo dữ liệu cũ cần thay bằng nội dung của dự án.
+Không chốt các dòng này chỉ để đưa số review về 0.
+
+Ba tên AI vẫn dùng đúng: **Chiến binh huyền thoại**, **White Angel**, **Mister Fortune**.
+Tên cá ở H032 giữ nguyên. Phần ảnh vẫn chỉ được liệt kê, chưa Việt hóa.
+
+Kiểm tra từ gốc repo:
 
 ```sh
 python3 tools/l10n_extract.py catalog
 python3 tools/l10n_validate.py
 ```
 
-Bộ kiểm tra đối chiếu ID, câu Hàn và `vi_base` với cache nguồn; kiểm tra ghi đè,
-placeholder/thứ tự printf/ngắt dòng của các câu chuyển giọng so với `vi_base`,
-ba tên AI và từ cấm trên toàn catalog. Kết quả cuối: **0 lỗi kiểm tra, 0 từ cấm**.
-Các khác biệt KR/VN được đánh dấu `review` vẫn cần rà nội dung riêng.
+Bộ kiểm tra đối chiếu toàn bộ ID, câu Hàn và `vi_base` với cache nguồn; kiểm tra ghi đè,
+placeholder/thứ tự printf/thẻ font/ngắt dòng của các câu đã duyệt theo câu Hàn,
+ba tên AI, từ cấm, bộ câu đố và báo cáo review. Kết quả: **0 lỗi kiểm tra, 0 từ cấm**.
