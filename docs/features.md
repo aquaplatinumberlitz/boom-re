@@ -194,6 +194,11 @@ Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 6. **F11** `0x736C27`: kiểm thêm map/loại phòng khác (20/33) — với Village01/phòng 19 skip đã chứng minh tương đương.
 7. Các mode F13–F20: chỉ làm khi map/mode tương ứng được mở.
 
+## Kế hoạch viết lại (Rust)
+
+Port full feature theo đợt W1–W4 và quyết định PORT/REDESIGN/DROP cho từng opcode: `docs/REWRITE_PLAN.md` §9
+(danh mục chi tiết sẽ ở `docs/spec/feature-catalog.md`).
+
 ## Cách cập nhật checklist này
 
 ```bash

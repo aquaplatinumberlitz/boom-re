@@ -3,7 +3,9 @@
 > Trạng thái: **ĐỀ XUẤT (2026-10-19)**. Bổ sung cho `docs/MASTER_PLAN.md` (kế hoạch RE/bảo tồn);
 > tài liệu này chi tiết hoá nhóm PORT-* thành kế hoạch viết lại cụ thể.
 > Quy ước tag giống `docs/MASTER_PLAN.md`: **[VERIFIED]** đã kiểm trong repo, **[DOC]** theo tài liệu sẵn có,
-> **[HYPOTHESIS]** giả thuyết, **[UNKNOWN]** chưa biết.
+> **[HYPOTHESIS]** giả thuyết, **[UNKNOWN]** chưa biết. Thêm hai tag cho dữ liệu phía server (§9):
+> **[ARCHIVE]** lấy từ tài liệu lưu trữ trên mạng (ghi URL + ngày truy cập + phiên bản game),
+> **[DESIGN]** tự thiết kế, không có nguồn gốc (designer duyệt).
 
 ## 0. Bối cảnh & quyết định
 
@@ -18,6 +20,10 @@ Quyết định đã chốt (2026-10-19):
 | Nền tảng | Desktop: Windows / Linux / macOS |
 | Hiển thị | **Pixel-perfect**: render đúng độ phân giải gốc vào framebuffer, phóng to nguyên lần; có chế độ "gốc 100%" để so sánh |
 | Release 1 | Trận đấu (chế độ chính) + kênh/sảnh/phòng chờ + online. Shop/túi đồ/guild/sự kiện để sau |
+| Full feature | Có: port toàn bộ tính năng client cũ theo các đợt W1–W4 (§9) |
+| Logic server gốc | **Không còn.** Thiết kế lại: `Attr/*` trong client → tài liệu lưu trữ trên mạng (wiki KR, fan site…) → designer quyết |
+| Nhân lực | Đội **3–5 người**, 4 luồng song song |
+| Cash/nạp tiền thật | **Để sau.** Chỉ làm tiền ảo trong game |
 
 ## 1. Kết luận khả thi
 
@@ -143,7 +149,13 @@ Stack mỏng (winit/wgpu/kira) ít "phép thuật", dễ tất định, dễ deb
 
 ## 6. Lộ trình
 
-Mỗi pha có exit criteria đo được. Ước lượng cho 1–2 người toàn thời gian; đây là con số định hướng, chưa phải cam kết.
+Mỗi pha có exit criteria đo được. Ước lượng ghi theo công 1–2 người cho từng pha; đây là con số định hướng, chưa phải cam kết.
+
+Đội 3–5 người chia 4 luồng chạy song song:
+- **RE/Oracle**: R1, rồi cấp hằng số và trace cho mọi pha sau;
+- **Core/Server**: R2, R4, R5;
+- **Client/Render/UI**: R0 (`boom-assets`), R3, R6;
+- **Backend/Data**: giao thức v2, persistence, chuẩn bị §9.
 
 | Pha | Mục tiêu | Exit criteria | Ước lượng |
 |---|---|---|---|
@@ -156,11 +168,9 @@ Mỗi pha có exit criteria đo được. Ước lượng cho 1–2 người to�
 | **R6** UI ngoài trận | Login, kênh, sảnh, phòng chờ bằng skin gốc | Ảnh từng màn khớp gốc theo Fidelity Spec | 4–6 tuần |
 | **R7** QA & phát hành | Playtest A/B mù với người chơi cũ, sửa lệch, build 3 OS | Đạt toàn bộ §2 | 3–4 tuần |
 
-**Tổng Release 1: khoảng 8–12 tháng.**
+**Tổng Release 1: khoảng 6–8 tháng với đội 3–5 người** (khoảng 8–12 tháng nếu chỉ 1–2 người).
 
-Sau Release 1, theo thứ tự trong `docs/features.md`:
-- các chế độ đặc biệt F13–F21 (HiddenCatch, SnowBear, SnowBall, Boss, RPG, Zombie, AI quái…);
-- shop, túi đồ, guild, sự kiện.
+Sau Release 1: port full feature theo các đợt W1–W4, xem §9.
 
 ## 7. Rủi ro & giảm thiểu
 
@@ -172,6 +182,8 @@ Sau Release 1, theo thứ tự trong `docs/features.md`:
 | Font `.fft`, video Bink (`nm.bik`) | Thấp–TB | RE format font; chuyển video offline sang định dạng mở |
 | Server-authoritative làm lệch cảm giác khi ping cao | Trung bình | Prediction + rollback; đo input latency trong oracle |
 | Phạm vi phình to | Cao | Khóa phạm vi Release 1; tính năng mới phải có dòng trong `docs/features.md` và được duyệt |
+| Logic server không RE được → lệch "cảm giác kinh tế" (giá, drop, exp) | Cao | Lấy tối đa từ `Attr/*`; đối chiếu [ARCHIVE]; số [DESIGN] cho playtest với người chơi cũ |
+| Nguồn [ARCHIVE] sai hoặc thuộc phiên bản khác (KR/VN, mùa khác) | Trung bình | Luôn ghi phiên bản + ngày; cần ≥ 2 nguồn độc lập hoặc khớp với ảnh chụp/video gốc |
 | Pháp lý asset/IP | Cao | Xác nhận bằng văn bản quyền sử dụng/công khai trước khi public repo hoặc phát hành |
 
 ## 8. Việc làm ngay
@@ -180,3 +192,90 @@ Sau Release 1, theo thứ tự trong `docs/features.md`:
 - [ ] **R0-001**: tạo workspace, chuyển `server/` thành `crates/boom-server` (giữ `server/tests/golden.rs`, `server/tests/bomb.rs` xanh).
 - [ ] **R0-002**: port `tools/idf.py` + `tools/i16.py` sang `boom-assets`; test hash khớp bản Python.
 - [ ] **R1-002**: script gdb tracer bomber + bom; trace đầu tiên "đi thẳng + đặt 1 bom".
+- [ ] **FF-001**: mở rộng `tools/feature_stats.py` sinh `docs/spec/feature-catalog.md` (520 opcode → ID tính năng + PORT/REDESIGN/DROP).
+
+## 9. Port full feature (sau Release 1)
+
+### 9.1 Hai loại tính năng
+
+| Loại | Ví dụ | Nguồn sự thật | Chuẩn "giống gốc" |
+|---|---|---|---|
+| **Phía client** | UI, dialog, hiệu ứng, animation, luật trong trận, chế độ chơi | Client gốc: RE được | Fidelity Spec §2: khớp pixel, khớp tick |
+| **Phía server** | giá shop, tỉ lệ drop/gacha, bảng exp, thưởng quest, luật guild, chợ | Server gốc đã mất; client chỉ cho thấy **giao diện và gói tin** | **Giống những gì người chơi nhìn thấy**, không phải giống từng dòng code server |
+
+Nguồn dữ liệu phía server, theo thứ tự ưu tiên:
+1. bảng `Attr/*` trong client (ItemAttr, BomberAttr, MapGroup…, `docs/items.md`, `docs/map.md`) **[DOC]**;
+2. tài liệu lưu trữ trên mạng: wiki KR (Namuwiki…), fan site, video/ảnh chụp cũ **[ARCHIVE]**;
+3. phần còn thiếu do game designer quyết **[DESIGN]**.
+
+### 9.2 Danh mục tính năng đầy đủ: `docs/spec/feature-catalog.md` (đề xuất)
+
+- Sinh tự động bằng cách mở rộng `tools/feature_stats.py`, đọc:
+  - `decomp/opcode_dispatch.json` (520 opcode, 59 dispatcher);
+  - `decomp/ida_names.json` (class, dialog);
+  - danh sách dialog trong `ca_strings.txt`.
+- **Mọi opcode phải gắn với một ID tính năng** (A–H trong `docs/features.md`) và một quyết định:
+  - `PORT`: làm lại giống gốc;
+  - `REDESIGN`: giữ tính năng, đổi cơ chế;
+  - `DROP`: bỏ, kèm lý do.
+- Chỉ số tiến độ: `opcode đã quyết định / 520` và `tính năng PORT xong / tổng`.
+- `docs/features.md` sẽ có thêm cột "Rewrite".
+
+Quyết định sơ bộ:
+
+| Quyết định | Tính năng | Lý do |
+|---|---|---|
+| DROP | A7 renderer DDraw7/D3D7 | Có renderer wgpu |
+| DROP | A3, A14, B13 (anti-cheat, Themida, báo cáo 141/142) | Server-authoritative thay thế |
+| DROP | C5 `CLoginStageChina` | Nếu xác nhận không thuộc bản VN |
+| REDESIGN | B8, C7 (endpoint launcher/multisvr) | Thay bằng chọn server của giao thức v2 |
+| REDESIGN | A8 cửa sổ web trong game (`CWebWnd`) | UI native hoặc mở trình duyệt ngoài |
+| REDESIGN | G4 cash/nạp tiền | Để sau; trước mắt chỉ tiền ảo |
+
+### 9.3 Quy trình port một tính năng (Feature Playbook)
+
+Áp dụng giống nhau cho mọi tính năng:
+
+1. **RE client**:
+   - đọc handler trong `decomp/handlers/*.c` (ví dụ `CShopStageNew.c`, `CChatStage.c`, `CExchangeStage.c`, `CUserMarketStage.c`);
+   - xác định định dạng gói S→C/C→S và các dialog liên quan.
+2. **Làm hiện màn hình trên client gốc**:
+   - mở rộng `tools/fakeserver.py` để gửi dữ liệu mẫu, cho client gốc hiển thị màn hình hoặc dialog đó;
+   - chụp ảnh chuẩn (`tools/snapdiff.py`), dùng làm golden cho UI mới.
+3. **Viết spec** `docs/spec/features/<ID>.md`:
+   - luồng màn hình, trạng thái, thông điệp;
+   - mỗi số liệu có tag `[DOC]`, `[ARCHIVE]` hoặc `[DESIGN]`.
+4. **Backend**: model dữ liệu và logic trong `boom-server` (§9.4), thông điệp mới trong `boom-proto` (v2).
+5. **UI**: dựng màn trong `boom-ui` bằng skin gốc; so ảnh với golden ở bước 2.
+6. **Test**: unit test logic, test tích hợp client ↔ server, golden ảnh. Cập nhật `feature-catalog.md` và `docs/features.md`.
+
+### 9.4 Backend cần thêm
+
+- **Lưu dữ liệu**: PostgreSQL (production) qua `sqlx`, có migration; SQLite cho dev và test.
+- **Tài khoản**: đăng ký, đổi mật khẩu (C6), phiên đăng nhập.
+- **Kinh tế ảo**:
+  - ví tiền trong game;
+  - **sổ cái giao dịch (ledger) bất biến**: mọi mua bán, trao đổi, chợ đều là giao dịch nguyên tử;
+  - chống nhân bản đồ (dupe).
+- **Dữ liệu cân bằng** (giá, drop, exp, gacha, quest) trong file cấu hình (RON/TOML) có version, không hardcode. Designer chỉnh không cần build lại.
+- **Công cụ vận hành (admin)**: tra cứu người chơi, cấp/thu đồ, xem log, khoá tài khoản.
+- **Kiểm duyệt**: lọc chat, báo cáo người chơi (D1, D2).
+
+### 9.5 Các đợt sau Release 1 (đội 3–5 người)
+
+| Đợt | Nội dung (ID trong `docs/features.md`) | Ước lượng |
+|---|---|---|
+| **W1 Xã hội** | chat phòng/kênh, whisper (D1, D2: `CChatStage` 21, `CChattingStage` 17 opcode); bạn bè (D3); thư (D7); ranking (G8); kick/chủ phòng/tuỳ chọn phòng (E9); sẵn sàng/đội/nhân vật (E12) | 2–3 tháng |
+| **W2 Tiến trình & kinh tế** | level/exp (G7); túi đồ/trang bị (G3); trang phục `CharTE`, biểu cảm `EmoTE` (H4, H5); shop + mua đồ (G1, G2: `CShopStageNew`, `CBuyItemListDlg`); quest (G6: `CGOLobbySquareQuestNpc`); trao đổi (D4: `CExchangeStage` 16 opcode); chợ người chơi (D5: `CUserMarketStage` 13 opcode); khoá đồ, mật khẩu cấp 2 (`CSecondaryPwdConfig`, `CChangeItemPasswordDlg`) | 4–5 tháng |
+| **W3 Chế độ chơi** | HiddenCatch (F13, E10); SnowBear (F14); SnowBall (F15); MonSeason2 (F16); IamBoss (F17); RPG (F18); Fighter of Legend (F19); Zombie (F20); AI NPC/quái (F21); script map `csys*` (H6). Tất cả theo Fidelity Spec + oracle như trận thường | 4–6 tháng (song song W2) |
+| **W4 Live-ops** | guild/clan (D6); event/season (G9); gacha/rương (G5) bằng tiền ảo; công cụ admin đầy đủ | 2–3 tháng |
+| sau | cash/nạp tiền thật (G4): workstream riêng về thanh toán và tuân thủ | — |
+
+**Tổng (3–5 người):** Release 1 khoảng 6–8 tháng; full feature thêm khoảng **10–14 tháng** (W2 song song W3).
+Tổng cộng khoảng **1,5–2 năm**.
+
+### 9.6 Định nghĩa "full feature xong"
+
+- 520/520 opcode đã có quyết định PORT, REDESIGN hoặc DROP; mọi PORT có test.
+- Mọi dialog/màn hình PORT có golden ảnh so với client gốc.
+- Mọi số liệu kinh tế có tag nguồn; mọi số [DESIGN] được designer duyệt và đã qua playtest.
