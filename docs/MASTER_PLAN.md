@@ -167,6 +167,8 @@ Effort S/M/L/XL (relative, not calendar); priority P0–P3.
 
 ### 6.4 Port & remaster
 
+> Detailed Rust rewrite plan (fidelity spec, Feel Oracle, crate layout, R0–R7 roadmap): `docs/REWRITE_PLAN.md`.
+
 | ID | Objective | Deliverable | Eff | Pri |
 |---|---|---|---|---|
 | PORT-001 | Canonical English protocol spec merging `protocol.md`, `oc_*`, `server/` | `docs/spec/protocol.md` + machine-readable opcode table | L | P1 |
