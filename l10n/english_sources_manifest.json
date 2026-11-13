@@ -1,0 +1,52 @@
+{
+  "client": "PopTag 0.7.8",
+  "matching": "ID chính xác hoặc casefold duy nhất; tất cả là ứng viên, không chọn biến thể mâu thuẫn",
+  "sha256": {
+    "csysstr.ssd": "b89ae91020e3829392b4cacb4f5d9ee0adec8a45d63378f8c6fbec441db72fa4",
+    "fx.idx": "7283cfa54c0cdf62a3175e092c03fa21548b5f6fc7f8f21932562fd98921bc69",
+    "fx.idd": "b7e43fcbff554298f944b0ce307170436a4bfbb7e40714cf31062af0d396f2f1",
+    "fxdynmapinfo.ssd": "0a706f7216ccfa3ccae20054fef785d22e81aa4e4537ce870f31e0b74c58893d",
+    "fxstock.ini": "6ec62acd694487adea7007a5e9e721d54595faf750585ab1a5ac23257ad65e75",
+    "channel2_000.ssd": "39b344744c0bf73b627b61f1e32a85b35d676a4d4997a4aa3f5afdf6156d3021",
+    "clientextensions/swish/swish.idx": "38dfe7a3f237bfa9aff95b96374adc4a7aa2a590c93712d911b81d0927c8e53f",
+    "clientextensions/swish/swish.idd": "760bd0c23e9512e9dd7e0cf2ff95d04d5625e28fa6dff9ed55b8e3d140c275b9"
+  },
+  "catalog_kr_sha256": "94a7723331c81385769a268bc7ddca0454eecc23f20ecd80b8ae423a6fd0d2a6",
+  "english_raw_records": 7750,
+  "english_unique_ids": 7454,
+  "english_variants": 7556,
+  "english_only_ids": 1270,
+  "swish_count": 61,
+  "stock_rows": 59,
+  "stock_status": {
+    "icon_kind_candidate_review": 59
+  },
+  "stock_unique_poptag_ids": 28,
+  "image_rows": 1187,
+  "image_comparison": {
+    "different": 576,
+    "same": 611
+  },
+  "kr_stock_sha256": {
+    "fxstock0.ini": "b037d12339e21b0688867a22ac3baf6255110917bfb06257cb4304ab5bdf8756",
+    "fxstock1.ini": "7d918d23d203022d1007e3dded5e65d211e8684460e7374aad7d95cbee4ac702",
+    "fxstock2.ini": "3766979ae99ed4d1f96f1fbd36cbe7c44d5452f62618a4fafe58aaa4ddc9e06b",
+    "fxstock3.ini": "38fc79e6a3c8db6115ceb115c39548c5d24d9b021fc85bf4d7d4d60312d03bd0"
+  },
+  "kr_stock_related_sha256": {
+    "fxstovi.ini": "0595bb882b330d737d3939fb820d43a7a6645e00272d655807efd617778d2678",
+    "fxstovs.ini": "339953d21673df86df3c4d70d6d0ee56ec29d5a5528d01ff51b26867de691c7a"
+  },
+  "images_todo_sha256": "d52542692047b54d977d0bfc9213ff05e399be7d8e816c1d56d406f54a57a21a",
+  "catalog_rows": 33486,
+  "status": {
+    "candidate": 6082,
+    "conflicting_variants": 106,
+    "machine": 26133,
+    "casefold_candidate": 199,
+    "machine_review": 97,
+    "missing": 826,
+    "stock_icon_candidate": 43
+  },
+  "format_mismatch": 61
+}

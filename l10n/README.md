@@ -1,7 +1,7 @@
 # Việt hoá chữ của Boom Online KR (cho engine Rust viết lại)
 
 Mục tiêu: toàn bộ chữ của bản KR (patch Nexon 00967, 13 pack) sang tiếng Việt, dùng lại bản dịch có sẵn của bản VN.
-Bản dịch dùng cho engine Rust viết lại (UTF-8, font vector), **không** patch vào client cũ.
+Catalog ban đầu dùng cho engine Rust viết lại (UTF-8, font vector). Công cụ ghi thử client gốc được mô tả ở cuối tài liệu; chưa nghiệm thu trên client.
 Ảnh nghi có chữ được thống kê (`images_todo.csv`) và có trang duyệt KR/VN;
 chưa vẽ lại hoặc Việt hóa ảnh. Xem hướng dẫn duyệt ảnh (`/home/admin/boom-rs/docs/specification/localization/IMAGE_REVIEW.md`).
 
@@ -10,6 +10,7 @@ chưa vẽ lại hoặc Việt hóa ảnh. Xem hướng dẫn duyệt ảnh (`/h
 | File | Nội dung |
 |---|---|
 | `catalog.csv` | mỗi chuỗi một dòng: `id, source, ko, vi_base, vi, status, notes` (UTF-8, CSV chuẩn, xuống dòng giữ nguyên trong ô có ngoặc kép) |
+| `design_rows.csv` | 64 dòng nguồn design thêm ngoài cache trích; giữ đủ các trường gốc |
 | `tm.csv` | bộ nhớ dịch `ko → vi` (một chuỗi Hàn dịch một lần, dùng cho mọi id trùng chuỗi) |
 | `tm_id.csv` | ghi đè theo `id` (khoá trùng bản VN nhưng nghĩa KR khác…) |
 | `reused_review.csv` | các dòng lấy từ VN còn cần rà sau đợt sửa nghĩa mới nhất |
@@ -43,7 +44,7 @@ Khoá pack: VN dùng `idf.KEYS`; KR dùng **khoá tự thân** = dword đầu `.
 
 | Nguồn | Định dạng | Số chuỗi | Tag |
 |---|---|---|---|
-| `csysstr.ssd` (thư mục game) | `.ssd`: `"ssi1"`, u32 ?, u8 `0x18`, u32 comp_len, u32 raw_len @14, **zlib từ offset 0x12**. Raw: `u16 count`, count × (`u32 len + key cp949`, `u32 len + value cp949`). Là cache của FxClientString (S->C 2) | 8.442 | [VERIFIED] parse vừa khít, raw_len khớp |
+| `csysstr.ssd` (thư mục game) | `.ssd`: `"ssi1"`, u32 ?, u8 `0x18`, u32 block_len @9 = file_size − 13, cờ @13, u32 raw_len @14, **zlib từ offset 0x12**. Raw: `u16 count`, count × (`u32 len + key cp949`, `u32 len + value cp949`). Là cache của FxClientString (S->C 2) | 8.442 | [VERIFIED] parse vừa khít, raw_len khớp |
 | `FxDesktop/ClientData/ClientString` | `u32 len` + XML cp949 `<Elem><LangID>1042</LangID><key/><string/></Elem>` | 6.993 | [VERIFIED] |
 | `csysqstr.ssd` | như csysstr (FxQuestString, S->C 12); cặp đầu có key rỗng | 7.845 | [VERIFIED] vừa khít |
 | `csysfxmg.ssd` | raw: `u16 count`, count × (`u8 kind`, `u32 len + text`); tip hiển thị, có `{ComponentType\|N}` | 31 | [VERIFIED] vừa khít |
@@ -64,6 +65,8 @@ Không phải chữ hiển thị (bỏ qua): `Attr/*` (chỉ đường dẫn res
 `MapScriptTemplate/*` (chỉ comment dev + 1 file test), `Pet/*`, `MotionBlur/*` (comment), `RPG/SkillTable`,
 `SandBox/GadgetTable` (comment `#`), `fxstagemap.ssd`, `fxdynimginfo.ssd` (đường dẫn ảnh), `Etc/FxLang`
 (bảng `ISTF`, giống hệt VN, chưa giải – [HYPOTHESIS] bảng IME/ngôn ngữ), `filterstr.ssd` (danh sách từ cấm, không dịch).
+
+| `fxstock0.ini`–`fxstock3.ini` | 8.165 record, tên cp949; ID catalog `stock:<id số>` ổn định theo record stock KR | [VERIFIED] đọc đúng hết bốn file; tên trùng theo ID khác nhau được giữ từng dòng, bản dịch tra `tm.csv` theo nguyên văn |
 
 ### VN (nguồn `vi_base`)
 
@@ -209,3 +212,128 @@ python3 tools/l10n_validate.py
 Bộ kiểm tra đối chiếu toàn bộ ID, câu Hàn và `vi_base` với cache nguồn; kiểm tra ghi đè,
 placeholder/thứ tự printf/thẻ font/ngắt dòng của các câu đã duyệt theo câu Hàn,
 ba tên AI, từ cấm, bộ câu đố và báo cáo review. Kết quả: **0 lỗi kiểm tra, 0 từ cấm**.
+
+## 6. Nguồn tiếng Anh PopTag 0.7.8
+
+`catalog_en.csv` là bản ghép **ứng viên**, giữ nguyên từng dòng Hàn–Việt và trạng thái Việt trong
+`catalog.csv`. Các cột bổ sung là `en`, `source_en`, `en_status`, `en_notes`. Ghép theo ID chính
+xác không chứng minh nghĩa hoặc giao diện hai phiên bản tương đương; mọi bản Anh đều cần duyệt.
+Không dùng trực tiếp làm bản vá client. Hai dòng Lua trong catalog gốc có cùng ID được giữ nguyên.
+
+- `candidate`: có một giá trị nguồn cho ID. `format_mismatch` cảnh báo thứ tự/loại printf,
+  placeholder `{...}` hoặc tag khác tiếng Hàn; kết quả chỉ là kiểm tra sơ bộ.
+- `casefold_candidate`: không có ID khớp chính xác và có đúng một ID PopTag khớp khi bỏ
+  phân biệt hoa/thường; `en_notes` ghi ID gốc và cảnh báo định dạng nếu có. Vẫn cần duyệt nghĩa.
+- `conflicting_variants`: có nhiều giá trị tiếng Anh khác nhau hoặc nhiều ID PopTag khớp khi
+  bỏ phân biệt hoa/thường. Cột `en` để trống;
+  xem mọi biến thể và nguồn của chúng trong `english_sources.csv` trước khi quyết định.
+- `machine`: bản dịch theo câu Hàn trong `tm_en.csv`; `machine_review` có cờ bàn giao, bản rỗng hoặc sai định dạng, chưa dùng để dựng.
+- `missing`: chưa tìm thấy bản Anh theo đúng ID hoặc bộ nhớ dịch; không phải khẳng định bản dịch không tồn tại.
+- `english_sources.csv` cũng giữ các ID chỉ có trong PopTag, không tự gán sang KR.
+- `english_sources_manifest.json` ghi SHA-256 của các file nguồn, catalog gốc và thống kê.
+
+Nguồn đã trích gồm cache `csysstr.ssd`, `fx/ClientData/ClientString` (LangID 1033) tên
+hiển thị trong `fxdynmapinfo.ssd`, 610 tên stock từ `fxstock.ini` và năm tên kênh từ
+`channel2_000.ssd`. Tên stock dùng tiền tố `poptag:stock:`; số lượng khớp count nhưng chỉ
+trích theo cấu trúc header, chưa giải toàn bộ record hoặc đối chiếu ID KR. Tên kênh dùng
+`poptag:channel:` vì số thứ tự không chứng minh đồng nhất với kênh KR. JSON `Swish/Catalog`
+đóng góp 61 tên hiệu ứng với tiền tố `poptag:swish:`, không ghép KR. Các chuỗi viết cứng
+trong `poptagdll.dll` chưa được trích. Những nguồn khác như ảnh, chuỗi do server gửi, quest,
+script và chữ trong exe chưa được kiểm kê đầy đủ. File Help trong pack PopTag đã xem vẫn có
+chữ Hàn, nên không giả định mọi thứ trong client này đều là tiếng Anh. Các tên map trùng
+ID cũng chỉ là ứng viên: cùng tên nội bộ có thể đổi nội dung theo bản game.
+
+Sau khi giải nén bộ cài PopTag ra một thư mục riêng, tái tạo bằng:
+
+```sh
+python3 tools/l10n_extract_en.py --client /duong/dan/client-poptag
+```
+
+Không sửa `catalog.csv`, `tm.csv`, `tm_id.csv` hoặc client nguồn. Để ghi sang thư mục khác,
+thêm `--out /duong/dan/thu-muc`; muốn đối chiếu catalog khác dùng `--catalog /duong/dan/catalog.csv`.
+
+Rà bổ sung: quét 538 entry `Map/` trong toàn bộ index PopTag đọc được; bộ đọc `map_says`
+nhận 44.012 tham chiếu không rỗng, gồm 42.222 khớp chính xác ID trong bảng nguồn, 37 giá trị
+có chữ Hàn và 1.753 lượt chưa khớp (471 giá trị khác nhau, 348 trong đó có ID cùng chữ khi
+không phân biệt hoa/thường). Đây là tham chiếu, không tự coi là câu dịch; ghép không phân biệt
+hoa/thường cần kiểm tra trùng và ngữ cảnh. Trong `clientextensions/custommap`, các mô tả trùng
+2.174 ID catalog KR đã xem vẫn là tiếng Hàn, không đưa vào cột Anh. Kết quả quét không khẳng
+định đã bao phủ mọi đoạn text nhúng, ảnh hoặc chuỗi được tải lúc chạy.
+
+### Đối chiếu ảnh và stock
+
+`images_en_candidates.csv` giữ các cột gốc trong `images_todo.csv` cho 1.187 mục trùng tên.
+Cột `comparison` là so byte payload sau giải mã pack: 611 mục có ít nhất một bản giống,
+576 mục khác. `kr_sizes` là danh sách kích thước mọi ảnh con; `kr_frames` là số frame.
+`poptag_details` là JSON giữ từng pack và entry PopTag, kích thước mọi ảnh con, số frame,
+so byte và kết quả so kích thước/số frame. Có một mục trùng tên trong nhiều pack nên phải
+xem từng kết quả trong JSON. Trùng tên, khác byte hay khớp kích thước không chứng minh ảnh
+có chữ Anh hoặc có thể thay vào client KR.
+
+`stock_names_en.csv` ghép theo ID số và giữ tên, loại, icon, file và offset KR. Bốn file
+`fxstock0.ini`–`fxstock3.ini` có 8.165 record, đều được đọc tới đúng cuối dữ liệu giải nén.
+`fxstovi.ini` và `fxstovs.ini` chứa record số; chưa thấy tên trong mẫu đã đọc. So tên nguyên
+văn thấy 588 record stock KR, gồm 155 tên khác nhau, trùng chữ Hàn của một hoặc nhiều dòng
+trong catalog, nhưng trùng chữ không chứng minh ID catalog là ID vật phẩm.
+
+Trong 610 tên stock PopTag, có 113 ID số trùng KR. Kiểm toàn bộ 113 cặp: **0/113** khớp
+đồng thời loại và đường dẫn icon (cả hai trường đều khác trong cả 113 cặp). Các dòng này
+không dùng làm bản dịch. Các phép ghép chỉ theo ID số đã được loại khỏi file ứng viên; so
+loại/icon là kiểm chứng tĩnh và không chứng minh đầy đủ ngữ nghĩa vật phẩm.
+
+## 7. Stock KR và bản dựng thử cho client gốc
+
+Bốn file stock KR có 8.165 ID, 4.968 tên nguyên văn (4.967 sau bỏ khoảng trắng đầu/cuối).
+Catalog stock có 8.140 dòng `translated`, 25 dòng `review` do cờ bàn giao; không còn dòng stock `untranslated`. Đã nhập nguyên văn 4.675 cặp Hàn–Việt từ bàn giao vào `tm.csv`. `design_rows.csv` lưu 64 dòng nguồn design thiếu trong cache cũ;
+`sources` nạp lại các dòng này cùng stock. Kiểm tra so từng trường xác nhận 25.321 dòng
+gốc không đổi. `review_pending.csv` được sinh lại từ catalog. Validator chạy hết, 0 lỗi.
+49 tên stock ban đầu bị quy tắc miền Nam gắn cờ (`mũ`, `mày`, `cửa hàng`) đã được sửa trong `tm.csv` (Mũ → Nón, ăn mày → ăn xin, cửa hàng → tiệm); validator không còn coi "lông mày", "chân mày" là đại từ `mày`.
+
+Nguồn VN đã tìm trong mã server boom-re/boom-re-l10n và file cache
+`boom-re/wine/Boom/fxstock.ini`: server và cache chỉ có hai mục giả `Test A`, `Test B`,
+không có bộ tên VN kèm loại/icon đáng tin. Không gán `vi_base` từ nguồn này. So PopTag
+theo loại và icon cho 365/610 ID PopTag ít nhất một ứng viên KR, tổng 235.132 cặp do
+nhiều stock dùng chung icon. Chỉ 28 ID PopTag có kết quả quy về đúng một tên KR: 59 cặp
+được giữ trong `stock_names_en.csv` (~28 KiB). Trong catalog Anh, 43 dòng có trạng thái
+`stock_icon_candidate`, bốn dòng có nhiều bản Anh được đánh dấu mâu thuẫn. Cùng loại/icon
+không chứng minh cùng vật phẩm, vẫn phải duyệt.
+
+Chạy build thử vào thư mục riêng, không đặt output trong client gốc:
+
+```sh
+python3 tools/l10n_build.py --kr /home/admin/boom/clients/kr-00967 --lang vi --encoding utf-8 --out /tmp/boom-l10n-vi
+python3 tools/l10n_build.py --kr /home/admin/boom/clients/kr-00967 --lang en --encoding cp949 --out /tmp/boom-l10n-en
+python3 tools/l10n_build.py --kr /home/admin/boom/clients/kr-00967 --lang ko --encoding cp949 --out /tmp/boom-l10n-ko
+```
+
+Hỗ trợ `ko`, `vi`, `en` và `cp949` hoặc `utf-8`; nếu chuỗi chưa có bản dịch được duyệt,
+khác nội dung gốc, hoặc lệch thứ tự tham số/thẻ thì giữ chuỗi gốc. Bản dịch có ký tự không mã hóa được trong bảng mã chọn được giữ lại bằng tiếng Hàn; số dòng và ký tự được ghi vào build-report.json. Không hỗ trợ những nguồn khác ở mục 1. Với SSI,
+checksum Adler-32 khởi tạo 0 tại byte 4–7 tính trên toàn bộ dữ liệu từ byte 8, byte 8 là 0x18, độ dài khối tại 9 bằng độ dài luồng
+nén cộng 5 (hay kích thước file trừ 13), byte 13 là 1, độ dài
+giải nén tại 14; phần thân nén zlib. Kiểm 13 file KR đều khớp checksum. Theo phân tích tĩnh exe VN, hàm đọc 0xA62D10 từ chối nếu checksum sai; hàm ghi 0xA62C20 và hàm tính 0xA0E1E0. Chưa xác minh hàm tương ứng của exe KR.
+`FxDesktop` ghi entry đã đổi ở cuối `.idd`, cập nhật offset/size index; không đổi entry khác.
+
+Kiểm `ko/cp949`: bảy SSI có parser được dựng lại dữ liệu và ghi qua bộ nén thực sự;
+phần giải nén trùng gốc, byte đầu khác là offset 9 do luồng nén khác độ dài. Kiểm thêm sáu
+SSI ở mức header và zlib: `csysfxmg.ssd`, `channel2_001.ssd`, `spcc.ssd`, `multisvr.ssd`,
+`fxstovi.ini` giống từng byte; `filterstr.ssd` khác từ offset 9, giải nén giống gốc. Đã
+thử level 1–9, wbits 9–15, memLevel 1–9, năm strategy (loại nhanh tổ hợp sai header zlib);
+không tìm được luồng gốc của tám file khác. Index pack được giải và mã hóa lại trùng byte,
+`.idd` không đổi được chép nguyên. Khi viết UTF-8, khóa `csysstr`/`csysqstr`, tên map,
+theme, tên file và khóa XML được giữ nguyên byte; quan sát 29 khóa ngoài ASCII trong
+`csysstr`, một trong `csysqstr`, 30 trong XML, và không có tên map/theme/file ngoài ASCII.
+
+Kiểm thử khô sau khi nhập dữ liệu: 13 checksum nguồn và các checksum file mới đều khớp;
+năm SSI nhỏ ở trên vẫn giống từng byte, tám SSI còn lại giải nén giống gốc khi dựng ko/cp949.
+Stock khi dựng vi/utf-8 lần lượt thay 2.493, 2.492, 2.485, 661 chuỗi; khi dựng en/cp949
+lần lượt thay 2.283, 2.379, 2.441, 661. `build-report.json` ghi số chuỗi thay, còn Hangul,
+lệch định dạng và không thể mã hóa theo từng file. English cp949 không mã hóa được `é`,
+`á`, `—`, `ñ` trong năm lượt chuỗi; những chuỗi đó giữ tiếng Hàn. Chưa file nào được nạp
+thử vào client.
+
+Nguồn tiếng Anh `tm_en.csv` có 18.132 câu: 17.983 câu nguyên văn từ hai file bàn giao (4.675 tên stock
+và 13.308 câu còn lại) cộng 149 câu bổ sung sau đó cho các tên stock đã có bản Việt từ trước. Bản PopTag và các biến thể mâu thuẫn được ưu tiên, không ghi đè.
+Catalog Anh: candidate 6.082, casefold_candidate 199, stock_icon_candidate 43, conflicting_variants
+106, machine 26.133, machine_review 97 và missing 826. Trong missing, 105 không có chữ gốc,
+358 có nguồn không chứa Hangul, 363 cố ý giữ tiếng Hàn như bản Việt (tên người, danh sách tên cấm); 19 dòng machine_review
+được bàn giao có cờ giữ Hangul, không cộng vào missing.

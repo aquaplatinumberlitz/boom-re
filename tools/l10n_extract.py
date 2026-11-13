@@ -83,7 +83,7 @@ def lstr(b, o, enc="cp949"):
 
 
 def ssd_raw(path):
-    """.ssd: 'ssi1', u32 ?, u8 0x18, u32 comp_len, u32 raw_len (offset 14), zlib từ offset 0x12."""
+    """.ssd: 'ssi1', u32 ?, u8 0x18, u32 block_len (compressed_len + 5), u32 raw_len (offset 14), zlib từ offset 0x12."""
     b = Path(path).read_bytes()
     if b[:4] != b"ssi1":
         raise ValueError("not ssi1: %s" % path)
@@ -263,6 +263,22 @@ def row(id_, source, ko, vi_base="", base_src="", ctx=""):
     return {"id": id_, "source": source, "ko": ko, "vi_base": vi_base, "base_src": base_src, "ctx": ctx}
 
 
+def design_rows():
+    with (L10N / "design_rows.csv").open(encoding="utf-8", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def stock_source_rows(root):
+    # Đọc bằng parser stock KR đã kiểm 4 file đến đúng cuối.
+    import l10n_extract_en as en
+    result = []
+    for path in sorted(Path(root).glob("fxstock[0-3].ini")):
+        for item, kind, name, icon, off in en.kr_stock(path):
+            result.append(row("stock:%d" % item, path.name, name,
+                              ctx="kind=%d;icon=%s;offset=0x%x" % (kind, icon, off)))
+    return result
+
+
 def collect(a):
     kr, vn = Path(a.kr), Path(a.vn)
     rows = []
@@ -389,6 +405,8 @@ def collect(a):
         for off, s in exe_strings(a.kr_exe):
             rows.append(row("exe:kr-full.exe:0x%x" % off, "exe:" + Path(a.kr_exe).name, s,
                             ctx="dev_debug" if DEV_HINT.search(s) else ""))
+    rows.extend(stock_source_rows(kr))
+    rows.extend(row(r["id"], r["source"], r["ko"], r["vi_base"], ctx="design") for r in design_rows())
     return rows
 
 
@@ -539,7 +557,11 @@ def cmd_catalog(a):
     tm = load_tm()
     tid = load_tm_id()
     out = []
+    designs = {r["id"]: r for r in design_rows()}
     for r in rows:
+        if r["id"] in designs:
+            out.append(designs[r["id"]])
+            continue
         ko, vb = r["ko"], r["vi_base"]
         notes = [r["ctx"]] if r["ctx"] else []
         if r["id"] in tid:
@@ -586,6 +608,10 @@ def cmd_catalog(a):
         w.writeheader()
         w.writerows(out)
     write_glossary(out, lex)
+    with (L10N / "review_pending.csv").open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, ["id", "source", "ko", "vi_base", "vi", "status", "notes"], lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(r for r in out if r["status"] == "review")
     print_stats(out)
 
 

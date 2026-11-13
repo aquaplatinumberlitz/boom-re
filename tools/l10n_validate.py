@@ -6,7 +6,8 @@ from collections import Counter
 
 import l10n_extract as L
 
-BAN = re.compile(r'(?<!\w)(xem|nhé|nhỉ|đấy|mũ|tớ|bọn|tao|mày|giao dịch|cửa hàng|nhặt)(?!\w)', re.I)
+# "lông mày" (chân mày) là danh từ, không phải đại từ "mày".
+BAN = re.compile(r'(?<!\w)(?<!lông )(?<!chân )(xem|nhé|nhỉ|đấy|mũ|tớ|bọn|tao|mày|giao dịch|cửa hàng|nhặt)(?!\w)', re.I)
 
 
 def read_csv(name, key=None):
