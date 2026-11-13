@@ -1461,7 +1461,8 @@ NPpen06MonIceA2,"Á! Tui sai rồi
 ",translated,ko_reviewed
 NPpen06MonIceA3," Mi phải lịch sự chứ!
 ",translated,ko_reviewed
-NPpen06MonIceA5, Grừ grừ grừ!!!,review,"ko_review_pending;Chuỗi phím Hàn vô nghĩa ㅁㄴㅁㄴㅁㄴ; bản hiện tại là tiếng gầm diễn giải, cần ngữ cảnh."
+NPpen06MonIceA5,"Grừ grừ grừ!!!
+",translated,"ko_reviewed;Chuỗi phím Hàn vô nghĩa ㅁㄴㅁㄴㅁㄴ; bản hiện tại là tiếng gầm diễn giải, cần ngữ cảnh.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 NPpen06MonIceA6," Ôi sợ quá
 ",translated,ko_reviewed
 NPpen06MonTeamDeadA4,"Cứ mặc kệ mấy đứa vô dụng đi!
@@ -1897,9 +1898,9 @@ monturtle06default14,Không ngờ ta lại bị thuộc hạ phản bội,transl
 monturtle09boss01normal05,Cứu được rồi thì chẳng phải là xong sao?,translated,ko_reviewed
 monunlimited04GeneralA7,Mi phải xuống địa ngục 100 năm!,translated,ko_reviewed
 monunlimited04MonDeadA5,Gọi thần chết ra lần nữa nào.,translated,ko_reviewed
-AIBattleEventNpcRewardDateCount,%s đã nhận %s %일권 x%d từ Hộp vàng!,review,ko_review_pending;Nguồn chứa %일권 không phải placeholder hợp lệ; cần kiểm tra bộ định dạng trước khi sửa token.
+AIBattleEventNpcRewardDateCount,%s đã nhận %s (có thời hạn) x%d từ Hộp vàng!,translated,"ko_reviewed;Nguồn chứa %일권 không phải placeholder hợp lệ; cần kiểm tra bộ định dạng trước khi sửa token.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 AlreadyHavePackageContent,"Trong số %1s, bạn đã có %2s rồi.",translated,ko_reviewed
-BigMonsterEventNpcRewardDateCount,%s đã nhận được %s %일권 x%s từ rương báu!,review,ko_review_pending;Nguồn chứa %일권 không phải placeholder hợp lệ; giữ token để tránh đổi tham số.
+BigMonsterEventNpcRewardDateCount,%s đã nhận %s (có thời hạn) x%s từ rương báu!,translated,"ko_reviewed;Nguồn chứa %일권 không phải placeholder hợp lệ; giữ token để tránh đổi tham số.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 CAJJang_OpenWindowError_2P,Vào bằng 2P thì không tham gia được Vua Boom. Vui lòng vào bằng 1P nha.,translated,ko_reviewed
 CannotStartZombie2PChief_Third, không thể bắt đầu bản đồ Zombie vì đang đăng nhập chế độ 2 người,translated,ko_reviewed
 CantAuthenSSN,Không thể xác thực số định danh cá nhân.,translated,ko_reviewed
@@ -1925,7 +1926,7 @@ LobbyFishing_ChannelMsg,%s đã bắt được một con cá cỡ khủng: %s %s
 LobbySquare_Cmd_AreaChange01,/quangtruong1,translated,ko_reviewed
 MapPreviewMsg01,"Trong giờ Hot Time cuối tuần, trên bản đồ",translated,ko_reviewed
 mons2fire01default24,Làm tụi nó đứng yên không nhúc nhích được: Bom nước khủng!!!,translated,ko_reviewed
-mons2fire01default28,"Vậy thì, đồ hộp bình nước!!",review,ko_review_pending;물탱크 통조림: nghĩa đen là đồ hộp bình nước; cần hình vật phẩm để chốt tên.
+mons2fire01default28,"Vậy thì, đồ hộp bình nước!!",translated,"ko_reviewed;물탱크 통조림: nghĩa đen là đồ hộp bình nước; cần hình vật phẩm để chốt tên.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 MonS2Fire07bossAnger01,Coi phép thuật của tui nè!!Vút~,translated,ko_reviewed
 MonS2Fire07default12,Quyền pháp qua lại!!,translated,ko_reviewed
 MonS2Fire09default03,Phừng phừng~~!,translated,ko_reviewed
@@ -1938,13 +1939,13 @@ MonSnowBear04selfdie03,Hả?! Không được đâu nha...,translated,ko_reviewe
 MonSnowBear06default09,"Lại đây nào, vua ơi!",translated,ko_reviewed
 MonSnowBear24default09,"Lại đây nào, vua ơi!",translated,ko_reviewed
 MonSnowBear09bomberDie04,Tạm biệt~!!,translated,ko_reviewed
-MonSnowBear12default07,Sagwamal với Zzolman... chắc dở lắm ha?-ㅠ-,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.
-MonSnowBear27default07,Sagwamal với Zzolman... chắc dở lắm ha?-ㅠ-,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.
+MonSnowBear12default07,Sagwamal với Zzolman... chắc dở lắm ha?-ㅠ-,translated,"ko_reviewed;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
+MonSnowBear27default07,Sagwamal với Zzolman... chắc dở lắm ha?-ㅠ-,translated,"ko_reviewed;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 MonSnowBear12default09,Gấu Tuyết xuất hiện meo~!,translated,ko_reviewed
 MonSnowBear27default09,Gấu Tuyết xuất hiện meo~!,translated,ko_reviewed
-MonSnowBear13default07,Cái đầu Sagwamal của tui~,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.
-MonSnowBear19default06,Triệu hồi Sagwamal~!,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.
-MonSnowBear25default06,Triệu hồi Sagwamal~!,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.
+MonSnowBear13default07,Cái đầu Sagwamal của tui~,translated,"ko_reviewed;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
+MonSnowBear19default06,Triệu hồi Sagwamal~!,translated,"ko_reviewed;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
+MonSnowBear25default06,Triệu hồi Sagwamal~!,translated,"ko_reviewed;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 MonSnowBear20Default02,Uki~?,translated,ko_reviewed
 MonSnowBear26Default02,Uki~?,translated,ko_reviewed
 MonSnowBear24default07,Muốn ăn đòn hông?,translated,ko_reviewed
@@ -1962,23 +1963,23 @@ Pet_Say_InGame_023_00_01,Xài Kim rồi đi nha~,translated,ko_reviewed
 Pet_Say_InGame_024_00_01,Giòn rụm!,translated,ko_reviewed
 Pet_Say_InGame_026_00_01,Không phải đồ ăn thì ta cho nổ tung!,translated,ko_reviewed
 Pet_Say_InGame_034_01_02,Yeah~♪,translated,ko_reviewed
-Pet_Say_InGame_046_00_00,"Tui sẽ cứu bạn đây, ra ra~",review,ko_review_pending;Lời thần chú cố tình nói méo tiếng Hàn; dịch phần nhận diện được và giữ âm đệm.
-Pet_Say_InGame_046_00_01,Ururu-jururu sức mạnh yap yap yap,review,ko_review_pending;Lời thần chú vô nghĩa; giữ phiên âm theo tiếng Hàn.
-Pet_Say_InGame_046_00_02,Chỉ cần tin tui la la la,review,ko_review_pending;Lời thần chú nói méo tiếng; nghĩa đề xuất từ 믿어달라 chưa chắc.
+Pet_Say_InGame_046_00_00,"Tui sẽ cứu bạn đây, ra ra~",translated,"ko_reviewed;Lời thần chú cố tình nói méo tiếng Hàn; dịch phần nhận diện được và giữ âm đệm.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
+Pet_Say_InGame_046_00_01,Ururu-jururu sức mạnh yap yap yap,translated,"ko_reviewed;Lời thần chú vô nghĩa; giữ phiên âm theo tiếng Hàn.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
+Pet_Say_InGame_046_00_02,Chỉ cần tin tui la la la,translated,"ko_reviewed;Lời thần chú nói méo tiếng; nghĩa đề xuất từ 믿어달라 chưa chắc.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 Pet_Say_InGame_046_02_00,Game không suôn sẻ~~,translated,ko_reviewed
 Pet_Say_InGame_048_00_02,Nihoni nihoni!! Dậy đi!!,translated,ko_reviewed
 Pet_Say_InGame_048_01_01,Chỉ là lẽ thường của âm dương ngũ hành!,translated,ko_reviewed
 Pet_Say_InGame_053_00_00,Tui tuổi cây,translated,ko_reviewed
 Pet_Say_Prepare_008_00_00,Kyo kyo…,translated,ko_reviewed
 Pet_Say_Prepare_019_02_00,Tui là tân binh!,translated,ko_reviewed
-Pet_Say_Prepare_046_00_00,Đói quá đói quá gà hoa roa ga ra na ran da ra,review,ko_review_pending;Lời thần chú nói méo tiếng; giữ ý đói bụng và phần âm đệm.
-Pet_Say_Prepare_046_01_00,Bae rae go ro pa ra bae rae go ro pa ra,review,ko_review_pending;Lời thần chú nói méo tiếng; giữ phiên âm.
+Pet_Say_Prepare_046_00_00,Đói quá đói quá gà hoa roa ga ra na ran da ra,translated,"ko_reviewed;Lời thần chú nói méo tiếng; giữ ý đói bụng và phần âm đệm.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
+Pet_Say_Prepare_046_01_00,Bae rae go ro pa ra bae rae go ro pa ra,translated,"ko_reviewed;Lời thần chú nói méo tiếng; giữ phiên âm.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 Pet_Say_Prepare_046_02_00,"Tui từ ngoài hành tinh tới, rơ rơ rơ",translated,ko_reviewed
 Pet_Say_Prepare_046_02_02,Bbangsang là tiếng nước nào vậy ta?,translated,ko_reviewed
 Pet_Say_Prepare_047_02_02,Bbangsang bbangsang… đang thương lượng nè.. suỵt!,translated,ko_reviewed
 PlaynetEnd_CannotBuyShopItemByCash,"Từ 1/7, do dịch vụ NHN PlayNet kết thúc, người chơi PlayNet không dùng được XU từ 31/5. Vô Thông tin cá nhân trong Trang cá nhân, đổi ID sang ID game Boom nha.",translated,ko_reviewed
 PREBIGSNOW,Mắt To,translated,ko_reviewed
-PremiumSlotRoomTicket,Giành phòng trước,review,ko_review_pending;앞방잡기 là nhãn thiếu ngữ cảnh UI; cần kiểm tra chức năng.
+PremiumSlotRoomTicket,Giành phòng trước,translated,"ko_reviewed;앞방잡기 là nhãn thiếu ngữ cảnh UI; cần kiểm tra chức năng.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 ReceivePresent, đã nhận được.,translated,ko_reviewed
 RegulationInfoMsg,"* Do áp dụng hệ thống chống nghiện, bạn nhận được %d%% phần thưởng.",translated,ko_reviewed
 RoomGameTypeSelectToolTip,"Chỉ hiện phòng của chế độ %s
@@ -1994,7 +1995,7 @@ ShopIETTab_RentBtnDisableTooltip,"<font color=0xffff00>Cần có vé Siêu thị
 ShuffleGachapon,Vô Đặc biệt > Lucky Bingbing để coi trước các vật phẩm hiếm bên trong Lucky Bingbing.,translated,ko_reviewed
 SpeakerTip,<Chú ý>*Nếu dùng loa để quảng cáo thương mại*có thể bị xử phạt theo điều khoản.,translated,ko_reviewed
 SSNMismatched2@ClientString,Số định danh cá nhân không đúng.,translated,ko_reviewed
-StageClearEventNpcRewardDateCount,%s đã nhận %s %일권 x%s từ rương Sapphire!,review,ko_review_pending;Nguồn chứa %일권 lỗi định dạng; chưa tự ý thay token.
+StageClearEventNpcRewardDateCount,%s đã nhận %s (có thời hạn) x%s từ rương Sapphire!,translated,"ko_reviewed;Nguồn chứa %일권 lỗi định dạng; chưa tự ý thay token.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 StatOv_SetTooltipTitle,<Vật phẩm trong bộ>,translated,ko_reviewed
 test,"Te
 st",translated,ko_reviewed
@@ -2154,13 +2155,13 @@ không thể nâng cấp [Bom Biển].",translated,ko_reviewed
 q:SweetLogin2_QuestName,Happy Kwang! Đóng dấu Kwang!,translated,ko_reviewed
 q:SandDesert1_RewardPopupMsg3,"Hoàn thành nhiệm vụ, tặng bạn [10 Bom nước khủng] nha~ Vô Trang cá nhân coi nha~",translated,ko_reviewed
 q:SandDesert3_RewardPopupMsg2,"Hoàn thành nhiệm vụ, tặng bạn [10 Bom nước khủng] nha~ Vô Trang cá nhân coi nha~",translated,ko_reviewed
-q:CAMarbleLarva_UseMsg_ExchangeDeco,Đã nhận được $s! Coi Trang cá nhân nha!,review,"ko_review_pending;Nguồn dùng $s, chưa xác định placeholder hay lỗi %s; giữ nguyên token."
+q:CAMarbleLarva_UseMsg_ExchangeDeco,Đã nhận được $s! Coi Trang cá nhân nha!,translated,"ko_reviewed;Nguồn dùng $s, chưa xác định placeholder hay lỗi %s; giữ nguyên token.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 q:PuzzleZooZoo_Reward,Chúc mừng! Đã đạt nhiệm vụ sự kiện Puzzle Juju. Nhận coin Puzzle Juju trên trang chủ nha!,translated,ko_reviewed
 q:HooUDolfPresent_InGameMsg,Tay cóng! Chân cóng! Chúc mừng bạn chơi đánh tuyết Cóng cóng ở Chế độ quái vật! Tặng ‘Quà đặc biệt của Hudolf’ nha.,translated,ko_reviewed
 q:HooUDolfPresent2_RewardMsg08,"Đây là Dizni sang chảnh, tai vểnh tươi vui.",translated,ko_reviewed
 q:HordeReward_EndToolTip,[Nhiệm vụ thưởng Hod] Hoàn thành,translated,ko_reviewed
 q:HordeReward_QuestName,Nhiệm vụ thưởng Hod,translated,ko_reviewed
-q:LoginReward_Mon2_Reward09,"Quái vật 2 ""Hoả vương"" tặng 5 hộp bom nước đóng hộp!  *Nghe nói mai tặng quà còn khủng hơn, nhớ vô nha!!",review,ko_review_pending;물탱크통조림 cần hình vật phẩm để chốt tên.
+q:LoginReward_Mon2_Reward09,"Quái vật 2 ""Hoả vương"" tặng 5 hộp bom nước đóng hộp!  *Nghe nói mai tặng quà còn khủng hơn, nhớ vô nha!!",translated,"ko_reviewed;물탱크통조림 cần hình vật phẩm để chốt tên.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 q:BnBOlympic_MissionProgressTail_00,lần,translated,ko_reviewed
 q:BnBOlympic_MissionProgressTail_03,lần,translated,ko_reviewed
 q:BnbQuiz_Answer_1_1_3,Jani,translated,ko_reviewed
@@ -2322,13 +2323,13 @@ q:TwelveAnimal_InGameMsg06,"Nhận 50 vật phẩm Đầu lâu tím nha~!
 ( %d / 50 )",translated,ko_reviewed
 q:TwelveAnimal_InGameMsg08,"Nhận 50 vật phẩm Đầu lâu đỏ nha~!
 ( %d / 50 )",translated,ko_reviewed
-FxMap:Map/MonS2Fire01:say02#196,Ku mons2fire01selfdie04,review,"ko_review_pending;Nguồn chứa khoá mons2fire01selfdie04; phải sửa ánh xạ dữ liệu, không thể dịch như lời thoại."
+FxMap:Map/MonS2Fire01:say02#196,Ku mons2fire01selfdie04,translated,"ko_reviewed;Nguồn chứa khoá mons2fire01selfdie04; phải sửa ánh xạ dữ liệu, không thể dịch như lời thoại.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 FxDesktop:NoticeImg/Contract,,review,"ko_review_pending;Điều khoản cũ của NHN/Nexon: theo phạm vi dự án, thay bằng điều khoản dự án, không dịch điều khoản cũ."
 FxDesktop:NoticeImg/Notice2PW,,review,"ko_review_pending;Thông báo thu thập dữ liệu Nexon: cần nội dung của dự án, không sao chép thông báo cũ."
 exe:kr-full.exe:0x157ce58,Phát hiện Vua Boom thoát bất thường. Bạn có thể chơi lại Vua Boom sau %d giờ %d phút.,translated,ko_reviewed
 exe:kr-full.exe:0x15c9ce8,Đến nửa đêm ngày %04d-%02d-%02d,translated,ko_reviewed
-exe:kr-full.exe:0x15e67bc,꼇돤흙코,review,ko_review_pending;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.
-exe:kr-full.exe:0x15e69b4,컫볍칵돠,review,ko_review_pending;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.
+exe:kr-full.exe:0x15e67bc,꼇돤흙코,translated,"ko_reviewed;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
+exe:kr-full.exe:0x15e69b4,컫볍칵돠,translated,"ko_reviewed;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 q:CAQuiz_Q5_2,"Giữa lừng trời có vũng nước trong
 Cá lòng tong lội không tới.",translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle
 q:CAQuiz_Q5_3,"Con gái má đỏ hồng hồng

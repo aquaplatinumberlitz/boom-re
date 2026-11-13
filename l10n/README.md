@@ -220,15 +220,24 @@ ba tên AI, từ cấm, bộ câu đố và báo cáo review. Kết quả: **0 l
 xác không chứng minh nghĩa hoặc giao diện hai phiên bản tương đương; mọi bản Anh đều cần duyệt.
 Không dùng trực tiếp làm bản vá client. Hai dòng Lua trong catalog gốc có cùng ID được giữ nguyên.
 
-- `candidate`: có một giá trị nguồn cho ID. `format_mismatch` cảnh báo thứ tự/loại printf,
-  placeholder `{...}` hoặc tag khác tiếng Hàn; kết quả chỉ là kiểm tra sơ bộ.
-- `casefold_candidate`: không có ID khớp chính xác và có đúng một ID PopTag khớp khi bỏ
-  phân biệt hoa/thường; `en_notes` ghi ID gốc và cảnh báo định dạng nếu có. Vẫn cần duyệt nghĩa.
-- `conflicting_variants`: có nhiều giá trị tiếng Anh khác nhau hoặc nhiều ID PopTag khớp khi
-  bỏ phân biệt hoa/thường. Cột `en` để trống;
-  xem mọi biến thể và nguồn của chúng trong `english_sources.csv` trước khi quyết định.
-- `machine`: bản dịch theo câu Hàn trong `tm_en.csv`; `machine_review` có cờ bàn giao, bản rỗng hoặc sai định dạng, chưa dùng để dựng.
-- `missing`: chưa tìm thấy bản Anh theo đúng ID hoặc bộ nhớ dịch; không phải khẳng định bản dịch không tồn tại.
+- `candidate`: chữ PopTag theo đúng ID. `en_notes` cho biết kết quả soát nghĩa so với câu Hàn
+  (`en_review.csv`): `meaning_checked` là khớp nghĩa, `whitespace_from_kr` là giữ câu chữ PopTag
+  nhưng lấy xuống dòng và khoảng trắng đầu cuối của câu Hàn (PopTag viết liền một dòng),
+  `meaning_unsure` là không đủ ngữ cảnh nên giữ chữ PopTag, `settled_poptag_variant` là một trong
+  nhiều biến thể PopTag được chọn (`en_override.csv`).
+- `casefold_candidate`: như trên nhưng ID chỉ khớp khi bỏ phân biệt hoa/thường; `en_notes` ghi ID gốc.
+- `machine`: bản dịch máy từ câu Hàn. Nguồn là `tm_en.csv`, hoặc `en_review.csv` khi chữ PopTag lệch
+  nghĩa câu Hàn (`replaces_poptag_text`), hoặc `en_override.csv` cho dòng từng treo (`settled_machine`).
+- `conflicting_variants`, `stock_icon_candidate`, `machine_review`: dòng còn treo, chưa dùng để dựng.
+  Sau lượt chốt 2026-11-14 không còn dòng nào ở ba trạng thái này.
+- `missing`: không có bản Anh. Hiện gồm dòng không có câu Hàn, dòng không có chữ Hàn (dùng nguyên)
+  và chuỗi trong exe (chưa có đường thay).
+
+Kiểm định dạng dùng chung cho cả công cụ dựng (`formatting` trong `tools/l10n_extract_en.py`): tham số
+printf đúng số lượng và thứ tự (tham số có số thứ tự `%1$s` được đổi chỗ), thẻ `<font …>` và `{…}`
+giữ nguyên. Chữ thường trong ngoặc nhọn như `<주의>` không phải thẻ. Dấu `%` nghĩa đen không được
+đứng trước chữ cái hoặc dấu cách rồi chữ cái (`50% for`, `20% nha` bị đọc thành tham số).
+
 - `english_sources.csv` cũng giữ các ID chỉ có trong PopTag, không tự gán sang KR.
 - `english_sources_manifest.json` ghi SHA-256 của các file nguồn, catalog gốc và thống kê.
 

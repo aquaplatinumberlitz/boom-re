@@ -1,24 +1,4 @@
 id,source,ko,vi_base,vi,status,notes
-AIBattleEventNpcRewardDateCount,csysstr.ssd,%s님께서 황금상자에서 %s %일권 %d개를 획득하셨습니다!,,%s đã nhận %s %일권 x%d từ Hộp vàng!,review,ko_review_pending;Nguồn chứa %일권 không phải placeholder hợp lệ; cần kiểm tra bộ định dạng trước khi sửa token.
-BigMonsterEventNpcRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %일권 %s개를 획득하셨습니다!,,%s đã nhận được %s %일권 x%s từ rương báu!,review,ko_review_pending;Nguồn chứa %일권 không phải placeholder hợp lệ; giữ token để tránh đổi tham số.
-mons2fire01default28,csysstr.ssd,"그럼, 물탱크 통조림!!",,"Vậy thì, đồ hộp bình nước!!",review,ko_review_pending;물탱크 통조림: nghĩa đen là đồ hộp bình nước; cần hình vật phẩm để chốt tên.;too_long?
-MonSnowBear12default07,csysstr.ssd,사과멀 쫄쫄이는...맛없겠지?-ㅠ-,,Sagwamal với Zzolman... chắc dở lắm ha?-ㅠ-,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.;too_long?
-MonSnowBear13default07,csysstr.ssd,사과멀 같은 내 머리~,,Cái đầu Sagwamal của tui~,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.;too_long?
-MonSnowBear19default06,csysstr.ssd,사과멀 소환~!,,Triệu hồi Sagwamal~!,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.;too_long?
-MonSnowBear25default06,csysstr.ssd,사과멀 소환~!,,Triệu hồi Sagwamal~!,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.;too_long?
-MonSnowBear27default07,csysstr.ssd,사과멀 쫄쫄이는...맛없겠지?-ㅠ-,,Sagwamal với Zzolman... chắc dở lắm ha?-ㅠ-,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.;too_long?
-Pet_Say_InGame_046_00_00,csysstr.ssd,내가너를구루해래다라,,"Tui sẽ cứu bạn đây, ra ra~",review,ko_review_pending;Lời thần chú cố tình nói méo tiếng Hàn; dịch phần nhận diện được và giữ âm đệm.;too_long?
-Pet_Say_InGame_046_00_01,csysstr.ssd,우루주루파워얍얍얍,,Ururu-jururu sức mạnh yap yap yap,review,ko_review_pending;Lời thần chú vô nghĩa; giữ phiên âm theo tiếng Hàn.;too_long?
-Pet_Say_InGame_046_00_02,csysstr.ssd,나만미리더러라라,,Chỉ cần tin tui la la la,review,ko_review_pending;Lời thần chú nói méo tiếng; nghĩa đề xuất từ 믿어달라 chưa chắc.;too_long?
-Pet_Say_Prepare_046_00_00,csysstr.ssd,너무배가고파가화롸가라나란다라,,Đói quá đói quá gà hoa roa ga ra na ran da ra,review,ko_review_pending;Lời thần chú nói méo tiếng; giữ ý đói bụng và phần âm đệm.;too_long?
-Pet_Say_Prepare_046_01_00,csysstr.ssd,배래고로파라배래고로파라,,Bae rae go ro pa ra bae rae go ro pa ra,review,ko_review_pending;Lời thần chú nói méo tiếng; giữ phiên âm.;too_long?
-PremiumSlotRoomTicket,csysstr.ssd+FxDesktop/ClientData/ClientString,앞방잡기,,Giành phòng trước,review,ko_review_pending;앞방잡기 là nhãn thiếu ngữ cảnh UI; cần kiểm tra chức năng.;too_long?
-StageClearEventNpcRewardDateCount,csysstr.ssd,%s님께서 사파이어상자에서 %s %일권 %s개를 획득하셨습니다!,,%s đã nhận %s %일권 x%s từ rương Sapphire!,review,ko_review_pending;Nguồn chứa %일권 lỗi định dạng; chưa tự ý thay token.
-NPpen06MonIceA5,FxDesktop/ClientData/ClientString,"ㅁㄴㅁㄴㅁㄴ!!!
-", Grừ grừ grừ!!!, Grừ grừ grừ!!!,review,"vi_base=vn:fx/ClientData/ClientString;ko_review_pending;Chuỗi phím Hàn vô nghĩa ㅁㄴㅁㄴㅁㄴ; bản hiện tại là tiếng gầm diễn giải, cần ngữ cảnh."
-q:CAMarbleLarva_UseMsg_ExchangeDeco,csysqstr.ssd,$s을 획득하였습니다!  마이페이지를 확인해 보세요!,,Đã nhận được $s! Coi Trang cá nhân nha!,review,"ko_review_pending;Nguồn dùng $s, chưa xác định placeholder hay lỗi %s; giữ nguyên token."
-q:LoginReward_Mon2_Reward09,csysqstr.ssd,"몬스터2 ""불의 제왕""이 선물로 물탱크통조림 5개를 드립니다!  *내일은 더 엄청난 선물을 준다니 꼭 와요!!",,"Quái vật 2 ""Hoả vương"" tặng 5 hộp bom nước đóng hộp!  *Nghe nói mai tặng quà còn khủng hơn, nhớ vô nha!!",review,ko_review_pending;물탱크통조림 cần hình vật phẩm để chốt tên.;too_long?
-FxMap:Map/MonS2Fire01:say02#196,FxMap/Map/MonS2Fire01,쿠mons2fire01selfdie04,,Ku mons2fire01selfdie04,review,"say;ko_review_pending;Nguồn chứa khoá mons2fire01selfdie04; phải sửa ánh xạ dữ liệu, không thể dịch như lời thoại."
 FxDesktop:NoticeImg/Contract,FxDesktop/NoticeImg/Contract,"제1장 총칙
 
 제1조(목적)
@@ -359,30 +339,3 @@ FxDesktop:NoticeImg/Notice2PW,FxDesktop/NoticeImg/Notice2PW,"㈜넥슨코리아�
 - 본인인증 수단을 질문/답변으로 설정하면, 본 동의절차 없이 2차 비밀번호 생성이 가능합니다.
 
 2차비밀번호 생성을 위한 [개인정보 수집 및 이용]에 대해 동의하시겠습니까?",,,review,"legal;ko_review_pending;Thông báo thu thập dữ liệu Nexon: cần nội dung của dự án, không sao chép thông báo cũ."
-exe:kr-full.exe:0x15e67bc,exe:kr-full.exe,꼇돤흙코,,꼇돤흙코,review,ko_review_pending;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.
-exe:kr-full.exe:0x15e69b4,exe:kr-full.exe,컫볍칵돠,,컫볍칵돠,review,ko_review_pending;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.
-stock:3532,fxstock0.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Icon/SlotDeco;offset=0x295dd;handoff_flags=vi_digits;en_digits;too_long?
-stock:4412,fxstock0.ini,백원 세트,,Bộ 100 won,review,kind=26;icon=Icon/Icon_100WonSet;offset=0x40386;handoff_flags=vi_digits;en_digits;too_long?
-stock:4468,fxstock0.ini,오백원 세트,,Bộ 500 won,review,kind=26;icon=Icon/Item500WonSet;offset=0x4273b;handoff_flags=vi_digits;en_digits;too_long?
-stock:6092,fxstock0.ini,이대팔 가발,,Tóc giả rẽ ngôi 2:8,review,kind=12;icon=Item/CharDeco;offset=0x4cb25;handoff_flags=vi_digits;en_digits;too_long?
-stock:1600931,fxstock1.ini,8등신 수 깃발,,Cờ Su dáng người mẫu,review,kind=10;icon=Icon/SlotDeco;offset=0x58c81;handoff_flags=vi_digits;en_digits;too_long?
-stock:1600932,fxstock1.ini,8등신 우니 깃발,,Cờ Uni dáng người mẫu,review,kind=10;icon=Icon/SlotDeco;offset=0x58d1c;handoff_flags=vi_digits;en_digits;too_long?
-stock:1600940,fxstock1.ini,5월의 패키지,,Gói tháng 5,review,kind=26;icon=Icon/Set_Monthly_0001Icon;offset=0x59207;handoff_flags=en_digits
-stock:1601015,fxstock1.ini,6월의 패키지,,Gói tháng 6,review,kind=26;icon=Icon/Set_Monthly_0002Icon;offset=0x5c03e;handoff_flags=en_digits
-stock:1601120,fxstock1.ini,7월의 패키지,,Gói tháng 7,review,kind=26;icon=Icon/Set_Monthly_0003Icon;offset=0x6000f;handoff_flags=en_digits
-stock:1601154,fxstock2.ini,8월의 패키지,,Gói tháng 8,review,kind=26;icon=Icon/Set_Monthly_0004Icon;offset=0x129e;handoff_flags=en_digits
-stock:1601268,fxstock2.ini,10월의 패키지,,Gói tháng 10,review,kind=26;icon=Icon/Set_Monthly_0005Icon;offset=0x587f;handoff_flags=en_digits
-stock:1601760,fxstock2.ini,6월의장마 효과,,Hiệu ứng mùa mưa tháng 6,review,kind=12;icon=Item/CharDeco;offset=0x1860a;handoff_flags=en_digits;too_long?
-stock:1602004,fxstock2.ini,삼일절 따라와,,Đi theo ngày phong trào 1 tháng 3,review,kind=12;icon=Item/CharDeco;offset=0x21a6c;handoff_flags=vi_digits;en_digits;too_long?
-stock:3600676,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Icon/SlotDeco;offset=0x2e95b;handoff_flags=vi_digits;en_digits;too_long?
-stock:3600679,fxstock2.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Icon/SlotDeco;offset=0x2eb20;handoff_flags=vi_digits;en_digits;too_long?
-stock:3620086,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Item/SlotDeco;offset=0x3c467;handoff_flags=vi_digits;en_digits;too_long?
-stock:3620089,fxstock2.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Item/SlotDeco;offset=0x3c62c;handoff_flags=vi_digits;en_digits;too_long?
-stock:3630083,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Item/SlotDeco;offset=0x4458a;handoff_flags=vi_digits;en_digits;too_long?
-stock:3630086,fxstock2.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Item/SlotDeco;offset=0x4474f;handoff_flags=vi_digits;en_digits;too_long?
-stock:3640083,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Item/SlotDeco;offset=0x4c266;handoff_flags=vi_digits;en_digits;too_long?
-stock:3640086,fxstock2.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Item/SlotDeco;offset=0x4c42b;handoff_flags=vi_digits;en_digits;too_long?
-stock:4100118,fxstock2.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Icon/SlotDeco;offset=0x52d8c;handoff_flags=vi_digits;en_digits;too_long?
-stock:5100029,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Item/SlotDeco;offset=0x5c036;handoff_flags=vi_digits;en_digits;too_long?
-stock:5100180,fxstock3.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Item/SlotDeco;offset=0x10a0;handoff_flags=vi_digits;en_digits;too_long?
-stock:5200028,fxstock3.ini,5월축제 날개,,Cánh lễ hội tháng 5,review,kind=12;icon=Item/CharDeco;offset=0xa75e;handoff_flags=en_digits;too_long?

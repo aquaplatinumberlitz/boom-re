@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Bản dựng thử offline: file cache + ClientString, chưa được client nạp thử."""
+import unicodedata
 import argparse
 import csv
 import json
@@ -31,17 +32,36 @@ def encodable(ch, encoding):
         return False
 
 
+FALLBACK = {'—': '-', '–': '-', '‘': "'", '’': "'", '“': '"', '”': '"', '…': '...'}
+# Bản dựng UTF-8 chuyển cả khoá có chữ Hàn sang UTF-8 để file chỉ mang một bảng mã.
+# Quét exe, 13 file ssi1 và mọi entry pack KR 00967 không thấy nơi nào tham chiếu các khoá này
+# bằng byte CP949. `--keep-key-bytes` giữ byte gốc.
+KEEP_KEY_BYTES = False
+PARTICLES = {'이', '가', '을', '를', '은', '는'}
+
+
 def get_text(key, old, catalog, language, stats, encoding):
     row = catalog.get(key)
     new = ''
+    empty = False  # trợ từ Hàn đứng riêng (을/를…): bản dịch cố ý rỗng
     if language != 'ko' and row and row['ko'] == old:
         if language == 'vi' and row.get('vi_status', row.get('status')) in ('translated', 'reused'):
             new = row['vi']
+            empty = not new and old in PARTICLES
         if language == 'en' and row.get('en_status') in ('candidate', 'casefold_candidate', 'machine'):
             new = row['en']
+            empty = not new and 'empty_on_purpose' in row.get('en_notes', '')
+    if empty:
+        stats['replaced'] += 1
+        stats['emptied'] = stats.get('emptied', 0) + 1
+        return ''
     if new and not EN.formatting(old, new):
         stats['format_rejected'] += 1
         new = ''
+    if new and encoding == 'cp949':
+        # Chữ Latin có dấu và gạch dài không có trong bảng mã Hàn: hạ về ký tự gần nhất.
+        new = ''.join(ch if encodable(ch, encoding) else FALLBACK.get(ch) or
+                      unicodedata.normalize('NFKD', ch).encode('ascii', 'ignore').decode() or ch for ch in new)
     if new:
         bad = [ch for ch in new if not encodable(ch, encoding)]
         if bad:
@@ -67,6 +87,9 @@ def pair_file(raw, name, catalog, lang, encoding, stats):
         stats['non_ascii_keys'] = stats.get('non_ascii_keys', 0) + any(b >= 128 for b in key_bytes[4:])
         val, pos = L.lstr(raw, pos)
         idx = ('q:' + (key.strip() or '<empty>')) if name == 'csysqstr.ssd' else key
+        if encoding == 'utf-8' and not KEEP_KEY_BYTES and any(b >= 128 for b in key_bytes[4:]):
+            key_bytes = packed(key_bytes[4:].decode('cp949').encode('utf-8'))
+            stats['keys_reencoded'] = stats.get('keys_reencoded', 0) + 1
         out += key_bytes + packed(get_text(idx, val, catalog, lang, stats, encoding).encode(encoding))
     if pos != len(raw):
         raise ValueError('pair file có dữ liệu thừa')
@@ -172,7 +195,13 @@ def pack_build(root, out, catalog, lang, encoding, stats):
         if new == old and encoding == 'cp949':
             return match.group(0)
         value = escape(new, {'"':'&quot;', "'":'&apos;'}).encode(encoding)
-        return match.group(1) + block[:v.start(1)] + value + block[v.end(1):] + match.group(3)
+        parts = [(v.start(1), v.end(1), value)]
+        if encoding == 'utf-8' and not KEEP_KEY_BYTES and any(b >= 128 for b in key_bytes):
+            parts.append((k.start(1), k.end(1), key_bytes.decode('cp949').encode('utf-8')))
+            stats['keys_reencoded'] = stats.get('keys_reencoded', 0) + 1
+        for start, end, data in sorted(parts, reverse=True):
+            block = block[:start] + data + block[end:]
+        return match.group(1) + block + match.group(3)
     replaced = pattern.sub(edit, text)
     newblob = packed(replaced)
     # Append-only: mọi byte entry khác giữ nguyên. Cập nhật offset/size trong index.
@@ -195,7 +224,10 @@ def main():
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--lang',choices=('ko','vi','en'),required=True)
     parser.add_argument('--encoding',choices=('cp949','utf-8'),required=True)
+    parser.add_argument('--keep-key-bytes',action='store_true',help='bản UTF-8 vẫn giữ khoá theo byte CP949 gốc')
     a=parser.parse_args(); root=a.kr.resolve(); out=a.out.resolve()
+    global KEEP_KEY_BYTES
+    KEEP_KEY_BYTES = a.keep_key_bytes
     if out == root or root in out.parents:
         raise ValueError('Không ghi vào client nguồn')
     out.mkdir(parents=True,exist_ok=True)

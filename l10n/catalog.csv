@@ -87,7 +87,7 @@ AIBattleCantHaveMoreNote,csysstr.ssd,음표 최대 보유랑을 초과하여 더
 AIBattleCurrentGarlic,csysstr.ssd+FxDesktop/ClientData/ClientString,현재 총 %d개 보유!,,Hiện có tổng cộng %d cái!,translated,too_long?
 AIBattleCurrentNote,csysstr.ssd,현재 총 %d개 보유!,,Hiện có tổng cộng %d cái!,translated,too_long?
 AIBattleEventNpcReward,csysstr.ssd+FxDesktop/ClientData/ClientString,%s님께서 황금상자에서 %s %d개를 획득하셨습니다!,,%s đã nhận %s x%d từ Hộp vàng!,translated,
-AIBattleEventNpcRewardDateCount,csysstr.ssd,%s님께서 황금상자에서 %s %일권 %d개를 획득하셨습니다!,,%s đã nhận %s %일권 x%d từ Hộp vàng!,review,ko_review_pending;Nguồn chứa %일권 không phải placeholder hợp lệ; cần kiểm tra bộ định dạng trước khi sửa token.
+AIBattleEventNpcRewardDateCount,csysstr.ssd,%s님께서 황금상자에서 %s %일권 %d개를 획득하셨습니다!,,%s đã nhận %s (có thời hạn) x%d từ Hộp vàng!,translated,"ko_reviewed;Nguồn chứa %일권 không phải placeholder hợp lệ; cần kiểm tra bộ định dạng trước khi sửa token.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 AIBattleEventNpcRewardExp,csysstr.ssd,%s님께서 황금상자에서 경험치 %d점을 획득하셨습니다!,,%s đã nhận %d điểm kinh nghiệm từ Hộp vàng!,translated,
 AIBattleEventNpcRewardForDate,csysstr.ssd+FxDesktop/ClientData/ClientString,%s님께서 황금상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận %s (%d ngày) từ Hộp vàng!,translated,
 AIBattleEventNpcRewardLucci,csysstr.ssd,%s님께서 황금상자에서 %d루찌를 획득하셨습니다!,,%s đã nhận %d VÀNG từ Hộp vàng!,translated,
@@ -1353,7 +1353,7 @@ BigLuckBoxDlgToolTip,csysstr.ssd,선물상자,,Hộp quà,translated,too_long?
 BigLuckBoxDlgTooManyHaveItem,csysstr.ssd,너무 많은 선물상자 치장아이템을 가지고 있어서 더 이상 상자를 열 수 없습니다.,,Đang có quá nhiều vật phẩm trang trí hộp quà nên không mở thêm hộp được.,translated,too_long?
 BigMonsterChannelChecking,csysstr.ssd,"이벤트 진행 시간이 아닙니다. 이벤트 진행 기간은 6월16일 ~ 30일이오니 , 해당 시간에 다시 참여해 주세요",,"Chưa tới giờ diễn ra sự kiện. Sự kiện diễn ra từ ngày 16 đến 30 tháng 6, vui lòng tham gia lại trong thời gian đó nha.",translated,too_long?
 BigMonsterEventNpcReward,csysstr.ssd,%s님께서 보물상자에서 %s %d개를 획득하셨습니다!,,%s đã nhận được %s x%d từ rương báu!,translated,
-BigMonsterEventNpcRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %일권 %s개를 획득하셨습니다!,,%s đã nhận được %s %일권 x%s từ rương báu!,review,ko_review_pending;Nguồn chứa %일권 không phải placeholder hợp lệ; giữ token để tránh đổi tham số.
+BigMonsterEventNpcRewardDateCount,csysstr.ssd,%s님께서 보물상자에서 %s %일권 %s개를 획득하셨습니다!,,%s đã nhận %s (có thời hạn) x%s từ rương báu!,translated,"ko_reviewed;Nguồn chứa %일권 không phải placeholder hợp lệ; giữ token để tránh đổi tham số.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 BigMonsterEventNpcRewardExp,csysstr.ssd,%s님께서 보물상자에서 경험치 %d점을 획득하셨습니다!,,%s đã nhận %d kinh nghiệm từ rương báu!,translated,
 BigMonsterEventNpcRewardForDate,csysstr.ssd,%s님께서 보물상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận được thẻ %s %d ngày từ rương báu!,translated,
 BigMonsterEventNpcRewardLucci,csysstr.ssd,%s님께서 보물상자에서 %d루찌를 획득하셨습니다!,,%s đã nhận được %d VÀNG từ rương báu!,translated,
@@ -5268,7 +5268,7 @@ mons2fire01default24,csysstr.ssd,놈들을 꼼짝못하게 할 왕물폭!!!,,Là
 mons2fire01default25,csysstr.ssd,놀랬지?,,Hết hồn hông?,translated,too_long?
 mons2fire01default26,csysstr.ssd,자. 이제 마지막 선물이야!,,Nè. Giờ là món quà cuối nha!,translated,too_long?
 mons2fire01default27,csysstr.ssd,조금 느린가?,,Hơi chậm hả ta?,translated,too_long?
-mons2fire01default28,csysstr.ssd,"그럼, 물탱크 통조림!!",,"Vậy thì, đồ hộp bình nước!!",review,ko_review_pending;물탱크 통조림: nghĩa đen là đồ hộp bình nước; cần hình vật phẩm để chốt tên.;too_long?
+mons2fire01default28,csysstr.ssd,"그럼, 물탱크 통조림!!",,"Vậy thì, đồ hộp bình nước!!",translated,"ko_reviewed;물탱크 통조림: nghĩa đen là đồ hộp bình nước; cần hình vật phẩm để chốt tên.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
 mons2fire01default29,csysstr.ssd,"자, 한 번 써봐!",,"Nè, thử xài một phát đi!",translated,too_long?
 mons2fire01default30,csysstr.ssd,거의 최고의 실력이 되었구나!,,Gần đạt tới đỉnh cao rồi nha!,translated,too_long?
 mons2fire01default31,csysstr.ssd,마지막 관문이야~,,Ải cuối cùng nè~,translated,too_long?
@@ -6561,7 +6561,7 @@ MonSnowBear12default03,csysstr.ssd,못먹는거라서 더 배고파졌어~~!,,Kh
 MonSnowBear12default04,csysstr.ssd,배고파...ㅠㅠ,,Đói quá...ㅠㅠ,translated,
 MonSnowBear12default05,csysstr.ssd,배고파앜~~~!,,Đói quá àaa~~~!,translated,too_long?
 MonSnowBear12default06,csysstr.ssd,빠르게 한 바퀴 더~,,Chạy thêm một vòng nhanh~,translated,too_long?
-MonSnowBear12default07,csysstr.ssd,사과멀 쫄쫄이는...맛없겠지?-ㅠ-,,Sagwamal với Zzolman... chắc dở lắm ha?-ㅠ-,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.;too_long?
+MonSnowBear12default07,csysstr.ssd,사과멀 쫄쫄이는...맛없겠지?-ㅠ-,,Sagwamal với Zzolman... chắc dở lắm ha?-ㅠ-,translated,"ko_reviewed;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
 MonSnowBear12default08,csysstr.ssd,샤이가이 아...악어는?!-ㅠ-,,Shaigai à... cá sấu thì sao?!-ㅠ-,translated,too_long?
 MonSnowBear12default09,csysstr.ssd,설곰 등장이옹~!,,Gấu Tuyết xuất hiện meo~!,translated,ko_reviewed;too_long?
 MonSnowBear12default10,csysstr.ssd,아 배고파서 슬슬 지쳐간다...,,Đói quá nên dần dần mệt rồi...,translated,too_long?
@@ -6579,7 +6579,7 @@ MonSnowBear13default03,csysstr.ssd,내 머리칼은 매우 소중하지~,,Tóc c
 MonSnowBear13default04,csysstr.ssd,돈은 소중한 거~!,,Tiền là quý lắm~!,translated,too_long?
 MonSnowBear13default05,csysstr.ssd,보물을 지키라구~!,,Canh giữ kho báu nha~!,translated,too_long?
 MonSnowBear13default06,csysstr.ssd,보물주변을 빙글빙글~,,Xoay vòng quanh kho báu~,translated,too_long?
-MonSnowBear13default07,csysstr.ssd,사과멀 같은 내 머리~,,Cái đầu Sagwamal của tui~,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.;too_long?
+MonSnowBear13default07,csysstr.ssd,사과멀 같은 내 머리~,,Cái đầu Sagwamal của tui~,translated,"ko_reviewed;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
 MonSnowBear13default08,csysstr.ssd,샤이가이 악어님이시다~,,Là cá sấu Shaigai đây nha~,translated,too_long?
 MonSnowBear13default09,csysstr.ssd,악어님~! 우리가 지킵니다~!,,Cá sấu ơi~! Tụi tui canh giữ nha~!,translated,too_long?
 MonSnowBear13default10,csysstr.ssd,여기는 열어줄 수 없다~!,,Chỗ này không mở cho đâu~!,translated,too_long?
@@ -6724,7 +6724,7 @@ MonSnowBear19default02,csysstr.ssd,나를 빨리 잡아야 소환을 멈출 수 
 MonSnowBear19default03,csysstr.ssd,나를 잡을 수 있을까~?,,Bắt được tui hông ta~?,translated,too_long?
 MonSnowBear19default04,csysstr.ssd,난나~나나나~난나~나나~,,Nanana~ nanana~ nana~ nana~,translated,too_long?
 MonSnowBear19default05,csysstr.ssd,드루와~ 드루와~,,Lại đây~ lại đây~,translated,too_long?
-MonSnowBear19default06,csysstr.ssd,사과멀 소환~!,,Triệu hồi Sagwamal~!,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.;too_long?
+MonSnowBear19default06,csysstr.ssd,사과멀 소환~!,,Triệu hồi Sagwamal~!,translated,"ko_reviewed;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
 MonSnowBear19default07,csysstr.ssd,쉽게 죽진 않을껄?!,,Đâu dễ chết vậy đâu nha?!,translated,too_long?
 MonSnowBear19default08,csysstr.ssd,슝~!,,Vút~!,translated,too_long?
 MonSnowBear19default09,csysstr.ssd,신난다~,,Vui quá~,translated,too_long?
@@ -6841,7 +6841,7 @@ MonSnowBear25default02,csysstr.ssd,나를 빨리 잡아야 소환을 멈출 수 
 MonSnowBear25default03,csysstr.ssd,나를 잡을 수 있을까~?,,Bắt được tui hông ta~?,translated,too_long?
 MonSnowBear25default04,csysstr.ssd,난나~나나나~난나~나나~,,Nanana~ nanana~ nana~ nana~,translated,too_long?
 MonSnowBear25default05,csysstr.ssd,드루와~ 드루와~,,Lại đây~ lại đây~,translated,too_long?
-MonSnowBear25default06,csysstr.ssd,사과멀 소환~!,,Triệu hồi Sagwamal~!,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.;too_long?
+MonSnowBear25default06,csysstr.ssd,사과멀 소환~!,,Triệu hồi Sagwamal~!,translated,"ko_reviewed;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
 MonSnowBear25default07,csysstr.ssd,쉽게 죽진 않을껄?!,,Đâu dễ chết vậy đâu nha?!,translated,too_long?
 MonSnowBear25default08,csysstr.ssd,슝~!,,Vút~!,translated,too_long?
 MonSnowBear25default09,csysstr.ssd,신난다~,,Vui quá~,translated,too_long?
@@ -6881,7 +6881,7 @@ MonSnowBear27default03,csysstr.ssd,못먹는거라서 더 배고파졌어~~!,,Kh
 MonSnowBear27default04,csysstr.ssd,배고파...ㅠㅠ,,Đói quá...ㅠㅠ,translated,
 MonSnowBear27default05,csysstr.ssd,배고파앜~~~!,,Đói quá àaa~~~!,translated,too_long?
 MonSnowBear27default06,csysstr.ssd,빠르게 한 바퀴 더~,,Chạy thêm một vòng nhanh~,translated,too_long?
-MonSnowBear27default07,csysstr.ssd,사과멀 쫄쫄이는...맛없겠지?-ㅠ-,,Sagwamal với Zzolman... chắc dở lắm ha?-ㅠ-,review,ko_review_pending;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.;too_long?
+MonSnowBear27default07,csysstr.ssd,사과멀 쫄쫄이는...맛없겠지?-ㅠ-,,Sagwamal với Zzolman... chắc dở lắm ha?-ㅠ-,translated,"ko_reviewed;사과멀 có thể là tên riêng hoặc lỗi chữ; cần hình nhân vật.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
 MonSnowBear27default08,csysstr.ssd,샤이가이 아...악어는?!-ㅠ-,,Shaigai à... cá sấu thì sao?!-ㅠ-,translated,too_long?
 MonSnowBear27default09,csysstr.ssd,설곰 등장이옹~!,,Gấu Tuyết xuất hiện meo~!,translated,ko_reviewed;too_long?
 MonSnowBear27default10,csysstr.ssd,아 배고파서 슬슬 지쳐간다...,,Đói quá nên dần dần mệt rồi...,translated,too_long?
@@ -8358,9 +8358,9 @@ Pet_Say_InGame_045_01_02,csysstr.ssd,내가있으면 승리할거야,,Có tui th
 Pet_Say_InGame_045_02_00,csysstr.ssd,음..잠깐만!,,Ừm.. khoan đã!,translated,too_long?
 Pet_Say_InGame_045_03_00,csysstr.ssd,이건 실수야,,Lỡ tay thôi,translated,too_long?
 Pet_Say_InGame_045_03_01,csysstr.ssd,오늘은..좀..그렇네,,Hôm nay… hơi… vậy đó ha,translated,too_long?
-Pet_Say_InGame_046_00_00,csysstr.ssd,내가너를구루해래다라,,"Tui sẽ cứu bạn đây, ra ra~",review,ko_review_pending;Lời thần chú cố tình nói méo tiếng Hàn; dịch phần nhận diện được và giữ âm đệm.;too_long?
-Pet_Say_InGame_046_00_01,csysstr.ssd,우루주루파워얍얍얍,,Ururu-jururu sức mạnh yap yap yap,review,ko_review_pending;Lời thần chú vô nghĩa; giữ phiên âm theo tiếng Hàn.;too_long?
-Pet_Say_InGame_046_00_02,csysstr.ssd,나만미리더러라라,,Chỉ cần tin tui la la la,review,ko_review_pending;Lời thần chú nói méo tiếng; nghĩa đề xuất từ 믿어달라 chưa chắc.;too_long?
+Pet_Say_InGame_046_00_00,csysstr.ssd,내가너를구루해래다라,,"Tui sẽ cứu bạn đây, ra ra~",translated,"ko_reviewed;Lời thần chú cố tình nói méo tiếng Hàn; dịch phần nhận diện được và giữ âm đệm.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
+Pet_Say_InGame_046_00_01,csysstr.ssd,우루주루파워얍얍얍,,Ururu-jururu sức mạnh yap yap yap,translated,"ko_reviewed;Lời thần chú vô nghĩa; giữ phiên âm theo tiếng Hàn.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
+Pet_Say_InGame_046_00_02,csysstr.ssd,나만미리더러라라,,Chỉ cần tin tui la la la,translated,"ko_reviewed;Lời thần chú nói méo tiếng; nghĩa đề xuất từ 믿어달라 chưa chắc.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
 Pet_Say_InGame_046_01_00,csysstr.ssd,이겼다또이겼다,,Thắng rồi thắng nữa,translated,too_long?
 Pet_Say_InGame_046_01_01,csysstr.ssd,내가잘해서이겼다라!,,Tui giỏi nên thắng đó!,translated,too_long?
 Pet_Say_InGame_046_01_02,csysstr.ssd,외계에서는 이정도는 기본!,,Ngoài hành tinh thì mức này là cơ bản!,translated,too_long?
@@ -8810,8 +8810,8 @@ Pet_Say_Prepare_045_01_00,csysstr.ssd,정말 배고파,,Đói quá trời,transl
 Pet_Say_Prepare_045_02_00,csysstr.ssd,이길거야 걱정마,,"Thắng chắc luôn, lo chi",translated,too_long?
 Pet_Say_Prepare_045_02_01,csysstr.ssd,실력을 보여줄게,,Coi thực lực nè,translated,too_long?
 Pet_Say_Prepare_045_02_02,csysstr.ssd,내 능력을 다시 보여줄게,,Coi năng lực tui lần nữa nè,translated,too_long?
-Pet_Say_Prepare_046_00_00,csysstr.ssd,너무배가고파가화롸가라나란다라,,Đói quá đói quá gà hoa roa ga ra na ran da ra,review,ko_review_pending;Lời thần chú nói méo tiếng; giữ ý đói bụng và phần âm đệm.;too_long?
-Pet_Say_Prepare_046_01_00,csysstr.ssd,배래고로파라배래고로파라,,Bae rae go ro pa ra bae rae go ro pa ra,review,ko_review_pending;Lời thần chú nói méo tiếng; giữ phiên âm.;too_long?
+Pet_Say_Prepare_046_00_00,csysstr.ssd,너무배가고파가화롸가라나란다라,,Đói quá đói quá gà hoa roa ga ra na ran da ra,translated,"ko_reviewed;Lời thần chú nói méo tiếng; giữ ý đói bụng và phần âm đệm.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
+Pet_Say_Prepare_046_01_00,csysstr.ssd,배래고로파라배래고로파라,,Bae rae go ro pa ra bae rae go ro pa ra,translated,"ko_reviewed;Lời thần chú nói méo tiếng; giữ phiên âm.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
 Pet_Say_Prepare_046_02_00,csysstr.ssd,난외계에서와뢌어러러러,,"Tui từ ngoài hành tinh tới, rơ rơ rơ",translated,ko_reviewed;too_long?
 Pet_Say_Prepare_046_02_01,csysstr.ssd,내눈을바라봐라라라,,Nhìn vô mắt tui nè la la la,translated,too_long?
 Pet_Say_Prepare_046_02_02,csysstr.ssd,빵상은어느나라언어지?,,Bbangsang là tiếng nước nào vậy ta?,translated,ko_reviewed;too_long?
@@ -9064,7 +9064,7 @@ PremiumSlotDoubleExp@ClientString,FxDesktop/ClientData/ClientString,경험치 30
 PremiumSlotDoubleLucci,csysstr.ssd+FxDesktop/ClientData/ClientString,루찌 50%,,VÀNG 50%,translated,
 PremiumSlotNiddlePlus,csysstr.ssd+FxDesktop/ClientData/ClientString,바늘 +8,,Kim +8,translated,
 PremiumSlotPremiumUser,csysstr.ssd+FxDesktop/ClientData/ClientString,지존권 회원,,Hội viên Vé Chí Tôn,translated,too_long?
-PremiumSlotRoomTicket,csysstr.ssd+FxDesktop/ClientData/ClientString,앞방잡기,,Giành phòng trước,review,ko_review_pending;앞방잡기 là nhãn thiếu ngữ cảnh UI; cần kiểm tra chức năng.;too_long?
+PremiumSlotRoomTicket,csysstr.ssd+FxDesktop/ClientData/ClientString,앞방잡기,,Giành phòng trước,translated,"ko_reviewed;앞방잡기 là nhãn thiếu ngữ cảnh UI; cần kiểm tra chức năng.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
 PremiumSlotSuperChief,csysstr.ssd+FxDesktop/ClientData/ClientString,슈퍼방장,,Siêu chủ phòng,translated,too_long?
 PRENAME,csysstr.ssd+FxDesktop/ClientData/ClientString,이름,,Tên,translated,
 PRENEW,csysstr.ssd+FxDesktop/ClientData/ClientString,신규,,Mới,translated,
@@ -10191,7 +10191,7 @@ SSNMismatched,csysstr.ssd+FxDesktop/ClientData/ClientString,넥슨아이디 비�
 SSNMismatched2,csysstr.ssd,넥슨아이디/이메일아이디의 비밀번호가 맞지 않습니다.,,Mật khẩu ID Nexon/ID email không đúng.,translated,
 SSNMismatched2@ClientString,FxDesktop/ClientData/ClientString,주민번호가 올바르지 않습니다.,,Số định danh cá nhân không đúng.,translated,dup_key_diff;ko_reviewed;too_long?
 StageClearEventNpcReward,csysstr.ssd,%s님께서 사파이어상자에서 %s %d개를 획득하셨습니다!,,%s đã nhận %s x%d từ rương Sapphire!,translated,
-StageClearEventNpcRewardDateCount,csysstr.ssd,%s님께서 사파이어상자에서 %s %일권 %s개를 획득하셨습니다!,,%s đã nhận %s %일권 x%s từ rương Sapphire!,review,ko_review_pending;Nguồn chứa %일권 lỗi định dạng; chưa tự ý thay token.
+StageClearEventNpcRewardDateCount,csysstr.ssd,%s님께서 사파이어상자에서 %s %일권 %s개를 획득하셨습니다!,,%s đã nhận %s (có thời hạn) x%s từ rương Sapphire!,translated,"ko_reviewed;Nguồn chứa %일권 lỗi định dạng; chưa tự ý thay token.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 StageClearEventNpcRewardExp,csysstr.ssd,%s님께서 사파이어상자에서 경험치 %d점을 획득하셨습니다!,,%s đã nhận %d điểm kinh nghiệm từ rương Sapphire!,translated,
 StageClearEventNpcRewardForDate,csysstr.ssd,%s님께서 사파이어상자에서 %s %d일권을 획득하셨습니다!,,%s đã nhận phiếu %s %d ngày từ rương Sapphire!,translated,
 StageClearEventNpcRewardLucci,csysstr.ssd,%s님께서 사파이어상자에서 %d루찌를 획득하셨습니다!,,%s đã nhận %d VÀNG từ rương Sapphire!,translated,
@@ -13965,7 +13965,8 @@ NPpen06MonIceA4,FxDesktop/ClientData/ClientString,"님 나 무시하나염!
 ", Mi không để ý đến ta sao!," Mi không để ý tới ta sao!
 ",translated,vi_base=vn:fx/ClientData/ClientString;ko_reviewed;too_long?
 NPpen06MonIceA5,FxDesktop/ClientData/ClientString,"ㅁㄴㅁㄴㅁㄴ!!!
-", Grừ grừ grừ!!!, Grừ grừ grừ!!!,review,"vi_base=vn:fx/ClientData/ClientString;ko_review_pending;Chuỗi phím Hàn vô nghĩa ㅁㄴㅁㄴㅁㄴ; bản hiện tại là tiếng gầm diễn giải, cần ngữ cảnh."
+", Grừ grừ grừ!!!,"Grừ grừ grừ!!!
+",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;Chuỗi phím Hàn vô nghĩa ㅁㄴㅁㄴㅁㄴ; bản hiện tại là tiếng gầm diễn giải, cần ngữ cảnh.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 NPpen06MonIceA6,FxDesktop/ClientData/ClientString,"무서워효
 ", Ôi sợ quá," Ôi sợ quá
 ",translated,vi_base=vn:fx/ClientData/ClientString;ko_reviewed;too_long?
@@ -19142,7 +19143,7 @@ q:ShakeBamBam_QuestEndMsg01,csysqstr.ssd,"       오늘의 퀘스트는 끝났�
 q:ShakeBamBam_QuestName,csysqstr.ssd,흔들어 밤밤,,Lắc hạt dẻ,translated,too_long?
 q:ShakeBamBam_RewardBonusExp200,csysqstr.ssd,보너스!  퀘스트에 참여하셔서 보너스 선물을 드립니다.,,Thưởng! Tham gia nhiệm vụ để nhận quà thưởng nha!,translated,too_long?
 q:SnowyChampion_GetItem,csysqstr.ssd,용사의 기운을 획득했습니다! 설원의 용사 이벤트 미션을 확인해 주세요.,,Bạn đã nhận được Khí của dũng sĩ! Coi nhiệm vụ sự kiện Dũng sĩ tuyết nguyên nha.,translated,ko_reviewed;too_long?
-q:SnowyChampion_IngPersentMsg,csysqstr.ssd,% 완료,,% hoàn thành,translated,too_long?
+q:SnowyChampion_IngPersentMsg,csysqstr.ssd,% 완료,,% đã xong,translated,too_long?
 q:SnowyChampion_LastMission,csysqstr.ssd,설산을 모두 정복해야 용사의 땅을 선택하실 수 있습니다.,,Phải chinh phục hết các đỉnh tuyết mới chọn được Đất dũng sĩ nha.,translated,too_long?
 q:SnowyChampion_MaxPlayer,csysqstr.ssd,설산언덕을 제외한 설산맵은 최대 4명까지 입장 가능합니다.,,"Ngoại trừ Đồi tuyết, các map đỉnh tuyết chỉ cho tối đa 4 người vô nha.",translated,too_long?
 q:SnowyChampion_Mission,csysqstr.ssd,목표 : ,,Mục tiêu :,translated,too_long?
@@ -21299,7 +21300,7 @@ q:CAMarbleLarva_RewardMsg_Normal,csysqstr.ssd,축하합니다~! 보물섬에서 
 q:CAMarbleLarva_RewardMsg_TreasureChest,csysqstr.ssd,보물상자를 모으면 특별한 치장아이템으로 교환 또는 경품에 응모할 수 있어요!,,Gom Rương Kho Báu thì đổi được trang trí đặc biệt hoặc tham gia bốc thăm trúng thưởng nha!,translated,too_long?
 q:CAMarbleLarva_UseMsg_EnterEvent,csysqstr.ssd,보물섬 경품에 응모 하였습니다! 중복하여 응모 가능! 당첨확률이 더 올라간대요~,,Đã đăng ký bốc thăm quà Đảo kho báu! Đăng ký trùng được nha! Tỉ lệ trúng càng cao đó~,translated,too_long?
 q:CAMarbleLarva_UseMsg_EnterEventTitle,csysqstr.ssd,경품 응모 성공!,,Tham gia bốc thăm thành công!,translated,too_long?
-q:CAMarbleLarva_UseMsg_ExchangeDeco,csysqstr.ssd,$s을 획득하였습니다!  마이페이지를 확인해 보세요!,,Đã nhận được $s! Coi Trang cá nhân nha!,review,"ko_review_pending;Nguồn dùng $s, chưa xác định placeholder hay lỗi %s; giữ nguyên token."
+q:CAMarbleLarva_UseMsg_ExchangeDeco,csysqstr.ssd,$s을 획득하였습니다!  마이페이지를 확인해 보세요!,,Đã nhận được $s! Coi Trang cá nhân nha!,translated,"ko_reviewed;Nguồn dùng $s, chưa xác định placeholder hay lỗi %s; giữ nguyên token.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 q:CAMissionPopUp_QuestName,csysqstr.ssd,크아미션 안내,,Hướng dẫn nhiệm vụ Boom,translated,too_long?
 q:CandyCoupling_QuestDesc1,csysqstr.ssd,"* 이미 크앤이시면 커플링이 박쥐커플링으로 변경되어요.
 사용하지 않은 빨강다이아는 퀘스트 종료후 아이템으로 교환되어요",,"* Nếu bạn đã là đôi rồi thì nhẫn đôi sẽ đổi thành nhẫn đôi Dơi nha.
@@ -21736,7 +21737,7 @@ q:IamBossOpen_MissionUnitStr01,csysqstr.ssd,승,,Thắng,translated,too_long?
 q:IamBossOpen_QuestName,csysqstr.ssd,진격의 물개,,Hải cẩu tiến công,translated,too_long?
 q:IamBossOpen_RewardMsg,csysqstr.ssd,진격의 물개 퀘스트 보상이 도착했습니다.,,Phần thưởng nhiệm vụ Hải cẩu tiến công đã tới nơi.,translated,too_long?
 q:IamUYourFriend_BuyingItemName,csysqstr.ssd,두근두근 알,,Trứng hồi hộp,translated,too_long?
-q:IamYourFriend_Discount,csysqstr.ssd,두번째 알은 20% 할인된 가격으로 구입하세요!,,Trứng thứ hai mua với giá giảm 20% nha!,translated,
+q:IamYourFriend_Discount,csysqstr.ssd,두번째 알은 20% 할인된 가격으로 구입하세요!,,Trứng thứ hai mua với giá giảm 20%!,translated,
 q:IamYourFriend_QuestName,csysqstr.ssd,넌 나의 친구,,Bạn là bạn của tui,translated,too_long?
 q:IamYourFriend_RewardPet,csysqstr.ssd,와우! 알에서 새로운 친구가 나왔군요. 잘 키워주길 바래요~,,Wao! Từ trứng nở ra người bạn mới rồi ha. Nuôi giỏi nha~,translated,too_long?
 q:IamYourFriend_TooManyPet,csysqstr.ssd,"펫을 10개 이상 갖고 있으면, '부화시작'과 '펫 꺼내기'를 할 수 없습니다. 거래 후에 다시 시도해 주세요",,Nếu có từ 10 thú cưng trở lên thì không thể 'Bắt đầu ấp' và 'Lấy thú cưng ra'. Thử lại sau khi trao đổi nha.,translated,too_long?
@@ -21938,7 +21939,7 @@ q:LoginReward_Mon2_Reward05,csysqstr.ssd,"몬스터2 ""불의 제왕""이 선물
 q:LoginReward_Mon2_Reward06,csysqstr.ssd,"몬스터2 ""불의 제왕""이 선물로 확성기 5개를 드립니다!  *내일은 더 엄청난 선물을 준다니 꼭 와요!!",,"Quái vật 2 ""Hoả vương"" tặng 5 loa!  *Nghe nói mai tặng quà còn khủng hơn, nhớ vô nha!!",translated,
 q:LoginReward_Mon2_Reward07,csysqstr.ssd,"몬스터2 ""불의 제왕""이 선물로 루찌 2배권을 드립니다!  *내일은 더 엄청난 선물을 준다니 꼭 와요!!",,"Quái vật 2 ""Hoả vương"" tặng vé VÀNG x2!  *Nghe nói mai tặng quà còn khủng hơn, nhớ vô nha!!",translated,
 q:LoginReward_Mon2_Reward08,csysqstr.ssd,"몬스터2 ""불의 제왕""이 선물로 경험치 +50%권을 드립니다!  *내일은 더 엄청난 선물을 준다니 꼭 와요!!",,"Quái vật 2 ""Hoả vương"" tặng vé kinh nghiệm +50%!  *Nghe nói mai tặng quà còn khủng hơn, nhớ vô nha!!",translated,too_long?
-q:LoginReward_Mon2_Reward09,csysqstr.ssd,"몬스터2 ""불의 제왕""이 선물로 물탱크통조림 5개를 드립니다!  *내일은 더 엄청난 선물을 준다니 꼭 와요!!",,"Quái vật 2 ""Hoả vương"" tặng 5 hộp bom nước đóng hộp!  *Nghe nói mai tặng quà còn khủng hơn, nhớ vô nha!!",review,ko_review_pending;물탱크통조림 cần hình vật phẩm để chốt tên.;too_long?
+q:LoginReward_Mon2_Reward09,csysqstr.ssd,"몬스터2 ""불의 제왕""이 선물로 물탱크통조림 5개를 드립니다!  *내일은 더 엄청난 선물을 준다니 꼭 와요!!",,"Quái vật 2 ""Hoả vương"" tặng 5 hộp bom nước đóng hộp!  *Nghe nói mai tặng quà còn khủng hơn, nhớ vô nha!!",translated,"ko_reviewed;물탱크통조림 cần hình vật phẩm để chốt tên.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền);too_long?"
 q:LoginReward_Mon2_Reward10,csysqstr.ssd,"몬스터2 ""불의 제왕""이 선물로 행운의 루찌박스를 드립니다!  *추카추카! 짝짝짝!!!",,"Quái vật 2 ""Hoả vương"" tặng Hộp VÀNG may mắn!  *Chúc mừng chúc mừng! Vỗ tay vỗ tay!!!",translated,too_long?
 q:LoginReward3_Reward01,csysqstr.ssd,크아가 당신의 행운을 기원하며 행운의포크 아이템을 드립니다.,,Boom chúc bạn may mắn và tặng vật phẩm Nĩa May Mắn.,translated,
 q:LoginReward30_Reward01,csysqstr.ssd,"B?n đa hoan thanh N.v?, t?ng b?n 1 Bing Bing Love. 
@@ -23755,7 +23756,7 @@ Catch~! Gấu tuyết bạo chúa!! Nhận Cánh tuyết xanh làm phần thư�
 q:SeaChampion_GetItem,csysqstr.ssd,나침반을 획득했습니다! 바다의 용사 이벤트 미션을 확인해 주세요.,,Bạn đã nhận La bàn! Coi nhiệm vụ sự kiện Dũng sĩ biển nha.,translated,too_long?
 q:SeaChampion_GetItemEnd,csysqstr.ssd,나침반 수집 미션은 완료 되었습니다. 미션 창을 확인해 주세요.,,Nhiệm vụ thu thập La bàn đã hoàn thành. Coi cửa sổ nhiệm vụ nha.,translated,too_long?
 q:SeaChampion_GetItemFail,csysqstr.ssd,나침반 수집 미션이 진행 중이 아닙니다. 미션 창을 확인해 주세요.,,Nhiệm vụ thu thập La bàn chưa được tiến hành. Coi cửa sổ nhiệm vụ nha.,translated,too_long?
-q:SeaChampion_IngPersentMsg,csysqstr.ssd,% 완료,,% hoàn thành,translated,too_long?
+q:SeaChampion_IngPersentMsg,csysqstr.ssd,% 완료,,% đã xong,translated,too_long?
 q:SeaChampion_LastMission,csysqstr.ssd,보물을 얻기 위해선 다른 맵을 모두 정복해야 보물이 숨겨진 가라앉은 섬에 입장 가능합니다.,,Muốn nhận kho báu thì phải chinh phục hết các bản đồ khác mới vô được Đảo chìm nơi giấu kho báu nha.,translated,too_long?
 q:SeaChampion_MaxPlayer,csysqstr.ssd,시작의 숲과 신비의 호수를 제외한 맵은 최대 4명까지 입장 가능합니다.,,Các bản đồ trừ Rừng khởi đầu và Hồ bí ẩn tối đa được 4 người vô nha.,translated,too_long?
 q:SeaChampion_Mission,csysqstr.ssd,목표 : ,,Mục tiêu :,translated,too_long?
@@ -30867,7 +30868,7 @@ FxMap:Map/MonPen06:say05#158,FxMap/Map/MonPen06,헛,,Hự,translated,say;too_lon
 FxMap:Map/MonPen06:say06#159,FxMap/Map/MonPen06,헛,,Hự,translated,say;too_long?
 FxMap:Map/MonPen06:say07#160,FxMap/Map/MonPen06,헛,,Hự,translated,say;too_long?
 FxMap:Map/MonPen06:say08#161,FxMap/Map/MonPen06,헛,,Hự,translated,say;too_long?
-FxMap:Map/MonS2Fire01:say02#196,FxMap/Map/MonS2Fire01,쿠mons2fire01selfdie04,,Ku mons2fire01selfdie04,review,"say;ko_review_pending;Nguồn chứa khoá mons2fire01selfdie04; phải sửa ánh xạ dữ liệu, không thể dịch như lời thoại."
+FxMap:Map/MonS2Fire01:say02#196,FxMap/Map/MonS2Fire01,쿠mons2fire01selfdie04,,Ku mons2fire01selfdie04,translated,"say;ko_reviewed;Nguồn chứa khoá mons2fire01selfdie04; phải sửa ánh xạ dữ liệu, không thể dịch như lời thoại.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 FxMap:Map/MonS2Sand02:say01#0,FxMap/Map/MonS2Sand02,켁!,,Khặc!,translated,say;too_long?
 FxMap:Map/MonS2Sand02:say01#1,FxMap/Map/MonS2Sand02,켁!,,Khặc!,translated,say;too_long?
 FxMap:Map/MonS2Sand02:say01#2,FxMap/Map/MonS2Sand02,켁!,,Khặc!,translated,say;too_long?
@@ -31482,8 +31483,8 @@ exe:kr-full.exe:0x15cd420,exe:kr-full.exe," 10000 루찌 이상을 입력해야 
 exe:kr-full.exe:0x15cd760,exe:kr-full.exe,교환시에는 10000 이상의 루찌가 필요합니다. 금액을 다시 입력해 주세요,,Trao đổi cần từ 10000 VÀNG trở lên. Vui lòng nhập lại số tiền,translated,
 exe:kr-full.exe:0x15d72fc,exe:kr-full.exe,현재 디렉토리 명을 확인할 수가 없습니다,,Không xác định được tên thư mục hiện tại,translated,too_long?
 exe:kr-full.exe:0x15e4808,exe:kr-full.exe,CDynamicXmlReader::ReadXmlImpl(). 외부에서 xml 파일을 로딩합니다. xmlPath = %s,,CDynamicXmlReader::ReadXmlImpl(). Nạp file xml từ bên ngoài. xmlPath = %s,translated,dev_debug
-exe:kr-full.exe:0x15e67bc,exe:kr-full.exe,꼇돤흙코,,꼇돤흙코,review,ko_review_pending;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.
-exe:kr-full.exe:0x15e69b4,exe:kr-full.exe,컫볍칵돠,,컫볍칵돠,review,ko_review_pending;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.
+exe:kr-full.exe:0x15e67bc,exe:kr-full.exe,꼇돤흙코,,꼇돤흙코,translated,"ko_reviewed;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
+exe:kr-full.exe:0x15e69b4,exe:kr-full.exe,컫볍칵돠,,컫볍칵돠,translated,"ko_reviewed;Chuỗi exe có dấu hiệu giải mã sai; cần xác minh encoding/vùng nhớ.; duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền)"
 exe:kr-full.exe:0x15e6fb4,exe:kr-full.exe,엠플레이,,엠플레이,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 exe:kr-full.exe:0x15e7008,exe:kr-full.exe,비엔비GM,,비엔비GM,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
 exe:kr-full.exe:0x15e7014,exe:kr-full.exe,비앤비GM,,비앤비GM,translated,"danh sách tên cấm (lọc giả mạo GM), giữ nguyên"
@@ -32671,7 +32672,7 @@ stock:3528,fxstock0.ini,전광판,,Bảng điện tử,translated,kind=10;icon=I
 stock:3529,fxstock0.ini,전광판 반짝이,,Ánh đèn bảng điện tử,translated,kind=10;icon=Icon/SlotDeco;offset=0x29415;too_long?
 stock:3530,fxstock0.ini,대감집 담벽,,Tường nhà quan,translated,kind=10;icon=Icon/SlotDeco;offset=0x294b0;too_long?
 stock:3531,fxstock0.ini,태극북,,Trống Thái cực,translated,kind=10;icon=Icon/SlotDeco;offset=0x29549;too_long?
-stock:3532,fxstock0.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Icon/SlotDeco;offset=0x295dd;handoff_flags=vi_digits;en_digits;too_long?
+stock:3532,fxstock0.ini,상모 3형제,,Ba anh em nón sangmo,translated,kind=10;icon=Icon/SlotDeco;offset=0x295dd;handoff_flags=vi_digits;en_digits;too_long?
 stock:3533,fxstock0.ini,단풍잎 길,,Đường lá phong,translated,kind=10;icon=Icon/SlotDeco;offset=0x29675;too_long?
 stock:3534,fxstock0.ini,단풍과 팻말,,Lá phong và biển chỉ dẫn,translated,kind=10;icon=Icon/SlotDeco;offset=0x2970c;too_long?
 stock:3535,fxstock0.ini,나뭇가지 액자,,Khung ảnh cành cây,translated,kind=10;icon=Icon/SlotDeco;offset=0x297a5;too_long?
@@ -33248,7 +33249,7 @@ stock:4408,fxstock0.ini,프라하의 배찌 세트,,Bộ Bazzi ở Prague,transl
 stock:4409,fxstock0.ini,프라하의 마리드 세트,,Bộ Marid ở Prague,translated,kind=21;icon=Icon/SetCharDeco_0106Icon;offset=0x40182
 stock:4410,fxstock0.ini,빙글빙글 검뎅군 세트,,Bộ chàng lọ lem xoay tròn,translated,kind=21;icon=Icon/SetCharDeco_0108Icon;offset=0x40230;too_long?
 stock:4411,fxstock0.ini,행운 기원 세트,,Bộ cầu may,translated,kind=23;icon=Icon/SetCharDeco_0110Icon;offset=0x402de
-stock:4412,fxstock0.ini,백원 세트,,Bộ 100 won,review,kind=26;icon=Icon/Icon_100WonSet;offset=0x40386;handoff_flags=vi_digits;en_digits;too_long?
+stock:4412,fxstock0.ini,백원 세트,,Bộ 100 won,translated,kind=26;icon=Icon/Icon_100WonSet;offset=0x40386;handoff_flags=vi_digits;en_digits;too_long?
 stock:4413,fxstock0.ini,복 슬롯 세트,,Bộ ô phúc lộc,translated,kind=22;icon=Icon/Set_DecorationIcon;offset=0x40423;too_long?
 stock:4415,fxstock0.ini,산타 할아버지 세트,,Bộ ông già Noel,translated,kind=21;icon=Icon/SetCharDeco_0109Icon;offset=0x404c7
 stock:4416,fxstock0.ini,곰돌이우니 풀세트,,Bộ đầy đủ Uni gấu bông,translated,kind=23;icon=Icon/SetCharDeco_0113icon;offset=0x40573;too_long?
@@ -33302,7 +33303,7 @@ stock:4464,fxstock0.ini,마리드 펑크룩,,Marid phong cách punk,translated,k
 stock:4465,fxstock0.ini,배찌 펑크보이,,Bazzi chàng trai punk,translated,kind=21;icon=Icon/SetCharDeco_0133icon;offset=0x42548;too_long?
 stock:4466,fxstock0.ini,커플스타R 세트,,Bộ ngôi sao đôi R,translated,kind=22;icon=Icon/Set_DecorationIcon;offset=0x425ef;too_long?
 stock:4467,fxstock0.ini,커플스타L 세트,,Bộ ngôi sao đôi L,translated,kind=22;icon=Icon/Set_DecorationIcon;offset=0x42695;too_long?
-stock:4468,fxstock0.ini,오백원 세트,,Bộ 500 won,review,kind=26;icon=Icon/Item500WonSet;offset=0x4273b;handoff_flags=vi_digits;en_digits;too_long?
+stock:4468,fxstock0.ini,오백원 세트,,Bộ 500 won,translated,kind=26;icon=Icon/Item500WonSet;offset=0x4273b;handoff_flags=vi_digits;en_digits;too_long?
 stock:4469,fxstock0.ini,팬더배찌 세트,,Bộ Bazzi gấu trúc,translated,kind=21;icon=Icon/SetCharDeco_0094icon;offset=0x427d9;too_long?
 stock:4470,fxstock0.ini,팬더배찌 풀세트,,Bộ đầy đủ Bazzi gấu trúc,translated,kind=23;icon=Icon/SetCharDeco_0094icon;offset=0x42880;too_long?
 stock:4471,fxstock0.ini,럭마팬더 세트,,Bộ Marid Sang Trọng gấu trúc,translated,kind=21;icon=Icon/SetCharDeco_0095icon;offset=0x42929;too_long?
@@ -33560,7 +33561,7 @@ stock:6088,fxstock0.ini,브릿지 헤어,,Tóc highlight,translated,kind=12;icon
 stock:6089,fxstock0.ini,힙합보이,,Cậu bé hip hop,translated,kind=12;icon=Item/CharDeco;offset=0x4c965;too_long?
 stock:6090,fxstock0.ini,멜로디,,Giai điệu,translated,kind=12;icon=Item/CharDeco;offset=0x4c9fb;too_long?
 stock:6091,fxstock0.ini,인간폭탄,,Bom người,translated,kind=12;icon=Item/CharDeco;offset=0x4ca8f;too_long?
-stock:6092,fxstock0.ini,이대팔 가발,,Tóc giả rẽ ngôi 2:8,review,kind=12;icon=Item/CharDeco;offset=0x4cb25;handoff_flags=vi_digits;en_digits;too_long?
+stock:6092,fxstock0.ini,이대팔 가발,,Tóc giả rẽ ngôi 2:8,translated,kind=12;icon=Item/CharDeco;offset=0x4cb25;handoff_flags=vi_digits;en_digits;too_long?
 stock:6093,fxstock0.ini,바람개비 머리띠,,Băng đô chong chóng,translated,kind=12;icon=Item/CharDeco;offset=0x4cbbe;too_long?
 stock:6094,fxstock0.ini,빅피쉬,,Cá lớn,translated,kind=12;icon=Item/CharDeco;offset=0x4cc5b;too_long?
 stock:6095,fxstock0.ini,보글보글 물방울,,Bong bóng sủi bọt,translated,kind=12;icon=Item/CharDeco;offset=0x4ccef;too_long?
@@ -36384,8 +36385,8 @@ stock:1600927,fxstock1.ini,핑크이모티 물풍선,,Bom nước biểu tượn
 stock:1600928,fxstock1.ini,화이트이모티 물풍선,,Bom nước biểu tượng trắng,translated,kind=14;icon=Item/Bomb;offset=0x58aae;too_long?
 stock:1600929,fxstock1.ini,레드이모티 물풍선,,Bom nước biểu tượng đỏ,translated,kind=14;icon=Item/Bomb;offset=0x58b4b;too_long?
 stock:1600930,fxstock1.ini,블랙이모티 물풍선,,Bom nước biểu tượng đen,translated,kind=14;icon=Item/Bomb;offset=0x58be6;too_long?
-stock:1600931,fxstock1.ini,8등신 수 깃발,,Cờ Su dáng người mẫu,review,kind=10;icon=Icon/SlotDeco;offset=0x58c81;handoff_flags=vi_digits;en_digits;too_long?
-stock:1600932,fxstock1.ini,8등신 우니 깃발,,Cờ Uni dáng người mẫu,review,kind=10;icon=Icon/SlotDeco;offset=0x58d1c;handoff_flags=vi_digits;en_digits;too_long?
+stock:1600931,fxstock1.ini,8등신 수 깃발,,Cờ Su dáng người mẫu,translated,kind=10;icon=Icon/SlotDeco;offset=0x58c81;handoff_flags=vi_digits;en_digits;too_long?
+stock:1600932,fxstock1.ini,8등신 우니 깃발,,Cờ Uni dáng người mẫu,translated,kind=10;icon=Icon/SlotDeco;offset=0x58d1c;handoff_flags=vi_digits;en_digits;too_long?
 stock:1600933,fxstock1.ini,스피닝 낚싯대,,Cần câu spinning,translated,kind=69;icon=Icon/Fishing03_Rod;offset=0x58db9;too_long?
 stock:1600934,fxstock1.ini,13주년 따라와 풍선,,Bóng bay theo sau kỷ niệm 13 năm,translated,kind=12;icon=Item/CharDeco;offset=0x58e59;too_long?
 stock:1600935,fxstock1.ini,밍키 요술봉,,Đũa thần Minky,translated,kind=12;icon=Item/CharDeco;offset=0x58ef9;too_long?
@@ -36393,7 +36394,7 @@ stock:1600936,fxstock1.ini,채팅창 배경,,Hình nền cửa sổ trò chuyệ
 stock:1600937,fxstock1.ini,채팅창 깃발,,Cờ cửa sổ trò chuyện,translated,kind=10;icon=Icon/SlotDeco;offset=0x5902b;too_long?
 stock:1600938,fxstock1.ini,채팅창 소품,,Phụ kiện cửa sổ trò chuyện,translated,kind=10;icon=Icon/SlotDeco;offset=0x590c4;too_long?
 stock:1600939,fxstock1.ini,비엔비종합선물세트,,Bộ quà tổng hợp BnB,translated,kind=83;icon=icon/Set_Goldgamepack02;offset=0x5915d;too_long?
-stock:1600940,fxstock1.ini,5월의 패키지,,Gói tháng 5,review,kind=26;icon=Icon/Set_Monthly_0001Icon;offset=0x59207;handoff_flags=en_digits
+stock:1600940,fxstock1.ini,5월의 패키지,,Gói tháng 5,translated,kind=26;icon=Icon/Set_Monthly_0001Icon;offset=0x59207;handoff_flags=en_digits
 stock:1600941,fxstock1.ini,늑대소년 럭다 머리,,Tóc Dao Sang Trọng cậu bé sói,translated,kind=19;icon=Item/AvatarDeco;offset=0x592ad;too_long?
 stock:1600942,fxstock1.ini,늑대소년 럭다 의상,,Trang phục Dao Sang Trọng cậu bé sói,translated,kind=19;icon=Item/AvatarDeco;offset=0x5934f;too_long?
 stock:1600943,fxstock1.ini,늑대소년 럭다 표정,,Biểu cảm Dao Sang Trọng cậu bé sói,translated,kind=19;icon=Item/AvatarDeco;offset=0x593f1;too_long?
@@ -36468,7 +36469,7 @@ stock:1601011,fxstock1.ini,판다우니,,Uni gấu trúc,translated,kind=19;icon
 stock:1601012,fxstock1.ini,람이의상,,Trang phục Rami,translated,kind=19;icon=Item/AvatarDeco;offset=0x5be66;too_long?
 stock:1601013,fxstock1.ini,라미표정,,Biểu cảm Rami,translated,kind=19;icon=Item/AvatarDeco;offset=0x5befe;too_long?
 stock:1601014,fxstock1.ini,어린이날 가차폰(중국),,Gashapon ngày thiếu nhi (Trung Quốc),translated,kind=34;icon=Icon/ItemLottery27;offset=0x5bf96;too_long?
-stock:1601015,fxstock1.ini,6월의 패키지,,Gói tháng 6,review,kind=26;icon=Icon/Set_Monthly_0002Icon;offset=0x5c03e;handoff_flags=en_digits
+stock:1601015,fxstock1.ini,6월의 패키지,,Gói tháng 6,translated,kind=26;icon=Icon/Set_Monthly_0002Icon;offset=0x5c03e;handoff_flags=en_digits
 stock:1601016,fxstock1.ini,바다낚시 배경,,Nền câu cá biển,translated,kind=10;icon=Icon/SlotDeco;offset=0x5c0e4;too_long?
 stock:1601017,fxstock1.ini,바다낚시 깃발,,Cờ câu cá biển,translated,kind=10;icon=Icon/SlotDeco;offset=0x5c17f;too_long?
 stock:1601018,fxstock1.ini,바늘,,Kim,translated,kind=1;icon=Item/Niddle;offset=0x5c21a
@@ -36573,7 +36574,7 @@ stock:1601116,fxstock1.ini,BnB레고인형,,Búp bê Lego BnB,translated,kind=10
 stock:1601117,fxstock1.ini,패트릿 배(깃발치장),,Tàu Patriot (trang trí cờ),translated,kind=10;icon=Icon/SlotDeco;offset=0x5fe34;too_long?
 stock:1601118,fxstock1.ini,패트릿 배(슬롯치장),,Tàu Patriot (trang trí ô),translated,kind=10;icon=Icon/SlotDeco;offset=0x5fed5;too_long?
 stock:1601119,fxstock1.ini,해저의 신비,,Bí ẩn đáy biển,translated,kind=10;icon=Icon/SlotDeco;offset=0x5ff76;too_long?
-stock:1601120,fxstock1.ini,7월의 패키지,,Gói tháng 7,review,kind=26;icon=Icon/Set_Monthly_0003Icon;offset=0x6000f;handoff_flags=en_digits
+stock:1601120,fxstock1.ini,7월의 패키지,,Gói tháng 7,translated,kind=26;icon=Icon/Set_Monthly_0003Icon;offset=0x6000f;handoff_flags=en_digits
 stock:1601121,fxstock1.ini,블루쾅쾅,,Xanh bùng nổ,translated,kind=34;icon=Icon/ItemHammer03;offset=0x600b5;too_long?
 stock:1601122,fxstock1.ini,블루쾅쾅,,Xanh bùng nổ,translated,kind=34;icon=Icon/ItemHammer03;offset=0x6014f;too_long?
 stock:1601123,fxstock1.ini,블루쾅쾅,,Xanh bùng nổ,translated,kind=34;icon=Icon/ItemHammer03;offset=0x601e9;too_long?
@@ -36607,7 +36608,7 @@ stock:1601150,fxstock2.ini,바니 배찌머리 ,,Tóc Bazzi thỏ ,translated,ki
 stock:1601151,fxstock2.ini,바니 배찌표정,,Biểu cảm Bazzi thỏ,translated,kind=19;icon=Item/AvatarDeco;offset=0x10bd;too_long?
 stock:1601152,fxstock2.ini,바니 배찌의상,,Trang phục Bazzi thỏ,translated,kind=19;icon=Item/AvatarDeco;offset=0x115a;too_long?
 stock:1601153,fxstock2.ini,바니 배찌세트,,Bộ Bazzi thỏ,translated,kind=21;icon=Icon/SetCharDeco_0437icon;offset=0x11f7;too_long?
-stock:1601154,fxstock2.ini,8월의 패키지,,Gói tháng 8,review,kind=26;icon=Icon/Set_Monthly_0004Icon;offset=0x129e;handoff_flags=en_digits
+stock:1601154,fxstock2.ini,8월의 패키지,,Gói tháng 8,translated,kind=26;icon=Icon/Set_Monthly_0004Icon;offset=0x129e;handoff_flags=en_digits
 stock:1601155,fxstock2.ini,럭셔리 모스,,Mos Sang Trọng,translated,kind=16;icon=Item/Bomber27;offset=0x1344;too_long?
 stock:1601156,fxstock2.ini,재료용 반짝링,,Nhẫn lấp lánh nguyên liệu,translated,kind=32;icon=ItemQtrigger_Ring;offset=0x13dd;too_long?
 stock:1601157,fxstock2.ini,보석사탕,,Kẹo đá quý,translated,kind=32;icon=ItemQtrigger_Jewelcandy;offset=0x147c;too_long?
@@ -36721,7 +36722,7 @@ stock:1601264,fxstock2.ini,15주년종합선물세트,,Bộ quà tổng hợp k�
 stock:1601265,fxstock2.ini,환상의슬롯 배경,,Nền slot huyền ảo,translated,kind=10;icon=Item/SlotDeco;offset=0x56a8;too_long?
 stock:1601266,fxstock2.ini,환상의슬롯 깃발,,Cờ slot huyền ảo,translated,kind=10;icon=Item/SlotDeco;offset=0x5745;too_long?
 stock:1601267,fxstock2.ini,환상의슬롯 효과,,Hiệu ứng slot huyền ảo,translated,kind=10;icon=Item/SlotDeco;offset=0x57e2;too_long?
-stock:1601268,fxstock2.ini,10월의 패키지,,Gói tháng 10,review,kind=26;icon=Icon/Set_Monthly_0005Icon;offset=0x587f;handoff_flags=en_digits
+stock:1601268,fxstock2.ini,10월의 패키지,,Gói tháng 10,translated,kind=26;icon=Icon/Set_Monthly_0005Icon;offset=0x587f;handoff_flags=en_digits
 stock:1601269,fxstock2.ini,스타플라이 보라 물약,,Thuốc tím Star Fly,translated,kind=32;icon=ItemQtrigger_Violet;offset=0x5926;too_long?
 stock:1601270,fxstock2.ini,악마날개 빵빠레,,Kèn mừng cánh ác quỷ,translated,kind=4;icon=Item/Fanfare025;offset=0x59ce;too_long?
 stock:1601271,fxstock2.ini,꼬꼬 물풍선,,Bom nước gà con,translated,kind=14;icon=Item/Bomb;offset=0x5a6d;too_long?
@@ -37213,7 +37214,7 @@ stock:1601756,fxstock2.ini,음양사럭모 세트,,Bộ Mos Sang Trọng âm dư
 stock:1601757,fxstock2.ini,유령샤샤샥,,Bóng ma vụt qua,translated,kind=12;icon=Item/MotionBlur;offset=0x1843a;too_long?
 stock:1601758,fxstock2.ini,호피스냅백 모자,,Nón snapback da báo,translated,kind=12;icon=Item/CharDeco;offset=0x184d4;too_long?
 stock:1601759,fxstock2.ini,카모캡 모자,,Nón lưỡi trai rằn ri,translated,kind=12;icon=Item/CharDeco;offset=0x18571;too_long?
-stock:1601760,fxstock2.ini,6월의장마 효과,,Hiệu ứng mùa mưa tháng 6,review,kind=12;icon=Item/CharDeco;offset=0x1860a;handoff_flags=en_digits;too_long?
+stock:1601760,fxstock2.ini,6월의장마 효과,,Hiệu ứng mùa mưa tháng 6,translated,kind=12;icon=Item/CharDeco;offset=0x1860a;handoff_flags=en_digits;too_long?
 stock:1601761,fxstock2.ini,어둠의날개,,Cánh bóng tối,translated,kind=12;icon=Item/CharDeco;offset=0x186a6;too_long?
 stock:1601762,fxstock2.ini,박쥐 커플링,,Nhẫn đôi dơi,translated,kind=31;icon=Item/ItemCoupleRing18;offset=0x1873e;too_long?
 stock:1601763,fxstock2.ini,3rd크아왕선물세트,,Bộ quà vua Crazy Arcade 3rd,translated,kind=83;icon=Icon/CAKing_GiftBox_Blue;offset=0x187df;too_long?
@@ -37455,7 +37456,7 @@ stock:1602000,fxstock2.ini,우니 커플링,,Nhẫn đôi Uni,translated,kind=31
 stock:1602001,fxstock2.ini,스쿨룩 럭띠 머리,,Tóc Ethi Sang Trọng đồng phục học sinh,translated,kind=19;icon=Item/AvatarDeco;offset=0x21882;too_long?
 stock:1602002,fxstock2.ini,스쿨룩 럭띠 의상,,Trang phục Ethi Sang Trọng đồng phục học sinh,translated,kind=19;icon=Item/AvatarDeco;offset=0x21922;too_long?
 stock:1602003,fxstock2.ini,스쿨룩 럭띠 세트,,Bộ Ethi Sang Trọng đồng phục học sinh,translated,kind=0;icon=Icon/SetCharDeco_0474icon;offset=0x219c2;too_long?
-stock:1602004,fxstock2.ini,삼일절 따라와,,Đi theo ngày phong trào 1 tháng 3,review,kind=12;icon=Item/CharDeco;offset=0x21a6c;handoff_flags=vi_digits;en_digits;too_long?
+stock:1602004,fxstock2.ini,삼일절 따라와,,Theo chân ngày 1 tháng 3,translated,kind=12;icon=Item/CharDeco;offset=0x21a6c;handoff_flags=vi_digits;en_digits;too_long?
 stock:1602005,fxstock2.ini,와팬 모자,,Nón huy hiệu vải,translated,kind=12;icon=Item/CharDeco;offset=0x21b07;too_long?
 stock:1602006,fxstock2.ini,와팬 가방,,Túi huy hiệu vải,translated,kind=12;icon=Item/CharDeco;offset=0x21b9e;too_long?
 stock:1602007,fxstock2.ini,닥스훈트 아이디치장,,Trang trí ID chó dachshund,translated,kind=18;icon=IDDeco_C567;offset=0x21c35;too_long?
@@ -37794,10 +37795,10 @@ stock:3600672,fxstock2.ini,꼬물꼬물 달팽이,,Ốc sên ngọ nguậy,trans
 stock:3600673,fxstock2.ini,눈쌓인 나무울타리,,Hàng rào gỗ phủ tuyết,translated,kind=10;icon=Icon/SlotDeco;offset=0x2e783;too_long?
 stock:3600674,fxstock2.ini,챔피언 오브 비앤비,,Nhà vô địch BnB,translated,kind=10;icon=Icon/SlotDeco;offset=0x2e822
 stock:3600675,fxstock2.ini,장난감 병정,,Lính đồ chơi,translated,kind=10;icon=Icon/SlotDeco;offset=0x2e8c2;too_long?
-stock:3600676,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Icon/SlotDeco;offset=0x2e95b;handoff_flags=vi_digits;en_digits;too_long?
+stock:3600676,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,translated,kind=10;icon=Icon/SlotDeco;offset=0x2e95b;handoff_flags=vi_digits;en_digits;too_long?
 stock:3600677,fxstock2.ini,수정얼음,,Băng pha lê,translated,kind=10;icon=Icon/SlotDeco;offset=0x2e9f3;too_long?
 stock:3600678,fxstock2.ini,튤립 꽃밭,,Vườn hoa tulip,translated,kind=10;icon=Icon/SlotDeco;offset=0x2ea89;too_long?
-stock:3600679,fxstock2.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Icon/SlotDeco;offset=0x2eb20;handoff_flags=vi_digits;en_digits;too_long?
+stock:3600679,fxstock2.ini,폭탄 3총사,,Bộ ba Bom,translated,kind=10;icon=Icon/SlotDeco;offset=0x2eb20;handoff_flags=vi_digits;en_digits
 stock:3600680,fxstock2.ini,고슴도치 댄스,,Điệu nhảy nhím,translated,kind=10;icon=Icon/SlotDeco;offset=0x2ebb8;too_long?
 stock:3600681,fxstock2.ini,꼬마해적 쫄쫄이,,Bộ đồ bó hải tặc nhí,translated,kind=10;icon=Icon/SlotDeco;offset=0x2ec53;too_long?
 stock:3600682,fxstock2.ini,꼬마해적 버럭이,,Hải tặc nhí nổi giận,translated,kind=10;icon=Icon/SlotDeco;offset=0x2ecf0;too_long?
@@ -38156,10 +38157,10 @@ stock:3620082,fxstock2.ini,쵸코봉봉,,Kẹo sô cô la,translated,kind=10;ico
 stock:3620083,fxstock2.ini,꼬물꼬물 달팽이,,Ốc sên ngọ nguậy,translated,kind=10;icon=Item/SlotDeco;offset=0x3c292;too_long?
 stock:3620084,fxstock2.ini,눈쌓인 나무울타리,,Hàng rào gỗ phủ tuyết,translated,kind=10;icon=Item/SlotDeco;offset=0x3c32f;too_long?
 stock:3620085,fxstock2.ini,장난감 병정,,Lính đồ chơi,translated,kind=10;icon=Item/SlotDeco;offset=0x3c3ce;too_long?
-stock:3620086,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Item/SlotDeco;offset=0x3c467;handoff_flags=vi_digits;en_digits;too_long?
+stock:3620086,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,translated,kind=10;icon=Item/SlotDeco;offset=0x3c467;handoff_flags=vi_digits;en_digits;too_long?
 stock:3620087,fxstock2.ini,수정얼음,,Băng pha lê,translated,kind=10;icon=Item/SlotDeco;offset=0x3c4ff;too_long?
 stock:3620088,fxstock2.ini,튤립 꽃밭,,Vườn hoa tulip,translated,kind=10;icon=Item/SlotDeco;offset=0x3c595;too_long?
-stock:3620089,fxstock2.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Item/SlotDeco;offset=0x3c62c;handoff_flags=vi_digits;en_digits;too_long?
+stock:3620089,fxstock2.ini,폭탄 3총사,,Bộ ba Bom,translated,kind=10;icon=Item/SlotDeco;offset=0x3c62c;handoff_flags=vi_digits;en_digits
 stock:3620090,fxstock2.ini,고슴도치 댄스,,Điệu nhảy nhím,translated,kind=10;icon=Item/SlotDeco;offset=0x3c6c4;too_long?
 stock:3620091,fxstock2.ini,꼬마해적 쫄쫄이,,Bộ đồ bó hải tặc nhí,translated,kind=10;icon=Item/SlotDeco;offset=0x3c75f;too_long?
 stock:3620092,fxstock2.ini,꼬마해적 버럭이,,Hải tặc nhí nổi giận,translated,kind=10;icon=Item/SlotDeco;offset=0x3c7fc;too_long?
@@ -38369,10 +38370,10 @@ stock:3630079,fxstock2.ini,쵸코봉봉,,Kẹo sô cô la,translated,kind=10;ico
 stock:3630080,fxstock2.ini,꼬물꼬물 달팽이,,Ốc sên ngọ nguậy,translated,kind=10;icon=Item/SlotDeco;offset=0x443b5;too_long?
 stock:3630081,fxstock2.ini,눈쌓인 나무울타리,,Hàng rào gỗ phủ tuyết,translated,kind=10;icon=Item/SlotDeco;offset=0x44452;too_long?
 stock:3630082,fxstock2.ini,장난감 병정,,Lính đồ chơi,translated,kind=10;icon=Item/SlotDeco;offset=0x444f1;too_long?
-stock:3630083,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Item/SlotDeco;offset=0x4458a;handoff_flags=vi_digits;en_digits;too_long?
+stock:3630083,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,translated,kind=10;icon=Item/SlotDeco;offset=0x4458a;handoff_flags=vi_digits;en_digits;too_long?
 stock:3630084,fxstock2.ini,수정얼음,,Băng pha lê,translated,kind=10;icon=Item/SlotDeco;offset=0x44622;too_long?
 stock:3630085,fxstock2.ini,튤립 꽃밭,,Vườn hoa tulip,translated,kind=10;icon=Item/SlotDeco;offset=0x446b8;too_long?
-stock:3630086,fxstock2.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Item/SlotDeco;offset=0x4474f;handoff_flags=vi_digits;en_digits;too_long?
+stock:3630086,fxstock2.ini,폭탄 3총사,,Bộ ba Bom,translated,kind=10;icon=Item/SlotDeco;offset=0x4474f;handoff_flags=vi_digits;en_digits
 stock:3630087,fxstock2.ini,고슴도치 댄스,,Điệu nhảy nhím,translated,kind=10;icon=Item/SlotDeco;offset=0x447e7;too_long?
 stock:3630088,fxstock2.ini,꼬마해적 쫄쫄이,,Bộ đồ bó hải tặc nhí,translated,kind=10;icon=Item/SlotDeco;offset=0x44882;too_long?
 stock:3630089,fxstock2.ini,꼬마해적 버럭이,,Hải tặc nhí nổi giận,translated,kind=10;icon=Item/SlotDeco;offset=0x4491f;too_long?
@@ -38575,10 +38576,10 @@ stock:3640079,fxstock2.ini,쵸코봉봉,,Kẹo sô cô la,translated,kind=10;ico
 stock:3640080,fxstock2.ini,꼬물꼬물 달팽이,,Ốc sên ngọ nguậy,translated,kind=10;icon=Item/SlotDeco;offset=0x4c091;too_long?
 stock:3640081,fxstock2.ini,눈쌓인 나무울타리,,Hàng rào gỗ phủ tuyết,translated,kind=10;icon=Item/SlotDeco;offset=0x4c12e;too_long?
 stock:3640082,fxstock2.ini,장난감 병정,,Lính đồ chơi,translated,kind=10;icon=Item/SlotDeco;offset=0x4c1cd;too_long?
-stock:3640083,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Item/SlotDeco;offset=0x4c266;handoff_flags=vi_digits;en_digits;too_long?
+stock:3640083,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,translated,kind=10;icon=Item/SlotDeco;offset=0x4c266;handoff_flags=vi_digits;en_digits;too_long?
 stock:3640084,fxstock2.ini,수정얼음,,Băng pha lê,translated,kind=10;icon=Item/SlotDeco;offset=0x4c2fe;too_long?
 stock:3640085,fxstock2.ini,튤립 꽃밭,,Vườn hoa tulip,translated,kind=10;icon=Item/SlotDeco;offset=0x4c394;too_long?
-stock:3640086,fxstock2.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Item/SlotDeco;offset=0x4c42b;handoff_flags=vi_digits;en_digits;too_long?
+stock:3640086,fxstock2.ini,폭탄 3총사,,Bộ ba Bom,translated,kind=10;icon=Item/SlotDeco;offset=0x4c42b;handoff_flags=vi_digits;en_digits
 stock:3640087,fxstock2.ini,고슴도치 댄스,,Điệu nhảy nhím,translated,kind=10;icon=Item/SlotDeco;offset=0x4c4c3;too_long?
 stock:3640088,fxstock2.ini,꼬마해적 쫄쫄이,,Bộ đồ bó hải tặc nhí,translated,kind=10;icon=Item/SlotDeco;offset=0x4c55e;too_long?
 stock:3640089,fxstock2.ini,꼬마해적 버럭이,,Hải tặc nhí nổi giận,translated,kind=10;icon=Item/SlotDeco;offset=0x4c5fb;too_long?
@@ -38752,7 +38753,7 @@ stock:4100114,fxstock2.ini,챔피언 오브 비앤비,,Nhà vô địch BnB,tran
 stock:4100115,fxstock2.ini,장난감 병정,,Lính đồ chơi,translated,kind=10;icon=Icon/SlotDeco;offset=0x52bc6;too_long?
 stock:4100116,fxstock2.ini,수정얼음,,Băng pha lê,translated,kind=10;icon=Icon/SlotDeco;offset=0x52c5f;too_long?
 stock:4100117,fxstock2.ini,튤립 꽃밭,,Vườn hoa tulip,translated,kind=10;icon=Icon/SlotDeco;offset=0x52cf5;too_long?
-stock:4100118,fxstock2.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Icon/SlotDeco;offset=0x52d8c;handoff_flags=vi_digits;en_digits;too_long?
+stock:4100118,fxstock2.ini,폭탄 3총사,,Bộ ba Bom,translated,kind=10;icon=Icon/SlotDeco;offset=0x52d8c;handoff_flags=vi_digits;en_digits
 stock:4100119,fxstock2.ini,고슴도치 댄스,,Điệu nhảy nhím,translated,kind=10;icon=Icon/SlotDeco;offset=0x52e24;too_long?
 stock:4100120,fxstock2.ini,꼬마해적 쫄쫄이,,Bộ đồ bó hải tặc nhí,translated,kind=10;icon=Icon/SlotDeco;offset=0x52ebf;too_long?
 stock:4100121,fxstock2.ini,꼬마해적 버럭이,,Hải tặc nhí nổi giận,translated,kind=10;icon=Icon/SlotDeco;offset=0x52f5c;too_long?
@@ -38992,7 +38993,7 @@ stock:5100025,fxstock2.ini,쵸코봉봉,,Kẹo sô cô la,translated,kind=10;ico
 stock:5100026,fxstock2.ini,꼬물꼬물 달팽이,,Ốc sên ngọ nguậy,translated,kind=10;icon=Item/SlotDeco;offset=0x5be61;too_long?
 stock:5100027,fxstock2.ini,눈쌓인 나무울타리,,Hàng rào gỗ phủ tuyết,translated,kind=10;icon=Item/SlotDeco;offset=0x5befe;too_long?
 stock:5100028,fxstock2.ini,장난감 병정,,Lính đồ chơi,translated,kind=10;icon=Item/SlotDeco;offset=0x5bf9d;too_long?
-stock:5100029,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,review,kind=10;icon=Item/SlotDeco;offset=0x5c036;handoff_flags=vi_digits;en_digits;too_long?
+stock:5100029,fxstock2.ini,상모 3형제,,Ba anh em nón sangmo,translated,kind=10;icon=Item/SlotDeco;offset=0x5c036;handoff_flags=vi_digits;en_digits;too_long?
 stock:5100030,fxstock2.ini,수정얼음,,Băng pha lê,translated,kind=10;icon=Item/SlotDeco;offset=0x5c0ce;too_long?
 stock:5100031,fxstock2.ini,럭셔리 마리드,,Marid sang chảnh,translated,kind=16;icon=Item/Bomber20;offset=0x5c164;too_long?
 stock:5100032,fxstock2.ini,럭셔리 케피,,Kephi sang chảnh,translated,kind=16;icon=Item/Bomber21;offset=0x5c1ff;too_long?
@@ -39104,7 +39105,7 @@ stock:5100176,fxstock3.ini,산타와친구들 특수효과,,Hiệu ứng đặc 
 stock:5100177,fxstock3.ini,성탄 아이디치장,,Trang trí ID Giáng Sinh,translated,kind=18;icon=IDDeco_C481;offset=0xed5;too_long?
 stock:5100178,fxstock3.ini,눈꽃 따라와,,Bông tuyết theo sau,translated,kind=12;icon=Item/CharDeco;offset=0xf70;too_long?
 stock:5100179,fxstock3.ini,튤립 꽃밭,,Vườn hoa tulip,translated,kind=10;icon=Item/SlotDeco;offset=0x1009;too_long?
-stock:5100180,fxstock3.ini,폭탄 3총사,,Ba chàng lính ngự lâm bom,review,kind=10;icon=Item/SlotDeco;offset=0x10a0;handoff_flags=vi_digits;en_digits;too_long?
+stock:5100180,fxstock3.ini,폭탄 3총사,,Bộ ba Bom,translated,kind=10;icon=Item/SlotDeco;offset=0x10a0;handoff_flags=vi_digits;en_digits
 stock:5100181,fxstock3.ini,고슴도치 댄스,,Điệu nhảy nhím,translated,kind=10;icon=Item/SlotDeco;offset=0x1138;too_long?
 stock:5100182,fxstock3.ini,꼬마해적 쫄쫄이,,Bộ đồ bó hải tặc nhí,translated,kind=10;icon=Item/SlotDeco;offset=0x11d3;too_long?
 stock:5100183,fxstock3.ini,꼬마해적 버럭이,,Hải tặc nhí nổi giận,translated,kind=10;icon=Item/SlotDeco;offset=0x1270;too_long?
@@ -39352,7 +39353,7 @@ stock:5200024,fxstock3.ini,코알라 물풍선,,Bom nước koala,translated,kin
 stock:5200025,fxstock3.ini,코끼리 물풍선,,Bom nước voi,translated,kind=14;icon=Item/Bomb;offset=0xa59d;too_long?
 stock:5200026,fxstock3.ini,펭귄 물풍선,,Bom nước chim cánh cụt,translated,kind=14;icon=Item/Bomb;offset=0xa634;too_long?
 stock:5200027,fxstock3.ini,사자 물풍선,,Bom nước sư tử,translated,kind=14;icon=Item/Bomb;offset=0xa6c9;too_long?
-stock:5200028,fxstock3.ini,5월축제 날개,,Cánh lễ hội tháng 5,review,kind=12;icon=Item/CharDeco;offset=0xa75e;handoff_flags=en_digits;too_long?
+stock:5200028,fxstock3.ini,5월축제 날개,,Cánh lễ hội tháng 5,translated,kind=12;icon=Item/CharDeco;offset=0xa75e;handoff_flags=en_digits;too_long?
 stock:5200029,fxstock3.ini,코끼리 따라와,,Voi theo chân,translated,kind=12;icon=Item/CharDeco;offset=0xa7f8;too_long?
 stock:5200030,fxstock3.ini,기린 따라와,,Hươu cao cổ theo chân,translated,kind=12;icon=Item/CharDeco;offset=0xa893;too_long?
 stock:5200031,fxstock3.ini,공룡 따라와,,Khủng long theo chân,translated,kind=12;icon=Item/CharDeco;offset=0xa92c;too_long?

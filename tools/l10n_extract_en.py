@@ -21,7 +21,8 @@ import l10n_extract as base
 
 ROOT = Path(__file__).resolve().parent.parent
 PRINTF = re.compile(r'%(?:\d+\$)?[-+#0 ]*\d*(?:\.\d+)?(?:hh|ll|h|l|I64|z)?[diuoxXfFeEgGaAcspn%]')
-OTHER = re.compile(r'\{[^{}]+\}|</?[^<>]+>')
+# Thẻ thật trong dữ liệu chỉ có font; `<경험치+30%>`, `<주의>`, `<PC방 …>` là chữ thường trong ngoặc nhọn.
+OTHER = re.compile(r'\{[^{}]+\}|</?font\b[^<>]*>', re.I)
 HANGUL = re.compile(r'[\uac00-\ud7a3\u3131-\u318e]')
 
 
@@ -84,6 +85,8 @@ def formatting(ko, en):
     # Thứ tự printf quan trọng với các tham số không đánh số; %% không lấy đối số.
     a = [m for m in PRINTF.findall(ko) if m != '%%']
     b = [m for m in PRINTF.findall(en) if m != '%%']
+    if a and all('$' in m for m in a + b):  # %1$s…: thứ tự trong câu được phép đổi
+        a, b = sorted(a), sorted(b)
     return a == b and OTHER.findall(ko) == OTHER.findall(en)
 
 
@@ -333,6 +336,52 @@ def main():
         r['source_en'] = 'tm_en.csv'
         r['en_status'] = 'machine_review' if flags or candidate['status'] == 'review' else 'machine'
         r['en_notes'] = ';'.join(flags)
+    # Kết quả soát nghĩa chữ PopTag so với câu Hàn (en_review.csv): `fix` thay bằng bản dịch
+    # từ câu Hàn, `whitespace` giữ câu chữ PopTag và lấy xuống dòng/khoảng trắng của câu Hàn.
+    review_path = ROOT / 'l10n/en_review.csv'
+    if review_path.exists():
+        with review_path.open(encoding='utf-8', newline='') as f:
+            reviewed = {(r['ko'], r['en_poptag']): r for r in csv.DictReader(f)}
+        for r in rows:
+            if r['en_status'] not in ('candidate', 'casefold_candidate'):
+                continue
+            verdict = reviewed.get((r['ko'], r['en']))
+            if not verdict:
+                continue
+            notes = [n for n in r['en_notes'].split(';') if n]
+            if verdict['verdict'] in ('fix', 'whitespace') and formatting(r['ko'], verdict['en']):
+                r['en'] = verdict['en']
+                notes = [n for n in notes if n != 'format_mismatch']
+                if verdict['verdict'] == 'fix':
+                    r['en_status'] = 'machine'
+                    r['source_en'] = 'en_review.csv'
+                    notes.append('replaces_poptag_text')
+                else:
+                    notes.append('whitespace_from_kr')
+            elif verdict['verdict'] == 'ok':
+                notes.append('meaning_checked')
+            else:
+                notes.append('meaning_unsure')
+            r['en_notes'] = ';'.join(notes)
+    # Dòng từng treo (nhiều biến thể PopTag, tên tạm theo icon, bản dịch máy bị máy kiểm đánh dấu)
+    # đã được chốt trong en_override.csv: `poptag_variant` là một biến thể PopTag được chọn,
+    # `machine` là bản dịch từ câu Hàn.
+    override_path = ROOT / 'l10n/en_override.csv'
+    if override_path.exists():
+        with override_path.open(encoding='utf-8', newline='') as f:
+            chosen = {r['ko']: r for r in csv.DictReader(f)}
+        for r in rows:
+            if r['en_status'] not in ('conflicting_variants', 'stock_icon_candidate', 'machine_review'):
+                continue
+            pick = chosen.get(r['ko'])
+            if not pick or not formatting(r['ko'], pick['en']):
+                continue
+            if not pick['en'] and pick['notes'] != 'empty_on_purpose':
+                continue
+            r['en'] = pick['en']
+            r['source_en'] = 'en_override.csv'
+            r['en_status'] = 'candidate' if pick['basis'] == 'poptag_variant' else 'machine'
+            r['en_notes'] = ';'.join(n for n in ('settled_' + pick['basis'], pick['notes']) if n)
     # Ghi lại sau bước đối chiếu stock; không thay các ứng viên nguồn khác.
     write_csv(args.out / 'catalog_en.csv', ['id', 'source_kr', 'ko', 'vi', 'vi_status', 'en', 'source_en', 'en_status', 'en_notes'], rows)
     write_csv(args.out / 'stock_names_en.csv', ['item_id','en','en_kind','en_icon','kr_item_id','ko','kr_kind','kr_icon','kr_source','kr_offset','kind_match','icon_match','catalog_ko_ids','basis','status'], stock)

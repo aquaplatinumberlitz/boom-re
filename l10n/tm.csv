@@ -671,7 +671,7 @@ Kênh Premium hiện chỉ vô được ở tiệm net đã đăng ký kênh Pre
 """해적꼬마들이 묶여있어! 일단 구해주자!""","""Hải tặc nhí bị trói! Cứu họ trước đã!""",translated,
 $s을 획득하였습니다!  마이페이지를 확인해 보세요!,Đã nhận được $s! Coi Trang cá nhân nha!,review,"gốc ""$s"" có lẽ là lỗi của %s"
 % 상승하였습니다.    드라큐라를 찾을수록 치장아이템의 완성도가 점점 올라갑니다.  치장아이템이 모두 완성되면 선물로 받을 수 있습니다.,"% tăng.    Càng tìm được Dracula, độ hoàn thành trang phục càng tăng. Khi trang phục hoàn thành đủ, bạn có thể nhận làm quà.",translated,
-% 완료,% hoàn thành,translated,
+% 완료,% đã xong,translated,
 %02d:%02d 남음,Còn %02d:%02d,translated,
 %02d회,%02d lần,translated,
 %04d년 %02d월 %02d일 자정까지,%04d년 %02d월 %02d일 자정까지,review,"thứ tự năm/tháng/ngày: cần định dạng ngày theo locale, gợi ý 'Đến nửa đêm %02d/%02d/%04d' (đổi thứ tự tham số)"
@@ -1867,7 +1867,7 @@ Gom đủ 8 cái sẽ được Quyền vĩnh viễn, còn Loa toàn server (50 c
 đóng tem điểm danh nha! Tích tem để nhận quà~★
 (Nhiệm vụ điểm danh hôm nay %d / 3 ván đạt)",translated,
 10월의 서포터즈만 사용할 수 있습니다,Chỉ người hỗ trợ tháng 10 mới dùng được.,translated,
-10월의 패키지,Gói tháng 10,review,handoff_flags=en_digits
+10월의 패키지,Gói tháng 10,translated,handoff_flags=en_digits
 "10일! 와! 내일이면 달콤출첵 퀘스트만의 특별한 선물!
 빼빼로 아이디치장을 선물로 받을 수 있어요!
 오늘은 센서 5개를 선물로 드릴게요!","Ngày 10! Woa! Ngày mai là quà đặc biệt chỉ có ở nhiệm vụ điểm danh ngọt ngào!
@@ -2432,8 +2432,8 @@ Bấm nút Nhận quà để coi vật phẩm nha",translated,
 (5/5~16일까지)","Sự kiện tháng 5!
 Người chơi đã có Marid Sang Trọng mà mua Kephi Sang Trọng sẽ được giảm 20%.
 (5/5~16/5)",translated,
-5월의 패키지,Gói tháng 5,review,handoff_flags=en_digits
-5월축제 날개,Cánh lễ hội tháng 5,review,handoff_flags=en_digits
+5월의 패키지,Gói tháng 5,translated,handoff_flags=en_digits
+5월축제 날개,Cánh lễ hội tháng 5,translated,handoff_flags=en_digits
 "5일차 로그인 미션 완료 선물로 바늘(10개)를 드려요~
 내일 다시 오면 또 다른 선물이 가득!
 (이벤트 기간: 4/18 ~ 4/29)","Hoàn thành nhiệm vụ đăng nhập ngày 5, tặng Kim (10 cái) nha~
@@ -2464,8 +2464,8 @@ Hãy tiếp tục làm người bảo vệ làng Bubble Hill nha~★",translated
 "6개의 곰곰이 있을 때에만 뽀끼열쇠를 
 변경하실 수 있어요!","Chỉ khi có 6 Gomgom mới có thể đổi Chìa khóa Ppoki
 nha!",translated,
-6월의 패키지,Gói tháng 6,review,handoff_flags=en_digits
-6월의장마 효과,Hiệu ứng mùa mưa tháng 6,review,handoff_flags=en_digits
+6월의 패키지,Gói tháng 6,translated,handoff_flags=en_digits
+6월의장마 효과,Hiệu ứng mùa mưa tháng 6,translated,handoff_flags=en_digits
 "6일차 로그인 미션 완료 특별 선물! 쾅쾅망치!
 내일 다시 오면 또 쾅쾅망치를 드려요!
 (이벤트 기간: 4/18 ~ 4/29)","Hoàn thành nhiệm vụ đăng nhập ngày 6, quà đặc biệt! Búa Đập Đập!
@@ -2495,7 +2495,7 @@ Mai quay lại tui lại tặng Búa Đập Đập nha!
 7만,70.000,translated,
 7월 주말 이벤트,Sự kiện cuối tuần tháng 7,translated,
 7월 주말이벤트가 진행중입니다. 주말에 만나요,Sự kiện cuối tuần tháng 7 đang diễn ra. Gặp nhau cuối tuần nha.,translated,
-7월의 패키지,Gói tháng 7,review,handoff_flags=en_digits
+7월의 패키지,Gói tháng 7,translated,handoff_flags=en_digits
 7월주말이벤트(주말),Sự kiện cuối tuần tháng 7 (cuối tuần),translated,
 7일,7 ngày,translated,
 "7일! 수능대박! BNB가 수능만점을 응원합니다!
@@ -2521,8 +2521,8 @@ Nhân ngày ý nghĩa tặng 3 Đậu may mắn sao nha.",translated,
 8low-me 이벤트 보상으로 춤추는 모짜렐라 슬롯을 받았습니다.,Nhận phần thưởng sự kiện 8low-me: slot Mozzarella nhảy múa.,translated,
 8개 미션 (%s/8),8 nhiệm vụ (%s/8),translated,
 8개의 미션 8개의 보상,"8 nhiệm vụ, 8 phần thưởng",translated,
-8등신 수 깃발,Cờ Su dáng người mẫu,review,handoff_flags=vi_digits;en_digits
-8등신 우니 깃발,Cờ Uni dáng người mẫu,review,handoff_flags=vi_digits;en_digits
+8등신 수 깃발,Cờ Su dáng người mẫu,translated,handoff_flags=vi_digits;en_digits
+8등신 우니 깃발,Cờ Uni dáng người mẫu,translated,handoff_flags=vi_digits;en_digits
 8등신 캐릭터가 안나와서 실망하셨나요? 스타럭키빈을 드릴게요. ,Bạn thất vọng vì không thấy nhân vật 8 đầu thân hả? Tui tặng Đậu may mắn Ngôi sao nha.,translated,
 "8등신캐릭터를 기다리셨나요? 만우절이에요~ 
 8등신 수 깃발 (7일)을 드립니다. 즐거운 크아하세요~","Bạn đang đợi nhân vật 8 đầu thân hả? Hôm nay là Cá tháng Tư đó~
@@ -2531,7 +2531,7 @@ Tui tặng cờ Su 8 đầu thân (7 ngày). Chúc chơi Boom vui nha~",translat
 8등신 우니 깃발  (7일)을 드립니다.즐거운 크아하세요~","Bạn đang đợi nhân vật 8 đầu thân hả? Hôm nay là Cá tháng Tư đó~
 Tui tặng cờ Uni 8 đầu thân (7 ngày). Chúc chơi Boom vui nha~",translated,
 8월엔 8low-me,Tháng 8 thì 8low-me,translated,
-8월의 패키지,Gói tháng 8,review,handoff_flags=en_digits
+8월의 패키지,Gói tháng 8,translated,handoff_flags=en_digits
 "8일! 오늘도 잊지 않고 출석하셨군요? 
 오늘도 즐겁게 게임하시라고 보상으로 바늘 5개를 드립니다!","Ngày 8! Hôm nay bạn cũng nhớ điểm danh nha?
 Hôm nay cũng chơi game vui vẻ nha, tặng bạn 5 Kim làm phần thưởng nha!",translated,
@@ -7677,7 +7677,7 @@ bấm lại thêm lần nữa~! nha.",translated,
 1개가 필요해요!","Muốn đập Gomgom thứ hai thì cần 
 1 Chìa khoá Ppokki nha!",translated,
 두번째 뽀끼열쇠,Chìa khóa Ppoki thứ hai,translated,
-두번째 알은 20% 할인된 가격으로 구입하세요!,Trứng thứ hai mua với giá giảm 20% nha!,translated,
+두번째 알은 20% 할인된 가격으로 구입하세요!,Trứng thứ hai mua với giá giảm 20%!,translated,
 두번째 퀘스트 완료 선물로 [사막 원숭이 삼형제]를 드려요~ 마이페이지에서 확인 하세요~,"Hoàn thành nhiệm vụ thứ hai, tặng [Ba anh em Khỉ Sa Mạc] nha~ Kiểm tra trong Trang cá nhân nha~",translated,
 "두번째 퍼즐을 찾으셨어요. 퍼즐을 찾아주셔서 아바타럭키빈 15개와 스타럭키빈 15개를 드려요. 
 (퍼즐2 획득)","Bạn đã tìm thấy mảnh ghép thứ hai. Cảm ơn đã tìm mảnh ghép, tặng 15 Đậu may mắn Avatar và 15 Đậu may mắn Ngôi sao nha.
@@ -11406,7 +11406,7 @@ Mỗi ngày tối đa 1200 CP!",translated,
 백설공주럭띠 의상,Trang phục Ethi Sang Trọng Bạch Tuyết,translated,
 백설공주럭띠 표정,Biểu cảm Ethi Sang Trọng Bạch Tuyết,translated,
 백설공주의 난장이,Chú lùn của Bạch Tuyết,translated,
-백원 세트,Bộ 100 won,review,handoff_flags=vi_digits;en_digits
+백원 세트,Bộ 100 won,translated,handoff_flags=vi_digits;en_digits
 백조수 머리,Tóc Su thiên nga trắng,translated,
 백조수 세트,Bộ Su thiên nga trắng,translated,
 백조수 의상,Trang phục Su thiên nga trắng,translated,
@@ -12863,7 +12863,7 @@ của Ông già Noel
 삼국지초선세트,Bộ Điêu Thuyền Tam Quốc,translated,
 삼색근두운,Cân đẩu vân ba màu,translated,
 삼성,Samsung,translated,
-삼일절 따라와,Đi theo ngày phong trào 1 tháng 3,review,handoff_flags=vi_digits;en_digits
+삼일절 따라와,Theo chân ngày 1 tháng 3,translated,handoff_flags=vi_digits;en_digits
 "삼일절을 맞이해서 준비했어요.
 [태극풍선 따라와] (7일) 아이템을 드려요!","Nhân Ngày Tam Nhất, chuẩn bị quà.
 Tặng vật phẩm [Theo chân Bom Thái Cực] (7 ngày)!",translated,
@@ -12910,7 +12910,7 @@ là thắng",translated,
 ",translated,
 상대편과 대결하는 게임방 만들기,Tạo phòng đấu với đối phương,translated,
 상대편을 모두 물풍선에 가두어 터뜨리면 YOU WIN~^^*자기편이 모두 물풍선에 갇히면 YOU LOSE~ ㅡㅜ,Nhốt hết đối phương trong bom nước rồi làm nổ thì YOU WIN~^^*Đồng đội bị nhốt hết thì YOU LOSE~ ㅡㅜ,translated,
-상모 3형제,Ba anh em nón sangmo,review,handoff_flags=vi_digits;en_digits
+상모 3형제,Ba anh em nón sangmo,translated,handoff_flags=vi_digits;en_digits
 상모돌리기,Xoay nón Sangmo,translated,
 상부상조 이벤트,Sự kiện Tương trợ,translated,
 상부상조 이벤트 보상으로 루찌 2배 7일권을 받았습니다.,Nhận Vé nhân đôi VÀNG 7 ngày từ phần thưởng sự kiện Tương trợ.,translated,
@@ -16428,7 +16428,7 @@ Thử đổi vật phẩm bằng phiếu đã nhận nha★",translated,
 오마이 베이비,Ôi My Baby,translated,
 오만하고 광기에 찬 승리를 보여주마.,Ta cho mi coi chiến thắng kiêu ngạo và điên cuồng.,translated,
 오물상자,Rương bẩn,translated,
-오백원 세트,Bộ 500 won,review,handoff_flags=vi_digits;en_digits
+오백원 세트,Bộ 500 won,translated,handoff_flags=vi_digits;en_digits
 오빠부대,Đội cổ vũ thần tượng,translated,
 오색찬란불사조,Phượng hoàng rực rỡ sắc màu,translated,
 오션물풍선,Bom nước đại dương,translated,
@@ -17985,7 +17985,7 @@ Tặng bạn 5 Kim làm phần thưởng nha!",translated,
 이대로 끝이 아니다!,Chưa xong đâu!,translated,
 이대로 핑키가 이기는거야?,Vậy là Pinky thắng luôn hả?,translated,
 이대로끝날수없다!,Không thể kết thúc vầy được!,translated,
-이대팔 가발,Tóc giả rẽ ngôi 2:8,review,handoff_flags=vi_digits;en_digits
+이대팔 가발,Tóc giả rẽ ngôi 2:8,translated,handoff_flags=vi_digits;en_digits
 이대호,Lee Dae-ho,translated,
 이동공격!,Tấn công di động!,translated,
 이동속도 +1!,Tốc độ di chuyển +1!,translated,
@@ -23330,7 +23330,7 @@ Tặng vật phẩm %s làm quà nha~!",translated,
 폭죽물풍선만들기!,Chế tạo bom nước pháo hoa!,translated,
 폭죽팡팡,Pháo hoa bùng nổ,translated,
 폭탄 1개가 설치되었습니다.,1 quả bom đã được đặt.,translated,
-폭탄 3총사,Ba chàng lính ngự lâm bom,review,handoff_flags=vi_digits;en_digits
+폭탄 3총사,Bộ ba Bom,translated,handoff_flags=vi_digits;en_digits
 폭탄 설치,Đặt bom,translated,
 폭탄 위로 경험치 500 을 드립니다.  다시 시도해 주세요.,Trúng bom nên tặng 500 kinh nghiệm.  Thử lại nha.,translated,
 "폭탄 제거반 출동!
