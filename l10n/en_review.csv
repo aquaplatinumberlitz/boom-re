@@ -108,10 +108,10 @@ to receive a bonus of +10 needles!"
 " - 비밀번호는 숫자 영문을 조합하여
    6자리 이상이 되어야 합니다.
  - 아이디와 동일하거나, 같은글자가 3자 이상
-   반복되는 비밀번호는 사용할 수 없습니다.",- Password must be 6+ characters with a*  mix of letters and numbers.*- Password cannot be the same as your ID*  or contain 3+ repeated characters.,fix," - Password must be 6+ characters with a*
-  mix of letters and numbers.*
-- Password cannot be the same as your ID*
-  or contain 3+ repeated characters."
+   반복되는 비밀번호는 사용할 수 없습니다.",- Password must be 6+ characters with a*  mix of letters and numbers.*- Password cannot be the same as your ID*  or contain 3+ repeated characters.,fix," - Password must be at least 6 characters long
+   and combine letters and numbers.
+ - Passwords cannot match your ID or contain
+   the same character repeated 3 or more times."
 " /?      설명보기
 
 ++확성기
@@ -749,7 +749,7 @@ PC방 보너스 01,BonusPCRoom 01,ok,
 
 자세한 사항은 PC방 사장님께 문의 하시기 바랍니다.",Your PC Cafe time has expired. The game will now close.,fix,"Your PC Cafe prepaid time has expired, so the game will close.
 
-Please ask the PC Cafe staff for details."
+Please ask the PC Cafe owner for details."
 PC방에서는 2인용 모드 접속이 불가능합니다.,2P mode is not available in PC Cafes.,ok,
 Size,Size,ok,
 UDP 설정을 마칠 수 없습니다.,Unable to complete UDP configuration.,ok,
@@ -2058,7 +2058,7 @@ Screenshots will be saved in the game folder.",fix,Could not find the My Documen
 "
 다음스테이지는힘들걸...,The next stage will be tough...,ok,
 다음스테이지로 그냥 보내주지 ,I'll just let you through to the next stage,whitespace,I'll just let you through to the next stage 
-다음에는 져주면.. 아..안될까..?,No way... no way... ooh...,fix,Could you let me win next time... p-please..?
+다음에는 져주면.. 아..안될까..?,No way... no way... ooh...,fix,Could you let me win next time.. a.. would that be okay..?
 다음엔안진다!,I won't lose next time!,ok,
 다음은 3단변속!!,Next: third gear!!,ok,
 "다음은 너희차례다
@@ -3816,7 +3816,7 @@ before it explodes over time."
 아이돌 무한 소환!!,"Come out of your boxes, boys!",fix,Summon idols endlessly!!
 아이돌 소환!!,"Wake up, boys!",fix,Summon idols!!
 아이돌 출동!,"Little rocks, move out!",fix,"Idols, move out!"
-"아이돌, 무한소환!!","Wake up, little ones!",fix,"Idols, summon endlessly!!"
+"아이돌, 무한소환!!","Wake up, little ones!",fix,Summon idols endlessly!!
 "아이돌, 팔로팔로미~!",Where'd they go?,fix,"Idols, follow follow me~!"
 아이돌님 등장!,Chase them!,fix,Here comes the idol!
 아이돌등장!!!,Boo! Surprise!,fix,Idol appears!!!
@@ -6590,7 +6590,7 @@ Please try again."
 헉헉...,Huff huff...,ok,
 헉헉헉,Huff huff huff,ok,
 헐~,Whoa~,ok,
-"헛, 너희랑만 놀아서 삐졌나?  얍!","Alright, no more playing around!",fix,"Huh, are you upset because I only played with them? Hyah!"
+"헛, 너희랑만 놀아서 삐졌나?  얍!","Alright, no more playing around!",fix,"Huh, are you upset because I only played with you? Hyah!"
 "헛, 너희랑만 놀아서 삐졌나?  얍!","Huh, jealous I only played with them? Hyah!",ok,
 헛둘헛둘,Hup two hup two,ok,
 헤헤,Hehe,ok,
