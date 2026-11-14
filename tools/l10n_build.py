@@ -12,6 +12,10 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 import idf
+import i16
+import io
+from PIL import Image
+import l10n_images_review as IR
 import l10n_extract as L
 import l10n_extract_en as EN
 
@@ -163,7 +167,7 @@ def encrypt_idx(plain, key):
     return bytes(out)
 
 
-def pack_build(root, out, catalog, lang, encoding, stats):
+def pack_build(root, out, catalog, lang, encoding, stats, images=None):
     index = root/'FxDesktop.idx'; data = index.read_bytes(); key = int.from_bytes(data[:4], 'little')
     plain = bytearray(idf.decrypt_idx(data, key)); version, entries, end = idf.parse_idx(plain)
     if end != len(plain) or version is None:
@@ -204,17 +208,152 @@ def pack_build(root, out, catalog, lang, encoding, stats):
         return match.group(1) + block + match.group(3)
     replaced = pattern.sub(edit, text)
     newblob = packed(replaced)
-    # Append-only: mọi byte entry khác giữ nguyên. Cập nhật offset/size trong index.
+    replacements = [('ClientData/ClientString', newblob)] + (images or [])
+    write_pack(index, out, replacements)
+
+
+def write_pack(index, out, replacements):
+    """Append plaintext entries to a copied KR pack and update its index once."""
+    data = index.read_bytes()
+    key = int.from_bytes(data[:4], 'little')
+    plain = bytearray(idf.decrypt_idx(data, key))
+    version, entries, end = idf.parse_idx(plain)
+    if version is None or end != len(plain):
+        raise ValueError(f'index không hỗ trợ: {index}')
+    changes = dict(replacements)
+    if len(changes) != len(replacements):
+        raise ValueError('entry thay thế bị lặp')
+    positions = {}
     p = 12
-    for _ in range(struct.unpack_from('<I', plain, 8)[0]):
-        n = struct.unpack_from('<i', plain, p)[0]; p += 4
-        name = bytes(plain[p:p+n]).decode('cp949'); p += n
-        if name == 'ClientData/ClientString':
-            struct.pack_into('<II', plain, p, idd.stat().st_size, len(newblob))
+    for name, offset, size, entry_key, crc in entries:
+        n = struct.unpack_from('<i', plain, p)[0]
+        p += 4 + n
+        if name in changes:
+            if name in positions:
+                raise ValueError(f'entry trùng tên: {name}')
+            positions[name] = (p, entry_key, crc)
         p += 16
-    shutil.copyfile(idd, out/'FxDesktop.idd')
-    with (out/'FxDesktop.idd').open('ab') as f: f.write(newblob)
-    (out/'FxDesktop.idx').write_bytes(encrypt_idx(plain, key))
+    if set(changes) != set(positions):
+        raise ValueError(f'entry không tồn tại: {set(changes) - set(positions)}')
+    idd = index.with_suffix('.idd')
+    shutil.copyfile(idd, out / idd.name)
+    with (out / idd.name).open('ab') as f:
+        for name, blob in replacements:
+            pos, entry_key, crc = positions[name]
+            if entry_key:
+                if crc not in (0, 1):
+                    struct.pack_into('<I', plain, pos + 12, idf._crc32(entry_key, blob))
+                blob = idf.encrypt_entry(blob, entry_key)
+            elif '_mm' in name:
+                compressed = zlib.compress(blob)
+                blob = struct.pack('<II', len(compressed), len(blob)) + compressed
+            struct.pack_into('<II', plain, pos, f.tell(), len(blob))
+            f.write(blob)
+    (out / index.name).write_bytes(encrypt_idx(plain, key))
+
+
+def image_shape(blob):
+    if blob.startswith(b'\xff\xd8\xff'):
+        with Image.open(io.BytesIO(blob)) as im:
+            return ('jpg', 1, 1, (im.size,))
+    s = i16.parse(blob)
+    return ('i16', len(s['images']), s['nframes'], tuple(s['sizes']))
+
+
+def image_changes(root, lang, decisions, image_dir, allow_shape_change, vn, en):
+    if image_dir and not image_dir.is_dir():
+        raise ValueError(f'thư mục ảnh không tồn tại: {image_dir}')
+    kr = IR.index_packs(root, True)
+    source = IR.index_packs(vn, False) if decisions and lang == 'vi' else {}
+    en_index = EN.index_tree(en) if decisions and lang == 'en' else {}
+    changes, skipped = {}, []
+    if decisions:
+        with decisions.open(encoding='utf-8-sig', newline='') as f:
+            rows = list(csv.DictReader(f))
+    else:
+        rows = []
+    selected = {(r['pack'], r['entry']): r for r in rows
+                if r.get('status_en' if lang == 'en' else 'status') == 'translated' and lang != 'ko'}
+    if image_dir:
+        names = {(pack, name.replace('\\', '/')) for pack, name in kr}
+        for path in image_dir.rglob('*'):
+            if not path.is_file() or path.suffix.lower() not in ('.png', '.jpg'):
+                continue
+            parts = path.relative_to(image_dir).parts
+            if len(parts) < (3 if path.suffix.lower() == '.png' else 2):
+                skipped.append({'pack': parts[0], 'entry': '/'.join(parts[1:]),
+                                'reason': 'đường dẫn ảnh không đúng quy ước'})
+                continue
+            if path.suffix not in ('.png', '.jpg'):
+                skipped.append({'pack': parts[0], 'entry': '/'.join(parts[1:]),
+                                'reason': 'đuôi file phải là .png hoặc .jpg'})
+                continue
+            entry = '/'.join(parts[1:-1]) if path.suffix.lower() == '.png' else '/'.join(parts[1:])[:-4]
+            if (parts[0], entry) not in names:
+                skipped.append({'pack': parts[0], 'entry': entry, 'reason': 'không có entry KR'})
+        for pack, name in kr:
+            base = image_dir / pack / name.replace('\\', '/')
+            if base.is_dir() and any(base.glob('*.png')) or base.with_suffix(base.suffix + '.jpg').is_file():
+                selected.setdefault((pack, name), None)
+    for (pack, name), row in selected.items():
+        try:
+            record = kr.get((pack, name))
+            if record is None:
+                raise ValueError('không có entry KR')
+            original = IR.read_blob(record, name)
+            blob = original
+            if row is not None:
+                if lang == 'vi':
+                    if name not in source:
+                        raise ValueError('không có entry VN cùng tên')
+                    blob = IR.read_blob(source[name], name)
+                else:
+                    matches = en_index.get(name.casefold(), [])
+                    exact = [(p, e) for p, e in matches if e[0] == name]
+                    if len(exact) != 1:
+                        raise ValueError(f'cần đúng một entry Bắc Mỹ cùng tên, có {len(exact)}')
+                    blob = EN.read_entry(*exact[0])
+                if not allow_shape_change and image_shape(blob) != image_shape(original):
+                    raise ValueError('số ảnh, kích thước, số frame hoặc loại ảnh khác KR')
+            if image_dir:
+                base = image_dir / pack / name.replace('\\', '/')
+                jpg = base.with_suffix(base.suffix + '.jpg')
+                if jpg.is_file():
+                    replacement = jpg.read_bytes()
+                    if image_shape(original)[0] != 'jpg' or image_shape(replacement)[0] != 'jpg':
+                        raise ValueError('file thay thế không phải JPEG')
+                    if not allow_shape_change and image_shape(replacement) != image_shape(original):
+                        raise ValueError('kích thước JPEG khác KR')
+                    blob = replacement
+                if base.is_dir() and any(base.glob('*.png')):
+                    s = i16.parse(original)
+                    rgba = []
+                    known = set()
+                    for i, (h, w) in enumerate(s['sizes']):
+                        paths = [p for p in base.glob('*.png') if p.stem.isdigit() and int(p.stem) == i]
+                        if len(paths) > 1:
+                            raise ValueError(f'ảnh con {i} có nhiều PNG')
+                        if not paths:
+                            rgba.append(None); continue
+                        known.add(paths[0])
+                        with Image.open(paths[0]) as im:
+                            if im.size != (w, h):
+                                raise ValueError(f'ảnh con {i} sai kích thước')
+                            rgba.append(im.convert('RGBA').tobytes())
+                    if set(base.glob('*.png')) != known:
+                        raise ValueError('tên PNG hoặc chỉ số ảnh con không hợp lệ')
+                    blob = i16.encode(original, rgba)
+            changes.setdefault(pack, []).append((name, blob))
+        except (ValueError, OSError, struct.error, IndexError, EOFError, zlib.error) as exc:
+            skipped.append({'pack': pack, 'entry': name, 'reason': str(exc)})
+    unique = {}
+    for item in skipped:
+        key = (item['pack'], item['entry'])
+        if key not in unique:
+            unique[key] = item
+        elif item['reason'] not in unique[key]['reason']:
+            unique[key]['reason'] += '; ' + item['reason']
+    return changes, list(unique.values())
 
 
 def main():
@@ -225,11 +364,24 @@ def main():
     parser.add_argument('--lang',choices=('ko','vi','en'),required=True)
     parser.add_argument('--encoding',choices=('cp949','utf-8'),required=True)
     parser.add_argument('--keep-key-bytes',action='store_true',help='bản UTF-8 vẫn giữ khoá theo byte CP949 gốc')
+    parser.add_argument('--images', type=Path, nargs='?', const=L.L10N/'images_review.csv')
+    parser.add_argument('--image-dir', type=Path)
+    parser.add_argument('--allow-shape-change', action='store_true')
+    parser.add_argument('--vn', type=Path, default=Path('/home/admin/Downloads/Boom'))
+    parser.add_argument('--en', type=Path, default=L.L10N/'.cache/poptag-client')
     a=parser.parse_args(); root=a.kr.resolve(); out=a.out.resolve()
     global KEEP_KEY_BYTES
     KEEP_KEY_BYTES = a.keep_key_bytes
     if out == root or root in out.parents:
         raise ValueError('Không ghi vào client nguồn')
+    for source in (a.vn.resolve(), a.en.resolve()):
+        if out == source or source in out.parents:
+            raise ValueError('Không ghi vào client nguồn')
+    if (a.images or a.image_dir) and (L.ROOT.resolve() in out.parents or out == L.ROOT.resolve()):
+        # Pack dựng ra là dữ liệu game: trong repo chỉ được ghi vào thư mục cache bị Git bỏ qua.
+        cache = (L.L10N / '.cache').resolve()
+        if out == cache or cache not in out.parents:
+            raise ValueError('trong repo, bản dựng ảnh phải nằm trong l10n/.cache/')
     out.mkdir(parents=True,exist_ok=True)
     with a.catalog.open(encoding='utf-8',newline='') as f: catalog={r['id']:r for r in csv.DictReader(f)}
     check_names = ['csysstr.ssd','csysqstr.ssd','fxdynmapinfo.ssd'] + [f'fxstock{i}.ini' for i in range(4)] + ['csysfxmg.ssd','channel2_001.ssd','spcc.ssd','multisvr.ssd','fxstovi.ini','filterstr.ssd']
@@ -260,6 +412,8 @@ def main():
             assert L.ssd_raw(out/name)==rebuilt
             stats['roundtrip']='decompressed-bytes'
         results[name]=stats
+    changes, skipped = image_changes(root, a.lang, a.images, a.image_dir, a.allow_shape_change, a.vn, a.en) if a.images or a.image_dir else ({}, [])
+    image_count = sum(len(v) for v in changes.values())
     if a.lang=='ko' and a.encoding=='cp949':
         idx = (root/'FxDesktop.idx').read_bytes()
         key = int.from_bytes(idx[:4], 'little')
@@ -273,9 +427,16 @@ def main():
         blob[4:].decode('cp949')
         for name in ('FxDesktop.idx','FxDesktop.idd'): shutil.copyfile(root/name,out/name)
         results['FxDesktop']={'roundtrip':'index read and re-encoded identical; unchanged IDD copied'}
+        if 'FxDesktop' in changes:
+            write_pack(root/'FxDesktop.idx', out, changes.pop('FxDesktop'))
+            results['FxDesktop']['roundtrip'] = 'index read and re-encoded identical; image entries appended'
     else:
         stats={'replaced':0,'retained':0,'hangul':0,'format_rejected':0,'encoding_rejected':0,'unencodable_characters':{}}
-        pack_build(root,out,catalog,a.lang,a.encoding,stats); results['FxDesktop']=stats
+        pack_build(root,out,catalog,a.lang,a.encoding,stats,changes.pop('FxDesktop', [])); results['FxDesktop']=stats
+    if a.images or a.image_dir:
+        for pack, replacements in changes.items():
+            write_pack(root/(pack+'.idx'), out, replacements)
+        results['images'] = {'replaced': image_count, 'skipped': len(skipped), 'reasons': skipped}
     (out/'build-report.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     print(json.dumps(results,ensure_ascii=False,indent=2))
 

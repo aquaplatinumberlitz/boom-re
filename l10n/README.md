@@ -411,3 +411,19 @@ của bản dịch với câu Hàn. Bản dịch máy và bản chính thức c�
 nội dung ở client VN (564) hoặc PopTag (358), 450 mục không có bản nào. Đối chiếu tay 15 ô của một tờ: đúng cả 15;
 chưa kiểm rộng hơn. 282 mục có nhiều hơn ba ảnh con, có thể sót chữ ở ảnh không được hiện. Cùng tên và khác byte
 không chứng minh ảnh kia đã được dịch.
+
+Dựng ảnh offline: `python3 tools/l10n_build.py --lang vi --encoding utf-8 --images --out l10n/.cache/build-vi`
+đọc quyết định từ `images_review.csv`; `--images <csv>` chọn file quyết định khác. Với `--lang en`, dùng cột
+`status_en` và ảnh PopTag. Có thể thêm `--image-dir <thư-mục>`: PNG đặt tại `<thư-mục>/<pack>/<entry>/<số>.png`,
+JPEG tại `<thư-mục>/<pack>/<entry>.jpg`. PNG thay các ảnh con được chỉ định, ảnh con còn lại giữ bản KR;
+JPEG được chép nguyên. Ảnh RGB565 được lượng tử hóa về RGB565; alpha bán trong suốt bị từ chối nếu ảnh
+gốc không có luồng alpha. Mặc định từ chối ảnh nguồn khác số frame, số ảnh con hoặc kích thước; dùng
+`--allow-shape-change` khi chủ đích chấp nhận. Báo cáo dựng ghi số ảnh thay và lý do bỏ qua.
+Kiểm offline toàn bộ 48.898 entry `i16` của 13 pack giữ nguyên điểm ảnh qua vòng mã hóa; 36 entry Việt và
+37 entry Anh đã đối chiếu pack đầu ra, cả JPEG, entry mã hóa và `FxDesktop`. Kết quả chi tiết ở
+`l10n/.cache/image-build-check/verification-report.json`. Chưa nạp vào client.
+Dựng với quyết định thật ngày 2026-11-14: bản Việt thay 459 ảnh trong 7 pack, bỏ qua 90 ảnh VN khác hình dạng
+(số ảnh con, kích thước hoặc số frame); bản Anh thay 314 ảnh trong 5 pack (35 entry mã hoá), bỏ qua 29. Kiểm độc lập
+của Claude: mọi ảnh thay giống từng byte entry nguồn sau giải mã, CRC đúng, mọi entry không đánh dấu giữ nguyên
+offset/size/khoá/CRC, phần `.idd` gốc của mỗi pack không đổi. Đầu ra ngoài repo được phép; trong repo chỉ được ghi
+vào `l10n/.cache/`.
