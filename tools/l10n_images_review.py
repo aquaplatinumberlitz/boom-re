@@ -2,7 +2,7 @@
 """Export a local KR/VN/North American image review gallery. Game packs remain read-only.
 
 python3 tools/l10n_images_review.py
-python3 tools/l10n_images_review.py --en /duong/dan/client-poptag   # thêm cột ảnh bản Bắc Mỹ
+python3 tools/l10n_images_review.py --en /duong/dan/client-poptag   # mặc định l10n/.cache/poptag-client nếu có
 python3 tools/l10n_images_review.py --serve 8765  # run outside a socket-restricted sandbox
 """
 import argparse
@@ -195,9 +195,11 @@ def import_decisions(path):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--kr', type=Path, default=L.DEF_KR)
+    p.add_argument('--kr', type=Path, default=L.DEF_KR if L.DEF_KR.exists() else Path('/home/admin/boom/clients/kr-00967'))
     p.add_argument('--vn', type=Path, default=L.DEF_VN)
-    p.add_argument('--en', type=Path, help='thư mục client PopTag đã bung; thêm cột ảnh bản Bắc Mỹ')
+    poptag = L.L10N / '.cache' / 'poptag-client'
+    p.add_argument('--en', type=Path, default=poptag if poptag.exists() else None,
+                   help='thư mục client PopTag đã bung; thêm cột ảnh bản Bắc Mỹ')
     p.add_argument('--out', type=Path, default=L.L10N / '.cache' / 'image-review')
     p.add_argument('--workers', type=int, default=4)
     p.add_argument('--import-csv', type=Path)

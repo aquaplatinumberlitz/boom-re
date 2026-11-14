@@ -267,7 +267,7 @@ def stock_crosswalk(en_path, kr_root, catalog):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--client', type=Path, required=True, help='PopTag đã trích xuất')
+    ap.add_argument('--client', type=Path, default=ROOT / 'l10n/.cache/poptag-client', help='PopTag đã trích xuất')
     ap.add_argument('--catalog', type=Path, default=ROOT / 'l10n/catalog.csv')
     ap.add_argument('--out', type=Path, default=ROOT / 'l10n')
     ap.add_argument('--kr', type=Path, default=Path('/home/admin/boom/clients/kr-00967'))

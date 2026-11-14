@@ -126,14 +126,18 @@ xdg-open /home/admin/boom-re-l10n/l10n/.cache/image-review/index.html
 
 Từ 2026-11-14 trang duyệt có ba cột KR / VN / Bắc Mỹ, hiện chữ do máy đọc trên từng ảnh (`images_text.csv`), lọc theo
 nhãn máy đọc và theo đối chiếu với bản Bắc Mỹ, và ghi hai quyết định riêng cho tiếng Việt (`status`) và tiếng Anh
-(`status_en`). Dựng lại (đường dẫn mặc định của `--kr` đã cũ nên phải chỉ rõ):
+(`status_en`). Dựng lại bằng `python3 tools/l10n_images_review.py`; mặc định đọc client KR ở
+`/home/admin/boom/clients/kr-00967` và client PopTag ở `l10n/.cache/poptag-client`.
+
+Mở sẵn bộ lọc qua phần sau dấu `#`, ví dụ 268 mục có chữ Hàn và có cả ảnh VN lẫn ảnh Bắc Mỹ khác nội dung. Phải
+đưa cho trình duyệt một địa chỉ `file://`; `xdg-open` với đường dẫn thường kèm `#` sẽ coi cả phần `#…` là tên file:
 
 ```sh
-python3 tools/l10n_images_review.py --kr /home/admin/boom/clients/kr-00967 --en /duong/dan/client-poptag
+firefox "file:///home/admin/boom/repos/boom-re-l10n/l10n/.cache/image-review/index.html#label=ko&relation=diff_bytes&enrel=diff_bytes"
 ```
 
-Mở sẵn bộ lọc qua đường dẫn, ví dụ `index.html#label=ko&relation=diff_bytes&enrel=diff_bytes` (268 mục có chữ Hàn
-và có cả ảnh VN lẫn ảnh Bắc Mỹ khác nội dung). CSV xuất ra có thêm cột `status_en`; CSV cũ bốn cột vẫn nhập được.
+Chủ dự án chấp nhận (2026-11-14) ảnh bản VN dùng giọng Bắc ở vài nút (`XEM NHIỆM VỤ`, `HỦY BỎ`) dù phần chữ theo
+giọng Nam: ảnh VN dùng được thì lấy, không vẽ lại vì lý do giọng. CSV xuất ra có thêm cột `status_en`; CSV cũ bốn cột vẫn nhập được.
 
 Sau kiểm tra cấu trúc, đã loại 4 dữ liệu bản đồ bị nhận nhầm thành ảnh. Danh sách còn
 **3.038 ứng viên**: 681 khác bản VN, 1.113 giống bản VN, 1.244 không có bản VN cùng tên.
@@ -263,10 +267,11 @@ script và chữ trong exe chưa được kiểm kê đầy đủ. File Help tro
 chữ Hàn, nên không giả định mọi thứ trong client này đều là tiếng Anh. Các tên map trùng
 ID cũng chỉ là ứng viên: cùng tên nội bộ có thể đổi nội dung theo bản game.
 
-Sau khi giải nén bộ cài PopTag ra một thư mục riêng, tái tạo bằng:
+Bản bung của bộ cài PopTag 0.7.8 nằm ở `l10n/.cache/poptag-client` (thư mục `.cache/` bị Git bỏ qua, không commit;
+không chạy file thực thi nào trong đó). Các công cụ mặc định đọc ở đó; tái tạo bằng:
 
 ```sh
-python3 tools/l10n_extract_en.py --client /duong/dan/client-poptag
+python3 tools/l10n_extract_en.py            # hoặc --client /duong/dan/khac
 ```
 
 Không sửa `catalog.csv`, `tm.csv`, `tm_id.csv` hoặc client nguồn. Để ghi sang thư mục khác,

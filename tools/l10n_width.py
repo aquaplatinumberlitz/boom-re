@@ -5,7 +5,7 @@ Chỉ là xếp hạng nguy cơ tràn khung: không biết bề rộng khung th�
 dùng font nào (ở đây dùng CxUni.fft), chưa đo trên client. Bản chính thức (chữ PopTag cho tiếng Anh,
 chữ bản VN cho tiếng Việt) được in riêng để làm mốc so.
 
-  python3 tools/l10n_width.py --vi-font /duong/dan/font/VN/CxUni.fft [--out width.csv]
+  python3 tools/l10n_width.py [--vi-font /duong/dan/font/VN/CxUni.fft] [--out width.csv]
 """
 import argparse
 import collections
@@ -45,7 +45,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--catalog', type=Path, default=ROOT / 'l10n/catalog_en.csv')
     parser.add_argument('--kr-font', type=Path, default=Path('/home/admin/boom/clients/kr-00967/CxUni.fft'))
-    parser.add_argument('--vi-font', type=Path, required=True, help='CxUni.fft của bộ font VN')
+    parser.add_argument('--vi-font', type=Path, default=ROOT / 'l10n/.cache/poptag-client/font/VN/CxUni.fft',
+                        help='CxUni.fft của bộ font VN')
     parser.add_argument('--out', type=Path)
     a = parser.parse_args()
     kr, vn = Font(a.kr_font), Font(a.vi_font)
