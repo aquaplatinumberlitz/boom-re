@@ -336,13 +336,62 @@ Kiểm thử khô sau khi nhập dữ liệu: 13 checksum nguồn và các check
 năm SSI nhỏ ở trên vẫn giống từng byte, tám SSI còn lại giải nén giống gốc khi dựng ko/cp949.
 Stock khi dựng vi/utf-8 lần lượt thay 2.493, 2.492, 2.485, 661 chuỗi; khi dựng en/cp949
 lần lượt thay 2.283, 2.379, 2.441, 661. `build-report.json` ghi số chuỗi thay, còn Hangul,
-lệch định dạng và không thể mã hóa theo từng file. English cp949 không mã hóa được `é`,
-`á`, `—`, `ñ` trong năm lượt chuỗi; những chuỗi đó giữ tiếng Hàn. Chưa file nào được nạp
-thử vào client.
+lệch định dạng và không thể mã hóa theo từng file. Số liệu thay chuỗi ở đoạn này là của lượt
+dựng đầu; số hiện hành ở mục 8. Chưa file nào được nạp thử vào client.
 
 Nguồn tiếng Anh `tm_en.csv` có 18.132 câu: 17.983 câu nguyên văn từ hai file bàn giao (4.675 tên stock
 và 13.308 câu còn lại) cộng 149 câu bổ sung sau đó cho các tên stock đã có bản Việt từ trước. Bản PopTag và các biến thể mâu thuẫn được ưu tiên, không ghi đè.
-Catalog Anh: candidate 6.082, casefold_candidate 199, stock_icon_candidate 43, conflicting_variants
+Số liệu catalog Anh của lượt nhập đầu (trước lượt chốt ở mục 8): candidate 6.082, casefold_candidate 199, stock_icon_candidate 43, conflicting_variants
 106, machine 26.133, machine_review 97 và missing 826. Trong missing, 105 không có chữ gốc,
 358 có nguồn không chứa Hangul, 363 cố ý giữ tiếng Hàn như bản Việt (tên người, danh sách tên cấm); 19 dòng machine_review
 được bàn giao có cờ giữ Hangul, không cộng vào missing.
+
+## 8. Lượt soát và chốt 2026-11-14
+
+Trạng thái sau lượt này. Tiếng Việt: `translated` 29.671, `reused` 3.813, `review` 2 (hai văn bản pháp lý của
+Nexon, phải thay bằng điều khoản của dự án). Tiếng Anh: `candidate` 5.527, `casefold_candidate` 197, `machine`
+27.218, `missing` 544 (105 dòng không có câu Hàn, 358 dòng không có chữ Hàn, 81 tên cấm trong exe giữ tiếng Hàn);
+không còn dòng `conflicting_variants`, `stock_icon_candidate` hay `machine_review`. Validator 0 lỗi.
+
+| File | Nội dung |
+|---|---|
+| `en_review.csv` | `ko, en_poptag, verdict, en`: kết quả soát nghĩa 5.417 cặp Hàn–Anh lấy từ PopTag. `ok` 3.910, `whitespace` 861, `fix` 632, `unsure` 14 |
+| `en_override.csv` | `ko, en, basis, notes`: 207 câu từng treo đã chốt. `poptag_variant` là một biến thể PopTag được chọn, `machine` là bản dịch từ câu Hàn; `empty_on_purpose` cho bốn trợ từ Hàn đứng riêng |
+| `images_text.csv` | `pack, entry, dims, label, text, vn_same_name, poptag`: kết quả đọc chữ trên 3.038 mục ảnh nghi có chữ |
+
+Việc đã làm, đều bằng model và kiểm máy, chưa có người đọc soát toàn bộ:
+
+- **Soát nghĩa chữ PopTag** (`gpt-6.1-terra`, 19 lô): chữ PopTag lệch nghĩa câu Hàn thì thay bằng bản dịch từ câu Hàn
+  (652 dòng catalog); chữ PopTag viết liền một dòng trong khi câu Hàn có xuống dòng thì giữ câu chữ, lấy xuống dòng và
+  khoảng trắng đầu cuối của câu Hàn (922 dòng).
+- **Chốt dòng treo:** 103 câu nhiều biến thể, 80 câu dịch máy bị cờ, 24 tên tạm ghép theo icon; 93 câu nhận một biến thể PopTag, 114 câu dịch từ câu Hàn. Dịch bù 244 câu tiếng
+  Anh từng bị bỏ qua vì bản Việt còn giữ chữ Hàn (biểu tượng cảm xúc `ㅠㅠ`, tên người trong bảng ghi công).
+- **Tiếng Việt chờ duyệt:** 46 trên 48 dòng được chốt (Claude quyết theo uỷ quyền của chủ dự án); ba câu nguồn có
+  `%일권` viết lại không còn dấu `%` lạc; `review_audit.csv` ghi quyết định mới.
+- **Soát lần hai** `csysstr.ssd` và `ClientString` (8.964 câu, 33 lô): áp dụng 623 sửa tiếng Việt (364 sửa nội dung,
+  259 chỉnh khoảng trắng đầu cuối) và 68 sửa tiếng Anh; không áp dụng 162 đề xuất chạm dòng có trong
+  `review_audit.csv` và 10 đề xuất viết lại câu có `%%` vốn đã đúng. `csysqstr.ssd` và tên stock chưa qua lượt này.
+- **Dấu `%` nghĩa đen:** bản dịch không được để chữ cái, hoặc dấu cách rồi chữ cái, ngay sau `%` (`50% for`, `20% nha`
+  thành tham số printf hợp lệ). Kiểm định dạng bắt các trường hợp này; các câu vi phạm đã viết lại.
+
+Công cụ dựng sau lượt này: bản dịch rỗng có chủ ý của trợ từ Hàn được áp dụng; chữ Latin có dấu và gạch dài được hạ
+về ký tự gần nhất khi ghi `cp949`; bản UTF-8 chuyển cả khoá có chữ Hàn sang UTF-8 (29 khoá `csysstr`, một khoá
+`csysqstr`, 30 khoá XML), `--keep-key-bytes` giữ byte gốc. Quét image exe đã unpack, 13 file SSI và 51.467 entry của
+mọi pack KR không thấy tham chiếu nào tới các khoá này bằng byte `cp949` ngoài chỗ định nghĩa.
+
+Dựng thử sau lượt này: `vi/utf-8` thay 32.098 chuỗi, `en/cp949` thay 32.102 chuỗi, không chuỗi nào bị loại vì lệch
+định dạng hoặc không mã hóa được. Kiểm lại trên file dựng ra: bảy SSI của mỗi bộ đúng checksum, hai trường độ dài và
+độ dài giải nén; bộ `ko/cp949` giải nén giống gốc cả bảy file; pack của bộ `vi` và `en` giữ 2.076 trên 2.077 mục
+index, phần `.idd` gốc không đổi, bảng chuỗi mới đọc lại trọn vẹn theo một bảng mã, đủ 6.993 mục. Chưa file nào
+được nạp thử vào client.
+
+Bề rộng chữ: `tools/l10n_width.py --vi-font <font VN>/CxUni.fft` cộng bề rộng bước từng ký tự và so dòng rộng nhất
+của bản dịch với câu Hàn. Bản dịch máy và bản chính thức có cùng phân bố (trung vị 1,16–1,42 lần câu Hàn, mức 95% từ
+1,7 tới 2,4 lần). Đây là xếp hạng nguy cơ, không phải phép đo khung thật.
+
+Ảnh có chữ: `gpt-6-luna` đọc 3.038 mục của `images_todo.csv` trên 203 tờ ảnh ghép đánh số (mỗi mục tối đa ba ảnh con:
+đầu, giữa, cuối), kết quả ở `images_text.csv`. Nhãn: `ko` 1.104 (746 cụm chữ khác nhau), `latin` 149, `digits` 165,
+`none` 1.598 (gồm 18 mục không có ảnh con), `unclear` 22. Trong 1.104 mục có chữ Hàn, 654 mục có ảnh cùng tên khác
+nội dung ở client VN (564) hoặc PopTag (358), 450 mục không có bản nào. Đối chiếu tay 15 ô của một tờ: đúng cả 15;
+chưa kiểm rộng hơn. 282 mục có nhiều hơn ba ảnh con, có thể sót chữ ở ảnh không được hiện. Cùng tên và khác byte
+không chứng minh ảnh kia đã được dịch.
