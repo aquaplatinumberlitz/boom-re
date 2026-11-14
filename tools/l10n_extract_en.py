@@ -382,6 +382,16 @@ def main():
             r['source_en'] = 'en_override.csv'
             r['en_status'] = 'candidate' if pick['basis'] == 'poptag_variant' else 'machine'
             r['en_notes'] = ';'.join(n for n in ('settled_' + pick['basis'], pick['notes']) if n)
+    # Bản sửa tay theo mã chuỗi (trang xem catalog → l10n_catalog_view.py --import): áp sau cùng.
+    manual_path = ROOT / 'l10n/en_id.csv'
+    if manual_path.exists():
+        with manual_path.open(encoding='utf-8', newline='') as f:
+            manual = {r['id']: r for r in csv.DictReader(f)}
+        for r in rows:
+            m = manual.get(r['id'])
+            if m and formatting(r['ko'], m['en']):
+                r['en'], r['source_en'], r['en_status'] = m['en'], 'en_id.csv', 'manual'
+                r['en_notes'] = m.get('notes', '')
     # Ghi lại sau bước đối chiếu stock; không thay các ứng viên nguồn khác.
     write_csv(args.out / 'catalog_en.csv', ['id', 'source_kr', 'ko', 'vi', 'vi_status', 'en', 'source_en', 'en_status', 'en_notes'], rows)
     write_csv(args.out / 'stock_names_en.csv', ['item_id','en','en_kind','en_icon','kr_item_id','ko','kr_kind','kr_icon','kr_source','kr_offset','kind_match','icon_match','catalog_ko_ids','basis','status'], stock)

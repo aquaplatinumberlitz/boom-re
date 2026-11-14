@@ -58,7 +58,7 @@ def main():
         if not ko_px:
             continue
         vi_px = vn.width(r['vi']) if r['vi_status'] in ('translated', 'reused') and r['vi'] else 0
-        en_px = kr.width(r['en']) if r['en_status'] in ('candidate', 'casefold_candidate', 'machine') and r['en'] else 0
+        en_px = kr.width(r['en']) if r['en_status'] in ('candidate', 'casefold_candidate', 'machine', 'manual') and r['en'] else 0
         out.append({'id': r['id'], 'ko_px': ko_px, 'vi_px': vi_px, 'en_px': en_px,
                     'vi_ratio': f'{vi_px / ko_px:.2f}' if vi_px else '', 'en_ratio': f'{en_px / ko_px:.2f}' if en_px else ''})
         if r['id'].startswith('stock:'):

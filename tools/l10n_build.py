@@ -52,7 +52,7 @@ def get_text(key, old, catalog, language, stats, encoding):
         if language == 'vi' and row.get('vi_status', row.get('status')) in ('translated', 'reused'):
             new = row['vi']
             empty = not new and old in PARTICLES
-        if language == 'en' and row.get('en_status') in ('candidate', 'casefold_candidate', 'machine'):
+        if language == 'en' and row.get('en_status') in ('candidate', 'casefold_candidate', 'machine', 'manual'):
             new = row['en']
             empty = not new and 'empty_on_purpose' in row.get('en_notes', '')
     if empty:

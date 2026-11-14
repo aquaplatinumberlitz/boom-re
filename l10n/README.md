@@ -427,3 +427,16 @@ Dựng với quyết định thật ngày 2026-11-14: bản Việt thay 459 ản
 của Claude: mọi ảnh thay giống từng byte entry nguồn sau giải mã, CRC đúng, mọi entry không đánh dấu giữ nguyên
 offset/size/khoá/CRC, phần `.idd` gốc của mỗi pack không đổi. Đầu ra ngoài repo được phép; trong repo chỉ được ghi
 vào `l10n/.cache/`.
+
+## 9. Xem và sửa catalog trong trình duyệt
+
+`python3 tools/l10n_catalog_view.py` dựng `l10n/.cache/catalog-view/index.html` (mở bằng
+`firefox file:///home/admin/boom/repos/boom-re-l10n/l10n/.cache/catalog-view/index.html`). Bảng bốn cột mã / Hàn /
+Việt / Anh, tìm và lọc theo nguồn, trạng thái. Bật "Chế độ sửa" rồi bấm vào ô Việt hoặc Anh để sửa; Ctrl+Enter
+hoặc bấm ra ngoài để lưu, Esc để huỷ. Chỗ sửa lưu trong trình duyệt, tô xanh; tô đỏ kèm lý do nếu lệch tham số định
+dạng, thẻ, số lần xuống dòng so với câu Hàn hoặc có từ ngoài giọng miền Nam. "Xuất các chỗ đã sửa" tải về
+`catalog-edits.csv` (`id, lang, ko, old, new`).
+
+Nhập: `python3 tools/l10n_catalog_view.py --import catalog-edits.csv`. Bản Việt ghi vào `tm_id.csv` (và
+`review_audit.csv` nếu dòng đó đã có quyết định duyệt), bản Anh ghi vào `en_id.csv` với trạng thái `manual`; rồi dựng
+lại hai catalog, chạy validator và dựng lại trang. Chỗ sửa lệch định dạng hoặc có từ cấm bị từ chối và in lý do.
