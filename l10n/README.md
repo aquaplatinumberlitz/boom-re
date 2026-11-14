@@ -440,3 +440,16 @@ dạng, thẻ, số lần xuống dòng so với câu Hàn hoặc có từ ngoà
 Nhập: `python3 tools/l10n_catalog_view.py --import catalog-edits.csv`. Bản Việt ghi vào `tm_id.csv` (và
 `review_audit.csv` nếu dòng đó đã có quyết định duyệt), bản Anh ghi vào `en_id.csv` với trạng thái `manual`; rồi dựng
 lại hai catalog, chạy validator và dựng lại trang. Chỗ sửa lệch định dạng hoặc có từ cấm bị từ chối và in lý do.
+
+## 10. Bảng mã tiếng Việt 1258 (đường thử nhanh, không cần vá UTF-8)
+
+Exe 00967 có sẵn nhánh bảng mã 1258 của client VN: hàm đặt bảng mã `0x149AA90` ghi `word_1A7E420`; công tắc vùng
+`0x138D380` chọn 949 (vùng 1, lệnh `push 3B5h` tại `0x138D3B1`, byte `68 B5 03 00 00`), 1258 cho vùng 64. Khi bảng mã
+là 1258, đổi byte sang Unicode đi qua `0x149A7B0` (tra bảng `word_19A8F00`, ghép dấu thanh 0300/0301/0303/0309/0323
+vào chữ đứng trước), đổi ngược qua `0x149AC90`, tìm ký tự kế qua `0x1499C20`. Đọc tĩnh trên bản sao IDB của
+`kr-full.exe`; chưa chạy.
+
+`--encoding vn1258` ghi chữ Việt theo đúng kiểu đó: nguyên âm có mũ/trăng/móc là một byte, dấu thanh là byte dấu kết
+hợp đứng sau. Ký hiệu không có trong 1258 (★, ♥, ♪, chữ cái Hàn rời trong biểu tượng cảm xúc) được thay bằng ký tự
+gần nhất; chuỗi chưa dịch còn chữ Hàn dùng bản Anh nếu có, không thì thành `?`. Muốn client đọc đúng phải vá vùng 1
+thành `push 4EAh` (`68 EA 04 00 00`). Đây là đường thử cho riêng tiếng Việt; hướng đã chốt cho nhiều ngôn ngữ vẫn là UTF-8.

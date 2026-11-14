@@ -36,12 +36,58 @@ def encodable(ch, encoding):
         return False
 
 
+# Bảng mã tiếng Việt 1258 theo kiểu client 00967 (nhánh 1258 của 0x149A740 / 0x149A7B0): nguyên âm có mũ,
+# trăng, móc (â ê ô ă ơ ư đ) là một byte, dấu thanh là byte dấu kết hợp đứng sau (0300 0301 0303 0309 0323);
+# client ghép lại thành ký tự dựng sẵn khi hiện. Python 'cp1258' không tự tách dấu thanh nên phải tách ở đây.
+import codecs
+TONES = {'\u0300', '\u0301', '\u0303', '\u0309', '\u0323'}
+
+
+def _vn1258_encode(text, errors='strict'):
+    out = bytearray()
+    for ch in text:
+        try:
+            out += ch.encode('cp1258')
+            continue
+        except UnicodeEncodeError:
+            pass
+        parts = unicodedata.normalize('NFD', ch)
+        base = ''.join(c for c in parts if c not in TONES)
+        tone = ''.join(c for c in parts if c in TONES)
+        base = unicodedata.normalize('NFC', base)
+        try:
+            out += (base + tone).encode('cp1258')
+        except UnicodeEncodeError as e:
+            if errors == 'replace':
+                out += b'?'
+            else:
+                raise UnicodeEncodeError('vn1258', text, text.index(ch), text.index(ch) + 1, 'không có trong 1258') from e
+    return bytes(out), len(text)
+
+
+def _vn1258_decode(data, errors='strict'):
+    return unicodedata.normalize('NFC', bytes(data).decode('cp1258', errors)), len(data)
+
+
+codecs.register(lambda name: codecs.CodecInfo(_vn1258_encode, _vn1258_decode, name='vn1258') if name == 'vn1258' else None)
+
+VN1258_FALLBACK = {'★': '*', '☆': '*', '♥': '*', '♡': '*', '♪': '~', '♬': '~', '♭': '~', '◎': 'o', '⊙': 'o', '※': '*',
+                   'Ⅱ': 'II', 'Ⅲ': 'III', '▼': 'v', '▲': '^', 'ㅠ': 'T', 'ㅜ': 'T', 'ㅁ': 'o', 'ㅅ': 'v', 'ㅋ': 'k', 'ㄷ': '', 'ㅡ': '-',
+                   '·': '.', '♣': '*', '♠': '*', '♦': '*', '●': 'o', '○': 'o', '■': '#', '□': '#', '→': '->', '←': '<-'}
 FALLBACK = {'—': '-', '–': '-', '‘': "'", '’': "'", '“': '"', '”': '"', '…': '...'}
 # Bản dựng UTF-8 chuyển cả khoá có chữ Hàn sang UTF-8 để file chỉ mang một bảng mã.
 # Quét exe, 13 file ssi1 và mọi entry pack KR 00967 không thấy nơi nào tham chiếu các khoá này
 # bằng byte CP949. `--keep-key-bytes` giữ byte gốc.
 KEEP_KEY_BYTES = False
 PARTICLES = {'이', '가', '을', '를', '은', '는'}
+
+
+def encodable_text(text, encoding):
+    try:
+        text.encode(encoding)
+        return True
+    except UnicodeEncodeError:
+        return False
 
 
 def get_text(key, old, catalog, language, stats, encoding):
@@ -62,6 +108,9 @@ def get_text(key, old, catalog, language, stats, encoding):
     if new and not EN.formatting(old, new):
         stats['format_rejected'] += 1
         new = ''
+    if new and encoding == 'vn1258':
+        # Ký hiệu và chữ cái Hàn rời trong biểu tượng cảm xúc không có trong 1258: thay bằng ký tự gần nhất.
+        new = ''.join(ch if encodable(ch, encoding) else VN1258_FALLBACK.get(ch, FALLBACK.get(ch, '')) for ch in new)
     if new and encoding == 'cp949':
         # Chữ Latin có dấu và gạch dài không có trong bảng mã Hàn: hạ về ký tự gần nhất.
         new = ''.join(ch if encodable(ch, encoding) else FALLBACK.get(ch) or
@@ -75,6 +124,15 @@ def get_text(key, old, catalog, language, stats, encoding):
                 chars[ch] = chars.get(ch, 0) + 1
             new = ''
     value = new or old
+    if not new and not encodable_text(value, encoding):
+        # Bảng mã 1258 không chứa chữ Hàn: chuỗi chưa dịch dùng bản Anh nếu có, không thì thay bằng '?'.
+        en = row.get('en', '') if row and row['ko'] == old and row.get('en_status') in ('candidate', 'casefold_candidate', 'machine', 'manual') else ''
+        if en and EN.formatting(old, en) and encodable_text(en, encoding):
+            value = en
+            stats['fallback_en'] = stats.get('fallback_en', 0) + 1
+        else:
+            value = value.encode(encoding, 'replace').decode(encoding)
+            stats['fallback_question_marks'] = stats.get('fallback_question_marks', 0) + 1
     stats['replaced' if new and new != old else 'retained'] += 1
     if EN.HANGUL.search(value):
         stats['hangul'] += 1
@@ -362,7 +420,7 @@ def main():
     parser.add_argument('--catalog',type=Path,default=L.L10N/'catalog_en.csv')
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--lang',choices=('ko','vi','en'),required=True)
-    parser.add_argument('--encoding',choices=('cp949','utf-8'),required=True)
+    parser.add_argument('--encoding',choices=('cp949','utf-8','vn1258'),required=True,help='vn1258: bảng mã tiếng Việt kiểu client 00967, cần vá exe chọn bảng mã 1258')
     parser.add_argument('--keep-key-bytes',action='store_true',help='bản UTF-8 vẫn giữ khoá theo byte CP949 gốc')
     parser.add_argument('--images', type=Path, nargs='?', const=L.L10N/'images_review.csv')
     parser.add_argument('--image-dir', type=Path)
