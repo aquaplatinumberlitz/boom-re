@@ -154,6 +154,13 @@ def export(kr, vn, out, workers, en=None):
     data = json.dumps(results, ensure_ascii=False).replace('<', '\\u003c')
     html = Path(__file__).with_suffix('.html').read_text(encoding='utf-8')
     html = html.replace('/*__GALLERY_DATA__*/[]', data)
+    # Quyết định đã ghi trong repo hiện sẵn trên trang; lựa chọn lưu ở trình duyệt vẫn được ưu tiên.
+    recorded = {}
+    with (L.L10N / 'images_review.csv').open(encoding='utf-8-sig', newline='') as f:
+        for r in csv.DictReader(f):
+            if r['status'] != 'pending' or r.get('status_en', 'pending') not in ('', 'pending') or r['notes']:
+                recorded[r['pack'] + '\t' + r['entry']] = dict(status=r['status'], status_en=r.get('status_en') or 'pending', notes=r['notes'])
+    html = html.replace('/*__RECORDED__*/{}', json.dumps(recorded, ensure_ascii=False).replace('<', '\\u003c'))
     (out / 'index.html').write_text(html, encoding='utf-8')
     (out / 'manifest.json').write_text(json.dumps(results, ensure_ascii=False), encoding='utf-8')
     (out / 'decode_errors.json').write_text(json.dumps(errors, ensure_ascii=False, indent=2), encoding='utf-8')

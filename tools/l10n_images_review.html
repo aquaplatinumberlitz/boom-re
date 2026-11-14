@@ -13,6 +13,7 @@
 <script>
 'use strict';
 const DATA=/*__GALLERY_DATA__*/[];
+const RECORDED=/*__RECORDED__*/{}; // quyết định đã ghi trong l10n/images_review.csv của repo
 const LABELS={pending:'Chưa duyệt',translated:'Đã có tiếng Việt',needs_translation:'Cần dịch',no_text:'Không có chữ',check:'Cần kiểm tra thêm'};
 const LABELS_EN={pending:'Chưa duyệt',translated:'Dùng được ảnh Bắc Mỹ',needs_translation:'Cần vẽ tiếng Anh',no_text:'Không có chữ',check:'Cần kiểm tra thêm'};
 const LUNA={ko:'có chữ Hàn',latin:'chỉ chữ Latin',digits:'chỉ số, ký hiệu',none:'không có chữ',unclear:'không đọc được','':'chưa đọc'};
@@ -25,6 +26,7 @@ const h=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','
 function decision(r){return decisions[key(r)]||{status:'pending',status_en:'pending',notes:''}}
 function enrel(r){if(!r.en)return 'no';const a=r.kr?.images||[],b=r.en.images||[];return a.length&&a.length===b.length&&a.every((im,i)=>im.full===b[i].full)?'same_bytes':'diff_bytes'}
 function persist(){try{localStorage.setItem(KEY,JSON.stringify(decisions));$('notice').textContent='Đã lưu trong trình duyệt. Xuất CSV để giữ bản sao và nhập vào dự án.'}catch(e){storageOK=false;$('notice').textContent='Trình duyệt không lưu được tại chỗ. Hãy xuất CSV trước khi đóng trang.'}}
+for(const r of DATA){const d=RECORDED[key(r)];if(d)decisions[key(r)]={status:d.status,status_en:d.status_en||'pending',notes:d.notes||''}}
 try{const saved=JSON.parse(localStorage.getItem(KEY)||'{}');for(const r of DATA){const d=saved[key(r)];if(d&&Object.hasOwn(LABELS,d.status))decisions[key(r)]={status:d.status,status_en:Object.hasOwn(LABELS,d.status_en||'')?d.status_en:'pending',notes:String(d.notes||'')}}}catch(e){storageOK=false}
 const byId=new Map(DATA.map(r=>[r.id,r]));
 function filtered(){const q=$('search').value.toLocaleLowerCase('vi');return DATA.filter(r=>(!q||(r.entry+' '+r.pack+' '+(r.text||'')).toLocaleLowerCase('vi').includes(q))&&(!$('enrel').value||enrel(r)===$('enrel').value)&&(!$('label').value||(r.label||'')===$('label').value)&&(!$('filteren').value||decision(r).status_en===$('filteren').value)&&(!$('pack').value||r.pack===$('pack').value)&&(!$('relation').value||r.vn_same_name===$('relation').value)&&(!$('filter').value||decision(r).status===$('filter').value))}
