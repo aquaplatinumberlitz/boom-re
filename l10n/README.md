@@ -124,6 +124,17 @@ Mở terminal và chạy:
 xdg-open /home/admin/boom-re-l10n/l10n/.cache/image-review/index.html
 ```
 
+Từ 2026-11-14 trang duyệt có ba cột KR / VN / Bắc Mỹ, hiện chữ do máy đọc trên từng ảnh (`images_text.csv`), lọc theo
+nhãn máy đọc và theo đối chiếu với bản Bắc Mỹ, và ghi hai quyết định riêng cho tiếng Việt (`status`) và tiếng Anh
+(`status_en`). Dựng lại (đường dẫn mặc định của `--kr` đã cũ nên phải chỉ rõ):
+
+```sh
+python3 tools/l10n_images_review.py --kr /home/admin/boom/clients/kr-00967 --en /duong/dan/client-poptag
+```
+
+Mở sẵn bộ lọc qua đường dẫn, ví dụ `index.html#label=ko&relation=diff_bytes&enrel=diff_bytes` (268 mục có chữ Hàn
+và có cả ảnh VN lẫn ảnh Bắc Mỹ khác nội dung). CSV xuất ra có thêm cột `status_en`; CSV cũ bốn cột vẫn nhập được.
+
 Sau kiểm tra cấu trúc, đã loại 4 dữ liệu bản đồ bị nhận nhầm thành ảnh. Danh sách còn
 **3.038 ứng viên**: 681 khác bản VN, 1.113 giống bản VN, 1.244 không có bản VN cùng tên.
 Đã xuất **8.750 ảnh con**, không lỗi giải mã. Chưa có xác nhận ảnh đã dịch từ người duyệt;

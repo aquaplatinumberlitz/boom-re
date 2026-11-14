@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Export a local KR/VN image review gallery. Game packs remain read-only.
+"""Export a local KR/VN/North American image review gallery. Game packs remain read-only.
 
 python3 tools/l10n_images_review.py
+python3 tools/l10n_images_review.py --en /duong/dan/client-poptag   # thêm cột ảnh bản Bắc Mỹ
 python3 tools/l10n_images_review.py --serve 8765  # run outside a socket-restricted sandbox
 """
 import argparse
@@ -19,7 +20,7 @@ import idf
 import i16
 import l10n_extract as L
 
-FIELDS = ['pack', 'entry', 'status', 'notes']
+FIELDS = ['pack', 'entry', 'status', 'status_en', 'notes']
 STATES = {'pending', 'translated', 'needs_translation', 'no_text', 'check'}
 
 
@@ -43,13 +44,23 @@ def read_blob(record, name):
     return idf.unpack_entry(name, blob, key, crc)
 
 
-def export(kr, vn, out, workers):
+def export(kr, vn, out, workers, en=None):
     out.mkdir(parents=True, exist_ok=True)
     (out / 'images').mkdir(exist_ok=True)
     with (L.L10N / 'images_todo.csv').open(encoding='utf-8', newline='') as f:
         rows = list(csv.DictReader(f))
     print(f'Indexing KR and VN packs; {len(rows)} candidates', flush=True)
     kr_idx, vn_idx = index_packs(kr, True), index_packs(vn, False)
+    en_idx = {}
+    if en:
+        import l10n_extract_en as EN
+        en_idx = EN.index_tree(en)  # tên entry viết thường -> [(file idx, entry)]
+        print(f'Indexed North American packs: {len(en_idx)} entry names', flush=True)
+    read_text = {}
+    text_path = L.L10N / 'images_text.csv'
+    if text_path.exists():
+        with text_path.open(encoding='utf-8', newline='') as f:
+            read_text = {(r['pack'], r['entry']): r for r in csv.DictReader(f)}
     cache, cache_lock, blob_locks = {}, threading.Lock(), {}
 
     def decode(blob):
@@ -106,6 +117,19 @@ def export(kr, vn, out, workers):
     def item(pair):
         n, row = pair
         result = dict(row, id=n)
+        seen = read_text.get((row['pack'], row['entry']), {})
+        result['label'], result['text'] = seen.get('label', ''), seen.get('text', '')
+        match = en_idx.get(row['entry'].casefold(), [])
+        result['en'] = None
+        if match:
+            try:
+                path, entry = match[0]
+                with path.with_suffix('.idd').open('rb') as f:
+                    f.seek(entry[1])
+                    blob = f.read(entry[2])
+                result['en'] = decode(idf.unpack_entry(entry[0], blob, entry[3], entry[4]))
+            except Exception as e:
+                result['en'] = dict(error=f'{type(e).__name__}: {e}', images=[])
         for side, record in [('kr', kr_idx.get((row['pack'], row['entry']))),
                              ('vn', vn_idx.get(row['entry']) if row['vn_same_name'] != 'no' else None)]:
             if record is None:
@@ -126,7 +150,7 @@ def export(kr, vn, out, workers):
             if done % 50 == 0 or done == len(rows):
                 print(f'{done}/{len(rows)} exported', flush=True)
     errors = [dict(pack=r['pack'], entry=r['entry'], side=s, error=r[s]['error'])
-              for r in results for s in ('kr', 'vn') if r[s] and r[s].get('error')]
+              for r in results for s in ('kr', 'vn', 'en') if r[s] and r[s].get('error')]
     data = json.dumps(results, ensure_ascii=False).replace('<', '\\u003c')
     html = Path(__file__).with_suffix('.html').read_text(encoding='utf-8')
     html = html.replace('/*__GALLERY_DATA__*/[]', data)
@@ -140,9 +164,9 @@ def export(kr, vn, out, workers):
             w = csv.DictWriter(f, FIELDS, lineterminator='\n')
             w.writeheader()
             for r in results:
-                w.writerow(dict(pack=r['pack'], entry=r['entry'], status='pending', notes=''))
+                w.writerow(dict(pack=r['pack'], entry=r['entry'], status='pending', status_en='pending', notes=''))
     print(f'Gallery: {out / "index.html"}', flush=True)
-    print(f'Images: {sum(len((r[s] or {}).get("images", [])) for r in results for s in ("kr", "vn"))}; errors: {len(errors)}', flush=True)
+    print(f'Images: {sum(len((r[s] or {}).get("images", [])) for r in results for s in ("kr", "vn", "en"))}; errors: {len(errors)}', flush=True)
 
 
 def import_decisions(path):
@@ -153,7 +177,8 @@ def import_decisions(path):
     seen = set()
     for row in rows:
         key = row['pack'], row['entry']
-        if key not in known or key in seen or row['status'] not in STATES:
+        row['status_en'] = row.get('status_en') or 'pending'
+        if key not in known or key in seen or row['status'] not in STATES or row['status_en'] not in STATES:
             raise ValueError(f'Unknown/duplicate resource or invalid status: {key}')
         seen.add(key)
     if seen != known:
@@ -172,6 +197,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--kr', type=Path, default=L.DEF_KR)
     p.add_argument('--vn', type=Path, default=L.DEF_VN)
+    p.add_argument('--en', type=Path, help='thư mục client PopTag đã bung; thêm cột ảnh bản Bắc Mỹ')
     p.add_argument('--out', type=Path, default=L.L10N / '.cache' / 'image-review')
     p.add_argument('--workers', type=int, default=4)
     p.add_argument('--import-csv', type=Path)
@@ -189,7 +215,7 @@ def main():
     else:
         if a.workers < 1:
             p.error('--workers must be positive')
-        export(a.kr, a.vn, a.out, a.workers)
+        export(a.kr, a.vn, a.out, a.workers, a.en)
 
 
 if __name__ == '__main__':
