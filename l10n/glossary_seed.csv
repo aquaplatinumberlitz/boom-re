@@ -1,0 +1,118 @@
+ko,vi,kind
+크아,Boom,game
+크레이지아케이드,Boom,game
+비엔비,Boom,game
+BnB,Boom,game
+루찌,VÀNG,currency
+캐시,XU,currency
+넥슨캐시,XU,currency
+크아포인트,BẠC,currency
+CP,BẠC,currency
+쿠폰,phiếu,currency
+상점,Siêu thị,ui
+샵,Siêu thị,ui
+유저장터,Chợ,ui
+내 아이템,Túi đồ,ui
+내아이템,Túi đồ,ui
+메신저,Bạn bè,ui
+내정보,Cá nhân,ui
+마이페이지,Trang cá nhân,ui
+옵션,Tùy chọn,ui
+도움말,Trợ giúp,ui
+퀘스트,Nhiệm vụ,ui
+일일퀘스트,Nhiệm vụ hằng ngày,ui
+퀘스트창,cửa sổ Nhiệm vụ,ui
+이벤트,Sự kiện,ui
+방,phòng,ui
+방장,chủ phòng,ui
+슈퍼방장,Siêu chủ phòng,item
+강퇴,mời ra,ui
+강퇴반사,Phản mời ra,item
+방제목,Tên phòng,ui
+비밀방,Phòng kín,ui
+비밀번호,mật khẩu,ui
+채널,kênh,ui
+서버,máy chủ,ui
+대기실,phòng chờ,ui
+로비,sảnh,ui
+광장,quảng trường,ui
+확성기,loa,item
+전광판,bảng điện tử,ui
+길드,hội,ui
+커플,đôi,ui
+크앤,đôi (Couple),ui
+친구,bạn,ui
+유저,người chơi,ui
+아이디,ID,ui
+레벨,cấp,stat
+경험치,kinh nghiệm,stat
+래더,Xếp hạng,mode
+래더짱,Vua xếp hạng,mode
+등급,hạng,stat
+난이도,độ khó,stat
+능력치,chỉ số,stat
+물풍선,bom nước,item
+물줄기,tia nước,item
+바늘,kim,item
+실드,khiên,item
+아이템,vật phẩm,ui
+선물,quà,ui
+보상,phần thưởng,ui
+획득,nhận được,ui
+미션,nhiệm vụ,ui
+맵,bản đồ,ui
+모드,chế độ,ui
+일반모드,Chế độ thường,mode
+몬스터모드,Chế độ quái vật,mode
+몬스터,quái vật,mode
+보스,trùm,mode
+매너,Lịch sự,mode
+자유,Tự do,mode
+랜덤,Ngẫu nhiên,mode
+초보,Tân thủ,mode
+부활대전,Đấu hồi sinh,mode
+고슴도치,Nhím,mode
+대장잡기,Bắt đội trưởng,mode
+시한폭탄,Bom hẹn giờ,mode
+AI배틀,Đấu máy,mode
+눈싸움,Ném tuyết,mode
+쫄맨,Zzolman,mode
+슈퍼파이터,Siêu chiến binh,mode
+내가보스,Tôi là trùm,mode
+히든캐치,Hidden Catch,mode
+크아히어로,Boom Hero,mode
+협공배틀,Đấu hợp sức,mode
+대난투,Đại loạn đấu,mode
+좀비모드,Chế độ Zombie,mode
+교환,trao đổi,ui
+교환채팅방,Phòng chat trao đổi,ui
+노샵,Không siêu thị,mode
+펫,thú cưng,item
+탈것,thú cưỡi,item
+배찌,Bazzi,character
+다오,Dao,character
+디지니,Dizni,character
+마리드,Marid,character
+케피,Kephi,character
+우니,Uni,character
+에띠,Ethi,character
+모스,Mos,character
+수,Su,character
+빌리지,Làng,theme
+숲,Rừng,theme
+캠프,Trại,theme
+패트릿,Patrit,theme
+해적,Cướp biển,theme
+사막,Sa mạc,theme
+공장,Nhà máy,theme
+광산,Mỏ,theme
+아이스,Băng,theme
+무덤,Lăng mộ,theme
+바다,Biển,theme
+레디,Sẵn sàng,ui
+스타트,Bắt đầu,ui
+타일,ô gạch,editor
+블록,khối,editor
+바닥,nền,editor
+파괴됨,bị phá huỷ,editor
+밀기 가능,đẩy được,editor

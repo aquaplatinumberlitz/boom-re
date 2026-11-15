@@ -68,6 +68,20 @@ def decrypt_entry(data, key):
     return bytes(out)
 
 
+def encrypt_entry(data, key):
+    """Inverse of decrypt_entry, including the partial trailing word."""
+    n, tail = divmod(len(data), 4)
+    words = struct.unpack_from('<%dI' % n, data)
+    out = bytearray()
+    for i, word in enumerate(words):
+        prev = words[i - 1] if i else key
+        mask = (i * i * (i + 966) * (i + 2020)) & 0xffffffff if i else 0
+        out += struct.pack('<I', word ^ prev ^ mask ^ 0x9c6c95ce)
+    last = words[-1] if n else key
+    out.extend(data[4*n+j] ^ ((last >> (8*j)) & 255) for j in range(tail))
+    return bytes(out)
+
+
 def _crc32(init, data):
     import boomproto
     return boomproto.crc32(init, data)
