@@ -521,6 +521,11 @@ cụ dựng không có kiểu ghi 1258; ghi lại để biết chỗ khi vá UTF
     - Sandking, Munppaki, Byeolmon/Star Monster, Grandma Pal Pal, Kkomuli;
     - lệnh chat viết thường, `/보석사탕` → `/jewelcandy`, bỏ lệnh Hàn trong 11 câu hướng dẫn.
   - Cột `vi` của `catalog_en.csv` đồng bộ lại theo `catalog.csv` (lượt sửa trước chưa chép sang).
+- Sửa 2026-11-16 theo giới hạn đo trên client 00967 đã vá (boom-kr-server, L1 949x; chữ Việt ngoài 949 tính 2 byte):
+  - Ô người nhận chat tối đa 14 byte: `ChatToAll` → `<Mọi người>`, `ChatToOurTeam` → `<Đồng đội>`, theo chữ của
+    `boom-re/server/src/strings.rs`; client VN không có chữ riêng cho hai khóa này.
+  - Tên phòng tối đa 22 byte: `DefaultRoomTitle1` → `Ai vô cũng được`, `DefaultRoomTitle2` → `Ai chơi chung hông~`.
+    Client VN không có chữ cho `DefaultRoomTitle*`.
 - Việc còn mở:
   - Lệnh chat bản Việt (`/ai`, `/odau`, `/moi`, `/duoi`, `/tenphong`, `/tudong`, `/trieutap`…) và bản Anh
     (`/summon`, `/broadcast`, `/jewelcandy`…) chỉ chạy được nếu engine nhận các bí danh này; client KR gốc chỉ biết lệnh

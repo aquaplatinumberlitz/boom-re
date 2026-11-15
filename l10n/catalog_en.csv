@@ -2133,8 +2133,8 @@ ChatRenew_DefaultChatMsg00,csysstr.ssd,/?를 입력하면 도움말 확인이 �
 ChatRenew_DefaultChatMsg01,csysstr.ssd,상단 확장 버튼을 클릭하면 채팅창이 더 커져요.,Bấm nút mở rộng phía trên để phóng to khung chat.,translated,Click the expand button at the top to enlarge the chat window.,tm_en.csv,machine,
 ChatRenew_MyChatEdit,csysstr.ssd,> ,> ,translated,,,missing,
 Chatting,csysstr.ssd+FxDesktop/ClientData/ClientString,대화 하기,Trò chuyện,translated,Chat,fx/ClientData/ClientString,candidate,meaning_checked
-ChatToAll,csysstr.ssd+FxDesktop/ClientData/ClientString,<모두에게>,<Gởi cho tất cả>,translated,<To All>,fx/ClientData/ClientString,candidate,meaning_checked
-ChatToOurTeam,csysstr.ssd+FxDesktop/ClientData/ClientString,<같은편에게>,<Gởi cho đồng đội>,translated,<To Team>,fx/ClientData/ClientString,candidate,meaning_checked
+ChatToAll,csysstr.ssd+FxDesktop/ClientData/ClientString,<모두에게>,<Mọi người>,translated,<To All>,fx/ClientData/ClientString,candidate,meaning_checked
+ChatToOurTeam,csysstr.ssd+FxDesktop/ClientData/ClientString,<같은편에게>,<Đồng đội>,translated,<To Team>,fx/ClientData/ClientString,candidate,meaning_checked
 CheckRentedItemMyPage,csysstr.ssd,"아이템 대여에 성공하셨습니다.
 마이페이지를 확인하세요!","Bạn đã thuê vật phẩm thành công.
 Hãy kiểm tra Trang cá nhân!",translated,"You rented the Item successfully.
@@ -2876,8 +2876,8 @@ DbErrOrNotExistId,csysstr.ssd+FxDesktop/ClientData/ClientString,"%s님은 존재
 DC,csysstr.ssd+FxDesktop/ClientData/ClientString,%s %d%% 할인권,Phiếu giảm giá %s %d%%,translated,%s %d%% Discount Coupon,fx/ClientData/ClientString,candidate,meaning_checked
 DCDesc,csysstr.ssd+FxDesktop/ClientData/ClientString,"쿠폰을 지금 사용하시겠습니까? 사용하지 않은 쿠폰은 10일동안 보관되며, 온라인쿠폰 버튼을 눌러 확인하실 수 있습니다.","Bạn muốn dùng phiếu ngay bây giờ? Phiếu chưa dùng được giữ trong 10 ngày, bạn có thể bấm nút phiếu trực tuyến để kiểm tra.",translated,Would you like to use the coupon now? Unused coupons are kept for 10 days and can be checked via the Online Coupon button.,fx/ClientData/ClientString,candidate,meaning_checked
 DefaultRoomTitle0,csysstr.ssd+FxDesktop/ClientData/ClientString,즐거운 게임해요,Chơi vui vẻ nha,translated,Let's have fun!,fx/ClientData/ClientString,candidate,meaning_checked
-DefaultRoomTitle1,csysstr.ssd+FxDesktop/ClientData/ClientString,아무나 오세요,Mọi người vô chơi đi,translated,Everyone welcome!,fx/ClientData/ClientString,candidate,meaning_checked
-DefaultRoomTitle2,csysstr.ssd+FxDesktop/ClientData/ClientString,저랑 게임하실분~,Ai chơi với mình không~,translated,Anyone want to play?,fx/ClientData/ClientString,candidate,meaning_checked
+DefaultRoomTitle1,csysstr.ssd+FxDesktop/ClientData/ClientString,아무나 오세요,Ai vô cũng được,translated,Everyone welcome!,fx/ClientData/ClientString,candidate,meaning_checked
+DefaultRoomTitle2,csysstr.ssd+FxDesktop/ClientData/ClientString,저랑 게임하실분~,Ai chơi chung hông~,translated,Anyone want to play?,fx/ClientData/ClientString,candidate,meaning_checked
 DefaultRoomTitle3,csysstr.ssd+FxDesktop/ClientData/ClientString,빨리 오세요~,Mau vô đi nào~,translated,Come quick~,fx/ClientData/ClientString,candidate,meaning_checked
 DefaultRoomTitle4,csysstr.ssd+FxDesktop/ClientData/ClientString,초보자 환영!,Chào mừng Tân thủ!,translated,Beginners welcome!,fx/ClientData/ClientString,candidate,meaning_checked
 DefaultRoomTitle5,csysstr.ssd+FxDesktop/ClientData/ClientString,매너겜 필수,Phải chơi Lịch sự,translated,Good manners required,fx/ClientData/ClientString,candidate,meaning_checked

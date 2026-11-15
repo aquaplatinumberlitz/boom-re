@@ -26,8 +26,8 @@ Character05,특수효과,Nhân vật 5,Hiệu ứng đặc biệt,Hiệu ứng �
 Character06,이모션,Nhân vật 6,Động tác biểu cảm,Biểu cảm,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 ChatFilterGuild@ClientString,길  드  채  팅,Hội,Chat hội,Trò chuyện hội,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 ChatFilterWhole@ClientString,전  체  채  팅,Tất cả,Chat tất cả,Chat chung,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-ChatToAll,<모두에게>,<Mọi người>,<Mọi người>,<Gởi cho tất cả>,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-ChatToOurTeam,<같은편에게>,<Đồng đội>,<Đồng đội>,<Gởi cho đồng đội>,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+ChatToAll,<모두에게>,<Mọi người>,<Gởi cho tất cả>,<Mọi người>,translated,sửa tay qua trang catalog 2026-11-16,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
+ChatToOurTeam,<같은편에게>,<Đồng đội>,<Gởi cho đồng đội>,<Đồng đội>,translated,sửa tay qua trang catalog 2026-11-16,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 ChiefBanned," 강퇴반사에 의해 퇴장 당하셨습니다.
 슈퍼방장 아이템이 있으면 강퇴반사를 가지고 있는 유저도 강퇴시킬 수 있습니다. 상점에서 확인해보세요.",Bạn đã bị mời ra khỏi phòng.," Bạn bị mời ra do Phản mời ra.
 Có vật phẩm Siêu chủ phòng thì có thể mời ra cả người chơi có Phản mời ra. Vô Siêu thị coi nha."," Bạn đã bị mời ra do Phản mời ra.

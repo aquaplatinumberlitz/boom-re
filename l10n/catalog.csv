@@ -1971,8 +1971,8 @@ ChatRenew_DefaultChatMsg00,csysstr.ssd,/?를 입력하면 도움말 확인이 �
 ChatRenew_DefaultChatMsg01,csysstr.ssd,상단 확장 버튼을 클릭하면 채팅창이 더 커져요.,,Bấm nút mở rộng phía trên để phóng to khung chat.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 ChatRenew_MyChatEdit,csysstr.ssd,> ,,> ,translated,no_hangul
 Chatting,csysstr.ssd+FxDesktop/ClientData/ClientString,대화 하기,,Trò chuyện,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-ChatToAll,csysstr.ssd+FxDesktop/ClientData/ClientString,<모두에게>,<Mọi người>,<Gởi cho tất cả>,translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-ChatToOurTeam,csysstr.ssd+FxDesktop/ClientData/ClientString,<같은편에게>,<Đồng đội>,<Gởi cho đồng đội>,translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+ChatToAll,csysstr.ssd+FxDesktop/ClientData/ClientString,<모두에게>,<Mọi người>,<Mọi người>,translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-16;too_long?"
+ChatToOurTeam,csysstr.ssd+FxDesktop/ClientData/ClientString,<같은편에게>,<Đồng đội>,<Đồng đội>,translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-16"
 CheckRentedItemMyPage,csysstr.ssd,"아이템 대여에 성공하셨습니다.
 마이페이지를 확인하세요!",,"Bạn đã thuê vật phẩm thành công.
 Hãy kiểm tra Trang cá nhân!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -2590,8 +2590,8 @@ DbErrOrNotExistId,csysstr.ssd+FxDesktop/ClientData/ClientString,"%s님은 존재
 DC,csysstr.ssd+FxDesktop/ClientData/ClientString,%s %d%% 할인권,,Phiếu giảm giá %s %d%%,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 DCDesc,csysstr.ssd+FxDesktop/ClientData/ClientString,"쿠폰을 지금 사용하시겠습니까? 사용하지 않은 쿠폰은 10일동안 보관되며, 온라인쿠폰 버튼을 눌러 확인하실 수 있습니다.",,"Bạn muốn dùng phiếu ngay bây giờ? Phiếu chưa dùng được giữ trong 10 ngày, bạn có thể bấm nút phiếu trực tuyến để kiểm tra.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 DefaultRoomTitle0,csysstr.ssd+FxDesktop/ClientData/ClientString,즐거운 게임해요,,Chơi vui vẻ nha,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-DefaultRoomTitle1,csysstr.ssd+FxDesktop/ClientData/ClientString,아무나 오세요,,Mọi người vô chơi đi,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-DefaultRoomTitle2,csysstr.ssd+FxDesktop/ClientData/ClientString,저랑 게임하실분~,,Ai chơi với mình không~,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+DefaultRoomTitle1,csysstr.ssd+FxDesktop/ClientData/ClientString,아무나 오세요,,Ai vô cũng được,translated,sửa tay qua trang catalog 2026-11-16;too_long?
+DefaultRoomTitle2,csysstr.ssd+FxDesktop/ClientData/ClientString,저랑 게임하실분~,,Ai chơi chung hông~,translated,sửa tay qua trang catalog 2026-11-16;too_long?
 DefaultRoomTitle3,csysstr.ssd+FxDesktop/ClientData/ClientString,빨리 오세요~,,Mau vô đi nào~,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 DefaultRoomTitle4,csysstr.ssd+FxDesktop/ClientData/ClientString,초보자 환영!,,Chào mừng Tân thủ!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 DefaultRoomTitle5,csysstr.ssd+FxDesktop/ClientData/ClientString,매너겜 필수,,Phải chơi Lịch sự,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
