@@ -128,6 +128,23 @@ lệnh đã dịch, không để lại lệnh Hàn (`/전광` → `/bangdien`).
 **Chữ Hàn sót.** Ngoài các tên giữ nguyên ở trên, không để chữ Hàn trong bản Việt (`(토,일)` → `(T7, CN)`).
 Emoticon bằng chữ cái Hàn (ㅠㅠ, ㅎㅎ, +ㅁ+) hiện vẫn giữ nguyên; xem việc còn mở ở §11.
 
+**Tên riêng đã chốt (bản Việt).** Vua Cát (샌드킹, cả tên map), quái sao (별몬, danh từ chung), Kong Kong (콩콩),
+Munppak (문빡이), Kdasu (크다수), bà Palpal (팔팔할매), Fortune Star (포츈스타, nhân vật AI) và Mister Fortune
+(미스터포츈, NPC quảng trường).
+
+**Nhân vật AI đối kháng** (`AIBattleSay_*_CAHero_N`, `AIBattleSay_*_N`) đều xưng ta – mi, kể cả nhân vật dễ thương
+như Indi, Pinky. Nhân vật tự gọi tên mình (Pinky, Indi) thì giữ tên, phần còn lại vẫn ta – mi.
+
+**Bản tiếng Anh.**
+- Tên nhân vật lấy theo bản PopTag (`Ch*` trong `english_sources.csv`): Sue (수), Hoou (후우), Posh … cho bản
+  럭셔리. Tên chỉ có trong bản máy chọn một cách viết và dùng cho mọi câu: Sand King, Moonbbak, Granny Palpal,
+  Starfish (별몬, theo PopTag), Little Caterpillar (꼬물이).
+- Lệnh chat viết thường, không khoảng trắng (`/speak`, `/christmas`, `/allpink`). Lệnh nào câu Hàn có kèm bí danh
+  Latin thì dùng bí danh đó (`/누구` → `/who`, `/어디` → `/where`, `/초대` → `/in`, `/퇴장` → `/ban`, `/방제` → `/rt`,
+  `/자동` → `/ar`); câu hướng dẫn không được để lệnh Hàn.
+- Sửa tay theo mã chuỗi ghi ở `en_id.csv` (`id, en, notes`), được áp sau cùng khi dựng `catalog_en.csv`. Dòng không
+  qua `formatting()` của `l10n_extract_en.py` sẽ bị bỏ khi dựng lại.
+
 ## 3. Ảnh có chữ (`images_todo.csv`)
 
 Quét mọi entry sprite (`CDataI16Alpha` v2) và JPEG trong 13 pack KR. Heuristic theo tên entry (token đứng đầu đoạn
@@ -490,7 +507,22 @@ cụ dựng không có kiểu ghi 1258; ghi lại để biết chỗ khi vá UTF
 - Lượt sửa này đồng bộ tay vào `catalog.csv` và `glossary.csv`, **chưa** chạy `l10n_extract.py catalog` và
   `l10n_validate.py` (máy sửa không có pack). Ở máy có pack: dựng lại catalog, chạy validator; nếu catalog dựng
   lại khác bản sửa tay thì lấy bản dựng lại.
+- Lượt review thứ hai (tên riêng, xưng hô, lệnh chat; notes `sửa 2026-11-15 (review 2: …)`):
+  - Việt, 89 dòng:
+    - thống nhất các tên ở §2c (Sand King/vua cát → Vua Cát; Byeolmon/quái vật sao → quái sao; Kongkong → Kong Kong;
+      Munbbak; Keudasu; "bà lão khỏe mạnh" → bà Palpal);
+    - nhân vật AI Indi, Pinky, Rodumani, Kong Kong, Fortune Star về ta – mi;
+    - "giới Indi" → "giới nhạc indie".
+  - Anh, 433 dòng trong `en_id.csv`:
+    - Su → Sue (260), Huu/Hoo → Hoou (99), nhãn tên `HooU` từng bị dịch "Phew";
+    - Sandking, Munppaki, Byeolmon/Star Monster, Grandma Pal Pal, Kkomuli;
+    - lệnh chat viết thường, `/보석사탕` → `/jewelcandy`, bỏ lệnh Hàn trong 11 câu hướng dẫn.
+  - Cột `vi` của `catalog_en.csv` đồng bộ lại theo `catalog.csv` (lượt sửa trước chưa chép sang).
 - Việc còn mở:
+  - Lệnh chat bản Việt (`/ai`, `/odau`, `/moi`, `/duoi`, `/tenphong`, `/tudong`, `/trieutap`…) và bản Anh
+    (`/summon`, `/broadcast`, `/jewelcandy`…) chỉ chạy được nếu engine nhận các bí danh này; client KR gốc chỉ biết lệnh
+    Hàn và bí danh Latin có sẵn.
+  - `ForceDeleteItem_Msg_0002` (`스주사위` → "Su Dice") chưa rõ nghĩa.
   - 146 câu có emoticon chữ Hàn (đổi sang T_T, hihi, >.<…?);
   - "Kim" viết hoa 392 chỗ, viết thường 20 chỗ;
   - 15 câu đố Việt nhiều dòng hơn câu Hàn, cần xem tràn khung trên client;
