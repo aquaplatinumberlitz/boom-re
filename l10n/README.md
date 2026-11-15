@@ -101,6 +101,33 @@ nha/ha/ta (nhé/nhỉ), đó/vậy cuối câu (đấy/thế), lượm (nhặt),
 - Theo yêu cầu mới, câu đố chính tả/chơi chữ Hàn được thay đồng bộ bằng câu đố chơi chữ Việt,
   giữ nguyên ID và vị trí lựa chọn đúng (`quiz_vi_localized`).
 
+## 2c. Xưng hô, lệnh chat và tên riêng
+
+Quy ước chốt sau lượt dịch lại 2026-11-15 và lượt review cùng ngày. Câu mới hoặc câu sửa phải theo các quy ước này.
+
+**Xưng hô.** Mỗi câu chỉ dùng một cặp xưng hô, và **cùng một nhân vật giữ một cặp trong mọi câu của nó**
+(cùng tiền tố `id`, ví dụ `q:WelcomeToBnB_InfoMsg*`, `monseal12generala*`).
+
+| Người nói | Cặp | Ghi chú |
+|---|---|---|
+| Quái, trùm, NPC thù địch | ta – mi | Số nhiều: tụi bây. **Không dùng "ngươi"** |
+| NPC thân thiện, thú cưng, NPC giao nhiệm vụ (kể cả ông nhà nghiên cứu RPG) | tui – bạn | Không xen "mình" để tự xưng |
+| Lính nói với chủ (câu Hàn dùng 제가/저희, kính ngữ) | tôi / chúng tôi – ngài | Ví dụ lính hải cẩu `monseal*` |
+| Hệ thống, hướng dẫn, thông báo | bạn | Nhãn UI kiểu 내 … giữ "… của tôi" |
+
+**Lệnh chat** (`*_CmdMsg`, `SpeakerMacro*`, `LobbySquare_Cmd_*`, `ChatRenew_ChatInfo*`, `FxDesktop:Help/Help:*`):
+không dấu, không khoảng trắng (`/loa`, `/bangdien`, `/phao`). Câu hướng dẫn nhắc tới lệnh phải dùng **đúng** chuỗi
+lệnh đã dịch, không để lại lệnh Hàn (`/전광` → `/bangdien`).
+
+**Tên riêng.**
+- Tên nhân vật theo `character_names.csv` (다오 → Nhanh Nhẩu, 배찌 → Khò Khò…).
+- Tên người chơi trong câu Hàn được phiên âm Latin theo romanization chuẩn (`[입소증]` → `[Ipsojeung]`).
+- Tên người trong credit, tên GM và tên hội vẫn giữ chữ Hàn (có ghi chú trong `notes`).
+- Một câu Hàn lặp lại với tên khác nhau phải dịch cùng một khuôn (ví dụ `UserContest02–05`: `[Giải Giỏi lắm]`).
+
+**Chữ Hàn sót.** Ngoài các tên giữ nguyên ở trên, không để chữ Hàn trong bản Việt (`(토,일)` → `(T7, CN)`).
+Emoticon bằng chữ cái Hàn (ㅠㅠ, ㅎㅎ, +ㅁ+) hiện vẫn giữ nguyên; xem việc còn mở ở §11.
+
 ## 3. Ảnh có chữ (`images_todo.csv`)
 
 Quét mọi entry sprite (`CDataI16Alpha` v2) và JPEG trong 13 pack KR. Heuristic theo tên entry (token đứng đầu đoạn
@@ -446,3 +473,26 @@ lại hai catalog, chạy validator và dựng lại trang. Chỗ sửa lệch �
 Exe 00967 có nhánh bảng mã 1258 của client VN (công tắc vùng `0x138D380`, `push 3B5h` tại `0x138D3B1` cho vùng 1;
 nhánh 1258 ở `0x149A7B0`, `0x149AC90`, `0x1499C20`). Chủ dự án chốt UTF-8 cho cả Hàn, Việt, Anh như PopTag, nên công
 cụ dựng không có kiểu ghi 1258; ghi lại để biết chỗ khi vá UTF-8.
+
+## 11. Dịch lại giọng Nam và review 2026-11-15
+
+- `7841c9b` (nhánh `claude/l10n-kr-vi`): Terra dịch lại 22.703 câu Hàn theo quy ước §2c.
+- PR #3 (merge `fc481f7` trên `main`) đưa `l10n/`, `tools/l10n_*`, `tools/idf.py`, `tools/i16.py` từ nhánh đó vào
+  `main`. Phần dời docs sang boom-rs, `AGENTS.md`/`CLAUDE.md`/`opencode.json` và các sửa đường dẫn trong comment
+  **không** được merge vì xung đột với `main`; chúng vẫn chỉ có trên `claude/l10n-kr-vi`.
+- `57c719d`: sửa sau review, ghi ở `tm.csv`/`tm_id.csv` (notes `sửa 2026-11-15 (review: …)`):
+  - lệnh chat `/bangdien`, `/phao`;
+  - bỏ hết "ngươi";
+  - thống nhất xưng hô cho NPC tân thủ, nhà nghiên cứu RPG (EP004, EP006), lính hải cẩu và chim cánh cụt băng;
+  - "A bố Kong" → "Hây da Kong";
+  - `UserContest02–05`;
+  - `(T7, CN)`, `Phố số 11`.
+- Lượt sửa này đồng bộ tay vào `catalog.csv` và `glossary.csv`, **chưa** chạy `l10n_extract.py catalog` và
+  `l10n_validate.py` (máy sửa không có pack). Ở máy có pack: dựng lại catalog, chạy validator; nếu catalog dựng
+  lại khác bản sửa tay thì lấy bản dựng lại.
+- Việc còn mở:
+  - 146 câu có emoticon chữ Hàn (đổi sang T_T, hihi, >.<…?);
+  - "Kim" viết hoa 392 chỗ, viết thường 20 chỗ;
+  - 15 câu đố Việt nhiều dòng hơn câu Hàn, cần xem tràn khung trên client;
+  - `PremiumSlotAdvMotionBlur` ("Vút vút cộng") nghe gượng;
+  - `boom-kr-server/docs/content/client-language.md` còn trỏ commit `e5d1bac` và số liệu bản Việt cũ.
