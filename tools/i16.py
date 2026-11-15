@@ -92,6 +92,75 @@ def parse(blob):
         imgs.append(blob[off:off + ln]); off += ln
     return dict(nframes=nfr, unk=unk, sizes=sizes, frames=frames, images=imgs, end=off)
 
+
+def encode(original, rgba_images):
+    """Encode RGBA images using the original header, frames and pixel formats.
+
+    Each item is RGBA bytes, or None to retain that original image stream.
+    RGB565 necessarily quantizes new colors; translucent pixels require alpha.
+    """
+    s = parse(original)
+    if len(rgba_images) != len(s['images']):
+        raise ValueError('số ảnh con không khớp')
+    prefix = 16 + 8 * len(s['images']) + 48 * s['nframes']
+    out = bytearray(original[:prefix])
+    for index, (((h, w), old), rgba) in enumerate(zip(zip(s['sizes'], s['images']), rgba_images)):
+        if rgba is None:
+            data = old
+        else:
+            if len(rgba) != w * h * 4:
+                raise ValueError(f'ảnh con {index}: kích thước RGBA không khớp')
+            if not old:
+                if any(rgba):
+                    raise ValueError(f'ảnh con {index}: ảnh gốc rỗng, không biết định dạng')
+                data = old
+            else:
+                first = old[0]
+                alpha = first & 0xc1 == 0xc1
+                bpp = 3 if first & 0xc1 in (0xc0, 0xc1) else 2
+                pixels, alphas = [], []
+                for p in range(0, len(rgba), 4):
+                    r, g, b, a = rgba[p:p+4]
+                    if not alpha and a not in (0, 255):
+                        raise ValueError(f'ảnh con {index}: alpha bán trong suốt nhưng ảnh gốc không có luồng alpha')
+                    if not a and (not alpha or (r, g, b) == (0, 0, 0)):
+                        pixels.append(None)
+                    elif bpp == 3:
+                        pixels.append(bytes((b, g, r)))
+                    else:
+                        v = ((r * 31 + 127) // 255 << 11) | ((g * 63 + 127) // 255 << 5) | ((b * 31 + 127) // 255)
+                        if v == KEY565:
+                            raise ValueError(f'ảnh con {index}: màu RGB565 trùng màu trong suốt')
+                        pixels.append(struct.pack('<H', v))
+                    alphas.append(255-a)
+                color = bytearray()
+                for start in range(0, len(pixels), 63):
+                    chunk = pixels[start:start+63]
+                    # Literal blocks cannot include transparent pixels.
+                    j = 0
+                    while j < len(chunk):
+                        transparent = chunk[j] is None
+                        k = j + 1
+                        while k < len(chunk) and (chunk[k] is None) == transparent:
+                            k += 1
+                        color.append((0x80 if transparent else 0) | (k-j))
+                        if not transparent:
+                            color.extend(b''.join(chunk[j:k]))
+                        j = k
+                if alpha:
+                    stream = bytearray()
+                    for start in range(0, len(alphas), 63):
+                        chunk = alphas[start:start+63]
+                        stream.append(len(chunk)); stream.extend(chunk)
+                    data = b'\xc1' + struct.pack('<I', 5 + len(color)) + color + stream
+                elif bpp == 3:
+                    data = b'\xc0' + color
+                else:
+                    data = color
+        out += struct.pack('<I', len(data)) + data
+    out += original[s['end']:]
+    return bytes(out)
+
 def png(rgba, w, h):
     raw = b"".join(b"\x00" + rgba[y * w * 4:(y + 1) * w * 4] for y in range(h))
     chunk = lambda t, d: struct.pack(">I", len(d)) + t + d + struct.pack(">I", zlib.crc32(t + d) & 0xFFFFFFFF)

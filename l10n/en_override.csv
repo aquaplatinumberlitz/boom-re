@@ -1,0 +1,368 @@
+ko,en,basis,notes
+"
+
+홈페이지에서 이벤트 당첨자 확인을 해주세요","
+
+Please check the website for Event winners.",machine,
+"
+* 이미 완료한 스테이지는
+코인 소모 없이 재도전할 수 있어요.","
+* You can retry completed stages
+without spending coins.",machine,
+"
+PC방 크아상자 아이템을 ","
+the PC Cafe Crazy Arcade Box Item ",machine,
+"
+바늘 아이템을 ","
+the Needle Item ",machine,
+"
+아이템을 아이템 가방으로 이동하시겠습니까?
+이동 후에는 청약철회가 불가능합니다.","
+Would you like to move the Item to your Item Bag?
+You cannot cancel the purchase after moving it.",machine,
+"
+아이템을 청약철회하겠습니까?
+청약철회하시면 아이템을 사용하실 수 없습니다.","
+Would you like to cancel the Item purchase?
+You cannot use the Item after canceling the purchase.",machine,
+"
+자동실드 아이템을 ","
+the Auto Shield Item ",machine,
+"
+크아CD 아이템을 ","
+the Crazy Arcade CD Item ",machine,
+  /누구 아이디 ,  /누구 ID ,machine,
+  /어디 아이디,  /어디 ID,machine,
+  /초대 아이디,  /초대 ID,machine,
+  /퇴장 아이디,  /퇴장 ID,machine,
+  3시간 이상 플레이시 50% 경험치만 획득할 수 있습니다.,"  After playing for 3 hours or more, your EXP is limited to 50%.",machine,
+  5시간 이상 플레이시 0% 경험치만 획득할 수 있습니다.,"  After playing for 5 hours or more, your EXP is limited to 0%.",machine,
+" /?      설명보기
+
+ ++확성기 :
+ /확성      확성기 사용
+ /분홍      분홍 확성기 사용
+ /주황      주황 확성기 사용
+ /연두      연두 확성기 사용
+ /보라      보라 확성기 사용
+ /반짝반짝  반짝반짝 확성기 사용
+ /사이렌    사이렌 확성기 사용
+
+ ++정보보기 :
+ /누구      /누구 아이디  지정 아이디 정보 보기
+ /어디      /어디 아이디  지정 아이디 위치 보기
+
+ ++게임하기 :
+ /go        /go 방번호  해당 번호의 방에 입장
+ /st        /st 방번호  해당 번호의 방정보 보기
+ /초대      /초대 아이디  지정 아이디 초대하기
+ /ready     레디하기
+ /start     시작하기(방장만 사용가능)
+ /퇴장      /퇴장 아이디  지정아이디 강퇴(방장만 사용가능)
+ /방제      /방제 방이름  지정한 방이름으로 변경(방장만 사용가능)
+ /자동      자동레디 하기
+
+ ++대화기능 :
+ /to        /to 아이디  지정 아이디 귓속말 하기
+ /to off    귓속말 해제
+ /m         /m 아이디  지정 아이디 귓속말 무시
+ /u         /u 아이디  지정 아이디 귓속말 무시 해제
+ /mute      모든 귓속말 무시
+ /a         전체 채팅 하기
+ /g         길드 채팅 하기"," /?      View help
+
+ ++Speaker :
+ /확성      Use a Speaker
+ /분홍      Use a Pink Speaker
+ /주황      Use an Orange Speaker
+ /연두      Use a Light Green Speaker
+ /보라      Use a Purple Speaker
+ /반짝반짝  Use a Sparkling Speaker
+ /사이렌    Use a Siren Speaker
+
+ ++View Info :
+ /누구      /누구 ID  View the specified ID's info
+ /어디      /어디 ID  View the specified ID's location
+
+ ++Play :
+ /go        /go room number  Enter that room
+ /st        /st room number  View that room's info
+ /초대      /초대 ID  Invite the specified ID
+ /ready     Get ready
+ /start     Start (Room Leader only)
+ /퇴장      /퇴장 ID  Kick the specified ID (Room Leader only)
+ /방제      /방제 room name  Change the room name (Room Leader only)
+ /자동      Enable auto-ready
+
+ ++Chat :
+ /to        /to ID  Whisper to the specified ID
+ /to off    Turn off Whisper
+ /m         /m ID  Ignore Whispers from the specified ID
+ /u         /u ID  Stop ignoring Whispers from the specified ID
+ /mute      Ignore all Whispers
+ /a         Global chat
+ /g         Guild chat",machine,
+%d레벨 이상이어야 길드를 만들 수 있습니다.,You must be at least Level %d to create a guild.,machine,
+"%s [%s] 에 접속
+","Connected to %s [%s]
+",machine,
+"%s 커플링 경험치 보너스 %d%%를 받았습니다. 
+","%s: +%d%% EXP bonus! 
+",poptag_variant,
+"%s 커플링 루찌 보너스 %d루찌를 드립니다.
+","%s: +%d Lucci bonus!
+",poptag_variant,
+"%s' 길드에 가입을 요청하였습니다.
+현재 가입대기 상태이며, 길드마스터가 승인하면 가입이 완료됩니다.
+승인 여부는 재접속을 하셔야 확인하실 수 있습니다.","You have applied to join the '%s' guild.
+Your application is pending and you will join once the Guild Master approves it.
+Reconnect to check whether it has been approved.",machine,
+"%s, %s 님은 %d회 욕설을 사용하였습니다.
+","%s, %s have used profanity %d times.
+",poptag_variant,
+"%s님은 %d회 욕설을 사용하였습니다.
+","%s has used profanity %d times.
+",poptag_variant,
+"%s님이 슈퍼 방장에 의해 퇴장당하셨습니다.
+","%s was kicked by the Super Room Leader.
+",poptag_variant,
+%s님이 우린팸이야 이벤트로 %d%% 추가 루찌와 %d%%추가 경험치를 획득하셨습니다.,%s earned %d%% extra Lucci and %d%% extra EXP from the We're Family Event.,machine,
+%s님이 우린팸이야 이벤트로 %d%%추가 루찌와 %d%%추가 경험치를 획득하셨습니다.,%s received %d%% extra Lucci and %d%% extra EXP from the We're Family Event.,machine,
+"%s님이 참가하셨습니다.
+","%s has joined.
+",poptag_variant,
+"%s님이 퇴장하셨습니다.
+","%s has left.
+",poptag_variant,
+"'%s' 님께서 경험치 %d %%를 받습니다.
+","'%s' receives %d %% EXP.
+",machine,
+* 중독방지 시스템 적용으로 보상을 %d%% 획득하였습니다.,* You received %d%% of the reward due to the anti-addiction system.,machine,
+/누구 아이디 = 입력된 아이디의 정보 보기 (/who),/who ID = View information about the entered ID,machine,
+"/방제 방제목 = 게임방제목 바꾸기, 방장사용 (/rt)",/rt room title = Change the game room title; Room Leader only,machine,
+/보석사탕,/보석사탕,machine,
+/소환 기능 사용,Use /소환,machine,
+/소환 해보기 %s/1 완료,Try /소환: %s/1 completed,machine,
+/어디 아이디 = 입력된 아이디의 접속채널 확인 (/where),/where ID = Check the channel the entered ID is connected to,machine,
+/자동 = 자동레디하기 (/ar),/ar = Enable auto-ready,machine,
+/초대 아이디 = 입력된 아이디를 게임방으로 초대하기 (/in),/in ID = Invite the entered ID to the game room,machine,
+"/퇴장 아이디 = 입력된 아이디 강퇴하기, 방장사용 (/ban)",/ban ID = Kick the entered ID; Room Leader only,machine,
+"100승 달성 선물 : 파워산삼10개, 바늘10개, 경험치 +50% 7일","100-Win Gift : 10 Power Ginseng, 10 Needles, EXP +50%, 7 Days",machine,
+10월의 패키지,October Package,machine,
+"20승 달성 선물 : 스프링10개, 경험치 +50% 3일","20-Win Gift : 10 Springs, EXP +50%, 3 Days",machine,
+"40승 달성 선물 : 실드10개, 경험치 +50% 3일","40-Win Gift : 10 Shields, EXP +50%, 3 Days",machine,
+"5월 이벤트!
+럭셔리 마리드를 이미 가지고 있는 유저가 럭셔리 캐피를 구매하면 20%할인 됩니다.
+(5/5~16일까지)","May Event!
+Players who already own Posh Evie get a discount when buying Posh Plunk: 20%.
+(5/5~16)",machine,
+5월의 패키지,May Package,machine,
+5월축제 날개,May Festival Wings,machine,
+"5회 이상은 1분간 대화금지 입니다.
+","5+ uses results in a 1-minute chat ban.
+",poptag_variant,
+5회이상 욕설사용으로 1분간 대화금지 입니다.,Chat banned for 1 minute due to 5+ uses of profanity.,poptag_variant,
+"60승 달성 선물 : 바늘10개, 센서 10개, 경험치 +50% 3일","60-Win Gift : 10 Needles, 10 Sensors, EXP +50%, 3 Days",machine,
+6월의 패키지,June Package,machine,
+6월의장마 효과,June Rainy Season Effect,machine,
+7월의 패키지,July Package,machine,
+"80승 달성 선물 : 센서10개, 실드10개, 경험치 +50% 3일","80-Win Gift : 10 Sensors, 10 Shields, EXP +50%, 3 Days",machine,
+8등신 수 깃발,Su Model Proportion Flag,machine,
+8등신 우니 깃발,Ike Model Proportion Flag,machine,
+8월의 패키지,August Package,machine,
+"<font color=0xFFDB00 style=bold>%s 혜택</font>    1. VIP 전용상점 이용가능  　구매가능 품목 : [VIP등급별 구매가능 카테고리 (일반, 고급, 레어, 초레어)]  2. 일부 아이템 [VIP등급별 할인율]%% 할인적용  3. 게임ID 의 VIP컬러 적용 ([<font color=0x00EAFF>%s</font>] VIP컬러색)  4. VIP 선물상자 [VIP등급별 VIP 선물상자 획득개수]개 획득가능    <font color=0xFFDB00>승급조건</font>  캐시사용 누적금액 [VIP등급별 당월 캐시사용 누적금액]위안 이상 사용 즉시 부여    <font color=0xFFDB00>유지조건</font>  혜택 남은기간 내 캐시사용 누적금액 [VIP등급별 유지조건 사용금액]위안 이상 사용  ","<font color=0xFFDB00 style=bold>%s Benefits</font>    1. Access to the VIP Shop  　Available categories: [Categories available by VIP rank (Normal, Premium, Rare, Super Rare)]  2. [Discount rate by VIP rank]%% discount on select Items  3. VIP color applied to game ID ([<font color=0x00EAFF>%s</font>] VIP color)  4. Receive [Number of VIP Gift Boxes by VIP rank] VIP Gift Boxes    <font color=0xFFDB00>Promotion Requirements</font>  Granted immediately upon spending at least [Monthly cumulative Cash spending by VIP rank] yuan in Cash    <font color=0xFFDB00>Maintenance Requirements</font>  Spend at least [Required spending by VIP rank] yuan in Cash during the remaining benefit period  ",machine,
+<font color=0xffff00>크앤샵 티켓이 있어야 대여와 50% 할인 구매가 가능합니다.</font>    <font color=0xff3cc8>[크앤샵 티켓 혜택]</font>  1. 크앤샵의 모든 아이템을 50% 할인 가격으로 <font color=0xffff00>구매</font> 가능! <font color=0xffff00>모두 영구권!</font>    2. 티켓 소지 기간 동안 크앤샵의 모든 아이템 <font color=0xffff00>대여</font> 가능!,<font color=0xffff00>You need a Couple Shop Ticket to rent Items and purchase them at a discount of 50%.</font>    <font color=0xff3cc8>[Couple Shop Ticket Benefits]</font>  1. <font color=0xffff00>Purchase</font> all Couple Shop Items at 50%! <font color=0xffff00>All permanent!</font>    2. <font color=0xffff00>Rent</font> all Couple Shop Items while your ticket is active!,machine,
+<세트구성 아이템>,<Set Items>,machine,
+"[%s]에 접속
+","Connected to [%s]
+",machine,
+[12자 이내],[12 characters max],machine,
+[150자 이내],[150 characters max],poptag_variant,
+[CON] %s님이 친구 추가를 요청하셨습니다. 허락하시겠습니까?,[CON] %s has requested to be your friend. Do you accept?,poptag_variant,
+"[래더 %d단 %s님이 참가하셨습니다.]
+","[Ladder Grade %d %s has joined.]
+",poptag_variant,
+\\크레이지아케이드\\스크린샷\\,\CrazyArcade\Screenshots\,poptag_variant,
+가,,machine,empty_on_purpose
+가입레벨,Level Requirement,poptag_variant,
+가입승인관리,Join Request Management,poptag_variant,
+강제탈퇴,Force Remove,poptag_variant,
+"경험치 25% 보너스 혜택!!
+최근승률 30% 이하 유저만 접속 가능합니다.","EXP bonus: 25%!!
+Entry requires a recent win rate at or below 30%.",machine,
+경험치 30%,EXP 30%,machine,
+계급장효과1,Rank Insignia Effect 1,machine,
+계급장효과2,Rank Insignia Effect 2,machine,
+계급장효과3,Rank Insignia Effect 3,machine,
+계급장효과6,Rank Insignia Effect 6,machine,
+계급장효과7,Rank Insignia Effect 7,machine,
+계급장효과8,Rank Insignia Effect 8,machine,
+골~인!!,Goo~al!!,machine,
+공개길드,Public Guild,poptag_variant,
+공개여부,Visibility,poptag_variant,
+공평,Fair,poptag_variant,
+공평모드에서는 대장잡기를 할 수 없습니다.,Flag Hunt cannot be played in Fair mode.,poptag_variant,
+기타,Misc,poptag_variant,
+기타관리,Other Settings,poptag_variant,
+길드 가입신청 후 7일이 지나셨으나 길드마스터로부터의 승인이 없어 길드 가입 요청이 취소됩니다.,Your guild application has expired after 7 days without approval from the Guild Master.,poptag_variant,
+길드 마스터는 다른 길드원이 남아있는 동안에는 길드를 탈퇴 할 수 없습니다.,The Guild Master cannot leave while other members remain.,poptag_variant,
+길드게시판,Guild Board,poptag_variant,
+길드관리,Guild Management,poptag_variant,
+길드등급,Guild Grade,poptag_variant,
+길드를 해체하기 위해서는 길드마스터를 제외한 길드원이 한명도 없어야 합니다. 길드를 해체하시겠습니까?,"To disband the guild, there must be no members other than the Guild Master. Disband the guild?",poptag_variant,
+길드마스터,Guild Master,poptag_variant,
+길드마스터가 가입신청을 거절했습니다.,Your guild application was not approved by the Guild Leader.,poptag_variant,
+길드마스터만이 길드 마크를 변경할 수 있습니다.,Only the Guild Master can change the guild mark.,poptag_variant,
+"길드마스터에 의해서 길드에서 탈퇴되셨습니다. 
+현재 가입 된 길드가 없습니다.","You have been expelled from your guild by the Guild Master. 
+You are not currently in a guild.",machine,
+길드마크가 변경되었습니다.,Guild mark has been changed.,poptag_variant,
+길드소개,Guild Introduction,poptag_variant,
+길드암호,Guild Password,poptag_variant,
+길드원관리,Member Management,poptag_variant,
+길드원리스트,Member List,poptag_variant,
+길드원수순,By Member Count,poptag_variant,
+길드원찾기,Find Guild Members,poptag_variant,
+길드포인트,Guild Points,poptag_variant,
+길드포인트순,By Guild Points,machine,
+나이트메어,Nightmare,machine,
+내    용,Content,poptag_variant,
+내길드포인트,My Guild Points,poptag_variant,
+"내용 중 욕설이 포함되어 있습니다. 건전한 단어를 이용해주세요^^
+","Your message contains profanity. Please use appropriate language.
+",poptag_variant,
+넥슨아이디/이메일아이디의 비밀번호가 맞지 않습니다.,The password for your Nexon ID/email ID is incorrect.,machine,
+닉네임에 적절하지 않은 단어가 있습니다. 수정해 주세요.,Your nickname contains inappropriate words. Please edit it.,poptag_variant,
+다이아,Diamond,poptag_variant,
+대~한민국!!,Ko~rea!!,machine,
+대왕문어의 습격맵 중 한가지가 랜덤하게 선택됩니다.,A random Giant Octopus Attack map will be selected.,poptag_variant,
+대화 상대 삭제,Remove Chat User,poptag_variant,
+돈벼락,Money Shower,machine,
+두번째 알은 20% 할인된 가격으로 구입하세요!,Buy the second egg at a discount of 20%!,machine,
+럭셔리 스타,Posh Star,machine,
+럭셔리 케피 출시 이벤트! 럭셔리 마리드를 이미 가지고 있는 유저가 럭셔리 캐피를 구매하면 20%할인 됩니다.(2/11~24일까지),Posh Plunk launch Event! Players who already own Posh Evie get a discount when purchasing Posh Plunk: 20%. (2/11~24),machine,
+럭키 이벤트 진행중! 게임 종료 후 경험치 %d%%가 지급됩니다.,Lucky Event in progress! You'll receive %d%% EXP after the game ends.,machine,
+럭키빙빙 쿠폰은 상점에서 판매되고 있는 럭키빙빙 퀘스트카드에서 얻으실 수 있습니다.,Lucky Spin coupons can be obtained from Lucky Spin Quest Cards sold in the shop.,poptag_variant,
+레벨,Level,poptag_variant,
+를,,machine,empty_on_purpose
+마스터,Master,poptag_variant,
+마음에 드는 길드가 없으신가요?! *그렇다면 새로운 길드를 만들어 보세요. *길드마스터가 되어 길드를 이끌 수 있습니다.,Can't find a guild you like?! *Then create a new one! *Become a Guild Master and lead your guild!,poptag_variant,
+만세~ 만세~,Hooray~ Hooray~,machine,
+말풍선 표시,Show Speech Bubbles,poptag_variant,
+매너,Even Teams Only,poptag_variant,
+"매일 실드/바늘 2개, 1000루찌 획득,
+경험치+50% 거기에 우니 이펙트까지!!","Get 2 Shields/Needles and 1000 Lucci daily,
+EXP +50%, and even an Ike effect!!",machine,
+"매일 실드/바늘 2개, 1000루찌획득, 
+경험치+50% 그리고 박쥐이펙트!!","Get 2 Shields/Needles and 1000 Lucci daily, 
+EXP +50%, and a Bat Effect!!",machine,
+매크로,Macro,poptag_variant,
+"머리 위에 깃발을 달고 있는
+적의 대장을 찾아라!
+우리팀 대장을 보호하고
+적의 대장을 잡으면 승리!","Find the enemy captain
+with the flag on their head!
+Protect your own captain
+and catch theirs to win!",poptag_variant,
+모든말 무시,Ignore All Chat,poptag_variant,
+바늘,Needle,poptag_variant,
+백원 세트,100 Won Set,machine,
+버럭고스트 %d%% 완성!,Angry Ghost %d%% complete!,machine,
+번쩍번쩍번개,Sparkling Lightning,machine,
+변경 후 길드마크,New Guild Mark,poptag_variant,
+부마스터,Vice Master,poptag_variant,
+비공개길드,Private Guild,poptag_variant,
+빵빠레1,Fanfare 1,machine,
+빵빠레2,Fanfare 2,machine,
+빵빠레3,Fanfare 3,machine,
+빵빠레4,Fanfare 4,machine,
+빵빠레5,Fanfare 5,machine,
+사파이어,Sapphire,poptag_variant,
+삼일절 따라와,March 1st Movement Follower,machine,
+상모 3형제,Three Sangmo Brothers,machine,
+상품 구매중에 오류가 발생하였습니다.,An error occurred while purchasing.,poptag_variant,
+"새로운 길드를 만들기 위해서는 레벨 51 이상, 30만 루찌가 필요합니다. 30만 루찌를 내고 길드를 만드시겠습니까?","Creating a new guild requires Level 51 or above and 300,000 Lucci. Pay 300,000 Lucci to create a guild?",machine,
+새로운 길드마크가 등록되면 기존 길드마크는 없어지니 이 점 유의하시기 바랍니다.,Please note that the current guild mark will be replaced when a new one is registered.,poptag_variant,
+생일에 적절하지 않은 단어가 있습니다. 수정해 주세요.,Your birthday contains inappropriate words. Please edit it.,poptag_variant,
+슈주-T빵빠레,Suju-T Fanfare,machine,
+스파이 액션,Spy Action,machine,
+승인관리,Approval Management,poptag_variant,
+아이디 표시,Show IDs,poptag_variant,
+아직 정식커플이 아닙니다!  정식커플이 되면 무지개커플링 50%할인권과  경험치(3000)을 드립니다!,You're not an official couple yet!  Become an official couple to receive a Rainbow Couple Ring discount Coupon (50%) and EXP (3000)!,machine,
+아직 준비 중인 기능입니다.,This feature is still being prepared.,poptag_variant,
+알쏭달쏭 쾅쾅 전용아이템은 거래시 1%의 추가 수수료가 부여됩니다.,An additional fee applies when trading Mystery Bang Bang exclusive Items: 1%.,machine,
+암호확인,Confirm Password,poptag_variant,
+오백원 세트,500 Won Set,machine,
+요청날짜,Request Date,poptag_variant,
+운영,Operator,poptag_variant,
+"운영원칙에 위배되는 내용은 삭제나 제재를 당할 수 있습니다.
+내용 변경은 <font color=0xFFEA00>/전광 수정메세지</font> 또는 장착한 전광판 아이템에서
+<font color=0xFFEA00>마우스 오른쪽 버튼 수정하기</font>로 가능합니다.","Content that violates the operating policy may be removed or subject to penalties.
+You can change the content with <font color=0xFFEA00>/전광 edit message</font> or by selecting
+<font color=0xFFEA00>Edit with the right mouse button</font> on your equipped billboard Item.",machine,
+"운영자 아이디는 <font style=bold>[GM단미], [GM이든], [GM라온], [GM해나]</font> 입니다.
+운영자는 비밀번호, 넥슨 아이디, 개인정보를 절대 요구하지 않습니다.
+운영자 쪽지의 경우 [GM] 표시와 글자가 주황색으로 표시됩니다. ","The administrator IDs are <font style=bold>[GM Danmi], [GM Idon], [GM Raon], [GM Hana]</font>.
+Administrators will never ask for your password, Nexon ID, or personal information.
+Messages from administrators display [GM] and orange text. ",machine,
+유령의공동묘지 %d%% 완성!,Ghost Cemetery %d%% complete!,machine,
+유령의집 %d%% 완성!,Haunted House %d%% complete!,machine,
+유저 정보 보기,View User Info,poptag_variant,
+을,,machine,empty_on_purpose
+이,,machine,empty_on_purpose
+이대팔 가발,2:8 Parted Wig,machine,
+이미 가지고 있습니다.,You already own this.,poptag_variant,
+"이벤트 경험치 %d%% 를 받았습니다. 
+","You received %d%% Event EXP. 
+",machine,
+이상,or above,poptag_variant,
+일시적인 시스템 오류로 길드마크 변경에 실패하였습니다. 아이템가방의 길드마크 변경권을 다시 사용해주세요.,Failed to change guild mark due to a temporary system error. Please try using the Guild Mark Changer from your inventory again.,poptag_variant,
+"입력창에 ID를 입력하면 친구를 찾을 수 있습니다.
+(대화창에 /누구 ID를 입력해도 찾을 수 있습니다.)","Enter an ID in the input field to find a friend.
+(You can also enter /누구 ID in the chat window.)",machine,
+자기소개 메세지에 적절하지 않은 단어가 있습니다. 수정해 주세요.,Your profile message contains inappropriate words. Please edit it.,poptag_variant,
+자기캐릭 표시,Show My Character,poptag_variant,
+자동으로 팀이 결정됩니다,Teams are determined automatically,poptag_variant,
+"접속만 해도 30분 마다 선물을 받을 수 있어요!
+할인권으로 후우 꼬물이 의상 50% 할인의 기회도 놓치지 마세요!","Just stay logged in to get a gift every 30 minutes!
+Don't miss the chance to get a discount on the Hoo Kkomuli Outfit with a Discount Coupon: 50%!",machine,
+접속만 해도 30분 마다 선물을 받을 수 있어요! 할인권으로 슈퍼 황제물개 50% 할인의 기회도 놓치지 마세요!,Just stay connected to receive a gift every 30 minutes! Don't miss your chance to get a discount on the Super Emperor Seal with a Discount Coupon: 50%!,machine,
+좌절금지,No Despair,poptag_variant,
+"죽는 순간 고슴도치로 변신!
+고슴도치는 가시를 이용하여
+물방울을 터뜨릴 수 있는
+능력을 가지고 있다!","Transform into a hedgehog
+when you die! Hedgehogs can
+pop bubbles
+with their spines!",poptag_variant,
+지금! 크앤샵의 모든 아이템을 50% 할인 가격에 구매할 수 있습니다!,Now! Purchase all Couple Shop Items at a discount of 50%!,machine,
+진주,Pearl,poptag_variant,
+차단리스트,Block List,poptag_variant,
+최대 : %s 루찌,Max: %s Lucci,poptag_variant,
+최신등록순,Newest First,poptag_variant,
+축하합니다. 럭키 이벤트 경험치 %d%%를 획득하셨습니다.,Congratulations. You received %d%% EXP from the Lucky Event.,machine,
+축하합니다. 무지개커플링 50%할인권을 선물 받으셨습니다.,Congratulations. You received a Rainbow Couple Ring discount Coupon (50%).,machine,
+축하합니다. 퀘스트 보상으로 경험치 50% 3일권을 획득하였습니다.,"Congratulations. You received an EXP ticket (50%, 3 days) as a Quest reward.",machine,
+친구를 부르고 싶다면 /소환 이라고 치고 친구를 부르면 돼. 지금 한번 해봐.,"To call a friend, type /소환 and call them. Try it now.",machine,
+캐시,Cash,poptag_variant,
+커플 신청 메세지에 적절하지 않은 단어가 있습니다. 수정해 주세요.,Your couple request message contains inappropriate words. Please edit it.,poptag_variant,
+콩콩풍선 %d%% 완성!,Bouncy Balloon %d%% complete!,machine,
+크앤 메세지에 적절하지 않은 단어가 있습니다. 수정해 주세요.,Your couple message contains inappropriate words. Please edit it.,poptag_variant,
+크앤신청 거절,Decline Couple Requests,poptag_variant,
+통조림,Can,machine,
+특훈채널 보너스로 경험치 25%를 추가로 받습니다.,You receive extra EXP as a Special Training Channel bonus: 25%.,machine,
+퍼펙트미션 달성으로 경험치보너스 50%를 획득하셨습니다.,You earned an EXP bonus for completing a perfect mission: 50%.,machine,
+폭탄 3총사,Bomb Three Musketeers,machine,
+"폭탄 제거반 출동!
+5초 안에 옮기지 않으면 터진다!!","Bomb squad, move out!
+Pass the bomb within 5 seconds or it explodes!!",poptag_variant,
+프리미엄,Premium,poptag_variant,
+하트,Heart,poptag_variant,
+한달 간 선물할 수 있는 한도액을 넘었습니다.,You have exceeded the monthly gift limit.,poptag_variant,
+현재 길드마크,Current Guild Mark,poptag_variant,
+현재 길드원이 있으므로 길드를 해체할 수 없습니다. 길드를 해체하려면 길드마스터를 제외한 길드원이 한명도 없어야 합니다.,Cannot disband the guild while there are members. All members except the Guild Master must leave first.,poptag_variant,
+"협공대전 보너스로 %s 님께서 루찌 %d, 추가경험치 %d 퍼센트를
+획득하셨습니다.","As a Co-op Battle bonus, %s earned %d Lucci and %d percent bonus
+EXP.",machine,
+협공배틀 보너스로 %s 님께서 %d 루찌와 경험치 %d%% 를 추가로 받았습니다.,"As a Co-op Battle bonus, %s received an extra %d Lucci and %d%% EXP.",machine,
+황제의귀환 맵 중 한 가지가 랜덤하게 선택됩니다.,A random Emperor's Return map will be selected.,poptag_variant,
