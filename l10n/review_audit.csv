@@ -89,11 +89,11 @@ EventCompleteKart_DoReward,"크아&카트 상부상조 이벤트 보상을 받�
 ExchangeGachaponTax,알쏭달쏭 쾅쾅 전용아이템은 거래시 1%의 추가 수수료가 부여됩니다.,,Vật phẩm riêng của Đập trứng bí ẩn khi trao đổi bị tính thêm phí 1%.,Vật phẩm dành riêng cho Trứng bí ẩn bùm bùm chịu thêm phí 1% khi trao đổi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 ExplainElecDisplay,"운영원칙에 위배되는 내용은 삭제나 제재를 당할 수 있습니다.
 내용 변경은 <font color=0xFFEA00>/전광 수정메세지</font> 또는 장착한 전광판 아이템에서
-<font color=0xFFEA00>마우스 오른쪽 버튼 수정하기</font>로 가능합니다.",,"Nội dung vi phạm nguyên tắc vận hành có thể bị xoá hoặc bị xử phạt.
-Muốn đổi nội dung thì gõ <font color=0xFFEA00>/bangdien sửa tin nhắn</font> hoặc vô vật phẩm bảng điện tử đang đeo
-<font color=0xFFEA00>bấm chuột phải chọn Sửa</font>.","Nội dung vi phạm quy định vận hành có thể bị xóa hoặc xử lý.
+<font color=0xFFEA00>마우스 오른쪽 버튼 수정하기</font>로 가능합니다.",,"Nội dung vi phạm quy định vận hành có thể bị xóa hoặc xử lý.
 Để thay đổi nội dung, dùng <font color=0xFFEA00>/전광 수정메세지</font> hoặc
-<font color=0xFFEA00>bấm chuột phải rồi chọn sửa</font> trên vật phẩm bảng điện tử đang trang bị.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+<font color=0xFFEA00>bấm chuột phải rồi chọn sửa</font> trên vật phẩm bảng điện tử đang trang bị.","Nội dung vi phạm quy định vận hành có thể bị xóa hoặc xử lý.
+Để thay đổi nội dung, dùng <font color=0xFFEA00>/bangdien nội dung mới</font> hoặc
+<font color=0xFFEA00>bấm chuột phải rồi chọn sửa</font> trên vật phẩm bảng điện tử đang trang bị.",translated,"sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)","dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 ForbiddenAuthenForOnePlayer,현재 게임을 하고 계시는 곳은 미가입 PC방입니다.,Không thể đăng nhập.,Chỗ bạn đang chơi là tiệm net chưa đăng ký.,Địa điểm bạn đang chơi hiện là tiệm net chưa đăng ký.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 GameModeFreeTooltip,각 팀 숫자가 달라도 됩니다,Chơi tự do,Số người mỗi đội có thể khác nhau,Số người ở mỗi đội có thể khác nhau,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 GameModeMannerTooltip,각 팀 숫자가 같아야 됩니다,Chơi lịch sự,Số người mỗi đội phải bằng nhau,Số người ở mỗi đội phải bằng nhau,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
@@ -921,13 +921,13 @@ NPpen06MonIceA16,"3초만 기다려라
 ","Đợi 3 giây
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPpen06MonIceA2,"꺄악 잘못해써요
-", Ặc ặc tiêu rùi.,"Á! Tui sai rồi
-","Á, tui sai rồi
-",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+", Ặc ặc tiêu rùi.,"Á, tui sai rồi
+","Á, ta sai rồi mà
+",translated,"sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)","dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 NPpen06MonIceA3,"니마 매너염! ;ㅁ;
-", Mi phải lịch sự chứ! ," Mi phải lịch sự chứ!
-","Mi Lịch sự chút đi! ;ㅁ;
-",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+", Mi phải lịch sự chứ! ,"Mi Lịch sự chút đi! ;ㅁ;
+","Mi lịch sự chút đi! ;ㅁ;
+",translated,"sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)","dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 NPpen06MonIceA4,"님 나 무시하나염!
 ", Mi không để ý đến ta sao!," Mi không để ý tới ta sao!
 ","Mi coi thường ta hả!
@@ -1484,9 +1484,9 @@ NPpen12boss6,"다음방으로 가볼까
 ","Qua phòng tiếp theo coi sao
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPpen12boss7,"아직 안죽었느냐?
-", Mi vẫn chưa chết hả?," Mi vẫn chưa chết hả?
-","Ngươi vẫn chưa chết sao?
-",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+", Mi vẫn chưa chết hả?,"Ngươi vẫn chưa chết sao?
+","Mi vẫn chưa chết sao?
+",translated,"sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)","dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 NPpen12boss8,"출입구를 조심해라
 ", Cẩn thận lối vào đó," Cẩn thận lối vô đó
 ","Coi chừng lối ra vô
@@ -1781,7 +1781,7 @@ monseal97bossatack02,땅개 물폭탄!!!!! ,,Bom nước bộ binh!!!!!,Bom nư�
 monseal98normal04,글로브에 대해 알려주지 ,,Để tui nói về Găng tay nha,Ta sẽ nói cho mi biết về găng tay ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 monturtle06default14,부하에게 배신당하다니,Ta đã phản bội thuộc hạ rồi,Không ngờ ta lại bị thuộc hạ phản bội,Không ngờ bị thuộc hạ phản bội.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 monturtle09boss01normal05,구해줬으면 된 것 아냐?,Chẳng phải tìm mua cho là được hay sao??,Cứu được rồi thì chẳng phải là xong sao?,Cứu được rồi là được chứ gì?,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-monunlimited04BossDeadA1,"이, 인간이여 네가 이겼다...","Í, tớ thắng rồi….","Hỡi… con người, mi thắng rồi...","Hỡi... con người, ngươi thắng rồi...",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+monunlimited04BossDeadA1,"이, 인간이여 네가 이겼다...","Í, tớ thắng rồi….","Hỡi... con người, ngươi thắng rồi...","Hỡi... con người, mi thắng rồi...",translated,"sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)","dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 monunlimited04GeneralA7,백년동안 지옥행이다!,Vận may 100 năm có một!,Mi phải xuống địa ngục 100 năm!,Xuống địa ngục một trăm năm đi!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 monunlimited04MonDeadA5,저승사자를 또 부르자.,Lại gọi mấy con sư tử đi.,Gọi thần chết ra lần nữa nào.,Gọi thần chết thêm lần nữa đi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 monunlimited10mona1,부르셨습니까 주인님!,Tớ đã gọi rồi!,Chủ nhân gọi tui ạ!,Chủ nhân gọi tui ạ!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
@@ -1818,7 +1818,7 @@ q:LuxuryKephi_HintMsg01_2,번째 힌트</font>를 주지.  ,,</font>.  ,gợi ý
 q:LuxuryKephi_RewardMsg01,축하합니다.  범인을 성공적으로 찾아냈습니다.,,Chúc mừng. Bạn đã tìm ra thủ phạm thành công.,Chúc mừng.  Bạn đã tìm được thủ phạm.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:LuxuryKephi_RewardMsg02,개가 보상으로 지급되었습니다.,, cái được trao làm phần thưởng.,cái đã được trao làm phần thưởng.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:LuxuryMosHit_Reward5,럭모 럭띠 후우를 모두 갖고 있는 님! 히트다히트으!,,"Bạn nào có đủ Mos sang chảnh, Ethi sang chảnh, Huu! Đỉnh quá đỉnh!","Bạn có đủ Đinh Ốc, Tí Tách và Tí Điệu rồi! Quá đỉnh luôn!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-q:MakeCdasoo_QuestDesc2,웹 이벤트 아이템 <font color=0xe6bdfe>크다수</font>를 만들어 드려요~★,,Làm vật phẩm sự kiện web <font color=0xe6bdfe>Keudasu</font> cho bạn nha~★,Tạo vật phẩm Sự kiện web <font color=0xe6bdfe>Keudasu</font> cho bạn~★,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+q:MakeCdasoo_QuestDesc2,웹 이벤트 아이템 <font color=0xe6bdfe>크다수</font>를 만들어 드려요~★,,Tạo vật phẩm Sự kiện web <font color=0xe6bdfe>Keudasu</font> cho bạn~★,Tạo vật phẩm Sự kiện web <font color=0xe6bdfe>Kdasu</font> cho bạn~★,translated,"sửa 2026-11-15 (review 2: tên riêng, xưng hô, lệnh chat)","dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 q:MakeDIYBomb_NeedBomb01,물풍선 ,,Cần thêm bom nước x,Bom nước ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:MakeDIYBomb_NeedBomb02,개가 더 필요해요! 지금 상점으로 GoGo!,, cái nữa! Vô Siêu thị liền GoGo!,"cái nữa! Tới Siêu thị ngay thôi, GoGo!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:MakeMeSnowMan_RewardA,축하합니다! 눈사람 꾸미기 보상으로 ,,Chúc mừng! Phần thưởng trang trí người tuyết: ,Chúc mừng! Phần thưởng trang trí người tuyết: ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.

@@ -504,9 +504,12 @@ cụ dựng không có kiểu ghi 1258; ghi lại để biết chỗ khi vá UTF
   - "A bố Kong" → "Hây da Kong";
   - `UserContest02–05`;
   - `(T7, CN)`, `Phố số 11`.
-- Lượt sửa này đồng bộ tay vào `catalog.csv` và `glossary.csv`, **chưa** chạy `l10n_extract.py catalog` và
-  `l10n_validate.py` (máy sửa không có pack). Ở máy có pack: dựng lại catalog, chạy validator; nếu catalog dựng
-  lại khác bản sửa tay thì lấy bản dựng lại.
+- Lượt sửa này đồng bộ tay vào `catalog.csv` và `glossary.csv`. Đã dựng lại ở máy có pack (`l10n_extract.py catalog`,
+  `l10n_extract_en.py`, `l10n_validate.py`):
+  - catalog dựng lại khớp bản sửa tay, chỉ đổi thứ tự ghi chú ở 106 dòng;
+  - `catalog_en.csv` không đổi (manifest đếm thêm 433 dòng `manual`);
+  - validator báo 6 dòng `review_audit.csv` còn giữ bản Terra, đã cập nhật `vi_after` theo hai lượt review
+    (theo cách `l10n_catalog_view.py` ghi audit); validator 0 lỗi.
 - Lượt review thứ hai (tên riêng, xưng hô, lệnh chat; notes `sửa 2026-11-15 (review 2: …)`):
   - Việt, 89 dòng:
     - thống nhất các tên ở §2c (Sand King/vua cát → Vua Cát; Byeolmon/quái vật sao → quái sao; Kongkong → Kong Kong;
