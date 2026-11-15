@@ -1467,7 +1467,7 @@ CafeTimeEventMsg02,csysstr.ssd,고객님 카페에 40분동안 계셨네요. 감
 CafeTimeEventMsg03,csysstr.ssd,고객님 카페에 60분동안 계셨네요. 감사의 마음을 담아[바늘프라푸치노]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,,Bạn đã ở quán cà phê 60 phút rồi. Xin tặng bạn [Frappuccino kim] để thay lời cảm ơn. Chúc bạn ngon miệng và có khoảng thời gian vui vẻ!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CafeTimeEventMsg04,csysstr.ssd,고객님 카페에 2시간동안 계셨네요. 감사의 마음을 담아[스프링팥빙수]를 드릴게요. 맛있게 드시고 즐거운 시간되세요,,Bạn đã ở quán cà phê 2 tiếng. Xin tặng bạn [Đá bào đậu đỏ mùa xuân] thay lời cảm ơn. Chúc bạn ăn ngon và vui vẻ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CafeTimeEventMsg05,csysstr.ssd,고객님 카페에 4시간동안 머물러 계셨군요! 당신을 VVIP로 모십니다. 저희 매장에 자주방문 부탁드리며 감사의 마음을 담아 [센서마끼아또]를 드립니다,,Bạn đã ở quán cà phê 4 tiếng rồi! Bạn là khách VVIP của chúng tôi. Mong bạn thường xuyên ghé quán. Xin tặng bạn [Macchiato cảm biến] để thay lời cảm ơn.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-CAHero_Continue,csysstr.ssd,"이어하기 버튼을 눌러 게임을 이어해보거라. 코인이 없다면 새로하기를 눌러라. 단, 새로하기 버튼을 누르면 지금까진 이긴NPC와 처음부터 대결해야한다 좋은점은 새로하기 때문에 코인이 들지 않는단다.",,"Hãy bấm nút tiếp tục để chơi tiếp. Nếu không có Coin thì bấm chơi mới. Nhưng khi chơi mới, ngươi phải đấu lại từ đầu với các NPC đã thắng. Bù lại, chơi mới không tốn Coin.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
+CAHero_Continue,csysstr.ssd,"이어하기 버튼을 눌러 게임을 이어해보거라. 코인이 없다면 새로하기를 눌러라. 단, 새로하기 버튼을 누르면 지금까진 이긴NPC와 처음부터 대결해야한다 좋은점은 새로하기 때문에 코인이 들지 않는단다.",,"Hãy bấm nút tiếp tục để chơi tiếp. Nếu không có Coin thì bấm chơi mới. Nhưng khi chơi mới, bạn phải đấu lại từ đầu với các NPC đã thắng. Bù lại, chơi mới không tốn Coin.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 CAHero_ContinueNeedCoin,csysstr.ssd,코인이 부족해서 이어할 수 없어요!,,Không đủ Coin để chơi tiếp!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CAHero_DisableStateMsg_DarkHero_01,csysstr.ssd,약한 자군. 아직은 때가 아니다,,Mi yếu quá. Chưa tới lúc đâu,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CAHero_DisableStateMsg_DarkHero_02,csysstr.ssd,아직 나와 겨룰 수 없다.,,Mi chưa thể đấu với ta.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -1542,7 +1542,7 @@ CAHero_EnableStateMsg_Gorill_06,csysstr.ssd,너 정도는 내가 그냥고릴 �
 CAHero_EnableStateMsg_Gorill_07,csysstr.ssd,고릴 나를 선택해 너의 첫 상대가 되어줄게 고릴,,"Goril! Chọn ta đi, ta sẽ là đối thủ đầu tiên của mi goril!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CAHero_EnableStateMsg_Gorill_08,csysstr.ssd,고릴 100전 100승 고릴님과 겨루 고릴!,,"Goril! Trăm trận trăm thắng, đấu với Goril đi goril!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CAHero_EnableStateMsg_KongKong_01,csysstr.ssd,꺄악! 이번엔 너콩? ,,Á! Lần này là Kong của mi? ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-CAHero_EnableStateMsg_KongKong_02,csysstr.ssd,준비됐콩?  나와 싸울 준비? 덤뵤! 아뵤콩!,,Sẵn sàng chưa Kong? Sẵn sàng đấu với ta chưa? Xông vô đi! A bố Kong!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+CAHero_EnableStateMsg_KongKong_02,csysstr.ssd,준비됐콩?  나와 싸울 준비? 덤뵤! 아뵤콩!,,Sẵn sàng chưa Kong? Sẵn sàng đấu với ta chưa? Xông vô đi! Hây da Kong!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 CAHero_EnableStateMsg_KongKong_03,csysstr.ssd,보나마나 내가 이길텐데..! 꺄 코옹!,,Rõ ràng tui sẽ thắng thôi..! Á Kong!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CAHero_EnableStateMsg_KongKong_04,csysstr.ssd,너랑 싸울 생각을 하니 어제부터 잠이 안오더콩! ,,"Nghĩ tới chuyện đấu với bạn mà từ hôm qua tui đã không ngủ được, Kong! ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CAHero_EnableStateMsg_KongKong_05,csysstr.ssd,내가 쉬운 상대라고 생각하진 마콩!,,"Đừng nghĩ tui dễ bị đánh bại, Kong!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -3209,8 +3209,8 @@ ExpiredCoupon,csysstr.ssd+FxDesktop/ClientData/ClientString,사용 기한이 지
 ExplainElecDisplay,csysstr.ssd,"운영원칙에 위배되는 내용은 삭제나 제재를 당할 수 있습니다.
 내용 변경은 <font color=0xFFEA00>/전광 수정메세지</font> 또는 장착한 전광판 아이템에서
 <font color=0xFFEA00>마우스 오른쪽 버튼 수정하기</font>로 가능합니다.",,"Nội dung vi phạm quy định vận hành có thể bị xóa hoặc xử lý.
-Để thay đổi nội dung, dùng <font color=0xFFEA00>/전광 수정메세지</font> hoặc
-<font color=0xFFEA00>bấm chuột phải rồi chọn sửa</font> trên vật phẩm bảng điện tử đang trang bị.",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
+Để thay đổi nội dung, dùng <font color=0xFFEA00>/bangdien nội dung mới</font> hoặc
+<font color=0xFFEA00>bấm chuột phải rồi chọn sửa</font> trên vật phẩm bảng điện tử đang trang bị.",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 ExpLotto,csysstr.ssd+FxDesktop/ClientData/ClientString,[알림] %s 님께서 프리미엄 채널에서 경험치 100배의 행운을 얻으셨습니다. 축하합니다!!!,,[Thông báo] %s đã may mắn nhận được kinh nghiệm gấp 100 lần tại kênh cao cấp. Chúc mừng!!!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 ExpPointPresent_Button,csysstr.ssd,"10분마다 레벨이 쑥쑥쑥!
 버튼을 클릭하세요!",,"Cứ 10 phút cấp tăng vù vù!
@@ -3276,7 +3276,7 @@ FindGuildOrder3,csysstr.ssd+FxDesktop/ClientData/ClientString,길드레벨별,,T
 FindGuildUser,csysstr.ssd+FxDesktop/ClientData/ClientString,길드원찾기,,Tìm thành viên hội,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 fire,csysstr.ssd,불꽃,,Ngọn lửa,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 FireCracker,csysstr.ssd,골드크라운,,Vương miện vàng,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-FireCracker_CmdMsg,csysstr.ssd,/폭죽,,/pháo,translated,"giữ lệnh chat cũ (không dấu, không cách) sau lượt dịch lại 2026-11-15;too_long?"
+FireCracker_CmdMsg,csysstr.ssd,/폭죽,,/phao,translated,"giữ lệnh chat cũ (không dấu, không cách) sau lượt dịch lại 2026-11-15;too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 FirstGrade,csysstr.ssd+FxDesktop/ClientData/ClientString,초단,,Sơ đẳng,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 FishingRankString_CarpDesc,csysstr.ssd,가장 큰 붕어를 잡은 낚시 왕,,Vua câu cá bắt được cá diếc lớn nhất,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 FishingRankString_CarpKing,csysstr.ssd,붕어왕,,Vua cá diếc,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -10591,10 +10591,10 @@ UserConnectNoticePeriod,csysstr.ssd,과도한 게임 이용은 정상적인 일�
 UserContest01,csysstr.ssd,"이상한씨,어려움씨,예쁘니씨 3명의 개발자가 팀장님의 미션을 수행하기 위해 만든 맵입니다. 
 개성 강한 개발자들의 맵을 즐겨보세요!",,"Bản đồ do 3 nhà phát triển Isanghan, Eoryeoum và Yeppeuni tạo ra để thực hiện nhiệm vụ của trưởng nhóm. 
 Hãy tận hưởng các bản đồ đầy cá tính này!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-UserContest02,csysstr.ssd,크아 탄생 9주년 기념 게임 아이디어 컨테스트에서 [참 잘했어요 상]을 수상한 [입소증]님의 맵입니다.,,Bản đồ của [Ipsojeung] đoạt Giải Giỏi lắm trong cuộc thi ý tưởng game kỷ niệm 9 năm Boom ra đời.,translated,too_long?
-UserContest03,csysstr.ssd,크아 탄생 9주년 기념 게임 아이디어 컨테스트에서 [참 잘했어요 상]을 수상한 [맑금별]님의 맵입니다.,,Bản đồ của [Malgeumbyeol] đoạt Giải Giỏi lắm trong cuộc thi ý tưởng game kỷ niệm 9 năm Boom ra đời.,translated,too_long?
-UserContest04,csysstr.ssd,크아 탄생 9주년 기념 게임 아이디어 컨테스트에서 [참 잘했어요 상]을 수상한 [빌믈]님의 맵입니다.,,Bản đồ của [Bilmeul] đoạt Giải Giỏi lắm trong cuộc thi ý tưởng game kỷ niệm 9 năm Boom ra đời.,translated,too_long?
-UserContest05,csysstr.ssd,크아 탄생 9주년 기념 게임 아이디어 컨테스트에서 [참 잘했어요 상]을 수상한 [l가을I낙엽l]님의 맵입니다.,,"Đây là bản đồ của [l가을I낙엽l], người đoạt [Giải xuất sắc] trong cuộc thi ý tưởng game kỷ niệm 9 năm Boom ra đời.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+UserContest02,csysstr.ssd,크아 탄생 9주년 기념 게임 아이디어 컨테스트에서 [참 잘했어요 상]을 수상한 [입소증]님의 맵입니다.,,Bản đồ của [Ipsojeung] đoạt [Giải Giỏi lắm] trong cuộc thi ý tưởng game kỷ niệm 9 năm Boom ra đời.,translated,"too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
+UserContest03,csysstr.ssd,크아 탄생 9주년 기념 게임 아이디어 컨테스트에서 [참 잘했어요 상]을 수상한 [맑금별]님의 맵입니다.,,Bản đồ của [Malgeumbyeol] đoạt [Giải Giỏi lắm] trong cuộc thi ý tưởng game kỷ niệm 9 năm Boom ra đời.,translated,"too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
+UserContest04,csysstr.ssd,크아 탄생 9주년 기념 게임 아이디어 컨테스트에서 [참 잘했어요 상]을 수상한 [빌믈]님의 맵입니다.,,Bản đồ của [Bilmeul] đoạt [Giải Giỏi lắm] trong cuộc thi ý tưởng game kỷ niệm 9 năm Boom ra đời.,translated,"too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
+UserContest05,csysstr.ssd,크아 탄생 9주년 기념 게임 아이디어 컨테스트에서 [참 잘했어요 상]을 수상한 [l가을I낙엽l]님의 맵입니다.,,Bản đồ của [lGaeulINagyeopl] đoạt [Giải Giỏi lắm] trong cuộc thi ý tưởng game kỷ niệm 9 năm Boom ra đời.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 UserContestRandom,csysstr.ssd,차칸크아 팀장의 교실 이벤트를 위해 개발자들이 제작한 맵 중 한가지가 랜덤하게 선택됩니다.,,Một bản đồ do các nhà phát triển tạo cho Sự kiện lớp học của trưởng nhóm Boom tốt bụng sẽ được chọn Ngẫu nhiên.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 UserID,csysstr.ssd+FxDesktop/ClientData/ClientString,아이디,,ID,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 UserInfo,csysstr.ssd+FxDesktop/ClientData/ClientString,유저 정보 보기,,Coi thông tin người chơi,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -11195,7 +11195,7 @@ monseal12boss26,FxDesktop/ClientData/ClientString,아야!!!! 때리지마!!!,Aha
 monseal12generala1,FxDesktop/ClientData/ClientString,물개님은 제가 지키겠습니다.,"Hải cẩu chúa, có tớ đây.",Tôi sẽ bảo vệ ngài hải cẩu.,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monseal12generala2,FxDesktop/ClientData/ClientString,안돼요!!!! 창피해요!!!,Không được!!!,Không được!!!! Mắc cỡ quá!!!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monseal12generala3,FxDesktop/ClientData/ClientString,물개님은 겁이 너무많아요,Hải cẩu chúa nhát gan lắm,Ngài hải cẩu nhát gan quá,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-monseal12generala4,FxDesktop/ClientData/ClientString,제가 지켜야돼요,Tớ phải bảo vệ mới được,Tui phải bảo vệ.,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+monseal12generala4,FxDesktop/ClientData/ClientString,제가 지켜야돼요,Tớ phải bảo vệ mới được,Tôi phải bảo vệ ngài.,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 monseal12generala5,FxDesktop/ClientData/ClientString,다행이네요.,May quá hix hix,May quá.,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 monseal12generala6,FxDesktop/ClientData/ClientString,안돼~,Không được!!!,Không được~,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monseal12generala7,FxDesktop/ClientData/ClientString,물개님을 지켰다,Bảo vệ hải cẩu chúa,Đã bảo vệ được ngài hải cẩu,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -11353,7 +11353,7 @@ monseal18bossstart1,FxDesktop/ClientData/ClientString,가르쳐봤자 소용이 
 monseal18bossstart2,FxDesktop/ClientData/ClientString,가만 두지 않겠어!!!,Chẳng ra làm sao!!,Ta sẽ không tha cho mi đâu!!!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monseal18bossstart20,FxDesktop/ClientData/ClientString,여기까지 온걸 보니 부하들이 실패했군!,Chúng ta thất bại rồi!,Mi tới được đây tức là đám thuộc hạ của ta thất bại rồi!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monseal18bossuserlocked3,FxDesktop/ClientData/ClientString,가소롭구나! 크크큭~,Buồn cười quá~,Nực cười! Khà khà khà~,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-monseal18mpdefaulta18,FxDesktop/ClientData/ClientString,실력을 보여드리겠습니다!!,Ta sẽ cho mi thấy!,Ta sẽ cho các ngươi thấy thực lực của ta!!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+monseal18mpdefaulta18,FxDesktop/ClientData/ClientString,실력을 보여드리겠습니다!!,Ta sẽ cho mi thấy!,Ta sẽ cho tụi bây thấy thực lực của ta!!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 monseal18mpsselfreleased11,FxDesktop/ClientData/ClientString,메롱~!!,Lêu lêu!,Lêu lêu~!!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monseal18mpstart17,FxDesktop/ClientData/ClientString,분!신!술!,Phân thân !,Phân! Thân! Thuật!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monseal18mpuserdie36,FxDesktop/ClientData/ClientString,크하하핫~,Hahahha,Khà hà hà~,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -12465,7 +12465,7 @@ NPmst21BossAngry,FxDesktop/ClientData/ClientString,내 손으로 끝장을 내�
 NPmst21BossStart1,FxDesktop/ClientData/ClientString,어이쿠 반갑구나!!!,Ôi trời ơi vui quá à!!!,"Ôi chao, gặp mi vui quá!!!",translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPmst21BossStart2,FxDesktop/ClientData/ClientString,날 좀 구해줘~~,Cứu tớ với~,Cứu ta với~~,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 NPmst21BossStart3,FxDesktop/ClientData/ClientString,부하놈들이 날 여기 가둬버렸어 엉엉..,Thuộc hạ của ta đã bỏ ta đi hết rồi hu hu…,"Đám thuộc hạ nhốt ta ở đây rồi, hu hu..",translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-NPmst21BossStart4,FxDesktop/ClientData/ClientString,자 보물은 얼마든지 줄테니 어서 풀어다오,"Cha, bao nhiêu kho báu ta cũng cho nên hãy mau thả nó ra đi","Ta sẽ cho các ngươi thật nhiều kho báu, mau thả ta ra đi.",translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+NPmst21BossStart4,FxDesktop/ClientData/ClientString,자 보물은 얼마든지 줄테니 어서 풀어다오,"Cha, bao nhiêu kho báu ta cũng cho nên hãy mau thả nó ra đi","Ta sẽ cho tụi bây thật nhiều kho báu, mau thả ta ra đi.",translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 NPmst21BossStart5,FxDesktop/ClientData/ClientString,거짓말이지롱!!!! 푸하하하!!!!,Ta nói xạo đó!!! Phù ha ha ha ha!!!!,Gạt mi đó!!!! Phú ha ha ha!!!!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 NPmst21BossStart6,FxDesktop/ClientData/ClientString,이제 도망못간다,Giờ mi không thể chạy trốn đâu.,Giờ mi hết đường chạy rồi!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPmst21BossStart7,FxDesktop/ClientData/ClientString,ㅋㅋㅋ 어디 한번 살아남아보라구,Kha kha kha đâu mi thử hồi sinh một lần nữa xem nào,"Ha ha ha, thử sống sót coi nào",translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -13951,16 +13951,16 @@ NPpen06MonIceA17,FxDesktop/ClientData/ClientString,실수다!, Thật sai lầm
 NPpen06MonIceA18,FxDesktop/ClientData/ClientString,어쭈?, Ôi trời?,Ủa?,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 NPpen06MonIceA19,FxDesktop/ClientData/ClientString,위험하닷, Nguy hiểm quá,Nguy hiểm quá,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen06MonIceA2,FxDesktop/ClientData/ClientString,"꺄악 잘못해써요
-", Ặc ặc tiêu rùi.,"Á, tui sai rồi
-",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
+", Ặc ặc tiêu rùi.,"Á, ta sai rồi mà
+",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 NPpen06MonIceA20,FxDesktop/ClientData/ClientString,으헉!, Ặc ặc!,Hự!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 NPpen06MonIceA21,FxDesktop/ClientData/ClientString,이얏이얏 풀려라, Gừ gừ! Thoát ra nào,"Ya ya, tan ra đi",translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen06MonIceA22,FxDesktop/ClientData/ClientString,이자식! 얼음 풀어!, Cái thằng này! Phá băng đi nào!,Tên kia! Phá băng đi!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen06MonIceA23,FxDesktop/ClientData/ClientString,저런 녀석들 따위!, Mấy đứa Bọn mi!,Mấy tên đó thì có là gì!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen06MonIceA24,FxDesktop/ClientData/ClientString,저리가!, Đi chỗ khác coi!,Tránh ra!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen06MonIceA3,FxDesktop/ClientData/ClientString,"니마 매너염! ;ㅁ;
-", Mi phải lịch sự chứ! ,"Mi Lịch sự chút đi! ;ㅁ;
-",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+", Mi phải lịch sự chứ! ,"Mi lịch sự chút đi! ;ㅁ;
+",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 NPpen06MonIceA4,FxDesktop/ClientData/ClientString,"님 나 무시하나염!
 ", Mi không để ý đến ta sao!,"Mi coi thường ta hả!
 ",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -13970,7 +13970,7 @@ NPpen06MonIceA5,FxDesktop/ClientData/ClientString,"ㅁㄴㅁㄴㅁㄴ!!!
 NPpen06MonIceA6,FxDesktop/ClientData/ClientString,"무서워효
 ", Ôi sợ quá,"Sợ quá đi
 ",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-NPpen06MonIceA7,FxDesktop/ClientData/ClientString,살려주세여, Cứu tôi với,Cứu tôi với,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+NPpen06MonIceA7,FxDesktop/ClientData/ClientString,살려주세여, Cứu tôi với,Cứu ta với,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 NPpen06MonIceA8,FxDesktop/ClientData/ClientString,씨잉~ TㅁT, Gừ gừ~ TㅁT,Hic~ TㅁT,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 NPpen06MonIceA9,FxDesktop/ClientData/ClientString,안돼효!, Không được!,Không được mà!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen06MonTeamDeadA1,FxDesktop/ClientData/ClientString,뭐하는 짓이냐!, Mi làm trò gì vậy!,Mi làm trò gì vậy!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -14380,8 +14380,8 @@ NPpen12boss6,FxDesktop/ClientData/ClientString,"다음방으로 가볼까
 ", Sang phòng khác xem,"Qua phòng tiếp theo coi sao
 ",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen12boss7,FxDesktop/ClientData/ClientString,"아직 안죽었느냐?
-", Mi vẫn chưa chết hả?,"Ngươi vẫn chưa chết sao?
-",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+", Mi vẫn chưa chết hả?,"Mi vẫn chưa chết sao?
+",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 NPpen12boss8,FxDesktop/ClientData/ClientString,"출입구를 조심해라
 ", Cẩn thận lối vào đó,"Coi chừng lối ra vô
 ",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -14815,7 +14815,7 @@ NPpen21BossAngryA1,FxDesktop/ClientData/ClientString,"무얼하느냐, 다 잡�
 NPpen21BossAngryA2,FxDesktop/ClientData/ClientString,영원히 도망가지 못한다!,Mi không trốn được đâu,Mi sẽ không bao giờ thoát được!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen21BossAngryA3,FxDesktop/ClientData/ClientString,인간들을 제압해라!,Đàn áp con người nào!,Khống chế đám người đó!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen21BossAngryA4,FxDesktop/ClientData/ClientString,지옥개방!!!,Tấn công nào!!,Mở cửa địa ngục!!!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-NPpen21BossDeadA1,FxDesktop/ClientData/ClientString,"이, 인간이여 네가 이겼다...","Í, mi thắng rồi ư…","Hỡi... con người, ngươi thắng rồi...",translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+NPpen21BossDeadA1,FxDesktop/ClientData/ClientString,"이, 인간이여 네가 이겼다...","Í, mi thắng rồi ư…","Hỡi... con người, mi thắng rồi...",translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 NPpen21GeneralA1,FxDesktop/ClientData/ClientString,가까이 와봐라~!,Lại gần đây coi~,Lại gần đây coi~!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen21GeneralA10,FxDesktop/ClientData/ClientString,염라대왕 공격!,Tấn công diêm vương!,Diêm Vương tấn công!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 NPpen21GeneralA11,FxDesktop/ClientData/ClientString,으하하! 무서워해라!,Haha! Sợ chưa!,Ha ha! Sợ ta đi!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
@@ -15973,7 +15973,7 @@ monseal99bossnormal08,FxDesktop/ClientData/ClientString,시간이 지날 수록 
 monseal99bossnormal09,FxDesktop/ClientData/ClientString,어디 한 번 잘 피해봐라~~ ,,Thử né cho giỏi coi~~ ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 monseal99bossnormal10,FxDesktop/ClientData/ClientString,어떠냐? 무시무시하지? ,,Sao nào? Đáng sợ lắm phải không? ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monseal99bossnormal11,FxDesktop/ClientData/ClientString,여기에 익숙해지면 크아를 좀 더 잘 할 수 있지 ,,Quen với chỗ này rồi thì mi sẽ chơi Boom giỏi hơn đó ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-monseal99bossnormal12,FxDesktop/ClientData/ClientString,웃...이번엔 내가 나가서 간단한 대련을 해주지. ,,Hừ... Lần này ta sẽ ra đấu với các ngươi vài chiêu. ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+monseal99bossnormal12,FxDesktop/ClientData/ClientString,웃...이번엔 내가 나가서 간단한 대련을 해주지. ,,Hừ... Lần này ta sẽ ra đấu với tụi bây vài chiêu. ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 monseal99bossnormal13,FxDesktop/ClientData/ClientString,이맵만 깨면 너흰 더이상 초보아냐 ,,"Chỉ cần vượt qua map này, tụi bây sẽ không còn là Tân thủ nữa ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monseal99bossnormal14,FxDesktop/ClientData/ClientString,이번엔 좀 특이한 물풍선을 보여주지 ,,Lần này ta sẽ cho mi coi bom nước hơi đặc biệt ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monseal99bossnormal15,FxDesktop/ClientData/ClientString,이번이 마지막이니 잘해봐~ ,,"Đây là lần cuối rồi, cố lên~ ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -16367,7 +16367,7 @@ monturtle23normal24,FxDesktop/ClientData/ClientString,저는 조금 무섭네요
 monturtle23normal25,FxDesktop/ClientData/ClientString,제가 잘못했습니다.,,Tui sai rồi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 monturtle23normal26,FxDesktop/ClientData/ClientString,조금 억울하네요.,,Hơi oan ức đó.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 monturtle23normal27,FxDesktop/ClientData/ClientString,체면보다는 생존이죠.,,Sống sót quan trọng hơn thể diện.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-monturtle23normal28,FxDesktop/ClientData/ClientString,포기하시는게 좋겠네요.,,Ngươi nên bỏ cuộc đi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+monturtle23normal28,FxDesktop/ClientData/ClientString,포기하시는게 좋겠네요.,,Mi nên bỏ cuộc đi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 monturtle24boss01anger01,FxDesktop/ClientData/ClientString,아!! 정말 열받는군!!,,Á!! Tức quá đi mất!!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 monturtle24boss01lock01,FxDesktop/ClientData/ClientString,악!! 나좀 살려줘~,,Á!! Cứu ta với~,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 monturtle24boss01normal01,FxDesktop/ClientData/ClientString,그게 나야.,,Chính là ta.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -16395,7 +16395,7 @@ monturtle24mon10normal,FxDesktop/ClientData/ClientString,저는 별몬이에요.
 monturtle24mon11normal,FxDesktop/ClientData/ClientString,저는 상당히 젠틀해요.,,Tui rất lịch thiệp.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 monturtle24mon12normal,FxDesktop/ClientData/ClientString,제가 잘못했습니다.,,Tui sai rồi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 monturtle24mon13normal,FxDesktop/ClientData/ClientString,조금 억울하네요.,,Hơi oan ức đó.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
-monturtle24mon14normal,FxDesktop/ClientData/ClientString,포기하시는게 좋겠네요.,,Ngươi nên bỏ cuộc đi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+monturtle24mon14normal,FxDesktop/ClientData/ClientString,포기하시는게 좋겠네요.,,Mi nên bỏ cuộc đi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 monunlimited01BossStart1,FxDesktop/ClientData/ClientString,가소롭구나~,Buồn cười thật~,Nực cười~,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 monunlimited01BossStart2,FxDesktop/ClientData/ClientString,크크크... 좋다 내 신기술을 보여주마,Haha..cho xem kỹ thuật mới của ta đây,"Khà khà khà... Được, ta sẽ cho mi thấy chiêu mới của ta.",translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monunlimited01BossStart3,FxDesktop/ClientData/ClientString,이얍!!!!!!!!,Ái chà!!!!!!,Ya!!!!!!!!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
@@ -16540,7 +16540,7 @@ monunlimited04BossAngryA1,FxDesktop/ClientData/ClientString,"무얼하느냐, �
 monunlimited04BossAngryA2,FxDesktop/ClientData/ClientString,영원히 도망가지 못한다!,Mi không bao giờ trốn được đâu.,Mi sẽ không bao giờ thoát được!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monunlimited04BossAngryA3,FxDesktop/ClientData/ClientString,인간들을 제압해라!,Đàn áp hết con người mau!,Khống chế đám người đó!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monunlimited04BossAngryA4,FxDesktop/ClientData/ClientString,지옥개방!!!,Khai phá địa ngục!!,Mở cửa địa ngục!!!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-monunlimited04BossDeadA1,FxDesktop/ClientData/ClientString,"이, 인간이여 네가 이겼다...","Í, tớ thắng rồi….","Hỡi... con người, ngươi thắng rồi...",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+monunlimited04BossDeadA1,FxDesktop/ClientData/ClientString,"이, 인간이여 네가 이겼다...","Í, tớ thắng rồi….","Hỡi... con người, mi thắng rồi...",translated,"vi_base=vn:fx/ClientData/ClientString;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 monunlimited04GeneralA1,FxDesktop/ClientData/ClientString,가까이 와봐라~!,Đến gần đây nào~!,Lại gần đây coi~!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monunlimited04GeneralA10,FxDesktop/ClientData/ClientString,염라대왕 공격!,Tấn công Diêm Vương!,Diêm Vương tấn công!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 monunlimited04GeneralA11,FxDesktop/ClientData/ClientString,으하하! 무서워해라!,Haha! Sợ chưa!,Ha ha! Sợ ta đi!,translated,"vi_base=vn:fx/ClientData/ClientString;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
@@ -18264,11 +18264,11 @@ q:RPG_EP004_MissionAdd,csysqstr.ssd,,,,translated,no_hangul
 q:RPG_EP004_MissionComplete,csysqstr.ssd,"+++ ""대왕문어 사냥"" 퀘스트를 완료하였습니다. +++",,"+++ Đã hoàn thành Nhiệm vụ ""Săn vua bạch tuộc"". +++",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EP004_QuestMission,csysqstr.ssd,<font color=yellow>문어의 함선(일반)</font> 이상 맵에서 <font color=yellow> 대왕문어 1마리</font>를 사냥하세요.,,Săn <font color=yellow> 1 bạch tuộc khổng lồ</font> ở bản đồ <font color=yellow>Chiến hạm bạch tuộc (thường)</font> trở lên.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 q:RPG_EP004_QuestName,csysqstr.ssd,대왕문어 사냥,,Săn bạch tuộc khổng lồ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-q:RPG_EP004_QuestStory,csysqstr.ssd,"이보게, 무슨배짱인지 대왕문어녀석이 함선을 끌고 와서 행패를 부리는구만! 내가 가서 쫒아내고 싶지만..내 나이가 몇인가? 자! 대왕문어쯤은 아무것도 아니겠지?",,"Này, chẳng biết lấy gan ở đâu mà tên bạch tuộc khổng lồ kéo chiến thuyền tới quậy phá! Ta muốn đi đuổi hắn, nhưng tuổi ta đã cao rồi... Nào! Bạch tuộc khổng lồ chắc chẳng làm khó được ngươi đâu ha?",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+q:RPG_EP004_QuestStory,csysqstr.ssd,"이보게, 무슨배짱인지 대왕문어녀석이 함선을 끌고 와서 행패를 부리는구만! 내가 가서 쫒아내고 싶지만..내 나이가 몇인가? 자! 대왕문어쯤은 아무것도 아니겠지?",,"Này, chẳng biết lấy gan ở đâu mà tên bạch tuộc khổng lồ kéo chiến thuyền tới quậy phá! Tui muốn đi đuổi hắn, nhưng tuổi tui đã cao rồi... Nào! Bạch tuộc khổng lồ chắc chẳng làm khó được bạn đâu ha?",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 q:RPG_EP004_Reward00,csysqstr.ssd,퀘스트 보상으로 루찌 3600을 받았습니다.,,Nhận được 3600 VÀNG làm phần thưởng Nhiệm vụ.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EP004_Reward01,csysqstr.ssd,퀘스트 보상으로 경험치 45을 받았습니다.,,Nhận được 45 kinh nghiệm làm phần thưởng Nhiệm vụ.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EP004_Reward02,csysqstr.ssd,퀘스트 보상으로  푸른모자를 받았습니다.,,Nhận được nón xanh làm phần thưởng Nhiệm vụ.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-q:RPG_EP004_StoryReward,csysqstr.ssd,이제 보스몬스터도 잘 잡는군. 이번엔 보상으로 모자 장비를 하나 주지. 응? 뭔가 걱정이 있는가? 또 몬스터가 달라졌다고 걱정이야? 걱정하지 말라니까 별일이 아닐걸세~,,"Giờ ngươi đã hạ được cả quái vật trùm rồi. Lần này ta sẽ thưởng cho ngươi một món trang bị nón. Hử? Ngươi có chuyện gì lo lắng sao? Lại lo quái vật thay đổi nữa à? Đừng lo, chắc không có chuyện gì đâu~",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+q:RPG_EP004_StoryReward,csysqstr.ssd,이제 보스몬스터도 잘 잡는군. 이번엔 보상으로 모자 장비를 하나 주지. 응? 뭔가 걱정이 있는가? 또 몬스터가 달라졌다고 걱정이야? 걱정하지 말라니까 별일이 아닐걸세~,,"Giờ bạn đã hạ được cả quái vật trùm rồi. Lần này tui sẽ thưởng cho bạn một món trang bị nón. Hử? Bạn có chuyện gì lo lắng sao? Lại lo quái vật thay đổi nữa à? Đừng lo, chắc không có chuyện gì đâu~",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 q:RPG_EP005_MissionAdd,csysqstr.ssd,,,,translated,no_hangul
 q:RPG_EP005_MissionComplete,csysqstr.ssd,"+++ ""일반난이도 도전"" 퀘스트를 완료하였습니다. +++",,"+++ Đã hoàn thành Nhiệm vụ ""Thử thách độ khó thường"". +++",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EP005_QuestMission,csysqstr.ssd,<font color=yellow>문어의 함선(중급)</font> 이상 맵에서 <font color=yellow> 꼬마몬스터 40마리</font>를 사냥하세요.,,Săn <font color=yellow> 40 quái vật nhỏ</font> ở bản đồ <font color=yellow>Chiến hạm bạch tuộc (trung cấp)</font> trở lên.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
@@ -18286,7 +18286,7 @@ q:RPG_EP006_QuestStory,csysqstr.ssd,요즘 꼬마몬스터들이 마법 보석 �
 q:RPG_EP006_Reward00,csysqstr.ssd,퀘스트 보상으로 루찌 4200을 받았습니다.,,Nhận được 4200 VÀNG làm phần thưởng Nhiệm vụ.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EP006_Reward01,csysqstr.ssd,퀘스트 보상으로 경험치 220을 받았습니다.,,Nhận được 220 kinh nghiệm làm phần thưởng Nhiệm vụ.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EP006_Reward02,csysqstr.ssd,퀘스트 보상으로  초급물약 5개를 받았습니다.,,Nhận được 5 bình thuốc sơ cấp làm phần thưởng Nhiệm vụ.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-q:RPG_EP006_StoryReward,csysqstr.ssd,혼내 줬나? 그럼 내가 보석을 주으러 한 번 가볼까? (요걸로 팔팔할매에게 고백을…^^;) 음? 들었는가? 농담일세!! 연구목적 보석이야. 하..하하하…,,Đã cho chúng một bài học chưa? Vậy để ta đi lượm ngọc thử coi nào? (Dùng cái này để tỏ tình với bà Palpal…^^;) Hả? Nghe thấy rồi sao? Ta đùa thôi!! Ngọc này dùng để nghiên cứu. Ha.. hahaha…,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+q:RPG_EP006_StoryReward,csysqstr.ssd,혼내 줬나? 그럼 내가 보석을 주으러 한 번 가볼까? (요걸로 팔팔할매에게 고백을…^^;) 음? 들었는가? 농담일세!! 연구목적 보석이야. 하..하하하…,,Đã cho chúng một bài học chưa? Vậy để tui đi lượm ngọc thử coi nào? (Dùng cái này để tỏ tình với bà Palpal…^^;) Hả? Nghe thấy rồi sao? Tui đùa thôi!! Ngọc này dùng để nghiên cứu. Ha.. hahaha…,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 q:RPG_EP007_MissionAdd,csysqstr.ssd,,,,translated,no_hangul
 q:RPG_EP007_MissionComplete,csysqstr.ssd,"+++ ""건방진 황제펭귄"" 퀘스트를 완료하였습니다. +++",,"+++ Đã hoàn thành Nhiệm vụ ""Chim cánh cụt hoàng đế ngạo mạn"". +++",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EP007_QuestMission,csysqstr.ssd,<font color=yellow>얼음 계곡(중급)</font> 이상 맵에서 <font color=yellow> 황제펭귄 1마리</font>를 사냥하세요.,,Săn <font color=yellow> 1 chim cánh cụt hoàng đế</font> ở bản đồ <font color=yellow>Thung lũng băng (trung cấp)</font> trở lên.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
@@ -18587,7 +18587,7 @@ q:RPG_EP039_StoryReward,csysqstr.ssd,"잘했네! 아까 이야기 한 것처럼 
 q:RPG_EventMap_QuestMission01,csysqstr.ssd,이벤트 맵에서 꼬마몬스터를 100마리 잡아오세요.,,Hãy hạ 100 quái vật nhỏ trong bản đồ Sự kiện.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EventMap_QuestMission02,csysqstr.ssd,이벤트 맵에서 꼬마몬스터를 300마리 잡아오세요.,,Hãy hạ 300 quái vật nhỏ trong bản đồ Sự kiện.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EventMap_QuestName,csysqstr.ssd,[E] 짓밟힌 바니팜 몬스터 잡기,,[E] Hạ quái vật ở nông trại thỏ bị giày xéo,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-q:RPG_EventMap_QuestStory01,csysqstr.ssd,이벤트 맵에서 매일 꼬마몬스터 100마리를 잡고 히어로모드 아이템을 얻자! 꼬마몬스터 100마리를 잡아오면 히어로 엔젤코인과 물약을 줄게~,,"Mỗi ngày hãy hạ 100 quái vật nhỏ ở bản đồ Sự kiện để nhận vật phẩm chế độ Anh hùng! Nếu hạ được 100 con, mình sẽ tặng bạn Coin thiên thần anh hùng và thuốc~",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+q:RPG_EventMap_QuestStory01,csysqstr.ssd,이벤트 맵에서 매일 꼬마몬스터 100마리를 잡고 히어로모드 아이템을 얻자! 꼬마몬스터 100마리를 잡아오면 히어로 엔젤코인과 물약을 줄게~,,"Mỗi ngày hãy hạ 100 quái vật nhỏ ở bản đồ Sự kiện để nhận vật phẩm chế độ Anh hùng! Nếu hạ được 100 con, tui sẽ tặng bạn Coin thiên thần anh hùng và thuốc~",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 q:RPG_EventMap_QuestStory02,csysqstr.ssd,"100마리를 다 잡아왔어? 빠르구나! 300마리까지 잡아봐, 더 좋은 선물을 줄게~",,"Bạn đã bắt đủ 100 con rồi sao? Nhanh quá! Thử bắt 300 con đi, tui sẽ tặng bạn quà ngon hơn~",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EventMap_Reward01,csysqstr.ssd,축하합니다. [E] 짓밟힌 바니팜 몬스터 잡기 퀘스트 보상으로 선물을 드립니다.,,Chúc mừng. Bạn nhận được quà làm phần thưởng Nhiệm vụ [E] Bắt quái vật ở nông trại thỏ bị giày xéo.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:RPG_EventMap_StoryEnd01,csysqstr.ssd,오늘의 미션을 모두 완료했군! 수고했어~ 내일 또 오라구!,,Bạn đã hoàn thành mọi nhiệm vụ hôm nay! Vất vả rồi~ Mai lại tới nha!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -23960,7 +23960,7 @@ q:MaridClothing_QuestName,csysqstr.ssd,럭마 코알라 되기,,Mắt Biếc hó
 q:MaridClothing_RewardChangeMsg00,csysqstr.ssd,럭마 코알라 모자 1개권을 획득하셨습니다.,,Đã nhận được phiếu 1 nón koala Mắt Biếc.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:TakeGoldFlag3_Reward22,csysqstr.ssd,축하합니다. 투시경 5개를 획득하셨습니다. 마이페이지를 확인해 주세요.,,Chúc mừng! Bạn đã nhận được 5 kính nhìn xuyên. Hãy kiểm tra Trang cá nhân.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:TakeGoldFlag3_StartTooltip,csysqstr.ssd,황금 깃발을 획득하라!,,Hãy nhận được cờ vàng!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-q:TellMeYourWish_Desc001,csysqstr.ssd,"9/1 ~ 9/30 (토,일)",,"9/1 ~ 9/30 (토,일)",translated,
+q:TellMeYourWish_Desc001,csysqstr.ssd,"9/1 ~ 9/30 (토,일)",,"9/1 ~ 9/30 (T7, CN)",translated,"sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 q:TellMeYourWish_Desc002,csysqstr.ssd,"달에게 소원을 말해봐 퀘스트는
 매주 토, 일요일에 참여할 수 있어요~★",,"Bạn có thể tham gia Nhiệm vụ nói điều ước với mặt trăng
 vào thứ bảy và chủ nhật mỗi tuần~★",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -24514,7 +24514,7 @@ q:CAQuiz_A5_9_1,csysqstr.ssd,아랫어른,,Con cua,translated,ko_reviewed;quiz_v
 q:CAQuiz_A5_9_2,csysqstr.ssd,윗어른,,Con tôm,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle;too_long?
 q:CAQuiz_A5_9_3,csysqstr.ssd,웃어른,,Con còng,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle;too_long?
 q:CAQuiz_A5_9_4,csysqstr.ssd,우더른,,Con ốc,translated,ko_reviewed;quiz_vi_localized;mekong_folk_riddle;too_long?
-q:CAQuiz_A6_1_1,csysqstr.ssd,11번가,,11번가,translated,
+q:CAQuiz_A6_1_1,csysqstr.ssd,11번가,,Phố số 11,translated,"sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 q:CAQuiz_A6_1_2,csysqstr.ssd,오픈마켓,,Chợ trực tuyến,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:CAQuiz_A6_1_3,csysqstr.ssd,매직마켓,,Chợ ma thuật,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:CAQuiz_A6_1_4,csysqstr.ssd,쥐마켓,,Chợ chuột,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -27540,7 +27540,7 @@ q:WelcomeToBnB_InfoMsg11,csysqstr.ssd,"물풍선에 닿으면 물방울에 갇�
 그럴 때를 대비해서 [바늘]아이템이 있어 
 내가 먼저 [바늘]아이템을 3개 줄게.",,"Chạm bom nước sẽ bị nhốt trong bong bóng nước. 
 Để phòng lúc đó, bạn có thể dùng vật phẩm [Kim]. 
-Mình sẽ tặng bạn 3 [Kim] trước.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+Tui sẽ tặng bạn 3 [Kim] trước.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?;sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)"
 q:WelcomeToBnB_InfoMsg12,csysqstr.ssd,"내가 준 [바늘]을 받았지? 
 받기만 해서는 소용이 없어.  
 아이템은 장착을 해야 사용할 수 있지.",,"Bạn nhận được [Kim] tui đưa rồi chứ? 
