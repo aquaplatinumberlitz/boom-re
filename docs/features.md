@@ -197,6 +197,11 @@ Thứ tự này suy ra từ chỗ đang kẹt, không phải từ danh sách:
 7. ~~**F11**~~ 9 map khác theme + loại phòng 14/16/22/32/33 chạy được; 17 = RPG (F18).
 8. Các mode F13–F20, G2–G9 (túi đồ, exp, quest…): chưa bắt đầu.
 
+## Kế hoạch viết lại (Rust)
+
+Port full feature theo đợt W1–W4 và quyết định PORT/REDESIGN/DROP cho từng opcode: `docs/REWRITE_PLAN.md` §9
+(danh mục chi tiết sẽ ở `docs/spec/feature-catalog.md`).
+
 ## Cách cập nhật checklist này
 
 ```bash
