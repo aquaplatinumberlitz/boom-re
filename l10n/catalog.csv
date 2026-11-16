@@ -4698,7 +4698,7 @@ MasterJoinSessionCAJJang,csysstr.ssd,"[짱풍선 %d등급 %s님이 참가하셨�
 ",,"[Bóng cao thủ hạng %d, người chơi %s đã tham gia.]
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 MaxUseSpeaker,csysstr.ssd+FxDesktop/ClientData/ClientString,확성기 %d개 사용,,Dùng %d loa,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
-Menu,csysstr.ssd+FxDesktop/ClientData/ClientString,메뉴,Menu,Menu,translated,"vi_base=boom-re:server/src/strings.rs;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+Menu,csysstr.ssd+FxDesktop/ClientData/ClientString,메뉴,Menu,Tùy chọn,translated,"vi_base=boom-re:server/src/strings.rs;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-16;too_long?"
 MessageDlgCost,csysstr.ssd+FxDesktop/ClientData/ClientString,가격 :,,Giá :,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 MessageDlgLucci,csysstr.ssd+FxDesktop/ClientData/ClientString,루찌,,VÀNG,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 MessageDlgMessage,csysstr.ssd+FxDesktop/ClientData/ClientString,쪽지,,Tin nhắn,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -9050,7 +9050,7 @@ PreGrade,csysstr.ssd+FxDesktop/ClientData/ClientString,급,,Cấp,translated,"d�
 PreGradeMax,csysstr.ssd+FxDesktop/ClientData/ClientString,래더기초 채널에서는 초단까지만 획득 가능합니다.,,"Ở kênh Xếp hạng cơ bản, bạn chỉ có thể đạt tới sơ đẳng.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 PREHOT,csysstr.ssd+FxDesktop/ClientData/ClientString,인기맵,,Bản đồ phổ biến,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 PRELEVEL,csysstr.ssd+FxDesktop/ClientData/ClientString,레  벨,Cấp,C  ấp,translated,"vi_base=boom-re:server/src/strings.rs;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
-PREMAX,csysstr.ssd+FxDesktop/ClientData/ClientString,인  원,Tối đa,Số  người,translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+PREMAX,csysstr.ssd+FxDesktop/ClientData/ClientString,인  원,Tối đa,Số chỗ,translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-16"
 PREMAXATTR,csysstr.ssd,최대능력치,Tối đa,Chỉ số tối đa,translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 PremiumOnly,csysstr.ssd+FxDesktop/ClientData/ClientString, 프리미엄 채널에서만 이용 가능한 맵입니다. 다른 맵을 선택해 주세요.,, Bản đồ này chỉ dùng được ở kênh cao cấp. Hãy chọn bản đồ khác.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 PremiumOnlyMap,csysstr.ssd+FxDesktop/ClientData/ClientString, 해당 맵은 지존권이 있어야 선택할 수 있습니다. 지존권 유저의 혜택을 누리실 수 있는 지존권을 지금 구매하시겠습니까?,, Cần có vé cao thủ mới chọn được bản đồ này. Bạn muốn mua vé cao thủ để nhận các ưu đãi ngay không?,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"

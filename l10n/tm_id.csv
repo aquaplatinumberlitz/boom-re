@@ -76,7 +76,7 @@ Quest,Coi Nhiệm vụ,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; g
 PRECOL,:,translated,ko_reviewed
 PREDEFAULTATTR,Chỉ số cơ bản,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 PREEA,Số lượng,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
-PREMAX,Số  người,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
+PREMAX,Số chỗ,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-16"
 PREMAXATTR,Chỉ số tối đa,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 PREPOW,Tia nước,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 ProcessOther,Máy chủ đang xử lý yêu cầu khác..,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
@@ -5141,7 +5141,7 @@ Lucci,VÀNG,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng
 LowLucci,Không đủ VÀNG. ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgModeManner,Lịch sự,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CantSelectMap,Không thể chọn bản đồ.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
-Menu,Menu,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
+Menu,Tùy chọn,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-16"
 GBMSN,Bạn bè,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 Messenger,Bạn bè,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgMode,Chế độ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
