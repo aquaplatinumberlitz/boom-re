@@ -1848,7 +1848,7 @@ CanNotProposeSelf,csysstr.ssd+FxDesktop/ClientData/ClientString,"자신에게는
 CannotProposeToSquareUser,csysstr.ssd+FxDesktop/ClientData/ClientString,상대방이 현재 광장에 있어서 커플 신청을 할 수 없습니다.,Đối phương đang ở quảng trường nên không thể gởi lời mời đôi.,translated,Cannot propose while a player is in Town!,csysstr.ssd,candidate,whitespace_from_kr
 CannotQuestInRPGGameStage,csysstr.ssd,게임 중에는 퀘스트를 완료할 수 없습니다.,Không thể hoàn thành Nhiệm vụ trong trận.,translated,You cannot complete a Quest during a game.,tm_en.csv,machine,
 CannotQuestInShop,csysstr.ssd+FxDesktop/ClientData/ClientString,상점에서는 퀘스트를 완료할 수 없습니다.,Không thể hoàn thành Nhiệm vụ trong Siêu thị.,translated,Quests cannot be completed in the shop.,fx/ClientData/ClientString,candidate,meaning_checked
-CannotSelectFairMode,csysstr.ssd+FxDesktop/ClientData/ClientString,공평모드에서는 대장잡기를 할 수 없습니다.,Không thể chơi Bắt đội trưởng trong chế độ công bằng.,translated,Flag Hunt cannot be played in Fair mode.,en_override.csv,candidate,settled_poptag_variant
+CannotSelectFairMode,csysstr.ssd+FxDesktop/ClientData/ClientString,공평모드에서는 대장잡기를 할 수 없습니다.,Không thể chơi Bắt thủ lĩnh trong chế độ công bằng.,translated,Leader Hunt cannot be played in Fair mode.,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 CannotSelectMapRPGUserLevelNoSuit,csysstr.ssd,유저 레벨이 낮아 지금 선택하신 맵에 참여할 수 없는 유저(%s)가 있습니다.,Có người chơi (%s) không thể tham gia bản đồ đã chọn do cấp quá thấp.,translated,Player (%s) has a Level too low to join the selected map.,tm_en.csv,machine,
 CannotSendMsgMySelf,csysstr.ssd+FxDesktop/ClientData/ClientString,자신에게는 메시지를 보낼 수 없습니다.,Bạn không thể tự gởi tin nhắn cho mình.,translated,You cannot send a message to yourself.,fx/ClientData/ClientString,candidate,meaning_checked
 CannotSendSmsByNoNexonId,csysstr.ssd,이메일아이디가 등록되어 있지 않은 경우 쪽지를 보낼 수 없습니다.,Không thể gởi thư khi chưa đăng ký ID email.,translated,You cannot send messages without registering an email ID.,tm_en.csv,machine,
@@ -2680,7 +2680,7 @@ CreateDlgGameType,csysstr.ssd+FxDesktop/ClientData/ClientString,게임타입,Lo�
 CreateDlgGameTypeAIBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,협공배틀,Đấu hợp sức,translated,Co-op Battle,tm_en.csv,machine,
 CreateDlgGameTypeAll,csysstr.ssd+FxDesktop/ClientData/ClientString,전체선택,Chọn tất cả,translated,All,csysstr.ssd,candidate,meaning_checked
 CreateDlgGameTypeDefault,csysstr.ssd+FxDesktop/ClientData/ClientString,기본타입,Loại cơ bản,translated,Default,fx/ClientData/ClientString,candidate,meaning_checked
-CreateDlgGameTypeFlagHunt,csysstr.ssd+FxDesktop/ClientData/ClientString,대장잡기,Bắt đội trưởng,translated,Catch the Leader,en_review.csv,machine,replaces_poptag_text
+CreateDlgGameTypeFlagHunt,csysstr.ssd+FxDesktop/ClientData/ClientString,대장잡기,Bắt thủ lĩnh,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 CreateDlgGameTypeHedgehog,csysstr.ssd+FxDesktop/ClientData/ClientString,고슴도치,Nhím,translated,Hedgehog,csysstr.ssd+fx/ClientData/ClientString,candidate,meaning_checked
 CreateDlgGameTypeIamBoss,csysstr.ssd,진격의물개,Hải cẩu tiến công,translated,Seal Attack,tm_en.csv,machine,
 CreateDlgGameTypeNpcBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,몬스터전,Đấu quái vật,translated,Monster,csysstr.ssd,candidate,meaning_checked
@@ -2704,7 +2704,7 @@ CreateDlgRenewAIBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,"인공지�
 máy tính.",translated,"Battle against
 an AI computer.",en_review.csv,machine,replaces_poptag_text
 CreateDlgRenewGTCaptain,csysstr.ssd+FxDesktop/ClientData/ClientString,"깃발을 단 대장을 잡으면
-승리합니다.","Bắt được đội trưởng mang cờ
+승리합니다.","Bắt được thủ lĩnh mang cờ
 sẽ chiến thắng.",translated,"Catch the captain carrying the flag
 to win.",en_review.csv,machine,replaces_poptag_text
 CreateDlgRenewGTHedgehog,csysstr.ssd+FxDesktop/ClientData/ClientString,"죽은 후 고슴도치로
@@ -3802,7 +3802,7 @@ GameResultNiceWinKil@ClientString,FxDesktop/ClientData/ClientString,"'%s' 님께
 ",tm_en.csv,machine,
 GameTypeAIBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,개성만점 인공지능 컴퓨터와의 한판승부! 직접 난이도를 조절하면서 게임을 즐겨보세요.,Đọ sức với máy có trí tuệ nhân tạo đầy cá tính! Hãy tự điều chỉnh độ khó và tận hưởng trò chơi.,translated,Challenge a computer opponent with a personality of its own! Adjust the difficulty and enjoy the game.,tm_en.csv,machine,
 GameTypeDefault,csysstr.ssd+FxDesktop/ClientData/ClientString,상대방을 물풍선으로 가두어 터뜨리면 승리할 수 있습니다. 기본 타입에서는 다양한 미션맵을 플레이할 수 있습니다.,"Nhốt đối phương trong bom nước rồi làm nổ để chiến thắng. Ở kiểu cơ bản, bạn có thể chơi nhiều bản đồ nhiệm vụ.",translated,Trap opponents in Water Balloons and pop them to win. You can play various mission maps in Default type.,en_review.csv,machine,replaces_poptag_text
-GameTypeFlaghunt,csysstr.ssd+FxDesktop/ClientData/ClientString,깃발을 달고 있는 상대팀의 대장을 노리세요. 대장만 잡으면 게임에서 승리할 수 있습니다. ,Hãy nhắm vào đội trưởng mang cờ của đội đối thủ. Chỉ cần bắt được đội trưởng là chiến thắng. ,translated,Target the enemy captain carrying the flag! Capture the captain to win the game. ,csysstr.ssd+fx/ClientData/ClientString,candidate,whitespace_from_kr
+GameTypeFlaghunt,csysstr.ssd+FxDesktop/ClientData/ClientString,깃발을 달고 있는 상대팀의 대장을 노리세요. 대장만 잡으면 게임에서 승리할 수 있습니다. ,Hãy nhắm vào thủ lĩnh mang cờ của đội đối thủ. Chỉ cần bắt được thủ lĩnh là chiến thắng. ,translated,Target the enemy captain carrying the flag! Capture the captain to win the game. ,csysstr.ssd+fx/ClientData/ClientString,candidate,whitespace_from_kr
 GameTypeHedgehog,csysstr.ssd+FxDesktop/ClientData/ClientString,죽으면 귀여운 고슴도치로 변신! 고슴도치는 물방울을 바로 터뜨릴 수 있는 능력을 가집니다.,Biến thành Nhím dễ thương khi bị hạ! Nhím có thể làm vỡ bóng nước ngay lập tức.,translated,Transform into a cute hedgehog when you die! Hedgehogs can pop bubbles instantly.,csysstr.ssd+fx/ClientData/ClientString,candidate,meaning_checked
 GameTypeRehab,csysstr.ssd+FxDesktop/ClientData/ClientString,제한시간 동안 얼마나 많은 Kill수를 올리는가를 겨루는 게임입니다. 정신없는 무한대결 시작!,Thi đấu để đạt nhiều Kill nhất trong thời gian giới hạn. Bắt đầu trận chiến bất tận đầy náo nhiệt!,translated,Compete for the most kills within the time limit! An intense endless battle begins!,fx/ClientData/ClientString,candidate,meaning_checked
 GameTypeTimebomb,csysstr.ssd+FxDesktop/ClientData/ClientString,술래가 되어서 5초동안 폭탄을 옮기지 못하면 폭발하게 됩니다. 술래가 아닌 플레이어를 터치해보세요. 폭탄이 옮겨갑니다!,"Nếu cầm bom mà không chuyển cho người khác trong 5 giây, bom sẽ nổ. Hãy chạm vào người chơi không cầm bom để chuyển bom!",translated,"If you're 'it' and can't pass the bomb in 5 seconds, it explodes! Touch another player to pass it!",csysstr.ssd+fx/ClientData/ClientString,candidate,meaning_checked
@@ -5350,10 +5350,10 @@ The team with more treasure wins!",tm_en.csv,machine,
 MissionCaptainMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,"머리 위에 깃발을 달고 있는
 적의 대장을 찾아라!
 우리팀 대장을 보호하고
-적의 대장을 잡으면 승리!","Tìm đội trưởng đối phương
+적의 대장을 잡으면 승리!","Tìm thủ lĩnh đối phương
 có cờ trên đầu!
-Bảo vệ đội trưởng phe mình
-và bắt đội trưởng đối phương để chiến thắng!",translated,"Find the enemy captain
+Bảo vệ thủ lĩnh phe mình
+và bắt thủ lĩnh đối phương để chiến thắng!",translated,"Find the enemy captain
 with the flag on their head!
 Protect your own captain
 and catch theirs to win!",en_override.csv,candidate,settled_poptag_variant
@@ -11299,7 +11299,8 @@ Sue,csysstr.ssd,수,Thiên Sứ,translated,Sue,en_id.csv,manual,"sửa 2026-11-1
 Super2FighterRandom,csysstr.ssd,슈퍼 파이터2 맵 중 한 가지가 선택됩니다.,Một bản đồ Siêu chiến binh 2 sẽ được chọn.,translated,One Super Fighter 2 map will be selected.,tm_en.csv,machine,
 SuperBazzi,csysstr.ssd,슈퍼 배찌,Siêu Khò Khò,translated,Super Boz,tm_en.csv,machine,
 SuperChiefCanStart,csysstr.ssd,슈퍼방장은 강제 시작 가능,Siêu chủ phòng có thể ép bắt đầu,translated,Super Room Leaders Can Force Start,tm_en.csv,machine,
-SuperChiefCanStartDetail,csysstr.ssd,슈퍼방장 아이템이 있으면 다른 사람이 준비 상태가 아니더라도 바로 게임을 시작할 수 있습니다.,"Có vật phẩm Siêu chủ phòng, bạn có thể bắt đầu trận ngay cả khi người khác chưa sẵn sàng.",translated,"With a Super Room Leader Item, you can start the game immediately even if others aren't ready.",tm_en.csv,machine,
+SuperChiefCanStartDetail,csysstr.ssd,슈퍼방장 아이템이 있으면 다른 사람이 준비 상태가 아니더라도 바로 게임을 시작할 수 있습니다.,"Có vật phẩm Siêu chủ phòng, bạn có thể bắt đầu trận ngay cả khi người khác chưa sẵn sàng.",translated,"With a Super Room Leader Item, you can start the game
+immediately even if others aren't ready.",en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 SuperChiefLodumani,csysstr.ssd,%s 님이 슈퍼방장 효과로 인해 로두마니로 변신하였습니다!,%s đã biến thành Rodumani nhờ hiệu ứng Siêu chủ phòng!,translated,%s transformed into Lodumani thanks to the Super Room Leader effect!,tm_en.csv,machine,
 SuperChiefWaitASecond,csysstr.ssd,%d 초만 기다려 주세요,Vui lòng chờ %d giây,translated,Please wait %d seconds,tm_en.csv,machine,
 SuperFighter,csysstr.ssd,시작부터 강력한 슈퍼캐릭터로 파워풀한 결투에 도전하세요!,Thử sức trong trận đấu mạnh mẽ với siêu nhân vật hùng mạnh ngay từ đầu!,translated,Take on powerful duels with a super character right from the start!,tm_en.csv,machine,
@@ -18826,15 +18827,15 @@ q:AprilFool3_RewardMsg02,csysqstr.ssd,7777만번째 접속자로 선정되셨습
 q:AprilFool3_RewardMsg03,csysqstr.ssd,7777만번째 접속자로 선정되셨습니다. 보상으로 스프링10개(7일권)을 드립니다!,Bạn được chọn là người đăng nhập thứ 7777 vạn. Tặng bạn 10 lò xo (7 ngày) làm phần thưởng!,translated,You were selected as the 7777 ten-thousandth login! Your reward is 10 Springs (7-day pass)!,tm_en.csv,machine,
 q:AprilFool3_RewardMsg04,csysqstr.ssd,7777만번째 접속자로 선정되셨습니다. 보상으로 센서10개(7일권)을 드립니다!,Bạn được chọn là người đăng nhập thứ 7777 vạn. Tặng bạn 10 cảm biến (7 ngày) làm phần thưởng!,translated,You were selected as the 7777 ten-thousandth login! Your reward is 10 Sensors (7-day pass)!,tm_en.csv,machine,
 q:AprilFool3_RewardMsg05,csysqstr.ssd,7777만번째 접속자로 선정되셨습니다. 보상으로 카트라넥(30일권)을 드립니다!,Bạn được chọn là người đăng nhập thứ 7777 vạn. Tặng bạn Kart Rider Nexon (30 ngày) làm phần thưởng!,translated,You were selected as the 7777 ten-thousandth login! Your reward is Katraneck (30-day pass)!,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_4_4,csysqstr.ssd,대장잡기,Bắt đội trưởng,translated,Catch the Captain,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_4_4,csysqstr.ssd,대장잡기,Bắt thủ lĩnh,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 q:BnbQuiz_Answer_2_5_1,csysqstr.ssd,고슴도치,Nhím,translated,Hedgehog,tm_en.csv,machine,
 q:BnbQuiz_Answer_2_5_2,csysqstr.ssd,시한폭탄,Bom hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
 q:BnbQuiz_Answer_2_5_3,csysqstr.ssd,부활대전,Đấu hồi sinh,translated,Revival Battle,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_5_4,csysqstr.ssd,대장잡기,Bắt đội trưởng,translated,Catch the Captain,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_5_4,csysqstr.ssd,대장잡기,Bắt thủ lĩnh,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 q:BnbQuiz_Answer_2_6_1,csysqstr.ssd,고슴도치,Nhím,translated,Hedgehog,tm_en.csv,machine,
 q:BnbQuiz_Answer_2_6_2,csysqstr.ssd,시한폭탄,Bom hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
 q:BnbQuiz_Answer_2_6_3,csysqstr.ssd,부활대전,Đấu hồi sinh,translated,Revival Battle,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_6_4,csysqstr.ssd,대장잡기,Bắt đội trưởng,translated,Catch the Captain,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_6_4,csysqstr.ssd,대장잡기,Bắt thủ lĩnh,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 q:BnbQuiz_Answer_3_1_1,csysqstr.ssd,문어,Bạch tuộc,translated,Octopus,tm_en.csv,machine,
 q:BnbQuiz_Answer_3_1_2,csysqstr.ssd,펭귄,Chim cánh cụt,translated,Penguin,tm_en.csv,machine,
 q:BnbQuiz_Answer_3_1_3,csysqstr.ssd,물개,Hải cẩu,translated,Seal,tm_en.csv,machine,
@@ -25754,7 +25755,7 @@ q:BnbQuiz_Answer_2_2_4,csysqstr.ssd,우니,Bé Bỏng,translated,Ike,tm_en.csv,m
 q:BnbQuiz_Answer_2_3_1,csysqstr.ssd,고슴도치,Nhím,translated,Hedgehog,tm_en.csv,machine,
 q:BnbQuiz_Answer_2_3_2,csysqstr.ssd,시한폭탄,Bom hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
 q:BnbQuiz_Answer_2_3_3,csysqstr.ssd,부활대전,Đấu hồi sinh,translated,Revival Battle,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_3_4,csysqstr.ssd,대장잡기,Bắt đội trưởng,translated,Catch the Captain,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_3_4,csysqstr.ssd,대장잡기,Bắt thủ lĩnh,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 q:BnbQuiz_Answer_2_4_1,csysqstr.ssd,고슴도치,Nhím,translated,Hedgehog,tm_en.csv,machine,
 q:BnbQuiz_Answer_2_4_2,csysqstr.ssd,시한폭탄,Bom hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
 q:BnbQuiz_Answer_2_4_3,csysqstr.ssd,부활대전,Đấu hồi sinh,translated,Revival Battle,tm_en.csv,machine,

@@ -1720,7 +1720,7 @@ CanNotProposeSelf,csysstr.ssd+FxDesktop/ClientData/ClientString,"자신에게는
 CannotProposeToSquareUser,csysstr.ssd+FxDesktop/ClientData/ClientString,상대방이 현재 광장에 있어서 커플 신청을 할 수 없습니다.,,Đối phương đang ở quảng trường nên không thể gởi lời mời đôi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CannotQuestInRPGGameStage,csysstr.ssd,게임 중에는 퀘스트를 완료할 수 없습니다.,,Không thể hoàn thành Nhiệm vụ trong trận.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CannotQuestInShop,csysstr.ssd+FxDesktop/ClientData/ClientString,상점에서는 퀘스트를 완료할 수 없습니다.,,Không thể hoàn thành Nhiệm vụ trong Siêu thị.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-CannotSelectFairMode,csysstr.ssd+FxDesktop/ClientData/ClientString,공평모드에서는 대장잡기를 할 수 없습니다.,,Không thể chơi Bắt đội trưởng trong chế độ công bằng.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+CannotSelectFairMode,csysstr.ssd+FxDesktop/ClientData/ClientString,공평모드에서는 대장잡기를 할 수 없습니다.,,Không thể chơi Bắt thủ lĩnh trong chế độ công bằng.,translated,sửa tay qua trang catalog 2026-11-17;too_long?
 CannotSelectMapRPGUserLevelNoSuit,csysstr.ssd,유저 레벨이 낮아 지금 선택하신 맵에 참여할 수 없는 유저(%s)가 있습니다.,,Có người chơi (%s) không thể tham gia bản đồ đã chọn do cấp quá thấp.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CannotSendMsgMySelf,csysstr.ssd+FxDesktop/ClientData/ClientString,자신에게는 메시지를 보낼 수 없습니다.,,Bạn không thể tự gởi tin nhắn cho mình.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CannotSendSmsByNoNexonId,csysstr.ssd,이메일아이디가 등록되어 있지 않은 경우 쪽지를 보낼 수 없습니다.,,Không thể gởi thư khi chưa đăng ký ID email.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
@@ -2409,7 +2409,7 @@ CreateDlgGameType,csysstr.ssd+FxDesktop/ClientData/ClientString,게임타입,,Lo
 CreateDlgGameTypeAIBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,협공배틀,,Đấu hợp sức,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CreateDlgGameTypeAll,csysstr.ssd+FxDesktop/ClientData/ClientString,전체선택,,Chọn tất cả,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CreateDlgGameTypeDefault,csysstr.ssd+FxDesktop/ClientData/ClientString,기본타입,,Loại cơ bản,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-CreateDlgGameTypeFlagHunt,csysstr.ssd+FxDesktop/ClientData/ClientString,대장잡기,Cướp cờ,Bắt đội trưởng,translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+CreateDlgGameTypeFlagHunt,csysstr.ssd+FxDesktop/ClientData/ClientString,대장잡기,Cướp cờ,Bắt thủ lĩnh,translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-17;too_long?"
 CreateDlgGameTypeHedgehog,csysstr.ssd+FxDesktop/ClientData/ClientString,고슴도치,Nhím,Nhím,translated,"vi_base=boom-re:server/src/strings.rs;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgGameTypeIamBoss,csysstr.ssd,진격의물개,,Hải cẩu tiến công,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 CreateDlgGameTypeNpcBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,몬스터전,,Đấu quái vật,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -2432,8 +2432,8 @@ CreateDlgRenewAIBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,"인공지�
 대결을 합니다.",Đấu máy,"Đấu với
 máy tính.",translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgRenewGTCaptain,csysstr.ssd+FxDesktop/ClientData/ClientString,"깃발을 단 대장을 잡으면
-승리합니다.",Đội trưởng,"Bắt được đội trưởng mang cờ
-sẽ chiến thắng.",translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+승리합니다.",Đội trưởng,"Bắt được thủ lĩnh mang cờ
+sẽ chiến thắng.",translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-17;too_long?"
 CreateDlgRenewGTHedgehog,csysstr.ssd+FxDesktop/ClientData/ClientString,"죽은 후 고슴도치로
 부활합니다.",Nhím,"Hồi sinh thành Nhím
 sau khi bị hạ.",translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -3385,7 +3385,7 @@ GameResultNiceWinKil@ClientString,FxDesktop/ClientData/ClientString,"'%s' 님께
 ",translated,"dup_key_diff;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 GameTypeAIBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,개성만점 인공지능 컴퓨터와의 한판승부! 직접 난이도를 조절하면서 게임을 즐겨보세요.,,Đọ sức với máy có trí tuệ nhân tạo đầy cá tính! Hãy tự điều chỉnh độ khó và tận hưởng trò chơi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 GameTypeDefault,csysstr.ssd+FxDesktop/ClientData/ClientString,상대방을 물풍선으로 가두어 터뜨리면 승리할 수 있습니다. 기본 타입에서는 다양한 미션맵을 플레이할 수 있습니다.,,"Nhốt đối phương trong bom nước rồi làm nổ để chiến thắng. Ở kiểu cơ bản, bạn có thể chơi nhiều bản đồ nhiệm vụ.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-GameTypeFlaghunt,csysstr.ssd+FxDesktop/ClientData/ClientString,깃발을 달고 있는 상대팀의 대장을 노리세요. 대장만 잡으면 게임에서 승리할 수 있습니다. ,,Hãy nhắm vào đội trưởng mang cờ của đội đối thủ. Chỉ cần bắt được đội trưởng là chiến thắng. ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+GameTypeFlaghunt,csysstr.ssd+FxDesktop/ClientData/ClientString,깃발을 달고 있는 상대팀의 대장을 노리세요. 대장만 잡으면 게임에서 승리할 수 있습니다. ,,Hãy nhắm vào thủ lĩnh mang cờ của đội đối thủ. Chỉ cần bắt được thủ lĩnh là chiến thắng. ,translated,sửa tay qua trang catalog 2026-11-17;too_long?
 GameTypeHedgehog,csysstr.ssd+FxDesktop/ClientData/ClientString,죽으면 귀여운 고슴도치로 변신! 고슴도치는 물방울을 바로 터뜨릴 수 있는 능력을 가집니다.,,Biến thành Nhím dễ thương khi bị hạ! Nhím có thể làm vỡ bóng nước ngay lập tức.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 GameTypeRehab,csysstr.ssd+FxDesktop/ClientData/ClientString,제한시간 동안 얼마나 많은 Kill수를 올리는가를 겨루는 게임입니다. 정신없는 무한대결 시작!,,Thi đấu để đạt nhiều Kill nhất trong thời gian giới hạn. Bắt đầu trận chiến bất tận đầy náo nhiệt!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 GameTypeTimebomb,csysstr.ssd+FxDesktop/ClientData/ClientString,술래가 되어서 5초동안 폭탄을 옮기지 못하면 폭발하게 됩니다. 술래가 아닌 플레이어를 터치해보세요. 폭탄이 옮겨갑니다!,,"Nếu cầm bom mà không chuyển cho người khác trong 5 giây, bom sẽ nổ. Hãy chạm vào người chơi không cầm bom để chuyển bom!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -4725,10 +4725,10 @@ MissionBulaMsg@ClientString,FxDesktop/ClientData/ClientString,"미라와 박쥐�
 MissionCaptainMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,"머리 위에 깃발을 달고 있는
 적의 대장을 찾아라!
 우리팀 대장을 보호하고
-적의 대장을 잡으면 승리!",,"Tìm đội trưởng đối phương
+적의 대장을 잡으면 승리!",,"Tìm thủ lĩnh đối phương
 có cờ trên đầu!
-Bảo vệ đội trưởng phe mình
-và bắt đội trưởng đối phương để chiến thắng!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+Bảo vệ thủ lĩnh phe mình
+và bắt thủ lĩnh đối phương để chiến thắng!",translated,sửa tay qua trang catalog 2026-11-17;too_long?
 MissionChannelExpBonus,csysstr.ssd,미션 채널 이벤트로 보너스경험치25%를 받았습니다.,,Bạn nhận được kinh nghiệm thưởng từ Sự kiện kênh nhiệm vụ: 25%.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 MissionGoldFlagModeStartMsg,csysstr.ssd,"황금 깃발 10개를 획득하라!
 깃발을 모으면 승점이 팍팍!",,"Nhận được 10 lá cờ vàng!
@@ -17171,15 +17171,15 @@ q:AprilFool3_RewardMsg02,csysqstr.ssd,7777만번째 접속자로 선정되셨습
 q:AprilFool3_RewardMsg03,csysqstr.ssd,7777만번째 접속자로 선정되셨습니다. 보상으로 스프링10개(7일권)을 드립니다!,,Bạn được chọn là người đăng nhập thứ 7777 vạn. Tặng bạn 10 lò xo (7 ngày) làm phần thưởng!,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:AprilFool3_RewardMsg04,csysqstr.ssd,7777만번째 접속자로 선정되셨습니다. 보상으로 센서10개(7일권)을 드립니다!,,Bạn được chọn là người đăng nhập thứ 7777 vạn. Tặng bạn 10 cảm biến (7 ngày) làm phần thưởng!,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:AprilFool3_RewardMsg05,csysqstr.ssd,7777만번째 접속자로 선정되셨습니다. 보상으로 카트라넥(30일권)을 드립니다!,,Bạn được chọn là người đăng nhập thứ 7777 vạn. Tặng bạn Kart Rider Nexon (30 ngày) làm phần thưởng!,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-q:BnbQuiz_Answer_2_4_4,csysqstr.ssd,대장잡기,,Bắt đội trưởng,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+q:BnbQuiz_Answer_2_4_4,csysqstr.ssd,대장잡기,,Bắt thủ lĩnh,translated,sửa tay qua trang catalog 2026-11-17;too_long?
 q:BnbQuiz_Answer_2_5_1,csysqstr.ssd,고슴도치,,Nhím,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 q:BnbQuiz_Answer_2_5_2,csysqstr.ssd,시한폭탄,,Bom hẹn giờ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:BnbQuiz_Answer_2_5_3,csysqstr.ssd,부활대전,,Đấu hồi sinh,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-q:BnbQuiz_Answer_2_5_4,csysqstr.ssd,대장잡기,,Bắt đội trưởng,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+q:BnbQuiz_Answer_2_5_4,csysqstr.ssd,대장잡기,,Bắt thủ lĩnh,translated,sửa tay qua trang catalog 2026-11-17;too_long?
 q:BnbQuiz_Answer_2_6_1,csysqstr.ssd,고슴도치,,Nhím,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 q:BnbQuiz_Answer_2_6_2,csysqstr.ssd,시한폭탄,,Bom hẹn giờ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:BnbQuiz_Answer_2_6_3,csysqstr.ssd,부활대전,,Đấu hồi sinh,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-q:BnbQuiz_Answer_2_6_4,csysqstr.ssd,대장잡기,,Bắt đội trưởng,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+q:BnbQuiz_Answer_2_6_4,csysqstr.ssd,대장잡기,,Bắt thủ lĩnh,translated,sửa tay qua trang catalog 2026-11-17;too_long?
 q:BnbQuiz_Answer_3_1_1,csysqstr.ssd,문어,,Bạch tuộc,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:BnbQuiz_Answer_3_1_2,csysqstr.ssd,펭귄,,Chim cánh cụt,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:BnbQuiz_Answer_3_1_3,csysqstr.ssd,물개,,Hải cẩu,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -23451,7 +23451,7 @@ q:BnbQuiz_Answer_2_2_4,csysqstr.ssd,우니,,Bé Bỏng,translated,"dịch lại 
 q:BnbQuiz_Answer_2_3_1,csysqstr.ssd,고슴도치,,Nhím,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 q:BnbQuiz_Answer_2_3_2,csysqstr.ssd,시한폭탄,,Bom hẹn giờ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:BnbQuiz_Answer_2_3_3,csysqstr.ssd,부활대전,,Đấu hồi sinh,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-q:BnbQuiz_Answer_2_3_4,csysqstr.ssd,대장잡기,,Bắt đội trưởng,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+q:BnbQuiz_Answer_2_3_4,csysqstr.ssd,대장잡기,,Bắt thủ lĩnh,translated,sửa tay qua trang catalog 2026-11-17;too_long?
 q:BnbQuiz_Answer_2_4_1,csysqstr.ssd,고슴도치,,Nhím,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 q:BnbQuiz_Answer_2_4_2,csysqstr.ssd,시한폭탄,,Bom hẹn giờ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 q:BnbQuiz_Answer_2_4_3,csysqstr.ssd,부활대전,,Đấu hồi sinh,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"

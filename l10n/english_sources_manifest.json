@@ -11,7 +11,7 @@
     "clientextensions/swish/swish.idx": "38dfe7a3f237bfa9aff95b96374adc4a7aa2a590c93712d911b81d0927c8e53f",
     "clientextensions/swish/swish.idd": "760bd0c23e9512e9dd7e0cf2ff95d04d5625e28fa6dff9ed55b8e3d140c275b9"
   },
-  "catalog_kr_sha256": "06c039bdc6bdcc91382679bea3679dbf61745d314219436ac3e54b6eb88ec622",
+  "catalog_kr_sha256": "7f15ee761d9eb361d28b44ffae71aadaf368e9188a7b66e2fe88ed6ae42776b4",
   "english_raw_records": 7750,
   "english_unique_ids": 7454,
   "english_variants": 7556,
@@ -40,11 +40,11 @@
   "images_todo_sha256": "d52542692047b54d977d0bfc9213ff05e399be7d8e816c1d56d406f54a57a21a",
   "catalog_rows": 33486,
   "status": {
-    "candidate": 5523,
-    "machine": 26788,
+    "candidate": 5522,
+    "machine": 26782,
     "casefold_candidate": 197,
     "missing": 544,
-    "manual": 434
+    "manual": 441
   },
   "format_mismatch": 0
 }

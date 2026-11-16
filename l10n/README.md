@@ -14,6 +14,7 @@ chưa vẽ lại hoặc Việt hóa ảnh. Xem hướng dẫn duyệt ảnh (`/h
 | `tm.csv` | bộ nhớ dịch `ko → vi` (một chuỗi Hàn dịch một lần, dùng cho mọi id trùng chuỗi) |
 | `tm_id.csv` | ghi đè theo `id` (khoá trùng bản VN nhưng nghĩa KR khác…) |
 | `reused_review.csv` | các dòng lấy từ VN còn cần rà sau đợt sửa nghĩa mới nhất |
+| `newline_exempt.csv` | `id, lang, notes`: dòng được phép khác số lần xuống dòng so với câu Hàn khi nhập sửa tay (§9), dùng cho dòng nhắc dài mà client tự ngắt giữa từ |
 | `review_audit.csv` | đối chiếu trước/sau và quyết định duyệt cho toàn bộ 1.030 dòng review ban đầu, cộng 15 câu hỏi được bản địa hóa |
 | `review_pending.csv` | toàn bộ dòng hiện còn `review`, kèm lý do cụ thể |
 | `quiz_vi.csv` | 15 câu đố chơi chữ Việt, bốn lựa chọn và vị trí đáp án đúng tương ứng câu Hàn |
@@ -526,6 +527,14 @@ cụ dựng không có kiểu ghi 1258; ghi lại để biết chỗ khi vá UTF
     `boom-re/server/src/strings.rs`; client VN không có chữ riêng cho hai khóa này.
   - Tên phòng tối đa 22 byte: `DefaultRoomTitle1` → `Ai vô cũng được`, `DefaultRoomTitle2` → `Ai chơi chung hông~`.
     Client VN không có chữ cho `DefaultRoomTitle*`.
+  - Sửa tiếp cùng ngày sau lượt duyệt giao diện (chủ dự án duyệt 2026-11-17):
+    - `PREMAX` → `Số chỗ`; tooltip `Menu` → `Tùy chọn`; bản Anh `CreateDlgModeManner` → `Even Teams`.
+    - 대장잡기: bản Việt **Bắt thủ lĩnh** (trước là "Bắt đội trưởng", tràn khỏi nút loại game; nút chứa khoảng
+      71 điểm), bản Anh **Leader Hunt** (trước lẫn ba tên Catch the Leader, Catch the Captain, Flag Hunt). Đổi ở nút,
+      4 đáp án đố, `CannotSelectFairMode`; ba câu mô tả bản Việt đổi "đội trưởng" → "thủ lĩnh". Tên vật phẩm
+      "đội trưởng Nhanh Nhẩu" (캡틴다오) giữ nguyên.
+    - `SuperChiefCanStartDetail` bản Anh: chèn `\n` ở ranh giới từ (ghi ở `newline_exempt.csv`). Client 00967 ngắt
+      dòng nhắc trong ô chat theo bề rộng ký tự; mỗi dòng nên không quá khoảng 390 điểm.
 - Việc còn mở:
   - Lệnh chat bản Việt (`/ai`, `/odau`, `/moi`, `/duoi`, `/tenphong`, `/tudong`, `/trieutap`…) và bản Anh
     (`/summon`, `/broadcast`, `/jewelcandy`…) chỉ chạy được nếu engine nhận các bí danh này; client KR gốc chỉ biết lệnh

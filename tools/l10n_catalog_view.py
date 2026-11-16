@@ -136,6 +136,9 @@ def import_edits(path):
     tid_fields, tid = read(L10N / 'tm_id.csv', 'id')
     _, en_id = read(L10N / 'en_id.csv', 'id')
     aud_fields, audit = read(L10N / 'review_audit.csv', 'id')
+    # Dòng được phép khác số lần xuống dòng so với câu Hàn (client tự ngắt dòng giữa từ): id, lang, notes.
+    with (L10N / 'newline_exempt.csv').open(encoding='utf-8', newline='') as f:
+        exempt = {(r['id'], r['lang']) for r in csv.DictReader(f)}
     applied, rejected = [], []
     for e in edits:
         row = catalog.get(e['id'])
@@ -146,7 +149,7 @@ def import_edits(path):
         if row['ko'] != e['ko']:
             rejected.append((e['id'], lang, 'câu Hàn trong catalog đã đổi từ lúc xuất'))
             continue
-        if not EN.formatting(row['ko'], new) or new.count('\n') != row['ko'].count('\n'):
+        if not EN.formatting(row['ko'], new) or ((e['id'], lang) not in exempt and new.count('\n') != row['ko'].count('\n')):
             rejected.append((e['id'], lang, 'lệch tham số định dạng, thẻ hoặc số lần xuống dòng so với câu Hàn'))
             continue
         if lang == 'vi' and BAN.search(new):

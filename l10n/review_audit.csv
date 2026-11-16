@@ -36,7 +36,7 @@ ConfirmBuy,"구입하기 전 아이템의 설명, 기간, 수량을 확인해주
 ConfirmBuy@ClientString,%s를(을) 구매하시겠습니까?,Bạn có muốn mua vật phẩm này?,Bạn có muốn mua %s?,Bạn muốn mua %s?,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 ConfirmPresent,님께 아이템을 선물하시겠습니까?,, có phải là người bạn muốn tặng vật phẩm không?,có muốn gởi tặng vật phẩm cho người chơi này không?,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 ConnectingToSvr,잠시만 기다려주세요,Đang kết nối máy chủ...,Vui lòng chờ trong giây lát,Vui lòng chờ một chút,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-CreateDlgGameTypeFlagHunt,대장잡기,Cướp cờ,Bắt đội trưởng,Bắt đội trưởng,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+CreateDlgGameTypeFlagHunt,대장잡기,Cướp cờ,Bắt đội trưởng,Bắt thủ lĩnh,translated,sửa tay qua trang catalog 2026-11-17,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgGameTypeRehab,부활대전,Hồi sinh,Đấu hồi sinh,Đấu hồi sinh,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 CreateDlgRenewAIBattle,"인공지능 컴퓨터와
 대결을 합니다.",Đấu máy,"Đấu với máy
@@ -44,8 +44,8 @@ trí tuệ nhân tạo.","Đấu với
 máy tính.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 CreateDlgRenewGTCaptain,"깃발을 단 대장을 잡으면
 승리합니다.",Đội trưởng,"Bắt được đội trưởng mang cờ
-là thắng.","Bắt được đội trưởng mang cờ
-sẽ chiến thắng.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+sẽ chiến thắng.","Bắt được thủ lĩnh mang cờ
+sẽ chiến thắng.",translated,sửa tay qua trang catalog 2026-11-17,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgRenewGTHedgehog,"죽은 후 고슴도치로
 부활합니다.",Nhím,"Sau khi chết sẽ hồi sinh
 thành nhím.","Hồi sinh thành Nhím

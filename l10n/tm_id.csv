@@ -22,12 +22,12 @@ Nếu có vật phẩm Siêu chủ phòng, bạn có thể mời cả người c
 ConfirmBuy,"Vui lòng kiểm tra mô tả, thời hạn và số lượng vật phẩm trước khi mua.",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 ConfirmBuy@ClientString,Bạn muốn mua %s?,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 ConnectingToSvr,Vui lòng chờ một chút,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
-CreateDlgGameTypeFlagHunt,Bắt đội trưởng,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
+CreateDlgGameTypeFlagHunt,Bắt thủ lĩnh,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-17"
 CreateDlgGameTypeRehab,Đấu hồi sinh,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgRenewAIBattle,"Đấu với
 máy tính.",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
-CreateDlgRenewGTCaptain,"Bắt được đội trưởng mang cờ
-sẽ chiến thắng.",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
+CreateDlgRenewGTCaptain,"Bắt được thủ lĩnh mang cờ
+sẽ chiến thắng.",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-17"
 CreateDlgRenewGTHedgehog,"Hồi sinh thành Nhím
 sau khi bị hạ.",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgRenewGTSurvival,"Liên tục hồi sinh
@@ -5326,3 +5326,13 @@ q:SandDesert1_SysQuestIngMsg,"Tham gia trận Quái vật mùa 2, Vua Cát! Mỗ
 q:SandDesert2_SysQuestIngMsg,"Tham gia trận Quái vật mùa 2, Vua Cát! Mỗi khi hoàn thành nhiệm vụ, bạn nhận được thật nhiều vật phẩm! Hoàn thành cả ba nhiệm vụ để nhận được đồ trang trí ô Vua Cát!",translated,"sửa 2026-11-15 (review 2: tên riêng, xưng hô, lệnh chat)"
 DefaultRoomTitle1,Ai vô cũng được,translated,sửa tay qua trang catalog 2026-11-16
 DefaultRoomTitle2,Ai chơi chung hông~,translated,sửa tay qua trang catalog 2026-11-16
+CannotSelectFairMode,Không thể chơi Bắt thủ lĩnh trong chế độ công bằng.,translated,sửa tay qua trang catalog 2026-11-17
+GameTypeFlaghunt,Hãy nhắm vào thủ lĩnh mang cờ của đội đối thủ. Chỉ cần bắt được thủ lĩnh là chiến thắng. ,translated,sửa tay qua trang catalog 2026-11-17
+MissionCaptainMsg,"Tìm thủ lĩnh đối phương
+có cờ trên đầu!
+Bảo vệ thủ lĩnh phe mình
+và bắt thủ lĩnh đối phương để chiến thắng!",translated,sửa tay qua trang catalog 2026-11-17
+q:BnbQuiz_Answer_2_3_4,Bắt thủ lĩnh,translated,sửa tay qua trang catalog 2026-11-17
+q:BnbQuiz_Answer_2_4_4,Bắt thủ lĩnh,translated,sửa tay qua trang catalog 2026-11-17
+q:BnbQuiz_Answer_2_5_4,Bắt thủ lĩnh,translated,sửa tay qua trang catalog 2026-11-17
+q:BnbQuiz_Answer_2_6_4,Bắt thủ lĩnh,translated,sửa tay qua trang catalog 2026-11-17
