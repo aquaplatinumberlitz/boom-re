@@ -30631,7 +30631,7 @@ csysfxmg.ssd:26,csysfxmg.ssd,운영자는 절대 메신저 친구 추가를 하�
 csysfxmg.ssd:27,csysfxmg.ssd,"운영자는 비밀번호, 넥슨아이디, 개인정보를 묻지 않습니다. 비밀번호 관리에 주의하세요.","GM không bao giờ hỏi mật khẩu, ID Nexon hay thông tin cá nhân.",translated,"GMs do not ask for your password, Nexon ID, or personal information. Keep your password safe.",tm_en.csv,machine,
 csysfxmg.ssd:28,csysfxmg.ssd,"해킹/자료 변조 등은 법에 따라 처벌받을 수 있으며, 약관에 의거하여 제재될 수 있습니다.","Hành vi hack, chỉnh sửa dữ liệu có thể bị xử phạt theo pháp luật và chế tài theo điều khoản sử dụng.",translated,Hacking or modifying data may be punishable by law and subject to penalties under the terms of service.,tm_en.csv,machine,
 csysfxmg.ssd:29,csysfxmg.ssd,[내정보]에 넥슨아이디를 등록하지 않으면 비밀번호 분실 시 아이디를 찾을 수 없습니다.,"Nếu không đăng ký ID Nexon trong [Cá nhân], bạn sẽ không thể tìm lại ID khi quên mật khẩu.",translated,"If you do not register your Nexon ID in [My Info], you cannot recover your ID if you lose your password.",tm_en.csv,machine,
-csysfxmg.ssd:30,csysfxmg.ssd,"F1키=도움말, F4키=스크린샷, F5=레디/스타트, F10=게임옵션 설정","Phím F1=Trợ giúp, phím F4=Chụp màn hình, F5=Sẵn sàng/Bắt đầu, F10=Cài đặt Tùy chọn game",translated,"F1=Help, F4=Screenshot, F5=Ready/Start, F10=Game Options",tm_en.csv,machine,
+csysfxmg.ssd:30,csysfxmg.ssd,"F1키=도움말, F4키=스크린샷, F5=레디/스타트, F10=게임옵션 설정","F1 Trợ giúp, F4 Chụp ảnh, F5 Sẵn sàng/Bắt đầu, F10 Tùy chọn",translated,"F1=Help, F4=Screenshot, F5=Ready/Start, F10=Game Options",tm_en.csv,machine,
 map:Random,fxdynmapinfo.ssd,전체 랜덤,Tất cả Ngẫu nhiên,translated,Random,fxdynmapinfo.ssd,candidate,meaning_checked
 map:BookMarkRandom,fxdynmapinfo.ssd,즐겨찾기 랜덤,Ngẫu nhiên yêu thích,translated,Favorites Random,tm_en.csv,machine,
 map:CaJJ_Space01,fxdynmapinfo.ssd,안드로메다,Andromeda,translated,Andromeda,tm_en.csv,machine,
