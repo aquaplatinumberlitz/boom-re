@@ -125,6 +125,19 @@ def maps(raw, catalog, lang, encoding, stats):
     return bytes(out)
 
 
+def fxmg(raw, catalog, lang, encoding, stats):
+    """csysfxmg: u16 count, count × (u8 kind, lstr text); id theo thứ tự như l10n_extract."""
+    count = struct.unpack_from('<H', raw)[0]
+    out, p = bytearray(raw[:2]), 2
+    for i in range(count):
+        out += raw[p:p+1]; p += 1
+        text, p = L.lstr(raw, p)
+        out += packed(get_text(f'csysfxmg.ssd:{i}', text, catalog, lang, stats, encoding).encode(encoding))
+    if p != len(raw):
+        raise ValueError('csysfxmg parse chưa hết')
+    return bytes(out)
+
+
 def stock(raw, catalog, lang, encoding, stats):
     count = struct.unpack_from('<I', raw)[0]
     out, p = bytearray(raw[:4]), 4
@@ -388,7 +401,7 @@ def main():
     for name in check_names:
         data = (root/name).read_bytes()
         assert int.from_bytes(data[4:8], 'little') == (zlib.adler32(data[8:], 0) & 0xffffffff), f'checksum gốc sai: {name}'
-    names=['csysstr.ssd','csysqstr.ssd','fxdynmapinfo.ssd']+[f'fxstock{i}.ini' for i in range(4)]
+    names=['csysstr.ssd','csysqstr.ssd','fxdynmapinfo.ssd','csysfxmg.ssd']+[f'fxstock{i}.ini' for i in range(4)]
     results={}
     for name in names:
         stats={'replaced':0,'retained':0,'hangul':0,'format_rejected':0,'encoding_rejected':0,'unencodable_characters':{}}
@@ -396,6 +409,7 @@ def main():
         if a.lang=='ko' and a.encoding=='cp949':
             if name.startswith('fxstock'): rebuilt=stock(raw,catalog,a.lang,a.encoding,stats)
             elif name=='fxdynmapinfo.ssd': rebuilt=maps(raw,catalog,a.lang,a.encoding,stats)
+            elif name=='csysfxmg.ssd': rebuilt=fxmg(raw,catalog,a.lang,a.encoding,stats)
             else: rebuilt=pair_file(raw,name,catalog,a.lang,a.encoding,stats)
             assert rebuilt==raw
             built=write_ssi(original, rebuilt)
@@ -407,6 +421,7 @@ def main():
         else:
             if name.startswith('fxstock'): rebuilt=stock(raw,catalog,a.lang,a.encoding,stats)
             elif name=='fxdynmapinfo.ssd': rebuilt=maps(raw,catalog,a.lang,a.encoding,stats)
+            elif name=='csysfxmg.ssd': rebuilt=fxmg(raw,catalog,a.lang,a.encoding,stats)
             else: rebuilt=pair_file(raw,name,catalog,a.lang,a.encoding,stats)
             (out/name).write_bytes(write_ssi(original,rebuilt))
             assert L.ssd_raw(out/name)==rebuilt

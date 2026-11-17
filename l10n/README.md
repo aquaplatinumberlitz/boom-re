@@ -540,8 +540,8 @@ cụ dựng không có kiểu ghi 1258; ghi lại để biết chỗ khi vá UTF
   `Bom hẹn giờ` → **Hẹn giờ** (chỉ tên chế độ; vật phẩm `stock:80137` và `BeginnerHelpMsg_ItemRemoteBomb` giữ "Bom hẹn giờ").
   `tm.csv` giữ nguyên dòng `시한폭탄` vì dùng chung với tên vật phẩm; các dòng theo id nằm ở `tm_id.csv`.
   `csysfxmg.ssd:8/9/17/22/23` (dòng chạy chữ, mẹo Zombie) viết lại theo bản chủ dự án đưa, dùng VÀNG (루찌) và
-  Chế độ Zombie theo glossary. `tools/l10n_build.py` chưa ghi `csysfxmg.ssd` ra bản dựng (chỉ kiểm checksum), nên các
-  dòng này vẫn hiện tiếng Hàn trong game.
+  Chế độ Zombie theo glossary. Từ 2026-11-17 `tools/l10n_build.py` ghi cả `csysfxmg.ssd` (trước đó chỉ kiểm checksum
+  nên các dòng này hiện tiếng Hàn): ko/cp949 dựng lại giống từng byte; vi thay 31/31 dòng, còn dòng 1 giữ tên GM tiếng Hàn.
 - Việc còn mở:
   - Lệnh chat bản Việt (`/ai`, `/odau`, `/moi`, `/duoi`, `/tenphong`, `/tudong`, `/trieutap`…) và bản Anh
     (`/summon`, `/broadcast`, `/jewelcandy`…) chỉ chạy được nếu engine nhận các bí danh này; client KR gốc chỉ biết lệnh
