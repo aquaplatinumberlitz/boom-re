@@ -552,3 +552,8 @@ cụ dựng không có kiểu ghi 1258; ghi lại để biết chỗ khi vá UTF
   - 15 câu đố Việt nhiều dòng hơn câu Hàn, cần xem tràn khung trên client;
   - `PremiumSlotAdvMotionBlur` ("Vút vút cộng") nghe gượng;
   - `boom-kr-server/docs/content/client-language.md` còn trỏ commit `e5d1bac` và số liệu bản Việt cũ.
+- Tooltip bốn tab lọc nhân vật (`전체/일반/럭셔리/슈퍼`) hiện khoá thô: exe tra khoá `1P_TooltpString_All/Normal/Luxury/Super`
+  (gõ sai `Tooltp`; kèm biến thể `1_2P_TooltpString_*` chưa rõ chỗ dùng) qua bảng chuỗi chung 0x13950d0 → 0x1394d20, hàm này
+  trả lại chính khoá khi không tìm thấy. Bốn khoá không có trong `csysstr.ssd`, ClientString của KR lẫn VN (VN cũng thiếu),
+  nên client Hàn gốc cũng hiện khoá thô. `l10n_build.py` thêm 4 dòng (`EXTRA_KEYS`) vào `csysstr.ssd` và ClientString cho vi
+  (`Tất cả/Thường/Cao cấp/Siêu cấp`) và en (`All/Normal/Luxury/Super`); ko không đổi. Chưa kiểm trên client chạy.

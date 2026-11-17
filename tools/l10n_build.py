@@ -41,6 +41,14 @@ FALLBACK = {'—': '-', '–': '-', '‘': "'", '’': "'", '“': '"', '”': '
 # Quét exe, 13 file ssi1 và mọi entry pack KR 00967 không thấy nơi nào tham chiếu các khoá này
 # bằng byte CP949. `--keep-key-bytes` giữ byte gốc.
 KEEP_KEY_BYTES = False
+# Khoá exe tra nhưng cả KR lẫn VN đều không có trong csysstr/ClientString (tooltip bốn tab lọc nhân vật; exe viết sai
+# `Tooltp`). Chỉ thêm cho vi/en để tooltip không hiện khoá thô; bản ko giữ nguyên từng byte.
+EXTRA_KEYS = {
+    '1P_TooltpString_All': {'vi': 'Tất cả', 'en': 'All'},
+    '1P_TooltpString_Normal': {'vi': 'Thường', 'en': 'Normal'},
+    '1P_TooltpString_Luxury': {'vi': 'Cao cấp', 'en': 'Luxury'},
+    '1P_TooltpString_Super': {'vi': 'Siêu cấp', 'en': 'Super'},
+}
 PARTICLES = {'이', '가', '을', '를', '은', '는'}
 
 
@@ -97,6 +105,11 @@ def pair_file(raw, name, catalog, lang, encoding, stats):
         out += key_bytes + packed(get_text(idx, val, catalog, lang, stats, encoding).encode(encoding))
     if pos != len(raw):
         raise ValueError('pair file có dữ liệu thừa')
+    if name == 'csysstr.ssd' and lang in ('vi', 'en'):
+        for k, v in EXTRA_KEYS.items():
+            out += packed(k.encode(encoding)) + packed(v[lang].encode(encoding))
+        out[0:2] = struct.pack('<H', n + len(EXTRA_KEYS))
+        stats['extra_keys'] = len(EXTRA_KEYS)
     return bytes(out)
 
 
@@ -220,6 +233,12 @@ def pack_build(root, out, catalog, lang, encoding, stats, images=None):
             block = block[:start] + data + block[end:]
         return match.group(1) + block + match.group(3)
     replaced = pattern.sub(edit, text)
+    if lang in ('vi', 'en'):
+        extra = ''.join('  <Elem>\r\n    <LangID>1042</LangID>\r\n    <key>%s</key>\r\n    <string>%s</string>\r\n  </Elem>\r\n'
+                        % (k, v[lang]) for k, v in EXTRA_KEYS.items()).encode(encoding)
+        marker = b'</DocumentElement>'
+        assert replaced.count(marker) == 1
+        replaced = replaced.replace(marker, extra + marker)
     newblob = packed(replaced)
     replacements = [('ClientData/ClientString', newblob)] + (images or [])
     write_pack(index, out, replacements)
