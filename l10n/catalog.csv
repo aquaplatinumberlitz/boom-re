@@ -2450,8 +2450,8 @@ CreateDlgRenewMonster,csysstr.ssd+FxDesktop/ClientData/ClientString,"꼬마몬�
 거대몬스터에게 도전합니다.",Quái vật,"Diệt quái vật nhỏ rồi
 đấu quái vật khổng lồ.",translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-17;too_long?"
 CreateDlgRenewNormal,csysstr.ssd+FxDesktop/ClientData/ClientString,"유저간의 승부를 즐기며
-각종 미션을 수행합니다.",Thường,"Tranh tài cùng người chơi khác
-và thực hiện các nhiệm vụ.",translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+각종 미션을 수행합니다.",Thường,"Đấu với người chơi khác
+và làm các nhiệm vụ.",translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-17;too_long?"
 CreateDlgRenewSnowBallFight,csysstr.ssd,"겨울 스페셜 한정 오픈!
 놓지말고 던져라!",Ném tuyết,"Chỉ mở trong Sự kiện mùa đông!
 Đừng giữ, ném đi!",translated,"vi_base=boom-re:server/src/strings.rs;ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
@@ -27651,7 +27651,7 @@ csysfxmg.ssd:22,csysfxmg.ssd,좀비모드에서 유저를 감염시키면 루찌
 csysfxmg.ssd:23,csysfxmg.ssd,좀비모드에서는 게임에 져도 패배가 쌓이지 않습니다.,,"Trong Chế độ Zombie, dù thua trận cũng không bị tính vào số lần thua.",translated,kind=1;sửa tay qua trang catalog 2026-11-17;too_long?
 csysfxmg.ssd:24,csysfxmg.ssd,부정한 방법으로 타인의 주민등록번호를 이용하실 경우 불이익을 받을 수 있습니다,,Bạn có thể bị xử lý nếu sử dụng trái phép số chứng minh nhân dân của người khác,translated,"kind=0;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 csysfxmg.ssd:25,csysfxmg.ssd,지나친 게임 이용은 건강을 해칠 수도 있으니 유의해 주시기 바랍니다.,,"Chơi game quá nhiều có thể gây hại cho sức khỏe, bạn hãy lưu ý.",translated,"kind=0;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-csysfxmg.ssd:26,csysfxmg.ssd,운영자는 절대 메신저 친구 추가를 하지 않습니다. 운영자 사칭 사고에 주의하세요.,,Quản trị viên tuyệt đối không kết Bạn bè. Hãy cảnh giác với người mạo danh quản trị viên.,translated,"kind=0;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
+csysfxmg.ssd:26,csysfxmg.ssd,운영자는 절대 메신저 친구 추가를 하지 않습니다. 운영자 사칭 사고에 주의하세요.,,Quản trị viên không bao giờ kết bạn. Cẩn thận kẻ mạo danh!,translated,kind=0;sửa tay qua trang catalog 2026-11-17
 csysfxmg.ssd:27,csysfxmg.ssd,"운영자는 비밀번호, 넥슨아이디, 개인정보를 묻지 않습니다. 비밀번호 관리에 주의하세요.",,"GM không bao giờ hỏi mật khẩu, ID Nexon hay thông tin cá nhân.",translated,kind=0;sửa tay qua trang catalog 2026-11-17
 csysfxmg.ssd:28,csysfxmg.ssd,"해킹/자료 변조 등은 법에 따라 처벌받을 수 있으며, 약관에 의거하여 제재될 수 있습니다.",,"Hành vi hack, chỉnh sửa dữ liệu có thể bị xử phạt theo pháp luật và chế tài theo điều khoản sử dụng.",translated,"kind=0;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
 csysfxmg.ssd:29,csysfxmg.ssd,[내정보]에 넥슨아이디를 등록하지 않으면 비밀번호 분실 시 아이디를 찾을 수 없습니다.,,"Nếu không đăng ký ID Nexon trong [Cá nhân], bạn sẽ không thể tìm lại ID khi quên mật khẩu.",translated,"kind=0;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"

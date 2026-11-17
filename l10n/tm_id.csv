@@ -38,8 +38,8 @@ CreateDlgRenewIamBoss,"Biến thành trùm và tham gia trận chiến hành đ�
 ngoạn mục với người chơi khác!",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgRenewMonster,"Diệt quái vật nhỏ rồi
 đấu quái vật khổng lồ.",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-17"
-CreateDlgRenewNormal,"Tranh tài cùng người chơi khác
-và thực hiện các nhiệm vụ.",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
+CreateDlgRenewNormal,"Đấu với người chơi khác
+và làm các nhiệm vụ.",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);sửa tay qua trang catalog 2026-11-17"
 CreateDlgRenewSnowBallFight,"Chỉ mở trong Sự kiện mùa đông!
 Đừng giữ, ném đi!",translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgRenewSuperFighter,Đấu kỹ năng bằng chỉ số siêu cấp và vật phẩm kỹ năng!,translated,"ko_reviewed;dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
@@ -5353,3 +5353,4 @@ csysfxmg.ssd:23,"Trong Chế độ Zombie, dù thua trận cũng không bị tí
 csysfxmg.ssd:8,"{ComponentType|6}[Mẹo Zombie] Trong Chế độ Zombie, bạn có thể nhận được VÀNG khi lây nhiễm cho người chơi khác.",translated,sửa tay qua trang catalog 2026-11-17
 csysfxmg.ssd:9,"{ComponentType|6}[Mẹo Zombie] Trong Chế độ Zombie, dù thua trận cũng không bị tính vào số lần thua.",translated,sửa tay qua trang catalog 2026-11-17
 csysfxmg.ssd:27,"GM không bao giờ hỏi mật khẩu, ID Nexon hay thông tin cá nhân.",translated,sửa tay qua trang catalog 2026-11-17
+csysfxmg.ssd:26,Quản trị viên không bao giờ kết bạn. Cẩn thận kẻ mạo danh!,translated,sửa tay qua trang catalog 2026-11-17
