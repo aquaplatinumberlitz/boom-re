@@ -2695,7 +2695,7 @@ CreateDlgModeExchange,csysstr.ssd+FxDesktop/ClientData/ClientString,교환방,Ph
 CreateDlgModeFair,csysstr.ssd+FxDesktop/ClientData/ClientString,공평,Công bằng,translated,Fair,en_override.csv,candidate,settled_poptag_variant
 CreateDlgModeFree,csysstr.ssd+FxDesktop/ClientData/ClientString,자유,Tự do,translated,Any,csysstr.ssd+fx/ClientData/ClientString,candidate,meaning_checked
 CreateDlgModeManner,csysstr.ssd+FxDesktop/ClientData/ClientString,매너,Lịch sự,translated,Even Teams,en_id.csv,manual,sửa tay qua trang catalog 2026-11-16
-CreateDlgModeRandom,csysstr.ssd,랜덤,Ngẫu nhiên,translated,Random,tm_en.csv,machine,
+CreateDlgModeRandom,csysstr.ssd,랜덤,Random,translated,Random,tm_en.csv,machine,
 CreateDlgNpcThemeName,csysstr.ssd+FxDesktop/ClientData/ClientString,몬스터모드,Chế độ quái vật,translated,Monster Mode,fx/ClientData/ClientString,candidate,meaning_checked
 CreateDlgPassword,csysstr.ssd+FxDesktop/ClientData/ClientString,비밀번호,Mật khẩu,translated,Password,fx/ClientData/ClientString,candidate,meaning_checked
 CreateDlgPrivate,csysstr.ssd+FxDesktop/ClientData/ClientString,비밀방,Phòng kín,translated,Private,fx/ClientData/ClientString,candidate,meaning_checked
@@ -9949,7 +9949,7 @@ PreGrade,csysstr.ssd+FxDesktop/ClientData/ClientString,급,Cấp,translated,Rank
 PreGradeMax,csysstr.ssd+FxDesktop/ClientData/ClientString,래더기초 채널에서는 초단까지만 획득 가능합니다.,"Ở kênh Xếp hạng cơ bản, bạn chỉ có thể đạt tới sơ đẳng.",translated,You can only reach First Dan in the Basic Ladder Channel.,tm_en.csv,machine,
 PREHOT,csysstr.ssd+FxDesktop/ClientData/ClientString,인기맵,Bản đồ phổ biến,translated,Popular,fx/ClientData/ClientString,candidate,meaning_checked
 PRELEVEL,csysstr.ssd+FxDesktop/ClientData/ClientString,레  벨,C  ấp,translated,Level,fx/ClientData/ClientString,candidate,meaning_checked
-PREMAX,csysstr.ssd+FxDesktop/ClientData/ClientString,인  원,Số chỗ,translated,Players,fx/ClientData/ClientString,candidate,meaning_checked
+PREMAX,csysstr.ssd+FxDesktop/ClientData/ClientString,인  원,Người,translated,Players,fx/ClientData/ClientString,candidate,meaning_checked
 PREMAXATTR,csysstr.ssd,최대능력치,Chỉ số tối đa,translated,Max Stats,tm_en.csv,machine,
 PremiumOnly,csysstr.ssd+FxDesktop/ClientData/ClientString, 프리미엄 채널에서만 이용 가능한 맵입니다. 다른 맵을 선택해 주세요., Bản đồ này chỉ dùng được ở kênh cao cấp. Hãy chọn bản đồ khác.,translated, This map is only available in Premium channels. Please select another map.,fx/ClientData/ClientString,candidate,whitespace_from_kr
 PremiumOnlyMap,csysstr.ssd+FxDesktop/ClientData/ClientString, 해당 맵은 지존권이 있어야 선택할 수 있습니다. 지존권 유저의 혜택을 누리실 수 있는 지존권을 지금 구매하시겠습니까?, Cần có vé cao thủ mới chọn được bản đồ này. Bạn muốn mua vé cao thủ để nhận các ưu đãi ngay không?,translated, This map requires a Premium Pass. Would you like to purchase a Premium Pass now?,fx/ClientData/ClientString,candidate,whitespace_from_kr
