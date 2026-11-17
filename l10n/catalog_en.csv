@@ -1848,7 +1848,7 @@ CanNotProposeSelf,csysstr.ssd+FxDesktop/ClientData/ClientString,"자신에게는
 CannotProposeToSquareUser,csysstr.ssd+FxDesktop/ClientData/ClientString,상대방이 현재 광장에 있어서 커플 신청을 할 수 없습니다.,Đối phương đang ở quảng trường nên không thể gởi lời mời đôi.,translated,Cannot propose while a player is in Town!,csysstr.ssd,candidate,whitespace_from_kr
 CannotQuestInRPGGameStage,csysstr.ssd,게임 중에는 퀘스트를 완료할 수 없습니다.,Không thể hoàn thành Nhiệm vụ trong trận.,translated,You cannot complete a Quest during a game.,tm_en.csv,machine,
 CannotQuestInShop,csysstr.ssd+FxDesktop/ClientData/ClientString,상점에서는 퀘스트를 완료할 수 없습니다.,Không thể hoàn thành Nhiệm vụ trong Siêu thị.,translated,Quests cannot be completed in the shop.,fx/ClientData/ClientString,candidate,meaning_checked
-CannotSelectFairMode,csysstr.ssd+FxDesktop/ClientData/ClientString,공평모드에서는 대장잡기를 할 수 없습니다.,Không thể chơi Bắt thủ lĩnh trong chế độ công bằng.,translated,Leader Hunt cannot be played in Fair mode.,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
+CannotSelectFairMode,csysstr.ssd+FxDesktop/ClientData/ClientString,공평모드에서는 대장잡기를 할 수 없습니다.,Không thể chơi Bắt trùm trong chế độ công bằng.,translated,Leader Hunt cannot be played in Fair mode.,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 CannotSelectMapRPGUserLevelNoSuit,csysstr.ssd,유저 레벨이 낮아 지금 선택하신 맵에 참여할 수 없는 유저(%s)가 있습니다.,Có người chơi (%s) không thể tham gia bản đồ đã chọn do cấp quá thấp.,translated,Player (%s) has a Level too low to join the selected map.,tm_en.csv,machine,
 CannotSendMsgMySelf,csysstr.ssd+FxDesktop/ClientData/ClientString,자신에게는 메시지를 보낼 수 없습니다.,Bạn không thể tự gởi tin nhắn cho mình.,translated,You cannot send a message to yourself.,fx/ClientData/ClientString,candidate,meaning_checked
 CannotSendSmsByNoNexonId,csysstr.ssd,이메일아이디가 등록되어 있지 않은 경우 쪽지를 보낼 수 없습니다.,Không thể gởi thư khi chưa đăng ký ID email.,translated,You cannot send messages without registering an email ID.,tm_en.csv,machine,
@@ -2680,14 +2680,14 @@ CreateDlgGameType,csysstr.ssd+FxDesktop/ClientData/ClientString,게임타입,Lo�
 CreateDlgGameTypeAIBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,협공배틀,Đấu hợp sức,translated,Co-op Battle,tm_en.csv,machine,
 CreateDlgGameTypeAll,csysstr.ssd+FxDesktop/ClientData/ClientString,전체선택,Chọn tất cả,translated,All,csysstr.ssd,candidate,meaning_checked
 CreateDlgGameTypeDefault,csysstr.ssd+FxDesktop/ClientData/ClientString,기본타입,Loại cơ bản,translated,Default,fx/ClientData/ClientString,candidate,meaning_checked
-CreateDlgGameTypeFlagHunt,csysstr.ssd+FxDesktop/ClientData/ClientString,대장잡기,Bắt thủ lĩnh,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
+CreateDlgGameTypeFlagHunt,csysstr.ssd+FxDesktop/ClientData/ClientString,대장잡기,Bắt trùm,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 CreateDlgGameTypeHedgehog,csysstr.ssd+FxDesktop/ClientData/ClientString,고슴도치,Nhím,translated,Hedgehog,csysstr.ssd+fx/ClientData/ClientString,candidate,meaning_checked
 CreateDlgGameTypeIamBoss,csysstr.ssd,진격의물개,Hải cẩu tiến công,translated,Seal Attack,tm_en.csv,machine,
 CreateDlgGameTypeNpcBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,몬스터전,Đấu quái vật,translated,Monster,csysstr.ssd,candidate,meaning_checked
-CreateDlgGameTypeRehab,csysstr.ssd+FxDesktop/ClientData/ClientString,부활대전,Đấu hồi sinh,translated,Revival,fx/ClientData/ClientString,candidate,meaning_checked
+CreateDlgGameTypeRehab,csysstr.ssd+FxDesktop/ClientData/ClientString,부활대전,Hồi sinh,translated,Revival,fx/ClientData/ClientString,candidate,meaning_checked
 CreateDlgGameTypeSnowBallFight,csysstr.ssd,눈싸움,Ném tuyết,translated,Snowball Fight,tm_en.csv,machine,
 CreateDlgGameTypeSuperFighter,csysstr.ssd,슈퍼파이터,Siêu chiến binh,translated,Super Fighter,tm_en.csv,machine,
-CreateDlgGameTypeTimeBomb,csysstr.ssd+FxDesktop/ClientData/ClientString,시한폭탄,Bom hẹn giờ,translated,Time Bomb,csysstr.ssd+fx/ClientData/ClientString,candidate,meaning_checked
+CreateDlgGameTypeTimeBomb,csysstr.ssd+FxDesktop/ClientData/ClientString,시한폭탄,Hẹn giờ,translated,Time Bomb,csysstr.ssd+fx/ClientData/ClientString,candidate,meaning_checked
 CreateDlgGameTypeZzolman,csysstr.ssd,쫄맨의외출,Zzolman đi chơi,translated,Zzolman's Outing,tm_en.csv,machine,
 CreateDlgMode,csysstr.ssd+FxDesktop/ClientData/ClientString,모드,Chế độ,translated,Mode,en_review.csv,machine,replaces_poptag_text
 CreateDlgModeChatting,csysstr.ssd+FxDesktop/ClientData/ClientString,채팅방,Phòng trò chuyện,translated,Chat Room,fx/ClientData/ClientString,candidate,meaning_checked
@@ -2704,7 +2704,7 @@ CreateDlgRenewAIBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,"인공지�
 máy tính.",translated,"Battle against
 an AI computer.",en_review.csv,machine,replaces_poptag_text
 CreateDlgRenewGTCaptain,csysstr.ssd+FxDesktop/ClientData/ClientString,"깃발을 단 대장을 잡으면
-승리합니다.","Bắt được thủ lĩnh mang cờ
+승리합니다.","Bắt được trùm mang cờ
 sẽ chiến thắng.",translated,"Catch the captain carrying the flag
 to win.",en_review.csv,machine,replaces_poptag_text
 CreateDlgRenewGTHedgehog,csysstr.ssd+FxDesktop/ClientData/ClientString,"죽은 후 고슴도치로
@@ -3802,7 +3802,7 @@ GameResultNiceWinKil@ClientString,FxDesktop/ClientData/ClientString,"'%s' 님께
 ",tm_en.csv,machine,
 GameTypeAIBattle,csysstr.ssd+FxDesktop/ClientData/ClientString,개성만점 인공지능 컴퓨터와의 한판승부! 직접 난이도를 조절하면서 게임을 즐겨보세요.,Đọ sức với máy có trí tuệ nhân tạo đầy cá tính! Hãy tự điều chỉnh độ khó và tận hưởng trò chơi.,translated,Challenge a computer opponent with a personality of its own! Adjust the difficulty and enjoy the game.,tm_en.csv,machine,
 GameTypeDefault,csysstr.ssd+FxDesktop/ClientData/ClientString,상대방을 물풍선으로 가두어 터뜨리면 승리할 수 있습니다. 기본 타입에서는 다양한 미션맵을 플레이할 수 있습니다.,"Nhốt đối phương trong bom nước rồi làm nổ để chiến thắng. Ở kiểu cơ bản, bạn có thể chơi nhiều bản đồ nhiệm vụ.",translated,Trap opponents in Water Balloons and pop them to win. You can play various mission maps in Default type.,en_review.csv,machine,replaces_poptag_text
-GameTypeFlaghunt,csysstr.ssd+FxDesktop/ClientData/ClientString,깃발을 달고 있는 상대팀의 대장을 노리세요. 대장만 잡으면 게임에서 승리할 수 있습니다. ,Hãy nhắm vào thủ lĩnh mang cờ của đội đối thủ. Chỉ cần bắt được thủ lĩnh là chiến thắng. ,translated,Target the enemy captain carrying the flag! Capture the captain to win the game. ,csysstr.ssd+fx/ClientData/ClientString,candidate,whitespace_from_kr
+GameTypeFlaghunt,csysstr.ssd+FxDesktop/ClientData/ClientString,깃발을 달고 있는 상대팀의 대장을 노리세요. 대장만 잡으면 게임에서 승리할 수 있습니다. ,Hãy nhắm vào trùm mang cờ của đội đối thủ. Chỉ cần bắt được trùm là chiến thắng. ,translated,Target the enemy captain carrying the flag! Capture the captain to win the game. ,csysstr.ssd+fx/ClientData/ClientString,candidate,whitespace_from_kr
 GameTypeHedgehog,csysstr.ssd+FxDesktop/ClientData/ClientString,죽으면 귀여운 고슴도치로 변신! 고슴도치는 물방울을 바로 터뜨릴 수 있는 능력을 가집니다.,Biến thành Nhím dễ thương khi bị hạ! Nhím có thể làm vỡ bóng nước ngay lập tức.,translated,Transform into a cute hedgehog when you die! Hedgehogs can pop bubbles instantly.,csysstr.ssd+fx/ClientData/ClientString,candidate,meaning_checked
 GameTypeRehab,csysstr.ssd+FxDesktop/ClientData/ClientString,제한시간 동안 얼마나 많은 Kill수를 올리는가를 겨루는 게임입니다. 정신없는 무한대결 시작!,Thi đấu để đạt nhiều Kill nhất trong thời gian giới hạn. Bắt đầu trận chiến bất tận đầy náo nhiệt!,translated,Compete for the most kills within the time limit! An intense endless battle begins!,fx/ClientData/ClientString,candidate,meaning_checked
 GameTypeTimebomb,csysstr.ssd+FxDesktop/ClientData/ClientString,술래가 되어서 5초동안 폭탄을 옮기지 못하면 폭발하게 됩니다. 술래가 아닌 플레이어를 터치해보세요. 폭탄이 옮겨갑니다!,"Nếu cầm bom mà không chuyển cho người khác trong 5 giây, bom sẽ nổ. Hãy chạm vào người chơi không cầm bom để chuyển bom!",translated,"If you're 'it' and can't pass the bomb in 5 seconds, it explodes! Touch another player to pass it!",csysstr.ssd+fx/ClientData/ClientString,candidate,meaning_checked
@@ -5350,10 +5350,10 @@ The team with more treasure wins!",tm_en.csv,machine,
 MissionCaptainMsg,csysstr.ssd+FxDesktop/ClientData/ClientString,"머리 위에 깃발을 달고 있는
 적의 대장을 찾아라!
 우리팀 대장을 보호하고
-적의 대장을 잡으면 승리!","Tìm thủ lĩnh đối phương
+적의 대장을 잡으면 승리!","Tìm trùm đối phương
 có cờ trên đầu!
-Bảo vệ thủ lĩnh phe mình
-và bắt thủ lĩnh đối phương để chiến thắng!",translated,"Find the enemy captain
+Bảo vệ trùm phe mình
+và bắt trùm đối phương để chiến thắng!",translated,"Find the enemy captain
 with the flag on their head!
 Protect your own captain
 and catch theirs to win!",en_override.csv,candidate,settled_poptag_variant
@@ -18827,15 +18827,15 @@ q:AprilFool3_RewardMsg02,csysqstr.ssd,7777만번째 접속자로 선정되셨습
 q:AprilFool3_RewardMsg03,csysqstr.ssd,7777만번째 접속자로 선정되셨습니다. 보상으로 스프링10개(7일권)을 드립니다!,Bạn được chọn là người đăng nhập thứ 7777 vạn. Tặng bạn 10 lò xo (7 ngày) làm phần thưởng!,translated,You were selected as the 7777 ten-thousandth login! Your reward is 10 Springs (7-day pass)!,tm_en.csv,machine,
 q:AprilFool3_RewardMsg04,csysqstr.ssd,7777만번째 접속자로 선정되셨습니다. 보상으로 센서10개(7일권)을 드립니다!,Bạn được chọn là người đăng nhập thứ 7777 vạn. Tặng bạn 10 cảm biến (7 ngày) làm phần thưởng!,translated,You were selected as the 7777 ten-thousandth login! Your reward is 10 Sensors (7-day pass)!,tm_en.csv,machine,
 q:AprilFool3_RewardMsg05,csysqstr.ssd,7777만번째 접속자로 선정되셨습니다. 보상으로 카트라넥(30일권)을 드립니다!,Bạn được chọn là người đăng nhập thứ 7777 vạn. Tặng bạn Kart Rider Nexon (30 ngày) làm phần thưởng!,translated,You were selected as the 7777 ten-thousandth login! Your reward is Katraneck (30-day pass)!,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_4_4,csysqstr.ssd,대장잡기,Bắt thủ lĩnh,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
+q:BnbQuiz_Answer_2_4_4,csysqstr.ssd,대장잡기,Bắt trùm,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 q:BnbQuiz_Answer_2_5_1,csysqstr.ssd,고슴도치,Nhím,translated,Hedgehog,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_5_2,csysqstr.ssd,시한폭탄,Bom hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_5_3,csysqstr.ssd,부활대전,Đấu hồi sinh,translated,Revival Battle,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_5_4,csysqstr.ssd,대장잡기,Bắt thủ lĩnh,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
+q:BnbQuiz_Answer_2_5_2,csysqstr.ssd,시한폭탄,Hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_5_3,csysqstr.ssd,부활대전,Hồi sinh,translated,Revival Battle,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_5_4,csysqstr.ssd,대장잡기,Bắt trùm,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 q:BnbQuiz_Answer_2_6_1,csysqstr.ssd,고슴도치,Nhím,translated,Hedgehog,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_6_2,csysqstr.ssd,시한폭탄,Bom hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_6_3,csysqstr.ssd,부활대전,Đấu hồi sinh,translated,Revival Battle,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_6_4,csysqstr.ssd,대장잡기,Bắt thủ lĩnh,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
+q:BnbQuiz_Answer_2_6_2,csysqstr.ssd,시한폭탄,Hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_6_3,csysqstr.ssd,부활대전,Hồi sinh,translated,Revival Battle,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_6_4,csysqstr.ssd,대장잡기,Bắt trùm,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 q:BnbQuiz_Answer_3_1_1,csysqstr.ssd,문어,Bạch tuộc,translated,Octopus,tm_en.csv,machine,
 q:BnbQuiz_Answer_3_1_2,csysqstr.ssd,펭귄,Chim cánh cụt,translated,Penguin,tm_en.csv,machine,
 q:BnbQuiz_Answer_3_1_3,csysqstr.ssd,물개,Hải cẩu,translated,Seal,tm_en.csv,machine,
@@ -19034,7 +19034,7 @@ q:BnbQuiz_Question_2_1,csysqstr.ssd,크아 친구들을 괴롭히는 해적선�
 q:BnbQuiz_Question_2_2,csysqstr.ssd,다음 중 물줄기가 2칸 나가는 캐릭터는  누구일까요?,"Trong các nhân vật sau, ai có tia nước dài 2 ô?",translated,Which character has a Power range of 2 tiles?,tm_en.csv,machine,
 q:BnbQuiz_Question_2_3,csysqstr.ssd,비엔비 게임타입 중 죽어도 계속 도전할 수  있는 게임타입은 무엇일까요?,"Trong các chế độ của Boom, chế độ nào cho phép tiếp tục thử thách sau khi chết?",translated,Which BnB game type lets you keep trying after you die?,tm_en.csv,machine,
 q:BnbQuiz_Question_2_4,csysqstr.ssd,비엔비 게임타입 중 죽었을 때 고슴도치로  부활하는 게임타입은 무엇일까요?,"Trong các chế độ của Boom, chế độ nào hồi sinh thành Nhím khi chết?",translated,Which BnB game type revives you as a hedgehog when you die?,tm_en.csv,machine,
-q:BnbQuiz_Question_2_5,csysqstr.ssd,비엔비 게임타입 중 대장을 잡으면 바로   리할 수 있는 게임타입은 무엇일까요?,"Trong các chế độ của Boom, chế độ nào thắng ngay khi bắt được thủ lĩnh?",translated,Which BnB game type lets you win immediately by catching the leader?,tm_en.csv,machine,
+q:BnbQuiz_Question_2_5,csysqstr.ssd,비엔비 게임타입 중 대장을 잡으면 바로   리할 수 있는 게임타입은 무엇일까요?,"Trong các chế độ của Boom, chế độ nào thắng ngay khi bắt được trùm?",translated,Which BnB game type lets you win immediately by catching the leader?,tm_en.csv,machine,
 q:BnbQuiz_Question_2_6,csysqstr.ssd,비엔비 게임타입 중 폭탄을 가지면 술래가   되는 게임타입은 무엇일까요?,"Trong các chế độ của Boom, chế độ nào biến người cầm bom thành người đi bắt?",translated,Which BnB game type makes the player holding the bomb the seeker?,tm_en.csv,machine,
 q:BnbQuiz_Question_3_1,csysqstr.ssd,다음 중 보스몬스터의 종류가 아닌 것은  무엇일까요?,"Trong các lựa chọn sau, đâu không phải là loại quái vật trùm?",translated,Which of the following is not a boss monster?,tm_en.csv,machine,
 q:BnbQuiz_Question_3_2,csysqstr.ssd,다음 중 물풍선미사일을 발사하는 보스  몬스터는?,"Trong các quái vật trùm sau, ai bắn tên lửa bom nước?",translated,Which boss monster fires Water Balloon missiles?,tm_en.csv,machine,
@@ -25702,7 +25702,7 @@ q:BnbQuiz_Answer_10_1_3,csysqstr.ssd,Delete,Delete,translated,,,missing,
 q:BnbQuiz_Answer_10_1_4,csysqstr.ssd,Enter,Enter,translated,,,missing,
 q:BnbQuiz_Answer_10_2_1,csysqstr.ssd,몬스터전,Đấu quái vật,translated,Monster Battle,tm_en.csv,machine,
 q:BnbQuiz_Answer_10_2_2,csysqstr.ssd,협공배틀,Đấu hợp sức,translated,Co-op Battle,tm_en.csv,machine,
-q:BnbQuiz_Answer_10_2_3,csysqstr.ssd,부활대전,Đấu hồi sinh,translated,Revival Battle,tm_en.csv,machine,
+q:BnbQuiz_Answer_10_2_3,csysqstr.ssd,부활대전,Hồi sinh,translated,Revival Battle,tm_en.csv,machine,
 q:BnbQuiz_Answer_10_2_4,csysqstr.ssd,래더채널,Kênh Xếp hạng,translated,Ladder Channel,tm_en.csv,machine,
 q:BnbQuiz_Answer_10_3_1,csysqstr.ssd,7개,7 cái,translated,7,tm_en.csv,machine,
 q:BnbQuiz_Answer_10_3_2,csysqstr.ssd,70개,70 cái,translated,70,tm_en.csv,machine,
@@ -25727,7 +25727,7 @@ q:BnbQuiz_Answer_11_1_4,csysqstr.ssd,방제목,Tên phòng,translated,Room Title
 q:BnbQuiz_Answer_11_2_1,csysqstr.ssd,혼자놀기,Chơi một mình,translated,Solo Play,tm_en.csv,machine,
 q:BnbQuiz_Answer_11_2_2,csysqstr.ssd,협공배틀,Đấu hợp sức,translated,Co-op Battle,tm_en.csv,machine,
 q:BnbQuiz_Answer_11_2_3,csysqstr.ssd,몬스터모드,Chế độ quái vật,translated,Monster Mode,tm_en.csv,machine,
-q:BnbQuiz_Answer_11_2_4,csysqstr.ssd,부활대전,Đấu hồi sinh,translated,Revival Battle,tm_en.csv,machine,
+q:BnbQuiz_Answer_11_2_4,csysqstr.ssd,부활대전,Hồi sinh,translated,Revival Battle,tm_en.csv,machine,
 q:BnbQuiz_Answer_11_3_1,csysqstr.ssd,붉은악마,Quỷ đỏ,translated,Red Devil,tm_en.csv,machine,
 q:BnbQuiz_Answer_11_3_2,csysqstr.ssd,보라악마,Ác quỷ tím,translated,Purple Devil,tm_en.csv,machine,
 q:BnbQuiz_Answer_11_3_3,csysqstr.ssd,녹색악마,Ác quỷ xanh lá,translated,Green Devil,tm_en.csv,machine,
@@ -25753,12 +25753,12 @@ q:BnbQuiz_Answer_2_2_2,csysqstr.ssd,배찌,Khò Khò,translated,Boz,tm_en.csv,ma
 q:BnbQuiz_Answer_2_2_3,csysqstr.ssd,마리드,Mắt Xanh,translated,Evie,tm_en.csv,machine,
 q:BnbQuiz_Answer_2_2_4,csysqstr.ssd,우니,Bé Bỏng,translated,Ike,tm_en.csv,machine,
 q:BnbQuiz_Answer_2_3_1,csysqstr.ssd,고슴도치,Nhím,translated,Hedgehog,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_3_2,csysqstr.ssd,시한폭탄,Bom hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_3_3,csysqstr.ssd,부활대전,Đấu hồi sinh,translated,Revival Battle,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_3_4,csysqstr.ssd,대장잡기,Bắt thủ lĩnh,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
+q:BnbQuiz_Answer_2_3_2,csysqstr.ssd,시한폭탄,Hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_3_3,csysqstr.ssd,부활대전,Hồi sinh,translated,Revival Battle,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_3_4,csysqstr.ssd,대장잡기,Bắt trùm,translated,Leader Hunt,en_id.csv,manual,sửa tay qua trang catalog 2026-11-17
 q:BnbQuiz_Answer_2_4_1,csysqstr.ssd,고슴도치,Nhím,translated,Hedgehog,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_4_2,csysqstr.ssd,시한폭탄,Bom hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
-q:BnbQuiz_Answer_2_4_3,csysqstr.ssd,부활대전,Đấu hồi sinh,translated,Revival Battle,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_4_2,csysqstr.ssd,시한폭탄,Hẹn giờ,translated,Time Bomb,tm_en.csv,machine,
+q:BnbQuiz_Answer_2_4_3,csysqstr.ssd,부활대전,Hồi sinh,translated,Revival Battle,tm_en.csv,machine,
 q:AnimalTrainer_RewardDesc2,csysqstr.ssd,축하합니다.  실드 10개를 획득하셨습니다.,Chúc mừng.  Bạn nhận được 10 Khiên.,translated,Congratulations. You received 10 Shields.,tm_en.csv,machine,
 q:AnimalTrainer_RewardDesc3,csysqstr.ssd,축하합니다.  산삼 10개를 획득하셨습니다.,Chúc mừng.  Bạn nhận được 10 nhân sâm.,translated,Congratulations. You received 10 Ginseng.,tm_en.csv,machine,
 q:AnimalTrainer_RewardDesc4,csysqstr.ssd,축하합니다.  엔젤코인 10개를 획득하셨습니다.,Chúc mừng.  Bạn nhận được 10 Coin thiên thần.,translated,Congratulations. You received 10 Angel Coins.,tm_en.csv,machine,
@@ -30609,8 +30609,8 @@ csysfxmg.ssd:4,csysfxmg.ssd,{ComponentType|17}+7강화 아이템을 모두 착�
 csysfxmg.ssd:5,csysfxmg.ssd,{ComponentType|17}최근 강화 등급이 A 이하인 아이템은 수리보석을 사용하여 더 높은 등급으로 수리할 수 있습니다.,{ComponentType|17}Vật phẩm có hạng cường hóa gần nhất từ A trở xuống có thể sửa lên hạng cao hơn bằng đá sửa chữa.,translated,{ComponentType|17}Items with a most recent enhancement grade of A or lower can be repaired to a higher grade using a Repair Jewel.,tm_en.csv,machine,
 csysfxmg.ssd:6,csysfxmg.ssd,{ComponentType|17}+6 이상 강화 시도 시 축복보석을 사용하면 강화 단계 하락을 방지할 수 있습니다.,"{ComponentType|17}Khi thử cường hóa lên +6 trở lên, dùng đá ban phước để tránh bị giảm cấp cường hóa.",translated,{ComponentType|17}Use a Blessing Jewel when attempting an enhancement of +6 or higher to prevent the enhancement level from dropping.,tm_en.csv,machine,
 csysfxmg.ssd:7,csysfxmg.ssd,{ComponentType|17}대형루찌보너스맵의 보물상자는 히어로드릴을 사용하여 얻을 수 있습니다.,{ComponentType|17}Dùng khoan anh hùng để lấy rương báu trong bản đồ thưởng VÀNG lớn.,translated,{ComponentType|17}You can obtain the treasure chest in the Large Lucci Bonus Map using a Hero Drill.,tm_en.csv,machine,
-csysfxmg.ssd:8,csysfxmg.ssd,{ComponentType|6}[좀비TIP] 좀비모드에서 유저를 감염시키면 루찌를 획득하실 수 있습니다.,{ComponentType|6}[Mẹo Zombie] Lây nhiễm người chơi trong Chế độ Zombie để nhận được VÀNG.,translated,{ComponentType|6}[Zombie TIP] You can earn Lucci by infecting players in Zombie Mode.,tm_en.csv,machine,
-csysfxmg.ssd:9,csysfxmg.ssd,{ComponentType|6}[좀비TIP] 좀비모드에서는 게임에 져도 패배가 쌓이지 않습니다.,{ComponentType|6}[Mẹo Zombie] Thua trong Chế độ Zombie sẽ không bị tính trận thua.,translated,{ComponentType|6}[Zombie TIP] Losses in Zombie Mode do not count against your record.,tm_en.csv,machine,
+csysfxmg.ssd:8,csysfxmg.ssd,{ComponentType|6}[좀비TIP] 좀비모드에서 유저를 감염시키면 루찌를 획득하실 수 있습니다.,"{ComponentType|6}[Mẹo Zombie] Trong Chế độ Zombie, bạn có thể nhận được VÀNG khi lây nhiễm cho người chơi khác.",translated,{ComponentType|6}[Zombie TIP] You can earn Lucci by infecting players in Zombie Mode.,tm_en.csv,machine,
+csysfxmg.ssd:9,csysfxmg.ssd,{ComponentType|6}[좀비TIP] 좀비모드에서는 게임에 져도 패배가 쌓이지 않습니다.,"{ComponentType|6}[Mẹo Zombie] Trong Chế độ Zombie, dù thua trận cũng không bị tính vào số lần thua.",translated,{ComponentType|6}[Zombie TIP] Losses in Zombie Mode do not count against your record.,tm_en.csv,machine,
 csysfxmg.ssd:10,csysfxmg.ssd,"{ComponentType|8}[클로버TIP] 클로버를 모으다 보면 럭키슈퍼맨, 럭키센서 능력이 생깁니다.",{ComponentType|8}[Mẹo cỏ bốn lá] Thu thập cỏ để nhận năng lực siêu nhân may mắn và cảm biến may mắn.,translated,{ComponentType|8}[Clover TIP] Collect clovers to gain Lucky Superman and Lucky Sensor abilities.,tm_en.csv,machine,
 csysfxmg.ssd:11,csysfxmg.ssd,{ComponentType|8}[클로버TIP] 클로버를 많이 모을 수록 럭키루찌를 획득할 확률이 올라갑니다.,"{ComponentType|8}[Mẹo cỏ bốn lá] Thu thập càng nhiều cỏ, cơ hội nhận được VÀNG may mắn càng cao.",translated,"{ComponentType|8}[Clover TIP] The more clovers you collect, the greater your chance of earning Lucky Lucci.",tm_en.csv,machine,
 csysfxmg.ssd:12,csysfxmg.ssd,{ComponentType|8}[클로버TIP] 점수가 같거나 낮은 유저를 잡으면 클로버를 뱉어내지 않습니다.,{ComponentType|8}[Mẹo cỏ bốn lá] Bắt người chơi có điểm bằng hoặc thấp hơn sẽ không làm họ rớt cỏ.,translated,{ComponentType|8}[Clover TIP] Catching a player with an equal or lower score won't make them drop clovers.,tm_en.csv,machine,
@@ -30618,13 +30618,13 @@ csysfxmg.ssd:13,csysfxmg.ssd,{ComponentType|8}[클로버TIP] 점수 높은 유�
 csysfxmg.ssd:14,csysfxmg.ssd,{ShopFreeStock|1600004}매일매일 주어지는 즐거운선물~ <font color=yellow>무료바늘</font> 받고 즐거운 게임하세요~,{ShopFreeStock|1600004}Quà vui mỗi ngày~ Nhận <font color=yellow>Kim miễn phí</font> và chơi vui nha~,translated,{ShopFreeStock|1600004}A fun gift every day~ Get your <font color=yellow>Free Needles</font> and enjoy the game~,tm_en.csv,machine,
 csysfxmg.ssd:15,csysfxmg.ssd,"안전한 개인정보 관리를 위하여 정기적으로 넥슨아이디, 게임아이디 비밀번호를 변경해 주세요.","Để bảo vệ thông tin cá nhân, vui lòng đổi mật khẩu ID Nexon và ID game định kỳ.",translated,"To protect your personal information, please change your Nexon ID and game ID passwords regularly.",tm_en.csv,machine,
 csysfxmg.ssd:16,csysfxmg.ssd,"부모님 성함, 휴대폰 번호, 전화번호 등은 다른 사람에게 알려주어서는 안됩니다.","Không được tiết lộ cho người khác tên, số điện thoại di động, số điện thoại của phụ huynh.",translated,"Do not share your parents' names, mobile numbers, phone numbers, or similar information with others.",tm_en.csv,machine,
-csysfxmg.ssd:17,csysfxmg.ssd,넥슨에서는 개인 메일로 안내 메일을 보내지 않습니다. 운영자 사칭 사고에 주의하세요.,Nexon không gởi thư thông báo qua email cá nhân. Hãy cẩn thận với kẻ giả danh ban quản trị.,translated,Nexon does not send notices to personal email addresses. Beware of GM impersonators.,tm_en.csv,machine,
+csysfxmg.ssd:17,csysfxmg.ssd,넥슨에서는 개인 메일로 안내 메일을 보내지 않습니다. 운영자 사칭 사고에 주의하세요.,Nexon không gởi thư thông báo qua email cá nhân. Hãy cảnh giác với các hành vi lừa đảo mạo danh ban quản trị (GM).,translated,Nexon does not send notices to personal email addresses. Beware of GM impersonators.,tm_en.csv,machine,
 csysfxmg.ssd:18,csysfxmg.ssd,"메일, 메신저 등으로 파일을 받을 경우 해킹프로그램이 설치될 위험이 있으니 주의하세요.","Hãy cẩn thận khi nhận tệp qua email, Bạn bè hoặc các kênh khác vì có nguy cơ bị cài chương trình hack.",translated,"Be careful when receiving files by email or messenger, as hacking software may be installed.",tm_en.csv,machine,
 csysfxmg.ssd:19,csysfxmg.ssd,넥슨 캐시는 루찌로 교환이 불가능합니다. 사기에 주의하세요.,Không thể đổi XU lấy VÀNG. Hãy cẩn thận bị lừa đảo.,translated,Nexon Cash cannot be exchanged for Lucci. Beware of scams.,tm_en.csv,machine,
 csysfxmg.ssd:20,csysfxmg.ssd,상점에선 무료 바늘을 하루에 2개씩 받을 수 있습니다.,Bạn có thể nhận được 2 Kim miễn phí mỗi ngày tại Siêu thị.,translated,You can get 2 free Needles a day in the Shop.,tm_en.csv,machine,
 csysfxmg.ssd:21,csysfxmg.ssd,"지금 ""퀘스트"" 버튼을 클릭해보세요. 비엔비에서 진행중인 여러가지 재미있는 퀘스트를 만나실 수 있습니다","Hãy bấm nút ""Nhiệm vụ"". Bạn có thể khám phá nhiều Nhiệm vụ thú vị đang diễn ra trong Boom",translated,"Click the ""Quest"" button now to find the many fun Quests happening in BnB.",tm_en.csv,machine,
-csysfxmg.ssd:22,csysfxmg.ssd,좀비모드에서 유저를 감염시키면 루찌를 획득하실 수 있습니다.,Lây nhiễm người chơi trong Chế độ Zombie để nhận được VÀNG.,translated,You can earn Lucci by infecting players in Zombie Mode.,tm_en.csv,machine,
-csysfxmg.ssd:23,csysfxmg.ssd,좀비모드에서는 게임에 져도 패배가 쌓이지 않습니다.,Thua trong Chế độ Zombie sẽ không bị tính thêm trận thua.,translated,Losses in Zombie Mode do not count against your record.,tm_en.csv,machine,
+csysfxmg.ssd:22,csysfxmg.ssd,좀비모드에서 유저를 감염시키면 루찌를 획득하실 수 있습니다.,"Trong Chế độ Zombie, bạn có thể nhận được VÀNG khi lây nhiễm cho người chơi khác.",translated,You can earn Lucci by infecting players in Zombie Mode.,tm_en.csv,machine,
+csysfxmg.ssd:23,csysfxmg.ssd,좀비모드에서는 게임에 져도 패배가 쌓이지 않습니다.,"Trong Chế độ Zombie, dù thua trận cũng không bị tính vào số lần thua.",translated,Losses in Zombie Mode do not count against your record.,tm_en.csv,machine,
 csysfxmg.ssd:24,csysfxmg.ssd,부정한 방법으로 타인의 주민등록번호를 이용하실 경우 불이익을 받을 수 있습니다,Bạn có thể bị xử lý nếu sử dụng trái phép số chứng minh nhân dân của người khác,translated,Using someone else's resident registration number unlawfully may result in penalties.,tm_en.csv,machine,
 csysfxmg.ssd:25,csysfxmg.ssd,지나친 게임 이용은 건강을 해칠 수도 있으니 유의해 주시기 바랍니다.,"Chơi game quá nhiều có thể gây hại cho sức khỏe, bạn hãy lưu ý.",translated,Please note that excessive gaming may harm your health.,tm_en.csv,machine,
 csysfxmg.ssd:26,csysfxmg.ssd,운영자는 절대 메신저 친구 추가를 하지 않습니다. 운영자 사칭 사고에 주의하세요.,Quản trị viên tuyệt đối không kết Bạn bè. Hãy cảnh giác với người mạo danh quản trị viên.,translated,GMs never add players as messenger friends. Beware of GM impersonators.,tm_en.csv,machine,
@@ -31631,7 +31631,7 @@ FxDesktop:Quest/cNovice:429,FxDesktop/Quest/cNovice,바니팜 맵에서 1판 승
 FxDesktop:Quest/cNovice:430,FxDesktop/Quest/cNovice,선물을 받으세요~ 토끼를 30,Hãy nhận quà đi~ Thỏ 30,translated,claim your gift~ The first team to catch 30,tm_en.csv,machine,
 FxDesktop:Quest/cNovice:431,FxDesktop/Quest/cNovice,마리 먼저 잡은 팀이 승리!!,Đội bắt đủ số con trước sẽ thắng!!,translated,rabbits wins!!,tm_en.csv,machine,
 FxDesktop:Quest/cNovice:454,FxDesktop/Quest/cNovice,게임이 끝날때까지 기다리기가,Chờ tới khi trận đấu kết thúc,translated,If waiting until the game ends is,tm_en.csv,machine,
-FxDesktop:Quest/cNovice:455,FxDesktop/Quest/cNovice,지루하다면 부활대전으로 Go!,Chán rồi thì đến Đấu hồi sinh Go!,translated,"boring, go to Revival Battle!",tm_en.csv,machine,
+FxDesktop:Quest/cNovice:455,FxDesktop/Quest/cNovice,지루하다면 부활대전으로 Go!,Chán rồi thì đến Hồi sinh Go!,translated,"boring, go to Revival Battle!",tm_en.csv,machine,
 FxDesktop:Quest/cNovice:456,FxDesktop/Quest/cNovice,완료시 선물을 드려요~,Hoàn thành để nhận quà~,translated,Complete it to receive a gift~,tm_en.csv,machine,
 FxDesktop:Quest/cNovice:479,FxDesktop/Quest/cNovice,이제 보스몬스터를 잡아볼까요?,Giờ hãy thử hạ quái vật trùm ha?,translated,Shall we catch a boss monster now?,tm_en.csv,machine,
 FxDesktop:Quest/cNovice:480,FxDesktop/Quest/cNovice,보스몬스터를 잡으면 루찌가,Hạ quái vật trùm sẽ được VÀNG,translated,Catch a boss monster and,tm_en.csv,machine,

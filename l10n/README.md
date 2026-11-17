@@ -535,6 +535,13 @@ cụ dựng không có kiểu ghi 1258; ghi lại để biết chỗ khi vá UTF
       "đội trưởng Nhanh Nhẩu" (캡틴다오) giữ nguyên.
     - `SuperChiefCanStartDetail` bản Anh: chèn `\n` ở ranh giới từ (ghi ở `newline_exempt.csv`). Client 00967 ngắt
       dòng nhắc trong ô chat theo bề rộng ký tự; mỗi dòng nên không quá khoảng 390 điểm.
+- Sửa 2026-11-17 (chủ dự án, nút loại game vẫn tràn): rút ngắn tên chế độ bản Việt, bản Anh không đổi:
+  `Bắt thủ lĩnh` → **Bắt trùm** (kèm "thủ lĩnh" → "trùm" ở bốn câu mô tả/đố cùng nghĩa), `Đấu hồi sinh` → **Hồi sinh**,
+  `Bom hẹn giờ` → **Hẹn giờ** (chỉ tên chế độ; vật phẩm `stock:80137` và `BeginnerHelpMsg_ItemRemoteBomb` giữ "Bom hẹn giờ").
+  `tm.csv` giữ nguyên dòng `시한폭탄` vì dùng chung với tên vật phẩm; các dòng theo id nằm ở `tm_id.csv`.
+  `csysfxmg.ssd:8/9/17/22/23` (dòng chạy chữ, mẹo Zombie) viết lại theo bản chủ dự án đưa, dùng VÀNG (루찌) và
+  Chế độ Zombie theo glossary. `tools/l10n_build.py` chưa ghi `csysfxmg.ssd` ra bản dựng (chỉ kiểm checksum), nên các
+  dòng này vẫn hiện tiếng Hàn trong game.
 - Việc còn mở:
   - Lệnh chat bản Việt (`/ai`, `/odau`, `/moi`, `/duoi`, `/tenphong`, `/tudong`, `/trieutap`…) và bản Anh
     (`/summon`, `/broadcast`, `/jewelcandy`…) chỉ chạy được nếu engine nhận các bí danh này; client KR gốc chỉ biết lệnh
