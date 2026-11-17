@@ -63,9 +63,9 @@ CreateDlgRenewIamBoss,"보스로 변신해서 다른 유저와
 trong trận chiến hành động hoành tráng!","Biến thành trùm và tham gia trận chiến hành động
 ngoạn mục với người chơi khác!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 CreateDlgRenewMonster,"꼬마몬스터들을 물리치고
-거대몬스터에게 도전합니다.",Quái vật,"Đánh bại đám quái nhỏ rồi
-thách đấu quái khổng lồ.","Đánh bại các quái vật nhỏ
-và thách đấu quái vật khổng lồ.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+거대몬스터에게 도전합니다.",Quái vật,"Đánh bại các quái vật nhỏ
+và thách đấu quái vật khổng lồ.","Diệt quái vật nhỏ rồi
+đấu quái vật khổng lồ.",translated,sửa tay qua trang catalog 2026-11-17,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 CreateDlgRenewNormal,"유저간의 승부를 즐기며
 각종 미션을 수행합니다.",Thường,"Đấu với người chơi khác và
 làm đủ loại nhiệm vụ.","Tranh tài cùng người chơi khác
