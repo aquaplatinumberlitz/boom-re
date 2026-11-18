@@ -7,6 +7,7 @@ import json
 import re
 import shutil
 import struct
+import hashlib
 import zlib
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -388,6 +389,23 @@ def image_changes(root, lang, decisions, image_dir, allow_shape_change, vn, en):
     return changes, list(unique.values())
 
 
+def bink_shape(data):
+    # Bink 1: "BIK" + phiên bản, u32 kích thước-8, u32 số khung, …, u32 rộng tại 20, u32 cao tại 24.
+    if data[:3] != b'BIK':
+        raise ValueError('không phải video Bink')
+    return data[:4], struct.unpack_from('<I', data, 20)[0], struct.unpack_from('<I', data, 24)[0]
+
+
+def intro_video(root, source, out):
+    """Thay nm.bik (logo + màn GRB chữ Hàn) bằng video mở đầu của client cùng ngôn ngữ (vi: VN, en: Bắc Mỹ)."""
+    kr = (root/'nm.bik').read_bytes(); new = (source/'nm.bik').read_bytes()
+    if bink_shape(new) != bink_shape(kr):
+        raise ValueError(f'nm.bik nguồn khác định dạng/kích thước KR: {bink_shape(new)} != {bink_shape(kr)}')
+    (out/'nm.bik').write_bytes(new)
+    return {'source': str(source/'nm.bik'), 'bytes': len(new), 'sha256': hashlib.sha256(new).hexdigest(),
+            'format': bink_shape(new)[0].decode(), 'size': list(bink_shape(new)[1:])}
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--kr',type=Path,default=Path('/home/admin/boom/clients/kr-00967'))
@@ -471,6 +489,8 @@ def main():
         for pack, replacements in changes.items():
             write_pack(root/(pack+'.idx'), out, replacements)
         results['images'] = {'replaced': image_count, 'skipped': len(skipped), 'reasons': skipped}
+        if a.lang in ('vi', 'en'):
+            results['intro_video'] = intro_video(root, a.vn if a.lang == 'vi' else a.en, out)
     (out/'build-report.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     print(json.dumps(results,ensure_ascii=False,indent=2))
 
