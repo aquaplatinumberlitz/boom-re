@@ -1,0 +1,22 @@
+name: Login art
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/login-art.yml"
+      - "tools/l10n_login_art_vi.py"
+      - "tools/test_l10n_login_art_vi.py"
+      - "tools/i16.py"
+      - "l10n/catalog.csv"
+permissions:
+  contents: read
+jobs:
+  login-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install 'Pillow>=10,<13'
+      - run: python -m unittest discover -s tools -p test_l10n_login_art_vi.py
