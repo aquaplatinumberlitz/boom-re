@@ -528,11 +528,14 @@ stock:80078,Rodumani Honk Honk~,hy4 char-name
 stock:80079,Rodumani Attendant,hy4 char-name
 stock:80181,Chinese Restaurant Rodumani,hy4 char-name
 stock:3610018,Rodumani Mask,hy4 char-name
-SuperUni,Posh Ike,hy4 char-name
-q:SuperCharacter_RewardUni01,Congratulations. You've successfully upgraded Posh Ike. Open My Page to check it out!,hy4 char-name
-q:SuperCharItem_RewardBlurUni,Congratulations! You've received Posh Ike Bubble Sashashak! Check My Page.,hy4 char-name
-q:SuperUni_FinalReward,Congratulations. You've successfully upgraded Posh Ike. Open My Page to check it out!,hy4 char-name
-q:SuperUni_Green,Congratulations! You've collected the Red Potion. Collect the remaining potions to transform into the powerful Posh Ike!,hy4 char-name
-q:SuperUni_QuestName,Power Up! Posh Ike,hy4 char-name
-q:SuperUni_Yellow,Congratulations! You've collected the Black Potion. Collect the remaining potions to transform into the powerful Posh Ike!,hy4 char-name
-stock:5100033,Posh Ike,hy4 char-name
+SuperUni,Super Ike,hy4 char-name
+q:SuperCharacter_RewardUni01,Congratulations. You've successfully upgraded Super Ike. Open My Page to check it out!,hy4 char-name
+q:SuperCharItem_RewardBlurUni,Congratulations! You've received Super Ike Bubble Sashashak! Check My Page.,hy4 char-name
+q:SuperUni_FinalReward,Congratulations. You've successfully upgraded Super Ike. Open My Page to check it out!,hy4 char-name
+q:SuperUni_Green,Congratulations! You've collected the Red Potion. Collect the remaining potions to transform into the powerful Super Ike!,hy4 char-name
+q:SuperUni_QuestName,Power Up! Super Ike,hy4 char-name
+q:SuperUni_Yellow,Congratulations! You've collected the Black Potion. Collect the remaining potions to transform into the powerful Super Ike!,hy4 char-name
+stock:5100033,Super Ike,hy4 char-name
+EP6_Name,EP6. Diz Rescue,owner_decision_2026-11-21
+stock:1600705,Evie New Year Hanbok,owner_decision_2026-11-21
+stock:1600706,Evie Hanbok Eoyeom,owner_decision_2026-11-21

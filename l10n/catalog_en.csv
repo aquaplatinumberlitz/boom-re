@@ -3092,7 +3092,7 @@ EnterValidRoomNo,csysstr.ssd+FxDesktop/ClientData/ClientString," 유효한 방 �
 ",fx/ClientData/ClientString,candidate,whitespace_from_kr
 EP6_Msg00,csysstr.ssd,해적꼬마들이 묶여있어! 일단 구해주자!,Mấy nhóc Cướp biển bị trói kìa! Mau cứu đi!,translated,The pirate kids are tied up! Let's rescue them!,fx/ClientData/ClientString,candidate,meaning_checked
 EP6_Msg00@ClientString,FxDesktop/ClientData/ClientString,"""해적꼬마들이 묶여있어! 일단 구해주자!""","""Mấy đứa Cướp biển nhí bị trói kìa! Cứu trước đã!""",translated,"""The little pirates are tied up! Let's rescue them first!""",tm_en.csv,machine,
-EP6_Name,csysstr.ssd+FxDesktop/ClientData/ClientString,EP6.디지니 구출,EP6. Giải cứu Mật Ngọt,translated,EP6. Dizini Rescue,fx/ClientData/ClientString,candidate,meaning_checked
+EP6_Name,csysstr.ssd+FxDesktop/ClientData/ClientString,EP6.디지니 구출,EP6. Giải cứu Mật Ngọt,translated,EP6. Diz Rescue,en_id.csv,manual,owner_decision_2026-11-21
 EquipBuyItemInstead,csysstr.ssd+FxDesktop/ClientData/ClientString,"현재 장착된 %s 아이템 대신, 구매한 %s 아이템을 장착하시겠습니까?",Bạn có muốn trang bị vật phẩm %s đã mua thay cho vật phẩm %s đang trang bị không?,translated,Replace your equipped %s Item with the purchased %s Item?,tm_en.csv,machine,
 EquipBuyItemNew,csysstr.ssd+FxDesktop/ClientData/ClientString,구매한 %s 아이템을 장착하시겠습니까?,Bạn có muốn trang bị vật phẩm %s vừa mua không?,translated,Would you like to equip the %s item you purchased?,en_review.csv,machine,replaces_poptag_text
 EquipIndividualItemInstead,csysstr.ssd+FxDesktop/ClientData/ClientString,"현재 장착된 %s 아이템 대신, 보상으로 획득한 %s 아이템을 장착하시겠습니까?",Bạn có muốn thay vật phẩm %s đang trang bị bằng vật phẩm %s nhận được làm phần thưởng không?,translated,Replace your equipped %s Item with the %s Item earned as a reward?,tm_en.csv,machine,
@@ -11316,7 +11316,7 @@ SuperSue_replace,csysstr.ssd,"파워업! 슈퍼수 퀘스트 종료로 인해 �
 회수보상으로 파워산삼 50개를 지급해 드립니다.","Vật phẩm chế tạo đã được thu hồi do Nhiệm vụ Tăng sức mạnh! Siêu Thiên Sứ kết thúc.
 Bạn nhận được 50 nhân sâm sức mạnh để đền bù.",translated,"The Power Up! Super Sue Quest has ended, so crafting Items have been reclaimed.
 You will receive 50 Power Ginseng as compensation.",en_id.csv,manual,"sửa 2026-11-15 (review 2: tên riêng, xưng hô, lệnh chat)"
-SuperUni,csysstr.ssd,슈퍼우니,Siêu Bé Bỏng,translated,Posh Ike,en_id.csv,manual,hy4 char-name
+SuperUni,csysstr.ssd,슈퍼우니,Siêu Bé Bỏng,translated,Super Ike,en_id.csv,manual,hy4 char-name
 SuperUniPharaoh,csysstr.ssd,파라오 징어,Mực pharaoh,translated,Pharaoh Squid,tm_en.csv,machine,
 SureToAskExchange,csysstr.ssd,%s'님께 교환신청을 하시겠습니까?,Gởi yêu cầu trao đổi tới %s'?,translated,Send a trade request to '%s'?,fx/ClientData/ClientString,candidate,meaning_checked
 SureToAskExchange@ClientString,FxDesktop/ClientData/ClientString,'%s'님께 교환신청을 하시겠습니까?,Bạn muốn đề nghị trao đổi với '%s'?,translated,Send a Trade request to '%s'?,tm_en.csv,machine,
@@ -22352,12 +22352,12 @@ q:SuperCharacter_RewardBazzi01,csysqstr.ssd,축하합니다. 슈퍼배찌 업그
 q:SuperCharacter_RewardInGame,csysqstr.ssd,슈퍼불꽃을 획득 하셨습니다. 나머지 불꽃도 모아보세요.,Bạn đã nhận được ngọn lửa siêu cấp. Hãy thu thập các ngọn lửa còn lại.,translated,You've received a Super Flame. Collect the remaining flames too.,tm_en.csv,machine,
 q:SuperCharacter_RewardLuxma01,csysqstr.ssd,축하합니다. 슈퍼럭마 업그레이드에 성공 하셨습니다. 마이페이지를 열어 확인해보세요!,Chúc mừng! Bạn đã nâng cấp Siêu Mắt Biếc thành công. Hãy mở Trang cá nhân để kiểm tra!,translated,Congratulations. You've successfully upgraded Super Posh Evie. Open My Page to check it out!,tm_en.csv,machine,
 q:SuperCharacter_RewardLuxma02,csysqstr.ssd,슈퍼럭마 업그레이드를 축하 드립니다. 슈퍼럭마 헤어 밴드 지급!,Chúc mừng nâng cấp Siêu Mắt Biếc. Nhận băng đô Siêu Mắt Biếc!,translated,Congratulations on upgrading Super Posh Evie. Super Posh Evie Hairband awarded!,tm_en.csv,machine,
-q:SuperCharacter_RewardUni01,csysqstr.ssd,축하합니다. 슈퍼우니 업그레이드에 성공 하셨습니다. 마이페이지를 열어 확인해보세요!,Chúc mừng! Bạn đã nâng cấp Siêu Bé Bỏng thành công. Hãy mở Trang cá nhân để kiểm tra!,translated,Congratulations. You've successfully upgraded Posh Ike. Open My Page to check it out!,en_id.csv,manual,hy4 char-name
+q:SuperCharacter_RewardUni01,csysqstr.ssd,축하합니다. 슈퍼우니 업그레이드에 성공 하셨습니다. 마이페이지를 열어 확인해보세요!,Chúc mừng! Bạn đã nâng cấp Siêu Bé Bỏng thành công. Hãy mở Trang cá nhân để kiểm tra!,translated,Congratulations. You've successfully upgraded Super Ike. Open My Page to check it out!,en_id.csv,manual,hy4 char-name
 q:SuperCharItem_AlreadyHaveItem,csysqstr.ssd,이미 해당 샤샤샥 아이템을 보유중 입니다. 다른 캐릭터의 샤샤샥을 모아보세요.,Bạn đã có vật phẩm vụt sáng này. Hãy sưu tập vụt sáng của nhân vật khác.,translated,You already own this Sashashak Item. Try collecting Sashashak for another character.,tm_en.csv,machine,
 q:SuperCharItem_QuestName,csysqstr.ssd,슈퍼아이템 3종,3 vật phẩm siêu cấp,translated,3 Super Items,tm_en.csv,machine,
 q:SuperCharItem_RewardBlurBazzi,csysqstr.ssd,축하 드립니다! 슈퍼배찌 버블샤샤샥을 받으셨습니다! 마이페이지를 확인하세요.,Chúc mừng! Bạn đã nhận được bong bóng vun vút của Siêu Khò Khò! Hãy kiểm tra Trang cá nhân.,translated,Congratulations! You've received Super Boz Bubble Sashashak! Check My Page.,tm_en.csv,machine,
 q:SuperCharItem_RewardBlurMarid,csysqstr.ssd,축하 드립니다! 슈퍼럭마 버블샤샤샥을 받으셨습니다! 마이페이지를 확인하세요.,Chúc mừng! Bạn đã nhận được bong bóng vun vút của Siêu Mắt Biếc! Hãy kiểm tra Trang cá nhân.,translated,Congratulations! You've received Super Posh Evie Bubble Sashashak! Check My Page.,tm_en.csv,machine,
-q:SuperCharItem_RewardBlurUni,csysqstr.ssd,축하 드립니다! 슈퍼우니 버블샤샤샥을 받으셨습니다! 마이페이지를 확인하세요.,Chúc mừng! Bạn đã nhận được bong bóng vun vút của Siêu Bé Bỏng! Hãy kiểm tra Trang cá nhân.,translated,Congratulations! You've received Posh Ike Bubble Sashashak! Check My Page.,en_id.csv,manual,hy4 char-name
+q:SuperCharItem_RewardBlurUni,csysqstr.ssd,축하 드립니다! 슈퍼우니 버블샤샤샥을 받으셨습니다! 마이페이지를 확인하세요.,Chúc mừng! Bạn đã nhận được bong bóng vun vút của Siêu Bé Bỏng! Hãy kiểm tra Trang cá nhân.,translated,Congratulations! You've received Super Ike Bubble Sashashak! Check My Page.,en_id.csv,manual,hy4 char-name
 q:SuperFighter2Challenge_Name,csysqstr.ssd,슈퍼파이터2,Siêu chiến binh 2,translated,Super Fighter 2,tm_en.csv,machine,
 q:SuperFighterChallengeReward1_1,csysqstr.ssd,축하합니다. 바늘 20개(7일권)를 획득하셨습니다!,Chúc mừng! Bạn đã nhận được 20 Kim (7 ngày)!,translated,Congratulations. You've received 20 Needles (7 Days)!,tm_en.csv,machine,
 q:SuperFighterChallengeReward1_2,csysqstr.ssd,축하합니다. 센서 20개(7일권)를 획득하셨습니다!,Chúc mừng! Bạn đã nhận được 20 cảm biến (7 ngày)!,translated,Congratulations. You've received 20 Sensors (7 Days)!,tm_en.csv,machine,
@@ -30067,11 +30067,11 @@ Open My Page to check it out!",en_id.csv,manual,"sửa 2026-11-15 (review 2: tê
 q:SuperSue_ShopSearch,csysqstr.ssd,,,translated,,,missing,
 q:SuperSue_SueStarReward,csysqstr.ssd,축하합니다. 슈퍼 수 스타 아이템을 획득하셨습니다. 마이페이지를 열어 확인해보세요!,Chúc mừng! Bạn đã nhận được vật phẩm ngôi sao Siêu Thiên Sứ. Hãy mở Trang cá nhân để kiểm tra!,translated,Congratulations. You've received the Super Sue Star Item. Open My Page to check it out!,en_id.csv,manual,"sửa 2026-11-15 (review 2: tên riêng, xưng hô, lệnh chat)"
 q:SuperUni_AlreadyHaveTornado,csysqstr.ssd,이미 마법의 회오리 아이템을 갖고 있어 퀘스트를 완료할 수 없습니다. 교환하거나 삭제한 후에 다시 시도해 주세요.,Bạn đã có vật phẩm Lốc xoáy ma thuật nên không thể hoàn thành Nhiệm vụ. Hãy trao đổi hoặc xóa vật phẩm rồi thử lại.,translated,"You already have the Magic Whirlwind Item, so you cannot complete the Quest. Please trade or delete it and try again.",tm_en.csv,machine,
-q:SuperUni_FinalReward,csysqstr.ssd,축하합니다. 슈퍼우니 업그레이드에 성공 하셨습니다. 마이페이지를 열어 확인해보세요!,Chúc mừng! Bạn đã nâng cấp Siêu Bé Bỏng thành công. Hãy mở Trang cá nhân để kiểm tra!,translated,Congratulations. You've successfully upgraded Posh Ike. Open My Page to check it out!,en_id.csv,manual,hy4 char-name
-q:SuperUni_Green,csysqstr.ssd,축하합니다! 빨간물약을 모으셨습니다. 나머지 물약도 모아 강력한 슈퍼우니로 변신해 보세요!,Chúc mừng! Bạn đã thu thập thuốc đỏ. Hãy thu thập các lọ thuốc còn lại để biến thành Siêu Bé Bỏng hùng mạnh!,translated,Congratulations! You've collected the Red Potion. Collect the remaining potions to transform into the powerful Posh Ike!,en_id.csv,manual,hy4 char-name
-q:SuperUni_QuestName,csysqstr.ssd,파워업! 슈퍼우니,Tăng sức mạnh! Siêu Bé Bỏng,translated,Power Up! Posh Ike,en_id.csv,manual,hy4 char-name
+q:SuperUni_FinalReward,csysqstr.ssd,축하합니다. 슈퍼우니 업그레이드에 성공 하셨습니다. 마이페이지를 열어 확인해보세요!,Chúc mừng! Bạn đã nâng cấp Siêu Bé Bỏng thành công. Hãy mở Trang cá nhân để kiểm tra!,translated,Congratulations. You've successfully upgraded Super Ike. Open My Page to check it out!,en_id.csv,manual,hy4 char-name
+q:SuperUni_Green,csysqstr.ssd,축하합니다! 빨간물약을 모으셨습니다. 나머지 물약도 모아 강력한 슈퍼우니로 변신해 보세요!,Chúc mừng! Bạn đã thu thập thuốc đỏ. Hãy thu thập các lọ thuốc còn lại để biến thành Siêu Bé Bỏng hùng mạnh!,translated,Congratulations! You've collected the Red Potion. Collect the remaining potions to transform into the powerful Super Ike!,en_id.csv,manual,hy4 char-name
+q:SuperUni_QuestName,csysqstr.ssd,파워업! 슈퍼우니,Tăng sức mạnh! Siêu Bé Bỏng,translated,Power Up! Super Ike,en_id.csv,manual,hy4 char-name
 q:SuperUni_TornadoReward,csysqstr.ssd,축하합니다. 마법의 회오리를 획득하셨습니다. 마이페이지를 열어 확인해보세요!,Chúc mừng! Bạn đã nhận được lốc xoáy phép thuật. Hãy mở Trang cá nhân để kiểm tra!,translated,Congratulations! You obtained the Magic Whirlwind. Open My Page to check it out!,tm_en.csv,machine,
-q:SuperUni_Yellow,csysqstr.ssd,축하합니다! 검정물약을 모으셨습니다. 나머지 물약도 모아 강력한 슈퍼우니로 변신해 보세요!,Chúc mừng! Bạn đã thu thập thuốc đen. Hãy thu thập các lọ thuốc còn lại để biến thành Siêu Bé Bỏng hùng mạnh!,translated,Congratulations! You've collected the Black Potion. Collect the remaining potions to transform into the powerful Posh Ike!,en_id.csv,manual,hy4 char-name
+q:SuperUni_Yellow,csysqstr.ssd,축하합니다! 검정물약을 모으셨습니다. 나머지 물약도 모아 강력한 슈퍼우니로 변신해 보세요!,Chúc mừng! Bạn đã thu thập thuốc đen. Hãy thu thập các lọ thuốc còn lại để biến thành Siêu Bé Bỏng hùng mạnh!,translated,Congratulations! You've collected the Black Potion. Collect the remaining potions to transform into the powerful Super Ike!,en_id.csv,manual,hy4 char-name
 q:SurpriseEvent_NaviContent001,csysqstr.ssd,1시간 내 500000루찌 사용하기,Dùng 500000 VÀNG trong 1 giờ,translated,Spend 500000 Lucci within 1 hour,tm_en.csv,machine,
 q:SurpriseEvent_NaviContent002,csysqstr.ssd,1시간 내 400000루찌 사용하기,Dùng 400000 VÀNG trong 1 giờ,translated,Spend 400000 Lucci within 1 hour,tm_en.csv,machine,
 q:SurpriseEvent_NaviContent003,csysqstr.ssd,1시간 내 300000루찌 사용하기,Dùng 300000 VÀNG trong 1 giờ,translated,Spend 300000 Lucci within 1 hour,tm_en.csv,machine,
@@ -39476,8 +39476,8 @@ stock:1600701,fxstock1.ini,럭케 스노우보더 머리,Tóc trượt ván tuy�
 stock:1600702,fxstock1.ini,스노우모피모자,Nón lông tuyết,translated,Snow Fur Hat,tm_en.csv,machine,
 stock:1600703,fxstock1.ini,윈터니트모자,Nón len mùa đông,translated,Winter Knit Hat,tm_en.csv,machine,
 stock:1600704,fxstock1.ini,부자되세요 깃발,Cờ chúc phát tài,translated,Get Rich Flag,tm_en.csv,machine,
-stock:1600705,fxstock1.ini,마리드 설빔한복,Hanbok năm mới Mắt Xanh,translated,Marid New Year Hanbok,tm_en.csv,machine,
-stock:1600706,fxstock1.ini,마리드 한복어염,Tóc hanbok Mắt Xanh,translated,Marid Hanbok Eoyeom,tm_en.csv,machine,
+stock:1600705,fxstock1.ini,마리드 설빔한복,Hanbok năm mới Mắt Xanh,translated,Evie New Year Hanbok,en_id.csv,manual,owner_decision_2026-11-21
+stock:1600706,fxstock1.ini,마리드 한복어염,Tóc hanbok Mắt Xanh,translated,Evie Hanbok Eoyeom,en_id.csv,manual,owner_decision_2026-11-21
 stock:1600707,fxstock1.ini,다오 X-MAS 트리,Cây thông X-MAS Nhanh Nhẩu,translated,Dao X-MAS Tree,tm_en.csv,machine,
 stock:1600708,fxstock1.ini,마리드 X-MAS 트리,Cây thông Mắt Xanh X-MAS,translated,Evie X-MAS Tree,tm_en.csv,machine,
 stock:1600709,fxstock1.ini,배찌 X-MAS 트리,Cây Giáng sinh Khò Khò,translated,Boz X-MAS Tree,tm_en.csv,machine,
@@ -42314,7 +42314,7 @@ stock:5100029,fxstock2.ini,상모 3형제,Ba anh em sangmo,translated,Three Sang
 stock:5100030,fxstock2.ini,수정얼음,Băng pha lê,translated,Crystal Ice,tm_en.csv,machine,
 stock:5100031,fxstock2.ini,럭셔리 마리드,Mắt Biếc,translated,Posh Evie,tm_en.csv,machine,
 stock:5100032,fxstock2.ini,럭셔리 케피,Tí Bảnh,translated,Posh Plunk,tm_en.csv,machine,
-stock:5100033,fxstock2.ini,슈퍼 우니,Siêu Bé Bỏng,translated,Posh Ike,en_id.csv,manual,hy4 char-name
+stock:5100033,fxstock2.ini,슈퍼 우니,Siêu Bé Bỏng,translated,Super Ike,en_id.csv,manual,hy4 char-name
 stock:5100034,fxstock2.ini,럭셔리 다오,Tia Chớp,translated,Posh Dao,tm_en.csv,machine,
 stock:5100035,fxstock2.ini,수 캐릭터,Nhân vật Thiên Sứ,translated,Sue Character,en_id.csv,manual,"sửa 2026-11-15 (review 2: tên riêng, xưng hô, lệnh chat)"
 stock:5100036,fxstock2.ini,슈퍼 배찌,Siêu Khò Khò,translated,Super Boz,tm_en.csv,machine,
