@@ -136,13 +136,25 @@ Munppak (문빡이), Kdasu (크다수), bà Palpal (팔팔할매), Fortune Star 
 như Indi, Pinky. Nhân vật tự gọi tên mình (Pinky, Indi) thì giữ tên, phần còn lại vẫn ta – mi.
 
 **Bản tiếng Anh.**
-- Tên nhân vật tiếng Anh ghi riêng trong [`character_names_en_review.csv`](character_names_en_review.csv).
-  Cột `client_evidence_id` trỏ đến ID trong `english_sources.csv` của PopTag; nếu tên do chủ dự án chốt,
-  cột `official_source` ghi quyết định thay cho nguồn client. Số trong `en_variants_in_catalog` đếm
-  dòng có cụm tên tiếng Anh, ưu tiên tên dài nhất khi trùng (ví dụ `Posh Ike` không tính vào `Ike`).
-  `consistent` tính cả biến thể có trong PopTag (`Dizini` ở `EP6_Name`); `n/a` nghĩa là không có tên
-  trong catalog chuỗi. Tên chỉ có trong bản máy chọn một cách viết và dùng cho mọi câu:
-  Sand King, Moonbbak, Granny Palpal, Starfish (별몬, theo PopTag), Little Caterpillar (꼬물이).
+
+**Tên nhân vật tiếng Anh** (chủ dự án chốt ngày 2026-11-21). Áp dụng bảng này khi thêm tên mới
+và khi nhắc đến nhân vật trong câu:
+
+| Dạng tên Hàn | Quy tắc tiếng Anh | Tên hoặc ví dụ |
+|---|---|---|
+| Nhân vật gốc | Giữ nguyên tên chính thức của PopTag | Boz, Dao, Ike, Evie, Melvin, Diz, Moss, Plunk, Sue, Hoou, Ray, Lucy, Rodumani |
+| 럭셔리 | `Posh ` + tên gốc | Posh Dao, Posh Melvin |
+| 슈퍼 | `Super ` + tên gốc | Super Sue, Super Boz, Super Ike |
+| 슈퍼 + 럭셔리 (슈퍼럭…) | `Super Posh ` + tên gốc | Super Posh Evie, Super Posh Melvin |
+
+Tên đã chốt ghi trong [`character_names_en_review.csv`](character_names_en_review.csv).
+Cột `official_source` ghi nguồn của tên được chọn; `client_evidence_id` trỏ đến ID trong
+`english_sources.csv`, và `notes` ghi tên client nếu khác tên đã chốt. Số trong
+`en_variants_in_catalog` đếm dòng có cụm tên tiếng Anh, ưu tiên tên dài nhất khi trùng
+(ví dụ `Super Ike` không tính vào `Ike`). `consistent=n/a` nghĩa là không có tên trong catalog chuỗi.
+Tên chỉ có trong bản máy chọn một cách viết và dùng cho mọi câu: Sand King, Moonbbak, Granny Palpal,
+Starfish (별몬, theo PopTag), Little Caterpillar (꼬물이).
+
 - Lệnh chat viết thường, không khoảng trắng (`/speak`, `/christmas`, `/allpink`). Lệnh nào câu Hàn có kèm bí danh
   Latin thì dùng bí danh đó (`/누구` → `/who`, `/어디` → `/where`, `/초대` → `/in`, `/퇴장` → `/ban`, `/방제` → `/rt`,
   `/자동` → `/ar`); câu hướng dẫn không được để lệnh Hàn.

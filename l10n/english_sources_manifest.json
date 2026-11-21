@@ -40,10 +40,10 @@
   "images_todo_sha256": "d52542692047b54d977d0bfc9213ff05e399be7d8e816c1d56d406f54a57a21a",
   "catalog_rows": 33486,
   "status": {
-    "candidate": 5524,
-    "machine": 26744,
+    "candidate": 5523,
+    "machine": 26742,
     "casefold_candidate": 197,
-    "manual": 477,
+    "manual": 480,
     "missing": 544
   },
   "format_mismatch": 0
