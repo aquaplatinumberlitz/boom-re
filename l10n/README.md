@@ -136,9 +136,13 @@ Munppak (문빡이), Kdasu (크다수), bà Palpal (팔팔할매), Fortune Star 
 như Indi, Pinky. Nhân vật tự gọi tên mình (Pinky, Indi) thì giữ tên, phần còn lại vẫn ta – mi.
 
 **Bản tiếng Anh.**
-- Tên nhân vật lấy theo bản PopTag (`Ch*` trong `english_sources.csv`): Sue (수), Hoou (후우), Posh … cho bản
-  럭셔리. Tên chỉ có trong bản máy chọn một cách viết và dùng cho mọi câu: Sand King, Moonbbak, Granny Palpal,
-  Starfish (별몬, theo PopTag), Little Caterpillar (꼬물이).
+- Tên nhân vật tiếng Anh ghi riêng trong [`character_names_en_review.csv`](character_names_en_review.csv).
+  Cột `client_evidence_id` trỏ đến ID trong `english_sources.csv` của PopTag; nếu tên do chủ dự án chốt,
+  cột `official_source` ghi quyết định thay cho nguồn client. Số trong `en_variants_in_catalog` đếm
+  dòng có cụm tên tiếng Anh, ưu tiên tên dài nhất khi trùng (ví dụ `Posh Ike` không tính vào `Ike`).
+  `consistent` tính cả biến thể có trong PopTag (`Dizini` ở `EP6_Name`); `n/a` nghĩa là không có tên
+  trong catalog chuỗi. Tên chỉ có trong bản máy chọn một cách viết và dùng cho mọi câu:
+  Sand King, Moonbbak, Granny Palpal, Starfish (별몬, theo PopTag), Little Caterpillar (꼬물이).
 - Lệnh chat viết thường, không khoảng trắng (`/speak`, `/christmas`, `/allpink`). Lệnh nào câu Hàn có kèm bí danh
   Latin thì dùng bí danh đó (`/누구` → `/who`, `/어디` → `/where`, `/초대` → `/in`, `/퇴장` → `/ban`, `/방제` → `/rt`,
   `/자동` → `/ar`); câu hướng dẫn không được để lệnh Hàn.
