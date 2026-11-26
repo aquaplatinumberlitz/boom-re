@@ -20860,3 +20860,2699 @@ fx:CustomMap/CustomTileList:Desc#2239,Floor Tile,polish-95:en-batch26
 fx:CustomMap/CustomTileList:Desc#2241,Floor Tile,polish-95:en-batch26
 fx:CustomMap/CustomTileList:Desc#2243,Floor Tile,polish-95:en-batch26
 fx:CustomMap/CustomTileList:Desc#2245,Floor Tile,polish-95:en-batch26
+fx:CustomMap/CustomTileList:Desc#1999,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2001,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2027,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2029,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#203,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2031,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2033,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#205,Factory,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2063,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2065,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2067,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2069,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2071,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2073,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2075,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2077,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2079,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2081,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2083,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2085,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2087,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2089,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2091,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2093,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2095,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2097,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2099,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2101,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2103,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2105,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2107,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2109,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2111,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2113,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2115,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2117,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2119,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2121,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2123,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2125,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2127,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2129,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2131,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2133,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2135,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2161,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2163,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2165,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2167,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2169,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2171,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2173,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2175,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2177,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2179,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2181,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2183,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2185,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2187,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2189,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2191,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#229,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#231,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2315,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2317,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2319,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2321,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2323,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2325,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2327,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2329,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#233,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2331,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2333,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2335,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2337,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2339,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2341,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2343,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2345,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2347,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2349,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#235,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2351,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#237,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#239,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#241,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#243,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#245,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2459,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2461,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2463,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2465,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2467,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2469,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#247,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2471,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2473,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2475,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2477,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2479,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2481,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2483,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2485,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2487,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2489,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#249,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2491,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2493,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2495,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2497,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2499,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2501,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2503,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2505,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2507,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2509,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#251,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2511,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#253,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#255,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2565,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2567,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2569,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#257,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2571,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2573,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2575,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2577,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2579,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2581,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2583,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2585,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2587,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2589,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#259,Patrit,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2591,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2593,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2595,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2597,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2599,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2601,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2603,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2605,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2607,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2609,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2611,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2613,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2615,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2617,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2619,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2621,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2623,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2625,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2627,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2629,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2631,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2633,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2635,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2637,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2639,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2641,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2643,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2645,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2647,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2649,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2651,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2653,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2655,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2657,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2659,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2661,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2663,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2665,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2667,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2669,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2671,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2673,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2675,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2677,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2679,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2681,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2683,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2685,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2687,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2689,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2691,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2693,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2695,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2697,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2699,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2701,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2703,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2705,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2707,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2709,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2711,Christmas,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2761,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2763,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2765,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2767,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2769,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2771,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2773,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2775,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2777,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2779,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2781,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2783,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2785,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2787,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2789,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2863,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2865,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2867,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2869,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2871,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2873,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2875,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2877,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2879,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2881,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2883,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2885,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2887,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2889,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2921,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2923,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2925,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2927,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2929,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2931,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2933,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2935,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2937,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2939,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2941,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2943,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2945,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2981,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2983,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2985,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2987,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2989,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2991,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2993,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2995,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2997,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#2999,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3001,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3003,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3005,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3007,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3009,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#301,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3011,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3013,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3015,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3017,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3019,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3021,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3023,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3025,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3027,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3029,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#303,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3031,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#305,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#307,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#309,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#311,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3113,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3115,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3117,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3119,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3121,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3123,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3125,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3127,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3129,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#313,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3131,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3133,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3135,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3137,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3139,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3141,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3143,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3145,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3147,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3149,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#315,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3151,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#317,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#319,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#321,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#323,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#325,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#327,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3289,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#329,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3291,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3293,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3295,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3297,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3299,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#331,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#333,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#335,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3361,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3363,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3365,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3367,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3369,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#337,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3371,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3373,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3375,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3377,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#339,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#341,Forest,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3467,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3469,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3471,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3473,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3475,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3477,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3479,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3481,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3483,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3485,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3487,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3489,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3491,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#35,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3621,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3623,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3625,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3627,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3629,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3631,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3633,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3635,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3637,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3639,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3641,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3643,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3645,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3647,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3649,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3651,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3653,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3655,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3657,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3659,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3661,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3663,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3665,Baseball,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3695,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3697,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3699,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#37,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3701,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3703,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3705,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3707,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3709,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3711,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3713,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3715,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3717,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3719,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3721,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3723,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3725,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3727,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3729,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3731,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3733,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3735,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3737,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3739,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3741,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3743,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3745,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3747,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3749,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3751,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3753,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3755,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3757,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3759,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3761,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3763,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3765,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3767,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3797,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3799,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3801,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3803,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3805,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3807,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3809,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3811,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3813,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3815,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3817,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3819,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3821,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3823,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3825,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3827,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3829,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3831,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3833,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3835,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3837,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3839,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3841,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3843,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3845,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3847,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3849,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3851,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3853,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3855,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3857,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3859,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#3869,Developer,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#39,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#41,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#427,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#429,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#43,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#431,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#433,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#435,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#437,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#439,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#441,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#443,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#445,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#447,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#449,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#45,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#451,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#453,Christmas,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#467,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#469,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#47,Desert,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#471,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#473,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#475,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#477,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#479,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#481,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#483,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#485,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#487,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#489,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#491,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#493,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#495,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#497,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#499,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#501,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#503,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#619,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#621,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#623,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#625,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#627,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#629,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#631,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#633,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#635,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#637,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#639,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#641,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#643,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#645,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#649,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#651,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#653,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#655,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#657,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#659,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#661,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#705,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#707,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#709,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#711,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#713,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#715,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#717,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#719,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#721,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#723,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#725,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#727,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#729,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#731,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#733,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#735,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#737,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#739,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#741,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#743,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#745,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#747,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#749,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#751,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#753,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#755,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#757,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#759,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#761,Tomb,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#839,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#841,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#843,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#845,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#847,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#849,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#851,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#853,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#855,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#857,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#859,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#861,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#863,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#865,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#867,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#869,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#871,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#873,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#875,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#877,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#879,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#881,Cemetery,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#95,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#97,Indestructible,polish-95:en-batch28
+fx:CustomMap/CustomTileList:Desc#99,Indestructible,polish-95:en-batch28
+stock:4686,Chitty Chitty Bang Bang (Posh Evie),polish-95:en-batch25
+stock:4687,Lord of Monsters,polish-95:en-batch25
+stock:4688,Taegeuk Warrior Set,polish-95:en-batch25
+stock:4689,Red Devils Set,polish-95:en-batch25
+stock:4690,Fan Gear Set,polish-95:en-batch25
+stock:4693,Rambo Set (Posh Plunk),polish-95:en-batch25
+stock:4694,Native American Boy Set (Ike),polish-95:en-batch25
+stock:4695,Native American Girl Set (Posh Evie),polish-95:en-batch25
+stock:4696,Vintage Set (Posh Evie),polish-95:en-batch25
+stock:4697,Vintage Set (Posh Plunk),polish-95:en-batch25
+stock:4700,Halloween Girl Set,polish-95:en-batch25
+stock:4701,Halloween Boy Set,polish-95:en-batch25
+stock:4703,9th Anniversary Speed Set,polish-95:en-batch25
+stock:4704,9th Anniversary Defense Set,polish-95:en-batch25
+stock:4705,Classic Scooter Set,polish-95:en-batch25
+stock:4708,Alien Set (Ike),polish-95:en-batch25
+stock:4710,Sweethearts Set,polish-95:en-batch25
+stock:4715,Skier Set (Posh Evie),polish-95:en-batch25
+stock:4716,Snowboarder Set (Posh Plunk),polish-95:en-batch25
+stock:4717,Ice Cream Set (Posh Evie),polish-95:en-batch25
+stock:4718,Ice Cream Set (Ike),polish-95:en-batch25
+stock:4722,Posh Dao Set,polish-95:en-batch25
+stock:4723,Flame Warrior Set (Posh Dao),polish-95:en-batch25
+stock:4726,Fashionista Bunny Set (Posh Dao),polish-95:en-batch25
+stock:4727,Fashionista Bunny Set (Posh Evie),polish-95:en-batch25
+stock:4729,Posh Plunk + Rambo Set,polish-95:en-batch25
+stock:4730,Black Shotgun + Rambo Set,polish-95:en-batch25
+stock:50000013,Hero Needle x10,polish-95:en-batch25
+stock:50000015,Hero Coin x10,polish-95:en-batch25
+stock:50000020,Hero Wild Ginseng x10,polish-95:en-batch25
+stock:50000028,Hero Potion x10,polish-95:en-batch25
+stock:50000029,Basic Potion x2,polish-95:en-batch25
+stock:50000030,Basic Potion x10,polish-95:en-batch25
+stock:50000070,Intermediate Potion x10,polish-95:en-batch25
+stock:50000071,Intermediate Potion x30,polish-95:en-batch25
+stock:50000072,Advanced Potion x10,polish-95:en-batch25
+stock:50000073,Advanced Potion x30,polish-95:en-batch25
+stock:50000074,Premium Potion x10,polish-95:en-batch25
+stock:50000075,Premium Potion x30,polish-95:en-batch25
+stock:50000077,Hero Angel x10,polish-95:en-batch25
+stock:50000078,Hero Drill,polish-95:en-batch25
+stock:50000079,Repair Gem,polish-95:en-batch25
+stock:50000080,Blessing Gem,polish-95:en-batch25
+stock:50000081,Repair Gem,polish-95:en-batch25
+stock:50000082,Blessing Gem,polish-95:en-batch25
+stock:50000100,Green Stardust (China),polish-95:en-batch25
+stock:5100000,Global Love Megaphone,polish-95:en-batch25
+stock:5100001,Global Megaphone,polish-95:en-batch25
+stock:5100002,Needle (EXP +50),polish-95:en-batch25
+stock:5100003,Wild Ginseng (EXP +50),polish-95:en-batch25
+stock:5100004,Shield (EXP +50),polish-95:en-batch25
+stock:5100005,Angel Coin (EXP +50),polish-95:en-batch25
+stock:5100006,Needle (Lucci +50),polish-95:en-batch25
+stock:5100007,Wild Ginseng (Lucci +50),polish-95:en-batch25
+stock:5100008,Shield (Lucci +50),polish-95:en-batch25
+stock:5100009,Angel Coin (Lucci +50),polish-95:en-batch25
+stock:5100010,Popping Hearts,polish-95:en-batch25
+stock:5100011,Gold Star,polish-95:en-batch25
+stock:5100012,Candy Basket,polish-95:en-batch25
+stock:5100013,Sweetheart Chocolates,polish-95:en-batch25
+stock:5100014,Love Flag,polish-95:en-batch25
+stock:5100015,Sweet Chocolate Balls,polish-95:en-batch25
+stock:5100016,Valentine Chocolates,polish-95:en-batch25
+stock:5100017,Sweetheart Flower Basket,polish-95:en-batch25
+stock:5100018,Malibu Beach,polish-95:en-batch25
+stock:5100019,Treasure Trove,polish-95:en-batch25
+stock:5100020,Velvet Heart Cushion,polish-95:en-batch25
+stock:5100021,Golden Bird's Song,polish-95:en-batch25
+stock:5100022,Lovely Rose,polish-95:en-batch25
+stock:5100024,Red Lantern,polish-95:en-batch25
+stock:5100025,Chocolate Bonbons,polish-95:en-batch25
+stock:5100026,Wiggly Snail,polish-95:en-batch25
+stock:5100027,Snowy Wooden Fence,polish-95:en-batch25
+stock:5100028,Toy Soldier,polish-95:en-batch25
+stock:5100029,Three Sangmo Brothers,polish-95:en-batch25
+stock:5100030,Crystal Ice,polish-95:en-batch25
+stock:5100031,Posh Evie,polish-95:en-batch25
+stock:5100032,Posh Plunk,polish-95:en-batch25
+stock:5100034,Posh Dao,polish-95:en-batch25
+stock:5100036,Super Boz,polish-95:en-batch25
+stock:5100038,Posh Melvin,polish-95:en-batch25
+stock:5100061,Friendly Paengi,polish-95:en-batch25
+stock:5100062,Clever Paenggu,polish-95:en-batch25
+stock:5100063,Sassy Pinko,polish-95:en-batch25
+stock:5100064,Mini Tree,polish-95:en-batch25
+stock:5100065,Beep-Beep,polish-95:en-batch25
+stock:5100066,Bichon Frise,polish-95:en-batch25
+stock:5100068,Little Bear,polish-95:en-batch25
+stock:5100070,Giant Octopus,polish-95:en-batch25
+stock:5100071,Unlimited Unsealing Key,polish-95:en-batch25
+stock:5100103,Whirling Pink Heart,polish-95:en-batch25
+stock:5100104,Pink Angel,polish-95:en-batch25
+stock:5100105,Magic Flame,polish-95:en-batch25
+stock:5100106,Blue Dragon,polish-95:en-batch25
+stock:5100108,Bling Butterfly,polish-95:en-batch25
+stock:5100110,Jewel Aurora Background,polish-95:en-batch25
+stock:5100111,Jewel Aurora Flag,polish-95:en-batch25
+stock:5100112,Jewel Aurora Frame,polish-95:en-batch25
+stock:5100114,Global Love Megaphone,polish-95:en-batch25
+stock:5100115,Needle (EXP +50),polish-95:en-batch25
+stock:5100116,Wild Ginseng (EXP +50),polish-95:en-batch25
+stock:5100117,Shield (EXP +50),polish-95:en-batch25
+stock:5100118,Angel Coin (EXP +50),polish-95:en-batch25
+stock:5100119,Needle (Lucci +50),polish-95:en-batch25
+stock:5100120,Wild Ginseng (Lucci +50),polish-95:en-batch25
+stock:5100121,Shield (Lucci +50),polish-95:en-batch25
+stock:5100122,Angel Coin (Lucci +50),polish-95:en-batch25
+stock:5100123,Golden Wings,polish-95:en-batch25
+stock:5100124,Mo-yeon Hair (Posh Moss),polish-95:en-batch25
+stock:5100125,Mo-yeon Outfit (Posh Moss),polish-95:en-batch25
+stock:5100126,Mo-yeon Expression (Posh Moss),polish-95:en-batch25
+stock:5100127,Mo-yeon Bag (Posh Moss),polish-95:en-batch25
+stock:5100128,Si-jin Hair (Ike),polish-95:en-batch25
+stock:5100129,Si-jin Outfit (Ike),polish-95:en-batch25
+stock:5100130,Si-jin Glasses (Ike),polish-95:en-batch25
+stock:5100131,Camo Background,polish-95:en-batch25
+stock:5100132,Camo Flag,polish-95:en-batch25
+stock:5100136,Thinking of Fried Chicken,polish-95:en-batch25
+stock:5100137,Chicken Kingdom Background,polish-95:en-batch25
+stock:5100138,Chicken Kingdom Flag,polish-95:en-batch25
+stock:5100139,Chicken Kingdom Frame,polish-95:en-batch25
+stock:5100140,Hula Hair (Boz),polish-95:en-batch25
+stock:5100141,Hula Expression (Boz),polish-95:en-batch25
+stock:5100142,Hula Outfit (Boz),polish-95:en-batch25
+stock:5100144,Autumn Style Hair (Posh Moss),polish-95:en-batch25
+stock:5100145,Autumn Style Glasses (Posh Moss),polish-95:en-batch25
+stock:5100146,Autumn Style Outfit (Posh Moss),polish-95:en-batch25
+stock:5100149,Girl Next Door Outfit (Posh Melvin),polish-95:en-batch25
+stock:5100150,Girl Next Door Hair (Posh Melvin),polish-95:en-batch25
+stock:5100151,Girl Next Door Glasses (Posh Melvin),polish-95:en-batch25
+stock:5100153,Mushroom Boy Hair (Ike),polish-95:en-batch25
+stock:5100154,Mushroom Boy Outfit (Ike),polish-95:en-batch25
+stock:5100155,Mushroom Boy Expression (Ike),polish-95:en-batch25
+stock:5100156,Mushroom Girl Hair (Posh Evie),polish-95:en-batch25
+stock:5100157,Mushroom Girl Outfit (Posh Evie),polish-95:en-batch25
+stock:5100158,Mushroom Girl Expression (Posh Evie),polish-95:en-batch25
+stock:5100159,Exchange Student Hair (Posh Melvin),polish-95:en-batch25
+stock:5100160,Exchange Student Expression (Posh Melvin),polish-95:en-batch25
+stock:5100161,Exchange Student Outfit (Posh Melvin),polish-95:en-batch25
+stock:5100162,Dreamy Wings,polish-95:en-batch25
+stock:5100163,Rainbow Ladybug Follower,polish-95:en-batch25
+stock:5100164,MC Hair (Posh Dao),polish-95:en-batch25
+stock:5100165,MC Outfit (Posh Dao),polish-95:en-batch25
+stock:5100166,MC Sunglasses (Posh Dao),polish-95:en-batch25
+stock:5100168,Piano Name Tag,polish-95:en-batch25
+stock:5100173,Christmas Tree Hair (Posh Diz),polish-95:en-batch25
+stock:5100174,Christmas Tree Expression (Posh Diz),polish-95:en-batch25
+stock:5100175,Christmas Tree Outfit (Posh Diz),polish-95:en-batch25
+stock:5100176,Santa and Friends Special Effect,polish-95:en-batch25
+stock:5100177,Christmas Name Tag,polish-95:en-batch25
+stock:5100178,Snowflake Follower,polish-95:en-batch25
+stock:5100179,Tulip Garden,polish-95:en-batch25
+stock:5100181,Hedgehog Dance,polish-95:en-batch25
+stock:5100182,Little Pirate Bodysuit,polish-95:en-batch25
+stock:5100183,Angry Little Pirate,polish-95:en-batch25
+stock:5100184,Crazy Dogs Chihuahua,polish-95:en-batch25
+stock:5100185,Dancing Teddy Bear,polish-95:en-batch25
+stock:5100186,Fluffy Snowfall,polish-95:en-batch25
+stock:5100187,Poop Angel,polish-95:en-batch25
+stock:5100189,Luxury Velvet Curtain,polish-95:en-batch25
+stock:5100190,Star Beads,polish-95:en-batch25
+stock:5100191,Twig Picture Frame,polish-95:en-batch25
+stock:5100192,Yarn Bow,polish-95:en-batch25
+stock:5100193,Octopus Tentacle,polish-95:en-batch25
+stock:5100197,Whirling Pink Heart,polish-95:en-batch25
+stock:5100198,Pink Angel,polish-95:en-batch25
+stock:5100199,Magic Flame,polish-95:en-batch25
+stock:5100200,Blue Dragon,polish-95:en-batch25
+stock:5100201,Red Rooster Hat,polish-95:en-batch25
+stock:5100202,Red Rooster Follower,polish-95:en-batch25
+stock:5100203,Red Rooster Name Tag,polish-95:en-batch25
+stock:5100204,Red Rooster Hair (Posh Melvin),polish-95:en-batch25
+stock:5100205,Red Rooster Expression (Posh Melvin),polish-95:en-batch25
+stock:5100206,Red Rooster Outfit (Posh Melvin),polish-95:en-batch25
+stock:5100207,Chocolate Ribbon,polish-95:en-batch25
+stock:5100211,Grim Reaper Hat (Posh Moss),polish-95:en-batch25
+stock:5100212,Grim Reaper Outfit (Posh Moss),polish-95:en-batch25
+stock:5100213,Goblin Sword,polish-95:en-batch25
+stock:5100214,Hipster Hair (Ike),polish-95:en-batch25
+stock:5100215,Hipster Outfit (Ike),polish-95:en-batch25
+stock:5100216,Hipster Expression (Ike),polish-95:en-batch25
+stock:5100218,Dark Bunny Hair (Boz) ,polish-95:en-batch25
+stock:5100219,Dark Bunny Expression (Boz),polish-95:en-batch25
+stock:5100220,Dark Bunny Outfit (Boz),polish-95:en-batch25
+stock:5100221,Wings of Darkness,polish-95:en-batch25
+stock:5100222,Rainy Day Girl Hair (Posh Evie),polish-95:en-batch25
+stock:5100223,Rainy Day Girl Outfit (Posh Evie),polish-95:en-batch25
+stock:5100224,Rainbow Wave Wings,polish-95:en-batch25
+stock:5100232,Swan Wings,polish-95:en-batch25
+stock:5100233,Gentleman Hair (Ike),polish-95:en-batch25
+stock:5100234,Gentleman Outfit (Ike),polish-95:en-batch25
+stock:5100235,Gentleman Glasses (Ike),polish-95:en-batch25
+stock:5100237,Desert Prince Hair (Posh Diz),polish-95:en-batch25
+stock:5100238,Desert Prince Expression (Posh Diz),polish-95:en-batch25
+stock:5100239,Desert Prince Outfit (Posh Diz),polish-95:en-batch25
+stock:5100240,Little Prince Hair (Ike),polish-95:en-batch25
+stock:5100241,Little Prince Outfit (Ike),polish-95:en-batch25
+stock:5100242,Little Prince Expression (Ike),polish-95:en-batch25
+stock:5100243,Sea Prince Hair (Posh Dao),polish-95:en-batch25
+stock:5100244,Sea Prince Outfit (Posh Dao),polish-95:en-batch25
+stock:5100245,Sea Prince Expression (Posh Dao),polish-95:en-batch25
+stock:5100246,Snow White Hair (Posh Melvin),polish-95:en-batch25
+stock:5100247,Snow White Expression (Posh Melvin),polish-95:en-batch25
+stock:5100248,Snow White Outfit (Posh Melvin),polish-95:en-batch25
+stock:5100249,Kissy Lips,polish-95:en-batch25
+stock:5100251,Panda Posh Diz,polish-95:en-batch25
+stock:5100252,Moonlight Girl Outfit (Posh Melvin),polish-95:en-batch25
+stock:5100253,Moonlight Girl Hair (Posh Melvin),polish-95:en-batch25
+stock:5100256,Snowflake Butterfly Wings,polish-95:en-batch25
+stock:5100257,Crazy Dogs Chihuahua,polish-95:en-batch25
+stock:5100258,Dancing Teddy Bear,polish-95:en-batch25
+stock:5100262,Whirling Pink Heart,polish-95:en-batch25
+stock:5100263,Pink Angel,polish-95:en-batch25
+stock:5100264,Magic Flame,polish-95:en-batch25
+stock:5100265,Blue Dragon,polish-95:en-batch25
+stock:5100266,2018 Pet,polish-95:en-batch25
+stock:5100268,Recharge Card (5 Days),polish-95:en-batch25
+stock:5100269,Needle (EXP +50),polish-95:en-batch25
+stock:5100270,Wild Ginseng (EXP +50),polish-95:en-batch25
+stock:5100271,Shield (EXP +50),polish-95:en-batch25
+stock:5100272,Needle (Lucci +50),polish-95:en-batch25
+stock:5100273,Wild Ginseng (Lucci +50),polish-95:en-batch25
+stock:5100274,Shield (Lucci +50),polish-95:en-batch25
+stock:5100275,Global Love Megaphone,polish-95:en-batch25
+stock:5100276,Popping Hearts,polish-95:en-batch25
+stock:5100277,Gold Star,polish-95:en-batch25
+stock:5100278,Candy Basket,polish-95:en-batch25
+stock:5100279,Sweetheart Chocolates,polish-95:en-batch25
+stock:5100280,Love Flag,polish-95:en-batch25
+stock:5100281,Sweet Chocolate Balls,polish-95:en-batch25
+stock:5100282,Valentine Chocolates,polish-95:en-batch25
+stock:5100283,Sweetheart Flower Basket,polish-95:en-batch25
+stock:5100284,Malibu Beach,polish-95:en-batch25
+stock:5100285,Treasure Trove,polish-95:en-batch25
+stock:5100286,Velvet Heart Cushion,polish-95:en-batch25
+stock:5100287,Golden Bird's Song,polish-95:en-batch25
+stock:5100288,Lovely Rose,polish-95:en-batch25
+stock:5100291,Global Love Megaphone,polish-95:en-batch25
+stock:5100292,Global Megaphone,polish-95:en-batch25
+stock:5100293,Needle (EXP +50),polish-95:en-batch25
+stock:5100294,Wild Ginseng (EXP +50),polish-95:en-batch25
+stock:5100295,Shield (EXP +50),polish-95:en-batch25
+stock:5100296,Angel Coin (EXP +50),polish-95:en-batch25
+stock:5100297,Needle (Lucci +50),polish-95:en-batch25
+stock:5100298,Wild Ginseng (Lucci +50),polish-95:en-batch25
+stock:5100299,Shield (Lucci +50),polish-95:en-batch25
+stock:5100300,Angel Coin (Lucci +50),polish-95:en-batch25
+stock:5100301,Popping Hearts,polish-95:en-batch25
+stock:5100302,Gold Star,polish-95:en-batch25
+stock:5100303,Candy Basket,polish-95:en-batch25
+stock:5100304,Sweetheart Chocolates,polish-95:en-batch25
+stock:5100305,Love Flag,polish-95:en-batch25
+stock:5100306,Sweet Chocolate Balls,polish-95:en-batch25
+stock:5100307,Valentine Chocolates,polish-95:en-batch25
+stock:5100308,Sweetheart Flower Basket,polish-95:en-batch25
+stock:5100309,Malibu Beach,polish-95:en-batch25
+stock:5100310,Treasure Trove,polish-95:en-batch25
+stock:5100311,Velvet Heart Cushion,polish-95:en-batch25
+stock:5100312,Golden Bird's Song,polish-95:en-batch25
+stock:5100313,Lovely Rose,polish-95:en-batch25
+stock:5100314,2018 Pet,polish-95:en-batch25
+stock:5100315,Global Love Megaphone,polish-95:en-batch25
+stock:5100316,Global Megaphone,polish-95:en-batch25
+stock:5100317,Needle (EXP +50),polish-95:en-batch25
+stock:5100318,Wild Ginseng (EXP +50),polish-95:en-batch25
+stock:5100319,Shield (EXP +50),polish-95:en-batch25
+stock:5100320,Angel Coin (EXP +50),polish-95:en-batch25
+stock:5100321,Needle (Lucci +50),polish-95:en-batch25
+stock:5100322,Wild Ginseng (Lucci +50),polish-95:en-batch25
+stock:5100323,Shield (Lucci +50),polish-95:en-batch25
+stock:5100324,Angel Coin (Lucci +50),polish-95:en-batch25
+stock:5100325,Popping Hearts,polish-95:en-batch25
+stock:5100326,Gold Star,polish-95:en-batch25
+stock:5100327,Candy Basket,polish-95:en-batch25
+stock:5100328,Sweetheart Chocolates,polish-95:en-batch25
+stock:5100329,Love Flag,polish-95:en-batch25
+stock:5100330,Sweet Chocolate Balls,polish-95:en-batch25
+stock:5100331,Valentine Chocolates,polish-95:en-batch25
+stock:5100332,Sweetheart Flower Basket,polish-95:en-batch25
+stock:5100333,Treasure Trove,polish-95:en-batch25
+stock:5100334,Velvet Heart Cushion,polish-95:en-batch25
+stock:5100335,Golden Bird's Song,polish-95:en-batch25
+stock:5100336,Lovely Rose,polish-95:en-batch25
+stock:5100337,Malibu Beach,polish-95:en-batch25
+stock:5100338,Global Love Megaphone,polish-95:en-batch25
+stock:5100339,Global Megaphone,polish-95:en-batch25
+stock:5100340,Needle (EXP +50),polish-95:en-batch25
+stock:5100341,Wild Ginseng (EXP +50),polish-95:en-batch25
+stock:5100342,Shield (EXP +50),polish-95:en-batch25
+stock:5100343,Angel Coin (EXP +50),polish-95:en-batch25
+stock:5100344,Needle (Lucci +50),polish-95:en-batch25
+stock:5100345,Wild Ginseng (Lucci +50),polish-95:en-batch25
+stock:5100346,Shield (Lucci +50),polish-95:en-batch25
+stock:5100347,Angel Coin (Lucci +50),polish-95:en-batch25
+stock:5100348,Popping Hearts,polish-95:en-batch25
+stock:5100349,Gold Star,polish-95:en-batch25
+stock:5100350,Candy Basket,polish-95:en-batch25
+stock:5100351,Sweetheart Chocolates,polish-95:en-batch25
+stock:5100352,Love Flag,polish-95:en-batch25
+stock:5100353,Sweet Chocolate Balls,polish-95:en-batch25
+stock:5100354,Valentine Chocolates,polish-95:en-batch25
+stock:5100355,Sweetheart Flower Basket,polish-95:en-batch25
+stock:5100356,Treasure Trove,polish-95:en-batch25
+stock:5100357,Velvet Heart Cushion,polish-95:en-batch25
+stock:5100358,Golden Bird's Song,polish-95:en-batch25
+stock:5100359,Lovely Rose,polish-95:en-batch25
+stock:5100360,Malibu Beach,polish-95:en-batch25
+stock:5100361,Crazy Dogs Chihuahua,polish-95:en-batch25
+stock:5100362,Dancing Teddy Bear,polish-95:en-batch25
+stock:5100366,Needle (EXP +50),polish-95:en-batch25
+stock:5100367,Wild Ginseng (EXP +50),polish-95:en-batch25
+stock:5100368,Shield (EXP +50),polish-95:en-batch25
+stock:5100369,Needle (Lucci +50),polish-95:en-batch25
+stock:5100370,Wild Ginseng (Lucci +50),polish-95:en-batch25
+stock:5100371,Shield (Lucci +50),polish-95:en-batch25
+stock:5100372,Global Love Megaphone,polish-95:en-batch25
+stock:5100373,Popping Hearts,polish-95:en-batch25
+stock:5100374,Gold Star,polish-95:en-batch25
+stock:5100375,Candy Basket,polish-95:en-batch25
+stock:5100376,Sweetheart Chocolates,polish-95:en-batch25
+stock:5100377,Love Flag,polish-95:en-batch25
+stock:5100378,Sweet Chocolate Balls,polish-95:en-batch25
+stock:5100379,Valentine Chocolates,polish-95:en-batch25
+stock:5100380,Sweetheart Flower Basket,polish-95:en-batch25
+stock:5100381,Malibu Beach,polish-95:en-batch25
+stock:5100382,Treasure Trove,polish-95:en-batch25
+stock:5100383,Velvet Heart Cushion,polish-95:en-batch25
+stock:5100384,Golden Bird's Song,polish-95:en-batch25
+stock:5100385,Lovely Rose,polish-95:en-batch25
+stock:5100389,Whirling Pink Heart,polish-95:en-batch25
+stock:5100390,Pink Angel,polish-95:en-batch25
+stock:5100391,Magic Flame,polish-95:en-batch25
+stock:5100392,Blue Dragon,polish-95:en-batch25
+stock:5100394,Bling Butterfly,polish-95:en-batch25
+stock:5100396,Jewel Aurora Background,polish-95:en-batch25
+stock:5100397,Jewel Aurora Flag,polish-95:en-batch25
+stock:5100398,Jewel Aurora Frame,polish-95:en-batch25
+stock:5200002,Popping Hearts,polish-95:en-batch25
+stock:5200003,Gold Star,polish-95:en-batch25
+stock:5200004,Candy Basket,polish-95:en-batch25
+stock:5200005,Sweetheart Chocolates,polish-95:en-batch25
+stock:5200006,Love Flag,polish-95:en-batch25
+stock:5200007,Sweet Chocolate Balls,polish-95:en-batch25
+stock:5200008,Valentine Chocolates,polish-95:en-batch25
+stock:5200009,Sweetheart Flower Basket,polish-95:en-batch25
+stock:5200010,Malibu Beach,polish-95:en-batch25
+stock:5200011,Treasure Trove,polish-95:en-batch25
+stock:5200012,Velvet Heart Cushion,polish-95:en-batch25
+stock:5200013,Golden Bird's Song,polish-95:en-batch25
+stock:5200014,Lovely Rose,polish-95:en-batch25
+stock:5200021,Cola Fanfare,polish-95:en-batch25
+stock:5200022,Mickey Star Hat,polish-95:en-batch25
+stock:5200023,Minnie Heart Hat,polish-95:en-batch25
+stock:5200028,May Festival Wings,polish-95:en-batch25
+stock:5200029,Elephant Follower,polish-95:en-batch25
+stock:5200030,Giraffe Follower,polish-95:en-batch25
+stock:5200031,Dinosaur Follower,polish-95:en-batch25
+stock:5200037,Smile Talk Special Effect,polish-95:en-batch25
+stock:5200038,Smile Follower,polish-95:en-batch25
+stock:5200039,Needle (EXP +50),polish-95:en-batch25
+stock:5200040,Wild Ginseng (EXP +50),polish-95:en-batch25
+stock:5200041,Shield (EXP +50),polish-95:en-batch25
+stock:5200042,Needle (Lucci +50),polish-95:en-batch25
+stock:5200043,Wild Ginseng (Lucci +50),polish-95:en-batch25
+stock:5200044,Shield (Lucci +50),polish-95:en-batch25
+stock:5200045,Global Love Megaphone,polish-95:en-batch25
+stock:5200050,Recharge Card (5 Days),polish-95:en-batch25
+stock:5310001,Global Love Megaphone,polish-95:en-batch25
+stock:5310002,Global Megaphone,polish-95:en-batch25
+stock:5310003,Needle (EXP +50),polish-95:en-batch25
+stock:5310004,Wild Ginseng (EXP +50),polish-95:en-batch25
+stock:5310005,Shield (EXP +50),polish-95:en-batch25
+stock:5310006,Angel Coin (EXP +50),polish-95:en-batch25
+stock:5310007,Needle (Lucci +50),polish-95:en-batch25
+stock:5310008,Wild Ginseng (Lucci +50),polish-95:en-batch25
+stock:5310009,Shield (Lucci +50),polish-95:en-batch25
+stock:5310010,Angel Coin (Lucci +50),polish-95:en-batch25
+stock:5310011,Popping Hearts,polish-95:en-batch25
+stock:5310012,Gold Star,polish-95:en-batch25
+stock:5310013,Candy Basket,polish-95:en-batch25
+stock:5310014,Sweetheart Chocolates,polish-95:en-batch25
+stock:5310015,Love Flag,polish-95:en-batch25
+stock:5310016,Sweet Chocolate Balls,polish-95:en-batch25
+stock:5310017,Valentine Chocolates,polish-95:en-batch25
+stock:5310018,Sweetheart Flower Basket,polish-95:en-batch25
+stock:5310019,Treasure Trove,polish-95:en-batch25
+stock:5310020,Velvet Heart Cushion,polish-95:en-batch25
+stock:5310021,Golden Bird's Song,polish-95:en-batch25
+stock:5310022,Lovely Rose,polish-95:en-batch25
+stock:5310023,Malibu Beach,polish-95:en-batch25
+stock:5310024,Crazy Dogs Chihuahua,polish-95:en-batch25
+stock:5310025,Dancing Teddy Bear,polish-95:en-batch25
+stock:5310029,Whirling Pink Heart,polish-95:en-batch25
+stock:5310030,Pink Angel,polish-95:en-batch25
+stock:5310031,Magic Flame,polish-95:en-batch25
+stock:5310032,Blue Dragon,polish-95:en-batch25
+stock:5310034,Golden Pig Background,polish-95:en-batch25
+stock:5310035,Golden Pig Flag,polish-95:en-batch25
+stock:5310039,Money Shower Special Effect,polish-95:en-batch25
+stock:5320002,Camellia Background,polish-95:en-batch25
+stock:5320003,Camellia Flag,polish-95:en-batch25
+stock:5320004,Camellia Effect,polish-95:en-batch25
+stock:5320005,Blue Magpie Wings,polish-95:en-batch25
+stock:5320006,Long Puffer Coat (Ray),polish-95:en-batch25
+stock:5350003,Fairy's Snowflake Special Effect,polish-95:en-batch25
+stock:5350004,Rudolph Expression (Posh Melvin),polish-95:en-batch25
+stock:5350005,Rudolph Outfit (Posh Melvin),polish-95:en-batch25
+stock:5350006,Rudolph Hair (Posh Melvin),polish-95:en-batch25
+stock:5350007,Santa and Gifts Fanfare,polish-95:en-batch25
+stock:600001,Mini Bunny,polish-95:en-batch25
+stock:600002,Mini Mong,polish-95:en-batch25
+stock:6001,Angel Halo,polish-95:en-batch25
+stock:6003,Spinning Shooting Star,polish-95:en-batch25
+stock:6007,Rainbow Star,polish-95:en-batch25
+stock:6009,A Single Rose,polish-95:en-batch25
+stock:6010,Flying Superman,polish-95:en-batch25
+stock:6011,Wicked Devil,polish-95:en-batch25
+stock:6012,Guardian Angel,polish-95:en-batch25
+stock:6013,Floating Hearts,polish-95:en-batch25
+stock:6014,Play Ball,polish-95:en-batch25
+stock:6015,Wizard Hat,polish-95:en-batch25
+stock:6017,Celebration Cake,polish-95:en-batch25
+stock:6018,Bundle of Books,polish-95:en-batch25
+stock:6019,Cowboy Hat,polish-95:en-batch25
+stock:6020,Lady's Dress Hat,polish-95:en-batch25
+stock:6022,Flower Wreath,polish-95:en-batch25
+stock:6023,Jiangshi Hat,polish-95:en-batch25
+stock:6025,Pig Head,polish-95:en-batch25
+stock:6028,Cozy Bird's Nest,polish-95:en-batch25
+stock:6029,King's Hat,polish-95:en-batch25
+stock:6030,Alphabet Basket,polish-95:en-batch25
+stock:6031,Magic Hand,polish-95:en-batch25
+stock:6032,Hearty Ginseng Chicken Soup,polish-95:en-batch25
+stock:6034,Punk Hair,polish-95:en-batch25
+stock:6036,Magic Flame,polish-95:en-batch25
+stock:6037,Freebie Fanatic,polish-95:en-batch25
+stock:6038,"Go, Go, Racing!",polish-95:en-batch25
+stock:6039,Angel Wings,polish-95:en-batch25
+stock:6040,Devil Wings,polish-95:en-batch25
+stock:6041,Boxman,polish-95:en-batch25
+stock:6043,Mr. 7's Hat,polish-95:en-batch25
+stock:6044,Ayumi's Cap,polish-95:en-batch25
+stock:6048,Butterfly Antennae,polish-95:en-batch25
+stock:6049,Blue Butterfly,polish-95:en-batch25
+stock:6050,Princess Ribbon,polish-95:en-batch25
+stock:6051,Chae-ok Wig,polish-95:en-batch25
+stock:6052,Straw Hat,polish-95:en-batch25
+stock:6053,Beggar King Hat,polish-95:en-batch25
+stock:6055,Golden Antennae,polish-95:en-batch25
+stock:6056,Bbung Bbung the Fart King,polish-95:en-batch25
+stock:6057,Golden Swallowtail,polish-95:en-batch25
+stock:6058,Queen's Hairstyle,polish-95:en-batch25
+stock:6059,Radiant Bride,polish-95:en-batch25
+stock:6060,Wedding Ribbon,polish-95:en-batch25
+stock:6061,Native American Chief,polish-95:en-batch25
+stock:6063,Luxury Flat Cap,polish-95:en-batch25
+stock:6064,Luxury Trench Coat,polish-95:en-batch25
+stock:6065,Stylish Fur Hat,polish-95:en-batch25
+stock:6066,Firefly Fairy,polish-95:en-batch25
+stock:6067,Dazzling Christmas Tree,polish-95:en-batch25
+stock:6068,Hip-Hop Dreads,polish-95:en-batch25
+stock:6069,Santa Special,polish-95:en-batch25
+stock:6070,Stylish Goggles,polish-95:en-batch25
+stock:6071,Sun Wukong Hairstyle,polish-95:en-batch25
+stock:6072,Flying Nimbus,polish-95:en-batch25
+stock:6073,Survival Helmet,polish-95:en-batch25
+stock:6074,Combat Backpack,polish-95:en-batch25
+stock:6075,Sweet Kisses,polish-95:en-batch25
+stock:6076,Kiss Ribbon,polish-95:en-batch25
+stock:6077,Gollum Mask,polish-95:en-batch25
+stock:6078,Heart Whirlwind,polish-95:en-batch25
+stock:6079,Taegeuk Helmet,polish-95:en-batch25
+stock:6080,Flower Hat,polish-95:en-batch25
+stock:6081,Butterfly Friends,polish-95:en-batch25
+stock:6082,Enjin Hat,polish-95:en-batch25
+stock:6083,Dreadlock Updo,polish-95:en-batch25
+stock:6084,Hair Rollers,polish-95:en-batch25
+stock:6085,School Cap,polish-95:en-batch25
+stock:6086,Schoolbag,polish-95:en-batch25
+stock:6087,Boya Hair,polish-95:en-batch25
+stock:6088,Highlighted Hair,polish-95:en-batch25
+stock:6089,Hip-Hop Boy,polish-95:en-batch25
+stock:6092,Deep Side-Part Wig,polish-95:en-batch25
+stock:6093,Pinwheel Headband,polish-95:en-batch25
+stock:6094,Big Fish,polish-95:en-batch25
+stock:6095,Fizzy Bubbles,polish-95:en-batch25
+stock:6096,Poop Hat,polish-95:en-batch25
+stock:6097,Clown Hat,polish-95:en-batch25
+stock:6098,Fireworks Burst,polish-95:en-batch25
+stock:6099,Sleepyhead Hat,polish-95:en-batch25
+stock:6100,Cowboy Star,polish-95:en-batch25
+stock:610001,Pet Food,polish-95:en-batch25
+stock:610002,Unsealing Key,polish-95:en-batch25
+stock:610003,Tier 1 Pet Upgrade Ticket,polish-95:en-batch25
+stock:610004,Tier 2 Pet Upgrade Ticket,polish-95:en-batch25
+stock:610005,Tier 3 Pet Upgrade Ticket,polish-95:en-batch25
+stock:6101,Dust Storm,polish-95:en-batch25
+stock:6102,Rookie Eggshell,polish-95:en-batch25
+stock:6103,Steaming Mad,polish-95:en-batch25
+stock:6104,Spinning Sangmo,polish-95:en-batch25
+stock:6105,Love Heart,polish-95:en-batch25
+stock:6107,Black Cat,polish-95:en-batch25
+stock:6109,Dreads with Headphones,polish-95:en-batch25
+stock:6110,Sleepy Raccoon Dog,polish-95:en-batch25
+stock:6111,Flying Chick,polish-95:en-batch25
+stock:6112,Party Hat,polish-95:en-batch25
+stock:6114,Hands Off!,polish-95:en-batch25
+stock:6117,Giant Soot Sprite,polish-95:en-batch25
+stock:6118,Spinning Soot Sprite,polish-95:en-batch25
+stock:6119,God of Fortune's Hat,polish-95:en-batch25
+stock:6121,Rudolph Hat,polish-95:en-batch25
+stock:6124,Egyptian-Style Hair,polish-95:en-batch25
+stock:6125,Star Vortex,polish-95:en-batch25
+stock:6126,Frog on a Leaf,polish-95:en-batch25
+stock:6127,Goofy Glasses,polish-95:en-batch25
+stock:6128,Taegeuk Bandana,polish-95:en-batch25
+stock:6129,Spiral Glasses,polish-95:en-batch25
+stock:6130,Lucifer's Wings,polish-95:en-batch25
+stock:6131,Pirate Octopus,polish-95:en-batch25
+stock:6133,Greater Angel Wings,polish-95:en-batch25
+stock:6134,Angry Glasses,polish-95:en-batch25
+stock:6135,Fed-Up Glasses (Sue),polish-95:en-batch25
+stock:6139,Pink Number 5 Balloon,polish-95:en-batch25
+stock:6140,Red Number 5 Balloon,polish-95:en-batch25
+stock:6141,Chic Number 5 Balloon,polish-95:en-batch25
+stock:6144,Taiwan Flag Headpiece,polish-95:en-batch25
+stock:6146,Rose Whirlwind,polish-95:en-batch25
+stock:6147,Cute Angel,polish-95:en-batch25
+stock:6149,Giant Octopus,polish-95:en-batch25
+stock:6150,BnB Flower Pig,polish-95:en-batch25
+stock:6155,Ultimate Weapon,polish-95:en-batch25
+stock:6156,Baseball Helmet,polish-95:en-batch25
+stock:6158,Squirming Emperor Penguin,polish-95:en-batch25
+stock:6159,Viking Pirate Ship,polish-95:en-batch25
+stock:6163,Carnivorous Plant,polish-95:en-batch25
+stock:6164,Scooter Helmet,polish-95:en-batch25
+stock:6165,Mini Scooter,polish-95:en-batch25
+stock:6167,Volume Meter Effect,polish-95:en-batch25
+stock:6170,Disguise Wig (Posh Evie),polish-95:en-batch25
+stock:6171,Disguise Wig (Posh Evie),polish-95:en-batch25
+stock:6173,Black Tarantula,polish-95:en-batch25
+stock:6175,Bunny Hat,polish-95:en-batch25
+stock:6176,Hot Pot,polish-95:en-batch25
+stock:6178,Rainbow Wings,polish-95:en-batch25
+stock:6179,Squeaky Mouse Hat,polish-95:en-batch25
+stock:6180,Sweetheart Glasses,polish-95:en-batch25
+stock:6185,Green Grass Fairy,polish-95:en-batch25
+stock:6186,Pink Flower Fairy,polish-95:en-batch25
+stock:6187,Blue-Striped Ball,polish-95:en-batch25
+stock:6188,Twinkling Star,polish-95:en-batch25
+stock:6191,Baby Penguin Hat,polish-95:en-batch25
+stock:6193,Special Forces Backpack,polish-95:en-batch25
+stock:6194,Cookie Hat,polish-95:en-batch25
+stock:6197,Fireball Hair,polish-95:en-batch25
+stock:6198,Red Dragon,polish-95:en-batch25
+stock:6199,Blue Dragon,polish-95:en-batch25
+stock:6200,Ancient Hero's Helmet,polish-95:en-batch25
+stock:6201,Ancient Hero's Cape,polish-95:en-batch25
+stock:6203,Mini Velo Bike,polish-95:en-batch25
+stock:6204,Ghostly Mayhem,polish-95:en-batch25
+stock:6205,Squirming King,polish-95:en-batch25
+stock:6207,Magic Flame,polish-95:en-batch25
+stock:6209,Pesky Mosquito,polish-95:en-batch25
+stock:6212,Red Hare,polish-95:en-batch25
+stock:6213,We Are the Champions,polish-95:en-batch25
+stock:6214,Sticky Goo,polish-95:en-batch25
+stock:6215,7th Anniversary Party Hat,polish-95:en-batch25
+stock:6216,Lightning King Helmet,polish-95:en-batch25
+stock:6217,Cleanup Bot,polish-95:en-batch25
+stock:6218,Santa Bear Hat,polish-95:en-batch25
+stock:6219,White Bear,polish-95:en-batch25
+stock:6220,Bunny Bell Hat,polish-95:en-batch25
+stock:6221,Fuzzy Teddy Bear Hat,polish-95:en-batch25
+stock:6222,Rookie Helmet,polish-95:en-batch25
+stock:6223,Flame Wings,polish-95:en-batch25
+stock:6225,Nightmare Ghost,polish-95:en-batch25
+stock:6226,Foul-Mouthed Granny,polish-95:en-batch25
+stock:6228,Odd Banana,polish-95:en-batch25
+stock:6229,Flaming Electric Guitar,polish-95:en-batch25
+stock:6232,Green Elf Hair,polish-95:en-batch25
+stock:6233,Green Elf Wings,polish-95:en-batch25
+stock:6242,Raging Ghost,polish-95:en-batch25
+stock:6243,Shark Hat,polish-95:en-batch25
+stock:6246,Red Hare,polish-95:en-batch25
+stock:6251,Bandana Devil,polish-95:en-batch25
+stock:6253,Horse Head,polish-95:en-batch25
+stock:6255,8th Anniversary Cake,polish-95:en-batch25
+stock:6256,Kiss of the Angels,polish-95:en-batch25
+stock:6260,Dark Knight Wings,polish-95:en-batch25
+stock:6261,Red-Nosed Rudolph,polish-95:en-batch25
+stock:6262,Black Dragon,polish-95:en-batch25
+stock:6264,Rainbow Knit Hat,polish-95:en-batch25
+stock:6267,Gold Dragon,polish-95:en-batch25
+stock:6268,Mischievous Bamtori,polish-95:en-batch25
+stock:6269,Mischievous Bamsuni,polish-95:en-batch25
+stock:6275,9th Anniversary Sparkle Hat,polish-95:en-batch25
+stock:6276,Rose Headband,polish-95:en-batch25
+stock:6277,Rose Carriage,polish-95:en-batch25
+stock:6278,Rainbow Star,polish-95:en-batch25
+stock:6280,"Go, Korea!",polish-95:en-batch25
+stock:6283,Monster Crown,polish-95:en-batch25
+stock:6284,Monster Cape,polish-95:en-batch25
+stock:6285,Golden Little Caterpillar,polish-95:en-batch25
+stock:6286,Thunder Crash,polish-95:en-batch25
+stock:6288,Black Shotgun,polish-95:en-batch25
+stock:6291,Chubby Duck Hat,polish-95:en-batch25
+stock:6296,Rainbow Whirlwind,polish-95:en-batch25
+stock:6299,Classic Scooter,polish-95:en-batch25
+stock:6300,Classic Scooter Helmet,polish-95:en-batch25
+stock:6312,9th Anniversary Banner,polish-95:en-batch25
+stock:6313,Pumpkin Tornado,polish-95:en-batch25
+stock:6319,Oddball Cat,polish-95:en-batch25
+stock:6320,Pink Unicorn,polish-95:en-batch25
+stock:6321,Blue Unicorn,polish-95:en-batch25
+stock:6323,Fire Ring,polish-95:en-batch25
+stock:6326,Lazy Cat,polish-95:en-batch25
+stock:6328,Hero Dark Dragon,polish-95:en-batch25
+stock:6329,Hero Dark Dragon,polish-95:en-batch25
+stock:6330,Hero Dark Dragon,polish-95:en-batch25
+stock:6331,Ice Ring,polish-95:en-batch25
+stock:700003,Camo Hedgehog,polish-95:en-batch25
+stock:700004,Super Hedgehog,polish-95:en-batch25
+stock:700007,Power Ginseng,polish-95:en-batch25
+stock:700008,Co-op Battle Revival Coin,polish-95:en-batch25
+stock:700009,Magnifying Glass,polish-95:en-batch25
+stock:700010,Needle (EXP +50),polish-95:en-batch25
+stock:700011,Needle (Lucci +50),polish-95:en-batch25
+stock:700012,Shield (EXP +50),polish-95:en-batch25
+stock:700013,Shield (Lucci +50),polish-95:en-batch25
+stock:700014,Wild Ginseng (EXP +50),polish-95:en-batch25
+stock:700015,Wild Ginseng (Lucci +50),polish-95:en-batch25
+stock:700016,Angel Coin (EXP +50),polish-95:en-batch25
+stock:700017,Angel Coin (Lucci +50),polish-95:en-batch25
+stock:700019,Luxury Picture Frame,polish-95:en-batch25
+stock:700020,Luxury Velvet Curtain,polish-95:en-batch25
+stock:700021,Happy Flower,polish-95:en-batch25
+stock:700022,Happy Flower Flag,polish-95:en-batch25
+stock:700024,Golden Ball,polish-95:en-batch25
+stock:700025,Red Pang,polish-95:en-batch25
+stock:700026,Blue Pang,polish-95:en-batch25
+stock:700028,Red Devil,polish-95:en-batch25
+stock:700029,Pink Heartbeat,polish-95:en-batch25
+stock:700030,Blue Heartbeat,polish-95:en-batch25
+stock:700031,Penguin Background,polish-95:en-batch25
+stock:700032,Emperor Penguin,polish-95:en-batch25
+stock:700033,Fuzzy Emperor Penguin Coat,polish-95:en-batch25
+stock:700034,Hawaiian Background,polish-95:en-batch25
+stock:700035,Hawaiian Flag,polish-95:en-batch25
+stock:700036,Quilt Wallpaper,polish-95:en-batch25
+stock:700037,Quilt Flag,polish-95:en-batch25
+stock:700038,Lace Quilt,polish-95:en-batch25
+stock:700039,Robot Base Background,polish-95:en-batch25
+stock:700040,Robot Base Flag,polish-95:en-batch25
+stock:700041,Robot Base Accessory,polish-95:en-batch25
+stock:700042,Scooter Race,polish-95:en-batch25
+stock:700043,Scooter Flag,polish-95:en-batch25
+stock:700044,Bunny Farm Wallpaper,polish-95:en-batch25
+stock:700045,Bunny Flag,polish-95:en-batch25
+stock:700046,Bunny Friends,polish-95:en-batch25
+stock:700047,Goblin Face (Boz),polish-95:en-batch25
+stock:700048,Goblin Leather Outfit (Boz),polish-95:en-batch25
+stock:700049,Brown Goblin Hat (Boz),polish-95:en-batch25
+stock:700050,Zombie Bride Face,polish-95:en-batch25
+stock:700051,Zombie Bride Dress,polish-95:en-batch25
+stock:700052,Zombie Bride Veil,polish-95:en-batch25
+stock:700053,Pink Heartbeat,polish-95:en-batch25
+stock:700054,Blue Heartbeat,polish-95:en-batch25
+stock:700055,Aroa Expression (Posh Evie),polish-95:en-batch25
+stock:700056,Aroa Outfit (Posh Evie),polish-95:en-batch25
+stock:700057,Aroa Hat (Posh Evie),polish-95:en-batch25
+stock:700058,Snowfield Warrior Name Tag,polish-95:en-batch25
+stock:700059,Sea Warrior Name Tag,polish-95:en-batch25
+stock:700060,Dreamy Cloud,polish-95:en-batch25
+stock:700061,Pink Heart Flutter,polish-95:en-batch25
+stock:700062,Lime Heart Flutter,polish-95:en-batch25
+stock:700063,Blooming Hat,polish-95:en-batch25
+stock:700064,Blooming Backpack,polish-95:en-batch25
+stock:700065,Bouncing Kitty,polish-95:en-batch25
+stock:700066,Block Bike Mount,polish-95:en-batch25
+stock:700067,Captain Korea Shield,polish-95:en-batch25
+stock:700068,Maple Slime Hat,polish-95:en-batch25
+stock:700069,Maple Yeti Hat,polish-95:en-batch25
+stock:700070,Blue Maple Name Tag,polish-95:en-batch25
+stock:700071,Flower Name Tag,polish-95:en-batch25
+stock:700072,Electric Unicycle,polish-95:en-batch25
+stock:700073,Love Dash Trail,polish-95:en-batch25
+stock:700074,Fox Ear Hat,polish-95:en-batch25
+stock:700075,Fox Tail Wings,polish-95:en-batch25
+stock:700076,Parfait Background,polish-95:en-batch25
+stock:700077,Parfait Flag,polish-95:en-batch25
+stock:700078,Parfait Frame,polish-95:en-batch25
+stock:700079,Dream Palace Background,polish-95:en-batch25
+stock:700080,Dream Palace Flag,polish-95:en-batch25
+stock:700084,Wave Dash Trail,polish-95:en-batch25
+stock:700088,Chicken Kingdom Background,polish-95:en-batch25
+stock:700089,Chicken Kingdom Flag,polish-95:en-batch25
+stock:700090,Chicken Kingdom Frame,polish-95:en-batch25
+stock:700091,Bouquet Follower,polish-95:en-batch25
+stock:700092,Fireworks Transformation,polish-95:en-batch25
+stock:700093,Parfait Accessory,polish-95:en-batch25
+stock:700094,Flirt & Fight Special Effect,polish-95:en-batch25
+stock:700095,Lucky Pouch Name Tag,polish-95:en-batch25
+stock:700096,Pastel Bunny Background,polish-95:en-batch25
+stock:700097,Pastel Bunny Flag,polish-95:en-batch25
+stock:700098,Pastel Bunny Accessory,polish-95:en-batch25
+stock:700099,Flower Path Dash Trail,polish-95:en-batch25
+stock:700100,Panda Follower,polish-95:en-batch25
+stock:700103,My TV Name Tag,polish-95:en-batch25
+stock:700104,LED Wings,polish-95:en-batch25
+stock:700105,Seafood All Day Background,polish-95:en-batch25
+stock:700106,Seafood All Day Flag,polish-95:en-batch25
+stock:700107,Taurus Follower,polish-95:en-batch25
+stock:700108,Gemini Follower,polish-95:en-batch25
+stock:700109,Banana for Me Name Tag,polish-95:en-batch25
+stock:700110,Camellia Name Tag,polish-95:en-batch25
+stock:700111,Penguin Name Tag,polish-95:en-batch25
+stock:700112,LED Fireworks Special Effect,polish-95:en-batch25
+stock:700113,Honeybee Wings,polish-95:en-batch25
+stock:700114,Petal Breeze Follower,polish-95:en-batch25
+stock:700115,Dandelion Seed Special Effect,polish-95:en-batch25
+stock:700116,Barbie's House Name Tag,polish-95:en-batch25
+stock:700117,Flamingo Fanfare,polish-95:en-batch25
+stock:700123,Tuxedo Hair (Ray),polish-95:en-batch25
+stock:700124,Tuxedo Outfit (Ray),polish-95:en-batch25
+stock:700125,Pineapple Pop Special Effect,polish-95:en-batch25
+stock:700126,Ambulance Follower,polish-95:en-batch25
+stock:700127,Gas Mask,polish-95:en-batch25
+stock:700128,Hermit Crab Hat,polish-95:en-batch25
+stock:700129,Watermelon Name Tag,polish-95:en-batch25
+stock:700130,Finger Heart Background,polish-95:en-batch25
+stock:700131,Finger Heart Flag,polish-95:en-batch25
+stock:700132,Spotted Butterfly Wings,polish-95:en-batch25
+stock:700133,Spooky Dash Trail,polish-95:en-batch25
+stock:700135,Global Love Megaphone,polish-95:en-batch25
+stock:700140,Phantom Hair (Ray),polish-95:en-batch25
+stock:700141,Phantom Outfit (Ray),polish-95:en-batch25
+stock:700142,Phantom Expression (Ray),polish-95:en-batch25
+stock:700143,Blue Jeans,polish-95:en-batch25
+stock:700145,Money Shower,polish-95:en-batch25
+stock:700146,Pink Bean Hat,polish-95:en-batch25
+stock:700147,Lucid's Butterfly Special Effect,polish-95:en-batch25
+stock:700151,Power Ginseng,polish-95:en-batch25
+stock:700155,Revival Coin,polish-95:en-batch25
+stock:700158,X-Ray Specs,polish-95:en-batch25
+stock:700161,Power Ginseng,polish-95:en-batch25
+stock:700162,Angel Coin,polish-95:en-batch25
+stock:700167,Revival Coin,polish-95:en-batch25
+stock:700170,X-Ray Specs,polish-95:en-batch25
+stock:700171,Brown Background,polish-95:en-batch25
+stock:700172,Brown Flag,polish-95:en-batch25
+stock:700173,Cony Background,polish-95:en-batch25
+stock:700174,Cony Flag,polish-95:en-batch25
+stock:700175,Sally Background,polish-95:en-batch25
+stock:700176,Sally Flag,polish-95:en-batch25
+stock:700177,Sally Accessory,polish-95:en-batch25
+stock:700178,Brown Follower,polish-95:en-batch25
+stock:700179,Cony Follower,polish-95:en-batch25
+stock:700180,Sally Bag,polish-95:en-batch25
+stock:700181,Leonard Bag,polish-95:en-batch25
+stock:700182,Brown Name Tag,polish-95:en-batch25
+stock:700183,Cony Name Tag,polish-95:en-batch25
+stock:700184,Brown Hat,polish-95:en-batch25
+stock:700185,Cony Hat,polish-95:en-batch25
+stock:700186,Sally Hat,polish-95:en-batch25
+stock:700187,Leonard Hat,polish-95:en-batch25
+stock:700194,Poop Hat,polish-95:en-batch25
+stock:700196,Chat Window Background,polish-95:en-batch25
+stock:700197,Chat Window Flag,polish-95:en-batch25
+stock:700198,Chat Window Accessory,polish-95:en-batch25
+stock:700199,Heart Pop Special Effect,polish-95:en-batch25
+stock:700200,Chocolate Party Hat,polish-95:en-batch25
+stock:700201,Choco Choco Name Tag,polish-95:en-batch25
+stock:700203,Chocolate Pudding Mount,polish-95:en-batch25
+stock:700204,Valentine Chocolate Background,polish-95:en-batch25
+stock:700205,Valentine Chocolate Flag,polish-95:en-batch25
+stock:700206,Valentine Chocolate Effect,polish-95:en-batch25
+stock:7009,Watermelon Beach Ball,polish-95:en-batch25
+stock:7010,Blue Beach Ball,polish-95:en-batch25
+stock:7011,Golden Ball,polish-95:en-batch25
+stock:7013,Red Pang,polish-95:en-batch25
+stock:7014,Blue Pang,polish-95:en-batch25
+stock:7022,Pink Tornado,polish-95:en-batch25
+stock:7040,Snowy Snowman,polish-95:en-batch25
+stock:7041,Snowy Snowman,polish-95:en-batch25
+stock:77701,Crazy Arcade BnB Mobile 2011,polish-95:en-batch25
+stock:7999,Posh Dao,polish-95:en-batch25
+stock:8000,Posh Plunk,polish-95:en-batch25
+stock:80000,Rank Insignia Effect 4 (Coupon),polish-95:en-batch25
+stock:8000003,Banana for Me Name Tag,polish-95:en-batch25
+stock:8000004,Rainbow Falls Cloud Special Effect,polish-95:en-batch25
+stock:8000005,Little Flowerpot Follower,polish-95:en-batch25
+stock:8000016,Banana Couple Background,polish-95:en-batch25
+stock:8000017,Banana Couple Flag,polish-95:en-batch25
+stock:8000018,Banana Couple Accessory,polish-95:en-batch25
+stock:8000019,Black Sneakers Name Tag,polish-95:en-batch25
+stock:8000020,White Sneakers Name Tag,polish-95:en-batch25
+stock:8000021,Petite Purple Scarf,polish-95:en-batch25
+stock:8000022,Black Straw Hat,polish-95:en-batch25
+stock:8000023,Yellow Dinosaur Hat,polish-95:en-batch25
+stock:8000024,Gold Skull Hat,polish-95:en-batch25
+stock:8000025,Green Butterfly Wings,polish-95:en-batch25
+stock:8000026,Pink Death Spear Wings,polish-95:en-batch25
+stock:8000027,Black Wings,polish-95:en-batch25
+stock:8000028,Green Camper Mount,polish-95:en-batch25
+stock:8000029,Black Swan Follower,polish-95:en-batch25
+stock:8000030,Pink Elephant Follower,polish-95:en-batch25
+stock:8000031,Yellow Rising Star Special Effect,polish-95:en-batch25
+stock:8000032,Rainbow Shimmer Special Effect,polish-95:en-batch25
+stock:8000033,My Kitchen Background,polish-95:en-batch25
+stock:8000034,My Kitchen Flag,polish-95:en-batch25
+stock:8000035,My Bathroom Background,polish-95:en-batch25
+stock:8000036,My Bathroom Flag,polish-95:en-batch25
+stock:8000037,Gummy Bear Background,polish-95:en-batch25
+stock:8000038,Gummy Bear Flag,polish-95:en-batch25
+stock:8000039,Gummy Bear Accessory,polish-95:en-batch25
+stock:8000040,Magic Hat,polish-95:en-batch25
+stock:8000041,Octopus Ink Special Effect,polish-95:en-batch25
+stock:8000045,Sailor Hair (Boz),polish-95:en-batch25
+stock:8000046,Sailor Glasses (Boz),polish-95:en-batch25
+stock:8000047,Sailor Outfit (Boz),polish-95:en-batch25
+stock:8000048,Cool Style Hair (Posh Dao),polish-95:en-batch25
+stock:8000049,Cool Style Glasses (Posh Dao),polish-95:en-batch25
+stock:8000050,Cool Style Outfit (Posh Dao),polish-95:en-batch25
+stock:8000051,Shrimp Sushi Follower,polish-95:en-batch25
+stock:8000052,Coconut Follower,polish-95:en-batch25
+stock:8000053,Camper Mount,polish-95:en-batch25
+stock:8000054,Gummy Bear Name Tag,polish-95:en-batch25
+stock:8000055,Sleek Wings,polish-95:en-batch25
+stock:8000056,Slime Monster Hat,polish-95:en-batch25
+stock:8000059,VIP 3 Background,polish-95:en-batch25
+stock:8000060,VIP 3 Flag,polish-95:en-batch25
+stock:8000061,VIP 4 Background,polish-95:en-batch25
+stock:8000062,VIP 4 Flag,polish-95:en-batch25
+stock:8000067,Watermelon Name Tag,polish-95:en-batch25
+stock:8000068,Paper Carnation Hat,polish-95:en-batch25
+stock:8000069,Giant Skull Special Effect,polish-95:en-batch25
+stock:8000070,Jiangshi Megaphone,polish-95:en-batch25
+stock:8000071,Global Ghost Megaphone,polish-95:en-batch25
+stock:8000072,Global Supreme Megaphone,polish-95:en-batch25
+stock:8000073,Global VIP Megaphone,polish-95:en-batch25
+stock:8000076,Ghost Name Tag,polish-95:en-batch25
+stock:8000077,Carnation Special Effect,polish-95:en-batch25
+stock:8000078,Gourd Brothers Background,polish-95:en-batch25
+stock:8000079,Gourd Brothers Flag,polish-95:en-batch25
+stock:8000080,Chinese Soldier Hair (Posh Evie),polish-95:en-batch25
+stock:8000081,Chinese Soldier Outfit (Posh Evie),polish-95:en-batch25
+stock:8000082,Chinese Soldier Hair (Posh Dao),polish-95:en-batch25
+stock:8000083,Chinese Soldier Outfit (Posh Dao),polish-95:en-batch25
+stock:8000087,Explorer Hair (Ray),polish-95:en-batch25
+stock:8000088,Explorer Outfit (Ray),polish-95:en-batch25
+stock:8000089,Explorer Expression (Ray),polish-95:en-batch25
+stock:8000090,Hip-Hop Streetwear Hair (Ike),polish-95:en-batch25
+stock:8000091,Hip-Hop Tracksuit (Ike),polish-95:en-batch25
+stock:8000092,Hip-Hop Streetwear Expression (Ike),polish-95:en-batch25
+stock:8000093,Toy Block Follower,polish-95:en-batch25
+stock:8000094,Drone Hat,polish-95:en-batch25
+stock:8000095,Megaphone Subscription Pass,polish-95:en-batch25
+stock:8000096,Viking Hat,polish-95:en-batch25
+stock:8000097,Viking Cape,polish-95:en-batch25
+stock:8000098,Raw Blue Cosmic Gem,polish-95:en-batch25
+stock:8000099,Snake Follower,polish-95:en-batch25
+stock:80001,Rank Insignia Effect 5 (Coupon),polish-95:en-batch25
+stock:8000100,Bat Wings,polish-95:en-batch25
+stock:8000101,Pirate Background,polish-95:en-batch25
+stock:8000102,Pirate Flag,polish-95:en-batch25
+stock:8000103,Tarot Card Background,polish-95:en-batch25
+stock:8000104,Tarot Card Flag,polish-95:en-batch25
+stock:8000105,Tarot Card Effect,polish-95:en-batch25
+stock:8000106,Halloween Pumpkin Background,polish-95:en-batch25
+stock:8000107,Halloween Pumpkin Flag,polish-95:en-batch25
+stock:8000108,Halloween Pumpkin Effect,polish-95:en-batch25
+stock:8000112,Hip-Hop Hair (Posh Moss),polish-95:en-batch25
+stock:8000113,Hip-Hop Outfit (Posh Moss),polish-95:en-batch25
+stock:8000114,Hip-Hop Glasses (Posh Moss),polish-95:en-batch25
+stock:8000115,Witch Dash Trail,polish-95:en-batch25
+stock:8000116,IV Drip Follower,polish-95:en-batch25
+stock:8000117,Spiderweb Special Effect,polish-95:en-batch25
+stock:8000118,Mosaic Special Effect,polish-95:en-batch25
+stock:8000119,Needle (EXP +50),polish-95:en-batch25
+stock:8000120,Crying Boz Headband,polish-95:en-batch25
+stock:8000121,Ladder Boz Follower,polish-95:en-batch25
+stock:8000122,Boz Plane Follower,polish-95:en-batch25
+stock:8000123,Cue the Music Special Effect,polish-95:en-batch25
+stock:8000124,Music Name Tag,polish-95:en-batch25
+stock:8000125,Dreamy Butterfly Wings,polish-95:en-batch25
+stock:8000126,Dreamy Purple Background,polish-95:en-batch25
+stock:8000127,Dreamy Purple Flag,polish-95:en-batch25
+stock:8000128,Dreamy Purple Effect,polish-95:en-batch25
+stock:8000129,Barista Glasses (Posh Evie),polish-95:en-batch25
+stock:8000130,Barista Outfit (Posh Evie),polish-95:en-batch25
+stock:8000131,Barista Hair (Posh Evie),polish-95:en-batch25
+stock:8000133,Tangerine Dash Trail,polish-95:en-batch25
+stock:8000134,Gamma Day Background,polish-95:en-batch25
+stock:8000135,Gamma Day Flag,polish-95:en-batch25
+stock:8000136,Tangerine Wings,polish-95:en-batch25
+stock:8000137,Tangerine Mount,polish-95:en-batch25
+stock:8000138,Tangerine Name Tag,polish-95:en-batch25
+stock:8000139,Tangerine Fishing Rod,polish-95:en-batch25
+stock:8000140,Gamma Day Gachapon,polish-95:en-batch25
+stock:8000141,Golden Gamma Day Gachapon,polish-95:en-batch25
+stock:8000143,Winter Snowflake Background (China),polish-95:en-batch25
+stock:8000144,Winter Snowflake Flag (China),polish-95:en-batch25
+stock:8000145,Winter Snowflake Effect (China),polish-95:en-batch25
+stock:8000146,Mushroom Boy Background (China),polish-95:en-batch25
+stock:8000147,Mushroom Boy Flag (China),polish-95:en-batch25
+stock:8000148,Mushroom Boy Accessory (China),polish-95:en-batch25
+stock:8000149,Elephant Name Tag (China),polish-95:en-batch25
+stock:8000150,Rudolph Hat (Posh Melvin),polish-95:en-batch25
+stock:8000151,Rudolph Outfit (Posh Melvin),polish-95:en-batch25
+stock:8000152,Rudolph Expression (Posh Melvin),polish-95:en-batch25
+stock:8000153,High Society Hat (Posh Diz),polish-95:en-batch25
+stock:8000154,High Society Outfit (Posh Diz),polish-95:en-batch25
+stock:8000155,Fluffy Santa Name Tag,polish-95:en-batch25
+stock:8000159,Rudolph Headband,polish-95:en-batch25
+stock:8000160,Mushroom Boy Follower,polish-95:en-batch25
+stock:8000161,Electric Zap Special Effect,polish-95:en-batch25
+stock:8000163,Golden Pig Background (Overseas),polish-95:en-batch25
+stock:8000164,Golden Pig Flag (Overseas),polish-95:en-batch25
+stock:8000168,Long White Puffer Name Tag (Overseas),polish-95:en-batch25
+stock:8000170,Camellia Background (Overseas),polish-95:en-batch25
+stock:8000171,Camellia Flag (Overseas),polish-95:en-batch25
+stock:8000172,Camellia Effect (Overseas),polish-95:en-batch25
+stock:8000173,Heart Pop Special Effect (Overseas),polish-95:en-batch25
+stock:8000174,Money Shower Special Effect (Overseas),polish-95:en-batch25
+stock:8000175,"Boyfriend Style Hair (Posh Dao, Overseas)",polish-95:en-batch25
+stock:8000176,"Boyfriend Style Outfit (Posh Dao, Overseas)",polish-95:en-batch25
+stock:8000177,"Boyfriend Style Expression (Posh Dao, Overseas)",polish-95:en-batch25
+stock:8000178,"Boyfriend Style Glasses (Posh Dao, Overseas)",polish-95:en-batch25
+stock:8000179,Leonard Fishing Rod,polish-95:en-batch25
+stock:8000180,Lupin Hair (Ray),polish-95:en-batch25
+stock:8000181,Lupin Outfit (Ray),polish-95:en-batch25
+stock:8000182,Lupin Expression (Ray),polish-95:en-batch25
+stock:8000183,Leonard Follower,polish-95:en-batch25
+stock:8000184,Leonard Mount,polish-95:en-batch25
+stock:8000185,Sally Follower,polish-95:en-batch25
+stock:8000186,Sally Mount,polish-95:en-batch25
+stock:8000188,Lucky Cat Background (Overseas),polish-95:en-batch25
+stock:8000189,Lucky Cat Flag (Overseas),polish-95:en-batch25
+stock:8000190,Pig Bag (Overseas),polish-95:en-batch25
+stock:8000191,Pig Name Tag (Overseas),polish-95:en-batch25
+stock:8000193,Back-to-School Background (Overseas),polish-95:en-batch25
+stock:8000194,Back-to-School Flag (Overseas),polish-95:en-batch25
+stock:8000195,Makeup Name Tag (Overseas),polish-95:en-batch25
+stock:8000196,Makeup Background (Overseas),polish-95:en-batch25
+stock:8000197,Makeup Flag (Overseas),polish-95:en-batch25
+stock:8000198,Piggy Bow Hat,polish-95:en-batch25
+stock:8000199,Hologram Heart Follower,polish-95:en-batch25
+stock:80002,Yi Sun-sin's Armor,polish-95:en-batch25
+stock:8000200,Chocolate Rain Special Effect,polish-95:en-batch25
+stock:8000201,Sally Dash Trail,polish-95:en-batch25
+stock:8000202,James Background,polish-95:en-batch25
+stock:8000203,James Flag,polish-95:en-batch25
+stock:8000204,Doozzi Hair (Posh Diz),polish-95:en-batch25
+stock:8000205,Doozzi Outfit (Posh Diz),polish-95:en-batch25
+stock:8000206,Doozzi Expression (Posh Diz),polish-95:en-batch25
+stock:8000207,Doozzi Bag (Posh Diz),polish-95:en-batch25
+stock:8000208,Party Fanfare,polish-95:en-batch25
+stock:8000211,Rainbow Follower (Overseas),polish-95:en-batch25
+stock:8000212,Sweet Macaron Follower,polish-95:en-batch25
+stock:8000216,Candy Ears Hat,polish-95:en-batch25
+stock:8000218,Moonlight Kitty Background,polish-95:en-batch25
+stock:8000219,Moonlight Kitty Flag,polish-95:en-batch25
+stock:8000220,Moonlight Kitty Name Tag,polish-95:en-batch25
+stock:8000221,Moonlight Kitty,polish-95:en-batch25
+stock:8000222,Astronaut Hat,polish-95:en-batch25
+stock:8000223,Astronaut Name Tag,polish-95:en-batch25
+stock:8000224,Ice Pop Sommelier Background,polish-95:en-batch25
+stock:8000225,Ice Pop Sommelier Flag,polish-95:en-batch25
+stock:8000226,Branded Strap Bag,polish-95:en-batch25
+stock:8000228,Singapore Trip Background,polish-95:en-batch25
+stock:8000229,Singapore Trip Flag,polish-95:en-batch25
+stock:8000230,Singapore Trip Effect,polish-95:en-batch25
+stock:8000231,Merlion Follower,polish-95:en-batch25
+stock:8000232,Maple Mushroom Hat,polish-95:en-batch25
+stock:8000233,Clover Special Effect,polish-95:en-batch25
+stock:8000234,Grapefruit Soda Background,polish-95:en-batch25
+stock:8000235,Grapefruit Soda Flag,polish-95:en-batch25
+stock:8000236,Golden Trident Follower,polish-95:en-batch25
+stock:8000237,Rose Name Tag,polish-95:en-batch25
+stock:8000238,Triangle Kimbap Hair (Ike),polish-95:en-batch25
+stock:8000239,Triangle Kimbap Outfit (Ike),polish-95:en-batch25
+stock:8000240,Triangle Kimbap Expression (Ike),polish-95:en-batch25
+stock:8000241,Pom-Pom Hat,polish-95:en-batch25
+stock:8000242,Polka-Dot Hair (Posh Melvin),polish-95:en-batch25
+stock:8000243,Polka-Dot Outfit (Posh Melvin),polish-95:en-batch25
+stock:8000244,Polka-Dot Expression (Posh Melvin),polish-95:en-batch25
+stock:8000245,Lovely Girl Hair (Ike),polish-95:en-batch25
+stock:8000246,Lovely Girl Outfit (Ike),polish-95:en-batch25
+stock:8000247,Lovely Girl Glasses (Ike),polish-95:en-batch25
+stock:8000248,Stone Spirit Hat,polish-95:en-batch25
+stock:8000249,Stone Spirit Special Effect,polish-95:en-batch25
+stock:8000251,Oz Hair (Posh Evie),polish-95:en-batch25
+stock:8000252,Oz Outfit (Posh Evie),polish-95:en-batch25
+stock:8000253,Oz Expression (Posh Evie),polish-95:en-batch25
+stock:8000257,Hawkeye Hair (Posh Dao),polish-95:en-batch25
+stock:8000258,Hawkeye Outfit (Posh Dao),polish-95:en-batch25
+stock:8000259,Hawkeye Expression (Posh Dao),polish-95:en-batch25
+stock:8000260,Eckhart Hair (Ray),polish-95:en-batch25
+stock:8000261,Eckhart Outfit (Ray),polish-95:en-batch25
+stock:8000262,Eckhart Expression (Ray),polish-95:en-batch25
+AIBattleNpcName08,Tuto,polish-95:en-batch29
+AIBattleNpcName09,Pinky,polish-95:en-batch29
+AIBattleNpcName10,Jin,polish-95:en-batch29
+AIBattleNpcName11,Reina,polish-95:en-batch29
+AIBattleNpcName12,Shy,polish-95:en-batch29
+AIBattleNpcName13,Jun,polish-95:en-batch29
+AIBattleNpcName14,Indi,polish-95:en-batch29
+AIBattleNpcName15,Kun,polish-95:en-batch29
+AIBattleNpcName19,Santa,polish-95:en-batch29
+AIBattleSay_AIDie_0_0,Ugh...,polish-95:en-batch29
+AIBattleSay_AIDraw_CAHero_100_2,Wow.,polish-95:en-batch29
+AIBattleSay_EnemyLockedIn_6_0,Too easy.,polish-95:en-batch29
+AIBattleSay_EnemyLockedIn_CAHero_18_0,Heh.,polish-95:en-batch29
+AIBattleSay_EnemyLockedIn_CAHero_6_0,Too easy.,polish-95:en-batch29
+AIBattleSay_EnemyLockedIn_CAHero_7_1,Huh?,polish-95:en-batch29
+AIBattleSay_SelfLockedIn_17_4,Oh no!,polish-95:en-batch29
+AIBattleSay_SelfLockedIn_CAHero_100_7,Argh!,polish-95:en-batch29
+AIBattleSay_SelfLockedIn_CAHero_18_1,Ouch.,polish-95:en-batch29
+AIBattleSay_SelfLockedIn_CAHero_9_0,"Aww, come on!",polish-95:en-batch29
+AIBattleSay_StalkerIn_11_1,Eek!,polish-95:en-batch29
+AIBattleSay_StalkerIn_12_1,Whoa!,polish-95:en-batch29
+AIBattleSay_StalkerIn_13_1,Whoa!,polish-95:en-batch29
+AIBattleSay_StalkerIn_14_0,What?!,polish-95:en-batch29
+AIBattleSay_StalkerIn_14_1,Whoa!,polish-95:en-batch29
+AIBattleSay_StalkerIn_15_1,Whoa!,polish-95:en-batch29
+AIBattleSay_StalkerIn_8_1,Eek!,polish-95:en-batch29
+AIBattleSay_StalkerIn_9_1,Eek!,polish-95:en-batch29
+Antarctic01approach02,Huh?,polish-95:en-batch29
+Antarctic01bomberDie05,Hee-hee!,polish-95:en-batch29
+Antarctic01bossDamaged01,Oh my!,polish-95:en-batch29
+Antarctic01default17,"Why, you!",polish-95:en-batch29
+Antarctic01default19,Zzz...,polish-95:en-batch29
+Antarctic01selfDie04,Whoa!,polish-95:en-batch29
+Antarctic01selfLocked06,Oh!,polish-95:en-batch29
+Bat_CmdMsg,/bat,polish-95:en-batch29
+BeginnerHelpMsg_ItemSpring,Jump!,polish-95:en-batch29
+BigBattle_Ingame_Winner_Line2,%s!,polish-95:en-batch29
+BnbNavi_EventNaviTitle,Events,polish-95:en-batch29
+BnbNavi_NormalQuestNaviTitle,Quests,polish-95:en-batch29
+BonusLargeGourd01SelfDamaged01,Ouch!,polish-95:en-batch29
+CAMarble2_NeedSlot1Reward,15,polish-95:en-batch29
+CAMarble2_NeedSlot2Reward,5,polish-95:en-batch29
+CAMarbleK1305_NeedSlot1Reward,20,polish-95:en-batch29
+CAMarbleK1305_NeedSlot2Reward,20,polish-95:en-batch29
+CAMarbleK1305_NeedSlot3Reward,30,polish-95:en-batch29
+CAMarbleK1309_NeedSlot1Reward,30,polish-95:en-batch29
+CAMarbleK1309_NeedSlot2Reward,20,polish-95:en-batch29
+CAMarbleK1309_NeedSlot3Reward,20,polish-95:en-batch29
+CAMarble_NeedSlot1Reward,15,polish-95:en-batch29
+CAMarble_NeedSlot2Reward,15,polish-95:en-batch29
+CAMarble_NeedSlot3Reward,15,polish-95:en-batch29
+CAMission_Dlg_MissionDaily,Daily,polish-95:en-batch29
+CAMission_Dlg_RewardLabel,Reward,polish-95:en-batch29
+ChannelMoveMode1,Free Play,polish-95:en-batch29
+ChannelMoveMode5,Hero,polish-95:en-batch29
+ChannelMoveMode7,Brawl,polish-95:en-batch29
+Character01,Hat,polish-95:en-batch29
+ChatFilterGuild,Guild,polish-95:en-batch29
+CoupleRing_Bat,Bat,polish-95:en-batch29
+CoupleRing_LineFriends,Line,polish-95:en-batch29
+CoupleRing_Uni,Ike,polish-95:en-batch29
+CreateDlgMode,Mode,polish-95:en-batch29
+DTT_SlotLock_HelpMsg03,"<font style=bold>Your slots unlock automatically when:</font>
+* You close the Drop the Item window
+* The items refresh automatically (manual refreshes don't count)
+* You get a locked item
+* The service is unexpectedly interrupted",polish-95:en-batch29
+Dream,Dream,polish-95:en-batch29
+EventCompleteKart_DoReward,"Claim your Crazy Arcade & Kart Crossover reward! <font color=yellow style=bold>Limit one BnB game ID per registered Nexon ID</font>.
+%s, would you like to claim your reward?",polish-95:en-batch29
+FishName_Eel,Eel,polish-95:en-batch29
+FishName_Shark,Shark,polish-95:en-batch29
+FishingRankString_ItemCount,Count,polish-95:en-batch29
+FishingRankString_ItemTitle,Item,polish-95:en-batch29
+FishingRankString_TopRankID,ID,polish-95:en-batch29
+FxDesktop:NoticeImg/Notice2PW,"Nexon Korea Corporation collects the information below to verify your identity when you set up a secondary password for Crazy Arcade.
+
+[Consent to Collection and Use of Personal Information]
+● Information we collect
+- Your mobile phone number or email address
+● Why we collect it
+- To verify your identity when you reset your Crazy Arcade secondary password
+● How long we keep it
+- We delete it as soon as the Crazy Arcade service ends, unless applicable law requires us to retain it separately.
+● Your right to decline
+- You may decline consent and still play the game. Without consent, you can't create a secondary password using your phone number or email.
+- To create a secondary password without giving consent, choose a security question and answer to verify your identity.
+
+Do you consent to the collection and use of your personal information to create a secondary password?",polish-95:en-batch29
+FxMap:Map/MonGolem18:say00#67,Squawk!,polish-95:en-batch29
+FxMap:Map/MonGolem27:say00#69,Squawk!,polish-95:en-batch29
+FxMap:Map/MonPen06:say00#153,Hah!,polish-95:en-batch29
+FxMap:Map/MonPen06:say01#154,Hah!,polish-95:en-batch29
+FxMap:Map/MonPen06:say02#155,Hah!,polish-95:en-batch29
+FxMap:Map/MonPen06:say03#156,Hah!,polish-95:en-batch29
+FxMap:Map/MonPen06:say04#157,Hah!,polish-95:en-batch29
+FxMap:Map/MonPen06:say05#158,Hah!,polish-95:en-batch29
+FxMap:Map/MonPen06:say06#159,Hah!,polish-95:en-batch29
+FxMap:Map/MonPen06:say07#160,Hah!,polish-95:en-batch29
+FxMap:Map/MonPen06:say08#161,Hah!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#0,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#1,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#10,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#11,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#12,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#13,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#14,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#15,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#16,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#17,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#2,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#3,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#4,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#5,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#6,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#7,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#8,Ack!,polish-95:en-batch29
+FxMap:Map/MonS2Sand02:say01#9,Ack!,polish-95:en-batch29
+FxMap:Map/MonTurtle21:say00#19,Gah!,polish-95:en-batch29
+FxMap:Map/Monster14:say05#140,Ugh!,polish-95:en-batch29
+FxMap:Map/Monster14:say05#185,Ugh!,polish-95:en-batch29
+FxMap:Map/Monster14:say05#230,Ugh!,polish-95:en-batch29
+FxMap:Map/Monster14:say05#275,Ugh!,polish-95:en-batch29
+FxMap:Map/Monster14:say05#311,Ugh!,polish-95:en-batch29
+FxMap:Map/Monster14:say05#356,Ugh!,polish-95:en-batch29
+FxMap:Map/Monster14:say05#401,Ugh!,polish-95:en-batch29
+FxMap:Map/Monster14:say05#446,Ugh!,polish-95:en-batch29
+FxMap:Map/Monster14:say06#141,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say06#186,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say06#231,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say06#276,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say06#312,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say06#357,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say06#402,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say06#447,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say08#143,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say08#188,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say08#233,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say08#278,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say08#314,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say08#359,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say08#404,Ack!,polish-95:en-batch29
+FxMap:Map/Monster14:say08#449,Ack!,polish-95:en-batch29
+FxStage:StageCredit/Credit:10,박 기 수,polish-95:en-batch29
+FxStage:StageCredit/Credit:100,김 현 기,polish-95:en-batch29
+FxStage:StageCredit/Credit:101,박 성 철,polish-95:en-batch29
+FxStage:StageCredit/Credit:102,황 용 수,polish-95:en-batch29
+FxStage:StageCredit/Credit:103,김 민 성,polish-95:en-batch29
+FxStage:StageCredit/Credit:104,박 광 준,polish-95:en-batch29
+FxStage:StageCredit/Credit:106,김 종 원,polish-95:en-batch29
+FxStage:StageCredit/Credit:107,노 영 진,polish-95:en-batch29
+FxStage:StageCredit/Credit:108,김 성 배,polish-95:en-batch29
+FxStage:StageCredit/Credit:109,장 석 현,polish-95:en-batch29
+FxStage:StageCredit/Credit:110,김 청 용,polish-95:en-batch29
+FxStage:StageCredit/Credit:111,계 동 균,polish-95:en-batch29
+FxStage:StageCredit/Credit:112,이 현 준,polish-95:en-batch29
+FxStage:StageCredit/Credit:113,노 재 현,polish-95:en-batch29
+FxStage:StageCredit/Credit:114,김 경 아,polish-95:en-batch29
+FxStage:StageCredit/Credit:115,권 오 창,polish-95:en-batch29
+FxStage:StageCredit/Credit:116,이 권 일,polish-95:en-batch29
+FxStage:StageCredit/Credit:117,장 재 화,polish-95:en-batch29
+FxStage:StageCredit/Credit:118,윤 영 섭,polish-95:en-batch29
+FxStage:StageCredit/Credit:119,김 정 도,polish-95:en-batch29
+FxStage:StageCredit/Credit:120,이 경 민,polish-95:en-batch29
+FxStage:StageCredit/Credit:121,황 인 승,polish-95:en-batch29
+FxStage:StageCredit/Credit:122,최 재 혁,polish-95:en-batch29
+FxStage:StageCredit/Credit:123,박 민 욱,polish-95:en-batch29
+FxStage:StageCredit/Credit:124,유 창 곤,polish-95:en-batch29
+FxStage:StageCredit/Credit:127,이 은 아,polish-95:en-batch29
+FxStage:StageCredit/Credit:128,남 혜 진,polish-95:en-batch29
+FxStage:StageCredit/Credit:129,신 지 혜,polish-95:en-batch29
+FxStage:StageCredit/Credit:130,홍 수 옥,polish-95:en-batch29
+FxStage:StageCredit/Credit:131,윤 정 항,polish-95:en-batch29
+FxStage:StageCredit/Credit:132,이 상 희,polish-95:en-batch29
+FxStage:StageCredit/Credit:133,임 주 현,polish-95:en-batch29
+FxStage:StageCredit/Credit:134,이 수 진,polish-95:en-batch29
+FxStage:StageCredit/Credit:135,은 주 희,polish-95:en-batch29
+FxStage:StageCredit/Credit:136,노 해 진,polish-95:en-batch29
+FxStage:StageCredit/Credit:137,박 은 희,polish-95:en-batch29
+FxStage:StageCredit/Credit:138,이 은 혜,polish-95:en-batch29
+FxStage:StageCredit/Credit:139,최 은 영,polish-95:en-batch29
+FxStage:StageCredit/Credit:14,이 경 민,polish-95:en-batch29
+FxStage:StageCredit/Credit:140,전 유 민,polish-95:en-batch29
+FxStage:StageCredit/Credit:141,위 지 혜,polish-95:en-batch29
+FxStage:StageCredit/Credit:142,송 재 남,polish-95:en-batch29
+FxStage:StageCredit/Credit:146,황 재 호,polish-95:en-batch29
+FxStage:StageCredit/Credit:147,최 선 미,polish-95:en-batch29
+FxStage:StageCredit/Credit:148,김 종 율,polish-95:en-batch29
+FxStage:StageCredit/Credit:149,정 은 실,polish-95:en-batch29
+FxStage:StageCredit/Credit:15,황 인 승,polish-95:en-batch29
+FxStage:StageCredit/Credit:150,임 혜 리,polish-95:en-batch29
+FxStage:StageCredit/Credit:151,안 현 숙,polish-95:en-batch29
+FxStage:StageCredit/Credit:152,권 오 직,polish-95:en-batch29
+FxStage:StageCredit/Credit:158,권 현 주,polish-95:en-batch29
+FxStage:StageCredit/Credit:159,우 은 미,polish-95:en-batch29
+FxStage:StageCredit/Credit:16,최 재 혁,polish-95:en-batch29
+FxStage:StageCredit/Credit:160,조 재 윤,polish-95:en-batch29
+FxStage:StageCredit/Credit:161,황 인 웅,polish-95:en-batch29
+FxStage:StageCredit/Credit:162,문 윤 주,polish-95:en-batch29
+FxStage:StageCredit/Credit:163,최 진 희,polish-95:en-batch29
+FxStage:StageCredit/Credit:17,박 민 욱,polish-95:en-batch29
+FxStage:StageCredit/Credit:172,김병수,polish-95:en-batch29
+FxStage:StageCredit/Credit:18,유 창 곤,polish-95:en-batch29
+FxStage:StageCredit/Credit:183,주은정,polish-95:en-batch29
+FxStage:StageCredit/Credit:22,이 은 혜,polish-95:en-batch29
+FxStage:StageCredit/Credit:23,이 수 진,polish-95:en-batch29
+FxStage:StageCredit/Credit:24,전 유 민,polish-95:en-batch29
+FxStage:StageCredit/Credit:25,위 지 혜,polish-95:en-batch29
+FxStage:StageCredit/Credit:26,송 재 남,polish-95:en-batch29
+FxStage:StageCredit/Credit:36,권 오 직,polish-95:en-batch29
+FxStage:StageCredit/Credit:42,최 진 희,polish-95:en-batch29
+FxStage:StageCredit/Credit:49,박 종 흠,polish-95:en-batch29
+FxStage:StageCredit/Credit:50,채 은 도,polish-95:en-batch29
+FxStage:StageCredit/Credit:51,윤 세 훈,polish-95:en-batch29
+FxStage:StageCredit/Credit:52,권 순 성,polish-95:en-batch29
+FxStage:StageCredit/Credit:53,강 대 현,polish-95:en-batch29
+FxStage:StageCredit/Credit:54,황 승 희,polish-95:en-batch29
+FxStage:StageCredit/Credit:55,김 청 용,polish-95:en-batch29
+FxStage:StageCredit/Credit:56,계 동 균,polish-95:en-batch29
+FxStage:StageCredit/Credit:57,이 재 준,polish-95:en-batch29
+FxStage:StageCredit/Credit:58,남 혜 진,polish-95:en-batch29
+FxStage:StageCredit/Credit:61,김 정 현,polish-95:en-batch29
+FxStage:StageCredit/Credit:62,이 승 찬,polish-95:en-batch29
+FxStage:StageCredit/Credit:63,정 영 석,polish-95:en-batch29
+FxStage:StageCredit/Credit:64,석 광 원,polish-95:en-batch29
+FxStage:StageCredit/Credit:65,이 인 원,polish-95:en-batch29
+FxStage:StageCredit/Credit:66,허 영 석,polish-95:en-batch29
+FxStage:StageCredit/Credit:67,오 영 균,polish-95:en-batch29
+FxStage:StageCredit/Credit:68,정 우 용,polish-95:en-batch29
+FxStage:StageCredit/Credit:69,권 순 성,polish-95:en-batch29
+FxStage:StageCredit/Credit:70,황 승 희,polish-95:en-batch29
+FxStage:StageCredit/Credit:71,오 원 석,polish-95:en-batch29
+FxStage:StageCredit/Credit:72,장 소 연,polish-95:en-batch29
+FxStage:StageCredit/Credit:73,문 성 호,polish-95:en-batch29
+FxStage:StageCredit/Credit:74,유 형 석,polish-95:en-batch29
+FxStage:StageCredit/Credit:75,김 수 연,polish-95:en-batch29
+FxStage:StageCredit/Credit:76,문 새 벽,polish-95:en-batch29
+FxStage:StageCredit/Credit:77,이 수 정,polish-95:en-batch29
+FxStage:StageCredit/Credit:78,박 찬 현,polish-95:en-batch29
+FxStage:StageCredit/Credit:79,김 소 희,polish-95:en-batch29
+FxStage:StageCredit/Credit:80,박 기 수,polish-95:en-batch29
+FxStage:StageCredit/Credit:83,이 상 근,polish-95:en-batch29
+FxStage:StageCredit/Credit:84,이 창 희,polish-95:en-batch29
+FxStage:StageCredit/Credit:85,김 성 훈,polish-95:en-batch29
+FxStage:StageCredit/Credit:86,채 은 도,polish-95:en-batch29
+FxStage:StageCredit/Credit:87,안 병 규,polish-95:en-batch29
+FxStage:StageCredit/Credit:88,김 이 선,polish-95:en-batch29
+FxStage:StageCredit/Credit:89,송 창 규,polish-95:en-batch29
+FxStage:StageCredit/Credit:9,박 찬 현,polish-95:en-batch29
+FxStage:StageCredit/Credit:90,강 대 현,polish-95:en-batch29
+FxStage:StageCredit/Credit:91,황 민 재,polish-95:en-batch29
+FxStage:StageCredit/Credit:92,김 주 남,polish-95:en-batch29
+FxStage:StageCredit/Credit:93,방 경 민,polish-95:en-batch29
+FxStage:StageCredit/Credit:94,정 우 용,polish-95:en-batch29
+FxStage:StageCredit/Credit:95,김 재 일,polish-95:en-batch29
+FxStage:StageCredit/Credit:96,송 창 규,polish-95:en-batch29
+FxStage:StageCredit/Credit:97,김 기 준,polish-95:en-batch29
+FxStage:StageCredit/Credit:98,김 도 겸,polish-95:en-batch29
+FxStage:StageCredit/Credit:99,송 기 문,polish-95:en-batch29
+HC_PrepareStage_Stage,Stage,polish-95:en-batch29
+HC_SingleTooltip_Theme0_Reward20,EXP,polish-95:en-batch29
+HC_SingleTooltip_Theme0_Reward40,EXP,polish-95:en-batch29
+HC_SingleTooltip_Theme0_Reward70,EXP,polish-95:en-batch29
+HC_SingleTooltip_Theme0_Reward90,EXP,polish-95:en-batch29
+HC_SingleTooltip_Theme1_Reward30,EXP,polish-95:en-batch29
+HC_SingleTooltip_Theme1_Reward50,EXP,polish-95:en-batch29
+Happy,Happy,polish-95:en-batch29
+HiddenCatch_DifficultyOptionEasy,Easy,polish-95:en-batch29
+HiddenCatch_DifficultyOptionHard,Hard,polish-95:en-batch29
+Item05,Other,polish-95:en-batch29
+Item07,Pet,polish-95:en-batch29
+ItemPeriodChangeDlg_ItemName,Name,polish-95:en-batch29
+ItemSkill_ItemToolTip,"<font style=bold color=white>%s [Lv. %d]</font>
+
+%s
+
+<font style=bold color=white>[Activation Chance: %d%%]</font>
+
+<font color=0xffff00>To use this action skill, equip it and the required item in My Items.</font>",polish-95:en-batch29
+Lei,Ray,polish-95:en-batch29
+LimitLottery_Type1,Boss,polish-95:en-batch29
+LimitLottery_Type4,Golem,polish-95:en-batch29
+LimitLottery_Type5,Boz,polish-95:en-batch29
+LimitLottery_Type6,Seal,polish-95:en-batch29
+LimitLottery_Type7,Pudak,polish-95:en-batch29
+LimitLottery_Type8,Light,polish-95:en-batch29
+LimitLottery_Type9,Item,polish-95:en-batch29
+LineFriends_CmdMsg,/line,polish-95:en-batch29
+LobbyFishing_ToolBox_ToolTipAuto,Auto,polish-95:en-batch29
+LobbySquare_ChatTab_All,All,polish-95:en-batch29
+LobbySquare_ChatTab_Guild,Guild,polish-95:en-batch29
+LucciDonation_HeaderLucci,Lucci,polish-95:en-batch29
+MPCharSlot02,Hat,polish-95:en-batch29
+MPCharSlot05@ClientString,Bag,polish-95:en-batch29
+MPEmotionSlot06,Uh-oh!,polish-95:en-batch29
+MPProfileSlot09,Rank,polish-95:en-batch29
+MPProfileWinning01,Rank,polish-95:en-batch29
+MPProfileWinning03,Personal Best,polish-95:en-batch29
+MPProfileWinning07,ID,polish-95:en-batch29
+MagicBox_RewardPermanent,x%d,polish-95:en-batch29
+MagicMarket_ItemPieces,%d pieces,polish-95:en-batch29
+MagicMarket_LimitedResultItemRemains,%d left,polish-95:en-batch29
+MagicMarket_ProductionToolTip,Craft,polish-95:en-batch29
+MagicMarket_TabMake,Craft,polish-95:en-batch29
+MapRank,Rank,polish-95:en-batch29
+Modification,Edit,polish-95:en-batch29
+MonAction_Monkey_01SelfDamaged01,Ack!,polish-95:en-batch29
+MonAction_Monkey_01SelfDamaged02,Aah!,polish-95:en-batch29
+MonAction_Monkey_01SelfDie02,Ouch!,polish-95:en-batch29
+MonAction_Monkey_01approach05,Grrr!,polish-95:en-batch29
+MonAction_Monkey_01approach06,Ook!,polish-95:en-batch29
+MonAction_Sancho_01SelfDamaged01,Oof!,polish-95:en-batch29
+MonAction_Sancho_01SelfDamaged02,Ouch!,polish-95:en-batch29
+MonAction_Sancho_01SelfDie01,Bye!,polish-95:en-batch29
+MonAction_Sancho_01SelfDie02,Aah!,polish-95:en-batch29
+MonAction_Sancho_01Selflocked03,Three,polish-95:en-batch29
+MonAction_Sancho_01Selflocked04,Two,polish-95:en-batch29
+MonAction_Sancho_01Selflocked05,One,polish-95:en-batch29
+MonAction_Sancho_01Selflocked06,Pop!,polish-95:en-batch29
+MonAction_Sancho_01approach05,Haha!,polish-95:en-batch29
+MonBig10Selflocked02,Oh!,polish-95:en-batch29
+MonBig10default11,Huh?,polish-95:en-batch29
+MonBig10default12,Ah!,polish-95:en-batch29
+MonBig10default13,Whuh?,polish-95:en-batch29
+MonBig10default15,Hmm?,polish-95:en-batch29
+MonBig10default26,Hehe!,polish-95:en-batch29
+MonPen@ClientString,"The Giant Octopus is in trouble, and now his big brother Emperor Penguin is here with an army of Snowmon and Egg Soldiers! Freeze and shatter the Snowmon, then take on Emperor Penguin to defend Boom Hill Village!
+",polish-95:en-batch29
+MonS2Fire06Approach13,Fire!,polish-95:en-batch29
+MonS2Fire06Approach24,Ah!,polish-95:en-batch29
+MonS2Fire06Approach27,Hyah!,polish-95:en-batch29
+MonS2Fire06SelfDamaged03,Heh-heh!,polish-95:en-batch29
+MonS2Fire06SelfDamaged06,Ah!,polish-95:en-batch29
+MonS2Fire06SelfDamaged07,Ouch!,polish-95:en-batch29
+MonS2Fire06SelfDamaged09,Ouch!,polish-95:en-batch29
+MonS2Fire06SelfDamaged10,Owie!,polish-95:en-batch29
+MonS2Fire06SelfDamaged14,Owie!,polish-95:en-batch29
+MonS2Fire06SelfDie13,Aah!,polish-95:en-batch29
+MonS2Fire06SelfDie20,Gah!,polish-95:en-batch29
+MonS2Fire06SelfDie21,Ack!,polish-95:en-batch29
+MonS2Fire06SelfDie22,Gack!,polish-95:en-batch29
+MonS2Fire06SelfDie24,Oof!,polish-95:en-batch29
+MonS2Fire07Approach03,Ah!,polish-95:en-batch29
+MonS2Fire07Approach05,Hyah!,polish-95:en-batch29
+MonS2Fire07Approach09,Hup!,polish-95:en-batch29
+MonS2Fire07SelfDamaged01,Ouch!,polish-95:en-batch29
+MonS2Fire07SelfDie02,Aah!,polish-95:en-batch29
+MonS2Fire07SelfDie03,Aah!,polish-95:en-batch29
+MonS2Fire07SelfDie06,Tsk!,polish-95:en-batch29
+MonS2Fire07SelfDie07,Ack!,polish-95:en-batch29
+MonS2Fire07SelfDie08,Heh!,polish-95:en-batch29
+MonS2Fire07SelfDie09,Whoa!,polish-95:en-batch29
+MonS2Fire08Approach06,Fire!,polish-95:en-batch29
+MonS2Fire08Approach08,Ah!,polish-95:en-batch29
+MonS2Fire08Approach10,Hyah!,polish-95:en-batch29
+MonS2Fire08Approach12,Huh?,polish-95:en-batch29
+MonS2Fire08Approach13,Smooch!,polish-95:en-batch29
+MonS2Fire08Approach15,Hup!,polish-95:en-batch29
+MonS2Fire08Approach18,Phew!,polish-95:en-batch29
+MonS2Fire08SelfDamaged01,Oof!,polish-95:en-batch29
+MonS2Fire08SelfDamaged02,Ouch!,polish-95:en-batch29
+MonS2Fire08SelfDie02,Aah!,polish-95:en-batch29
+MonS2Fire08SelfDie04,Graaah!,polish-95:en-batch29
+MonS2Fire09Approach06,Fire!,polish-95:en-batch29
+MonS2Fire09Approach08,Ah!,polish-95:en-batch29
+MonS2Fire09Approach09,Hyah!,polish-95:en-batch29
+MonS2Fire09Approach11,Huh?,polish-95:en-batch29
+MonS2Fire09Approach12,Smooch!,polish-95:en-batch29
+MonS2Fire09Approach14,Hup!,polish-95:en-batch29
+MonS2Fire09Approach17,Phew!,polish-95:en-batch29
+MonS2Fire09SelfDamaged01,Oof!,polish-95:en-batch29
+MonS2Fire09SelfDamaged02,Ouch!,polish-95:en-batch29
+MonS2Fire09SelfDie03,Aah!,polish-95:en-batch29
+MonS2Fire09SelfDie05,Graaah!,polish-95:en-batch29
+MonS2Sand03Bossdefault22,Hyah!,polish-95:en-batch29
+MonS2Sand03Bossdefault23,Sheesh...,polish-95:en-batch29
+MonS2Sand05Approach06,Ah!,polish-95:en-batch29
+MonS2Sand05Approach10,Haha!,polish-95:en-batch29
+MonS2Sand05Bossdefault17,Hee-hee!,polish-95:en-batch29
+MonS2Sand05SelfDamaged01,Oof!,polish-95:en-batch29
+MonS2Sand05SelfDamaged02,Ouch!,polish-95:en-batch29
+MonS2Sand05SelfDamaged03,Ack!,polish-95:en-batch29
+MonS2Sand05SelfDamaged04,Ook!,polish-95:en-batch29
+MonS2Sand05SelfDamaged05,Oof!,polish-95:en-batch29
+MonS2Sand05SelfDie02,Ouch!,polish-95:en-batch29
+MonS2Sand05SelfDie05,Aah!,polish-95:en-batch29
+MonS2Sand05SelfDie06,Gah!,polish-95:en-batch29
+MonS2Sand05default01,"Go, go, go!",polish-95:en-batch29
+MonS2Sand05default03,Run!,polish-95:en-batch29
+MonS2Sand05default04,Ruuun!,polish-95:en-batch29
+MonSnowBear01default07,Ah!,polish-95:en-batch29
+MonSnowBear01default09,Huh?,polish-95:en-batch29
+MonSnowBear01default11,Haha!,polish-95:en-batch29
+MonSnowBear01selfdie02,Waaah!,polish-95:en-batch29
+MonSnowBear02default04,Ah!,polish-95:en-batch29
+MonSnowBear02default08,Boss!,polish-95:en-batch29
+MonSnowBear03default20,Ah!,polish-95:en-batch29
+MonSnowBear03default23,Haha!,polish-95:en-batch29
+MonSnowBear03default25,Huh?,polish-95:en-batch29
+MonSnowBear03selfdie02,Waaah!,polish-95:en-batch29
+MonSnowBear05default03,Ah!,polish-95:en-batch29
+MonSnowBear06SelfDamaged01,Rraaah!,polish-95:en-batch29
+MonSnowBear06SelfDamaged02,Ouch!,polish-95:en-batch29
+MonSnowBear06SelfDamaged04,Stop!,polish-95:en-batch29
+MonSnowBear06SelfDie05,Ouch!,polish-95:en-batch29
+MonSnowBear06SelfDie06,Aah!,polish-95:en-batch29
+MonSnowBear06bossAnger03,Roar!,polish-95:en-batch29
+MonSnowBear06default08,Grrr!,polish-95:en-batch29
+MonSnowBear06default11,Grrr!,polish-95:en-batch29
+MonSnowBear07SelfDie01,Eek!,polish-95:en-batch29
+MonSnowBear07SelfDie03,Aah!,polish-95:en-batch29
+MonSnowBear07default02,Haha!,polish-95:en-batch29
+MonSnowBear07default04,Huh?,polish-95:en-batch29
+MonSnowBear08SelfDie01,Eek!,polish-95:en-batch29
+MonSnowBear08SelfDie06,No!,polish-95:en-batch29
+MonSnowBear08SelfDie07,Aah!,polish-95:en-batch29
+MonSnowBear08default03,Hehe!,polish-95:en-batch29
+MonSnowBear08default04,Jump!,polish-95:en-batch29
+MonSnowBear08default10,Hup!,polish-95:en-batch29
+MonSnowBear08default11,Hop!,polish-95:en-batch29
+MonSnowBear08default12,Whoosh!,polish-95:en-batch29
+MonSnowBear08locked04,Ice!,polish-95:en-batch29
+MonSnowBear09SelfDamaged01,Ouch!,polish-95:en-batch29
+MonSnowBear09SelfDie06,No!,polish-95:en-batch29
+MonSnowBear09SelfDie07,Aah!,polish-95:en-batch29
+MonSnowBear09bossAnger10,Roar!,polish-95:en-batch29
+MonSnowBear09bossAnger12,Grrr!,polish-95:en-batch29
+MonSnowBear09bossAnger14,Rawr!,polish-95:en-batch29
+MonSnowBear09locked03,Ice!,polish-95:en-batch29
+MonSnowBear10SelfDie04,Aah!,polish-95:en-batch29
+MonSnowBear11SelfDie01,Eek!,polish-95:en-batch29
+MonSnowBear11SelfDie05,No!,polish-95:en-batch29
+MonSnowBear11SelfDie06,Aah!,polish-95:en-batch29
+MonSnowBear11default05,Wait!,polish-95:en-batch29
+MonSnowBear11default30,Brr! It's cold!,polish-95:en-batch29
+MonSnowBear11default33,Ho ho!,polish-95:en-batch29
+MonSnowBear11locked02,Ice!,polish-95:en-batch29
+MonSnowBear11locked03,Olé!,polish-95:en-batch29
+MonSnowBear14selfdie01,Eek!,polish-95:en-batch29
+MonSnowBear14selfdie06,No!,polish-95:en-batch29
+MonSnowBear14selfdie07,Aah!,polish-95:en-batch29
+MonSnowBear14selfdie08,Aah?!,polish-95:en-batch29
+MonSnowBear15SelfDamaged01,Ouch!,polish-95:en-batch29
+MonSnowBear15default07,Grrr!,polish-95:en-batch29
+MonSnowBear16SelfDie01,Eek!,polish-95:en-batch29
+MonSnowBear16SelfDie08,No!,polish-95:en-batch29
+MonSnowBear16SelfDie09,Aah!,polish-95:en-batch29
+MonSnowBear16locked02,Ice!,polish-95:en-batch29
+MonSnowBear17selfdie03,No!,polish-95:en-batch29
+MonSnowBear17selfdie04,Aah?!,polish-95:en-batch29
+MonSnowBear18SelfDamaged01,Stop!,polish-95:en-batch29
+MonSnowBear18SelfDamaged02,Ouch!,polish-95:en-batch29
+MonSnowBear18SelfDamaged03,Ouch!,polish-95:en-batch29
+MonSnowBear18SelfDamaged04,Oof!,polish-95:en-batch29
+MonSnowBear18SelfDie05,No!,polish-95:en-batch29
+MonSnowBear18SelfDie06,Aah!,polish-95:en-batch29
+MonSnowBear18bossAnger03,Grrr!,polish-95:en-batch29
+MonSnowBear18bossAnger05,Rawr!,polish-95:en-batch29
+MonSnowBear18bossAnger08,Gah!,polish-95:en-batch29
+MonSnowBear18default14,Roar!,polish-95:en-batch29
+MonSnowBear18locked02,Ice!,polish-95:en-batch29
+MonSnowBear19default11,Hee-hee!,polish-95:en-batch29
+MonSnowBear19selfdie07,Eek!,polish-95:en-batch29
+MonSnowBear20Default02,Ook?,polish-95:en-batch29
+MonSnowBear20SelfDamaged01,Aagh!,polish-95:en-batch29
+MonSnowBear20SelfDie05,Waaah!,polish-95:en-batch29
+MonSnowBear20SelfDie06,Boom!,polish-95:en-batch29
+MonSnowBear21SelfDie02,Ouch!,polish-95:en-batch29
+MonSnowBear21SelfDie03,No!,polish-95:en-batch29
+MonSnowBear21SelfDie05,Aah!,polish-95:en-batch29
+MonSnowBear21bossAnger04,Grrr!,polish-95:en-batch29
+MonSnowBear21bossAnger06,Rawr!,polish-95:en-batch29
+MonSnowBear21default06,Run!,polish-95:en-batch29
+MonSnowBear21default14,Roar!,polish-95:en-batch29
+MonSnowBear21locked03,Ice!,polish-95:en-batch29
+MonSnowBear24SelfDamaged01,Rraaah!,polish-95:en-batch29
+MonSnowBear24SelfDamaged02,Ouch!,polish-95:en-batch29
+MonSnowBear24SelfDamaged04,Stop!,polish-95:en-batch29
+MonSnowBear24bossAnger03,Roar!,polish-95:en-batch29
+MonSnowBear24default08,Grrr!,polish-95:en-batch29
+MonSnowBear24default11,Grrr!,polish-95:en-batch29
+MonSnowBear25default11,Hee-hee!,polish-95:en-batch29
+MonSnowBear25selfdie07,Eek!,polish-95:en-batch29
+MonSnowBear26Default02,Ook?,polish-95:en-batch29
+MonSnowBear26SelfDamaged01,Aagh!,polish-95:en-batch29
+MonSnowBear26SelfDie05,Waaah!,polish-95:en-batch29
+MonSnowBear26SelfDie06,Boom!,polish-95:en-batch29
+NPmst15Chat3,Ron!,polish-95:en-batch29
+NewShop_Cash,Cash,polish-95:en-batch29
+NewShop_CategoryAll,All,polish-95:en-batch29
+NewShop_CategoryCharhair,Hats,polish-95:en-batch29
+NewShop_CategoryGame,Game,polish-95:en-batch29
+NewShop_CategoryItem,Items,polish-95:en-batch29
+NewShop_CategoryMain,Main,polish-95:en-batch29
+NewShop_CategoryPet,Pets,polish-95:en-batch29
+NewShop_CategorySet,Sets,polish-95:en-batch29
+NewShop_CategorySlot,Slots,polish-95:en-batch29
+NewShop_CategorySlotacc,Accessories,polish-95:en-batch29
+NewShop_CategorySlotflag,Flags,polish-95:en-batch29
+NewShop_Lucci,Lucci,polish-95:en-batch29
+Olympic_Rank,place,polish-95:en-batch29
+Olympic_TitleRank,Rank,polish-95:en-batch29
+OneClick_GameEnd_Popup,"When you exit, you'll lose all EXP and Lucci earned on this trial ID.
+You won't be able to sign in with it again.
+Sign up for a Nexon Members ID and use it to log in
+to unlock more benefits.
+Register now?",polish-95:en-batch29
+OptionDlgResolution_0,1x,polish-95:en-batch29
+OptionDlgResolution_1,1.5x,polish-95:en-batch29
+OptionDlgResolution_2,2x,polish-95:en-batch29
+Pet_AbilityDesc_Pet019,"This little soldier is still learning the ropes, but he's determined to be the best!
+
+<font color=0xff3cc8>Shields you when you're in trouble.
+Our strongest pair of pet abilities yet!</font>",polish-95:en-batch29
+Pet_Abilitydesc_Pet036,"1st Place in the BnB King Tournament! Team Captain's Pet! (Untradeable)
+<font color=0xff3cc9>May use a Needle to rescue you when you're trapped. May trigger the Superman effect when you break free.</font> <font color=0xff3cc8>Lucci Bonus, Lucci Magnet</font>",polish-95:en-batch29
+Pet_Abilitydesc_Pet038,"A proud little lion cub.
+
+<font color=0xff3cc9>May use a Needle to rescue you when you're trapped. May trigger the Superman effect when you break free.</font>
+<font color=0xff3cc8>Lucci Bonus, Lucci Magnet</font>",polish-95:en-batch29
+Pet_Abilitydesc_Pet039,"A pink octopus pet.
+<font color=0xff3cc9>May use a Needle to rescue you when you're trapped. May trigger the Superman effect when you break free. Grants a Lucci bonus.</font>
+* Equip it alongside your partner's pet and watch hearts pop up when you get close!",polish-95:en-batch29
+Pet_Abilitydesc_Pet040,"1st Place Pet from the 2nd BnB King Tournament (Untradeable)
+
+<font color=0xff3cc9>May save you with a Needle or Shield when you're in trouble.
+May trigger the Superman effect when you break free. Includes Lucci Bonus and Lucci Magnet.</font>",polish-95:en-batch29
+Pet_Abilitydesc_Pet041,"2nd Place Pet from the 2nd BnB King Tournament (Untradeable)
+
+<font color=0xff3cc9>May save you with a Needle or Shield when you're in trouble.
+May trigger the Superman effect when you break free. Includes Lucci Bonus and Lucci Magnet.</font>",polish-95:en-batch29
+Pet_Abilitydesc_Pet042,"3rd Place Pet from the 2nd BnB King Tournament (Untradeable)
+
+<font color=0xff3cc9>May save you with a Needle or Shield when you're in trouble.
+May trigger the Superman effect when you break free. Includes Lucci Bonus and Lucci Magnet.</font>",polish-95:en-batch29
+Pet_Abilitydesc_Pet055,"It's Leonard from LINE FRIENDS!
+<font color=0xff3cc9>May rescue you from a Water Balloon. May trigger the Superman effect when you break free. Grants a Lucci bonus.</font>
+* Equip it alongside your partner's pet for a special effect when you get close!",polish-95:en-batch29
+Pet_Say_InGame_001_02_02,Eek!,polish-95:en-batch29
+Pet_Say_InGame_004_02_02,No!,polish-95:en-batch29
+Pet_Say_InGame_010_02_00,Ah!,polish-95:en-batch29
+Pet_Say_InGame_010_02_01,Whoa!,polish-95:en-batch29
+Pet_Say_InGame_010_02_02,No!,polish-95:en-batch29
+Pet_Say_InGame_011_01_02,Wow!,polish-95:en-batch29
+Pet_Say_InGame_011_02_00,Huh?,polish-95:en-batch29
+Pet_Say_InGame_012_02_00,Whoa!,polish-95:en-batch29
+Pet_Say_InGame_013_02_00,Whoa...,polish-95:en-batch29
+Pet_Say_InGame_014_01_01,Hee-hee!,polish-95:en-batch29
+Pet_Say_InGame_016_03_00,Oh!,polish-95:en-batch29
+Pet_Say_InGame_017_00_00,Nice!,polish-95:en-batch29
+Pet_Say_InGame_017_03_00,Aww...,polish-95:en-batch29
+Pet_Say_InGame_017_03_01,Huh?!,polish-95:en-batch29
+Pet_Say_InGame_018_00_02,Stage clear!,polish-95:en-batch29
+Pet_Say_InGame_020_00_02,Stage clear!,polish-95:en-batch29
+Pet_Say_InGame_053_02_00,Beep!,polish-95:en-batch29
+Pet_Say_InGame_054_02_00,Huh!,polish-95:en-batch29
+Pet_Say_InGame_055_02_00,Whoa!,polish-95:en-batch29
+Pet_Say_InGame_055_03_00,Whoa!,polish-95:en-batch29
+Pet_Say_Prepare_006_00_00,Huh?,polish-95:en-batch29
+PlaynetEnd_MoveGameID,"Switch to a Crazy Arcade game ID to keep your progress and get access to all Crazy Arcade services. Once you switch, you can no longer sign in through PlayNet. Switch now?",polish-95:en-batch29
+PopupMenu_UseItem,Use,polish-95:en-batch29
+PracticeBalloon,Hint!,polish-95:en-batch29
+PreGrade,Rank,polish-95:en-batch29
+PreRank,Rank,polish-95:en-batch29
+RPGDecoSlot01,Wig,polish-95:en-batch29
+RPGDecoSlot02,Hat,polish-95:en-batch29
+RPGDecoSlot03,Mask,polish-95:en-batch29
+RPGDecoSlot06,Wings,polish-95:en-batch29
+RPGEquipItemPrefix1,Light,polish-95:en-batch29
+RPGEquipSlot01,Armor,polish-95:en-batch29
+RPGItemInitGradeS,Rare,polish-95:en-batch29
+RPGMPInfoExp,EXP,polish-95:en-batch29
+RPGMPInfoHP,HP,polish-95:en-batch29
+RPGMPInfoLevel,Level,polish-95:en-batch29
+RPGMPInfoLucci,Lucci,polish-95:en-batch29
+RPGQuestRewardExp,EXP,polish-95:en-batch29
+RPGQuestRewardField,Items,polish-95:en-batch29
+RPGQuestRewardLucci,Lucci,polish-95:en-batch29
+RPGQuestRewardMaterial,Gems,polish-95:en-batch29
+RPGResultClearTime,Time:,polish-95:en-batch29
+RPG_MapDifficulty4,Hero,polish-95:en-batch29
+RPG_SelHero_Stat,Stats,polish-95:en-batch29
+ResultTeamIamBoss,Seal,polish-95:en-batch29
+SMSMsgWarning,"Our GMs use these IDs: <font style=bold>[GM Danmi], [GM Eden], [GM Raon], [GM Haena]</font>.
+GMs will never ask for your password, Nexon ID, or personal information.
+Official GM messages are marked [GM] and appear in orange.",polish-95:en-batch29
+Santa,Santa,polish-95:en-batch29
+SecondaryPwd_DlgLockDescMsg,"We locked your account to protect it from unauthorized access.
+Click below to remove your secondary password on the website, then log in to the game again.
+(Click OK to return to the login screen.)",polish-95:en-batch29
+ShopIETTab_RentBtnDisableTooltip,<font color=0xffff00>A Couple Shop Ticket unlocks rentals and a discount of 50%.</font>    <font color=0xff3cc8>[Couple Shop Ticket Benefits]</font>  1. Save 50%: <font color=0xffff00>Buy</font> any Couple Shop item for half price. <font color=0xffff00>Yours to keep!</font>    2. <font color=0xffff00>Rent</font> any Couple Shop item while your ticket is active!,polish-95:en-batch29
+ShopVIP_Day,day,polish-95:en-batch29
+ShopVIP_HelpInfoContent,"<font color=0xFFDB00 style=bold>%s Benefits</font>    1. Shop in the VIP Shop. Item categories depend on your tier: Normal, Premium, Rare, and Super Rare.  2. Discount on select items: [Discount by VIP tier]%%.  3. Display your game ID in your VIP color ([<font color=0x00EAFF>%s</font>]).  4. Get [Gift Box count by VIP tier] VIP Gift Boxes.    <font color=0xFFDB00>Moving Up a Tier</font>  Move up as soon as you spend [Monthly spending threshold by VIP tier] yuan or more in Cash this month.    <font color=0xFFDB00>Keeping Your Tier</font>  Spend [Minimum spend to keep your VIP tier] yuan or more in Cash before your benefits expire.",polish-95:en-batch29
+ShopVIP_HelpInfoTitle,<font color=0x81E9F9 style=boldoutlined outline=0x004883>Current VIP tier for [%s]:</font> <font color=0xFFDB00 style=boldoutlined outline=0x004883>%s</font><font color=0x81E9F9 style=boldoutlined outline=0x004883>.</font>,polish-95:en-batch29
+ShopVIP_Hour,hour,polish-95:en-batch29
+StatOv_HP,HP,polish-95:en-batch29
+SubMyInfo05,Title,polish-95:en-batch29
+SystemRewardSender,Nexon,polish-95:en-batch29
+TPAAuthDlgName,Name,polish-95:en-batch29
+TimeLimitShop_RemainCount,%d left,polish-95:en-batch29
+UXCAJJang_Rank,Rank,polish-95:en-batch29
+UXMatching_CAJJangMyPage_RankText,Rank,polish-95:en-batch29
+Universe,Space,polish-95:en-batch29
+UserRestrict1021,"You can't chat for %d days because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID or email ID.",polish-95:en-batch29
+UserRestrict1021@ClientString,"You can't chat for %d days because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID.
+
+",polish-95:en-batch29
+UserRestrict1022,"You can't trade for %d days because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID or email ID.",polish-95:en-batch29
+UserRestrict1022@ClientString,"You can't trade for %d days because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID.
+",polish-95:en-batch29
+UserRestrict1023,"You can't chat or trade for %d days because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID or email ID.",polish-95:en-batch29
+UserRestrict1023@ClientString,"You can't chat or trade for %d days because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID.
+",polish-95:en-batch29
+UserRestrict1024,"You can't log in for %d days because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID or email ID.",polish-95:en-batch29
+UserRestrict1024@ClientString,"You can't log in for %d days because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID.
+",polish-95:en-batch29
+UserRestrictEternal1021,"You can't chat because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID or email ID.",polish-95:en-batch29
+UserRestrictEternal1021@ClientString,"You can't chat because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID.
+",polish-95:en-batch29
+UserRestrictEternal1022,"You can't trade because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID or email ID.",polish-95:en-batch29
+UserRestrictEternal1022@ClientString,"You can't trade because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID.
+",polish-95:en-batch29
+UserRestrictEternal1023,"You can't chat or trade because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID or email ID.",polish-95:en-batch29
+UserRestrictEternal1023@ClientString,"You can't chat or trade because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID.
+",polish-95:en-batch29
+UserRestrictEternal1024,"You can't log in because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID or email ID.",polish-95:en-batch29
+UserRestrictEternal1024@ClientString,"You can't log in because of disruptive conduct such as scamming, posting obscene content, or using abusive language. If you keep breaking the rules, we may restrict every Crazy Arcade game ID linked to your Nexon ID.
+",polish-95:en-batch29
+UserTitleDlgExplain,"Enter a new title or change your current one.
+Use up to 7 characters,
+with no spaces or special characters.
+Keep it clean: no profanity or obscene language.
+Your new title keeps the time left on your old one.",polish-95:en-batch29
+UserTitle_DisplayGuild,Guild,polish-95:en-batch29
+UserTitle_DisplayTitle,Title,polish-95:en-batch29
+Winning_MPProfile02,Rank,polish-95:en-batch29
+exe:kr-full.exe:0x15a8cdc,/user,polish-95:en-batch29
+exe:kr-full.exe:0x15f16e0,GNTC,polish-95:en-batch29
+fire,Flame,polish-95:en-batch29
+fx:CustomMap/CustomTileList:Desc#1121,Kart,polish-95:en-batch29
+fx:CustomMap/CustomTileList:Desc#123,Ice,polish-95:en-batch29
+fx:CustomMap/CustomTileList:Desc#1239,Camp,polish-95:en-batch29
+fx:CustomMap/CustomTileList:Desc#1781,Aqua,polish-95:en-batch29
+fx:CustomMap/CustomTileList:Desc#1823,Space,polish-95:en-batch29
+fx:CustomMap/CustomTileList:Desc#505,Sea,polish-95:en-batch29
+fx:CustomMap/CustomTileList:Desc#663,Mine,polish-95:en-batch29
+fx:ObjectTable/SpeakerTable:1,Pink,polish-95:en-batch29
+fx:ObjectTable/SpeakerTable:6,Pink,polish-95:en-batch29
+golemrun01default25,Zzz,polish-95:en-batch29
+golemrun01default29,Hah!,polish-95:en-batch29
+golemrun01firstmondie03,Oh~,polish-95:en-batch29
+golemrun01selfdamaged01,Grrr!,polish-95:en-batch29
+golemrun01selflocked03,Ouch!,polish-95:en-batch29
+golemrun01selflocked04,Aagh!,polish-95:en-batch29
+golemrun01selflocked05,Huh?,polish-95:en-batch29
+mongolem01selfdie01,Gack!,polish-95:en-batch29
+mongolem02default01,Grrr!,polish-95:en-batch29
+mongolem02default08,Huh?,polish-95:en-batch29
+mongolem02firstmondie01,Oh!,polish-95:en-batch29
+mongolem02selfdie02,Gack!,polish-95:en-batch29
+mongolem03selfdie01,Pow!,polish-95:en-batch29
+mongolem04default02,Grrr!,polish-95:en-batch29
+mongolem04default03,Grr!,polish-95:en-batch29
+mongolem04default06,Whuh!,polish-95:en-batch29
+mongolem04firstmondie01,Huh?,polish-95:en-batch29
+mongolem04selfdie02,Gack!,polish-95:en-batch29
+mongolem05default02,Just kidding!,polish-95:en-batch29
+mongolem05selfdie01,Wham!,polish-95:en-batch29
+mongolem06default06,Grrr!,polish-95:en-batch29
+mongolem06firstmondie01,Oh!,polish-95:en-batch29
+mongolem07default02,Grrr!,polish-95:en-batch29
+mongolem07default05,Huh?!,polish-95:en-batch29
+mongolem07default06,Grrr!,polish-95:en-batch29
+mongolem07default07,Grr!,polish-95:en-batch29
+mongolem07firstmondie01,Oh!,polish-95:en-batch29
+mongolem08default01,Grrr!,polish-95:en-batch29
+mongolem08default04,Over here!,polish-95:en-batch29
+mongolem08firstmondie01,Oh!,polish-95:en-batch29
+mongolem08selfdie01,Gack!,polish-95:en-batch29
+mongolem09default08,Grrr!,polish-95:en-batch29
+mongolem09firstmondie01,Oh!,polish-95:en-batch29
+mongolem10default01,Huh?,polish-95:en-batch29
+mongolem11default01,Grrr!,polish-95:en-batch29
+mongolem11firstmondie01,Oh!,polish-95:en-batch29
+mongolem11selfdie02,Gack!,polish-95:en-batch29
+mongolem12default18,Crack!,polish-95:en-batch29
+mongolem12firstmondie01,Oh!,polish-95:en-batch29
+mongolem12selfdamaged01,Grrr!,polish-95:en-batch29
+mongolem13classalldie01,Wham!,polish-95:en-batch29
+mongolem14default01,Grr!,polish-95:en-batch29
+mongolem14default04,Huh?!,polish-95:en-batch29
+mongolem14firstmondie01,Oh!,polish-95:en-batch29
+mons2fire01approach06,Whuh?,polish-95:en-batch29
+mons2fire01approach09,Fire!,polish-95:en-batch29
+mons2fire01approach11,Ah!,polish-95:en-batch29
+mons2fire01approach12,Hyah!,polish-95:en-batch29
+mons2fire01approach13,Whoa!,polish-95:en-batch29
+mons2fire01approach16,Mwah!,polish-95:en-batch29
+mons2fire01approach17,Mwaah!,polish-95:en-batch29
+mons2fire01approach18,Smooch!,polish-95:en-batch29
+mons2fire01approach19,Rrrah?,polish-95:en-batch29
+mons2fire01approach21,Hup!,polish-95:en-batch29
+mons2fire01approach24,Phew...,polish-95:en-batch29
+mons2fire01selfdamaged01,Oof!,polish-95:en-batch29
+mons2fire01selfdamaged02,Ouch!,polish-95:en-batch29
+mons2fire01selfdie01,Yipe!,polish-95:en-batch29
+mons2fire01selfdie03,Argh!,polish-95:en-batch29
+mons2fire01selfdie04,Oof!,polish-95:en-batch29
+mons2fire02approach06,Whuh?,polish-95:en-batch29
+mons2fire02approach09,Fire!,polish-95:en-batch29
+mons2fire02approach11,Ah!,polish-95:en-batch29
+mons2fire02approach12,Hyah!,polish-95:en-batch29
+mons2fire02approach13,Whoa!,polish-95:en-batch29
+mons2fire02approach16,Mwah!,polish-95:en-batch29
+mons2fire02approach17,Mwaah!,polish-95:en-batch29
+mons2fire02approach18,Smooch!,polish-95:en-batch29
+mons2fire02approach19,Rrrah?,polish-95:en-batch29
+mons2fire02approach21,Hup!,polish-95:en-batch29
+mons2fire02approach24,Phew...,polish-95:en-batch29
+mons2fire02selfdamaged01,Oof!,polish-95:en-batch29
+mons2fire02selfdamaged02,Aah!,polish-95:en-batch29
+mons2fire02selfdamaged03,Ouch!,polish-95:en-batch29
+mons2fire02selfdie01,Yipe!,polish-95:en-batch29
+mons2fire02selfdie03,Argh!,polish-95:en-batch29
+mons2fire02selfdie04,Aah!,polish-95:en-batch29
+mons2fire02selfdie05,Oof!,polish-95:en-batch29
+mons2fire03approach06,Whuh?,polish-95:en-batch29
+mons2fire03approach09,Fire!,polish-95:en-batch29
+mons2fire03approach11,Ah!,polish-95:en-batch29
+mons2fire03approach12,Hyah!,polish-95:en-batch29
+mons2fire03approach13,Whoa!,polish-95:en-batch29
+mons2fire03approach16,Mwah!,polish-95:en-batch29
+mons2fire03approach17,Mwaah!,polish-95:en-batch29
+mons2fire03approach18,Smooch!,polish-95:en-batch29
+mons2fire03approach19,Rrrah?,polish-95:en-batch29
+mons2fire03approach21,Hup!,polish-95:en-batch29
+mons2fire03approach24,Phew...,polish-95:en-batch29
+mons2fire03selfdamaged01,Oof!,polish-95:en-batch29
+mons2fire03selfdamaged02,Aah!,polish-95:en-batch29
+mons2fire03selfdamaged03,Ouch!,polish-95:en-batch29
+mons2fire03selfdamaged06,Argh!,polish-95:en-batch29
+mons2fire03selfdie01,Yipe!,polish-95:en-batch29
+mons2fire03selfdie05,Oof!,polish-95:en-batch29
+mons2fire04approach06,Whuh?,polish-95:en-batch29
+mons2fire04approach09,Fire!,polish-95:en-batch29
+mons2fire04approach11,Ah!,polish-95:en-batch29
+mons2fire04approach12,Hyah!,polish-95:en-batch29
+mons2fire04approach13,Whoa!,polish-95:en-batch29
+mons2fire04approach16,Mwah!,polish-95:en-batch29
+mons2fire04approach17,Mwaah!,polish-95:en-batch29
+mons2fire04approach18,Smooch!,polish-95:en-batch29
+mons2fire04approach19,Rrrah?,polish-95:en-batch29
+mons2fire04approach21,Hup!,polish-95:en-batch29
+mons2fire04approach24,Phew...,polish-95:en-batch29
+mons2fire04selfdamaged01,Oof!,polish-95:en-batch29
+mons2fire04selfdamaged02,Aah!,polish-95:en-batch29
+mons2fire04selfdamaged03,Ouch!,polish-95:en-batch29
+mons2fire04selfdie01,Yipe!,polish-95:en-batch29
+mons2fire04selfdie03,Argh!,polish-95:en-batch29
+mons2fire04selfdie04,Aah!,polish-95:en-batch29
+mons2fire04selfdie05,Oof!,polish-95:en-batch29
+mons2fire04selfdie09,Graaah!,polish-95:en-batch29
+mons2fire05approach06,Whuh?,polish-95:en-batch29
+mons2fire05approach09,Fire!,polish-95:en-batch29
+mons2fire05approach11,Ah!,polish-95:en-batch29
+mons2fire05approach12,Hyah!,polish-95:en-batch29
+mons2fire05approach13,Whoa!,polish-95:en-batch29
+mons2fire05approach16,Mwah!,polish-95:en-batch29
+mons2fire05approach17,Mwaah!,polish-95:en-batch29
+mons2fire05approach18,Smooch!,polish-95:en-batch29
+mons2fire05approach20,Hup!,polish-95:en-batch29
+mons2fire05approach23,Phew...,polish-95:en-batch29
+mons2fire05selfdamaged01,Yipe!,polish-95:en-batch29
+mons2fire05selfdamaged02,Oof!,polish-95:en-batch29
+mons2fire05selfdamaged03,Argh!,polish-95:en-batch29
+mons2fire05selfdamaged04,Ouch!,polish-95:en-batch29
+mons2fire05selfdie04,Oof!,polish-95:en-batch29
+mons2fire05selfdie07,Graaah!,polish-95:en-batch29
+mons2fire10approach05,Fire!,polish-95:en-batch29
+mons2fire10approach07,Ah!,polish-95:en-batch29
+mons2fire10approach08,Hyah!,polish-95:en-batch29
+mons2fire10approach10,Huh?,polish-95:en-batch29
+mons2fire10approach11,Smooch!,polish-95:en-batch29
+mons2fire10approach13,Hup!,polish-95:en-batch29
+mons2fire10approach16,Phew!,polish-95:en-batch29
+mons2fire10selfdamaged01,Oof!,polish-95:en-batch29
+mons2fire10selfdamaged02,Ouch!,polish-95:en-batch29
+mons2fire10selfdie02,Aah!,polish-95:en-batch29
+mons2fire10selfdie04,Graaah!,polish-95:en-batch29
+mons2fire11approach06,Fire!,polish-95:en-batch29
+mons2fire11approach08,Ah!,polish-95:en-batch29
+mons2fire11approach09,Hyah!,polish-95:en-batch29
+mons2fire11approach11,Huh?,polish-95:en-batch29
+mons2fire11approach12,Smooch!,polish-95:en-batch29
+mons2fire11approach14,Hup!,polish-95:en-batch29
+mons2fire11approach17,Phew!,polish-95:en-batch29
+mons2fire11bossanger11,Fire!,polish-95:en-batch29
+mons2fire11default04,Fiiire!,polish-95:en-batch29
+mons2fire11selfdamaged01,Oof!,polish-95:en-batch29
+mons2fire11selfdamaged02,Ouch!,polish-95:en-batch29
+mons2fire11selfdie02,Aah!,polish-95:en-batch29
+mons2fire11selfdie04,Graaah!,polish-95:en-batch29
+mons2fire12approach06,Whuh?,polish-95:en-batch29
+mons2fire12approach09,Fire!,polish-95:en-batch29
+mons2fire12approach14,Ah!,polish-95:en-batch29
+mons2fire12approach15,Hyah!,polish-95:en-batch29
+mons2fire12approach16,Whoa!,polish-95:en-batch29
+mons2fire12approach19,Mwah!,polish-95:en-batch29
+mons2fire12approach21,Mwaah!,polish-95:en-batch29
+mons2fire12approach25,Smooch!,polish-95:en-batch29
+mons2fire12approach28,Rrrah?,polish-95:en-batch29
+mons2fire12approach30,Hup!,polish-95:en-batch29
+mons2fire12approach35,Phew...,polish-95:en-batch29
+mons2fire12selfdamaged02,Oof!,polish-95:en-batch29
+mons2fire12selfdamaged03,Heh-heh!,polish-95:en-batch29
+mons2fire12selfdamaged04,Aah!,polish-95:en-batch29
+mons2fire12selfdamaged05,Ouch!,polish-95:en-batch29
+mons2fire12selfdamaged06,Owie!,polish-95:en-batch29
+mons2fire12selfdie01,Yipe!,polish-95:en-batch29
+mons2fire12selfdie02,Gulp!,polish-95:en-batch29
+mons2fire12selfdie06,Gack!,polish-95:en-batch29
+mons2fire12selfdie10,Argh!,polish-95:en-batch29
+mons2fire12selfdie11,Oof!,polish-95:en-batch29
+mons2fire12selfdie15,Ack!,polish-95:en-batch29
+mons2fire13Approach06,Whuh?,polish-95:en-batch29
+mons2fire13Approach09,Fire!,polish-95:en-batch29
+mons2fire13Approach11,Ah!,polish-95:en-batch29
+mons2fire13Approach12,Hyah!,polish-95:en-batch29
+mons2fire13Approach13,Whoa!,polish-95:en-batch29
+mons2fire13Approach16,Mwaah!,polish-95:en-batch29
+mons2fire13Approach18,Rrrah?,polish-95:en-batch29
+mons2fire13Approach20,Hup!,polish-95:en-batch29
+mons2fire13Approach24,Phew...,polish-95:en-batch29
+mons2fire13SelfDamaged02,Oof!,polish-95:en-batch29
+mons2fire13SelfDamaged03,Aah!,polish-95:en-batch29
+mons2fire13SelfDamaged04,Ouch!,polish-95:en-batch29
+mons2fire13SelfDie01,Yipe!,polish-95:en-batch29
+mons2fire13SelfDie05,Argh!,polish-95:en-batch29
+mons2fire13SelfDie06,Oof!,polish-95:en-batch29
+mons2fire14approach08,Fire!,polish-95:en-batch29
+mons2fire14approach11,Ah!,polish-95:en-batch29
+mons2fire14approach15,Hyah!,polish-95:en-batch29
+mons2fire14approach17,Huh?,polish-95:en-batch29
+mons2fire14approach18,Smooch!,polish-95:en-batch29
+mons2fire14approach20,Hup!,polish-95:en-batch29
+mons2fire14approach24,Phew!,polish-95:en-batch29
+mons2fire14default06,Move!,polish-95:en-batch29
+mons2fire14selfdamaged01,Oof!,polish-95:en-batch29
+mons2fire14selfdamaged02,Ouch!,polish-95:en-batch29
+mons2fire14selfdie02,Aah!,polish-95:en-batch29
+mons2fire14selfdie04,Graaah!,polish-95:en-batch29
+mons2fire15approach06,Fire!,polish-95:en-batch29
+mons2fire15approach08,Ah!,polish-95:en-batch29
+mons2fire15approach09,Hyah!,polish-95:en-batch29
+mons2fire15approach11,Huh?,polish-95:en-batch29
+mons2fire15approach12,Smooch!,polish-95:en-batch29
+mons2fire15approach14,Hup!,polish-95:en-batch29
+mons2fire15approach17,Phew!,polish-95:en-batch29
+mons2fire15default03,Two!,polish-95:en-batch29
+mons2fire15default10,Fiiire!,polish-95:en-batch29
+mons2fire15default11,One!,polish-95:en-batch29
+mons2fire15selfdamaged01,Oof!,polish-95:en-batch29
+mons2fire15selfdamaged02,Ouch!,polish-95:en-batch29
+mons2fire15selfdie02,Aah!,polish-95:en-batch29
+mons2fire15selfdie04,Graaah!,polish-95:en-batch29
+monunlimited01Chat2,Dr!,polish-95:en-batch29
+monunlimited01Chat3,Ron!,polish-95:en-batch29
+monunlimited03BossTimeLeft1,Whoa!,polish-95:en-batch29
+monunlimited03MonDeadD2,Tch...,polish-95:en-batch29
+monunlimited03SelfDeadC1,Aah!,polish-95:en-batch29
+monunlimited03SelfDeadC3,Pop!,polish-95:en-batch29
+monunlimited03SelfDeadD3,Oh!,polish-95:en-batch29
+monunlimited03SelfbeLockedBoss1,Gack!,polish-95:en-batch29
+monunlimited03SelfbeLockedBoss3,Mommy!,polish-95:en-batch29
+monunlimited03SelfbeLockedC2,I'm frozen!,polish-95:en-batch29
+monunlimited03SelfbeLockedC3,Waaah!,polish-95:en-batch29
+monunlimited04MonDamageA2,Ouch!,polish-95:en-batch29
+monunlimited04MonDeadA2,Huh?,polish-95:en-batch29
+monunlimited04MonDeadA3,Whoa?!,polish-95:en-batch29
+monunlimited04UserDeadA6,Hmph!,polish-95:en-batch29
+monunlimited06boss21,Rooaaar!,polish-95:en-batch29
+monunlimited07bossbomblocked39,Pfft.,polish-95:en-batch29
+monunlimited07bossdamaged27,Oof!,polish-95:en-batch29
+monunlimited07bossdefault43,Whoa!,polish-95:en-batch29
+monunlimited07bossselfdie35,Boo-hoo!,polish-95:en-batch29
+monunlimited07wddefault49,Hee-hee!,polish-95:en-batch29
+monunlimited09GeneralBoss1,Grrr,polish-95:en-batch29
+monunlimited09GeneralBoss20,Gah!,polish-95:en-batch29
+monunlimited10bosshit2,Ugh!,polish-95:en-batch29
+monunlimited10monb4,Gack!,polish-95:en-batch29
+olympicRun01SelfDie01,Gulp!,polish-95:en-batch29
+olympicRun01SelfDie03,Gack!,polish-95:en-batch29
+olympicRun01default17,Keep rolling!,polish-95:en-batch29
+q:14thSecretTree_MissionComplete1,"<font style=bold color=0xffba00>Twenty-six million, three hundred forty-one thousand, seven hundred twenty-one times!</font>
+<font color=0xea8f00>Over the past 14 years, players have used the Needle a whopping 26,341,721 times. That's more than any other item, and the count is still climbing!</font>",polish-95:en-batch29
+q:14thSecretTree_MissionComplete4,"<font style=bold color=0xffba00>Surprise! Celebrate our 14th anniversary with the Starry Crazy Arcade Quest! ★</font>
+<font color=0xea8f00>Join the Starry Crazy Arcade Quest for Star Lucky Beans and a game ID decoration!</font>",polish-95:en-batch29
+q:369_Kill,Kill ,polish-95:en-batch29
+q:369_Msg00,100th,polish-95:en-batch29
+q:369_Msg04,10th,polish-95:en-batch29
+q:369_Msg09,left.,polish-95:en-batch29
+q:369_Win,Wins ,polish-95:en-batch29
+q:BigBattleWin_GameWin,Wins,polish-95:en-batch29
+q:Bingo_ItemLuzzi,Lucci,polish-95:en-batch29
+q:BnBOlympic_MissionProgressTail_00,times,polish-95:en-batch29
+q:BnBOlympic_MissionProgressTail_03,times,polish-95:en-batch29
+q:BnbQuiz_Answer_10_3_1,7,polish-95:en-batch29
+q:BnbQuiz_Answer_10_3_2,70,polish-95:en-batch29
+q:BnbQuiz_Answer_10_3_3,700,polish-95:en-batch29
+q:BnbQuiz_Answer_10_3_4,7000,polish-95:en-batch29
+q:BnbQuiz_Answer_10_4_1,Wave,polish-95:en-batch29
+q:BnbQuiz_Answer_10_4_3,Fall,polish-95:en-batch29
+q:BnbQuiz_Answer_11_1_3,Free Play,polish-95:en-batch29
+q:BnbQuiz_Answer_11_4_1,Boz,polish-95:en-batch29
+q:BnbQuiz_Answer_11_4_2,Santa,polish-95:en-batch29
+q:BnbQuiz_Answer_11_4_3,Evie,polish-95:en-batch29
+q:BnbQuiz_Answer_11_4_4,Ike,polish-95:en-batch29
+q:BnbQuiz_Answer_11_6_1,Kart,polish-95:en-batch29
+q:BnbQuiz_Answer_11_6_2,Owl,polish-95:en-batch29
+q:BnbQuiz_Answer_1_1_1,Ike,polish-95:en-batch29
+q:BnbQuiz_Answer_1_1_2,Boni,polish-95:en-batch29
+q:BnbQuiz_Answer_1_1_3,Jani,polish-95:en-batch29
+q:BnbQuiz_Answer_1_2_1,Diz,polish-95:en-batch29
+q:BnbQuiz_Answer_1_2_2,Dao,polish-95:en-batch29
+q:BnbQuiz_Answer_1_2_3,Boz,polish-95:en-batch29
+q:BnbQuiz_Answer_1_2_4,Ike,polish-95:en-batch29
+q:BnbQuiz_Answer_1_3_1,Ike,polish-95:en-batch29
+q:BnbQuiz_Answer_1_3_2,Diz,polish-95:en-batch29
+q:BnbQuiz_Answer_1_3_3,Dao,polish-95:en-batch29
+q:BnbQuiz_Answer_1_3_4,Evie,polish-95:en-batch29
+q:BnbQuiz_Answer_1_4_1,Ike,polish-95:en-batch29
+q:BnbQuiz_Answer_1_4_2,Santa,polish-95:en-batch29
+q:BnbQuiz_Answer_1_4_3,Evie,polish-95:en-batch29
+q:BnbQuiz_Answer_1_4_4,Boz,polish-95:en-batch29
+q:BnbQuiz_Answer_1_5_1,Ike,polish-95:en-batch29
+q:BnbQuiz_Answer_1_5_2,Boz,polish-95:en-batch29
+q:BnbQuiz_Answer_1_5_4,Evie,polish-95:en-batch29
+q:BnbQuiz_Answer_2_2_1,Dao,polish-95:en-batch29
+q:BnbQuiz_Answer_2_2_2,Boz,polish-95:en-batch29
+q:BnbQuiz_Answer_2_2_3,Evie,polish-95:en-batch29
+q:BnbQuiz_Answer_2_2_4,Ike,polish-95:en-batch29
+q:BnbQuiz_Answer_3_1_3,Seal,polish-95:en-batch29
+q:BnbQuiz_Answer_3_1_4,Lion,polish-95:en-batch29
+q:BnbQuiz_Answer_3_4_3,Ghost,polish-95:en-batch29
+q:BnbQuiz_Answer_3_4_4,Goril,polish-95:en-batch29
+q:BnbQuiz_Answer_4_6_2,Camp,polish-95:en-batch29
+q:BnbQuiz_Answer_4_6_3,Bla,polish-95:en-batch29
+q:BnbQuiz_Answer_5_3_1,Shop,polish-95:en-batch29
+q:BnbQuiz_Answer_5_3_3,Quest,polish-95:en-batch29
+q:BnbQuiz_Answer_5_4_4,Shop,polish-95:en-batch29
+q:BnbQuiz_Answer_5_5_1,Camp,polish-95:en-batch29
+q:BnbQuiz_Answer_5_5_2,Town,polish-95:en-batch29
+q:BnbQuiz_Answer_5_5_3,Shop,polish-95:en-batch29
+q:BnbQuiz_Answer_6_2_1,Shop,polish-95:en-batch29
+q:BnbQuiz_Answer_6_2_3,Quest,polish-95:en-batch29
+q:BnbQuiz_Answer_6_3_2,Fish Scale,polish-95:en-batch29
+q:BnbQuiz_Answer_6_3_4,Bacle,polish-95:en-batch29
+q:BnbQuiz_Answer_7_3_1,Shoes,polish-95:en-batch29
+q:BnbQuiz_Answer_7_3_3,Kart,polish-95:en-batch29
+q:BnbQuiz_Answer_7_6_4,Cash,polish-95:en-batch29
+q:BnbQuiz_Answer_9_2_1,New,polish-95:en-batch29
+q:BnbQuiz_Answer_9_2_2,Used,polish-95:en-batch29
+q:BnbQuiz_Answer_9_3_1,Burst into tears.,polish-95:en-batch29
+q:CAHero_LastNpcRewardMsg01,"You beat the toughest NPC of them all! You're the ultimate hero! Here's your reward: 100 Victory Points and Hero Street (3 Days).
+(Want a permanent item? Keep earning Victory Points! Open the gift box to check your total.)",polish-95:en-batch29
+q:CAHero_LastNpcRewardMsg02,"You beat the toughest NPC of them all! You're the ultimate hero! Here's your reward: 100 Victory Points and Hero's Cap (3 Days).
+(Want a permanent item? Keep earning Victory Points! Open the gift box to check your total.)",polish-95:en-batch29
+q:CAHero_LastNpcRewardMsg03,"You beat the toughest NPC of them all! You're the ultimate hero! Here's your reward: 100 Victory Points and Hero's Cape (3 Days).
+(Want a permanent item? Keep earning Victory Points! Open the gift box to check your total.)",polish-95:en-batch29
+q:CAJJangBalloon_PopupLevel,Level,polish-95:en-batch29
+q:CAJJangShop_Lucci,Lucci,polish-95:en-batch29
+q:CAMarble3_NeedSlot1Reward,15,polish-95:en-batch29
+q:CAMarble3_NeedSlot2Reward,15,polish-95:en-batch29
+q:CAMarble3_NeedSlot3Reward,15,polish-95:en-batch29
+q:CAMarbleLarva_Reward_Dice,Dice,polish-95:en-batch29
+q:CAMarbleLarva_Reward_Lucci,Lucci,polish-95:en-batch29
+q:CAMarble_DesertReward1_2,items,polish-95:en-batch29
+q:CAMarble_EXP,EXP ,polish-95:en-batch29
+q:CAMarble_FinishReward1_1,EXP,polish-95:en-batch29
+q:CAMarble_HammerReward1_2,items,polish-95:en-batch29
+q:CAMarble_JewerlyReward1_2,items,polish-95:en-batch29
+q:CAMarble_LucciReward1_1,Lucci,polish-95:en-batch29
+q:CAMarble_LucciReward2_1,Yay! ,polish-95:en-batch29
+q:CAMarble_PresentFinish1_1,Lucci,polish-95:en-batch29
+q:CAMarble_PresentReward1_2,items,polish-95:en-batch29
+q:CAMarble_SpecialReward1_2,days,polish-95:en-batch29
+q:CAQuiz_A1_10_2,Boz,polish-95:en-batch29
+q:CAQuiz_A1_13_3,Japan,polish-95:en-batch29
+q:CAQuiz_A1_1_3,Kaká,polish-95:en-batch29
+q:CAQuiz_A1_4_1,Miami,polish-95:en-batch29
+q:CAQuiz_A1_7_4,Nexen,polish-95:en-batch29
+q:CAQuiz_A2_16_4,Earth,polish-95:en-batch29
+q:CAQuiz_A2_1_4,Scam,polish-95:en-batch29
+q:CAQuiz_A2_3_1,Idol,polish-95:en-batch29
+q:CAQuiz_A2_3_2,Woman,polish-95:en-batch29
+q:CAQuiz_A2_3_3,Son,polish-95:en-batch29
+q:CAQuiz_A2_4_2,Slave,polish-95:en-batch29
+q:CAQuiz_A2_9_3,Dream,polish-95:en-batch29
+q:CAQuiz_A2_9_4,Hope,polish-95:en-batch29
+q:CAQuiz_A3_11_1,Joy,polish-95:en-batch29
+q:CAQuiz_A3_11_4,Dummy,polish-95:en-batch29
+q:CAQuiz_A3_12_2,Jessi,polish-95:en-batch29
+q:CAQuiz_A3_12_3,Squid,polish-95:en-batch29
+q:CAQuiz_A3_12_4,Jimin,polish-95:en-batch29
+q:CAQuiz_A3_13_1,Joy,polish-95:en-batch29
+q:CAQuiz_A3_13_4,Dummy,polish-95:en-batch29
+q:CAQuiz_A3_1_1,Rock,polish-95:en-batch29
+q:CAQuiz_A3_2_3,Haha,polish-95:en-batch29
+q:CAQuiz_A3_3_1,Henry,polish-95:en-batch29
+q:CAQuiz_A3_3_2,Jerry,polish-95:en-batch29
+q:CAQuiz_A3_3_3,Yuri,polish-95:en-batch29
+q:CAQuiz_A3_3_4,Hyeri,polish-95:en-batch29
+q:CAQuiz_A3_8_2,Rock,polish-95:en-batch29
+q:CAQuiz_A3_9_1,Jojo,polish-95:en-batch29
+q:CAQuiz_A4_1_1,TOEFL,polish-95:en-batch29
+q:CAQuiz_A4_1_3,Apple,polish-95:en-batch29
+q:CAQuiz_A4_3_1,Hani,polish-95:en-batch29
+q:CAQuiz_A4_3_2,Solji,polish-95:en-batch29
+q:CAQuiz_A4_4_3,China,polish-95:en-batch29
+q:CAQuiz_A4_4_4,Korea,polish-95:en-batch29
+q:CAQuiz_A4_6_1,Seoul,polish-95:en-batch29
+q:CAQuiz_A5_6_1,Yoshi,polish-95:en-batch29
+q:CAQuiz_A5_6_2,Yosae,polish-95:en-batch29
+q:CAQuiz_A5_6_3,Yose,polish-95:en-batch29
+q:CBTEvent_StageFinal,Final,polish-95:en-batch29
+q:ConfusedFightTG_QuestName,Brawl,polish-95:en-batch29
+q:ConquestofSpace_RewardItemName04,Lucci,polish-95:en-batch29
+q:DiceQuest201109_ShopSearch,Dice,polish-95:en-batch29
+q:FindDracula_CharMsgCantTry07_2,items,polish-95:en-batch29
+q:FindDracula_CharMsgNotFound01_1,I only found ,polish-95:en-batch29
+q:FindDracula_MonName02,Goril,polish-95:en-batch29
+q:FindDracula_MonName04,Ghost,polish-95:en-batch29
+q:GoGoCAPlay_MissionAIBattle,Co-op,polish-95:en-batch29
+q:GoldenBonusWriggle_TitleName_First,Mis,polish-95:en-batch29
+q:GoldenBonusWriggle_TitleName_Second,sion,polish-95:en-batch29
+q:IamBossOpen_MissionUnitStr01,Wins,polish-95:en-batch29
+q:LadderWPExchange_Lucci,Lucci,polish-95:en-batch29
+q:LoginRewardHdn6_RewardMsg,"August 15 Liberation Day Login Event
+Today marks 70 years since Korea's liberation. Please take a moment to remember those who gave their lives for Korea's independence.
+To mark the occasion, we're giving you 3 Star Lucky Beans.",polish-95:en-batch29
+q:Lottery_Blank_First,Pudak,polish-95:en-batch29
+q:LuckyCardSF_Remain_2,Wins ,polish-95:en-batch29
+q:LuckyCard_Remain_2,Wins,polish-95:en-batch29
+q:LuckyCard_Remain_3,Saves,polish-95:en-batch29
+q:LuckySeven_MissionMsg02,more,polish-95:en-batch29
+q:MakeMeSnowMan_Exp,EXP,polish-95:en-batch29
+q:MatchingKey_ItemName10,EXP,polish-95:en-batch29
+q:MatchingKey_ItemName8,Lucci,polish-95:en-batch29
+q:MatchingKey_RewardItem10,EXP,polish-95:en-batch29
+q:MatchingKey_RewardItem8,Lucci,polish-95:en-batch29
+q:Mission3693_Desc,"Stay online for <font style=boldoutlined color=0xFFE504 outline=0x970A03>3 minutes</font>, win <font style=boldoutlined color=0xFFE504 outline=0x970A03>6 times</font>, and defeat <font style=boldoutlined color=0xFFE504 outline=0x970A03>9 players</font>.
+Do all three to earn a treasure chest! <font style=boldoutlined color=0xFFE504 outline=0x970A03>Up to 30 times a day!</font>",polish-95:en-batch29
+q:MonWars_RankingRow01,Rank,polish-95:en-batch29
+q:Ogokbap_HintMsg3,Shop,polish-95:en-batch29
+q:Pharaoh_Mission02,Day,polish-95:en-batch29
+q:PointLogin_Day,Day,polish-95:en-batch29
+q:RPG_EP012_QuestStory,"Granny Palpal from next door came over in a fright. The monsters have been wilder than usual, she says. Head to Suspicious Shipwreck, watch what those little monsters are up to, and bring me back some notes.",polish-95:en-batch29
+q:RPG_EP022_QuestStory,"I think there's a passage from Strange Forest, where the seals live, to the mine. We've got to seal it off! We don't know exactly where it is, so set charges all over the forest. Break blocks to place the charges automatically.",polish-95:en-batch29
+q:RPG_EP039_QuestStory,"I've finished studying the golems, but I've got bad news: more magical creatures like these are going to keep popping up. For now, let's deal with the obstacle right in front of us.",polish-95:en-batch29
+q:RPG_SubEP008_QuestStory,"I'm going to be a great scientist, just like Dr. Gugu! My next project is on penguins. We don't have a zoo in the village, so I guess I'll have to study the Emperor Penguin. You'll help me, right?",polish-95:en-batch29
+q:RedeemNovice_ItemTitleNum,items,polish-95:en-batch29
+q:SFItemSkillMake_Text4, min,polish-95:en-batch29
+q:SeaChampion_Result1_2, Wins,polish-95:en-batch29
+q:SeaChampion_Result3_2, Wins,polish-95:en-batch29
+q:SeaChampion_Result4_2, Wins,polish-95:en-batch29
+q:SeaChampion_Result5_2, Wins,polish-95:en-batch29
+q:SeaChampion_Result6_2, Wins,polish-95:en-batch29
+q:SelectCandy_CountString,items,polish-95:en-batch29
+q:SelectCandy_Or,or,polish-95:en-batch29
+q:SelectCandy_RewardItem2,Dart,polish-95:en-batch29
+q:ShakeBamBam_ShowBamCount02, collected so far. ,polish-95:en-batch29
+q:SnowyChampion_Result1_2, Wins,polish-95:en-batch29
+q:SnowyChampion_Result2_2, Wins,polish-95:en-batch29
+q:SnowyChampion_Result3_2, Wins,polish-95:en-batch29
+q:SnowyChampion_Result5_2, Wins,polish-95:en-batch29
+q:SoloorCouple4_SysQuestIngMsg,"Flying solo or playing as a couple? Your mission depends on it!
+Finish your missions <font style=bold color=0xffe8f7>every day</font> to rake in the rewards!
+Claim each mission's gift <font style=bold color=0xffe8f7>once a day</font>. ♥",polish-95:en-batch29
+q:SoloorCouple6_Info01,"Flying solo or playing as a couple? Your missions will be different!
+Complete your missions <font style=bold color=0xffe8f7>once a day</font> to earn gifts.
+Come back tomorrow to claim another <font style=bold color=0xffe8f7>gift</font>! ♥",polish-95:en-batch29
+q:WorldCup2010_HelpMsg,"How to play    1. Complete missions.  2. Pick how many goals you think Korea will score in its World Cup match.  3. Each time you pick that score, you add 1 Cheer Point to it.  4. You can add up to 99 Cheer Points per score.  5. Your Lucci reward depends on the match result.    * Earn 10,000 Lucci for every goal Korea scores, even if your prediction is off.  * If you predict the exact number of goals, earn 5,000 Lucci per Cheer Point on that score.",polish-95:en-batch29
+q:테스트,Tet,polish-95:en-batch29
+stock:1104,Dart,polish-95:en-batch29
+stock:1105,Dart,polish-95:en-batch29
+stock:1106,Dart,polish-95:en-batch29
+stock:1114,Motor,polish-95:en-batch29
+stock:1115,Motor,polish-95:en-batch29
+stock:1122,Nitro,polish-95:en-batch29
+stock:1123,Nitro,polish-95:en-batch29
+stock:1127,Dart,polish-95:en-batch29
+stock:1130,Dart,polish-95:en-batch29
+stock:1134,Nitro,polish-95:en-batch29
+stock:1137,Motor,polish-95:en-batch29
+stock:1161,Dart,polish-95:en-batch29
+stock:1167,Dart,polish-95:en-batch29
+stock:1501299,Mali,polish-95:en-batch29
+stock:1600480,Motor,polish-95:en-batch29
+stock:1600486,Nitro,polish-95:en-batch29
+stock:1600552,Dart,polish-95:en-batch29
+stock:1600553,Dart,polish-95:en-batch29
+stock:1600554,Dart,polish-95:en-batch29
+stock:1600587,Nitro,polish-95:en-batch29
+stock:1600588,Nitro,polish-95:en-batch29
+stock:1600589,Motor,polish-95:en-batch29
+stock:1600590,Motor,polish-95:en-batch29
+stock:1600895,Frog,polish-95:en-batch29
+stock:1600896,Frog,polish-95:en-batch29
+stock:1600905,Chick,polish-95:en-batch29
+stock:1601108,Mud,polish-95:en-batch29
+stock:1946,Ice,polish-95:en-batch29
+stock:3060,Robot,polish-95:en-batch29
+stock:3070,Snail,polish-95:en-batch29
+stock:3134,Candy,polish-95:en-batch29
+stock:3212,Chick,polish-95:en-batch29
+stock:3320,Joyride,polish-95:en-batch29
+stock:3329,Juyon,polish-95:en-batch29
+stock:3470,Heart,polish-95:en-batch29
+stock:3493,Fish,polish-95:en-batch29
+stock:3522,Glare,polish-95:en-batch29
+stock:3527,Disco,polish-95:en-batch29
+stock:3562,Clown,polish-95:en-batch29
+stock:3600665,Clown,polish-95:en-batch29
+stock:3600669,Heart,polish-95:en-batch29
+stock:3610039,Robot,polish-95:en-batch29
+stock:3610101,Hen,polish-95:en-batch29
+stock:3620076,Clown,polish-95:en-batch29
+stock:3620080,Heart,polish-95:en-batch29
+stock:3630073,Clown,polish-95:en-batch29
+stock:3630077,Heart,polish-95:en-batch29
+stock:3640,Owl,polish-95:en-batch29
+stock:3640073,Clown,polish-95:en-batch29
+stock:3640077,Heart,polish-95:en-batch29
+stock:3640156,Zebra,polish-95:en-batch29
+stock:3726,Iris,polish-95:en-batch29
+stock:3793,Mud,polish-95:en-batch29
+stock:4100110,Heart,polish-95:en-batch29
+stock:4100218,Sun,polish-95:en-batch29
+stock:4100219,Moon,polish-95:en-batch29
+stock:5100023,Heart,polish-95:en-batch29
+stock:5100069,Popo,polish-95:en-batch29
+stock:6024,Hen,polish-95:en-batch29
+stock:6027,Crown,polish-95:en-batch29
+stock:6113,Skull,polish-95:en-batch29
+stock:6161,Pansy,polish-95:en-batch29
+stock:6162,Tulip,polish-95:en-batch29
+stock:700153,Canned Food,polish-95:en-batch29
+stock:700154,Dart,polish-95:en-batch29
+stock:700165,Canned Food,polish-95:en-batch29
+stock:700166,Dart,polish-95:en-batch29
+stock:80013,Frog,polish-95:en-batch29
+stock:80170,Ghost,polish-95:en-batch29
+stock:80222,Gym,polish-95:en-batch29
+stock:80231,Party,polish-95:en-batch29
