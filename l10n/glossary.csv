@@ -4,13 +4,13 @@ ko,vi,kind,source,count
 경험치,kinh nghiệm,stat,seed,13
 루찌,VÀNG,currency,seed,13
 확성기,loa,item,seed,10
-우니,Uni,character,seed,9
-배찌,Bazzi,character,seed,8
+우니,Bé Bỏng,character,seed,9
+배찌,Khò Khò,character,seed,8
 슈퍼방장,Siêu chủ phòng,item,seed,8
 부활대전,Hồi sinh,mode,seed,7
 강퇴반사,Phản mời ra,item,seed,6
 레벨,cấp,stat,seed,6
-마리드,Marid,character,seed,6
+마리드,Mắt Xanh,character,seed,6
 물풍선,bom nước,item,seed,6
 시한폭탄,Hẹn giờ,mode,seed,6
 전광판,bảng điện tử,ui,seed,6
@@ -21,12 +21,12 @@ ko,vi,kind,source,count
 상점,Siêu thị,ui,seed,5
 아이디,ID,ui,seed,5
 아이템,vật phẩm,ui,seed,5
-다오,Dao,character,seed,4
+다오,Nhanh Nhẩu,character,seed,4
 랜덤,Ngẫu nhiên,mode,seed,4
 마이페이지,Trang cá nhân,ui,seed,4
 이벤트,Sự kiện,ui,seed,4
 퀘스트,Nhiệm vụ,ui,seed,4
-디지니,Dizni,character,seed,3
+디지니,Mật Ngọt,character,seed,3
 자유,Tự do,mode,seed,3
 캠프,Trại,theme,seed,3
 길드,hội,ui,seed,2
@@ -56,7 +56,7 @@ ko,vi,kind,source,count
 능력치,chỉ số,stat,seed,1
 래더,Xếp hạng,mode,seed,1
 모드,chế độ,ui,seed,1
-모스,Mos,character,seed,1
+모스,Đầu Đinh,character,seed,1
 몬스터,quái vật,mode,seed,1
 무덤,Lăng mộ,theme,seed,1
 물줄기,tia nước,item,seed,1
@@ -65,14 +65,14 @@ ko,vi,kind,source,count
 보스,trùm,mode,seed,1
 비밀방,Phòng kín,ui,seed,1
 선물,quà,ui,seed,1
-수,Su,character,seed,1
+수,Thiên Sứ,character,seed,1
 슈퍼파이터,Siêu chiến binh,mode,seed,1
-에띠,Ethi,character,seed,1
+에띠,Mọt Sách,character,seed,1
 옵션,Tùy chọn,ui,seed,1
 유저,người chơi,ui,seed,1
 일일퀘스트,Nhiệm vụ hằng ngày,ui,seed,1
 캐시,XU,currency,seed,1
-케피,Kephi,character,seed,1
+케피,Thịt Mỡ,character,seed,1
 쿠폰,phiếu,currency,seed,1
 패트릿,Patrit,theme,seed,1
 히든캐치,Hidden Catch,mode,seed,1

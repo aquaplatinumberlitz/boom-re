@@ -40,11 +40,11 @@
   "images_todo_sha256": "d52542692047b54d977d0bfc9213ff05e399be7d8e816c1d56d406f54a57a21a",
   "catalog_rows": 33486,
   "status": {
-    "candidate": 5522,
-    "machine": 26782,
+    "candidate": 5521,
+    "machine": 26736,
     "casefold_candidate": 197,
-    "missing": 544,
-    "manual": 441
+    "manual": 488,
+    "missing": 544
   },
   "format_mismatch": 0
 }

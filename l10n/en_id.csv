@@ -493,3 +493,58 @@ q:BnbQuiz_Answer_2_6_4,Leader Hunt,sửa tay qua trang catalog 2026-11-17
 CannotSelectFairMode,Leader Hunt cannot be played in Fair mode.,sửa tay qua trang catalog 2026-11-17
 SuperChiefCanStartDetail,"With a Super Room Leader Item, you can start the game
 immediately even if others aren't ready.",sửa tay qua trang catalog 2026-11-17
+AIBattleSay_AIDraw_CAHero_100_0,You're the first.. to draw with Rodumani.,hy4 char-name
+AIBattleSay_Starting_CAHero_100_0,You think you can beat Rodumani.. Hmph,hy4 char-name
+CAHero_NpcName_Lodumani,Rodumani,hy4 char-name
+Lodumani,Rodumani,hy4 char-name
+MissionSnowBonusMsg2,Catch Rodumani and earn Lucci!!,hy4 char-name
+MonSnowBear10default02,I rented this place from Rodumani~,hy4 char-name
+SeaFields,Defeat Rodumani and claim the treasure! Defeat the Pirate King and clear every map to obtain the Pirate King's treasure!,hy4 char-name
+SuperChiefLodumani,%s transformed into Rodumani thanks to the Super Room Leader effect!,hy4 char-name
+q:RPG_EP016_MissionComplete,"+++ Quest ""Rodumani Is Missing!"" completed. +++",hy4 char-name
+q:RPG_EP016_QuestName,Rodumani Is Missing!,hy4 char-name
+q:RPG_EP016_QuestStory,"Oh! Help..!! Pant, pant... Rodumani disappeared last night! I think the Emperor Penguin captured him... If you teach the Emperor Penguin a lesson, I think Rodumani can be freed.",hy4 char-name
+q:RPG_EP016_StoryReward,"Ah!! Captain Rodumani is back safely. Thank you so much for saving him!! Our pirate crew was almost attacked while the captain was missing. We're safe now. Sob, sob..",hy4 char-name
+q:RPG_EP017_MissionComplete,"+++ Quest ""Rodumani's Revenge"" completed. +++",hy4 char-name
+q:RPG_EP017_QuestName,Rodumani's Revenge,hy4 char-name
+q:RPG_EP020_QuestStory,Is... is what Rodumani said true? The monsters became so violent after getting hold of the magic gems we use? I... I can't believe it. Please check on the other monsters too.,hy4 char-name
+q:RPSQuest_Default_A,"Collect Rock! Paper! Scissors! cards and challenge Rodumani
+Beat Rodumani to receive a special gift~★",hy4 char-name
+q:SelectCandy_RewardNotice,"Congratulations.   From Rodumani's Gift,  ",hy4 char-name
+q:SelectCandy_RewardTooltip,[Rodumani's Gift] Quest Complete!,hy4 char-name
+q:SelectCandy_StartTooltip,[Rodumani's Gift] Quest Started!,hy4 char-name
+q:SnowyChampion_Text5_2,"The final challenge! Defeat Rodumani, who stands in your way, and become the Hero of the Snowfield!",hy4 char-name
+q:BnbQuiz_Answer_1_5_3,Rodumani,hy4 char-name
+q:BnbQuiz_Answer_2_1_2,Rodumani,hy4 char-name
+q:SeaChampion_Text6_2,Showdown! Defeat Rodumani!,hy4 char-name
+q:SelectCandy,Rodumani's Gift,hy4 char-name
+q:CAQuiz_Q5_4,Rodumani played (    ).,hy4 char-name
+q:RPSQuest_RewardMsg,Congratulations~! You beat Rodumani at Scissors! Rock! Paper!~★,hy4 char-name
+q:RPSQuest_Win,Oh~★ You beat Rodumani~^0^,hy4 char-name
+q:WelcomeToBnB_InfoMsg03,"There aren't any adults in Boom Hill Village. 
+Why? An evil pirate named Rodumani 
+captured them all.",hy4 char-name
+q:WelcomeToBnB_InfoMsg04,"According to my research… 
+Rodumani is afraid of water.  
+So we're working hard to defeat Rodumani 
+with Water Balloons.",hy4 char-name
+q:WelcomeToBnB_InfoMsg09,"Rodumani and his minions are afraid of water. 
+That's why we started using 
+Water Balloons.",hy4 char-name
+stock:3326,Rodumani's Safe,hy4 char-name
+stock:6046,Rodumani Mask,hy4 char-name
+stock:80078,Rodumani Honk Honk~,hy4 char-name
+stock:80079,Rodumani Attendant,hy4 char-name
+stock:80181,Chinese Restaurant Rodumani,hy4 char-name
+stock:3610018,Rodumani Mask,hy4 char-name
+SuperUni,Super Ike,hy4 char-name
+q:SuperCharacter_RewardUni01,Congratulations. You've successfully upgraded Super Ike. Open My Page to check it out!,hy4 char-name
+q:SuperCharItem_RewardBlurUni,Congratulations! You've received Super Ike Bubble Sashashak! Check My Page.,hy4 char-name
+q:SuperUni_FinalReward,Congratulations. You've successfully upgraded Super Ike. Open My Page to check it out!,hy4 char-name
+q:SuperUni_Green,Congratulations! You've collected the Red Potion. Collect the remaining potions to transform into the powerful Super Ike!,hy4 char-name
+q:SuperUni_QuestName,Power Up! Super Ike,hy4 char-name
+q:SuperUni_Yellow,Congratulations! You've collected the Black Potion. Collect the remaining potions to transform into the powerful Super Ike!,hy4 char-name
+stock:5100033,Super Ike,hy4 char-name
+EP6_Name,EP6. Diz Rescue,owner_decision_2026-11-21
+stock:1600705,Evie New Year Hanbok,owner_decision_2026-11-21
+stock:1600706,Evie Hanbok Eoyeom,owner_decision_2026-11-21
