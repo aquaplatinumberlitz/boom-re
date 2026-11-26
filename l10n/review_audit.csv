@@ -9,9 +9,9 @@ BnbNavi_BrandNewNaviTitle,최신 모아보기,Hướng dẫn,Coi mục mới nh�
 BnbNavi_DailyQuestTitle,일일퀘스트,Nhiệm vụ ngày,Nhiệm vụ hằng ngày,Nhiệm vụ hằng ngày,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 BuyItem,%s를(을) 구매하였습니다.,Mua vật phẩm thành công.,Đã mua %s.,Đã mua %s.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 CAJJang_OpenWindowError_2P,2P로 접속하시면 크아짱에 참여하실 수 없습니다. 1P로 접속해주세요.,,Vào bằng 2P thì không tham gia được Vua Boom. Vui lòng vào bằng 1P nha.,Chế độ 2P không dự Vua Boom được. Bạn đăng nhập lại bằng 1P nha.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-CannotStartZombie2PChief_Third,님께서 2인용 접속이므로 좀비맵을 시작할 수 없습니다,, không thể bắt đầu bản đồ Zombie vì đang đăng nhập chế độ 2 người,đang kết nối ở chế độ 2 người nên không thể bắt đầu bản đồ zombie,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-CantAuthenSSN,주민번호 인증을 할 수 없습니다.,,Không thể xác thực số định danh cá nhân.,Không thể xác thực số căn cước.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-ChannelDesc0,누구나 제한 없이 접속 가능합니다.,Mọi người đều vào được,"Ai cũng có thể vào, không giới hạn.",Ai cũng có thể kết nối không giới hạn.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+CannotStartZombie2PChief_Third,님께서 2인용 접속이므로 좀비맵을 시작할 수 없습니다,, không thể bắt đầu bản đồ Zombie vì đang đăng nhập chế độ 2 người,đang chơi ở chế độ 2 người nên chưa mở bản đồ Zombie được,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+CantAuthenSSN,주민번호 인증을 할 수 없습니다.,,Không thể xác thực số định danh cá nhân.,Chưa xác thực được số căn cước.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+ChannelDesc0,누구나 제한 없이 접속 가능합니다.,Mọi người đều vào được,"Ai cũng có thể vào, không giới hạn.",Ai vô cũng được.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 ChannelExplain0,"초,중급 채널입니다. 최대 45레벨까지 출입가능합니다.",Kênh tự do,Kênh sơ - trung cấp. Chỉ nhận người chơi từ cấp 45 trở xuống.,"Kênh Tân thủ và Trung cấp, vô được tới cấp 45.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 ChannelExplain0@ClientString,"초,중급 채널입니다. 최대 20레벨까지 출입가능합니다.
 ",Kênh tự do,"Kênh sơ - trung cấp. Chỉ nhận người chơi từ cấp 20 trở xuống.
@@ -45,7 +45,7 @@ máy tính.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưn
 CreateDlgRenewGTCaptain,"깃발을 단 대장을 잡으면
 승리합니다.",Đội trưởng,"Bắt được thủ lĩnh mang cờ
 sẽ chiến thắng.","Bắt được trùm mang cờ
-sẽ chiến thắng.",translated,sửa tay qua trang catalog 2026-11-17,sửa tay qua trang catalog 2026-11-17
+là thắng!",translated,sửa tay qua trang catalog 2026-11-17,sửa tay qua trang catalog 2026-11-17
 CreateDlgRenewGTHedgehog,"죽은 후 고슴도치로
 부활합니다.",Nhím,"Sau khi chết sẽ hồi sinh
 thành nhím.","Hồi sinh thành Nhím
@@ -74,19 +74,19 @@ CreateDlgRenewSnowBallFight,"겨울 스페셜 한정 오픈!
 놓지말고 던져라!",Ném tuyết,"Chỉ mở vào mùa đông!
 Đừng giữ, ném đi!","Chỉ mở trong Sự kiện mùa đông!
 Đừng giữ, ném đi!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-CreateDlgRenewSuperFighter,"슈퍼 능력치로 대결하며, 스킬 아이템을 사용하는 스킬대전!",Siêu chiến binh,Đấu kỹ năng: so tài bằng chỉ số siêu cấp và dùng vật phẩm kỹ năng!,Đấu kỹ năng bằng chỉ số siêu cấp và vật phẩm kỹ năng!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+CreateDlgRenewSuperFighter,"슈퍼 능력치로 대결하며, 스킬 아이템을 사용하는 스킬대전!",Siêu chiến binh,Đấu kỹ năng: so tài bằng chỉ số siêu cấp và dùng vật phẩm kỹ năng!,So tài bằng chỉ số siêu cấp và đồ kỹ năng!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 CreateDlgRenewZzolman,쏟아지는 귀여운 쫄맨들을 모두 무찔러주세요!,Zzolman,Hãy hạ gục hết đám Zzolman dễ thương đang ùa tới!,Zzolman dễ thương kéo tới kìa. Dẹp hết tụi nó nha!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 CreatePracticeRoomToolTip,컴퓨터와 자유롭게 대결하기,Tạo phòng luyện tập,Tự do đấu với máy,Tự do đấu với máy,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 DailyMission_Guide_cajjang,크아짱 > 시작으로 플레이하기,,Vua Boom > Chơi bằng nút Bắt đầu,Cao thủ Boom > Bắt đầu chơi,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-DailyMission_Info,방울방울 상점 내 아이템은 보유 중인 방울을 사용해서 구매가 가능합니다.,,Vật phẩm trong Tiệm Giọt nước mua bằng giọt nước bạn đang có.,Có thể dùng bong bóng đang có để mua vật phẩm trong Siêu thị bong bóng.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-DailyMission_PurchaseSuccess,%d방울 사용하여 %s아이템 구매에 성공하였습니다.,,Đã xài %d giọt nước để mua %s thành công.,Đã dùng %d giọt mua thành công vật phẩm %s.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+DailyMission_Info,방울방울 상점 내 아이템은 보유 중인 방울을 사용해서 구매가 가능합니다.,,Vật phẩm trong Tiệm Giọt nước mua bằng giọt nước bạn đang có.,Dùng giọt đang có để mua đồ trong Siêu thị bong bóng.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+DailyMission_PurchaseSuccess,%d방울 사용하여 %s아이템 구매에 성공하였습니다.,,Đã xài %d giọt nước để mua %s thành công.,Đã đổi %d giọt lấy %s.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 ElecDisplayPreviewMsg,전광판 미리보기,Xem trước,Coi trước bảng điện tử,Coi trước bảng điện tử,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 ErrorBuying2, 일시적으로 상점의 일부 서비스를 이용하실 수 없습니다. 잠시 후 다시 이용해 주시기 바랍니다.,Có lỗi khi mua vật phẩm., Tạm thời không dùng được một số dịch vụ của Siêu thị. Vui lòng thử lại sau.,Một số dịch vụ trong Siêu thị đang tạm nghỉ. Lát bạn ghé lại nha.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 EventCompleteKart_DoReward,"크아&카트 상부상조 이벤트 보상을 받을 수 있습니다. <font color=yellow style=bold>등록된 넥슨 아이디의 비엔비 게임 아이디 중 하나만 가능</font>합니다.
 %s님께서 크아&카트 상부상조 이벤트 보상을 받으시겠습니까?",,"Có thể nhận phần thưởng sự kiện hỗ trợ lẫn nhau Boom&Kart. <font color=yellow style=bold>Chỉ một ID game Boom trong tài khoản Nexon đã đăng ký được nhận</font>.
-%s có muốn nhận phần thưởng sự kiện hỗ trợ lẫn nhau Boom&Kart không?","Bạn có thể nhận phần thưởng Sự kiện Boom & Kart tương trợ. <font color=yellow style=bold>Chỉ một ID Boom thuộc ID Nexon đã đăng ký được nhận</font>.
-%s có muốn nhận phần thưởng Sự kiện Boom & Kart tương trợ không?",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-ExchangeGachaponTax,알쏭달쏭 쾅쾅 전용아이템은 거래시 1%의 추가 수수료가 부여됩니다.,,Vật phẩm riêng của Đập trứng bí ẩn khi trao đổi bị tính thêm phí 1%.,Vật phẩm dành riêng cho Trứng bí ẩn bùm bùm chịu thêm phí 1% khi trao đổi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+%s có muốn nhận phần thưởng sự kiện hỗ trợ lẫn nhau Boom&Kart không?","Quà sự kiện Boom & Kart tương trợ đã sẵn sàng. <font color=yellow style=bold>Mỗi ID Nexon đã đăng ký chỉ nhận quà bằng một ID Boom</font>.
+%s muốn nhận quà sự kiện Boom & Kart tương trợ hông?",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+ExchangeGachaponTax,알쏭달쏭 쾅쾅 전용아이템은 거래시 1%의 추가 수수료가 부여됩니다.,,Vật phẩm riêng của Đập trứng bí ẩn khi trao đổi bị tính thêm phí 1%.,Trao đổi đồ riêng của Đập bất ngờ sẽ tốn thêm 1%.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 ExplainElecDisplay,"운영원칙에 위배되는 내용은 삭제나 제재를 당할 수 있습니다.
 내용 변경은 <font color=0xFFEA00>/전광 수정메세지</font> 또는 장착한 전광판 아이템에서
 <font color=0xFFEA00>마우스 오른쪽 버튼 수정하기</font>로 가능합니다.",,"Nội dung vi phạm quy định vận hành có thể bị xóa hoặc xử lý.
@@ -95,11 +95,11 @@ ExplainElecDisplay,"운영원칙에 위배되는 내용은 삭제나 제재를 �
 Để thay đổi nội dung, dùng <font color=0xFFEA00>/bangdien nội dung mới</font> hoặc
 <font color=0xFFEA00>bấm chuột phải rồi chọn sửa</font> trên vật phẩm bảng điện tử đang trang bị.",translated,"sửa 2026-11-15 (review: lệnh chat, xưng hô, chữ Hàn sót)","dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 ForbiddenAuthenForOnePlayer,현재 게임을 하고 계시는 곳은 미가입 PC방입니다.,Không thể đăng nhập.,Chỗ bạn đang chơi là tiệm net chưa đăng ký.,Địa điểm bạn đang chơi hiện là tiệm net chưa đăng ký.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-GameModeFreeTooltip,각 팀 숫자가 달라도 됩니다,Chơi tự do,Số người mỗi đội có thể khác nhau,Số người ở mỗi đội có thể khác nhau,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+GameModeFreeTooltip,각 팀 숫자가 달라도 됩니다,Chơi tự do,Số người mỗi đội có thể khác nhau,Hai đội có thể lệch số người,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 GameModeMannerTooltip,각 팀 숫자가 같아야 됩니다,Chơi lịch sự,Số người mỗi đội phải bằng nhau,Số người ở mỗi đội phải bằng nhau,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-GameModeRandomTooltip,팀이 임의로 선정됩니다.,Chọn ngẫu nhiên,Đội được chia ngẫu nhiên.,Các đội được chọn ngẫu nhiên.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-GradeAbove,래더 %d 단 이상만 살 수 있습니다.,Cần hạng %d trở lên mới mua được.,Chỉ người chơi Xếp hạng từ đẳng %d trở lên mới mua được.,Chỉ người đạt đẳng %d Xếp hạng trở lên mới có thể mua.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-GradeBelow,래더 %d 단 이하만 살 수 있습니다.,Chỉ hạng %d trở xuống mới mua được.,Chỉ người chơi Xếp hạng từ đẳng %d trở xuống mới mua được.,Chỉ người đạt đẳng %d Xếp hạng trở xuống mới có thể mua.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+GameModeRandomTooltip,팀이 임의로 선정됩니다.,Chọn ngẫu nhiên,Đội được chia ngẫu nhiên.,Chia đội ngẫu nhiên.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+GradeAbove,래더 %d 단 이상만 살 수 있습니다.,Cần hạng %d trở lên mới mua được.,Chỉ người chơi Xếp hạng từ đẳng %d trở lên mới mua được.,Từ bậc %d Xếp hạng trở lên mới mua được.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+GradeBelow,래더 %d 단 이하만 살 수 있습니다.,Chỉ hạng %d trở xuống mới mua được.,Chỉ người chơi Xếp hạng từ đẳng %d trở xuống mới mua được.,Từ bậc %d Xếp hạng trở xuống mới mua được.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 InviteUserToGuild,%s' 님을 길드에 초대하였습니다. '%s' 님께서 허용하시면 길드에 가입됩니다.,,Đã mời '%s' vào hội. Nếu '%s' đồng ý thì sẽ gia nhập hội.,"Đã mời %s' vào hội. Khi '%s' đồng ý, người đó sẽ gia nhập hội.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 Item00,프리미엄,Tất cả,Cao cấp,Cao cấp,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 Item01,게임,Trong trận,Trò chơi,Trò chơi,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
@@ -113,7 +113,7 @@ MonSnowBear01default03,뎀뵤뎀뵤,,Dembyo Dembyo,"Nhào vô, nhào vô",transl
 MonSnowBear03default22,뎀뵤뎀뵤,,Dembyo Dembyo,"Nhào vô, nhào vô",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 LimitLottery_Type7,푸닥,,Pudak,Pudak,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:Lottery_Blank_First,푸닥,,Pudak,Pudak,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-LobbyFishing_ChannelMsg,%s님이 어마마한 크기의 %s %s를 획득하셨습니다.,,%s đã bắt được một con cá cỡ khủng: %s %s.,%s đã nhận được %s %s có kích thước khổng lồ.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+LobbyFishing_ChannelMsg,%s님이 어마마한 크기의 %s %s를 획득하셨습니다.,,%s đã bắt được một con cá cỡ khủng: %s %s.,%s câu được cá bự chảng: %s %s!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 LobbySquare_AreaName01,광장2,Quảng trường 1,Quảng trường 2,Quảng trường 2,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 LobbySquare_AreaName02,광장3,Quảng trường 2,Quảng trường 3,Quảng trường 3,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 LobbySquare_AreaName03,광장6,Quảng trường 3,Quảng trường 6,Quảng trường 6,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
@@ -134,10 +134,10 @@ MonS2Fire07default12,왔다리 갔다리 권법!!,,Quyền pháp qua lại!!,Võ
 MonS2Fire09default03,뽜이야아아~~!,,Phừng phừng~~!,Lửaaa~~!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 MonSnowBear01default06,샤이가이악어님이다,,Là cá sấu Shygai nè,Ngài cá sấu Shy Guy đến rồi,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 MonSnowBear03default24,샤이가이악어님이다,,Là cá sấu Shygai nè,Ngài cá sấu Shy Guy đến rồi,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-MonSnowBear02selfdie01,이대로 끝나진 않을거다일!,,Chuyện này chưa xong đâu nha!,Chuyện chưa kết thúc đâu!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-MonSnowBear04selfdie01,이대로 끝나진 않을거다일!,,Chuyện này chưa xong đâu nha!,Chuyện chưa kết thúc đâu!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-MonSnowBear05selfdie01,이대로 끝나진 않을거다일!,,Chuyện này chưa xong đâu nha!,Chuyện chưa kết thúc đâu!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-MonSnowBear04selfdie03,아니?! 아니된 다일...,,Hả?! Không được đâu nha...,Cái gì?! Không thể nào...,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+MonSnowBear02selfdie01,이대로 끝나진 않을거다일!,,Chuyện này chưa xong đâu nha!,Còn lâu mới xong nha!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+MonSnowBear04selfdie01,이대로 끝나진 않을거다일!,,Chuyện này chưa xong đâu nha!,Còn lâu mới xong nha!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+MonSnowBear05selfdie01,이대로 끝나진 않을거다일!,,Chuyện này chưa xong đâu nha!,Còn lâu mới xong nha!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+MonSnowBear04selfdie03,아니?! 아니된 다일...,,Hả?! Không được đâu nha...,Hả?! Không thể nào…,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 MonSnowBear06default09,이리왕!,,"Lại đây nào, vua ơi!",Qua đây nè!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 MonSnowBear24default09,이리왕!,,"Lại đây nào, vua ơi!",Qua đây nè!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 MonSnowBear09bomberDie04,짜이찌엔~!!,,Tạm biệt~!!,Tái kiến~!!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
@@ -368,7 +368,7 @@ NPmst03MonDieA9,"아아아악!
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPmst03UserbeLockedA1,"큭큭 잡았군~
 ",Khư khư bắt được rồi nhe~,"Khư khư bắt được rồi nha~
-","Khì khì, bắt được mi rồi~
+","Khì khì, ta tóm được mi rồi~
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPmst03UserDeadA1,"나의 승리다!
 ",Chiến thắng của ta!,"Chiến thắng của ta!
@@ -572,7 +572,7 @@ NPmst13UserbeLockedA2,"어디어디?
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPmst13UserbeLockedA3,"탈주자를 잡았다! 
 ",Đã bắt được thằng bỏ trốn rồi!,"Đã bắt được thằng bỏ trốn rồi! 
-","Bắt được kẻ bỏ trốn rồi! 
+","Tóm được đứa chạy trốn rồi! 
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPmst13UserDeadA2,"아자~ 
 ",Ái chà~,"Cố lên~ 
@@ -993,7 +993,7 @@ NPpen07GeneraE3,"너희는 내가 지켜주마
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPpen07GeneraE4,"좋아 그럼 열심히 싸워라
 "," Giỏi, tiếp tục đánh nhau đi."," Giỏi, tiếp tục đánh nhau đi.
-","Được, vậy chiến đấu hết mình đi
+","Được, vậy ráng đánh cho hết sức đi!
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPpen07GeneraE5,"순간이동!!!
 ", Di chuyển nhanh!!!,"Dịch chuyển tức thời!!!
@@ -1005,7 +1005,7 @@ NPpen08GeneraA10,"순간이동!!!
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPpen07GeneralA1,"우린 부활 못해
 ", Không thể hồi sinh rồi," Không thể hồi sinh rồi
-","Chúng ta không thể hồi sinh
+","Tụi ta đâu có hồi sinh được.
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPpen07GeneralB1,"놓치지마라
 ", Đừng bỏ lỡ đó,"Đừng để nó thoát
@@ -1465,7 +1465,7 @@ NPpen12boss10,"밥은 없다!!!
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPpen12boss2,"혼을 내줘야겠군
 ", Ta sẽ cho biết tay.," Ta sẽ cho biết tay.
-","Ta phải cho mi một bài học mới được
+","Để ta dạy mi một bài học.
 ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 NPpen12boss3,"밥줄테니 나와라!
 ", Lại đây ta cho cơm nè!," Lại đây ta cho cơm nè!
@@ -1812,13 +1812,13 @@ q:BnbQuiz_Answer_9_6_1,허경영 X 3,,Heo Kyung-young x 3,Heo Kyung-young X 3,tr
 q:BnbQuiz_Question_2_5,비엔비 게임타입 중 대장을 잡으면 바로   리할 수 있는 게임타입은 무엇일까요?,,"Trong các chế độ của Boom, chế độ nào thắng ngay khi bắt được thủ lĩnh?","Trong các chế độ của Boom, chế độ nào thắng ngay khi bắt được trùm?",translated,sửa tay qua trang catalog 2026-11-17,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 q:BnbQuiz_Question_7_2,보라악마를 먹어 저주에 걸렸을 때 풀려날   수 있도록 하는 아이템은?,,Vật phẩm nào giải trừ khi bị nguyền bởi quỷ tím?,Vật phẩm nào giúp giải lời nguyền khi ăn phải ác quỷ tím?,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:GiveLucciTicket_GameMsg,** 개천절 기념! **  선물로 <font color=0xFF00FF>루찌 2배권</font>이 지급되었습니다!  마이페이지를 확인하세요.,,** Kỷ niệm Ngày Lập quốc! **  Đã phát quà <font color=0xFF00FF>Phiếu x2 VÀNG</font> nha!  Vô Trang cá nhân coi thử đi nha.,** Mừng Quốc khánh! ** Bạn có quà <font color=0xFF00FF>Vé nhân đôi VÀNG</font>! Vô Trang cá nhân coi nha.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-q:GiveLucciTicket_Reward,** 개천절 기념! <font color=0xFF00FF>루찌 2배권이 지급</font>되었습니다!  ** 마이페이지를 확인하세요!,,** Kỷ niệm Ngày Lập quốc! <font color=0xFF00FF>Đã phát Phiếu x2 VÀNG</font>!  ** Vô Trang cá nhân coi nha!,** Mừng Quốc khánh! <font color=0xFF00FF>Đã phát vé nhân đôi VÀNG</font>!  ** Hãy coi Trang cá nhân!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+q:GiveLucciTicket_Reward,** 개천절 기념! <font color=0xFF00FF>루찌 2배권이 지급</font>되었습니다!  ** 마이페이지를 확인하세요!,,** Kỷ niệm Ngày Lập quốc! <font color=0xFF00FF>Đã phát Phiếu x2 VÀNG</font>!  ** Vô Trang cá nhân coi nha!,** Mừng Quốc khánh! <font color=0xFF00FF>Có vé nhân đôi VÀNG nè</font>! ** Vô Trang cá nhân coi nha!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:LuxuryKephi_HintMsg01_1,좋아! <font style=bold color=9631236>,,Được! <font style=bold color=9631236>Ta cho bạn gợi ý thứ ,Tốt! <font style=bold color=9631236>,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:LuxuryKephi_HintMsg01_2,번째 힌트</font>를 주지.  ,,</font>.  ,gợi ý thứ</font>.  ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-q:LuxuryKephi_RewardMsg01,축하합니다.  범인을 성공적으로 찾아냈습니다.,,Chúc mừng. Bạn đã tìm ra thủ phạm thành công.,Chúc mừng.  Bạn đã tìm được thủ phạm.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+q:LuxuryKephi_RewardMsg01,축하합니다.  범인을 성공적으로 찾아냈습니다.,,Chúc mừng. Bạn đã tìm ra thủ phạm thành công.,Hay quá! Tìm ra thủ phạm rồi.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:LuxuryKephi_RewardMsg02,개가 보상으로 지급되었습니다.,, cái được trao làm phần thưởng.,cái là quà của bạn.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-q:LuxuryMosHit_Reward5,럭모 럭띠 후우를 모두 갖고 있는 님! 히트다히트으!,,"Bạn nào có đủ Mos sang chảnh, Ethi sang chảnh, Huu! Đỉnh quá đỉnh!","Bạn có đủ Đinh Ốc, Tí Tách và Tí Điệu rồi! Quá đỉnh luôn!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-q:MakeCdasoo_QuestDesc2,웹 이벤트 아이템 <font color=0xe6bdfe>크다수</font>를 만들어 드려요~★,,Tạo vật phẩm Sự kiện web <font color=0xe6bdfe>Keudasu</font> cho bạn~★,Tạo vật phẩm Sự kiện web <font color=0xe6bdfe>Kdasu</font> cho bạn~★,translated,"sửa 2026-11-15 (review 2: tên riêng, xưng hô, lệnh chat)","dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
+q:LuxuryMosHit_Reward5,럭모 럭띠 후우를 모두 갖고 있는 님! 히트다히트으!,,"Bạn nào có đủ Mos sang chảnh, Ethi sang chảnh, Huu! Đỉnh quá đỉnh!","Có đủ Đinh Ốc, Tí Tách với Tí Điệu luôn! Đỉnh dữ vậy!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+q:MakeCdasoo_QuestDesc2,웹 이벤트 아이템 <font color=0xe6bdfe>크다수</font>를 만들어 드려요~★,,Tạo vật phẩm Sự kiện web <font color=0xe6bdfe>Keudasu</font> cho bạn~★,Tui làm <font color=0xe6bdfe>Kdasu</font> cho bạn dự sự kiện trên web nha~★,translated,"sửa 2026-11-15 (review 2: tên riêng, xưng hô, lệnh chat)","dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
 q:MakeDIYBomb_NeedBomb01,물풍선 ,,Cần thêm bom nước x,Bom nước ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:MakeDIYBomb_NeedBomb02,개가 더 필요해요! 지금 상점으로 GoGo!,, cái nữa! Vô Siêu thị liền GoGo!,"cái nữa! Tới Siêu thị ngay thôi, GoGo!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:MakeMeSnowMan_RewardA,축하합니다! 눈사람 꾸미기 보상으로 ,,Chúc mừng! Phần thưởng trang trí người tuyết: ,Chúc mừng! Phần thưởng trang trí người tuyết: ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
@@ -1899,15 +1899,15 @@ q:MonBigWin_MsgViewContent,몬스터대난투하고 배찌민둥문어 아이템
 q:MonBigWin_RewardFinal01,축하합니다. 배찌 대왕문어 세트 50% 할인권을 획득하셨습니다.,,Chúc mừng. Bạn đã nhận Phiếu giảm 50% bộ Vua bạch tuộc Bazzi.,Chúc mừng! Bạn đã nhận được phiếu giảm giá bộ Khò Khò bạch tuộc khổng lồ 50%.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:MonBigWin_RewardGame04,축하합니다. 파워산삼 5개를 획득하셨습니다.,,Chúc mừng bạn đã nhận được 5 Sâm sức mạnh.,Chúc mừng! Bạn đã nhận được 5 nhân sâm sức mạnh.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:HC_ShootingStar_RewardString1,일반3승!! 경쟁2승!! 틀린그림30개!!,,Thắng 3 trận thường!! Thắng 2 trận thi đấu!! Tìm 30 điểm khác biệt!!,Thường 3 trận thắng!! Cạnh tranh 2 trận thắng!! 30 điểm khác biệt!!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-q:HeartPointEvent_FinalReward00,축하합니다. 퀘스트 보상으로 악어 아이디 치장을 선물로 드립니다.,,Chúc mừng. Phần thưởng nhiệm vụ là Trang trí ID Cá sấu.,Chúc mừng! Bạn nhận được quà là trang trí ID cá sấu làm phần thưởng Nhiệm vụ.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+q:HeartPointEvent_FinalReward00,축하합니다. 퀘스트 보상으로 악어 아이디 치장을 선물로 드립니다.,,Chúc mừng. Phần thưởng nhiệm vụ là Trang trí ID Cá sấu.,Xong nhiệm vụ rồi! Tặng bạn Trang trí ID cá sấu nè.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:HeartPointEvent_QuestName,내하트를그대에게,,Trái tim anh gửi em,Gởi trái tim tới bạn,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:HiLobbySquearQuest_RewardMsg_RiceBait,"선택한 상품의 당첨을 응원하며!
 오늘은 게임하실 때 사용하실 수 있는 
 떡밥 미끼아이템 100개를 드릴게요. 즐겜하슨!",,"Chúc bạn trúng sản phẩm đã chọn!
 Hôm nay tặng bạn vật phẩm dùng khi chơi game
-100 mồi câu bột. Chúc chơi vui nha!","Chúc bạn trúng sản phẩm đã chọn!
-Tặng bạn 100 vật phẩm mồi bánh gạo để dùng 
-khi chơi hôm nay. Chơi vui ha!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+100 mồi câu bột. Chúc chơi vui nha!","Chúc bạn trúng đúng món đã chọn!
+Boom tặng bạn 100 mồi bánh gạo xài bữa nay nè.
+Chơi vui nha!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:NewCar_ShopSearch,리틀 쿠페,,Little Coupe,Coupe nhỏ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:NewCharHooU_CollectEventItem,NEW 캐릭터 후우 수집아이템 획득!! 퀘스트창에서 무료 아이템을 받으세요!,,Đã nhận vật phẩm sưu tầm nhân vật MỚI Huu!! Vô cửa sổ nhiệm vụ nhận vật phẩm miễn phí nha!,Bạn lượm được món sưu tầm của nhân vật mới Tí Điệu!! Mở bảng Nhiệm vụ nhận đồ miễn phí nha!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:NewCharHooU_QuestName,매력쟁이 '후우',,Huu quyến rũ,'Tí Điệu' quyến rũ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
@@ -1937,7 +1937,7 @@ q:CAMarbleLarva_UseMsg_ExchangeDeco,$s을 획득하였습니다!  마이페이�
 q:PuzzleZooZoo_Reward,축하합니다! 퍼즐주주 이벤트 미션을 달성하였습니다. 홈페이지에서 퍼즐주주 코인을 받으세요!,,Chúc mừng! Đã đạt nhiệm vụ sự kiện Puzzle Juju. Nhận coin Puzzle Juju trên trang chủ nha!,"Chúc mừng, bạn làm xong nhiệm vụ Ghép hình Zoo Zoo! Lên trang chủ nhận Xu ghép hình Zoo Zoo nha!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:HooUDolfPresent_InGameMsg,손이 꽁! 발이 꽁! 눈싸움 모드 꽁!꽁! 몬스터모드 눈싸움 플레이를 축하 드리며 ‘후돌프의 특별한 선물’을 드릴게요.,,Tay cóng! Chân cóng! Chúc mừng bạn chơi đánh tuyết Cóng cóng ở Chế độ quái vật! Tặng ‘Quà đặc biệt của Hudolf’ nha.,"Tay lạnh cóng! Chân lạnh cóng! Chế độ Ném tuyết lạnh cóng! Chúc mừng bạn tham gia Ném tuyết trong Chế độ quái vật, xin gởi bạn 'Món quà đặc biệt của Hudolph'.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:HooUDolfPresent2_RewardMsg08,귀쫑긋 발랄한 력셔리 디지니 입니다.,,"Đây là Dizni sang chảnh, tai vểnh tươi vui.",Tai Thính lanh lợi với đôi tai vểnh.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-q:HordeReward_EndToolTip,[호드보상퀘스트] 완료,,[Nhiệm vụ thưởng Hod] Hoàn thành,Hoàn thành [Nhiệm vụ phần thưởng Horde],translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+q:HordeReward_EndToolTip,[호드보상퀘스트] 완료,,[Nhiệm vụ thưởng Hod] Hoàn thành,Xong [Nhiệm vụ nhận quà Horde],translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:HordeReward_QuestName,호드보상퀘스트,,Nhiệm vụ thưởng Hod,Nhiệm vụ thưởng Horde,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:LoginReward_Mon2_Reward09,"몬스터2 ""불의 제왕""이 선물로 물탱크통조림 5개를 드립니다!  *내일은 더 엄청난 선물을 준다니 꼭 와요!!",,"Quái vật 2 ""Hoả vương"" tặng 5 hộp bom nước đóng hộp!  *Nghe nói mai tặng quà còn khủng hơn, nhớ vô nha!!","Quái vật 2 ""Chúa tể lửa"" tặng bạn 5 hộp bình nước!  *Ngày mai còn có quà hấp dẫn hơn, nhớ quay lại đó!!",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)","Duyệt 2026-11-14 (Claude, chủ dự án uỷ quyền): chốt bản dịch; câu có %일권 viết lại không còn dấu % lạc, chuỗi exe giải mã lệch giữ nguyên."
 q:BnBOlympic_MissionProgressTail_00,회,,lần,lần,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
@@ -1961,7 +1961,7 @@ q:DarkHero_DrawCount01,다크히어로 ,,Dark Hero ,Anh hùng bóng tối ,trans
 q:DarkHero_WinCount01,다크히어로 ,,Dark Hero ,Anh hùng bóng tối ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:DarkHero_DrawCount02,번 비기기(Draw) 성공!,,lần hòa (Draw) thành công!,lần hòa (Draw) thành công!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:DarkHero_WinCount02,번 이기기 성공!,,lần thắng thành công!,lần thắng thành công!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-q:DiceQuest201109_S_Mission00,주사위 퀘스트 완료까지 ,,Còn ,Đến khi hoàn thành Nhiệm vụ xúc xắc ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+q:DiceQuest201109_S_Mission00,주사위 퀘스트 완료까지 ,,Còn ,Còn lại để xong nhiệm vụ Xúc xắc ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:DiceQuest201109_S_Mission01,게임 남았습니다. 조금만 더 힘내세요!,,game nữa là xong. Cố thêm chút nha!,trận còn lại. Cố lên!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:ShakeBamBam_ShowBamCount02,개째 획득하셨습니다. ,, cái đã nhận được. ,cái đã nhận được. ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:SnowBear_QuestName,Catch~!설곰!!,,Catch~! Gấu tuyết!!,Bắt gấu tuyết nào~!,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
@@ -2076,9 +2076,9 @@ q:Burngauge_QuestDesc1,"빠른시작으로 플레이하면 게이지가 채워�
 30%, 60%, 100% 채울때마다 보상 획득!
 100% 완료해도 다시 반복해서 할 수 있어요. ",,"Chơi bằng Bắt đầu nhanh để làm đầy thanh tiến trình. 
 Đạt các mốc 30%, 60%, 100% là nhận được thưởng!
-Đầy 100% rồi vẫn có thể làm lại. ","Chơi Bắt đầu nhanh để tăng thanh tiến độ. 
-Nhận phần thưởng mỗi khi đạt 30%, 60%, 100%!
-Sau khi đạt 100%, bạn có thể làm lại nhiều lần. ",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+Đầy 100% rồi vẫn có thể làm lại. ","Chơi Bắt đầu nhanh để làm đầy thanh tiến độ.
+Có quà ở các mốc 30%, 60%, 100%!
+Đạt 100%, bạn vẫn làm lại được bao nhiêu lần tùy thích.",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CAKing_RewardToolTip45,"100,000 경험치 
 액션 파삼 스킬 (15일) 1개",,"100.000 kinh nghiệm 
 Kỹ năng động tác Pasam (15 ngày) x1","100.000 kinh nghiệm 
@@ -2093,20 +2093,20 @@ Dùng [Cần câu Thanh Long] đã nhận, hãy thử gom [Bom nước Ngọc nh
 Dùng [Cần câu Thanh Long] đã nhận để sưu tầm [Bom nước ngọc rồng] từ 1 đến 6 sao tại khu câu cá ở quảng trường~★",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CALogInRod_Reward_Connect,"여의주를 낚자 이벤트가 진행 중이에요~!
 지급된 낚싯대를 이용해 광장 낚시터에서 여의주 물풍선을 1~6성까지 모아보세요~★",,"Sự kiện Câu ngọc như ý đang diễn ra~!
-Dùng cần câu đã nhận, thử gom Bom nước Ngọc như ý từ 1~6 sao ở hồ câu Quảng trường nha~★","Sự kiện câu ngọc như ý đang diễn ra~!
-Dùng cần câu được cấp để thu thập bom nước ngọc như ý từ 1 đến 6 sao tại chỗ câu cá ở quảng trường nha~★",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+Dùng cần câu đã nhận, thử gom Bom nước Ngọc như ý từ 1~6 sao ở hồ câu Quảng trường nha~★","Đi câu Ngọc Như Ý thôi~!
+Xài cần câu được tặng, ra chỗ câu cá ở quảng trường câu bom nước Ngọc Như Ý từ 1 đến 6 sao nha~★",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CAMarble_DesertReward2_1,사막유적에서 ,,"Ở Di tích sa mạc, ",Tại di tích Sa mạc ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CAMarble_DesertReward2_2, 획득. 마이페이지를 확인해 보세요,, đã nhận được. Vô Trang cá nhân coi nha, về túi rồi. Vô Trang cá nhân coi nha,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CAMarble_JewerlyReward2_2, 획득. 마이페이지를 확인해 보세요,, đã nhận được. Vô Trang cá nhân coi nha, về túi rồi. Vô Trang cá nhân coi nha,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CAMarble_FinishReward1_2, 점,, điểm, điểm,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-q:CAMarble_GameReward1_1,크아마블 주사위 획득까지 게임진행 ,,Số ván đã chơi để nhận Xúc xắc Boom Marble: ,Chơi đến khi nhận được xúc xắc Boom Marble ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+q:CAMarble_GameReward1_1,크아마블 주사위 획득까지 게임진행 ,,Số ván đã chơi để nhận Xúc xắc Boom Marble: ,Chơi tiếp để lấy xúc xắc Boom Marble ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CAKing_RewardToolTip14,"크아CD 2개
 아이템 가방 1개
 보너스 귀환스탬프+1 1개",,"CD Boom x2
 Túi đồ x1
 Dấu Quay về+1 (thưởng) x1","2 CD Boom
-1 túi vật phẩm
-1 tem trở về thưởng +1",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+1 Túi đồ
+Thưởng thêm 1 tem trở về",translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:MyBeetle_ShopSearch,쾅쾅,,Bùm Bùm,Đập bùm,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:BigBattleWin_RewardName05,착한보석 물풍선,,Bom nước Đá quý hiền,Bom nước đá quý tốt bụng,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:PCBangDaily4_RewardDesc04,미사일 전자파밴드 머리띠,,Băng đô Sóng điện từ tên lửa,Băng đô tên lửa chống sóng điện từ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
@@ -2118,7 +2118,7 @@ q:PCBangDaily7_RewardDesc03,3월 크아빈 10개,,Đậu Boom tháng 3 x10,10 đ
 q:CAMarble2_RewardSlotDecoTitle02,우주인 아이디치장 (7일),,Trang trí ID Người ngoài hành tinh (7 ngày),Trang trí ID phi hành gia (7 ngày),translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:RiceCakeBazzi5_Reward_Replacement01,이미 사다리배찌 따라와 아이템을 영구로 소지하고 있군요? 다른 아이템으로 지급해 드릴게요~★,,Bạn đã sở hữu vĩnh viễn vật phẩm Thang Bazzi theo chân rồi nè? Mình tặng vật phẩm khác nha~★,Bạn đã có vĩnh viễn vật phẩm Khò Khò leo thang theo sau rồi! Sẽ tặng bạn vật phẩm khác~★,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CBTEvent_InfoMsg00, Play 완료! ,, Hoàn thành Play! , Chơi hoàn tất! ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
-q:CBTEvent_InfoMsg01,단계 성공까지 ,,Còn ,Đến khi hoàn thành cấp ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
+q:CBTEvent_InfoMsg01,단계 성공까지 ,,Còn ,Còn lại để qua chặng ,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CBTEvent_InfoMsg02,Play 남았습니다.,, lượt chơi nữa là hoàn thành giai đoạn.,Lượt chơi còn lại.,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CheerUpLevelUp_Reward_Lucci1,20만,,200.000,200.000,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
 q:CheerUpLevelUp_Reward_Lucci2,50만,,500.000,500.000,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)",Đã đối chiếu câu Hàn; sửa nghĩa/định dạng nếu cần.
