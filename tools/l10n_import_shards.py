@@ -39,6 +39,7 @@ def main():
 
     tm_fields, tm_id = read_csv_dict(L10N / "tm_id.csv", "id")
     aud_fields, audit = read_csv_dict(L10N / "review_audit.csv", "id")
+    des_fields, designs = read_csv_dict(L10N / "design_rows.csv", "id")
     en_fields, en_id = read_csv_dict(L10N / "en_id.csv", "id")
     if not en_fields:
         en_fields = ["id", "en", "notes"]
@@ -59,6 +60,12 @@ def main():
             if lang == "vi":
                 cur = vi_map[rid]
                 if new == cur["vi"] and cur["status"] == "translated":
+                    continue
+                if rid in designs:
+                    designs[rid]["vi"] = new
+                    designs[rid]["status"] = "translated"
+                    tm_id.pop(rid, None)
+                    accepted_vi += 1
                     continue
                 prev = tm_id.get(rid)
                 prev_notes = prev["notes"] if prev else cur.get("notes", "")
@@ -94,6 +101,7 @@ def main():
 
     write_csv(L10N / "tm_id.csv", tm_fields, tm_id.values())
     write_csv(L10N / "review_audit.csv", aud_fields, audit.values())
+    write_csv(L10N / "design_rows.csv", des_fields, designs.values())
     write_csv(L10N / "en_id.csv", en_fields, en_id.values())
 
     if not args.no_rebuild:
