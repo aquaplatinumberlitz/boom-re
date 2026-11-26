@@ -13,6 +13,26 @@ ROOT = SA.ROOT
 L10N = SA.L10N
 
 
+RESERVED_VALIDATOR_NOTES = {
+    "nam_bo_rewrite",
+    "ko_review_pending",
+    "ko_vi_base_placeholder_mismatch",
+    "untranslated",
+}
+
+
+def sanitize_shard_note(raw: str, stem: str) -> str:
+    tokens = []
+    for tok in (raw or "").split(";"):
+        t = tok.strip()
+        if not t:
+            continue
+        if t in RESERVED_VALIDATOR_NOTES:
+            t = f"polish-95:{t}"
+        tokens.append(t)
+    return ";".join(tokens) if tokens else f"polish-95 ({stem})"
+
+
 def read_csv_dict(path, key):
     with path.open(encoding="utf-8-sig", newline="") as f:
         rows = list(csv.DictReader(f))
@@ -56,7 +76,7 @@ def main():
             rid = r["id"]
             lang = r["lang"].strip()
             new = r["new"]
-            note = (r.get("notes") or "").strip() or f"polish-95 ({sp.stem})"
+            note = sanitize_shard_note(r.get("notes") or "", sp.stem)
             if lang == "vi":
                 cur = vi_map[rid]
                 if new == cur["vi"] and cur["status"] == "translated":
