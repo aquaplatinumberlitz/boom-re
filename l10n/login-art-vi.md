@@ -1,9 +1,9 @@
 # Sáu ảnh màn đăng nhập KR 00967 (vi)
 
-`l10n_login_art_vi.py` đọc sáu entry `FxDesktop/LoginStage` từ pack KR và dùng bitmap
-`CxUniBold.fft` (hoặc `CxUni.fft`) 12×16 tiếng Việt của gói. Giữ hàng chọn máy chủ,
-ô nhập 1P/2P, checkbox và nhãn `1PLAYER`/`2PLAYER`. Lấy `UserID` và `Password` từ catalog;
-chữ nằm riêng trong ảnh là “CHỌN MÁY CHỦ” và tên máy chủ “DREAM”/“HAPPY”.
+`l10n_login_art_vi.py` đọc sáu entry `FxDesktop/LoginStage` từ pack KR và dùng chung
+bộ vẽ DejaVu Sans Bold / Condensed Bold với bản tiếng Anh. Giữ hàng chọn máy chủ,
+ô nhập 1P/2P, checkbox và nhãn `1PLAYER`/`2PLAYER`. Các nhãn vẽ lại là “CHỌN MÁY CHỦ”,
+“ID”, “MẬT KHẨU”, “DREAM” và “HAPPY”.
 
 | Entry | Vùng chữ (x trái, y trên, x phải, y dưới; phải/dưới không tính) |
 |---|---|
@@ -12,15 +12,16 @@ chữ nằm riêng trong ảnh là “CHỌN MÁY CHỦ” và tên máy chủ �
 | `LO_SerDre`/`LO_SerDre2P` | (25, 4 + 24i, 87, 20 + 24i), i = 0..4 |
 | `LO_SerHa`/`LO_SerHa2P` | (25, 4 + 24i, 87, 20 + 24i), i = 0..3; giữ cả 5 bản ghi frame |
 
-Mỗi dòng pixel lấy nền từ cột ngay bên phải vùng chữ để giữ chuyển màu theo chiều dọc.
+Mỗi dòng pixel lấy trung vị màu từ các cột lân cận để giữ chuyển màu theo chiều dọc.
+Hai nhãn có dấu tự giảm cỡ chữ vừa đủ để nét viền cách mép trên và dưới ít nhất một pixel.
 Script từ chối đầu vào khác hash KR, nhãn không vừa và thay đổi pixel ngoài vùng hoặc đổi alpha.
-Script kiểm I16 sau mã hóa lại: kích thước, dữ liệu frame và pixel phải khớp.
+Script kiểm I16 sau mã hóa lại: kích thước, dữ liệu frame, alpha và pixel ngoài vùng chữ phải khớp.
 
 ```sh
-python3 tools/l10n_login_art_vi.py --kr CLIENT_KR --font CXUNI_VN --out local/login-art-vi
+python3 tools/l10n_login_art_vi.py --kr CLIENT_KR --out local/login-art-vi
 ```
 
-Dùng Python và Pillow từ 10. Xem `before-after.png` và `receipt.json` tại thư mục đầu ra.
-Sau khi ảnh được duyệt, dùng `tools/l10n_build.py --lang vi --image-dir local/login-art-vi/drawn`
+Dùng Python, Pillow từ 10 và font DejaVu Sans. Xem cỡ chữ đã dùng trong `receipt.json`.
+Sau khi ảnh được duyệt, dùng `tools/l10n_build.py --lang vi --image-dir local/login-art-vi/vi-drawn`
 với các tham số dựng gói đang dùng. Không cần `--allow-shape-change` cho sáu entry này.
-Không commit ảnh nguồn, ảnh dựng hoặc pack. Bản en để sau giai đoạn 1.
+Không commit ảnh nguồn, ảnh dựng hoặc pack.
