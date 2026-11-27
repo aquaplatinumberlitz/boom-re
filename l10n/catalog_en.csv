@@ -2879,7 +2879,7 @@ DefaultRoomTitle0,csysstr.ssd+FxDesktop/ClientData/ClientString,즐거운 게임
 DefaultRoomTitle1,csysstr.ssd+FxDesktop/ClientData/ClientString,아무나 오세요,Ai vô cũng được,translated,Everyone welcome!,fx/ClientData/ClientString,candidate,meaning_checked
 DefaultRoomTitle2,csysstr.ssd+FxDesktop/ClientData/ClientString,저랑 게임하실분~,Ai chơi chung hông~,translated,Anyone want to play?,fx/ClientData/ClientString,candidate,meaning_checked
 DefaultRoomTitle3,csysstr.ssd+FxDesktop/ClientData/ClientString,빨리 오세요~,Mau vô đi nào~,translated,Come quick~,fx/ClientData/ClientString,candidate,meaning_checked
-DefaultRoomTitle4,csysstr.ssd+FxDesktop/ClientData/ClientString,초보자 환영!,Tân thủ vô chơi nha!,translated,Beginners welcome!,fx/ClientData/ClientString,candidate,meaning_checked
+DefaultRoomTitle4,csysstr.ssd+FxDesktop/ClientData/ClientString,초보자 환영!,Tân thủ vô chơi!,translated,Beginners welcome!,fx/ClientData/ClientString,candidate,meaning_checked
 DefaultRoomTitle5,csysstr.ssd+FxDesktop/ClientData/ClientString,매너겜 필수,Chơi đẹp nha!,translated,Good manners required,fx/ClientData/ClientString,candidate,meaning_checked
 DeferShutdown,csysstr.ssd,이 채널은 점검이 예정되어 있어 플레이를 할 수 없습니다. 다른 채널을 이용해 주세요.,Kênh này sắp bảo trì. Bạn qua kênh khác chơi nha.,translated,This channel is closed for scheduled maintenance. Choose another channel.,en_id.csv,manual,polish-95:en-ui
 Delete,csysstr.ssd+FxDesktop/ClientData/ClientString,삭제하기,Xóa,translated,Delete,fx/ClientData/ClientString,candidate,meaning_checked

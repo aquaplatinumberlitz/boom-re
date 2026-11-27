@@ -2593,7 +2593,7 @@ DefaultRoomTitle0,csysstr.ssd+FxDesktop/ClientData/ClientString,즐거운 게임
 DefaultRoomTitle1,csysstr.ssd+FxDesktop/ClientData/ClientString,아무나 오세요,,Ai vô cũng được,translated,sửa tay qua trang catalog 2026-11-16;too_long?
 DefaultRoomTitle2,csysstr.ssd+FxDesktop/ClientData/ClientString,저랑 게임하실분~,,Ai chơi chung hông~,translated,sửa tay qua trang catalog 2026-11-16;too_long?
 DefaultRoomTitle3,csysstr.ssd+FxDesktop/ClientData/ClientString,빨리 오세요~,,Mau vô đi nào~,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt);too_long?"
-DefaultRoomTitle4,csysstr.ssd+FxDesktop/ClientData/ClientString,초보자 환영!,,Tân thủ vô chơi nha!,translated,ko_reviewed;nam_bo_polish;too_long?
+DefaultRoomTitle4,csysstr.ssd+FxDesktop/ClientData/ClientString,초보자 환영!,,Tân thủ vô chơi!,translated,ko_reviewed;nam_bo_polish
 DefaultRoomTitle5,csysstr.ssd+FxDesktop/ClientData/ClientString,매너겜 필수,,Chơi đẹp nha!,translated,ko_reviewed;nam_bo_polish;too_long?
 DeferShutdown,csysstr.ssd,이 채널은 점검이 예정되어 있어 플레이를 할 수 없습니다. 다른 채널을 이용해 주세요.,,Kênh này sắp bảo trì. Bạn qua kênh khác chơi nha.,translated,ko_reviewed;polish-95:southern+tone
 Delete,csysstr.ssd+FxDesktop/ClientData/ClientString,삭제하기,,Xóa,translated,"dịch lại 2026-11-15 (Terra; giọng Nam, cặp xưng hô, tên nhân vật Việt)"
