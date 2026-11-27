@@ -322,13 +322,24 @@ def _paint_char_banner(src: bytes, title: str, subtitle: str, bfont: BitmapFont)
     return before, after, rebuilt
 
 
-def _paint_game_stage_item(src: bytes, bfont: BitmapFont) -> tuple[Image.Image, Image.Image, bytes]:
-    _, before = decode_image_at(src, 2)
+def _paint_room_char_banner(src: bytes, title: str, subtitle: str, bfont: BitmapFont) -> tuple[Image.Image, Image.Image, bytes]:
+    _, before = decode_image_at(src, 0)
+    after = before.copy()
+    erase_rect = (165, 5, 274, 48)
+    _erase_horizontal_median(after, before, erase_rect, [133, 134, 135, 136, 137])
+    _draw_ttf_label(after, (175, 4, 270, 27), title, 18, (255, 245, 130), stroke=(0, 50, 125), stroke_width=2, condensed=False, bitmap_font=bfont, align='right')
+    _draw_ttf_label(after, (166, 28, 272, 46), subtitle, 11, (255, 255, 255), stroke=(0, 50, 125), stroke_width=1, condensed=True, bitmap_font=bfont, align='right')
+    rebuilt = validate_i16(src, after, [erase_rect], 0)
+    return before, after, rebuilt
+
+
+def _paint_game_stage_item_idx(src: bytes, image_index: int, bfont: BitmapFont) -> tuple[Image.Image, Image.Image, bytes]:
+    _, before = decode_image_at(src, image_index)
     after = before.copy()
     rect = (12, 6, 82, 28)
     _erase_horizontal_median(after, before, rect, [8, 9, 10, 83, 84])
     _draw_ttf_label(after, rect, 'MY ITEM', 11, (255, 255, 255), stroke=(0, 55, 120), stroke_width=1, condensed=True, bitmap_font=bfont)
-    rebuilt = validate_i16(src, after, [rect], 2)
+    rebuilt = validate_i16(src, after, [rect], image_index)
     return before, after, rebuilt
 
 
@@ -375,14 +386,19 @@ def render_ui(kr: Path, font_data: bytes, out: Path) -> list:
     for pack, entry, fn, image_index, nframes in (
         ('FxMap', 'Prepare/PRE_Img', lambda s: _paint_pre_img(s, bfont), 0, 29),
         ('FxDesktop', 'Etc/ChaInfo_Char00', lambda s: _paint_char_banner(s, 'DAO', 'Righteous & Loyal!', bfont), 0, 1),
-        ('FxStage', 'Game/GameStageItem', lambda s: _paint_game_stage_item(s, bfont), 2, 41),
+        ('FxContents', 'CharacterSelect/S_Cha00', lambda s: _paint_room_char_banner(s, 'DAO', 'Righteous & Loyal!', bfont), 0, 1),
+        ('FxStage', 'Game/GameStageItem', lambda s: _paint_game_stage_item_idx(s, 0, bfont), 0, 41),
+        ('FxStage', 'Game/GameStageItem', lambda s: _paint_game_stage_item_idx(s, 2, bfont), 2, 41),
     ):
         src = read_entry(idx, pack, entry)
         before, after, rebuilt = fn(src)
         d = out / 'en-drawn' / pack / entry
         d.mkdir(parents=True, exist_ok=True)
         (d / f'{image_index}.png').write_bytes(i16.png(after.tobytes(), after.width, after.height))
-        rendered.append((pack + '/' + entry, before, after))
+        if before.width > 360:
+            rendered.append((f'{pack}/{entry}[{image_index}] (left crop)', before.crop((0, 0, 300, before.height)), after.crop((0, 0, 300, after.height))))
+        else:
+            rendered.append((f'{pack}/{entry}[{image_index}]', before, after))
         receipt.append({'pack': pack, 'entry': entry, 'dims': list(after.size), 'frames': nframes, 'image_index': image_index, 'sha256': sha(rebuilt)})
 
     # Room background labels (TEAM, MAP, AUTO READY)
