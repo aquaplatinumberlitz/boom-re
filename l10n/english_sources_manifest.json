@@ -11,7 +11,7 @@
     "clientextensions/swish/swish.idx": "38dfe7a3f237bfa9aff95b96374adc4a7aa2a590c93712d911b81d0927c8e53f",
     "clientextensions/swish/swish.idd": "760bd0c23e9512e9dd7e0cf2ff95d04d5625e28fa6dff9ed55b8e3d140c275b9"
   },
-  "catalog_kr_sha256": "2606a441c58557afb53efd3cfd47c7e30b9c5dfb98116a45e5c7e7a5fa773a3e",
+  "catalog_kr_sha256": "28f3370bfb284b4c143dd8ed2edd9a13542c133bbcf419c105a9b1008447a467",
   "english_raw_records": 7750,
   "english_unique_ids": 7454,
   "english_variants": 7556,
@@ -40,11 +40,10 @@
   "images_todo_sha256": "d52542692047b54d977d0bfc9213ff05e399be7d8e816c1d56d406f54a57a21a",
   "catalog_rows": 33486,
   "status": {
-    "candidate": 5522,
-    "machine": 26782,
+    "candidate": 5520,
+    "manual": 27225,
     "casefold_candidate": 197,
-    "missing": 544,
-    "manual": 441
+    "missing": 544
   },
   "format_mismatch": 0
 }
