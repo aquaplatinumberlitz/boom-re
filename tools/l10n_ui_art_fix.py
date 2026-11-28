@@ -25,6 +25,13 @@ LOGIN_TABLES = {
     'LO_LogTable00': ((172, 5, 285, 21), (139, 94, 221, 111), (139, 120, 221, 137)),
     'LO_LogTable01': ((204, 5, 312, 21), (123, 94, 199, 111), (123, 120, 199, 137)),
 }
+# The Vietnamese title/password use two extra plain rows so their stacked marks
+# can keep the English font sizes.  x coordinates remain exactly those of KR.
+VI_LOGIN_TABLES = {
+    'LO_LogTable00': ((172, 3, 285, 23), (139, 94, 221, 111), (139, 117, 221, 137)),
+    'LO_LogTable01': ((204, 3, 312, 23), (123, 94, 199, 111), (123, 117, 199, 137)),
+}
+PLAIN_ROW_MAX_DEVIATION = 2
 LOGIN_SOURCES = {
     'LO_LogTable00': (456, 157, 1, '111e49e762b7e3618e7a288e6dd36e9c99d5ae255d0203c4e44fca736501c770'),
     'LO_LogTable01': (516, 157, 1, '6b48294fadfd2bb93091fd289c30e3198a229d8d25449aca671d60cbeabc82f6'),
@@ -163,6 +170,59 @@ def _erase_horizontal_median(
             px[x, y] = c + (px[x, y][3],)
 
 
+def _plain_row_evidence(
+    before: Image.Image,
+    base_rect: tuple[int, int, int, int],
+    chosen_rect: tuple[int, int, int, int],
+    donor_xs: list[int],
+) -> list[dict]:
+    """Prove that only plain fill rows were added around a VI label."""
+    bx0, by0, bx1, by1 = base_rect
+    x0, y0, x1, y1 = chosen_rect
+    if (x0, x1) != (bx0, bx1) or y0 > by0 or y1 < by1 or y0 < by0 - 3 or y1 > by1 + 3:
+        raise ValueError(f'VI rect extension exceeds three rows or changes x range: {chosen_rect}')
+    bpx = before.load()
+    valid_xs = [x for x in donor_xs if 0 <= x < before.width]
+    if not valid_xs:
+        raise ValueError('VI rect extension has no donor columns')
+    evidence = []
+    for y in list(range(y0, by0)) + list(range(by1, y1)):
+        donors = [bpx[x, y] for x in valid_xs]
+        alpha = {p[3] for p in donors}
+        if len(alpha) != 1:
+            raise ValueError(f'VI extra row {y} donor alpha is not uniform')
+        median = tuple(int(statistics.median([p[c] for p in donors])) for c in range(3))
+        deviations = [max(abs(bpx[x, y][c] - median[c]) for c in range(3)) for x in range(x0, x1)]
+        max_deviation = max(deviations, default=0)
+        row_alpha = {bpx[x, y][3] for x in range(x0, x1)}
+        neighbor_rows = [yy for yy in (y - 1, y + 1) if 0 <= yy < before.height]
+        neighbor_medians = []
+        for yy in neighbor_rows:
+            neighbor_pixels = [bpx[x, yy] for x in valid_xs]
+            neighbor_medians.append(tuple(int(statistics.median([p[c] for p in neighbor_pixels])) for c in range(3)))
+        neighbor_deviation = min(
+            (max(abs(median[c] - other[c]) for c in range(3)) for other in neighbor_medians),
+            default=0,
+        )
+        plain = (
+            alpha == {255} and row_alpha == {255}
+            and max_deviation <= PLAIN_ROW_MAX_DEVIATION
+            and neighbor_deviation <= 100
+        )
+        row = {
+            'y': y,
+            'max_deviation': max_deviation,
+            'donor_median': list(median),
+            'alpha': sorted(row_alpha),
+            'neighbor_deviation': neighbor_deviation,
+            'plain': plain,
+        }
+        evidence.append(row)
+        if not plain:
+            raise ValueError(f'VI extra row {y} is not plain background: {row}')
+    return evidence
+
+
 def decode_image_at(blob: bytes, index: int = 0) -> tuple[dict, Image.Image]:
     s = i16.parse(blob)
     h, w = s['sizes'][index]
@@ -219,20 +279,29 @@ def render_login(kr: Path, font_data: bytes | None, out: Path, lang: str = 'en')
         boxes = []
         labels = []
         if name in LOGIN_TABLES:
+            table_rects = VI_LOGIN_TABLES[name] if lang == 'vi' else LOGIN_TABLES[name]
             specs = (
                 (title, 12, (179, 88, 0), True),
                 ('ID', 12, (0, 60, 119), False),
                 (password, 11, (0, 60, 119), True),
             )
-            for rect, (label, sz, stroke, cond) in zip(LOGIN_TABLES[name], specs):
+            for label_index, (rect, (label, sz, stroke, cond)) in enumerate(zip(table_rects, specs)):
+                base_rect = LOGIN_TABLES[name][label_index]
                 donor_xs = [min(after.width - 1, rect[2] + k) for k in range(3)]
+                extension_evidence = []
+                if lang == 'vi' and label_index in (0, 2):
+                    extension_evidence = _plain_row_evidence(before, base_rect, rect, donor_xs)
                 _erase_horizontal_median(after, before, rect, donor_xs)
                 actual_size = _draw_ttf_label(
                     after, rect, label, sz, (255, 255, 255), stroke=stroke, condensed=cond,
                     bitmap_font=bfont, vertical_margin=2 if lang == 'vi' and label != 'ID' else 1,
                 )
                 boxes.append(rect)
-                labels.append({'rect': rect, 'text': label, 'size': actual_size})
+                label_receipt = {'rect': list(rect), 'text': label, 'size': actual_size}
+                if lang == 'vi':
+                    label_receipt['base_rect'] = list(base_rect)
+                    label_receipt['extension_evidence'] = extension_evidence
+                labels.append(label_receipt)
         else:
             visible = h // 24
             server = 'DREAM' if name.startswith('LO_SerDre') else 'HAPPY'

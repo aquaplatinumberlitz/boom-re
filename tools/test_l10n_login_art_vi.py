@@ -24,13 +24,14 @@ class LoginArt(unittest.TestCase):
         font_path = ImageFont.truetype('DejaVuSansCondensed-Bold.ttf', 12).path
         name = 'LO_LogTable00'
         entry = 'LoginStage/' + name
-        rects = art.LOGIN_TABLES[name]
+        base_rects = art.LOGIN_TABLES[name]
+        rects = art.VI_LOGIN_TABLES[name]
         background = (17, 29, 43, 255)
         original = Image.new('RGBA', (456, 157), background)
         original.putpixel((0, 0), (20, 40, 60, 128))
-        for rect in rects:
+        for rect in base_rects:
             x0, y0, x1, y1 = rect
-            original.paste('black', (x0 + 1, y0 + 1, x1 - 1, y1 - 1))
+            original.paste((0, 60, 119, 255), (x0 + 1, y0 + 1, x1 - 1, y1 - 1))
         blob = make_i16(original, 1)
 
         with (
@@ -51,6 +52,15 @@ class LoginArt(unittest.TestCase):
             before.paste(background, rect)
         labels = receipt[name]['labels']
         self.assertEqual([item['text'] for item in labels], ['CHỌN MÁY CHỦ', 'ID', 'MẬT KHẨU'])
+        self.assertEqual([item['rect'] for item in labels], [list(rect) for rect in rects])
+        self.assertEqual(labels[0]['size'], 12)
+        self.assertEqual(labels[2]['size'], 11)
+        self.assertEqual(labels[0]['rect'], [172, 3, 285, 23])
+        self.assertEqual(labels[2]['rect'], [139, 117, 221, 137])
+        for item in (labels[0], labels[2]):
+            self.assertTrue(item['extension_evidence'])
+            self.assertTrue(all(row['plain'] for row in item['extension_evidence']))
+            self.assertLessEqual(max(row['max_deviation'] for row in item['extension_evidence']), 2)
         diff = ImageChops.difference(before.convert('RGB'), after.convert('RGB'))
         for label, rect in zip(labels, rects):
             with self.subTest(text=label['text']):
@@ -68,6 +78,19 @@ class LoginArt(unittest.TestCase):
                 self.assertEqual((right - left, bottom - top), (ref_r - ref_l, ref_b - ref_t))
                 diff.paste(0, rect)
         self.assertIsNone(diff.getbbox())
+
+    def test_vi_rect_extension_fails_closed_on_non_plain_row(self):
+        image = Image.new('RGBA', (32, 24), (20, 40, 60, 255))
+        image.putpixel((10, 4), (255, 0, 0, 255))
+        with self.assertRaisesRegex(ValueError, 'not plain background'):
+            art._plain_row_evidence(image, (5, 5, 20, 10), (5, 4, 20, 11), [20, 21, 22])
+        with self.assertRaisesRegex(ValueError, 'exceeds three rows'):
+            art._plain_row_evidence(image, (5, 5, 20, 10), (5, 1, 20, 11), [20, 21, 22])
+        abrupt = Image.new('RGBA', (32, 24), (20, 40, 60, 255))
+        for x in (20, 21, 22):
+            abrupt.putpixel((x, 4), (240, 240, 240, 255))
+        with self.assertRaisesRegex(ValueError, 'not plain background'):
+            art._plain_row_evidence(abrupt, (5, 5, 20, 10), (5, 4, 20, 11), [20, 21, 22])
 
     def test_vi_server_states_match_en_and_keep_frame_records(self):
         font_path = ImageFont.truetype('DejaVuSansCondensed-Bold.ttf', 12).path
