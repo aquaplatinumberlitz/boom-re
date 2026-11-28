@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build bounded VI login JPEG and English UI sprite/background replacements.
+"""Build bounded login and English UI sprite/background replacements.
 
 Only reads client packs/fonts and writes a disposable image-dir tree under ``--out``
 matching the layout consumed by :mod:`l10n_build`.
@@ -25,6 +25,13 @@ LOGIN_TABLES = {
     'LO_LogTable00': ((172, 5, 285, 21), (139, 94, 221, 111), (139, 120, 221, 137)),
     'LO_LogTable01': ((204, 5, 312, 21), (123, 94, 199, 111), (123, 120, 199, 137)),
 }
+# The Vietnamese title/password use two extra plain rows so their stacked marks
+# can keep the English font sizes.  x coordinates remain exactly those of KR.
+VI_LOGIN_TABLES = {
+    'LO_LogTable00': ((172, 3, 285, 23), (139, 94, 221, 111), (139, 117, 221, 137)),
+    'LO_LogTable01': ((204, 3, 312, 23), (123, 94, 199, 111), (123, 117, 199, 137)),
+}
+PLAIN_ROW_MAX_DEVIATION = 2
 LOGIN_SOURCES = {
     'LO_LogTable00': (456, 157, 1, '111e49e762b7e3618e7a288e6dd36e9c99d5ae255d0203c4e44fca736501c770'),
     'LO_LogTable01': (516, 157, 1, '6b48294fadfd2bb93091fd289c30e3198a229d8d25449aca671d60cbeabc82f6'),
@@ -84,7 +91,8 @@ def _draw_ttf_label(
     condensed: bool = True,
     bitmap_font: BitmapFont | None = None,
     align: str = 'center',
-) -> None:
+    vertical_margin: int = 1,
+) -> int | None:
     x0, y0, x1, y1 = rect
     w, h = x1 - x0, y1 - y0
     ttf_path = _find_ttf(condensed)
@@ -97,12 +105,14 @@ def _draw_ttf_label(
         pad = stroke_width * 2 + 2
         while cur_size > 7:
             bbox = d.multiline_textbbox((0, 0), text, font=font, stroke_width=stroke_width, align='center')
-            if (bbox[2] - bbox[0]) <= w - pad and (bbox[3] - bbox[1]) <= h - 1:
+            if (bbox[2] - bbox[0]) <= w - pad and (bbox[3] - bbox[1]) <= h - vertical_margin:
                 break
             cur_size -= 1
             font = ImageFont.truetype(str(ttf_path), cur_size)
         bbox = d.multiline_textbbox((0, 0), text, font=font, stroke_width=stroke_width, align='center')
         tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+        if vertical_margin > 1 and (tw > w - pad or th > h - vertical_margin):
+            raise ValueError(f'label {text!r} does not fit in {rect}')
         if align == 'right':
             tx = w - tw - 2 - bbox[0]
         elif align == 'left':
@@ -119,7 +129,7 @@ def _draw_ttf_label(
         composited = Image.alpha_composite(base_crop, layer)
         composited.putalpha(alpha)
         im.paste(composited, (x0, y0))
-        return
+        return cur_size
 
     if bitmap_font is None:
         raise ValueError('no TTF or bitmap font available')
@@ -135,6 +145,7 @@ def _draw_ttf_label(
             if ink.getpixel((xx, yy)) >= 128:
                 old = px[ox + xx, oy + yy]
                 px[ox + xx, oy + yy] = fill + (old[3],)
+    return None
 
 
 def _erase_horizontal_median(
@@ -157,6 +168,59 @@ def _erase_horizontal_median(
             c = (int(statistics.median(rs)), int(statistics.median(gs)), int(statistics.median(bs)))
         for x in range(x0, x1):
             px[x, y] = c + (px[x, y][3],)
+
+
+def _plain_row_evidence(
+    before: Image.Image,
+    base_rect: tuple[int, int, int, int],
+    chosen_rect: tuple[int, int, int, int],
+    donor_xs: list[int],
+) -> list[dict]:
+    """Prove that only plain fill rows were added around a VI label."""
+    bx0, by0, bx1, by1 = base_rect
+    x0, y0, x1, y1 = chosen_rect
+    if (x0, x1) != (bx0, bx1) or y0 > by0 or y1 < by1 or y0 < by0 - 3 or y1 > by1 + 3:
+        raise ValueError(f'VI rect extension exceeds three rows or changes x range: {chosen_rect}')
+    bpx = before.load()
+    valid_xs = [x for x in donor_xs if 0 <= x < before.width]
+    if not valid_xs:
+        raise ValueError('VI rect extension has no donor columns')
+    evidence = []
+    for y in list(range(y0, by0)) + list(range(by1, y1)):
+        donors = [bpx[x, y] for x in valid_xs]
+        alpha = {p[3] for p in donors}
+        if len(alpha) != 1:
+            raise ValueError(f'VI extra row {y} donor alpha is not uniform')
+        median = tuple(int(statistics.median([p[c] for p in donors])) for c in range(3))
+        deviations = [max(abs(bpx[x, y][c] - median[c]) for c in range(3)) for x in range(x0, x1)]
+        max_deviation = max(deviations, default=0)
+        row_alpha = {bpx[x, y][3] for x in range(x0, x1)}
+        neighbor_rows = [yy for yy in (y - 1, y + 1) if 0 <= yy < before.height]
+        neighbor_medians = []
+        for yy in neighbor_rows:
+            neighbor_pixels = [bpx[x, yy] for x in valid_xs]
+            neighbor_medians.append(tuple(int(statistics.median([p[c] for p in neighbor_pixels])) for c in range(3)))
+        neighbor_deviation = min(
+            (max(abs(median[c] - other[c]) for c in range(3)) for other in neighbor_medians),
+            default=0,
+        )
+        plain = (
+            alpha == {255} and row_alpha == {255}
+            and max_deviation <= PLAIN_ROW_MAX_DEVIATION
+            and neighbor_deviation <= 100
+        )
+        row = {
+            'y': y,
+            'max_deviation': max_deviation,
+            'donor_median': list(median),
+            'alpha': sorted(row_alpha),
+            'neighbor_deviation': neighbor_deviation,
+            'plain': plain,
+        }
+        evidence.append(row)
+        if not plain:
+            raise ValueError(f'VI extra row {y} is not plain background: {row}')
+    return evidence
 
 
 def decode_image_at(blob: bytes, index: int = 0) -> tuple[dict, Image.Image]:
@@ -195,9 +259,14 @@ def read_entry(idx: dict, pack: str, name: str) -> bytes:
     return review.read_blob(idx[(pack, name)], name)
 
 
-def render_login(kr: Path, font_data: bytes, out: Path) -> tuple[list, dict]:
+def render_login(kr: Path, font_data: bytes | None, out: Path, lang: str = 'en') -> tuple[list, dict]:
+    """Render all six login atlases through the shared TTF renderer."""
+    if lang not in ('en', 'vi'):
+        raise ValueError(f'unsupported login language: {lang}')
     ki = review.index_packs(kr, True)
-    bfont = BitmapFont(font_data)
+    # VI requires the TTF so accent marks and outlines are always rendered.
+    bfont = BitmapFont(font_data) if lang == 'en' and font_data is not None else None
+    title, password = ('CHỌN MÁY CHỦ', 'MẬT KHẨU') if lang == 'vi' else ('SELECT SERVER', 'PASSWORD')
     rendered = []
     receipt = {}
     for name in LOGIN:
@@ -205,20 +274,34 @@ def render_login(kr: Path, font_data: bytes, out: Path) -> tuple[list, dict]:
         w, h, n, expected = LOGIN_SOURCES[name]
         if sha(src) != expected:
             raise ValueError(f'{name}: KR hash mismatch')
-        s, before = decode_image_at(src, 0)
+        _, before = decode_image_at(src, 0)
         after = before.copy()
         boxes = []
+        labels = []
         if name in LOGIN_TABLES:
+            table_rects = VI_LOGIN_TABLES[name] if lang == 'vi' else LOGIN_TABLES[name]
             specs = (
-                ('SELECT SERVER', 12, (255, 255, 255), (179, 88, 0), True),
-                ('ID', 12, (255, 255, 255), (0, 60, 119), False),
-                ('PASSWORD', 11, (255, 255, 255), (0, 60, 119), True),
+                (title, 12, (179, 88, 0), True),
+                ('ID', 12, (0, 60, 119), False),
+                (password, 11, (0, 60, 119), True),
             )
-            for rect, (label, sz, fill, stroke, cond) in zip(LOGIN_TABLES[name], specs):
+            for label_index, (rect, (label, sz, stroke, cond)) in enumerate(zip(table_rects, specs)):
+                base_rect = LOGIN_TABLES[name][label_index]
                 donor_xs = [min(after.width - 1, rect[2] + k) for k in range(3)]
+                extension_evidence = []
+                if lang == 'vi' and label_index in (0, 2):
+                    extension_evidence = _plain_row_evidence(before, base_rect, rect, donor_xs)
                 _erase_horizontal_median(after, before, rect, donor_xs)
-                _draw_ttf_label(after, rect, label, sz, fill, stroke=stroke, stroke_width=1, condensed=cond, bitmap_font=bfont)
+                actual_size = _draw_ttf_label(
+                    after, rect, label, sz, (255, 255, 255), stroke=stroke, condensed=cond,
+                    bitmap_font=bfont, vertical_margin=2 if lang == 'vi' and label != 'ID' else 1,
+                )
                 boxes.append(rect)
+                label_receipt = {'rect': list(rect), 'text': label, 'size': actual_size}
+                if lang == 'vi':
+                    label_receipt['base_rect'] = list(base_rect)
+                    label_receipt['extension_evidence'] = extension_evidence
+                labels.append(label_receipt)
         else:
             visible = h // 24
             server = 'DREAM' if name.startswith('LO_SerDre') else 'HAPPY'
@@ -227,14 +310,17 @@ def render_login(kr: Path, font_data: bytes, out: Path) -> tuple[list, dict]:
                 fill = (255, 224, 0) if i == visible - 2 else ((0, 113, 198) if i == visible - 1 else (255, 255, 255))
                 stroke = (0, 0, 0) if i == visible - 2 else ((0, 80, 164) if i == visible - 1 else (0, 60, 119))
                 _erase_horizontal_median(after, before, rect, [22, 23, 88, 89])
-                _draw_ttf_label(after, rect, server, 12, fill, stroke=stroke, stroke_width=1, condensed=True, bitmap_font=bfont)
+                actual_size = _draw_ttf_label(after, rect, server, 12, fill, stroke=stroke, stroke_width=1, condensed=True, bitmap_font=bfont)
                 boxes.append(rect)
+                labels.append({'rect': rect, 'text': server, 'size': actual_size})
         rebuilt = validate_i16(src, after, boxes, 0)
-        target = out / 'en-drawn' / 'FxDesktop' / 'LoginStage' / name
+        target = out / ('en-drawn' if lang == 'en' else 'vi-drawn') / 'FxDesktop' / 'LoginStage' / name
         target.mkdir(parents=True, exist_ok=True)
         (target / '0.png').write_bytes(i16.png(after.tobytes(), w, h))
         rendered.append(('FxDesktop/LoginStage/' + name, before, after))
         receipt[name] = {'pack': 'FxDesktop', 'entry': 'LoginStage/' + name, 'dims': [w, h], 'frames': n, 'sha256': sha(rebuilt)}
+        if lang == 'vi':
+            receipt[name]['labels'] = labels
     return rendered, receipt
 
 
